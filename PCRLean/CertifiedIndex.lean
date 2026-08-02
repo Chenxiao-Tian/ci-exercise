@@ -13,6 +13,7 @@ import PCRLean.NoetherianTraceMemory
 import PCRLean.DifferentialOrbitKernel
 import PCRLean.DifferentialOrbitClosure
 import PCRLean.NoetherianOperatorOrbit
+import PCRLean.SplitKernelCentre
 import PCRLean.NoetherianPatchingCompiler
 import PCRLean.CartierNoetherMaster
 import PCRLean.ActualIdealGluing
