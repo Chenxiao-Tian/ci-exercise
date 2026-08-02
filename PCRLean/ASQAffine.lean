@@ -5,6 +5,8 @@ import PCRLean.CentrePermissibility
 namespace PCRLean
 namespace ASQAffine
 
+noncomputable section
+
 universe u
 
 variable {R : Type u} [CommRing R]
@@ -70,8 +72,9 @@ theorem equation_mem_centre_sq (u : R) (m r : Nat) :
   have htz : tVar (R := R) * zVar (R := R) ∈ centre (R := R) ^ 2 :=
     CentrePermissibility.mul_mem_center_sq t_mem_centre z_mem_centre
   have hlinear : tVar (R := R) ^ (m + 1) * zVar (R := R) ∈ centre (R := R) ^ 2 := by
-    rw [pow_succ]
-    exact (centre (R := R) ^ 2).mul_mem_left _ htz
+    have hmul := (centre (R := R) ^ 2).mul_mem_left
+      (tVar (R := R) ^ m) htz
+    simpa [pow_succ, mul_assoc] using hmul
   have ht2 : tVar (R := R) ^ 2 ∈ centre (R := R) ^ 2 :=
     CentrePermissibility.square_mem_center_sq t_mem_centre
   have htailPow : tVar (R := R) ^ (r + 2) ∈ centre (R := R) ^ 2 := by
@@ -91,6 +94,8 @@ theorem marked_equation_permissible (u : R) (m r : Nat) :
   exact MarkedIdeal.permissible_span_singleton
     (R := MvPolynomial (Fin 2) R) (by omega)
     (equation_mem_centre_sq u m r)
+
+end
 
 end ASQAffine
 end PCRLean
