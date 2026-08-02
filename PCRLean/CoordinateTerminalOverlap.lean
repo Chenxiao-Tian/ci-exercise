@@ -1,13 +1,13 @@
 import Mathlib
-import PCRLean.CoordinateCentrePrincipalization
+import PCRLean.CoordinateRootPacket
 
 /-!
 # Terminal overlap compatibility for coordinate Frobenius packets
 
-On every standard chart the controlled coordinate Frobenius packet is the unit
-ideal. Therefore any two chart packets agree after restriction to an overlap.
-The scheme-level localization map is not needed for this terminal ideal-level
-identity.
+On every standard chart the controlled coordinate root packet is the unit
+ideal. Therefore any two chart packets agree at the ideal level. Scheme-level
+localization and strict-transform overlap maps remain a later globalization
+obligation.
 -/
 
 namespace PCRLean
@@ -24,20 +24,20 @@ variable [DecidableEq ι]
 /-- Any two standard-chart controlled root ideals are equal. -/
 theorem transformedRootIdeal_eq
     (i j : ι) (q : Nat) :
-    CoordinateCentrePrincipalization.transformedRootIdeal
+    CoordinateRootPacket.transformedRootIdeal
         (R := R) (α := α) i q =
-      CoordinateCentrePrincipalization.transformedRootIdeal
-        (R := R) (α := α) j q := by
-  rw [CoordinateCentrePrincipalization.transformedRootIdeal_eq_top,
-    CoordinateCentrePrincipalization.transformedRootIdeal_eq_top]
+      CoordinateRootPacket.transformedRootIdeal
+        (R := R) (α := α) j q :=
+  CoordinateRootPacket.transformedRootIdeal_eq
+    (R := R) (α := α) i j q
 
 /-- Every chart packet is terminal. -/
 theorem terminal_on_every_chart (q : Nat) :
     ∀ i : ι,
-      CoordinateCentrePrincipalization.transformedRootIdeal
+      CoordinateRootPacket.transformedRootIdeal
         (R := R) (α := α) i q = ⊤ := by
   intro i
-  exact CoordinateCentrePrincipalization.transformedRootIdeal_eq_top
+  exact CoordinateRootPacket.transformedRootIdeal_eq_top
     (R := R) (α := α) i q
 
 end
