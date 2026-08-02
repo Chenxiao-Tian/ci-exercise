@@ -66,8 +66,8 @@ theorem mem_ker_evaluationMap_iff
 /-- Coercion of linear functionals to ordinary functions, as a linear map. -/
 def dualToFun : DualV (K := K) (V := V) →ₗ[K] (V → K) where
   toFun f := fun x => f x
-  map_add' f g := rfl
-  map_smul' a f := rfl
+  map_add' _ _ := rfl
+  map_smul' _ _ := rfl
 
 /-- Coercion of linear functionals to functions is injective. -/
 theorem dualToFun_injective :
@@ -76,6 +76,7 @@ theorem dualToFun_injective :
   ext x
   exact congrFun h x
 
+set_option maxHeartbeats 800000 in
 /-- A linearly independent finite family of functionals gives a surjective
 coordinate-evaluation map. -/
 theorem evaluationMap_surjective_of_linearIndependent
@@ -91,7 +92,7 @@ theorem evaluationMap_surjective_of_linearIndependent
       (dualToFun_injective (K := K) (V := V)).injOn
     simpa [f, coeDual, Function.comp_def] using hmap
   have hspan :
-      Submodule.span K (Set.range (Function.flip f)) = ⊤ :=
+      Submodule.span K (Set.range (flip f)) = ⊤ :=
     (span_flip_eq_top_iff_linearIndependent).2 hliFun
   apply top_unique
   rw [← hspan]
