@@ -5,7 +5,9 @@ import PCRLean.Chambers.OddCuspProgram
 import PCRLean.Chambers.RamifiedQuadratic
 import PCRLean.Chambers.RamifiedQuadraticProgram
 import PCRLean.Chambers.ArtinSchreier
+import PCRLean.Chambers.ArtinSchreierProgram
 import PCRLean.Termination.Generational
+import PCRLean.Termination.PacketMultiset
 import PCRLean.Framework.RankedSystem
 import PCRLean.NoGo.PersistentObstruction
 
@@ -27,6 +29,11 @@ open PCRLean.Termination
 theorem generational_backend_wf :
     WellFounded Generational.GenLt :=
   Generational.genLt_wellFounded
+
+/-- The finite packet-multiset compiler has a genuine well-founded backend. -/
+theorem packet_multiset_backend_wf {α : Type*} [Preorder α] [WellFoundedLT α] :
+    WellFounded (PacketMultiset.PacketLt : Multiset α → Multiset α → Prop) :=
+  PacketMultiset.packetLt_wellFounded
 
 end PCRLean.Certified
 
@@ -53,10 +60,16 @@ end PCRLean.Certified
 #print axioms PCRLean.Chambers.ArtinSchreier.collision_factorization
 #print axioms PCRLean.Chambers.ArtinSchreier.sibling_factorization
 #print axioms PCRLean.Chambers.ArtinSchreier.collisionDepth_add_step
+#print axioms PCRLean.Chambers.ArtinSchreierProgram.step_decreases
+#print axioms PCRLean.Chambers.ArtinSchreierProgram.active_reaches_classified_exit
 #print axioms PCRLean.Termination.Generational.genLt_wellFounded
+#print axioms PCRLean.Termination.PacketMultiset.packetLt_wellFounded
+#print axioms PCRLean.Termination.PacketMultiset.replace_block_lt
+#print axioms PCRLean.Termination.PacketMultiset.PacketSystem.step_wellFounded
 #print axioms PCRLean.Framework.RankedSystem.step_wellFounded
 #print axioms PCRLean.Framework.CertifiedProgram.reaches_terminal
 #print axioms PCRLean.Framework.CertifiedProgram.reaches_resolved
 #print axioms PCRLean.NoGo.ObstructionSystem.preserves_path
 #print axioms PCRLean.NoGo.ObstructionSystem.nonzero_persists
 #print axioms PCRLean.Certified.generational_backend_wf
+#print axioms PCRLean.Certified.packet_multiset_backend_wf
