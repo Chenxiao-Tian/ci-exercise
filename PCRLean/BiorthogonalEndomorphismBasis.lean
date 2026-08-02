@@ -114,7 +114,7 @@ theorem conjugate_rankOne_eq_matrixUnit (i j : ι) :
   funext k
   change F.functional k
       (F.functional j (F.synthesize a) • F.vector i) =
-    Pi.single i (a j) k
+    ((Pi.single i (a j) : ι → R) k)
   have hj : F.functional j (F.synthesize a) = a j := by
     exact congrFun (F.evaluate_synthesize a) j
   rw [map_smul, hj, F.biorthogonal k i]
