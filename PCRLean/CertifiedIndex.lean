@@ -18,6 +18,7 @@ import PCRLean.NoetherianOperatorOrbit
 import PCRLean.OperatorSaturation
 import PCRLean.OperatorConjugacy
 import PCRLean.DifferentialIdealSaturation
+import PCRLean.DifferentialIdealIteration
 import PCRLean.DifferentialIdealConjugacy
 import PCRLean.MatrixStableSubmodule
 import PCRLean.FiniteFreeEndomorphismDescent
