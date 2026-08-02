@@ -38,8 +38,11 @@ theorem insert_owner_preserves
     (hi : owners i ≤ C ^ m)
     (hs : activeUnion owners s ≤ C ^ m) :
     activeUnion owners (insert i s) ≤ C ^ m := by
-  classical
-  simp [activeUnion, hi, hs]
+  apply activeUnion_le_centre_pow
+  intro b hb
+  rcases Finset.mem_insert.mp hb with rfl | hb
+  · exact hi
+  · exact (Finset.le_sup (f := owners) hb).trans hs
 
 /-- Removing an owner cannot destroy joint permissibility. -/
 theorem subset_preserves
