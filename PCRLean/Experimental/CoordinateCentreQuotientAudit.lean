@@ -1,0 +1,11 @@
+import PCRLean.Experimental.CoordinateCentreQuotient
+
+#print axioms PCRLean.Experimental.CoordinateCentreQuotient.passiveEval_C
+#print axioms PCRLean.Experimental.CoordinateCentreQuotient.passiveEval_passiveVar
+#print axioms PCRLean.Experimental.CoordinateCentreQuotient.passiveEval_centreVar
+#print axioms PCRLean.Experimental.CoordinateCentreQuotient.sub_passiveProjection_mem
+#print axioms PCRLean.Experimental.CoordinateCentreQuotient.centreIdeal_le_ker
+#print axioms PCRLean.Experimental.CoordinateCentreQuotient.ker_passiveEval_eq_centreIdeal
+#print axioms PCRLean.Experimental.CoordinateCentreQuotient.passiveEval_surjective
+#print axioms PCRLean.Experimental.CoordinateCentreQuotient.quotientEquiv
+#print axioms PCRLean.Experimental.CoordinateCentreQuotient.quotientEquiv_mk
