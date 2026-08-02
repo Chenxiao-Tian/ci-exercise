@@ -77,8 +77,10 @@ jobs:
             PCRLean.Chambers.RamifiedQuadraticProgram
             PCRLean.Chambers.ArtinSchreier
             PCRLean.Chambers.ArtinSchreierProgram
+            PCRLean.Chambers.AllChartPrograms
             PCRLean.Termination.Generational
             PCRLean.Termination.FiniteSources
+            PCRLean.Termination.GenerationSystem
             PCRLean.Termination.PacketMultiset
             PCRLean.Framework.RankedSystem
             PCRLean.Framework.FiniteChartProgram
