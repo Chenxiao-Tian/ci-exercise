@@ -4,13 +4,16 @@ on:
   push:
     branches:
       - pcr-lean-formalization-20260801
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: pcr-hmc-sccd-${{ github.ref }}
+  group: pcr-hmc-sccd-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
