@@ -1,14 +1,16 @@
 name: PCR Lean closed-loop verification
 
 on:
-  push:
-    branches: ["pcr-lean-closed-loop"]
   pull_request:
     branches: ["main"]
   workflow_dispatch:
 
 permissions:
   contents: read
+
+concurrency:
+  group: pcr-lean-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build-and-audit:
