@@ -3,22 +3,24 @@ import Std.Tactic
 namespace PCRLean
 namespace NoRecharge
 
-/-- Immutable finite coupon ledger. -/
+/-- Immutable finite coupon ledger.  A list is sufficient because the formal
+no-recharge property is monotone membership, not a choice of ordering. -/
 structure Ledger where
   capacity : Nat
-  consumed : Finset Nat
-  withinCapacity : ∀ q ∈ consumed, q < capacity
+  consumed : List Nat
+  withinCapacity : ∀ q, q ∈ consumed → q < capacity
 
 /-- A chart, gauge, or reentry comparison is certified only when the consumed
-coupon set can grow but never shrink. -/
+coupon collection can grow but never lose a previously consumed coupon. -/
 def CertifiedReentry (before after : Ledger) : Prop :=
-  before.capacity = after.capacity ∧ before.consumed ⊆ after.consumed
+  before.capacity = after.capacity ∧
+    ∀ q, q ∈ before.consumed → q ∈ after.consumed
 
 /-- A consumed coupon cannot become available after certified reentry. -/
 theorem consumed_remains_consumed {before after : Ledger}
     (h : CertifiedReentry before after) {q : Nat}
     (hq : q ∈ before.consumed) : q ∈ after.consumed := by
-  exact h.2 hq
+  exact h.2 q hq
 
 /-- Certified reentry is transitive. -/
 theorem CertifiedReentry.trans {a b c : Ledger}
@@ -26,7 +28,8 @@ theorem CertifiedReentry.trans {a b c : Ledger}
     CertifiedReentry a c := by
   constructor
   · exact hab.1.trans hbc.1
-  · exact fun _ hq => hbc.2 (hab.2 hq)
+  · intro q hq
+    exact hbc.2 q (hab.2 q hq)
 
 /-- Certified reentry is reflexive. -/
 theorem CertifiedReentry.refl (a : Ledger) : CertifiedReentry a a := by
@@ -39,7 +42,7 @@ def freshBirthIdentity (n : Nat) : Nat := n
 /-- The fresh-birth stream is injective. -/
 theorem freshBirthIdentity_injective : Function.Injective freshBirthIdentity := by
   intro a b h
-  exact h
+  simpa [freshBirthIdentity] using h
 
 /-- Every time step produces a genuinely new identity. -/
 theorem freshBirthIdentity_strict (n : Nat) :
