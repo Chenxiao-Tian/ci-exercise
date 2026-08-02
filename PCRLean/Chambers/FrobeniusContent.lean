@@ -16,7 +16,10 @@ variable {R : Type*} [CommRing R]
 theorem active_factorization (t Y U : R) (q n : ℕ) :
     (t * Y) ^ q + t ^ ((n + 1) * q) * U =
       t ^ q * (Y ^ q + t ^ (n * q) * U) := by
-  have hexp : (n + 1) * q = q + n * q := by omega
+  have hexp : (n + 1) * q = q + n * q := by
+    calc
+      (n + 1) * q = n * q + q := by simp [Nat.add_mul]
+      _ = q + n * q := Nat.add_comm _ _
   rw [mul_pow, hexp, pow_add]
   ring
 
@@ -24,7 +27,10 @@ theorem active_factorization (t Y U : R) (q n : ℕ) :
 theorem sibling_factorization (y T U : R) (q n : ℕ) :
     y ^ q + (y * T) ^ ((n + 1) * q) * U =
       y ^ q * (1 + y ^ (n * q) * T ^ ((n + 1) * q) * U) := by
-  have hexp : (n + 1) * q = q + n * q := by omega
+  have hexp : (n + 1) * q = q + n * q := by
+    calc
+      (n + 1) * q = n * q + q := by simp [Nat.add_mul]
+      _ = q + n * q := Nat.add_comm _ _
   rw [mul_pow, hexp, pow_add]
   ring
 
