@@ -17,6 +17,7 @@ import PCRLean.NoetherianOperatorOrbit
 import PCRLean.OperatorSaturation
 import PCRLean.OperatorConjugacy
 import PCRLean.DifferentialIdealSaturation
+import PCRLean.DifferentialIdealConjugacy
 import PCRLean.SplitKernelCentre
 import PCRLean.FiniteKernelCentre
 import PCRLean.ProjectiveKernelCentre
