@@ -4,21 +4,21 @@ import PCRLean.EndomorphismGeneration
 /-!
 # Matrix units from separating diagonal operators
 
-Let `R^ι` be a finite free coordinate module.  Suppose a finite family of
+Let `R^ι` be a finite free coordinate module. Suppose a finite family of
 diagonal operators has a coefficient matrix admitting an explicit left inverse:
 for every target coordinate `d`, a finite linear combination of the diagonal
-weights is the Kronecker delta at `d`.  These combinations are the coordinate
+weights is the Kronecker delta at `d`. These combinations are the coordinate
 projectors `E_{dd}`.
 
 If the operator packet also contains transfer operators carrying the image of
 `E_{jj}` to the `i`-th coordinate, then the packet generates every matrix unit
-`E_{ij}` under addition, scalar multiplication and composition.  The abstract
+`E_{ij}` under addition, scalar multiplication and composition. The abstract
 endomorphism-generation theorem can then turn stability under this finite
 packet into Frobenius-base ideal descent.
 
 For a one-variable Frobenius monomial frame, the diagonal operators are
-`x^b H_b`; their weight matrix is the finite Pascal matrix.  Its inverse is the
-binomial-inversion matrix.  Thus this file isolates the exact finite identity
+`x^b H_b`; their weight matrix is the finite Pascal matrix. Its inverse is the
+binomial-inversion matrix. Thus this file isolates the exact finite identity
 needed from Hasse calculus.
 -/
 
@@ -47,7 +47,7 @@ def diagonal (weight : β → ι → R) (b : β) :
   map_smul' := by
     intro r x
     ext i
-    simp [mul_assoc, mul_comm, mul_left_comm]
+    simp [mul_left_comm]
 
 @[simp] theorem diagonal_apply
     (weight : β → ι → R) (b : β)
@@ -86,7 +86,9 @@ theorem projector_eq_sum
     (d : ι) :
     MatrixStableSubmodule.matrixUnit (R := R) d d =
       ∑ b, coeff d b • diagonal weight b := by
-  ext x i
+  apply LinearMap.ext
+  intro x
+  funext i
   change (Pi.single d (x d)) i =
     ∑ b, coeff d b * (weight b i * x i)
   simp only [← mul_assoc]
@@ -134,8 +136,7 @@ theorem generatesMatrixUnits
     (ops := packet weight transfer) (Sum.inr (i, j))
   have hproj := generated_projector weight coeff transfer hseparate j
   have hcomp := EndomorphismGeneration.Generated.comp hmove hproj
-  rw [htransfer i j] at hcomp
-  exact hcomp
+  simpa [packet, htransfer i j] using hcomp
 
 /-- Stability under a separating diagonal-and-transfer packet forces full
 endomorphism invariance of a coordinate submodule. -/
