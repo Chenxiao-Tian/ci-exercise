@@ -5,7 +5,10 @@ import PCRLean.Algebra.SquareCleaningDerivative
 import PCRLean.Algebra.OddContactDerivative
 import PCRLean.Algebra.QuasilinearPolar
 import PCRLean.Algebra.PerfectQuasilinearRoot
+import PCRLean.Algebra.FrobeniusPolynomialRoot
 import PCRLean.Algebra.UnitCocycleIdeal
+import PCRLean.Algebra.JointOwners
+import PCRLean.Algebra.PassiveFlatness
 import PCRLean.Chambers.FrobeniusContent
 import PCRLean.Chambers.FrobeniusContentProgram
 import PCRLean.Chambers.OddCusp
