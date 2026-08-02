@@ -1,3 +1,4 @@
+import Mathlib
 import Mathlib.Data.Multiset.DershowitzManna
 
 /-!
@@ -59,8 +60,10 @@ variable (S : PacketSystem (α := α))
 
 /-- Every packet-ranked transition system is well founded. -/
 theorem step_wellFounded : WellFounded S.step := by
-  exact (packetLt_wellFounded.onFun (f := S.packets)).mono
-    (fun _ _ h => S.step_decreases h)
+  have hPacket : WellFounded (PacketLt : Multiset α → Multiset α → Prop) :=
+    packetLt_wellFounded
+  exact (hPacket.onFun (f := S.packets)).mono
+    (fun _ _ hstep => S.step_decreases hstep)
 
 /-- Hence no infinite certified packet-replacement chain exists. -/
 theorem no_infinite_chain :
