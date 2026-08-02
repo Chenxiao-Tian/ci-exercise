@@ -1,0 +1,39 @@
+name: PCR Lean closed-loop verification
+
+on:
+  push:
+    branches: ["pcr-lean-closed-loop"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Lean build, kernel checks, and independent nanoda verification
+        uses: leanprover/lean-action@v1
+        with:
+          build: true
+          test: false
+          use-mathlib-cache: true
+          leanchecker: true
+          nanoda: true
+          nanoda-allow-sorry: false
+
+      - name: Reject proof placeholders and project axioms
+        shell: bash
+        run: |
+          set -euo pipefail
+          bad="$(find PCRLean -name '*.lean' -print0 | xargs -0 grep -nE '^[[:space:]]*(sorry|admit|axiom)([[:space:]]|$)' || true)"
+          if [[ -n "$bad" ]]; then
+            echo "$bad"
+            echo "Forbidden proof placeholder or custom axiom found."
+            exit 1
+          fi
+
+      - name: Re-run certified axiom audit explicitly
+        run: lake env lean PCRLean/Certified/CertifiedIndex.lean
