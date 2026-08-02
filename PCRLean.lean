@@ -1,5 +1,7 @@
 import PCRLean.Algebra.MarkedIdeal
+import PCRLean.Algebra.ControlledTransform
 import PCRLean.Algebra.CharacteristicTwoGauge
+import PCRLean.Algebra.SquareCleaningDerivative
 import PCRLean.Algebra.OddContactDerivative
 import PCRLean.Chambers.FrobeniusContent
 import PCRLean.Chambers.FrobeniusContentProgram
