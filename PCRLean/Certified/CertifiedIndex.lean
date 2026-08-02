@@ -12,6 +12,7 @@ import PCRLean.Chambers.ArtinSchreierProgram
 import PCRLean.Chambers.AllChartPrograms
 import PCRLean.Termination.Generational
 import PCRLean.Termination.FiniteSources
+import PCRLean.Termination.GenerationSystem
 import PCRLean.Termination.PacketMultiset
 import PCRLean.Framework.RankedSystem
 import PCRLean.Framework.FiniteChartProgram
@@ -39,6 +40,11 @@ open PCRLean.Termination
 theorem generational_backend_wf :
     WellFounded Generational.GenLt :=
   Generational.genLt_wellFounded
+
+/-- The accepted finite-source transition relation itself is well founded. -/
+theorem finite_source_generation_wf :
+    WellFounded GenerationSystem.Step :=
+  GenerationSystem.step_wellFounded
 
 /-- The finite packet-multiset compiler has a genuine well-founded backend. -/
 theorem packet_multiset_backend_wf {α : Type*} [Preorder α] [WellFoundedLT α] :
@@ -88,6 +94,8 @@ end PCRLean.Certified
 #print axioms PCRLean.Termination.FiniteSources.active_identity_bound
 #print axioms PCRLean.Termination.FiniteSources.no_infinite_financed_births
 #print axioms PCRLean.Termination.FiniteSources.clone_breaks_injectivity
+#print axioms PCRLean.Termination.GenerationSystem.step_rank_drop
+#print axioms PCRLean.Termination.GenerationSystem.step_wellFounded
 #print axioms PCRLean.Termination.PacketMultiset.packetLt_wellFounded
 #print axioms PCRLean.Termination.PacketMultiset.replace_block_lt
 #print axioms PCRLean.Termination.PacketMultiset.PacketSystem.step_wellFounded
@@ -103,5 +111,6 @@ end PCRLean.Certified
 #print axioms PCRLean.NoGo.FreshBirth.not_wellFounded
 #print axioms PCRLean.NoGo.CoordinatewiseDropCycle.not_wellFounded
 #print axioms PCRLean.Certified.generational_backend_wf
+#print axioms PCRLean.Certified.finite_source_generation_wf
 #print axioms PCRLean.Certified.packet_multiset_backend_wf
 #print axioms PCRLean.Certified.finite_carrier_excludes_infinite_births
