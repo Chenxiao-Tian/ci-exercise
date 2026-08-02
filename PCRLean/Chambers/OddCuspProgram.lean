@@ -7,8 +7,8 @@ import PCRLean.Framework.RankedSystem
 
 This file packages the exact chart identities for `y^2 + s^(2n+1)` into a
 finite transition program.  The program includes the repeated active cusp
-chart, the terminal sibling chart, and the two boundary-contact repair stages
-for the smooth tangent tail `y^2+s`.
+chart, the terminal sibling chart, and the two boundary-contact blowups for
+the smooth tangent tail `y^2+s`.
 
 The result is a kernel-checked theorem about this explicit affine chart model.
 It is not a scheme-level theorem for arbitrary singularities.
@@ -18,13 +18,13 @@ namespace PCRLean.Chambers.OddCuspProgram
 
 variable {R : Type*} [CommRing R]
 
-/-- In the `s`-pivot chart of the smooth tangent tail, the strict transform
-misses the active corner. -/
+/-- In the `s`-pivot chart of the first contact blowup, the strict transform
+misses the active boundary corner. -/
 theorem firstRepair_sPivot (s Y : R) :
     (s * Y) ^ 2 + s = s * (1 + s * Y ^ 2) := by
   ring
 
-/-- In the `y`-pivot chart of the smooth tangent tail, the strict transform is
+/-- In the `y`-pivot chart of the first contact blowup, the strict transform is
 `y+S`; it passes through the crossing of the old and new boundary components. -/
 theorem firstRepair_yPivot (y S : R) :
     y ^ 2 + y * S = y * (y + S) := by
@@ -40,19 +40,17 @@ theorem secondRepair_sPivot (S V : R) :
     S + S * V = S * (1 + V) := by
   ring
 
-/-- States of the complete local chart program. -/
+/-- States of the complete local chart program.  `secondContact` is the unique
+active chart after the first boundary-contact blowup. -/
 inductive State where
   | active (debt : ℕ)
-  | firstContact
   | secondContact
   | terminal
   deriving DecidableEq, Repr
 
-/-- The rank counts the remaining active cusp debt together with the two
-contact-repair stages. -/
+/-- The rank counts the remaining cusp blowups and the two contact blowups. -/
 def rank : State → ℕ
-  | .active n => n + 3
-  | .firstContact => 2
+  | .active n => n + 2
   | .secondContact => 1
   | .terminal => 0
 
@@ -60,13 +58,12 @@ def rank : State → ℕ
 inductive Step : State → State → Prop
   | activeMain (n : ℕ) : Step (.active n) (.active (n + 1))
   | activeSibling (n : ℕ) : Step .terminal (.active (n + 1))
-  | cuspTail : Step .firstContact (.active 0)
-  | firstMain : Step .secondContact .firstContact
-  | firstSibling : Step .terminal .firstContact
+  | firstMain : Step .secondContact (.active 0)
+  | firstSibling : Step .terminal (.active 0)
   | secondLeft : Step .terminal .secondContact
   | secondRight : Step .terminal .secondContact
 
-/-- Every chart edge strictly lowers the complete local rank. -/
+/-- Every actual chart edge strictly lowers the complete local rank. -/
 theorem step_decreases {child parent : State} (h : Step child parent) :
     rank child < rank parent := by
   cases h <;> simp [rank] <;> omega
@@ -92,9 +89,8 @@ theorem progress (s : State) : ¬ terminal s → ∃ t, Step t s := by
   cases s with
   | active n =>
       cases n with
-      | zero => exact ⟨.firstContact, Step.cuspTail⟩
+      | zero => exact ⟨.secondContact, Step.firstMain⟩
       | succ n => exact ⟨.active n, Step.activeMain n⟩
-  | firstContact => exact ⟨.secondContact, Step.firstMain⟩
   | secondContact => exact ⟨.terminal, Step.secondLeft⟩
   | terminal => exact False.elim (h trivial)
 
