@@ -5,6 +5,8 @@ import PCRLean.CentrePermissibility
 namespace PCRLean
 namespace TameQuadraticAffine
 
+noncomputable section
+
 universe u
 
 variable {R : Type u} [CommRing R]
@@ -80,6 +82,8 @@ theorem marked_equation_permissible (u : R) (N : Nat) :
   exact MarkedIdeal.permissible_span_singleton
     (R := MvPolynomial (Fin 2) R) (by omega)
     (equation_mem_centre_sq u N)
+
+end
 
 end TameQuadraticAffine
 end PCRLean
