@@ -19,6 +19,7 @@ import PCRLean.OperatorConjugacy
 import PCRLean.DifferentialIdealSaturation
 import PCRLean.DifferentialIdealConjugacy
 import PCRLean.MatrixStableSubmodule
+import PCRLean.FiniteFreeEndomorphismDescent
 import PCRLean.SplitKernelCentre
 import PCRLean.FiniteKernelCentre
 import PCRLean.ProjectiveKernelCentre
