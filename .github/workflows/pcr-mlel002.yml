@@ -54,8 +54,7 @@ jobs:
       - name: Build MLEL-002 chain
         run: |
           set -o pipefail
-          lake build PCRLean.MultiHasseOnlyDescent 2>&1 | tee mlel002-build.txt
-          lake env lean PCRLean/MLEL002Index.lean 2>&1 | tee -a mlel002-build.txt
+          lake build PCRLean.MLEL002Index 2>&1 | tee mlel002-build.txt
       - name: Axiom audit
         run: |
           set -o pipefail
