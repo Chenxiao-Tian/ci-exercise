@@ -142,7 +142,7 @@ def fromRowModule
   carrier := {x | ∀ i, rowAt (R := R) i x ∈ P}
   zero_mem' := by
     intro i
-    simp [rowAt]
+    simpa [rowAt] using P.zero_mem
   add_mem' := by
     intro x y hx hy i
     exact P.add_mem (hx i) (hy i)
@@ -194,8 +194,11 @@ theorem mem_iff_forall_row_mem
     (hN : LeftInvariant N)
     (x : ProductCoordinates (R := R) (ι := ι) (μ := μ)) :
     x ∈ N ↔ ∀ i, rowAt (R := R) i x ∈ rowModule N := by
-  rw [eq_fromRowModule N hN]
-  rfl
+  constructor
+  · intro hx i
+    exact row_mem hN hx i
+  · intro hx
+    exact mem_of_forall_row_mem hx
 
 end
 
