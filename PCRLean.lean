@@ -6,6 +6,7 @@ import PCRLean.Algebra.OddContactDerivative
 import PCRLean.Algebra.QuasilinearPolar
 import PCRLean.Algebra.PerfectQuasilinearRoot
 import PCRLean.Algebra.FrobeniusPolynomialRoot
+import PCRLean.Algebra.FrobeniusExtractionProgram
 import PCRLean.Algebra.UnitCocycleIdeal
 import PCRLean.Algebra.JointOwners
 import PCRLean.Algebra.PassiveFlatness
