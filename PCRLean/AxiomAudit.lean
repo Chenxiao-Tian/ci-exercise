@@ -25,6 +25,9 @@ import PCRLean
 #print axioms PCRLean.NoetherianTraceMemory.no_infinite_independent_births
 #print axioms PCRLean.NoetherianTraceMemory.eventually_disjoint_kernel_range
 #print axioms PCRLean.NoetherianTraceMemory.eventually_kernel_tower_stabilizes
+#print axioms PCRLean.DifferentialOrbitKernel.annihilator_antitone
+#print axioms PCRLean.DifferentialOrbitKernel.annihilator_invariant
+#print axioms PCRLean.DifferentialOrbitKernel.annihilator_family_invariant
 #print axioms PCRLean.OwnerJoint.aggregate_permissible
 #print axioms PCRLean.PolynomialCharts.oddCusp_sPivot_identity
 #print axioms PCRLean.PolynomialCharts.oddCusp_yPivot_identity
