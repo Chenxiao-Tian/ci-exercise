@@ -12,7 +12,7 @@ presentation independence under equality of packet spans and exposes the
 explicit direct-summand decomposition of the direction module.
 
 The remaining geometric bridge is to prove that arbitrary prepared packets
-admit these constant-rank charts and that the local actual ideals glue as a
+possess these constant-rank charts and that the local actual ideals glue as a
 coherent regular centre compatible with all marked owners and boundaries.
 -/
 
