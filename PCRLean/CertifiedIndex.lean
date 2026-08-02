@@ -57,6 +57,7 @@ import PCRLean.ReesFoundation
 import PCRLean.ResolutionCompiler
 import PCRLean.ChamberPrograms
 import PCRLean.ConditionalMaster
+import PCRLean.HMCSCCD
 
 namespace PCRLean
 
