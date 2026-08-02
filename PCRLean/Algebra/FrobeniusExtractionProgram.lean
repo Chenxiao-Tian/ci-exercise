@@ -20,7 +20,6 @@ noncomputable section
 namespace PCRLean.Algebra.FrobeniusExtractionProgram
 
 open Polynomial
-namespace FRoot := PCRLean.Algebra.FrobeniusPolynomialRoot
 
 variable {K : Type*} [Field K]
 variable (p : ℕ) [Fact p.Prime] [CharP K p] [PerfectRing K p]
@@ -36,31 +35,37 @@ def terminal (f : State) : Prop :=
   f.natDegree = 0 ∨ derivative f ≠ 0
 
 /-- Terminality is the exact certified outcome for this extractor. -/
-def resolved : State → Prop := terminal
+def resolved : State → Prop := terminal p
 
 /-- One canonical Frobenius-root extraction step. -/
 inductive Step : State → State → Prop
   | extract (f : State)
       (hder : derivative f = 0)
       (hdeg : 0 < f.natDegree) :
-      Step (FRoot.rootPolynomial p f) f
+      Step (PCRLean.Algebra.FrobeniusPolynomialRoot.rootPolynomial p f) f
 
-/-- The canonical root has degree multiplied by `p` in the original packet. -/
-theorem degree_eq_prime_mul_root_degree {f : State}
+/-- The original degree is the characteristic prime times the root degree. -/
+theorem degree_eq_prime_mul_root_degree {f : K[X]}
     (hder : derivative f = 0) :
-    f.natDegree = p * (FRoot.rootPolynomial p f).natDegree := by
-  rw [← FRoot.rootPolynomial_pow_of_derivative_eq_zero p hder]
+    f.natDegree =
+      p * (PCRLean.Algebra.FrobeniusPolynomialRoot.rootPolynomial p f).natDegree := by
+  rw [← PCRLean.Algebra.FrobeniusPolynomialRoot.rootPolynomial_pow_of_derivative_eq_zero
+    p hder]
   exact Polynomial.natDegree_pow _ _
 
 /-- Every nontrivial root extraction strictly lowers polynomial degree. -/
-theorem root_degree_strict_drop {f : State}
+theorem root_degree_strict_drop {f : K[X]}
     (hder : derivative f = 0) (hdeg : 0 < f.natDegree) :
-    (FRoot.rootPolynomial p f).natDegree < f.natDegree := by
-  let d := (FRoot.rootPolynomial p f).natDegree
+    (PCRLean.Algebra.FrobeniusPolynomialRoot.rootPolynomial p f).natDegree <
+      f.natDegree := by
+  let d := (PCRLean.Algebra.FrobeniusPolynomialRoot.rootPolynomial p f).natDegree
   have hEq : f.natDegree = p * d := by
     simpa [d] using degree_eq_prime_mul_root_degree p hder
   have hmulpos : 0 < p * d := by simpa [hEq] using hdeg
-  have hdpos : 0 < d := (Nat.mul_pos_iff.mp hmulpos).2
+  have hdpos : 0 < d := by
+    by_contra hd
+    have hd0 : d = 0 := Nat.eq_zero_of_not_pos hd
+    simp [hd0] at hmulpos
   have hp2 : 2 ≤ p := (Fact.out : p.Prime).two_le
   have hfirst : d < 2 * d := by omega
   have hsecond : 2 * d ≤ p * d := Nat.mul_le_mul_right d hp2
@@ -68,14 +73,14 @@ theorem root_degree_strict_drop {f : State}
   exact hfirst.trans_le hsecond
 
 /-- Every extraction edge strictly lowers the rank. -/
-theorem step_decreases {child parent : State} (h : Step p child parent) :
+theorem step_decreases {child parent : K[X]} (h : Step p child parent) :
     rank p child < rank p parent := by
   cases h with
   | extract f hder hdeg =>
       exact root_degree_strict_drop p hder hdeg
 
 /-- Every nonterminal packet admits its canonical root step. -/
-theorem progress (f : State) :
+theorem progress (f : K[X]) :
     ¬ terminal p f → ∃ g, Step p g f := by
   intro hterm
   have hdeg : 0 < f.natDegree := by
@@ -84,11 +89,12 @@ theorem progress (f : State) :
   have hder : derivative f = 0 := by
     by_contra h
     exact hterm (Or.inr h)
-  exact ⟨FRoot.rootPolynomial p f, Step.extract f hder hdeg⟩
+  exact ⟨PCRLean.Algebra.FrobeniusPolynomialRoot.rootPolynomial p f,
+    Step.extract f hder hdeg⟩
 
 /-- The complete finite root-extraction program. -/
 def program : PCRLean.Framework.CertifiedProgram where
-  State := State
+  State := K[X]
   step := Step p
   rank := rank p
   step_decreases := step_decreases p
