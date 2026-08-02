@@ -52,6 +52,7 @@ end PCRLean.Certified
 #print axioms PCRLean.Chambers.RamifiedQuadraticProgram.active_reaches_resolved
 #print axioms PCRLean.Chambers.ArtinSchreier.collision_factorization
 #print axioms PCRLean.Chambers.ArtinSchreier.sibling_factorization
+#print axioms PCRLean.Chambers.ArtinSchreier.collisionDepth_add_step
 #print axioms PCRLean.Termination.Generational.genLt_wellFounded
 #print axioms PCRLean.Framework.RankedSystem.step_wellFounded
 #print axioms PCRLean.Framework.CertifiedProgram.reaches_terminal
