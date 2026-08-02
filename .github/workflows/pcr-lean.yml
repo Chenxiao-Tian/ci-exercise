@@ -32,6 +32,12 @@ jobs:
           lean --version | tee lean-version.txt
           lake --version | tee lake-version.txt
 
+      - name: Resolve pinned mathlib dependency
+        run: |
+          set -o pipefail
+          lake update 2>&1 | tee lake-update.txt
+          lake exe cache get 2>&1 | tee mathlib-cache.txt
+
       - name: Reject proof placeholders and custom axioms
         run: |
           set -o pipefail
@@ -59,6 +65,8 @@ jobs:
           path: |
             lean-version.txt
             lake-version.txt
+            lake-update.txt
+            mathlib-cache.txt
             source-audit.txt
             lake-build.txt
             axiom-audit.txt
