@@ -8,7 +8,7 @@ variable {R : Type*} {σ : Type*}
 variable [CommRing R] [CharP R 2] [Fintype σ] [DecidableEq σ]
 
 /-- The ordinary Jacobian ideal of a multivariate polynomial. -/
-def jacobianIdeal (H : MvPolynomial σ R) : Ideal (MvPolynomial σ R) :=
+noncomputable def jacobianIdeal (H : MvPolynomial σ R) : Ideal (MvPolynomial σ R) :=
   Ideal.span (Set.range fun i : σ => MvPolynomial.pderiv i H)
 
 /-- Every partial derivative is a generator of the Jacobian ideal. -/
@@ -23,13 +23,12 @@ theorem X_mul_pderiv_mem (H : MvPolynomial σ R) (i : σ) :
   exact (jacobianIdeal H).mul_mem_left _ (pderiv_mem_jacobian H i)
 
 /-- For an odd homogeneous polynomial in characteristic two, the equation
-itself belongs to its Jacobian ideal.  This is the ideal-theoretic Euler
-bridge used by the nonprincipal radicial core. -/
+itself belongs to its Jacobian ideal. -/
 theorem self_mem_jacobian_of_odd_homogeneous
     {H : MvPolynomial σ R} {N : Nat}
     (hH : H.IsHomogeneous (2 * N + 1)) : H ∈ jacobianIdeal H := by
   rw [← EulerRadicial.odd_euler_identity hH]
-  exact Finset.sum_mem (fun i _ => X_mul_pderiv_mem H i)
+  exact (jacobianIdeal H).sum_mem fun i _ => X_mul_pderiv_mem H i
 
 /-- Square cleaning leaves the full Jacobian ideal unchanged. -/
 theorem jacobianIdeal_square_cleaning (H G : MvPolynomial σ R) :
@@ -37,12 +36,16 @@ theorem jacobianIdeal_square_cleaning (H G : MvPolynomial σ R) :
   apply le_antisymm
   · rw [jacobianIdeal, jacobianIdeal, Ideal.span_le]
     rintro x ⟨i, rfl⟩
+    change MvPolynomial.pderiv i (H + G ^ 2) ∈
+      Ideal.span (Set.range fun j : σ => MvPolynomial.pderiv j H)
     rw [EulerRadicial.pderiv_square_cleaning]
-    exact pderiv_mem_jacobian H i
+    exact Ideal.subset_span ⟨i, rfl⟩
   · rw [jacobianIdeal, jacobianIdeal, Ideal.span_le]
     rintro x ⟨i, rfl⟩
+    change MvPolynomial.pderiv i H ∈
+      Ideal.span (Set.range fun j : σ => MvPolynomial.pderiv j (H + G ^ 2))
     rw [← EulerRadicial.pderiv_square_cleaning i H G]
-    exact pderiv_mem_jacobian (H + G ^ 2) i
+    exact Ideal.subset_span ⟨i, rfl⟩
 
 /-- The principal ideal of an odd homogeneous equation is contained in its
 Jacobian ideal. -/
