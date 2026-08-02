@@ -20,12 +20,12 @@ def GenRank.Lt (x y : GenRank) : Prop :=
 /-- Accessibility of every finite generation rank. -/
 theorem GenRank.acc (r : GenRank) : Acc GenRank.Lt r := by
   rcases r with ⟨u, a, b⟩
-  induction u using Nat.strong_induction_on generalizing a b with
-  | h u ihu =>
-      induction a using Nat.strong_induction_on generalizing b with
-      | h a iha =>
-          induction b using Nat.strong_induction_on with
-          | h b ihb =>
+  induction u using Nat.strongRecOn generalizing a b with
+  | ind u ihu =>
+      induction a using Nat.strongRecOn generalizing b with
+      | ind a iha =>
+          induction b using Nat.strongRecOn with
+          | ind b ihb =>
               constructor
               intro r' hr
               rcases r' with ⟨u', a', b'⟩
@@ -65,13 +65,13 @@ inductive GenStep : GenState → GenState → Prop
 theorem GenStep.decreases {s t : GenState} (h : GenStep s t) :
     GenRank.Lt t.rank s.rank := by
   cases h with
-  | financedBirth _ _ h =>
+  | financedBirth h =>
       exact Or.inl h
-  | sourceMerge _ _ hu ha =>
+  | sourceMerge hu ha =>
       exact Or.inr ⟨hu, Or.inl ha⟩
-  | cleanup _ _ hu ha =>
+  | cleanup hu ha =>
       exact Or.inr ⟨hu, Or.inl ha⟩
-  | macroInternal _ _ hu ha hb =>
+  | macroInternal hu ha hb =>
       exact Or.inr ⟨hu, Or.inr ⟨ha, hb⟩⟩
 
 /-- A generic well-founded relation admits no infinite strictly descending stream. -/
