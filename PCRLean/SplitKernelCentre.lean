@@ -4,9 +4,9 @@ import Mathlib
 # Split linear kernels as regular centre models
 
 A constant-rank differential packet gives a linear map from a conormal space to
-its coefficient space.  If the map has a linear section, its kernel is an
-actual split linear subspace.  This file constructs the explicit product
-decomposition.  In geometry, a locally split map of vector bundles cuts out a
+its coefficient space. If the map has a linear right inverse, its kernel is an
+actual split linear subspace. This file constructs the explicit product
+decomposition. In geometry, a locally split map of vector bundles cuts out a
 regular linear centre; the sheaf and scheme descent are separate obligations.
 -/
 
@@ -22,25 +22,34 @@ variable [Field K]
 variable [AddCommGroup V] [Module K V]
 variable [AddCommGroup W] [Module K W]
 
-/-- A linear surjection equipped with a chosen section. -/
+/-- A linear surjection equipped with a chosen right inverse. -/
 structure SplitMap where
   map : V →ₗ[K] W
-  section : W →ₗ[K] V
-  rightInverse : map.comp section = LinearMap.id
+  rightInv : W →ₗ[K] V
+  rightInv_spec : map.comp rightInv = LinearMap.id
 
 namespace SplitMap
 
 variable (S : SplitMap (K := K) (V := V) (W := W))
 
-@[simp] theorem map_section (w : W) : S.map (S.section w) = w := by
-  have h := LinearMap.congr_fun S.rightInverse w
+@[simp] theorem map_rightInv (w : W) : S.map (S.rightInv w) = w := by
+  have h := LinearMap.congr_fun S.rightInv_spec w
   simpa using h
 
 /-- Projection of a vector to the kernel component. -/
-def kernelPart (v : V) : V := v - S.section (S.map v)
+def kernelPart (v : V) : V := v - S.rightInv (S.map v)
 
 @[simp] theorem map_kernelPart (v : V) : S.map (S.kernelPart v) = 0 := by
-  simp [kernelPart, map_section]
+  simp [kernelPart]
+
+@[simp] theorem kernelPart_add (x y : V) :
+    S.kernelPart (x + y) = S.kernelPart x + S.kernelPart y := by
+  simp [kernelPart]
+  abel
+
+@[simp] theorem kernelPart_smul (a : K) (x : V) :
+    S.kernelPart (a • x) = a • S.kernelPart x := by
+  simp [kernelPart, smul_sub]
 
 /-- Kernel component as an element of the kernel subtype. -/
 def kernelPartSubtype (v : V) : LinearMap.ker S.map :=
@@ -52,22 +61,25 @@ def toProd : V →ₗ[K] (LinearMap.ker S.map × W) where
   map_add' x y := by
     apply Prod.ext
     · ext
-      simp [kernelPartSubtype, kernelPart]
-    · simp
+      exact S.kernelPart_add x y
+    · exact S.map.map_add x y
   map_smul' a x := by
     apply Prod.ext
     · ext
-      simp [kernelPartSubtype, kernelPart]
-    · simp
+      exact S.kernelPart_smul a x
+    · exact S.map.map_smul a x
 
 /-- Reconstruct a vector from its kernel and transverse components. -/
 def fromProd : (LinearMap.ker S.map × W) →ₗ[K] V where
-  toFun z := (z.1 : V) + S.section z.2
+  toFun z := (z.1 : V) + S.rightInv z.2
   map_add' x y := by
-    simp
+    dsimp
+    rw [map_add]
     abel
   map_smul' a x := by
-    simp [smul_add]
+    dsimp
+    rw [map_smul]
+    exact smul_add a (x.1 : V) (S.rightInv x.2)
 
 @[simp] theorem fromProd_toProd (v : V) :
     S.fromProd (S.toProd v) = v := by
@@ -78,8 +90,8 @@ def fromProd : (LinearMap.ker S.map × W) →ₗ[K] V where
   rcases z with ⟨k, w⟩
   apply Prod.ext
   · ext
-    simp [fromProd, toProd, kernelPartSubtype, kernelPart, map_section]
-  · simp [fromProd, toProd, map_section]
+    simp [fromProd, toProd, kernelPartSubtype, kernelPart]
+  · simp [fromProd, toProd]
 
 /-- Explicit product decomposition of a split linear packet. -/
 def equivKernelProd : V ≃ₗ[K] (LinearMap.ker S.map × W) where
@@ -88,39 +100,43 @@ def equivKernelProd : V ≃ₗ[K] (LinearMap.ker S.map × W) where
   left_inv := S.fromProd_toProd
   right_inv := S.toProd_fromProd
 
-/-- The section is injective. -/
-theorem section_injective : Function.Injective S.section := by
+/-- The right inverse is injective. -/
+theorem rightInv_injective : Function.Injective S.rightInv := by
   intro x y hxy
-  apply S.map_section x ▸ S.map_section y ▸ congrArg S.map hxy
+  have h := congrArg S.map hxy
+  simpa using h
 
-/-- The kernel and the image of the section meet only in zero. -/
-theorem ker_disjoint_range_section :
-    Disjoint (LinearMap.ker S.map) (LinearMap.range S.section) := by
-  rw [Submodule.disjoint_left]
-  intro x hxker hxrange
+/-- The kernel and the image of the right inverse meet only in zero. -/
+theorem ker_disjoint_range_rightInv :
+    Disjoint (LinearMap.ker S.map) (LinearMap.range S.rightInv) := by
+  rw [disjoint_iff_inf_le]
+  intro x hx
+  rcases hx with ⟨hxker, hxrange⟩
   rcases hxrange with ⟨w, rfl⟩
-  have hm : S.map (S.section w) = 0 := hxker
-  rw [S.map_section] at hm
+  have hw : w = 0 := by
+    have hm : S.map (S.rightInv w) = 0 := hxker
+    simpa using hm
   subst w
   simp
 
-/-- The kernel and section image span the whole source. -/
-theorem ker_sup_range_section :
-    LinearMap.ker S.map ⊔ LinearMap.range S.section = ⊤ := by
+/-- The kernel and right-inverse image span the whole source. -/
+theorem ker_sup_range_rightInv :
+    LinearMap.ker S.map ⊔ LinearMap.range S.rightInv = ⊤ := by
   apply top_unique
   intro v hv
   have hk : S.kernelPart v ∈ LinearMap.ker S.map := S.map_kernelPart v
-  have hs : S.section (S.map v) ∈ LinearMap.range S.section :=
+  have hs : S.rightInv (S.map v) ∈ LinearMap.range S.rightInv :=
     ⟨S.map v, rfl⟩
-  have hsum : S.kernelPart v + S.section (S.map v) ∈
-      LinearMap.ker S.map ⊔ LinearMap.range S.section :=
-    (Submodule.add_mem_sup hk hs)
+  have hsum : S.kernelPart v + S.rightInv (S.map v) ∈
+      LinearMap.ker S.map ⊔ LinearMap.range S.rightInv :=
+    Submodule.add_mem_sup hk hs
   simpa [kernelPart] using hsum
 
 /-- The kernel and chosen transverse image are complementary. -/
-theorem isCompl_kernel_range_section :
-    IsCompl (LinearMap.ker S.map) (LinearMap.range S.section) :=
-  ⟨S.ker_disjoint_range_section, codisjoint_iff.mpr S.ker_sup_range_section⟩
+theorem isCompl_kernel_range_rightInv :
+    IsCompl (LinearMap.ker S.map) (LinearMap.range S.rightInv) :=
+  ⟨S.ker_disjoint_range_rightInv,
+    codisjoint_iff.mpr S.ker_sup_range_rightInv⟩
 
 end SplitMap
 
