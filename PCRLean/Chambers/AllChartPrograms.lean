@@ -46,7 +46,7 @@ private theorem child_decreases {child parent : State} (h : child ∈ children p
   | terminalSibling => simp [children] at h
 
 private theorem progress (parent : State) :
-    ¬ FrobeniusContentProgram.terminal parent → (children parent).Nonempty := by
+    ¬ FrobeniusContentProgram.terminal parent → children parent ≠ [] := by
   intro h
   cases parent with
   | active n => cases n <;> simp [children]
@@ -104,7 +104,7 @@ private theorem child_decreases {child parent : State} (h : child ∈ children p
   | terminal => simp [children] at h
 
 private theorem progress (parent : State) :
-    ¬ OddCuspProgram.terminal parent → (children parent).Nonempty := by
+    ¬ OddCuspProgram.terminal parent → children parent ≠ [] := by
   intro h
   cases parent with
   | active n => cases n <;> simp [children]
@@ -149,14 +149,19 @@ private theorem child_decreases {child parent : State} (h : child ∈ children p
     RamifiedQuadraticProgram.rank child < RamifiedQuadraticProgram.rank parent := by
   cases parent with
   | active n =>
-      rcases n with _ | _ | n
-      · simp [children] at h
-        subst child
-        simp [RamifiedQuadraticProgram.rank]
-      · simp [children] at h
-        rcases h with rfl | rfl <;> simp [RamifiedQuadraticProgram.rank]
-      · simp [children] at h
-        rcases h with rfl | rfl <;> simp [RamifiedQuadraticProgram.rank]
+      cases n with
+      | zero =>
+          simp [children] at h
+          subst child
+          simp [RamifiedQuadraticProgram.rank]
+      | succ n =>
+          cases n with
+          | zero =>
+              simp [children] at h
+              rcases h with rfl | rfl <;> simp [RamifiedQuadraticProgram.rank]
+          | succ n =>
+              simp [children] at h
+              rcases h with rfl | rfl <;> simp [RamifiedQuadraticProgram.rank]
   | secondContact =>
       simp [children] at h
       subst child
@@ -168,10 +173,13 @@ private theorem child_decreases {child parent : State} (h : child ∈ children p
   | terminal => simp [children] at h
 
 private theorem progress (parent : State) :
-    ¬ RamifiedQuadraticProgram.terminal parent → (children parent).Nonempty := by
+    ¬ RamifiedQuadraticProgram.terminal parent → children parent ≠ [] := by
   intro h
   cases parent with
-  | active n => rcases n with _ | _ | n <;> simp [children]
+  | active n =>
+      cases n with
+      | zero => simp [children]
+      | succ n => cases n <;> simp [children]
   | secondContact => simp [children]
   | branchFinal => simp [children]
   | terminal => exact False.elim (h trivial)
@@ -222,14 +230,19 @@ private theorem child_decreases {child parent : State} (h : child ∈ children p
           subst child
           simp [ArtinSchreierProgram.rank]
       | succ m =>
-          rcases r with _ | _ | r
-          · simp [children] at h
-            subst child
-            simp [ArtinSchreierProgram.rank]
-          · simp [children] at h
-            rcases h with rfl | rfl <;> simp [ArtinSchreierProgram.rank]
-          · simp [children] at h
-            rcases h with rfl | rfl <;> simp [ArtinSchreierProgram.rank]
+          cases r with
+          | zero =>
+              simp [children] at h
+              subst child
+              simp [ArtinSchreierProgram.rank]
+          | succ r =>
+              cases r with
+              | zero =>
+                  simp [children] at h
+                  rcases h with rfl | rfl <;> simp [ArtinSchreierProgram.rank]
+              | succ r =>
+                  simp [children] at h
+                  rcases h with rfl | rfl <;> simp [ArtinSchreierProgram.rank]
   | wildSecondContact =>
       simp [children] at h
       subst child
@@ -242,13 +255,16 @@ private theorem child_decreases {child parent : State} (h : child ∈ children p
   | terminal => simp [children] at h
 
 private theorem progress (parent : State) :
-    ¬ ArtinSchreierProgram.classifiedExit parent → (children parent).Nonempty := by
+    ¬ ArtinSchreierProgram.classifiedExit parent → children parent ≠ [] := by
   intro h
   cases parent with
   | active m r =>
       cases m with
       | zero => simp [children]
-      | succ m => rcases r with _ | _ | r <;> simp [children]
+      | succ m =>
+          cases r with
+          | zero => simp [children]
+          | succ r => cases r <;> simp [children]
   | wildSecondContact => simp [children]
   | branchFinal => simp [children]
   | radicialFrontier => exact False.elim (h trivial)
