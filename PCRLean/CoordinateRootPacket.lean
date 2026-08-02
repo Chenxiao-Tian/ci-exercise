@@ -71,8 +71,14 @@ theorem sourceIdeal_le_centre_pow (q : Nat) :
         (R := R) (α := α) (ι := ι)) ^ q := by
   rw [sourceIdeal, Ideal.span_le]
   rintro x ⟨i, rfl⟩
-  exact Ideal.pow_mem_pow
-    (Ideal.subset_span ⟨i, rfl⟩) q
+  have hi :
+      CoordinateBlowupChart.centreVar (R := R) (α := α) i ∈
+        CoordinateBlowupChart.centreIdeal
+          (R := R) (α := α) (ι := ι) := by
+    rw [CoordinateBlowupChart.centreIdeal]
+    apply Ideal.subset_span
+    exact ⟨i, rfl⟩
+  exact Ideal.pow_mem_pow hi q
 
 /-- Marked formulation of source permissibility. -/
 theorem sourcePacket_permissible
