@@ -4,8 +4,8 @@ import PCRLean.FiniteFreeEndomorphismDescent
 /-!
 # Ideal descent from full finite-free endomorphism stability
 
-Let `A` be a finite free algebra over a commutative base ring `R`.  Suppose a
-chosen finite free frame contains the unit as one coordinate vector.  If an
+Let `A` be a finite free algebra over a commutative base ring `R`. Suppose a
+chosen finite free frame contains the unit as one coordinate vector. If an
 ideal of `A`, viewed as an `R`-submodule, is invariant under every `R`-linear
 endomorphism of `A`, then it is exactly the extension of its contraction to
 `R`.
@@ -38,8 +38,8 @@ def idealSubmodule (I : Ideal A) : Submodule R A where
     exact I.add_mem hx hy
   smul_mem' := by
     intro r x hx
-    change algebraMap R A r * x ∈ I
-    exact I.mul_mem_left _ hx
+    simpa [Algebra.smul_def] using
+      I.mul_mem_left (algebraMap R A r) hx
 
 @[simp] theorem mem_idealSubmodule (I : Ideal A) (x : A) :
     x ∈ idealSubmodule (R := R) I ↔ x ∈ I := Iff.rfl
@@ -159,7 +159,7 @@ theorem ideal_eq_map_comap_of_fullyInvariant
     I = (I.comap (algebraMap R A)).map (algebraMap R A) := by
   apply le_antisymm
   · intro x hx
-    rw [F.reconstruct x]
+    rw [reconstruct F x]
     exact (I.comap (algebraMap R A)).map (algebraMap R A) |>.sum_mem
       (fun i _ => by
         have hc : F.coord x i ∈ I.comap (algebraMap R A) :=
