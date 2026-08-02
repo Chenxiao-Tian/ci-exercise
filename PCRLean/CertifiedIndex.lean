@@ -9,6 +9,7 @@ import PCRLean.RadicialJacobian
 import PCRLean.QuasilinearSplit
 import PCRLean.CechEffectivity
 import PCRLean.CartierFiniteMemory
+import PCRLean.NoetherianTraceMemory
 import PCRLean.SourcePartition
 import PCRLean.MarkedIdeal
 import PCRLean.CentrePermissibility
