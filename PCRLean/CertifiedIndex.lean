@@ -38,6 +38,7 @@ import PCRLean.MonogenicFrobeniusFrame
 import PCRLean.AdjoinRootFrobeniusFrame
 import PCRLean.HasseSaturationDescent
 import PCRLean.MultiHasseSaturationDescent
+import PCRLean.MultiHasseOnlyDescent
 import PCRLean.SplitKernelCentre
 import PCRLean.FiniteKernelCentre
 import PCRLean.ProjectiveKernelCentre
