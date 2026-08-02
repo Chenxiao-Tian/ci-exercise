@@ -6,7 +6,7 @@ import PCRLean.ActualIdealGluing
 
 A finite packet of linear trace rows can be integrated into an actual ideal of
 the affine polynomial ring by replacing each row with its linear polynomial.
-Finite row operations do not change this ideal.  Thus a local operator packet
+Finite row operations do not change this ideal. Thus a local operator packet
 whose frames differ by invertible row changes has a presentation-independent
 actual linear ideal.
 
@@ -68,15 +68,32 @@ theorem linearPolynomial_combination
       ∑ t, MvPolynomial.C (coeff t) * packetGenerator packet t := by
   classical
   simp only [linearPolynomial, packetGenerator]
-  rw [Finset.sum_comm]
-  apply Finset.sum_congr rfl
-  intro i hi
-  rw [map_sum]
-  simp only [map_mul, MvPolynomial.C_mul]
-  rw [Finset.sum_mul]
-  apply Finset.sum_congr rfl
-  intro t ht
-  ring
+  calc
+    (∑ i : σ,
+        MvPolynomial.C (∑ t : τ, coeff t * packet t i) *
+          MvPolynomial.X i) =
+        ∑ i : σ,
+          (∑ t : τ, MvPolynomial.C (coeff t * packet t i)) *
+            MvPolynomial.X i := by
+      apply Finset.sum_congr rfl
+      intro i hi
+      rw [map_sum]
+    _ = ∑ i : σ, ∑ t : τ,
+          MvPolynomial.C (coeff t * packet t i) * MvPolynomial.X i := by
+      apply Finset.sum_congr rfl
+      intro i hi
+      rw [Finset.sum_mul]
+    _ = ∑ t : τ, ∑ i : σ,
+          MvPolynomial.C (coeff t * packet t i) * MvPolynomial.X i := by
+      rw [Finset.sum_comm]
+    _ = ∑ t : τ, MvPolynomial.C (coeff t) *
+          ∑ i : σ, MvPolynomial.C (packet t i) * MvPolynomial.X i := by
+      apply Finset.sum_congr rfl
+      intro t ht
+      rw [Finset.mul_sum]
+      apply Finset.sum_congr rfl
+      intro i hi
+      simp [map_mul, mul_assoc]
 
 /-- Explicit mutual row-combination certificates give equality of the actual
 packet ideals. -/
@@ -87,14 +104,18 @@ theorem packetIdeal_eq_of_mutual_row_combinations
     (hbackward : ∀ t i, q t i = ∑ u, backward t u * p u i) :
     packetIdeal p = packetIdeal q := by
   apply ActualIdealGluing.generatedIdeal_eq_of_mutual_combinations
-    (packetGenerator p) (packetGenerator q) forward backward
+    (packetGenerator p) (packetGenerator q)
+    (fun t u => MvPolynomial.C (forward t u))
+    (fun t u => MvPolynomial.C (backward t u))
   · intro t
-    rw [packetGenerator, linearPolynomial_combination q (forward t)]
+    rw [packetGenerator]
+    rw [← linearPolynomial_combination q (forward t)]
     apply congrArg linearPolynomial
     funext i
     exact hforward t i
   · intro t
-    rw [packetGenerator, linearPolynomial_combination p (backward t)]
+    rw [packetGenerator]
+    rw [← linearPolynomial_combination p (backward t)]
     apply congrArg linearPolynomial
     funext i
     exact hbackward t i
