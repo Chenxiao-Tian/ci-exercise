@@ -43,7 +43,7 @@ inductive Step : State → State → Prop
       {U A' A beta' beta : ℕ}
       (hA : A' < A) :
       Step ⟨U, A', beta'⟩ ⟨U, A, beta⟩
-  | macro
+  | macroStep
       {U A beta' beta : ℕ}
       (hbeta : beta' < beta) :
       Step ⟨U, A, beta'⟩ ⟨U, A, beta⟩
@@ -55,13 +55,11 @@ theorem step_rank_drop {new old : State} (h : Step new old) :
   | financed hU => exact financedBirth_lt hU
   | merge hA => exact sourceMerge_lt hA
   | cleanup hA => exact cleanup_lt hA
-  | macro hbeta => exact macroInternal_lt hbeta
+  | macroStep hbeta => exact macroInternal_lt hbeta
 
 /-- The complete accepted generation relation is well founded. -/
 theorem step_wellFounded : WellFounded Step := by
-  apply Subrelation.wf
-    (r := InvImage GenLt State.rank)
+  exact (genLt_wellFounded.onFun (f := State.rank)).mono
     (fun _ _ h => step_rank_drop h)
-  exact InvImage.wf State.rank genLt_wellFounded
 
 end PCRLean.Termination.GenerationSystem
