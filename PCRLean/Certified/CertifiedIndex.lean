@@ -2,6 +2,7 @@ import PCRLean.Chambers.OddCusp
 import PCRLean.Chambers.RamifiedQuadratic
 import PCRLean.Chambers.ArtinSchreier
 import PCRLean.Termination.Generational
+import PCRLean.Framework.RankedSystem
 
 /-!
 # Certified kernel index
@@ -28,4 +29,7 @@ end PCRLean.Certified
 #print axioms PCRLean.Chambers.RamifiedQuadratic.collision_factorization
 #print axioms PCRLean.Chambers.ArtinSchreier.collision_factorization
 #print axioms PCRLean.Termination.Generational.genLt_wellFounded
+#print axioms PCRLean.Framework.RankedSystem.step_wellFounded
+#print axioms PCRLean.Framework.CertifiedProgram.reaches_terminal
+#print axioms PCRLean.Framework.CertifiedProgram.reaches_resolved
 #print axioms PCRLean.Certified.generational_backend_wf
