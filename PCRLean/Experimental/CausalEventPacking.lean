@@ -65,7 +65,9 @@ theorem chosenSource_injective : Function.Injective C.chosenSource := by
 fixed ancestor sources. -/
 theorem card_events_le_card_sources :
     Fintype.card Event ≤ Fintype.card Source := by
-  exact Fintype.card_le_of_injective C.chosenSource C.chosenSource_injective
+  exact Fintype.card_le_of_injective
+    (fun e => chosenSource C e)
+    (chosenSource_injective C)
 
 /-- If every ancestor source is already assigned, a new disjoint nonempty event
 cannot be inserted without merging or releasing an old support. -/
