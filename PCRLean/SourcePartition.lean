@@ -49,14 +49,13 @@ theorem clone_allows_infinite_path (n : Nat) :
   intro k
   exact CloneStep.clone n
 
-/-- Consequently no strictly decreasing well-founded rank can certify every
-clone step. -/
+/-- Consequently no irreflexive strict rank can certify every clone step. -/
 theorem no_rank_strict_on_clones
-    {β : Type*} (rank : Nat → β) (lt : β → β → Prop) :
+    {β : Type*} (rank : Nat → β) (lt : β → β → Prop)
+    (hirr : ∀ x, ¬ lt x x) :
     ¬ (∀ {a b}, CloneStep a b → lt (rank b) (rank a)) := by
   intro h
-  have hself := h (CloneStep.clone 0)
-  exact (WellFounded.asymmetric (emptyWf.wf) ?_) -- unreachable placeholder
+  exact hirr (rank 0) (h (CloneStep.clone 0))
 
 end SourcePartition
 end PCRLean
