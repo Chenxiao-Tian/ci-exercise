@@ -50,12 +50,9 @@ theorem definingPolynomial_monic {q : Nat} (t : R) (hq : q ≠ 0) :
 theorem root_pow_eq_algebraMap (q : Nat) (t : R) :
     AdjoinRoot.root (definingPolynomial (R := R) q t) ^ q =
       algebraMap R (AdjoinRoot (definingPolynomial (R := R) q t)) t := by
-  have hzero :
-      AdjoinRoot.root (definingPolynomial (R := R) q t) ^ q -
-          algebraMap R (AdjoinRoot (definingPolynomial (R := R) q t)) t = 0 := by
-    simpa [definingPolynomial, AdjoinRoot.algebraMap_eq] using
-      (AdjoinRoot.eval₂_root (definingPolynomial (R := R) q t))
-  exact sub_eq_zero.mp hzero
+  rw [AdjoinRoot.algebraMap_eq, ← sub_eq_zero,
+    ← AdjoinRoot.eval₂_root,
+    definingPolynomial, eval₂_sub, eval₂_C, eval₂_pow, eval₂_X]
 
 section Domain
 
