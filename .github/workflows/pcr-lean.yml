@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - pcr-lean-formalization-20260801
-  pull_request:
-    branches:
-      - main
   workflow_dispatch:
 
 permissions:
@@ -26,9 +23,10 @@ jobs:
             | sh -s -- -y --default-toolchain leanprover/lean4:v4.30.0
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
 
-      - name: Record versions
+      - name: Record immutable build inputs
         run: |
           set -o pipefail
+          git rev-parse HEAD | tee git-commit.txt
           lean --version | tee lean-version.txt
           lake --version | tee lake-version.txt
 
@@ -36,6 +34,7 @@ jobs:
         run: |
           set -o pipefail
           lake update 2>&1 | tee lake-update.txt
+          grep -A8 -B2 'mathlib' lake-manifest.json | tee mathlib-revision.txt || true
           lake exe cache get 2>&1 | tee mathlib-cache.txt
 
       - name: Reject proof placeholders and custom axioms
@@ -56,6 +55,18 @@ jobs:
         run: |
           set -o pipefail
           lake env lean PCRLean/AxiomAudit.lean 2>&1 | tee axiom-audit.txt
+          if grep -E 'PCRLean\..*Axiom|ResolutionAxiom|DefectEscapeAxiom|PacketizationAxiom' axiom-audit.txt; then
+            echo 'Project-specific axiom detected.' >&2
+            exit 1
+          fi
+
+      - name: Package exact source snapshot
+        if: success()
+        run: |
+          set -o pipefail
+          tar --exclude=.git --exclude=.lake -czf PCRLean-source.tar.gz \
+            lean-toolchain lakefile.toml lake-manifest.json PCRLean.lean PCRLean
+          sha256sum PCRLean-source.tar.gz | tee source-package-sha256.txt
 
       - name: Upload audit evidence
         if: always()
@@ -63,11 +74,17 @@ jobs:
         with:
           name: pcr-lean-kernel-audit
           path: |
+            git-commit.txt
             lean-version.txt
             lake-version.txt
             lake-update.txt
+            mathlib-revision.txt
             mathlib-cache.txt
             source-audit.txt
             lake-build.txt
             axiom-audit.txt
+            PCRLean-source.tar.gz
+            source-package-sha256.txt
+            PCRLean/THEOREM_LEDGER.csv
+            PCRLean/FORMAL_FRONTIER.md
           if-no-files-found: warn
