@@ -1,0 +1,40 @@
+import PCRLean.MultiOwnerHasseCore
+import PCRLean.CoordinateCentreKernelBridge
+import PCRLean.CoordinateBoundarySNC
+import PCRLean.FreePassiveOwnerSafety
+import PCRLean.CoordinateTerminalOverlap
+import PCRLean.MultiOwnerSplitFrobeniusChamber
+import PCRLean.MultiOwnerCoordinateFrobenius
+import PCRLean.CoordinatePassiveSafety
+import PCRLean.ResidualOwnerRank
+
+/-!
+# MLEL-002 axiom audit
+-/
+
+namespace PCRLean.MLEL002Audit
+
+#print axioms PCRLean.MultiOwnerHasseCore.owner_eq_coreExtension_of_stable
+#print axioms PCRLean.MultiOwnerHasseCore.jointOwnerIdeal_eq_map_jointCore
+#print axioms PCRLean.MultiOwnerHasseCore.every_owner_permissible
+#print axioms PCRLean.CoordinateCentreKernelBridge.centreIdeal_eq_passiveKernel
+#print axioms PCRLean.CoordinateCentreKernelBridge.quotientEquiv
+#print axioms PCRLean.CoordinateCentreKernelBridge.centreIdeal_ne_top
+#print axioms PCRLean.CoordinateBoundarySNC.Frame.combined_injective
+#print axioms PCRLean.FreePassiveOwnerSafety.flat_of_free
+#print axioms PCRLean.FreePassiveOwnerSafety.rTensor_preserves_injective
+#print axioms PCRLean.CoordinateTerminalOverlap.transformedRootIdeal_eq
+#print axioms PCRLean.MultiOwnerSplitFrobeniusChamber.jointOwnerIdeal_eq_coordinateSource
+#print axioms PCRLean.MultiOwnerSplitFrobeniusChamber.every_owner_permissible
+#print axioms PCRLean.MultiOwnerSplitFrobeniusChamber.certificate
+#print axioms PCRLean.MultiOwnerCoordinateFrobenius.ownerIdeal_le_centre_pow
+#print axioms PCRLean.MultiOwnerCoordinateFrobenius.jointPacket_permissible
+#print axioms PCRLean.MultiOwnerCoordinateFrobenius.map_ownerIdeal_le_exceptional_mul_transformed
+#print axioms PCRLean.MultiOwnerCoordinateFrobenius.transformedOwnerIdeal_eq_top_of_mem
+#print axioms PCRLean.MultiOwnerCoordinateFrobenius.transformedJointIdeal_eq_top_of_mem_jointSupport
+#print axioms PCRLean.CoordinatePassiveSafety.chartMap_comp_passiveEmbed
+#print axioms PCRLean.CoordinatePassiveSafety.map_extendedPassiveIdeal_eq
+#print axioms PCRLean.ResidualOwnerRank.card_decreases
+#print axioms PCRLean.ResidualOwnerRank.no_infinite_branch
+
+end PCRLean.MLEL002Audit
