@@ -35,7 +35,7 @@ inductive Step : State → State → Prop
 /-- Every chart edge strictly lowers the content-program rank. -/
 theorem step_decreases {child parent : State} (h : Step child parent) :
     rank child < rank parent := by
-  cases h <;> simp [rank] <;> omega
+  cases h <;> simp [rank]
 
 /-- Terminal-or-lower-packet predicate for this chamber. -/
 def terminal : State → Prop
