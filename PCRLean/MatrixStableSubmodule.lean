@@ -80,7 +80,9 @@ theorem mem_of_forall_coordinate_mem
     {x : FreeModule (R := R) (ι := ι)}
     (hx : ∀ i, x i ∈ coordinateIdeal N) :
     x ∈ N := by
-  rw [← LinearMap.sum_single_apply R x]
+  have hsum : (∑ i, Pi.single i (x i)) = x :=
+    LinearMap.sum_single_apply (fun _ : ι => R) x
+  rw [← hsum]
   exact N.sum_mem fun i _ => (hx i) i
 
 /-- Classification theorem: membership in a fully invariant submodule is
@@ -116,8 +118,10 @@ theorem fromIdeal_fullyInvariant (J : Ideal R) :
   intro T x hx i
   let row : FreeModule (R := R) (ι := ι) →ₗ[R] R :=
     (LinearMap.proj i).comp T
+  have hsum : (∑ j, Pi.single j (x j)) = x :=
+    LinearMap.sum_single_apply (fun _ : ι => R) x
   have hdecomp : row x = ∑ j, x j * row (Pi.single j 1) := by
-    rw [← LinearMap.sum_single_apply R x, map_sum]
+    rw [← hsum, map_sum]
     apply Finset.sum_congr rfl
     intro j hj
     rw [map_smul]
