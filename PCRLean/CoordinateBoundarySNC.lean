@@ -35,19 +35,11 @@ def combined : β ⊕ ι → α ⊕ ι
 /-- The combined boundary/centre coordinate family has no collisions. -/
 theorem combined_injective : Function.Injective (F.combined (ι := ι)) := by
   intro x y h
-  cases x with
-  | inl bx =>
-      cases y with
-      | inl by =>
-          simp only [combined, Sum.inl.injEq] at h
-          exact congrArg Sum.inl (F.boundary_injective h)
-      | inr iy => cases h
-  | inr ix =>
-      cases y with
-      | inl by => cases h
-      | inr iy =>
-          simp only [combined, Sum.inr.injEq] at h
-          exact congrArg Sum.inr h
+  rcases x with bx | ix <;> rcases y with by | iy
+  · exact congrArg Sum.inl (F.boundary_injective (Sum.inl.inj h))
+  · cases h
+  · cases h
+  · exact congrArg Sum.inr (Sum.inr.inj h)
 
 /-- Polynomial embedding of the boundary-plus-centre coordinate subsystem. -/
 def polynomialEmbedding :
