@@ -46,7 +46,7 @@ structure GeometricProgram where
     rank child < rank parent
   child_certified : ∀ {child parent}, child ∈ children parent →
     edgeCertificate child parent
-  progress : ∀ parent, ¬ terminal parent → (children parent).Nonempty
+  progress : ∀ parent, ¬ terminal parent → children parent ≠ []
   terminal_resolved : ∀ {state}, terminal state → resolved state
 
 namespace GeometricProgram
