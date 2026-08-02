@@ -5,6 +5,8 @@ import PCRLean.CentrePermissibility
 namespace PCRLean
 namespace OddCuspAffine
 
+noncomputable section
+
 universe u
 
 variable {R : Type u} [CommRing R]
@@ -95,6 +97,8 @@ theorem marked_cusp_permissible (N : Nat) :
       (centre (R := R)) := by
   exact MarkedIdeal.permissible_span_singleton
     (R := MvPolynomial (Fin 2) R) (by omega) (cusp_mem_centre_sq N)
+
+end
 
 end OddCuspAffine
 end PCRLean
