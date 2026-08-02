@@ -32,9 +32,11 @@ theorem step_sub_rank :
   fun h => S.step_decreases h
 
 /-- A ranked transition system admits no infinite descending branch. -/
-theorem step_wellFounded : WellFounded S.step :=
-  Subrelation.wf (fun _ _ h => S.step_sub_rank h)
-    (InvImage.wf S.rank Nat.lt_wfRel.wf)
+theorem step_wellFounded : WellFounded S.step := by
+  have hNat : WellFounded ((· < ·) : ℕ → ℕ → Prop) := Nat.lt_wfRel.wf
+  apply (hNat.onFun S.rank).mono
+  intro child parent hstep
+  exact S.step_decreases hstep
 
 /-- Equivalent no-infinite-chain formulation. -/
 theorem no_infinite_chain :
@@ -42,8 +44,10 @@ theorem no_infinite_chain :
   wellFounded_iff_isEmpty_descending_chain.mp S.step_wellFounded
 
 /-- No state lies on a nonempty certified cycle. -/
-theorem no_cycle (s : S.State) : ¬ Relation.TransGen S.step s s :=
-  S.step_wellFounded.transGen.irrefl s
+theorem no_cycle (s : S.State) : ¬ Relation.TransGen S.step s s := by
+  have hIrr : Std.Irrefl (Relation.TransGen S.step) :=
+    S.step_wellFounded.transGen.irrefl
+  exact hIrr.irrefl s
 
 end RankedSystem
 
