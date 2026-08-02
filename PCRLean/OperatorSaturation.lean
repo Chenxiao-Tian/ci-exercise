@@ -5,10 +5,10 @@ import PCRLean.NoetherianOperatorOrbit
 # Canonical operator saturation
 
 A presentation-independent differential packet should depend on the submodule
-of seed data, not on a chosen list of generators.  This file closes the
-linear-algebraic part of that requirement.  Given a family of operators and a
+of seed data, not on a chosen list of generators. This file closes the
+linear-algebraic part of that requirement. Given a family of operators and a
 seed submodule, `saturation` is the least operator-stable submodule containing
-the seed.  It is monotone, idempotent, and finitely generated on a Noetherian
+the seed. It is monotone, idempotent, and finitely generated on a Noetherian
 ambient module.
 
 The geometric use still requires a functorial finite ancestor module and proof
@@ -86,7 +86,7 @@ theorem applyWord_mem_of_stable
   induction word with
   | nil => simpa
   | cons i word ih =>
-      exact hP i _ (ih hx)
+      exact hP i _ ih
 
 /-- Minimality: every stable submodule containing the seed contains its
 saturation. -/
