@@ -5,6 +5,7 @@ import PCRLean.Algebra.SquareCleaningDerivative
 import PCRLean.Algebra.OddContactDerivative
 import PCRLean.Algebra.QuasilinearPolar
 import PCRLean.Algebra.PerfectQuasilinearRoot
+import PCRLean.Algebra.UnitCocycleIdeal
 import PCRLean.Chambers.FrobeniusContent
 import PCRLean.Chambers.FrobeniusContentProgram
 import PCRLean.Chambers.OddCusp
@@ -14,6 +15,7 @@ import PCRLean.Chambers.RamifiedQuadraticProgram
 import PCRLean.Chambers.ArtinSchreier
 import PCRLean.Chambers.ArtinSchreierProgram
 import PCRLean.Chambers.AllChartPrograms
+import PCRLean.Chambers.ClosedGrammar
 import PCRLean.Termination.Generational
 import PCRLean.Termination.FiniteSources
 import PCRLean.Termination.GenerationSystem
@@ -84,6 +86,10 @@ end PCRLean.Certified
 #print axioms PCRLean.Algebra.PerfectQuasilinearRoot.finset_sum_pow_char_pow
 #print axioms PCRLean.Algebra.PerfectQuasilinearRoot.linearRoot_pow
 #print axioms PCRLean.Algebra.PerfectQuasilinearRoot.cleaning_identity
+#print axioms PCRLean.Algebra.UnitCocycleIdeal.span_singleton_unit_mul
+#print axioms PCRLean.Algebra.UnitCocycleIdeal.span_singleton_eq_of_eq_unit_mul
+#print axioms PCRLean.Algebra.UnitCocycleIdeal.PrincipalUnitAtlas.ideal_eq
+#print axioms PCRLean.Algebra.UnitCocycleIdeal.PrincipalUnitAtlas.gluedIdeal_eq
 #print axioms PCRLean.Chambers.FrobeniusContent.active_factorization
 #print axioms PCRLean.Chambers.FrobeniusContent.sibling_factorization
 #print axioms PCRLean.Chambers.FrobeniusContentProgram.step_decreases
@@ -105,6 +111,8 @@ end PCRLean.Certified
 #print axioms PCRLean.Chambers.AllChartPrograms.OddCusp.allChartsResolve
 #print axioms PCRLean.Chambers.AllChartPrograms.RamifiedQuadratic.allChartsResolve
 #print axioms PCRLean.Chambers.AllChartPrograms.ArtinSchreier.allChartsClassified
+#print axioms PCRLean.Chambers.ClosedGrammar.resolves_every_packet
+#print axioms PCRLean.Chambers.ClosedGrammar.classifies_every_packet
 #print axioms PCRLean.Termination.Generational.genLt_wellFounded
 #print axioms PCRLean.Termination.FiniteSources.financed_birth_bound
 #print axioms PCRLean.Termination.FiniteSources.financed_birth_finset_bound
