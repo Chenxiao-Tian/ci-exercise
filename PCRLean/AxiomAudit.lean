@@ -36,6 +36,10 @@ import PCRLean
 #print axioms PCRLean.NoetherianOperatorOrbit.orbitModule_stable
 #print axioms PCRLean.NoetherianOperatorOrbit.exists_finite_raw_orbit_generators
 #print axioms PCRLean.NoetherianOperatorOrbit.exists_finite_kernel_packet
+#print axioms PCRLean.OperatorSaturation.saturation_stable
+#print axioms PCRLean.OperatorSaturation.saturation_le_of_le_of_stable
+#print axioms PCRLean.OperatorSaturation.saturation_idempotent
+#print axioms PCRLean.OperatorSaturation.exists_finite_raw_saturation_generators
 #print axioms PCRLean.SplitKernelCentre.SplitMap.equivKernelProd
 #print axioms PCRLean.SplitKernelCentre.SplitMap.isCompl_kernel_range_section
 #print axioms PCRLean.FiniteKernelCentre.mem_ker_evaluationMap_iff
