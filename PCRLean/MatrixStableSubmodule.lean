@@ -127,8 +127,15 @@ theorem fromIdeal_fullyInvariant (J : Ideal R) :
       _ = ∑ j, x j * row (Pi.single j 1) := by
         apply Finset.sum_congr rfl
         intro j hj
-        simpa [Pi.single_smul, smul_eq_mul] using
-          row.map_smul (x j) (Pi.single j (1 : R))
+        have hsingle :
+            Pi.single j (x j) = (x j) • Pi.single j (1 : R) := by
+          ext k
+          by_cases hkj : k = j
+          · subst k
+            simp [smul_eq_mul]
+          · simp [Pi.single_eq_of_ne hkj, hkj, smul_eq_mul]
+        rw [hsingle, map_smul]
+        rfl
   rw [show T x i = row x from rfl, hdecomp]
   exact J.sum_mem fun j _ => J.mul_mem_right _ (hx j)
 
