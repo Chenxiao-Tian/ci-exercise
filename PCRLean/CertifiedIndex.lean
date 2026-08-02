@@ -25,6 +25,7 @@ import PCRLean.IdealEndomorphismDescent
 import PCRLean.OperatorSpanFullness
 import PCRLean.EndomorphismGeneration
 import PCRLean.BiorthogonalEndomorphismBasis
+import PCRLean.DiagonalMatrixUnitFactory
 import PCRLean.SplitKernelCentre
 import PCRLean.FiniteKernelCentre
 import PCRLean.ProjectiveKernelCentre
