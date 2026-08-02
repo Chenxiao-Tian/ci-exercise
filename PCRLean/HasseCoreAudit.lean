@@ -1,0 +1,13 @@
+import PCRLean.MonogenicFrobeniusFrame
+import PCRLean.AdjoinRootFrobeniusFrame
+import PCRLean.HasseSaturationDescent
+import PCRLean.HasseGrowthDescentDichotomy
+
+#print axioms PCRLean.MonogenicFrobeniusFrame.Frame.ideal_eq_map_comap_of_hasse_stable
+#print axioms PCRLean.AdjoinRootFrobeniusFrame.root_pow_eq_algebraMap
+#print axioms PCRLean.AdjoinRootFrobeniusFrame.ideal_eq_map_comap_of_hasse_stable
+#print axioms PCRLean.HasseSaturationDescent.hasseSaturation_eq_map_core
+#print axioms PCRLean.HasseSaturationDescent.hasseSaturation_dichotomy
+#print axioms PCRLean.HasseSaturationDescent.lt_hasseSaturation_of_not_stable
+#print axioms PCRLean.HasseGrowthDescentDichotomy.descent_or_strict_growth
+#print axioms PCRLean.HasseGrowthDescentDichotomy.terminal_or_proper_descent_or_growth
