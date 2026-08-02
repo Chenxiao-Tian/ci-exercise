@@ -83,7 +83,8 @@ def program : ResolutionCompiler.Program where
   terminal := Terminal
   rank := id
   lt := (· > ·)
-  wf := (inferInstance : IsNoetherian R M).wf
+  wf := IsNoetherian.wf (R := R) (M := M)
+    (inferInstance : IsNoetherian R M)
   decreases := birthStep_gt
   progress := progress
 
