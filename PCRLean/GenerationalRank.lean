@@ -30,10 +30,16 @@ theorem GenRank.acc (r : GenRank) : Acc GenRank.Lt r := by
               intro r' hr
               rcases r' with ⟨u', a', b'⟩
               rcases hr with hu | ⟨hu, ha | ⟨ha, hb⟩⟩
-              · exact ihu u' hu a' b'
-              · subst u'
+              · change u' < u at hu
+                exact ihu u' hu a' b'
+              · change u' = u at hu
+                change a' < a at ha
+                subst u'
                 exact iha a' ha b'
-              · subst u'
+              · change u' = u at hu
+                change a' = a at ha
+                change b' < b at hb
+                subst u'
                 subst a'
                 exact ihb b' hb
 
