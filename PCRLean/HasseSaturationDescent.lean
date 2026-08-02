@@ -119,8 +119,12 @@ theorem map_top_algebraMap
     {R : Type u} {A : Type v}
     [CommRing R] [CommRing A] [Algebra R A] :
     Ideal.map (algebraMap R A) (⊤ : Ideal R) = ⊤ := by
-  apply Ideal.eq_top_iff_one.mpr
-  exact Ideal.mem_map_of_mem (algebraMap R A) (by simp)
+  apply top_unique
+  intro x hx
+  have hOne : (1 : A) ∈ Ideal.map (algebraMap R A) (⊤ : Ideal R) :=
+    Ideal.mem_map_of_mem (algebraMap R A) (by trivial)
+  simpa using
+    (Ideal.map (algebraMap R A) (⊤ : Ideal R)).mul_mem_left x hOne
 
 /-- The Frobenius core is proper whenever the Hasse saturation is proper. -/
 theorem frobeniusCore_ne_top_of_saturation_ne_top
