@@ -10,6 +10,7 @@ import PCRLean.Chambers.RamifiedQuadraticProgram
 import PCRLean.Chambers.ArtinSchreier
 import PCRLean.Chambers.ArtinSchreierProgram
 import PCRLean.Termination.Generational
+import PCRLean.Termination.FiniteSources
 import PCRLean.Termination.PacketMultiset
 import PCRLean.Framework.RankedSystem
 import PCRLean.Framework.FiniteChartProgram
