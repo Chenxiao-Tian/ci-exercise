@@ -11,6 +11,7 @@ import PCRLean.CechEffectivity
 import PCRLean.CartierFiniteMemory
 import PCRLean.NoetherianTraceMemory
 import PCRLean.DifferentialOrbitKernel
+import PCRLean.DifferentialOrbitClosure
 import PCRLean.NoetherianPatchingCompiler
 import PCRLean.CartierNoetherMaster
 import PCRLean.ActualIdealGluing
