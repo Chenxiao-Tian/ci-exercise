@@ -1,16 +1,16 @@
-import Mathlib.LinearAlgebra.Pi
+import Mathlib
 
 /-!
 # Matrix-stable submodules of finite free modules
 
-Let `M = ι → R` be a finite free module.  A submodule invariant under every
+Let `M = ι → R` be a finite free module. A submodule invariant under every
 `R`-linear endomorphism of `M` is necessarily obtained coordinatewise from one
-ideal of `R`.  This is the Morita-theoretic algebraic core of Frobenius descent:
+ideal of `R`. This is the Morita-theoretic algebraic core of Frobenius descent:
 when a smooth characteristic-`p` algebra is finite free over its Frobenius
 image, an ideal stable under the full finite-level differential-operator algebra
 must descend from the Frobenius base.
 
-This file proves the free-module classification.  A geometric application must
+This file proves the free-module classification. A geometric application must
 identify the finite-level differential operators with the full endomorphism
 algebra and transport the result through local Frobenius bases.
 -/
