@@ -4,7 +4,7 @@ import Mathlib
 # Actual ideals glued by finite generator changes
 
 A geometric centre is an actual coherent ideal, not merely a locally named
-subspace or a direction scheme.  This file proves the affine algebraic core of
+subspace or a direction scheme. This file proves the affine algebraic core of
 higher-rank gluing: two finite generator families related by mutually inverse
 finite linear-combination certificates generate the same ideal.
 
@@ -56,7 +56,7 @@ theorem generatedIdeal_eq_of_mutual_combinations
   · exact generatedIdeal_le_of_combinations g h forward hforward
   · exact generatedIdeal_le_of_combinations h g backward hbackward
 
-/-- A finite overlap certificate for two local generator frames.  The two
+/-- A finite overlap certificate for two local generator frames. The two
 coefficient systems need not be declared matrix inverses: the explicit
 reconstruction equations are exactly what ideal gluing uses. -/
 structure GeneratorFrameEquivalence (g h : ι → R) where
@@ -67,10 +67,11 @@ structure GeneratorFrameEquivalence (g h : ι → R) where
 
 namespace GeneratorFrameEquivalence
 
-variable {g h : ι → R} (E : GeneratorFrameEquivalence g h)
+variable {g h : ι → R}
 
 /-- Equivalent finite generator frames define the same actual ideal. -/
-theorem ideal_eq : generatedIdeal g = generatedIdeal h :=
+theorem ideal_eq (E : GeneratorFrameEquivalence g h) :
+    generatedIdeal g = generatedIdeal h :=
   generatedIdeal_eq_of_mutual_combinations
     g h E.forward E.backward E.reconstruct_g E.reconstruct_h
 
@@ -110,7 +111,7 @@ variable {Chart : Type*} [Fintype Chart]
 /-- Every chart frame generates the same actual ideal. -/
 theorem ideal_eq (i j : Chart) :
     generatedIdeal (A.generator i) = generatedIdeal (A.generator j) :=
-  (A.overlap i j).ideal_eq
+  GeneratorFrameEquivalence.ideal_eq (A.overlap i j)
 
 /-- Choosing a reference chart defines an ideal independent of the reference. -/
 def gluedIdeal (i : Chart) : Ideal R :=
