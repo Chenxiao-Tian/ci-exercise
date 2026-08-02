@@ -17,7 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - name: Install elan and the pinned Lean toolchain
         shell: bash
         run: |
@@ -27,16 +26,12 @@ jobs:
           source "$HOME/.elan/env"
           lean --version
           lake --version
-
       - name: Resolve pinned dependencies
         run: lake update
-
       - name: Download mathlib compiled cache
         run: lake exe cache get
-
       - name: Build the complete PCRLean library
         run: lake build
-
       - name: Reject proof placeholders and project axioms
         shell: bash
         run: |
@@ -47,11 +42,26 @@ jobs:
             echo "Forbidden proof placeholder or custom axiom found."
             exit 1
           fi
-
       - name: Re-run certified axiom audit explicitly
         run: lake env lean PCRLean/Certified/CertifiedIndex.lean
 
-      - name: Independent leanchecker and nanoda verification
+  leanchecker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan and the pinned Lean toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          source "$HOME/.elan/env"
+      - name: Prepare compiled environment
+        run: |
+          lake update
+          lake exe cache get
+          lake build
+      - name: Independent leanchecker verification
         uses: leanprover/lean-action@v1
         with:
           auto-config: false
@@ -61,5 +71,33 @@ jobs:
           use-github-cache: false
           use-mathlib-cache: false
           leanchecker: true
+          nanoda: false
+
+  nanoda:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan and the pinned Lean toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          source "$HOME/.elan/env"
+      - name: Prepare compiled environment
+        run: |
+          lake update
+          lake exe cache get
+          lake build
+      - name: Independent nanoda verification with sorryAx forbidden
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+          leanchecker: false
           nanoda: true
           nanoda-allow-sorry: false
