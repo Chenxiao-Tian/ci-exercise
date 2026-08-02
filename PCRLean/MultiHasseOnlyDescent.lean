@@ -100,7 +100,7 @@ theorem embed_classify
               have hout :
                   classify (s :: rest) (Sum.inr k) =
                     Sum.inl (Sum.inr m) := by
-                simp [classify, hclass]
+                simpa only [classify, hclass]
               rw [hout]
               change Sum.inr (embedMultiplication rest m) = Sum.inr k
               exact congrArg Sum.inr hk
@@ -110,7 +110,7 @@ theorem embed_classify
               have hout :
                   classify (s :: rest) (Sum.inr k) =
                     Sum.inr (Sum.inr d) := by
-                simp [classify, hclass]
+                simpa only [classify, hclass]
               rw [hout]
               change Sum.inr (embedHasse rest d) = Sum.inr k
               exact congrArg Sum.inr hk
