@@ -26,16 +26,13 @@ principal marked ideal. -/
 theorem permissible_span_singleton {f : R} {m : Nat} (hm : 0 < m)
     {C : Ideal R} (hf : f ∈ C ^ m) :
     Permissible (R := R) ⟨Ideal.span {f}, m, hm⟩ C := by
-  intro x hx
-  rw [Ideal.mem_span_singleton] at hx
-  obtain ⟨a, rfl⟩ := hx
-  exact (C ^ m).mul_mem_left a hf
+  rw [Permissible, Ideal.span_le]
+  simpa using hf
 
 /-- Permissibility is monotone when the centre ideal is enlarged. -/
 theorem permissible_mono {P : Packet R} {C D : Ideal R}
     (hP : Permissible P C) (hCD : C ≤ D) : Permissible P D := by
-  intro x hx
-  exact (Ideal.pow_le_pow_right hCD P.mark) (hP hx)
+  exact hP.trans (Ideal.pow_le_pow_right hCD P.mark)
 
 /-- A product of equations each lying in the appropriate centre powers lies in
 the sum of the marks. -/
@@ -50,20 +47,14 @@ theorem sup_permissible {I J C : Ideal R} {m : Nat}
     (hI : I ≤ C ^ m) (hJ : J ≤ C ^ m) : I ⊔ J ≤ C ^ m := by
   exact sup_le hI hJ
 
-/-- Controlled transforms are never inferred merely from radical containment:
-ordinary containment in a radical is weaker than containment in the marked
-power.  The following concrete witness records this distinction. -/
-theorem radical_support_not_marked_power :
-    let C : Ideal (Polynomial ℤ) := Ideal.span {Polynomial.X}
-    Polynomial.X ∈ C.radical ∧ Polynomial.X ∉ C ^ 2 := by
-  dsimp
+/-- Radical support is strictly weaker than marked-square containment. -/
+theorem radical_support_not_square_span :
+    Polynomial.X ∈ (Ideal.span {Polynomial.X} : Ideal (Polynomial ℤ)).radical ∧
+      Polynomial.X ∉ (Ideal.span {Polynomial.X ^ 2} : Ideal (Polynomial ℤ)) := by
   constructor
-  · exact Ideal.subset_radical (Ideal.subset_span (Set.mem_singleton _))
-  · intro h
-    have hdeg := Polynomial.natDegree_le_of_dvd
-      (show Polynomial.X ^ 2 ∣ Polynomial.X from by
-        simpa [Ideal.mem_span_singleton, pow_two] using h)
-    norm_num at hdeg
+  · exact Ideal.subset_radical (Ideal.mem_span_singleton_self Polynomial.X)
+  · rw [Ideal.mem_span_singleton]
+    exact Polynomial.not_dvd_of_natDegree_lt (by simp) (by norm_num)
 
 end MarkedIdeal
 end PCRLean
