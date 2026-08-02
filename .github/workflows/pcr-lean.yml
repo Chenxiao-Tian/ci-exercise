@@ -1,0 +1,58 @@
+name: PCR Lean kernel verification
+
+on:
+  push:
+    branches:
+      - pcr-lean-formalization-20260801
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  kernel-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout isolated branch
+        uses: actions/checkout@v4
+
+      - name: Install pinned Lean toolchain
+        uses: leanprover/lean-action@v1
+
+      - name: Record versions
+        run: |
+          set -o pipefail
+          lean --version | tee lean-version.txt
+          lake --version | tee lake-version.txt
+
+      - name: Reject proof placeholders and custom axioms
+        run: |
+          set -o pipefail
+          if grep -R -nE '^[[:space:]]*(axiom|sorry|admit)([[:space:]]|$)' --include='*.lean' PCRLean PCRLean.lean; then
+            echo 'Forbidden proof placeholder or custom axiom found.' >&2
+            exit 1
+          fi
+          echo 'No line-level axiom, sorry, or admit declarations found.' | tee source-audit.txt
+
+      - name: Build all certified modules
+        run: |
+          set -o pipefail
+          lake build 2>&1 | tee lake-build.txt
+
+      - name: Kernel axiom audit
+        run: |
+          set -o pipefail
+          lake env lean PCRLean/AxiomAudit.lean 2>&1 | tee axiom-audit.txt
+
+      - name: Upload audit evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pcr-lean-kernel-audit
+          path: |
+            lean-version.txt
+            lake-version.txt
+            source-audit.txt
+            lake-build.txt
+            axiom-audit.txt
+          if-no-files-found: warn
