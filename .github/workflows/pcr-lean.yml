@@ -73,7 +73,10 @@ jobs:
             PCRLean.Algebra.OddContactDerivative
             PCRLean.Algebra.QuasilinearPolar
             PCRLean.Algebra.PerfectQuasilinearRoot
+            PCRLean.Algebra.FrobeniusPolynomialRoot
             PCRLean.Algebra.UnitCocycleIdeal
+            PCRLean.Algebra.JointOwners
+            PCRLean.Algebra.PassiveFlatness
             PCRLean.Chambers.FrobeniusContent
             PCRLean.Chambers.FrobeniusContentProgram
             PCRLean.Chambers.OddCusp
