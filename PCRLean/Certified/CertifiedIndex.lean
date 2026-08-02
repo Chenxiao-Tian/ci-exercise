@@ -1,4 +1,5 @@
 import PCRLean.Chambers.FrobeniusContent
+import PCRLean.Chambers.FrobeniusContentProgram
 import PCRLean.Chambers.OddCusp
 import PCRLean.Chambers.OddCuspProgram
 import PCRLean.Chambers.RamifiedQuadratic
@@ -31,6 +32,8 @@ end PCRLean.Certified
 
 #print axioms PCRLean.Chambers.FrobeniusContent.active_factorization
 #print axioms PCRLean.Chambers.FrobeniusContent.sibling_factorization
+#print axioms PCRLean.Chambers.FrobeniusContentProgram.step_decreases
+#print axioms PCRLean.Chambers.FrobeniusContentProgram.active_reaches_exit
 #print axioms PCRLean.Chambers.OddCusp.sChart_factorization
 #print axioms PCRLean.Chambers.OddCusp.yChart_factorization
 #print axioms PCRLean.Chambers.OddCuspProgram.firstRepair_sPivot
