@@ -1,5 +1,7 @@
 import PCRLean.Experimental.SurjectiveLinearMapSymmetricQuotient
 
+/-! Kernel audit for the intrinsic surjective conormal quotient bridge. -/
+
 #print axioms PCRLean.Experimental.SurjectiveLinearMapSymmetricQuotient.project_comp_liftBackOfSurjective
 #print axioms PCRLean.Experimental.SurjectiveLinearMapSymmetricQuotient.split_kernelIdeal_eq
 #print axioms PCRLean.Experimental.SurjectiveLinearMapSymmetricQuotient.ker_projectAlg_eq_kernelIdeal
