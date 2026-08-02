@@ -136,11 +136,13 @@ theorem liftLeft_matrixUnit
   apply LinearMap.ext
   intro f
   funext p
-  by_cases hp : p.1 = i
+  rcases p with ⟨a, m⟩
+  by_cases h : a = i
+  · subst a
+    simp [liftLeft, MatrixStableSubmodule.matrixUnit_apply,
+      BlockMatrixStableSubmodule.leftMatrixUnit_apply]
   · simp [liftLeft, MatrixStableSubmodule.matrixUnit_apply,
-      BlockMatrixStableSubmodule.leftMatrixUnit_apply, hp]
-  · simp [liftLeft, MatrixStableSubmodule.matrixUnit_apply,
-      BlockMatrixStableSubmodule.leftMatrixUnit_apply, hp]
+      BlockMatrixStableSubmodule.leftMatrixUnit_apply, h]
 
 /-- Matrix-unit generation on the Frobenius factor becomes left-matrix-unit
 generation on arbitrary passive rows. -/
