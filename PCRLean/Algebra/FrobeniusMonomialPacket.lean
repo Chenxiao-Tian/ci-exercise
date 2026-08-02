@@ -29,9 +29,14 @@ theorem finite_packet_reconstruction (e : ℕ) (f : MvPolynomial σ R)
       (p ^ e) • quotient d + residue d = d) :
     (∑ d ∈ f.support,
       packetTerm p e (quotient d) (residue d) (coeff d f)) = f := by
-  rw [f.as_sum]
-  apply Finset.sum_congr rfl
-  intro d hd
-  rw [packetTerm_eq_monomial, hsplit d hd]
+  calc
+    (∑ d ∈ f.support,
+      packetTerm p e (quotient d) (residue d) (coeff d f)) =
+        ∑ d ∈ f.support, monomial d (coeff d f) := by
+          apply Finset.sum_congr rfl
+          intro d hd
+          rw [packetTerm_eq_monomial, hsplit d hd]
+    _ = f := by
+      simpa using f.as_sum.symm
 
 end PCRLean.Algebra.FrobeniusMonomialPacket
