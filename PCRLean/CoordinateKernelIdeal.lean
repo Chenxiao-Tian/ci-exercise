@@ -1,7 +1,6 @@
 import Mathlib
 import Mathlib.Algebra.MvPolynomial.Rename
 import Mathlib.RingTheory.Ideal.Quotient.Operations
-import Mathlib.RingTheory.RegularLocalRing.Polynomial
 
 /-!
 # Coordinate kernels as actual affine regular-centre models
@@ -14,7 +13,9 @@ ideal is canonically isomorphic to the smaller polynomial ring.
 This is the affine algebraic core of the assertion that a split linear kernel
 cuts out a regular coordinate centre. The geometric application still has to
 choose such coordinates locally, prove overlap compatibility, and descend the
-ideal sheaf.
+ideal sheaf. The pinned mathlib release used by this project does not yet expose
+the later `IsRegularRing` instance for multivariate polynomial rings, so the
+strongest kernel statement here is the explicit quotient equivalence itself.
 -/
 
 namespace PCRLean
@@ -103,13 +104,6 @@ theorem quotient_nonempty (f : σ → τ) (hf : Function.Injective f) :
     Nonempty ((MvPolynomial τ R ⧸ ideal (R := R) f hf) ≃+*
       MvPolynomial σ R) :=
   ⟨quotientEquiv (R := R) f hf⟩
-
-/-- When the coefficient ring is regular and the retained coordinate set is
-finite, the quotient by the actual coordinate-kernel ideal is a regular ring. -/
-theorem quotient_isRegularRing [IsRegularRing R] [Finite σ]
-    (f : σ → τ) (hf : Function.Injective f) :
-    IsRegularRing (MvPolynomial τ R ⧸ ideal (R := R) f hf) := by
-  exact IsRegularRing.of_ringEquiv (quotientEquiv (R := R) f hf).symm
 
 end
 
