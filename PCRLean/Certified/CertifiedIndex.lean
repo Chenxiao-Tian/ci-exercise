@@ -3,6 +3,7 @@ import PCRLean.Algebra.ControlledTransform
 import PCRLean.Algebra.CharacteristicTwoGauge
 import PCRLean.Algebra.SquareCleaningDerivative
 import PCRLean.Algebra.OddContactDerivative
+import PCRLean.Algebra.QuasilinearPolar
 import PCRLean.Chambers.FrobeniusContent
 import PCRLean.Chambers.FrobeniusContentProgram
 import PCRLean.Chambers.OddCusp
@@ -23,6 +24,7 @@ import PCRLean.Framework.UniversalCompiler
 import PCRLean.NoGo.PersistentObstruction
 import PCRLean.NoGo.FreshBirth
 import PCRLean.NoGo.CoordinatewiseDropCycle
+import PCRLean.NoGo.FiniteJetBlindness
 
 /-!
 # Certified kernel index
@@ -73,6 +75,10 @@ end PCRLean.Certified
 #print axioms PCRLean.Algebra.SquareCleaningDerivative.jacobian_span_invariant
 #print axioms PCRLean.Algebra.OddContactDerivative.derivative_odd_power
 #print axioms PCRLean.Algebra.OddContactDerivative.derivative_even_power
+#print axioms PCRLean.Algebra.QuasilinearPolar.frobenius_additive
+#print axioms PCRLean.Algebra.QuasilinearPolar.frobenius_polar_zero
+#print axioms PCRLean.Algebra.QuasilinearPolar.scalar_frobenius_polar_zero
+#print axioms PCRLean.Algebra.QuasilinearPolar.diagonal_frobenius_polar_zero
 #print axioms PCRLean.Chambers.FrobeniusContent.active_factorization
 #print axioms PCRLean.Chambers.FrobeniusContent.sibling_factorization
 #print axioms PCRLean.Chambers.FrobeniusContentProgram.step_decreases
@@ -116,6 +122,10 @@ end PCRLean.Certified
 #print axioms PCRLean.NoGo.ObstructionSystem.nonzero_persists
 #print axioms PCRLean.NoGo.FreshBirth.not_wellFounded
 #print axioms PCRLean.NoGo.CoordinatewiseDropCycle.not_wellFounded
+#print axioms PCRLean.NoGo.FiniteJetBlindness.X_pow_coeff_zero_below
+#print axioms PCRLean.NoGo.FiniteJetBlindness.zero_and_X_pow_agree_below
+#print axioms PCRLean.NoGo.FiniteJetBlindness.X_pow_ne_zero
+#print axioms PCRLean.NoGo.FiniteJetBlindness.fixed_cutoff_not_faithful
 #print axioms PCRLean.Certified.generational_backend_wf
 #print axioms PCRLean.Certified.finite_source_generation_wf
 #print axioms PCRLean.Certified.packet_multiset_backend_wf
