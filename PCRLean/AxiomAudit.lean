@@ -60,7 +60,6 @@ import PCRLean
 #print axioms PCRLean.CoordinateKernelIdeal.quotientEquiv
 #print axioms PCRLean.CoordinateKernelIdeal.ideal_ne_top
 #print axioms PCRLean.CoordinateKernelIdeal.ideal_fg
-#print axioms PCRLean.CoordinateKernelIdeal.quotient_isRegularRing
 #print axioms PCRLean.NoetherianPatchingCompiler.rankLt_wellFounded
 #print axioms PCRLean.NoetherianPatchingCompiler.rankStep_wellFounded
 #print axioms PCRLean.NoetherianPatchingCompiler.PatchedProgram.terminal_reachable
