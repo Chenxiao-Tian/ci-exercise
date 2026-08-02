@@ -6,6 +6,7 @@ import PCRLean.PolynomialCharts
 import PCRLean.FrobeniusPacket
 import PCRLean.EulerRadicial
 import PCRLean.RadicialJacobian
+import PCRLean.QuasilinearSplit
 import PCRLean.SourcePartition
 import PCRLean.MarkedIdeal
 import PCRLean.CentrePermissibility
