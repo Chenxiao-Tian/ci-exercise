@@ -9,6 +9,7 @@ import PCRLean.Chambers.RamifiedQuadratic
 import PCRLean.Chambers.RamifiedQuadraticProgram
 import PCRLean.Chambers.ArtinSchreier
 import PCRLean.Chambers.ArtinSchreierProgram
+import PCRLean.Chambers.AllChartPrograms
 import PCRLean.Termination.Generational
 import PCRLean.Termination.FiniteSources
 import PCRLean.Termination.PacketMultiset
@@ -25,7 +26,7 @@ import PCRLean.NoGo.CoordinatewiseDropCycle
 
 Only declarations proved without `sorry`, `admit`, or project-specific axioms
 are imported here.  This is deliberately not a theorem of arbitrary-dimensional
-resolution.  It is the current kernel-checked algebraic, chart-program,
+resolution.  It is the current kernel-checked algebraic, all-chart,
 termination, finite-source, and obstruction-audit layer.
 -/
 
@@ -77,6 +78,10 @@ end PCRLean.Certified
 #print axioms PCRLean.Chambers.ArtinSchreier.collisionDepth_add_step
 #print axioms PCRLean.Chambers.ArtinSchreierProgram.step_decreases
 #print axioms PCRLean.Chambers.ArtinSchreierProgram.active_reaches_classified_exit
+#print axioms PCRLean.Chambers.AllChartPrograms.FrobeniusContent.allChartsResolve
+#print axioms PCRLean.Chambers.AllChartPrograms.OddCusp.allChartsResolve
+#print axioms PCRLean.Chambers.AllChartPrograms.RamifiedQuadratic.allChartsResolve
+#print axioms PCRLean.Chambers.AllChartPrograms.ArtinSchreier.allChartsClassified
 #print axioms PCRLean.Termination.Generational.genLt_wellFounded
 #print axioms PCRLean.Termination.FiniteSources.financed_birth_bound
 #print axioms PCRLean.Termination.FiniteSources.financed_birth_finset_bound
