@@ -28,6 +28,10 @@ import PCRLean
 #print axioms PCRLean.DifferentialOrbitKernel.annihilator_antitone
 #print axioms PCRLean.DifferentialOrbitKernel.annihilator_invariant
 #print axioms PCRLean.DifferentialOrbitKernel.annihilator_family_invariant
+#print axioms PCRLean.NoetherianPatchingCompiler.rankLt_wellFounded
+#print axioms PCRLean.NoetherianPatchingCompiler.rankStep_wellFounded
+#print axioms PCRLean.NoetherianPatchingCompiler.PatchedProgram.terminal_reachable
+#print axioms PCRLean.NoetherianPatchingCompiler.PatchedProgram.no_infinite_execution
 #print axioms PCRLean.OwnerJoint.aggregate_permissible
 #print axioms PCRLean.PolynomialCharts.oddCusp_sPivot_identity
 #print axioms PCRLean.PolynomialCharts.oddCusp_yPivot_identity
