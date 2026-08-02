@@ -89,7 +89,7 @@ theorem projector_eq_sum
   apply LinearMap.ext
   intro x
   funext i
-  change (Pi.single d (x d)) i =
+  change ((Pi.single d (x d) : ι → R) i) =
     ∑ b, coeff d b * (weight b i * x i)
   simp only [← mul_assoc]
   rw [← Finset.sum_mul, hseparate d i]
