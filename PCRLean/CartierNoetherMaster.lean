@@ -66,7 +66,7 @@ theorem every_step_all_gates {parent child : P.State}
       C.markedPermissible ∧ C.passiveSafe ∧ C.boundarySNC ∧
       C.allStandardCharts ∧ C.overlapGluing ∧ C.hereditaryReentry ∧
       C.nonidentity ∧ C.rankDecrease := by
-  obtain ⟨C⟩ := S.step_gated h
+  obtain ⟨C⟩ := CartierNoetherMaster.System.step_gated S h
   exact ⟨C, C.all_gates⟩
 
 /-- No infinite branch can satisfy the fixed-memory/local-drop
