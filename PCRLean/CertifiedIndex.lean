@@ -36,6 +36,7 @@ import PCRLean.IdealOperatorPacketDescent
 import PCRLean.MonogenicFrobeniusFrame
 import PCRLean.AdjoinRootFrobeniusFrame
 import PCRLean.HasseSaturationDescent
+import PCRLean.MultiHasseSaturationDescent
 import PCRLean.SplitKernelCentre
 import PCRLean.FiniteKernelCentre
 import PCRLean.ProjectiveKernelCentre
