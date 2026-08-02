@@ -1,0 +1,60 @@
+name: PCR Jump Lean verification
+
+on:
+  push:
+    branches:
+      - pcr-lean-formalization-20260801
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pcr-jump-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  jump-kernel-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          set -o pipefail
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf \
+            | sh -s -- -y --default-toolchain leanprover/lean4:v4.30.0
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned mathlib and cache
+        run: |
+          set -o pipefail
+          lake update
+          lake exe cache get
+      - name: Reject placeholders
+        run: |
+          set -o pipefail
+          if grep -R -nE '^[[:space:]]*(axiom|sorry|admit)([[:space:]]|$)' \
+              --include='*.lean' PCRLean PCRLean.lean; then
+            echo 'Forbidden proof placeholder or custom axiom found.' >&2
+            exit 1
+          fi
+      - name: Compile historical-jump architecture
+        run: |
+          set -o pipefail
+          lake env lean PCRLean/JumpIndex.lean 2>&1 | tee jump-build.txt
+      - name: Audit jump declarations
+        run: |
+          set -o pipefail
+          if grep -E 'sorryAx|PCRLean\..*Axiom|ResolutionAxiom|PacketizationAxiom' jump-build.txt; then
+            echo 'Unpermitted axiom detected.' >&2
+            exit 1
+          fi
+      - name: Upload jump audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pcr-jump-lean-audit
+          path: jump-build.txt
+          if-no-files-found: warn
