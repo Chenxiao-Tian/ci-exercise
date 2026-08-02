@@ -4,8 +4,10 @@ import PCRLean.QuadraticDebt
 import PCRLean.NoRecharge
 import PCRLean.PolynomialCharts
 import PCRLean.FrobeniusPacket
+import PCRLean.EulerRadicial
 import PCRLean.SourcePartition
 import PCRLean.MarkedIdeal
+import PCRLean.CentrePermissibility
 import PCRLean.ResolutionCompiler
 
 namespace PCRLean
