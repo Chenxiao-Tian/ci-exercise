@@ -14,7 +14,7 @@ arbitrary positive-characteristic schemes here. -/
 structure System where
   Input : Type u
   P : ResolutionCompiler.Program
-  initialize : Input → P.State
+  initState : Input → P.State
   isResolved : P.State → Prop
   terminal_sound : ∀ s, P.terminal s → isResolved s
   step_gated : ∀ {s t}, P.step s t →
@@ -26,8 +26,8 @@ variable (S : System)
 
 /-- Every input of a fully certified system reaches a resolved state. -/
 theorem every_input_resolves (x : S.Input) :
-    ∃ t, ResolutionCompiler.Reaches S.P.step (S.initialize x) t ∧ S.isResolved t := by
-  obtain ⟨t, hreach, hterminal⟩ := S.P.terminal_reachable (S.initialize x)
+    ∃ t, ResolutionCompiler.Reaches S.P.step (S.initState x) t ∧ S.isResolved t := by
+  obtain ⟨t, hreach, hterminal⟩ := S.P.terminal_reachable (S.initState x)
   exact ⟨t, hreach, S.terminal_sound t hterminal⟩
 
 /-- Every actual step in a certified system carries all mandatory gates. -/
