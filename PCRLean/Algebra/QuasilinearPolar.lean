@@ -63,9 +63,7 @@ theorem diagonal_frobenius_polar_zero
     (a : ι → R) (e : ℕ) (x y : ι → R) :
     vectorPolar (diagonalFrobenius p a e) x y = 0 := by
   unfold vectorPolar diagonalFrobenius
-  simp_rw [Pi.add_apply, frobenius_additive]
-  rw [← Finset.sum_add_distrib]
-  simp only [mul_add]
+  simp_rw [Pi.add_apply, frobenius_additive, mul_add]
   rw [Finset.sum_add_distrib]
   ring
 
