@@ -54,7 +54,9 @@ def coordinateIdeal
     simpa [Pi.single_add] using N.add_mem (ha i) (hb i)
   smul_mem' := by
     intro a b hb i
-    simpa [Pi.single_smul] using N.smul_mem a (hb i)
+    change Pi.single i (a • b) ∈ N
+    rw [Pi.single_smul]
+    exact N.smul_mem a (hb i)
 
 @[simp] theorem mem_coordinateIdeal_iff
     (N : Submodule R (FreeModule (R := R) (ι := ι))) (r : R) :
@@ -78,7 +80,7 @@ theorem mem_of_forall_coordinate_mem
     {x : FreeModule (R := R) (ι := ι)}
     (hx : ∀ i, x i ∈ coordinateIdeal N) :
     x ∈ N := by
-  rw [← LinearMap.sum_single_apply R (fun _ : ι => R) x]
+  rw [← LinearMap.sum_single_apply R x]
   exact N.sum_mem fun i _ => (hx i) i
 
 /-- Classification theorem: membership in a fully invariant submodule is
@@ -115,7 +117,7 @@ theorem fromIdeal_fullyInvariant (J : Ideal R) :
   let row : FreeModule (R := R) (ι := ι) →ₗ[R] R :=
     (LinearMap.proj i).comp T
   have hdecomp : row x = ∑ j, x j * row (Pi.single j 1) := by
-    rw [← LinearMap.sum_single_apply R (fun _ : ι => R) x, map_sum]
+    rw [← LinearMap.sum_single_apply R x, map_sum]
     apply Finset.sum_congr rfl
     intro j hj
     rw [map_smul]
@@ -141,8 +143,7 @@ theorem coordinateIdeal_fromIdeal [Nonempty ι] (J : Ideal R) :
     let i : ι := Classical.choice (inferInstance : Nonempty ι)
     have hi := hr i
     simpa using hi i
-  · intro hr i
-    intro j
+  · intro hr i j
     by_cases hji : j = i
     · subst j
       simpa using hr
