@@ -82,6 +82,9 @@ jobs:
             PCRLean.Chambers.RamifiedQuadraticProgram
             PCRLean.Chambers.ArtinSchreier
             PCRLean.Chambers.ArtinSchreierProgram
+            PCRLean.Chambers.PurelyInseparable
+            PCRLean.Chambers.PurelyInseparableProgram
+            PCRLean.Chambers.RadicialDifferential
             PCRLean.Chambers.AllChartPrograms
             PCRLean.Chambers.ClosedGrammar
             PCRLean.Termination.Generational
