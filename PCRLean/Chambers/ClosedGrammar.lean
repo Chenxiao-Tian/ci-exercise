@@ -34,15 +34,15 @@ inductive ResolvedPacket where
 def Resolves : ResolvedPacket → Prop
   | .frobeniusContent depth =>
       ∃ finish,
-        Relation.ReflTransGen F.step finish (F.State.active depth) ∧
+        Relation.ReflTransGen F.Step finish (F.State.active depth) ∧
         F.resolved finish
   | .oddCusp depth =>
       ∃ finish,
-        Relation.ReflTransGen O.step finish (O.State.active depth) ∧
+        Relation.ReflTransGen O.Step finish (O.State.active depth) ∧
         O.resolved finish
   | .ramifiedQuadratic depth =>
       ∃ finish,
-        Relation.ReflTransGen R.step finish (R.State.active depth) ∧
+        Relation.ReflTransGen R.Step finish (R.State.active depth) ∧
         R.resolved finish
 
 /-- Every packet in the current resolved grammar has a kernel-checked finite
@@ -69,14 +69,14 @@ def HasCertifiedOutcome : ClassifiedPacket → Prop
   | .resolved packet => Resolves packet
   | .artinSchreier m r =>
       ∃ finish,
-        Relation.ReflTransGen A.step finish (A.State.active m r) ∧
-        A.terminal finish
+        Relation.ReflTransGen A.Step finish (A.State.active m r) ∧
+        A.classifiedExit finish
 
 /-- Every packet in the current wider grammar reaches its certified outcome. -/
 theorem classifies_every_packet (p : ClassifiedPacket) :
     HasCertifiedOutcome p := by
   cases p with
   | resolved packet => exact resolves_every_packet packet
-  | artinSchreier m r => exact A.program.reaches_terminal (A.State.active m r)
+  | artinSchreier m r => exact A.program.reaches_resolved (A.State.active m r)
 
 end PCRLean.Chambers.ClosedGrammar
