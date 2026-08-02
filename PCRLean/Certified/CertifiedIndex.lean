@@ -28,6 +28,7 @@ import PCRLean.NoGo.PersistentObstruction
 import PCRLean.NoGo.FreshBirth
 import PCRLean.NoGo.CoordinatewiseDropCycle
 import PCRLean.NoGo.FiniteJetBlindness
+import PCRLean.NoGo.RelativeImperfection
 
 /-!
 # Certified kernel index
@@ -139,6 +140,10 @@ end PCRLean.Certified
 #print axioms PCRLean.NoGo.FiniteJetBlindness.zero_and_X_pow_agree_below
 #print axioms PCRLean.NoGo.FiniteJetBlindness.X_pow_ne_zero
 #print axioms PCRLean.NoGo.FiniteJetBlindness.fixed_cutoff_not_faithful
+#print axioms PCRLean.NoGo.RelativeImperfection.cast_prime_power_eq_zero
+#print axioms PCRLean.NoGo.RelativeImperfection.derivative_frobenius_power_zero
+#print axioms PCRLean.NoGo.RelativeImperfection.X_not_frobenius_power
+#print axioms PCRLean.NoGo.RelativeImperfection.frobenius_not_surjective
 #print axioms PCRLean.Certified.generational_backend_wf
 #print axioms PCRLean.Certified.finite_source_generation_wf
 #print axioms PCRLean.Certified.packet_multiset_backend_wf
