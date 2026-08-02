@@ -63,7 +63,7 @@ Jacobian ideal is the unit ideal. -/
 theorem jacobianIdeal_eq_top_of_isUnit_pderiv (H : MvPolynomial σ R) (i : σ)
     (hunit : IsUnit (pderiv i H)) :
     jacobianIdeal H = ⊤ := by
-  apply (Ideal.eq_top_iff_one).2
+  apply (Ideal.eq_top_iff_one (jacobianIdeal H)).2
   rcases hunit with ⟨u, hu⟩
   have hmem : (u : MvPolynomial σ R) ∈ jacobianIdeal H := by
     rw [hu]
