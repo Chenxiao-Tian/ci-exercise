@@ -8,7 +8,8 @@ import PCRLean.SplitKernelCentre
 A Noetherian operator orbit admits a finite packet. Pair that packet with an
 ambient direction space. The finite evaluation map cuts out the persistent
 kernel. A linearly independent trace packet has a surjective evaluation map,
-so it admits a linear section and its kernel is automatically a direct summand.
+so it admits a linear right inverse and its kernel is automatically a direct
+summand.
 
 The geometric problem is to realize the finite packet as a locally free
 constant-rank coefficient bundle and to glue the resulting linear centres as
@@ -76,8 +77,7 @@ theorem dualToFun_injective :
   exact congrFun h x
 
 /-- A linearly independent finite family of functionals gives a surjective
-coordinate-evaluation map. This is the algebraic bridge from an independent
-Hasse--Cartier packet to a split persistent direction kernel. -/
+coordinate-evaluation map. -/
 theorem evaluationMap_surjective_of_linearIndependent
     (pair : D →ₗ[K] DualV (K := K) (V := V))
     (s : Finset D)
@@ -101,11 +101,11 @@ theorem evaluationMap_surjective_of_linearIndependent
     ext d
     rfl⟩
 
-/-- A finite packet whose evaluation map has a chosen section. -/
+/-- A finite packet whose evaluation map has a chosen right inverse. -/
 structure SplitPacket (pair : D →ₗ[K] DualV (K := K) (V := V))
     (s : Finset D) where
-  section : ((d : s) → K) →ₗ[K] V
-  rightInverse : (evaluationMap pair s).comp section = LinearMap.id
+  rightInv : ((d : s) → K) →ₗ[K] V
+  rightInv_spec : (evaluationMap pair s).comp rightInv = LinearMap.id
 
 /-- Every linearly independent finite trace packet admits a split packet
 certificate. -/
@@ -116,8 +116,8 @@ theorem exists_splitPacket_of_linearIndependent
     Nonempty (SplitPacket pair s) := by
   have hsurj := evaluationMap_surjective_of_linearIndependent pair s hli
   rcases (evaluationMap pair s).exists_rightInverse_of_surjective
-      (LinearMap.range_eq_top.mpr hsurj) with ⟨section, hsection⟩
-  exact ⟨⟨section, hsection⟩⟩
+      (LinearMap.range_eq_top.mpr hsurj) with ⟨rightInv, hrightInv⟩
+  exact ⟨⟨rightInv, hrightInv⟩⟩
 
 namespace SplitPacket
 
@@ -128,8 +128,8 @@ variable {pair : D →ₗ[K] DualV (K := K) (V := V)}
 def toSplitMap : SplitKernelCentre.SplitMap
     (K := K) (V := V) (W := (d : s) → K) where
   map := evaluationMap pair s
-  section := P.section
-  rightInverse := P.rightInverse
+  rightInv := P.rightInv
+  rightInv_spec := P.rightInv_spec
 
 /-- Explicit product decomposition by the packet kernel and coefficient
 space. -/
@@ -137,11 +137,12 @@ def equivKernelProd :
     V ≃ₗ[K] (LinearMap.ker (evaluationMap pair s) × ((d : s) → K)) :=
   P.toSplitMap.equivKernelProd
 
-/-- The packet kernel is complementary to the image of the chosen section. -/
-theorem isCompl_kernel_range_section :
+/-- The packet kernel is complementary to the image of the chosen right
+inverse. -/
+theorem isCompl_kernel_range_rightInv :
     IsCompl (LinearMap.ker (evaluationMap pair s))
-      (LinearMap.range P.section) :=
-  P.toSplitMap.isCompl_kernel_range_section
+      (LinearMap.range P.rightInv) :=
+  P.toSplitMap.isCompl_kernel_range_rightInv
 
 end SplitPacket
 
@@ -193,12 +194,12 @@ theorem persistentKernel_isCompl
     IsCompl
       (NoetherianOperatorOrbit.annihilatorVia pair
         (NoetherianOperatorOrbit.orbitModule ops seed))
-      (LinearMap.range S.section) := by
+      (LinearMap.range S.rightInv) := by
   rw [P.annihilator_eq_ker_evaluation]
-  exact S.isCompl_kernel_range_section
+  exact S.isCompl_kernel_range_rightInv
 
-/-- Linear independence of the finite trace packet is already sufficient to
-produce a complementary persistent-kernel direction. -/
+/-- Linear independence of the finite trace packet is sufficient to produce a
+complementary persistent-kernel direction. -/
 theorem exists_complement_of_linearIndependent
     (hli : LinearIndependent K (fun d : P.packet => pair d.1)) :
     ∃ Q : Submodule K V,
@@ -206,7 +207,7 @@ theorem exists_complement_of_linearIndependent
         (NoetherianOperatorOrbit.annihilatorVia pair
           (NoetherianOperatorOrbit.orbitModule ops seed)) Q := by
   rcases exists_splitPacket_of_linearIndependent pair P.packet hli with ⟨S⟩
-  exact ⟨LinearMap.range S.section, P.persistentKernel_isCompl S⟩
+  exact ⟨LinearMap.range S.rightInv, P.persistentKernel_isCompl S⟩
 
 end OrbitPacket
 
