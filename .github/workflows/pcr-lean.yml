@@ -96,6 +96,7 @@ jobs:
             PCRLean.NoGo.FreshBirth
             PCRLean.NoGo.CoordinatewiseDropCycle
             PCRLean.NoGo.FiniteJetBlindness
+            PCRLean.NoGo.RelativeImperfection
             PCRLean.Certified.CertifiedIndex
             PCRLean
           )
