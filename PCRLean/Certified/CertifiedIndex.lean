@@ -14,6 +14,9 @@ import PCRLean.Chambers.RamifiedQuadratic
 import PCRLean.Chambers.RamifiedQuadraticProgram
 import PCRLean.Chambers.ArtinSchreier
 import PCRLean.Chambers.ArtinSchreierProgram
+import PCRLean.Chambers.PurelyInseparable
+import PCRLean.Chambers.PurelyInseparableProgram
+import PCRLean.Chambers.RadicialDifferential
 import PCRLean.Chambers.AllChartPrograms
 import PCRLean.Chambers.ClosedGrammar
 import PCRLean.Termination.Generational
@@ -108,6 +111,18 @@ end PCRLean.Certified
 #print axioms PCRLean.Chambers.ArtinSchreier.collisionDepth_add_step
 #print axioms PCRLean.Chambers.ArtinSchreierProgram.step_decreases
 #print axioms PCRLean.Chambers.ArtinSchreierProgram.active_reaches_classified_exit
+#print axioms PCRLean.Chambers.PurelyInseparable.square_gauge
+#print axioms PCRLean.Chambers.PurelyInseparable.even_collision_factorization
+#print axioms PCRLean.Chambers.PurelyInseparable.final_t_pivot
+#print axioms PCRLean.Chambers.PurelyInseparable.final_z_pivot
+#print axioms PCRLean.Chambers.PurelyInseparable.pure_collision_factorization
+#print axioms PCRLean.Chambers.PurelyInseparableProgram.step_decreases
+#print axioms PCRLean.Chambers.PurelyInseparableProgram.active_reaches_radicial_exit
+#print axioms PCRLean.Chambers.RadicialDifferential.pderiv_sq_zero
+#print axioms PCRLean.Chambers.RadicialDifferential.pderiv_add_sq
+#print axioms PCRLean.Chambers.RadicialDifferential.euler_odd
+#print axioms PCRLean.Chambers.RadicialDifferential.jacobianIdeal_eq_top_of_isUnit_pderiv
+#print axioms PCRLean.Chambers.RadicialDifferential.odd_homogeneous_mem_jacobianIdeal
 #print axioms PCRLean.Chambers.AllChartPrograms.FrobeniusContent.allChartsResolve
 #print axioms PCRLean.Chambers.AllChartPrograms.OddCusp.allChartsResolve
 #print axioms PCRLean.Chambers.AllChartPrograms.RamifiedQuadratic.allChartsResolve
