@@ -31,9 +31,23 @@ def transportedHasseAddHom
     [CommRing R] [CommRing A] [Algebra R A]
     {q : Nat} {t : R}
     (F : MonogenicFrobeniusFrame.Frame (R := R) (A := A) q t)
-    (d : Fin q) : A →+ A :=
-  (CoordinatePacketDescent.pullbackOperator F.coord
-    (FiniteHasseModel.hasse (R := R) q d)).toAddHom
+    (d : Fin q) : A →+ A where
+  toFun := CoordinatePacketDescent.pullbackOperator F.coord
+    (FiniteHasseModel.hasse (R := R) q d)
+  map_zero' := by simp
+  map_add' := by
+    intro x y
+    simp
+
+@[simp] theorem transportedHasseAddHom_apply
+    {R : Type u} {A : Type v}
+    [CommRing R] [CommRing A] [Algebra R A]
+    {q : Nat} {t : R}
+    (F : MonogenicFrobeniusFrame.Frame (R := R) (A := A) q t)
+    (d : Fin q) (x : A) :
+    transportedHasseAddHom F d x =
+      CoordinatePacketDescent.pullbackOperator F.coord
+        (FiniteHasseModel.hasse (R := R) q d) x := rfl
 
 /-- The least ideal containing `I` and stable under every transported finite
 Hasse operator. -/
@@ -80,9 +94,10 @@ theorem hasseSaturation_stable
       (CoordinatePacketDescent.pullbackOperator F.coord
         (FiniteHasseModel.hasse (R := R) q d)) := by
   intro x hx
-  change transportedHasseAddHom F d x ∈ hasseSaturation F I
-  exact DifferentialIdealSaturation.saturation_stable
+  change x ∈ hasseSaturation F I at hx
+  have hs := DifferentialIdealSaturation.saturation_stable
     (transportedHasseAddHom F) I d x hx
+  simpa using hs
 
 /-- The canonical Hasse saturation is exactly extended from its Frobenius
 core. -/
@@ -98,6 +113,15 @@ theorem hasseSaturation_eq_map_core
     (MonogenicFrobeniusFrame.Frame.ideal_eq_map_comap_of_hasse_stable
       F (hasseSaturation F I) (hasseSaturation_stable F I))
 
+/-- Mapping the unit ideal along a unital ring homomorphism gives the unit
+ideal. -/
+theorem map_top_algebraMap
+    {R : Type u} {A : Type v}
+    [CommRing R] [CommRing A] [Algebra R A] :
+    Ideal.map (algebraMap R A) (⊤ : Ideal R) = ⊤ := by
+  apply Ideal.eq_top_iff_one.mpr
+  exact Ideal.mem_map_of_mem (algebraMap R A) (by simp)
+
 /-- The Frobenius core is proper whenever the Hasse saturation is proper. -/
 theorem frobeniusCore_ne_top_of_saturation_ne_top
     {R : Type u} {A : Type v}
@@ -112,7 +136,8 @@ theorem frobeniusCore_ne_top_of_saturation_ne_top
     hasseSaturation F I =
         (frobeniusCore F I).map (algebraMap R A) :=
       hasseSaturation_eq_map_core F I
-    _ = ⊤ := by simp [hcore]
+    _ = Ideal.map (algebraMap R A) (⊤ : Ideal R) := by rw [hcore]
+    _ = ⊤ := map_top_algebraMap (R := R) (A := A)
 
 /-- Being the unit ideal is detected exactly on the contracted Frobenius
 core. -/
@@ -129,7 +154,8 @@ theorem frobeniusCore_eq_top_iff
       hasseSaturation F I =
           (frobeniusCore F I).map (algebraMap R A) :=
         hasseSaturation_eq_map_core F I
-      _ = ⊤ := by simp [hcore]
+      _ = Ideal.map (algebraMap R A) (⊤ : Ideal R) := by rw [hcore]
+      _ = ⊤ := map_top_algebraMap (R := R) (A := A)
   · intro hsat
     simp [frobeniusCore, hsat]
 
