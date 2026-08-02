@@ -5,11 +5,11 @@ import Mathlib.FieldTheory.Perfect
 # One-variable Frobenius descent for differential principal ideals
 
 Over a perfect field of characteristic `p`, a polynomial with zero derivative
-is a `p`-th power.  Consequently, if the principal ideal `(f)` is stable under
+is a `p`-th power. Consequently, if the principal ideal `(f)` is stable under
 the ordinary derivation, then `f` has an actual polynomial Frobenius root.
 
 This is the one-dimensional affine model of Cartier descent for differential
-ideals.  The higher-dimensional resolution program needs its finite-level
+ideals. The higher-dimensional resolution program needs its finite-level
 Hasse-operator and locally free relative-Frobenius analogue.
 -/
 
@@ -38,7 +38,7 @@ theorem frobeniusRoot_pow_of_derivative_eq_zero
   calc
     (frobeniusRoot (K := K) p f) ^ p =
         Polynomial.expand K p (Polynomial.contract p f) := by
-      exact (Polynomial.polynomial_expand_eq
+      exact (polynomial_expand_eq
         (R := K) (p := p) (Polynomial.contract p f)).symm
     _ = f := Polynomial.expand_contract p hf
       (Fact.out : p.Prime).ne_zero
@@ -54,9 +54,8 @@ theorem derivative_eq_zero_iff_exists_pow
       frobeniusRoot_pow_of_derivative_eq_zero (K := K) p hf⟩
   · rintro ⟨g, rfl⟩
     rw [Polynomial.derivative_pow]
-    have hpzero : (p : K[X]) = 0 := by
-      exact CharP.cast_eq_zero K[X] p
-    rw [hpzero, zero_mul]
+    have hpzero : (p : K) = 0 := CharP.cast_eq_zero K p
+    rw [hpzero, map_zero, zero_mul]
 
 /-- Stability of the principal ideal under ordinary differentiation forces an
 actual Frobenius root. -/
@@ -73,7 +72,7 @@ theorem exists_pow_of_derivative_mem_principal
 theorem frobeniusRoot_unique
     (f g : K[X]) (hg : g ^ p = f) :
     g = frobeniusRoot (K := K) p f := by
-  apply (frobenius K[X] p).injective
+  apply frobenius_inj K[X] p
   simpa [frobenius_def, hg,
     frobeniusRoot_pow_of_derivative_eq_zero (K := K) p
       ((derivative_eq_zero_iff_exists_pow (K := K) p f).2 ⟨g, hg⟩)]
