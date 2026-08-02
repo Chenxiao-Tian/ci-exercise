@@ -28,6 +28,7 @@ import PCRLean.BiorthogonalEndomorphismBasis
 import PCRLean.DiagonalMatrixUnitFactory
 import PCRLean.PascalSeparation
 import PCRLean.FiniteHasseModel
+import PCRLean.CoordinatePacketDescent
 import PCRLean.SplitKernelCentre
 import PCRLean.FiniteKernelCentre
 import PCRLean.ProjectiveKernelCentre
