@@ -155,6 +155,7 @@ theorem reconstruct (x : A) :
 /-- Main descent theorem: every ideal stable under the full base-linear
 endomorphism algebra is extended from its contraction to the base. -/
 theorem ideal_eq_map_comap_of_fullyInvariant
+    (F : UnitFrame (R := R) (A := A) (ι := ι))
     (I : Ideal A) (hI : FullyInvariant (R := R) I) :
     I = (I.comap (algebraMap R A)).map (algebraMap R A) := by
   apply le_antisymm
