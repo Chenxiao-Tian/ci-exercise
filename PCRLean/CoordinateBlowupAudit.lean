@@ -1,0 +1,6 @@
+import PCRLean.CoordinateBlowupChart
+
+#print axioms PCRLean.CoordinateBlowupChart.chartMap_centreVar_mem_pivot
+#print axioms PCRLean.CoordinateBlowupChart.map_centreIdeal_le_pivotIdeal
+#print axioms PCRLean.CoordinateBlowupChart.map_centreIdeal_pow_le_pivotIdeal_pow
+#print axioms PCRLean.CoordinateBlowupChart.chartMap_mem_pivot_pow
