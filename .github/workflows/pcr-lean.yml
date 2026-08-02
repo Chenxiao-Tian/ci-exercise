@@ -72,6 +72,8 @@ jobs:
             PCRLean.Algebra.SquareCleaningDerivative
             PCRLean.Algebra.OddContactDerivative
             PCRLean.Algebra.QuasilinearPolar
+            PCRLean.Algebra.PerfectQuasilinearRoot
+            PCRLean.Algebra.UnitCocycleIdeal
             PCRLean.Chambers.FrobeniusContent
             PCRLean.Chambers.FrobeniusContentProgram
             PCRLean.Chambers.OddCusp
@@ -81,6 +83,7 @@ jobs:
             PCRLean.Chambers.ArtinSchreier
             PCRLean.Chambers.ArtinSchreierProgram
             PCRLean.Chambers.AllChartPrograms
+            PCRLean.Chambers.ClosedGrammar
             PCRLean.Termination.Generational
             PCRLean.Termination.FiniteSources
             PCRLean.Termination.GenerationSystem
