@@ -32,6 +32,10 @@ import PCRLean
 #print axioms PCRLean.NoetherianPatchingCompiler.rankStep_wellFounded
 #print axioms PCRLean.NoetherianPatchingCompiler.PatchedProgram.terminal_reachable
 #print axioms PCRLean.NoetherianPatchingCompiler.PatchedProgram.no_infinite_execution
+#print axioms PCRLean.ActualIdealGluing.generatedIdeal_eq_of_mutual_combinations
+#print axioms PCRLean.ActualIdealGluing.GeneratorFrameEquivalence.ideal_eq
+#print axioms PCRLean.ActualIdealGluing.principal_unit_change
+#print axioms PCRLean.ActualIdealGluing.FiniteGeneratorAtlas.gluedIdeal_eq
 #print axioms PCRLean.OwnerJoint.aggregate_permissible
 #print axioms PCRLean.PolynomialCharts.oddCusp_sPivot_identity
 #print axioms PCRLean.PolynomialCharts.oddCusp_yPivot_identity
