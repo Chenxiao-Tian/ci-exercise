@@ -5,6 +5,7 @@ import PCRLean.Algebra.SquareCleaningDerivative
 import PCRLean.Algebra.OddContactDerivative
 import PCRLean.Algebra.QuasilinearPolar
 import PCRLean.Algebra.PerfectQuasilinearRoot
+import PCRLean.Algebra.UnitCocycleIdeal
 import PCRLean.Chambers.FrobeniusContent
 import PCRLean.Chambers.FrobeniusContentProgram
 import PCRLean.Chambers.OddCusp
@@ -14,6 +15,7 @@ import PCRLean.Chambers.RamifiedQuadraticProgram
 import PCRLean.Chambers.ArtinSchreier
 import PCRLean.Chambers.ArtinSchreierProgram
 import PCRLean.Chambers.AllChartPrograms
+import PCRLean.Chambers.ClosedGrammar
 import PCRLean.Termination.Generational
 import PCRLean.Termination.FiniteSources
 import PCRLean.Termination.GenerationSystem
