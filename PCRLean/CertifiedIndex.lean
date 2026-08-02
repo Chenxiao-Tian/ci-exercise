@@ -3,6 +3,7 @@ import PCRLean.OddCusp
 import PCRLean.QuadraticDebt
 import PCRLean.NoRecharge
 import PCRLean.PolynomialCharts
+import PCRLean.SourcePartition
 
 namespace PCRLean
 
