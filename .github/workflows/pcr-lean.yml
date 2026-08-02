@@ -1,0 +1,167 @@
+name: PCR Lean closed-loop verification
+
+on:
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pcr-lean-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan and the pinned Lean toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          source "$HOME/.elan/env"
+          lean --version
+          lake --version
+      - name: Resolve pinned dependencies
+        run: lake update
+      - name: Download mathlib compiled cache
+        run: lake exe cache get
+      - name: Build the complete PCRLean library
+        id: lean_build
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          lake build 2>&1 | tee PCRLEAN_BUILD.log
+      - name: Upload Lean build log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pcrlean-build-log
+          path: PCRLEAN_BUILD.log
+          if-no-files-found: error
+      - name: Enforce successful Lean build
+        if: steps.lean_build.outcome != 'success'
+        run: exit 1
+      - name: Reject proof placeholders and project axioms
+        shell: bash
+        run: |
+          set -euo pipefail
+          bad="$(find PCRLean -name '*.lean' -print0 | xargs -0 grep -nE '^[[:space:]]*(sorry|admit|axiom)([[:space:]]|$)' || true)"
+          if [[ -n "$bad" ]]; then
+            echo "$bad"
+            echo "Forbidden proof placeholder or custom axiom found."
+            exit 1
+          fi
+      - name: Re-run certified axiom audit explicitly
+        run: lake env lean PCRLean/Certified/CertifiedIndex.lean
+
+  leanchecker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan and the pinned Lean toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          source "$HOME/.elan/env"
+      - name: Prepare compiled environment
+        run: |
+          lake update
+          lake exe cache get
+          lake build
+      - name: Replay every PCRLean module with the bundled kernel checker
+        shell: bash
+        run: |
+          set -euo pipefail
+          modules=(
+            PCRLean.Algebra.MarkedIdeal
+            PCRLean.Algebra.ControlledTransform
+            PCRLean.Algebra.CharacteristicTwoGauge
+            PCRLean.Algebra.SquareCleaningDerivative
+            PCRLean.Algebra.OddContactDerivative
+            PCRLean.Algebra.QuasilinearPolar
+            PCRLean.Algebra.PerfectQuasilinearRoot
+            PCRLean.Algebra.FrobeniusPolynomialRoot
+            PCRLean.Algebra.UnitCocycleIdeal
+            PCRLean.Algebra.JointOwners
+            PCRLean.Algebra.PassiveFlatness
+            PCRLean.Chambers.FrobeniusContent
+            PCRLean.Chambers.FrobeniusContentProgram
+            PCRLean.Chambers.OddCusp
+            PCRLean.Chambers.OddCuspProgram
+            PCRLean.Chambers.RamifiedQuadratic
+            PCRLean.Chambers.RamifiedQuadraticProgram
+            PCRLean.Chambers.ArtinSchreier
+            PCRLean.Chambers.ArtinSchreierProgram
+            PCRLean.Chambers.PurelyInseparable
+            PCRLean.Chambers.PurelyInseparableProgram
+            PCRLean.Chambers.RadicialDifferential
+            PCRLean.Chambers.AllChartPrograms
+            PCRLean.Chambers.ClosedGrammar
+            PCRLean.Termination.Generational
+            PCRLean.Termination.FiniteSources
+            PCRLean.Termination.GenerationSystem
+            PCRLean.Termination.PacketMultiset
+            PCRLean.Framework.RankedSystem
+            PCRLean.Framework.FiniteChartProgram
+            PCRLean.Framework.GeometricProgram
+            PCRLean.Framework.UniversalCompiler
+            PCRLean.NoGo.PersistentObstruction
+            PCRLean.NoGo.FreshBirth
+            PCRLean.NoGo.CoordinatewiseDropCycle
+            PCRLean.NoGo.FiniteJetBlindness
+            PCRLean.NoGo.RelativeImperfection
+            PCRLean.Certified.CertifiedIndex
+            PCRLean
+          )
+          for module in "${modules[@]}"; do
+            echo "leanchecker: $module"
+            lake env leanchecker "$module"
+          done
+
+  nanoda:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan and the pinned Lean toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          source "$HOME/.elan/env"
+      - name: Prepare compiled environment
+        run: |
+          lake update
+          lake exe cache get
+          lake build
+      - name: Independent nanoda verification with explicit module and sorryAx forbidden
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf _lean4export _nanoda_lib _nanoda_export.txt _nanoda_config.json
+          git clone --depth 1 https://github.com/leanprover/lean4export.git _lean4export
+          cp lean-toolchain _lean4export/
+          (cd _lean4export && lake build)
+          git clone --depth 1 --branch debug https://github.com/ammkrn/nanoda_lib.git _nanoda_lib
+          (cd _nanoda_lib && cargo build --release)
+          lake env _lean4export/.lake/build/bin/lean4export PCRLean > _nanoda_export.txt
+          cat > _nanoda_config.json <<'JSON'
+          {
+            "export_file_path": "_nanoda_export.txt",
+            "use_stdin": false,
+            "permitted_axioms": ["propext", "Classical.choice", "Quot.sound", "Lean.trustCompiler"],
+            "unpermitted_axiom_hard_error": true,
+            "nat_extension": true,
+            "string_extension": true,
+            "print_success_message": true
+          }
+          JSON
+          _nanoda_lib/target/release/nanoda_bin _nanoda_config.json
