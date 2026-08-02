@@ -71,9 +71,10 @@ variable {g h : ι → R}
 
 /-- Equivalent finite generator frames define the same actual ideal. -/
 theorem ideal_eq (E : GeneratorFrameEquivalence g h) :
-    generatedIdeal g = generatedIdeal h :=
-  generatedIdeal_eq_of_mutual_combinations
-    g h E.forward E.backward E.reconstruct_g E.reconstruct_h
+    generatedIdeal g = generatedIdeal h := by
+  rcases E with ⟨forward, backward, reconstruct_g, reconstruct_h⟩
+  exact generatedIdeal_eq_of_mutual_combinations
+    g h forward backward reconstruct_g reconstruct_h
 
 end GeneratorFrameEquivalence
 
@@ -110,16 +111,16 @@ variable {Chart : Type*} [Fintype Chart]
 
 /-- Every chart frame generates the same actual ideal. -/
 theorem ideal_eq (i j : Chart) :
-    generatedIdeal (A.generator i) = generatedIdeal (A.generator j) :=
-  GeneratorFrameEquivalence.ideal_eq (A.overlap i j)
+    generatedIdeal (A.generator i) = generatedIdeal (A.generator j) := by
+  exact GeneratorFrameEquivalence.ideal_eq (A.overlap i j)
 
 /-- Choosing a reference chart defines an ideal independent of the reference. -/
 def gluedIdeal (i : Chart) : Ideal R :=
   generatedIdeal (A.generator i)
 
 /-- Reference independence of the glued ideal. -/
-theorem gluedIdeal_eq (i j : Chart) : A.gluedIdeal i = A.gluedIdeal j :=
-  A.ideal_eq i j
+theorem gluedIdeal_eq (i j : Chart) : A.gluedIdeal i = A.gluedIdeal j := by
+  exact A.ideal_eq i j
 
 end FiniteGeneratorAtlas
 
