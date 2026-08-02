@@ -18,11 +18,11 @@ def oddExp (n : ℕ) : ℕ := 2 * n + 1
   simp [oddExp]
 
 theorem oddExp_succ (n : ℕ) : oddExp (n + 1) = oddExp n + 2 := by
-  unfold oddExp
+  simp only [oddExp]
   omega
 
 theorem oddExp_pos (n : ℕ) : 0 < oddExp n := by
-  unfold oddExp
+  simp only [oddExp]
   omega
 
 variable {R : Type*} [CommRing R]
