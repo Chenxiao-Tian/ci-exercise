@@ -25,6 +25,10 @@ import PCRLean
 #print axioms PCRLean.NoetherianTraceMemory.no_infinite_independent_births
 #print axioms PCRLean.NoetherianTraceMemory.eventually_disjoint_kernel_range
 #print axioms PCRLean.NoetherianTraceMemory.eventually_kernel_tower_stabilizes
+#print axioms PCRLean.TraceKernelDebt.traceRank_add_kernelDebt
+#print axioms PCRLean.TraceKernelDebt.kernelDebt_strict_drop
+#print axioms PCRLean.TraceKernelDebt.kernelDebt_consume_add_one
+#print axioms PCRLean.TraceKernelDebt.no_infinite_independent_trace_births
 #print axioms PCRLean.DifferentialOrbitKernel.annihilator_antitone
 #print axioms PCRLean.DifferentialOrbitKernel.annihilator_invariant
 #print axioms PCRLean.DifferentialOrbitKernel.annihilator_family_invariant
@@ -43,9 +47,12 @@ import PCRLean
 #print axioms PCRLean.SplitKernelCentre.SplitMap.equivKernelProd
 #print axioms PCRLean.SplitKernelCentre.SplitMap.isCompl_kernel_range_section
 #print axioms PCRLean.FiniteKernelCentre.mem_ker_evaluationMap_iff
+#print axioms PCRLean.FiniteKernelCentre.evaluationMap_surjective_of_linearIndependent
+#print axioms PCRLean.FiniteKernelCentre.exists_splitPacket_of_linearIndependent
 #print axioms PCRLean.FiniteKernelCentre.SplitPacket.equivKernelProd
 #print axioms PCRLean.FiniteKernelCentre.OrbitPacket.annihilator_eq_ker_evaluation
 #print axioms PCRLean.FiniteKernelCentre.OrbitPacket.persistentKernel_isCompl
+#print axioms PCRLean.FiniteKernelCentre.OrbitPacket.exists_complement_of_linearIndependent
 #print axioms PCRLean.ProjectiveKernelCentre.exists_splitPacket_of_surjective
 #print axioms PCRLean.ProjectiveKernelCentre.exists_complement_of_surjective
 #print axioms PCRLean.ProjectiveKernelCentre.persistentKernel_isCompl_of_surjective
