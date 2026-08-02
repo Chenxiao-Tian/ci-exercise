@@ -2,6 +2,7 @@ import PCRLean.GenerationalRank
 import PCRLean.OddCusp
 import PCRLean.QuadraticDebt
 import PCRLean.NoRecharge
+import PCRLean.PolynomialCharts
 
 namespace PCRLean
 
