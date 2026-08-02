@@ -31,6 +31,7 @@ import PCRLean
 #print axioms PCRLean.DifferentialOrbitClosure.orbitModule_stable
 #print axioms PCRLean.DifferentialOrbitClosure.orbitModule_familyStable
 #print axioms PCRLean.DifferentialOrbitClosure.orbitAnnihilator_invariant
+#print axioms PCRLean.DifferentialOrbitClosure.exists_finite_raw_orbit_generators
 #print axioms PCRLean.NoetherianPatchingCompiler.rankLt_wellFounded
 #print axioms PCRLean.NoetherianPatchingCompiler.rankStep_wellFounded
 #print axioms PCRLean.NoetherianPatchingCompiler.PatchedProgram.terminal_reachable
