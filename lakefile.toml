@@ -1,0 +1,6 @@
+name = "PCRLean"
+version = "0.1.0"
+defaultTargets = ["PCRLean"]
+
+[[lean_lib]]
+name = "PCRLean"
