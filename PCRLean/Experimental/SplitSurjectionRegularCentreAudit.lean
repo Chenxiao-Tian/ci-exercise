@@ -1,0 +1,4 @@
+import PCRLean.Experimental.SplitSurjectionRegularCentre
+
+#print axioms PCRLean.Experimental.SplitSurjectionRegularCentre.quotient_isRegularRing
+#print axioms PCRLean.Experimental.SplitSurjectionRegularCentre.certificate
