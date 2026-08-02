@@ -1,4 +1,5 @@
 import Mathlib
+import PCRLean.GenerationalRank
 
 namespace PCRLean
 namespace ResolutionCompiler
@@ -20,7 +21,7 @@ theorem Reaches.trans {State : Type u} {step : State → State → Prop}
   | refl _ => exact hbc
   | cons hst _ ih => exact Reaches.cons hst (ih hbc)
 
-/-- The abstract data required by the termination backend.  Geometry supplies
+/-- The abstract data required by the termination backend. Geometry supplies
 `step`, `terminal`, and the strict rank theorem; the compiler supplies finite
 termination. -/
 structure Program where
@@ -46,7 +47,7 @@ theorem stateLt_wf : WellFounded P.stateLt := by
   exact InvImage.wf P.rank P.wf
 
 /-- Every state has a terminal descendant reached by finitely many certified
-steps.  This theorem is the kernel-checked abstract termination compiler. -/
+steps. This theorem is the kernel-checked abstract termination compiler. -/
 theorem terminal_reachable (s : P.State) :
     ∃ t, Reaches P.step s t ∧ P.terminal t := by
   induction s using P.stateLt_wf.induction with
@@ -67,10 +68,10 @@ theorem no_infinite_execution :
 
 end Program
 
-/-- The mandatory geometric gates for one ordinary-centre action.  This is a
+/-- The mandatory geometric gates for one ordinary-centre action. This is a
 semantic certificate record, not an assumption that such a certificate exists
 for arbitrary positive-characteristic inputs. -/
-structure CentreGateCertificate (State : Type u) (s t : State) : Prop where
+structure CentreGateCertificate (State : Type u) (s t : State) : Type where
   actualFiniteTypeIdeal : Prop
   actualFiniteTypeIdeal_proof : actualFiniteTypeIdeal
   regularImmersion : Prop
