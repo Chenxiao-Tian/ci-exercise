@@ -28,4 +28,5 @@ import PCRLean.NoGo.PersistentObstruction
 import PCRLean.NoGo.FreshBirth
 import PCRLean.NoGo.CoordinatewiseDropCycle
 import PCRLean.NoGo.FiniteJetBlindness
+import PCRLean.NoGo.RelativeImperfection
 import PCRLean.Certified.CertifiedIndex
