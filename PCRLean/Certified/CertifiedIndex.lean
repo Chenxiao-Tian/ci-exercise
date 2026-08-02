@@ -1,5 +1,6 @@
 import PCRLean.Chambers.FrobeniusContent
 import PCRLean.Chambers.OddCusp
+import PCRLean.Chambers.OddCuspProgram
 import PCRLean.Chambers.RamifiedQuadratic
 import PCRLean.Chambers.ArtinSchreier
 import PCRLean.Termination.Generational
@@ -31,6 +32,12 @@ end PCRLean.Certified
 #print axioms PCRLean.Chambers.FrobeniusContent.sibling_factorization
 #print axioms PCRLean.Chambers.OddCusp.sChart_factorization
 #print axioms PCRLean.Chambers.OddCusp.yChart_factorization
+#print axioms PCRLean.Chambers.OddCuspProgram.firstRepair_sPivot
+#print axioms PCRLean.Chambers.OddCuspProgram.firstRepair_yPivot
+#print axioms PCRLean.Chambers.OddCuspProgram.secondRepair_yPivot
+#print axioms PCRLean.Chambers.OddCuspProgram.secondRepair_sPivot
+#print axioms PCRLean.Chambers.OddCuspProgram.step_decreases
+#print axioms PCRLean.Chambers.OddCuspProgram.active_reaches_resolved
 #print axioms PCRLean.Chambers.RamifiedQuadratic.collision_factorization
 #print axioms PCRLean.Chambers.RamifiedQuadratic.sibling_factorization
 #print axioms PCRLean.Chambers.ArtinSchreier.collision_factorization
