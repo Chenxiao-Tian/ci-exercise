@@ -116,7 +116,8 @@ theorem pullback_multiply_basis
         apply F.coord.injective
         rw [CoordinatePacketDescent.pullbackOperator_apply]
         simpa [frameVector] using
-          (F.finiteMultiply_basis_of_ge a c hge)
+          (finiteMultiply_basis_of_ge
+            (R := R) (q := q) (t := t) a c hge)
       _ = algebraMap R A t * F.gen ^ d.1 := by
         rw [F.frameVector_eq_pow d, Algebra.smul_def]
       _ = F.gen ^ q * F.gen ^ d.1 := by
@@ -140,9 +141,16 @@ theorem pullback_multiply_eq_leftMultiplication (a : Fin q) :
         (FiniteHasseModel.multiply (R := R) q t a) =
       IdealOperatorPacketDescent.leftMultiplication
         (R := R) (F.gen ^ a.1) := by
-  apply (Basis.ofEquivFun F.coord).ext
-  intro c
-  simpa [frameVector] using F.pullback_multiply_basis a c
+  apply LinearMap.ext
+  intro x
+  rw [IdealEndomorphismDescent.UnitFrame.reconstruct F.unitFrame x]
+  simp only [map_sum, map_smul]
+  apply Finset.sum_congr rfl
+  intro c hc
+  have hb := F.pullback_multiply_basis a c
+  simpa [unitFrame, IdealEndomorphismDescent.UnitFrame.basisVector,
+    frameVector, FiniteHasseModel.basisVector] using
+      congrArg (fun y : A => F.coord x c • y) hb
 
 /-- Hasse-only ideal descent on an actual monogenic algebra frame. -/
 theorem ideal_eq_map_comap_of_hasse_stable
@@ -176,8 +184,7 @@ def ofPowerBasis [Nontrivial A]
       pb.basis.equivFun.symm
           (FiniteHasseModel.basisVector (R := R) pb.dim i) =
         pb.basis i := by
-          classical
-          rw [Basis.equivFun_symm_apply]
+          apply pb.basis.equivFun.injective
           simp [FiniteHasseModel.basisVector]
       _ = pb.gen ^ i.1 := pb.basis_eq_pow i
   relation := hrelation
