@@ -40,6 +40,8 @@ jobs:
               PCRLean/MultiOwnerHasseCore.lean \
               PCRLean/CoordinateCentreKernelBridge.lean \
               PCRLean/CoordinateBoundarySNC.lean \
+              PCRLean/CoordinateCentreProper.lean \
+              PCRLean/CoordinateRootPacket.lean \
               PCRLean/FreePassiveOwnerSafety.lean \
               PCRLean/CoordinateTerminalOverlap.lean \
               PCRLean/MultiOwnerSplitFrobeniusChamber.lean \
