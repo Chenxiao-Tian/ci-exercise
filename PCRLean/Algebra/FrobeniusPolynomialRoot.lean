@@ -65,7 +65,7 @@ theorem derivative_eq_zero_iff_exists_frobenius_root (f : K[X]) :
 polynomial ring. -/
 theorem frobenius_root_unique {f g h : K[X]}
     (hg : g ^ p = f) (hh : h ^ p = f) : g = h := by
-  apply frobenius_inj K[X] p
-  simpa [frobenius] using hg.trans hh.symm
+  have hpow : g ^ p = h ^ p := hg.trans hh.symm
+  exact (frobenius_inj K[X] p) (by simpa [frobenius] using hpow)
 
 end PCRLean.Algebra.FrobeniusPolynomialRoot
