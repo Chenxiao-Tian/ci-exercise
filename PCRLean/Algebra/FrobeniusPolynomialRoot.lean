@@ -41,7 +41,7 @@ theorem rootPolynomial_pow_of_derivative_eq_zero {f : K[X]}
     (rootPolynomial p f) ^ p = expand K p (contract p f) := by
       symm
       simpa [rootPolynomial] using
-        (Polynomial.polynomial_expand_eq (R := K) (p := p) (contract p f))
+        (polynomial_expand_eq (R := K) (p := p) (contract p f))
     _ = f := Polynomial.expand_contract p hf (Fact.out : p.Prime).ne_zero
 
 /-- Any `p`-th polynomial power has zero derivative. -/
