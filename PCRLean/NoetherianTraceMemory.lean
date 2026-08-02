@@ -5,12 +5,12 @@ import PCRLean.ResolutionCompiler
 # Noetherian trace memory
 
 The finite-dimensional Cartier ledger can be replaced by a more flexible
-Noetherian module.  A genuinely new trace enlarges the consumed submodule.
+Noetherian module. A genuinely new trace enlarges the consumed submodule.
 Noetherianity says that strict enlargement is itself a well-founded rank, so
 an infinite sequence of independent births is impossible without assigning a
 numerical dimension.
 
-This is the Hilbert--Noether version of finite causal memory.  It still does
+This is the Hilbert--Noether version of finite causal memory. It still does
 not assert that every geometric descendant trace of an arbitrary singularity
 lands functorially in one fixed Noetherian ancestor module.
 -/
@@ -83,7 +83,7 @@ def program : ResolutionCompiler.Program where
   terminal := Terminal
   rank := id
   lt := (· > ·)
-  wf := IsNoetherian.wf
+  wf := (inferInstance : IsNoetherian R M).wf
   decreases := birthStep_gt
   progress := progress
 
@@ -101,7 +101,7 @@ theorem no_infinite_independent_births :
   program.no_infinite_execution
 
 /-- For an endomorphism of a Noetherian trace module, sufficiently high powers
-have disjoint kernel and range.  This is the operator-theoretic stabilization
+have disjoint kernel and range. This is the operator-theoretic stabilization
 behind a Fitting-style recurrent chamber. -/
 theorem eventually_disjoint_kernel_range (T : Module.End R M) :
     ∀ᶠ n in Filter.atTop,
