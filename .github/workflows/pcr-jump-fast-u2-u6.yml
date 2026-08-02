@@ -13,8 +13,8 @@ permissions:
   contents: read
 
 concurrency:
-  group: pcr-jump-fast-u2-u6-${{ github.sha }}
-  cancel-in-progress: false
+  group: pcr-jump-fast-u2-u6-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   fast-validation:
@@ -38,6 +38,8 @@ jobs:
           if grep -nE '^[[:space:]]*(axiom|sorry|admit)([[:space:]]|$)' \
               PCRLean/Experimental/SplitSurjectionSymmetricQuotient.lean \
               PCRLean/Experimental/SplitSurjectionSymmetricQuotientAudit.lean \
+              PCRLean/Experimental/SurjectiveLinearMapSymmetricQuotient.lean \
+              PCRLean/Experimental/SurjectiveLinearMapSymmetricQuotientAudit.lean \
               PCRLean/Experimental/CausalEventPacking.lean \
               PCRLean/Experimental/CausalEventPackingAudit.lean \
               PCRLean/LinearPacketIdeal.lean \
@@ -56,6 +58,16 @@ jobs:
           set -o pipefail
           lake env lean PCRLean/Experimental/SplitSurjectionSymmetricQuotientAudit.lean 2>&1 \
             | tee split-surjection-axioms.txt
+      - name: Build surjective linear quotient
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.SurjectiveLinearMapSymmetricQuotient 2>&1 \
+            | tee surjective-linear-build.txt
+      - name: Audit surjective linear quotient
+        run: |
+          set -o pipefail
+          lake env lean PCRLean/Experimental/SurjectiveLinearMapSymmetricQuotientAudit.lean 2>&1 \
+            | tee surjective-linear-axioms.txt
       - name: Build causal event packing
         run: |
           set -o pipefail
