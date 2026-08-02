@@ -100,7 +100,8 @@ theorem ker_disjoint_range :
 /-- The two certified submodules form an internal direct decomposition. -/
 theorem isCompl_ker_range :
     IsCompl (LinearMap.ker F.eval) (LinearMap.range F.split) := by
-  exact ⟨F.ker_disjoint_range, F.ker_sup_range_eq_top⟩
+  exact ⟨F.ker_disjoint_range,
+    codisjoint_iff.mpr F.ker_sup_range_eq_top⟩
 
 /-- A vector lies in the persistent kernel exactly when its finite conormal
 coordinate packet is zero. -/
