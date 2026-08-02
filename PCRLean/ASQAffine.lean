@@ -9,32 +9,30 @@ universe u
 
 variable {R : Type u} [CommRing R]
 
-abbrev P := MvPolynomial (Fin 2) R
+def tVar : MvPolynomial (Fin 2) R := MvPolynomial.X 0
 
-def tVar : P := MvPolynomial.X 0
-
-def zVar : P := MvPolynomial.X 1
+def zVar : MvPolynomial (Fin 2) R := MvPolynomial.X 1
 
 /-- Artin--Schreier quadratic branch equation. -/
-def equation (u : R) (m r : Nat) : P :=
+def equation (u : R) (m r : Nat) : MvPolynomial (Fin 2) R :=
   zVar ^ 2 + tVar ^ m * zVar + MvPolynomial.C u * tVar ^ r
 
 /-- The collision-cylinder centre `(t,z)`. -/
-def centre : Ideal P := Ideal.span {tVar, zVar}
+def centre : Ideal (MvPolynomial (Fin 2) R) := Ideal.span {tVar, zVar}
 
 /-- Active `t`-pivot: `t ↦ t`, `z ↦ tZ`. -/
-def tPivot : P →+* P :=
+def tPivot : MvPolynomial (Fin 2) R →+* MvPolynomial (Fin 2) R :=
   MvPolynomial.eval₂Hom MvPolynomial.C fun i =>
     if i = 0 then MvPolynomial.X 0 else MvPolynomial.X 0 * MvPolynomial.X 1
 
 /-- Sibling `z`-pivot: `t ↦ zT`, `z ↦ z`. -/
-def zPivot : P →+* P :=
+def zPivot : MvPolynomial (Fin 2) R →+* MvPolynomial (Fin 2) R :=
   MvPolynomial.eval₂Hom MvPolynomial.C fun i =>
     if i = 0 then MvPolynomial.X 0 * MvPolynomial.X 1 else MvPolynomial.X 0
 
 /-- Exact active-chart recurrence `(m+1,r+2) -> (m,r)`. -/
 theorem tPivot_equation (u : R) (m r : Nat) :
-    tPivot (R := R) (equation u (m + 1) (r + 2)) =
+    tPivot (R := R) (equation (R := R) u (m + 1) (r + 2)) =
       (MvPolynomial.X 0) ^ 2 *
         ((MvPolynomial.X 1) ^ 2 +
           (MvPolynomial.X 0) ^ m * MvPolynomial.X 1 +
@@ -46,7 +44,7 @@ theorem tPivot_equation (u : R) (m r : Nat) :
 
 /-- Exact sibling-chart transform; the controlled factor begins with `1`. -/
 theorem zPivot_equation (u : R) (m r : Nat) :
-    zPivot (R := R) (equation u (m + 1) (r + 2)) =
+    zPivot (R := R) (equation (R := R) u (m + 1) (r + 2)) =
       (MvPolynomial.X 0) ^ 2 *
         (1 + (MvPolynomial.X 0) ^ m *
           (MvPolynomial.X 1) ^ (m + 1) +
@@ -58,10 +56,10 @@ theorem zPivot_equation (u : R) (m r : Nat) :
   ring
 
 theorem t_mem_centre : tVar (R := R) ∈ centre (R := R) := by
-  exact Ideal.subset_span (by simp [tVar])
+  exact Ideal.subset_span (by simp)
 
 theorem z_mem_centre : zVar (R := R) ∈ centre (R := R) := by
-  exact Ideal.subset_span (by simp [zVar])
+  exact Ideal.subset_span (by simp)
 
 /-- The active ASQ equation with at least one `t` in the linear term and at
 least two in the tail is mark-two permissible for `(t,z)`. -/
@@ -73,12 +71,11 @@ theorem equation_mem_centre_sq (u : R) (m r : Nat) :
     CentrePermissibility.mul_mem_center_sq t_mem_centre z_mem_centre
   have hlinear : tVar (R := R) ^ (m + 1) * zVar (R := R) ∈ centre (R := R) ^ 2 := by
     rw [pow_succ]
-    ring_nf
     exact (centre (R := R) ^ 2).mul_mem_left _ htz
   have ht2 : tVar (R := R) ^ 2 ∈ centre (R := R) ^ 2 :=
     CentrePermissibility.square_mem_center_sq t_mem_centre
   have htailPow : tVar (R := R) ^ (r + 2) ∈ centre (R := R) ^ 2 := by
-    rw [show r + 2 = r + 2 from rfl, pow_add]
+    rw [pow_add]
     exact (centre (R := R) ^ 2).mul_mem_left _ ht2
   have htail : MvPolynomial.C u * tVar (R := R) ^ (r + 2) ∈ centre (R := R) ^ 2 :=
     (centre (R := R) ^ 2).mul_mem_left _ htailPow
@@ -88,10 +85,11 @@ theorem equation_mem_centre_sq (u : R) (m r : Nat) :
 /-- The principal mark-two ASQ packet is permissible. -/
 theorem marked_equation_permissible (u : R) (m r : Nat) :
     MarkedIdeal.Permissible
-      (R := P)
+      (R := MvPolynomial (Fin 2) R)
       ⟨Ideal.span {equation (R := R) u (m + 1) (r + 2)}, 2, by omega⟩
       (centre (R := R)) := by
-  exact MarkedIdeal.permissible_span_singleton (R := P) (by omega)
+  exact MarkedIdeal.permissible_span_singleton
+    (R := MvPolynomial (Fin 2) R) (by omega)
     (equation_mem_centre_sq u m r)
 
 end ASQAffine
