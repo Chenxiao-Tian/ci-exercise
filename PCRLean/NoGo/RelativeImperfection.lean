@@ -22,7 +22,7 @@ variable (p : ℕ) [Fact p.Prime] [CharP K p]
 /-- A positive Frobenius exponent has zero scalar derivative coefficient in
 characteristic `p`. -/
 theorem cast_prime_power_eq_zero {e : ℕ} (he : 0 < e) :
-    (p ^ e : K) = 0 := by
+    (((p ^ e : ℕ) : K)) = 0 := by
   obtain ⟨d, rfl⟩ := Nat.exists_eq_succ_of_ne_zero (Nat.ne_of_gt he)
   simp [pow_succ]
 
@@ -30,11 +30,10 @@ theorem cast_prime_power_eq_zero {e : ℕ} (he : 0 < e) :
 theorem derivative_frobenius_power_zero (g : K[X]) {e : ℕ} (he : 0 < e) :
     derivative (g ^ (p ^ e)) = 0 := by
   rw [derivative_pow]
-  have hcast : (p ^ e : K) = 0 :=
+  have hcast : (((p ^ e : ℕ) : K)) = 0 :=
     cast_prime_power_eq_zero (K := K) p he
-  have hC : C (p ^ e : K) = (0 : K[X]) := by
-    rw [hcast]
-    exact C_0
+  have hC : C (((p ^ e : ℕ) : K)) = (0 : K[X]) := by
+    simp [hcast]
   rw [hC]
   simp
 
