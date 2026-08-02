@@ -141,7 +141,7 @@ theorem saturation_fg (ops : ι → R →+ R) (I : Ideal R) :
 theorem exists_finite_generators (ops : ι → R →+ R) (I : Ideal R) :
     ∃ s : Finset R, saturation ops I = Ideal.span (s : Set R) := by
   rcases saturation_fg ops I with ⟨s, hs⟩
-  exact ⟨s, hs⟩
+  exact ⟨s, hs.symm⟩
 
 end Noetherian
 
