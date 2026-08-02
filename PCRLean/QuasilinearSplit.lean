@@ -5,6 +5,8 @@ import PCRLean.MarkedIdeal
 namespace PCRLean
 namespace QuasilinearSplit
 
+noncomputable section
+
 universe u v
 
 variable {R : Type u} {σ : Type v}
@@ -78,7 +80,7 @@ theorem polar_zero (b : σ → R) (x y : MvPolynomial σ R) :
     ((linearRoot b + x + y) ^ 2 - (linearRoot b + x) ^ 2 -
       (linearRoot b + y) ^ 2 + (linearRoot b) ^ 2) = 0 := by
   rw [add_sq (linearRoot b + x) y, add_sq (linearRoot b) x,
-    add_sq (linearRoot b) x, add_sq (linearRoot b) y]
+    add_sq (linearRoot b) y]
   ring
 
 section Perfect
@@ -86,7 +88,7 @@ section Perfect
 variable [PerfectRing R 2]
 
 /-- The canonical coefficientwise square root supplied by perfection. -/
-noncomputable def canonicalRootCoeff (a : σ → R) (i : σ) : R :=
+def canonicalRootCoeff (a : σ → R) (i : σ) : R :=
   (frobeniusEquiv R 2).symm (a i)
 
 /-- The canonical coefficient root squares back to the original coefficient. -/
@@ -99,7 +101,7 @@ def diagonalForm (a : σ → R) : MvPolynomial σ R :=
   ∑ i : σ, MvPolynomial.C (a i) * (MvPolynomial.X i) ^ 2
 
 /-- Its canonical linear root over a perfect characteristic-two ring. -/
-noncomputable def canonicalLinearRoot (a : σ → R) : MvPolynomial σ R :=
+def canonicalLinearRoot (a : σ → R) : MvPolynomial σ R :=
   linearRoot (canonicalRootCoeff a)
 
 /-- Every diagonal fully quasilinear quadratic form over a perfect
@@ -114,7 +116,7 @@ theorem diagonalForm_eq_canonicalRoot_square (a : σ → R) :
   rw [canonicalRootCoeff_sq]
 
 /-- The canonical actual root centre for a diagonal quasilinear form. -/
-noncomputable def canonicalRootCentre (a : σ → R) : Ideal (MvPolynomial σ R) :=
+def canonicalRootCentre (a : σ → R) : Ideal (MvPolynomial σ R) :=
   rootCentre (canonicalRootCoeff a)
 
 /-- The diagonal quasilinear equation belongs to the square of its canonical
@@ -141,6 +143,8 @@ theorem canonicalRootCoeff_unique (a : σ → R) (i : σ) {b : R}
   simpa [canonicalRootCoeff] using hb
 
 end Perfect
+
+end
 
 end QuasilinearSplit
 end PCRLean
