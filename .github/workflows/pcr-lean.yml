@@ -31,7 +31,22 @@ jobs:
       - name: Download mathlib compiled cache
         run: lake exe cache get
       - name: Build the complete PCRLean library
-        run: lake build
+        id: lean_build
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          lake build 2>&1 | tee PCRLEAN_BUILD.log
+      - name: Upload Lean build log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pcrlean-build-log
+          path: PCRLEAN_BUILD.log
+          if-no-files-found: error
+      - name: Enforce successful Lean build
+        if: steps.lean_build.outcome != 'success'
+        run: exit 1
       - name: Reject proof placeholders and project axioms
         shell: bash
         run: |
