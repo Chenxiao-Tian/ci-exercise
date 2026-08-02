@@ -5,13 +5,13 @@ import PCRLean.ResolutionCompiler
 # Trace growth and persistent-kernel debt
 
 A differential/Hasse--Cartier packet is represented by a subspace of the dual
-of a finite-dimensional direction space.  Its common zero set is the dual
-coannihilator.  Enlarging the trace space shrinks the persistent kernel, and
+of a finite-dimensional direction space. Its common zero set is the dual
+coannihilator. Enlarging the trace space shrinks the persistent kernel, and
 adjoining one genuinely independent trace lowers the kernel dimension by
 exactly one.
 
 This is the finite-dimensional conservation law needed by the causal-birth
-program: a new independent trace cannot be created for free.  The geometric
+program: a new independent trace cannot be created for free. The geometric
 realization problem is to prove that every jump-capable birth either supplies
 such an independent trace in one fixed ancestor bundle or pays a separate
 local rank.
@@ -70,7 +70,8 @@ theorem persistentKernel_strict_shrink
   have hdim := kernelDebt_strict_drop hMN
   refine lt_of_le_of_ne hle ?_
   intro heq
-  have hfin := congrArg (Module.finrank K) heq
+  have hfin := congrArg
+    (fun Q : Submodule K V => Module.finrank K Q) heq
   exact (Nat.ne_of_lt hdim) hfin
 
 /-- Adjoin one new trace to the packet. -/
@@ -83,14 +84,14 @@ theorem consume_strict
     {M : TraceSpace (K := K) (V := V)}
     {f : Module.Dual K V} (hf : f ∉ M) :
     M < consume M f := by
-  simpa [consume] using
-    (show M < M ⊔ Submodule.span K {f} from by
-      refine lt_of_le_of_ne le_sup_left ?_
-      intro heq
-      apply hf
-      have hmem : f ∈ M ⊔ Submodule.span K {f} :=
-        le_sup_right (Submodule.subset_span (by simp))
-      exact heq ▸ hmem)
+  refine lt_of_le_of_ne le_sup_left ?_
+  intro heq
+  apply hf
+  have hspan : f ∈ Submodule.span K {f} :=
+    Submodule.subset_span (by simp)
+  have hmem : f ∈ M ⊔ Submodule.span K {f} :=
+    (show Submodule.span K {f} ≤ M ⊔ Submodule.span K {f} from le_sup_right) hspan
+  exact heq ▸ hmem
 
 /-- One independent trace increases trace rank by exactly one. -/
 theorem traceRank_consume
