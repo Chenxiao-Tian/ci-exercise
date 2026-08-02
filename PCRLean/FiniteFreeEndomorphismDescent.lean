@@ -4,13 +4,13 @@ import PCRLean.MatrixStableSubmodule
 /-!
 # Finite-free endomorphism descent
 
-The matrix classification is basis independent.  A submodule of any finite
+The matrix classification is basis independent. A submodule of any finite
 free module that is stable under every endomorphism becomes, in every chosen
-basis, the coordinatewise extension of one ideal of the base ring.  This is the
+basis, the coordinatewise extension of one ideal of the base ring. This is the
 basis-transport form needed for finite-level Frobenius descent.
 
 For a smooth characteristic-`p` algebra, relative Frobenius is finite locally
-free.  Once the level-`e` differential operators are identified with the full
+free. Once the level-`e` differential operators are identified with the full
 endomorphism algebra over the Frobenius twist, this theorem classifies every
 operator-stable ideal locally as an extended ideal from that twist.
 -/
@@ -52,7 +52,7 @@ theorem map_fullyInvariant
   intro T y hy
   rcases hy with ⟨x, hx, rfl⟩
   refine ⟨conjugateEnd e T x, hN (conjugateEnd e T) x hx, ?_⟩
-  exact (apply_conjugateEnd e T x).symm
+  exact apply_conjugateEnd e T x
 
 /-- In coordinates, a fully invariant submodule is the extension of one ideal
 of the base ring. -/
