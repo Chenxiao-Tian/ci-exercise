@@ -1,3 +1,6 @@
+import PCRLean.Algebra.MarkedIdeal
+import PCRLean.Algebra.CharacteristicTwoGauge
+import PCRLean.Algebra.OddContactDerivative
 import PCRLean.Chambers.FrobeniusContent
 import PCRLean.Chambers.FrobeniusContentProgram
 import PCRLean.Chambers.OddCusp
@@ -9,15 +12,20 @@ import PCRLean.Chambers.ArtinSchreierProgram
 import PCRLean.Termination.Generational
 import PCRLean.Termination.PacketMultiset
 import PCRLean.Framework.RankedSystem
+import PCRLean.Framework.FiniteChartProgram
+import PCRLean.Framework.GeometricProgram
+import PCRLean.Framework.UniversalCompiler
 import PCRLean.NoGo.PersistentObstruction
+import PCRLean.NoGo.FreshBirth
+import PCRLean.NoGo.CoordinatewiseDropCycle
 
 /-!
 # Certified kernel index
 
 Only declarations proved without `sorry`, `admit`, or project-specific axioms
 are imported here.  This is deliberately not a theorem of arbitrary-dimensional
-resolution.  It is the current kernel-checked local algebra, termination core,
-and obstruction-audit layer.
+resolution.  It is the current kernel-checked algebraic, chart-program,
+termination, and obstruction-audit layer.
 -/
 
 namespace PCRLean.Certified
@@ -37,24 +45,23 @@ theorem packet_multiset_backend_wf {α : Type*} [Preorder α] [WellFoundedLT α]
 
 end PCRLean.Certified
 
+#print axioms PCRLean.Algebra.oddCusp_principal_permissible
+#print axioms PCRLean.Algebra.ramifiedQuadratic_principal_permissible
+#print axioms PCRLean.Algebra.artinSchreier_principal_permissible
+#print axioms PCRLean.Algebra.CharacteristicTwoGauge.purelyInseparable_cleaning
+#print axioms PCRLean.Algebra.CharacteristicTwoGauge.artinSchreier_cleaning
+#print axioms PCRLean.Algebra.OddContactDerivative.derivative_odd_power
+#print axioms PCRLean.Algebra.OddContactDerivative.derivative_even_power
 #print axioms PCRLean.Chambers.FrobeniusContent.active_factorization
 #print axioms PCRLean.Chambers.FrobeniusContent.sibling_factorization
 #print axioms PCRLean.Chambers.FrobeniusContentProgram.step_decreases
 #print axioms PCRLean.Chambers.FrobeniusContentProgram.active_reaches_exit
 #print axioms PCRLean.Chambers.OddCusp.sChart_factorization
 #print axioms PCRLean.Chambers.OddCusp.yChart_factorization
-#print axioms PCRLean.Chambers.OddCuspProgram.firstRepair_sPivot
-#print axioms PCRLean.Chambers.OddCuspProgram.firstRepair_yPivot
-#print axioms PCRLean.Chambers.OddCuspProgram.secondRepair_yPivot
-#print axioms PCRLean.Chambers.OddCuspProgram.secondRepair_sPivot
 #print axioms PCRLean.Chambers.OddCuspProgram.step_decreases
 #print axioms PCRLean.Chambers.OddCuspProgram.active_reaches_resolved
 #print axioms PCRLean.Chambers.RamifiedQuadratic.collision_factorization
 #print axioms PCRLean.Chambers.RamifiedQuadratic.sibling_factorization
-#print axioms PCRLean.Chambers.RamifiedQuadraticProgram.oddTail_tPivot
-#print axioms PCRLean.Chambers.RamifiedQuadraticProgram.oddTail_zPivot
-#print axioms PCRLean.Chambers.RamifiedQuadraticProgram.oddTail_second_zPivot
-#print axioms PCRLean.Chambers.RamifiedQuadraticProgram.oddTail_second_tPivot
 #print axioms PCRLean.Chambers.RamifiedQuadraticProgram.step_decreases
 #print axioms PCRLean.Chambers.RamifiedQuadraticProgram.active_reaches_resolved
 #print axioms PCRLean.Chambers.ArtinSchreier.collision_factorization
@@ -69,7 +76,13 @@ end PCRLean.Certified
 #print axioms PCRLean.Framework.RankedSystem.step_wellFounded
 #print axioms PCRLean.Framework.CertifiedProgram.reaches_terminal
 #print axioms PCRLean.Framework.CertifiedProgram.reaches_resolved
+#print axioms PCRLean.Framework.FiniteChartProgram.resolvesAll
+#print axioms PCRLean.Framework.FiniteChartProgram.resolved_of_leaf
+#print axioms PCRLean.Framework.GeometricProgram.resolvesAll
+#print axioms PCRLean.Framework.UniversalProgramFamily.resolvesAllInputs
 #print axioms PCRLean.NoGo.ObstructionSystem.preserves_path
 #print axioms PCRLean.NoGo.ObstructionSystem.nonzero_persists
+#print axioms PCRLean.NoGo.FreshBirth.not_wellFounded
+#print axioms PCRLean.NoGo.CoordinatewiseDropCycle.not_wellFounded
 #print axioms PCRLean.Certified.generational_backend_wf
 #print axioms PCRLean.Certified.packet_multiset_backend_wf
