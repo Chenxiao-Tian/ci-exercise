@@ -121,11 +121,14 @@ theorem fromIdeal_fullyInvariant (J : Ideal R) :
   have hsum : (∑ j, Pi.single j (x j)) = x :=
     LinearMap.sum_single_apply (fun _ : ι => R) x
   have hdecomp : row x = ∑ j, x j * row (Pi.single j 1) := by
-    rw [← hsum, map_sum]
-    apply Finset.sum_congr rfl
-    intro j hj
-    rw [map_smul]
-    simp [smul_eq_mul, mul_comm]
+    calc
+      row x = row (∑ j, Pi.single j (x j)) := by rw [hsum]
+      _ = ∑ j, row (Pi.single j (x j)) := by rw [map_sum]
+      _ = ∑ j, x j * row (Pi.single j 1) := by
+        apply Finset.sum_congr rfl
+        intro j hj
+        simpa [Pi.single_smul, smul_eq_mul] using
+          row.map_smul (x j) (Pi.single j (1 : R))
   rw [show T x i = row x from rfl, hdecomp]
   exact J.sum_mem fun j _ => J.mul_mem_right _ (hx j)
 
