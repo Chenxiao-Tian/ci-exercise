@@ -5,7 +5,10 @@ import PCRLean.Algebra.SquareCleaningDerivative
 import PCRLean.Algebra.OddContactDerivative
 import PCRLean.Algebra.QuasilinearPolar
 import PCRLean.Algebra.PerfectQuasilinearRoot
+import PCRLean.Algebra.FrobeniusPolynomialRoot
 import PCRLean.Algebra.UnitCocycleIdeal
+import PCRLean.Algebra.JointOwners
+import PCRLean.Algebra.PassiveFlatness
 import PCRLean.Chambers.FrobeniusContent
 import PCRLean.Chambers.FrobeniusContentProgram
 import PCRLean.Chambers.OddCusp
@@ -90,10 +93,21 @@ end PCRLean.Certified
 #print axioms PCRLean.Algebra.PerfectQuasilinearRoot.finset_sum_pow_char_pow
 #print axioms PCRLean.Algebra.PerfectQuasilinearRoot.linearRoot_pow
 #print axioms PCRLean.Algebra.PerfectQuasilinearRoot.cleaning_identity
+#print axioms PCRLean.Algebra.FrobeniusPolynomialRoot.rootPolynomial_pow_of_derivative_eq_zero
+#print axioms PCRLean.Algebra.FrobeniusPolynomialRoot.derivative_eq_zero_of_eq_pow
+#print axioms PCRLean.Algebra.FrobeniusPolynomialRoot.derivative_eq_zero_iff_exists_frobenius_root
+#print axioms PCRLean.Algebra.FrobeniusPolynomialRoot.frobenius_root_unique
 #print axioms PCRLean.Algebra.UnitCocycleIdeal.span_singleton_unit_mul
 #print axioms PCRLean.Algebra.UnitCocycleIdeal.span_singleton_eq_of_eq_unit_mul
 #print axioms PCRLean.Algebra.UnitCocycleIdeal.PrincipalUnitAtlas.ideal_eq
 #print axioms PCRLean.Algebra.UnitCocycleIdeal.PrincipalUnitAtlas.gluedIdeal_eq
+#print axioms PCRLean.Algebra.JointOwners.combinedIdeal_le_iff
+#print axioms PCRLean.Algebra.JointOwners.combined_owner_permissible
+#print axioms PCRLean.Algebra.JointOwners.each_owner_permissible_of_combined
+#print axioms PCRLean.Algebra.PassiveFlatness.flat_of_free
+#print axioms PCRLean.Algebra.PassiveFlatness.flat_of_projective
+#print axioms PCRLean.Algebra.PassiveFlatness.rTensor_injective
+#print axioms PCRLean.Algebra.PassiveFlatness.rTensor_injective_of_free
 #print axioms PCRLean.Chambers.FrobeniusContent.active_factorization
 #print axioms PCRLean.Chambers.FrobeniusContent.sibling_factorization
 #print axioms PCRLean.Chambers.FrobeniusContentProgram.step_decreases
