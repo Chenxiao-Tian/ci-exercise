@@ -32,10 +32,17 @@ import PCRLean
 #print axioms PCRLean.DifferentialOrbitClosure.orbitModule_familyStable
 #print axioms PCRLean.DifferentialOrbitClosure.orbitAnnihilator_invariant
 #print axioms PCRLean.DifferentialOrbitClosure.exists_finite_raw_orbit_generators
+#print axioms PCRLean.DifferentialOrbitClosure.exists_finite_kernel_packet
+#print axioms PCRLean.NoetherianOperatorOrbit.orbitModule_stable
+#print axioms PCRLean.NoetherianOperatorOrbit.exists_finite_raw_orbit_generators
+#print axioms PCRLean.NoetherianOperatorOrbit.exists_finite_kernel_packet
 #print axioms PCRLean.NoetherianPatchingCompiler.rankLt_wellFounded
 #print axioms PCRLean.NoetherianPatchingCompiler.rankStep_wellFounded
 #print axioms PCRLean.NoetherianPatchingCompiler.PatchedProgram.terminal_reachable
 #print axioms PCRLean.NoetherianPatchingCompiler.PatchedProgram.no_infinite_execution
+#print axioms PCRLean.CartierNoetherMaster.System.every_input_resolves
+#print axioms PCRLean.CartierNoetherMaster.System.every_step_all_gates
+#print axioms PCRLean.CartierNoetherMaster.System.no_infinite_branch
 #print axioms PCRLean.ActualIdealGluing.generatedIdeal_eq_of_mutual_combinations
 #print axioms PCRLean.ActualIdealGluing.GeneratorFrameEquivalence.ideal_eq
 #print axioms PCRLean.ActualIdealGluing.principal_unit_change
