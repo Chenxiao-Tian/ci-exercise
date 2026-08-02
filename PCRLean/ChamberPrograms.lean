@@ -20,13 +20,15 @@ def oddProgram : ResolutionCompiler.Program where
   terminal := OddTerminal
   rank := id
   lt := (· < ·)
-  wf := Nat.lt_wfRel
+  wf := Nat.lt_wfRel.wf
   decreases := by
     intro s t h
-    rw [h.2]
-    exact Nat.sub_one_lt h.1
+    rcases h with ⟨hs, rfl⟩
+    change s - 1 < s
+    omega
   progress := by
     intro s hs
+    change s ≠ 0 at hs
     have hspos : 0 < s := Nat.pos_of_ne_zero hs
     exact ⟨s - 1, hspos, rfl⟩
 
@@ -54,13 +56,15 @@ def tameProgram : ResolutionCompiler.Program where
   terminal := TameTerminal
   rank := id
   lt := (· < ·)
-  wf := Nat.lt_wfRel
+  wf := Nat.lt_wfRel.wf
   decreases := by
     intro s t h
-    rw [h.2]
+    rcases h with ⟨hs, rfl⟩
+    change s - 2 < s
     omega
   progress := by
     intro s hs
+    change ¬ s < 2 at hs
     have hs2 : 2 ≤ s := by omega
     exact ⟨s - 2, hs2, rfl⟩
 
@@ -89,17 +93,17 @@ def asqProgram : ResolutionCompiler.Program where
   terminal := ASQTerminal
   rank := QuadraticDebt.ASQState.measure
   lt := (· < ·)
-  wf := Nat.lt_wfRel
+  wf := Nat.lt_wfRel.wf
   decreases := by
     intro s t h
-    rw [h.2.2]
-    exact QuadraticDebt.ASQState.measureDrops s h.1 h.2.1
+    rcases h with ⟨hm, hr, rfl⟩
+    exact QuadraticDebt.ASQState.measureDrops s hm hr
   progress := by
     intro s hs
+    change ¬ (s.linearDepth = 0 ∨ s.tailOrder < 2) at hs
     have hm : 1 ≤ s.linearDepth := by
       by_contra h
-      have : s.linearDepth = 0 := by omega
-      exact hs (Or.inl this)
+      exact hs (Or.inl (by omega))
     have hr : 2 ≤ s.tailOrder := by
       by_contra h
       exact hs (Or.inr (by omega))
