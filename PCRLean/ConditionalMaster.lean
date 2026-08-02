@@ -6,17 +6,17 @@ namespace ConditionalMaster
 
 open ResolutionCompiler
 
-universe u v w
+universe u
 
 /-- A fully certified resolution system separates the universal geometric
-input from the already verified termination compiler.  No instance of this
-structure is asserted for arbitrary positive-characteristic schemes here. -/
+input from the verified termination compiler. No instance is asserted for
+arbitrary positive-characteristic schemes here. -/
 structure System where
   Input : Type u
   P : ResolutionCompiler.Program
   initialize : Input → P.State
-  resolved : P.State → Prop
-  terminal_sound : ∀ s, P.terminal s → resolved s
+  isResolved : P.State → Prop
+  terminal_sound : ∀ s, P.terminal s → isResolved s
   step_gated : ∀ {s t}, P.step s t →
     Nonempty (ResolutionCompiler.CentreGateCertificate P.State s t)
 
@@ -24,16 +24,13 @@ namespace System
 
 variable (S : System)
 
-/-- Every input of a fully certified system reaches a resolved state.  This is
-the exact conditional master theorem; the outstanding mathematics is the
-construction of `S` for arbitrary positive-characteristic inputs. -/
+/-- Every input of a fully certified system reaches a resolved state. -/
 theorem every_input_resolves (x : S.Input) :
-    ∃ t, ResolutionCompiler.Reaches S.P.step (S.initialize x) t ∧ S.resolved t := by
+    ∃ t, ResolutionCompiler.Reaches S.P.step (S.initialize x) t ∧ S.isResolved t := by
   obtain ⟨t, hreach, hterminal⟩ := S.P.terminal_reachable (S.initialize x)
   exact ⟨t, hreach, S.terminal_sound t hterminal⟩
 
-/-- Every actual step in a certified system carries all mandatory geometric
-gates. -/
+/-- Every actual step in a certified system carries all mandatory gates. -/
 theorem every_step_all_gates {s t : S.P.State} (h : S.P.step s t) :
     ∃ C : ResolutionCompiler.CentreGateCertificate S.P.State s t,
       C.actualFiniteTypeIdeal ∧ C.regularImmersion ∧ C.markedPermissible ∧
@@ -49,9 +46,7 @@ theorem no_infinite_branch :
 
 end System
 
-/-- The universal theorem target is represented without postulating it as an
-axiom: it is the proposition that a certified system exists for the chosen
-input language. -/
+/-- The universal target is represented without postulating it as an axiom. -/
 def UniversalCertificateExists (Input : Type u) : Prop :=
   ∃ S : System, S.Input = Input
 
