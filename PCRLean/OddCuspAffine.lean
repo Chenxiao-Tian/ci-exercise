@@ -9,48 +9,46 @@ universe u
 
 variable {R : Type u} [CommRing R]
 
-abbrev P := MvPolynomial (Fin 2) R
-
 /-- Source coordinate `s`. -/
-def sVar : P := MvPolynomial.X 0
+def sVar : MvPolynomial (Fin 2) R := MvPolynomial.X 0
 
 /-- Source coordinate `y`. -/
-def yVar : P := MvPolynomial.X 1
+def yVar : MvPolynomial (Fin 2) R := MvPolynomial.X 1
 
 /-- The affine odd cusp equation `y^2+s^(2N+1)`. -/
-def cusp (N : Nat) : P := yVar ^ 2 + sVar ^ (2 * N + 1)
+def cusp (N : Nat) : MvPolynomial (Fin 2) R :=
+  yVar ^ 2 + sVar ^ (2 * N + 1)
 
 /-- The actual coordinate centre `(s,y)`. -/
-def centre : Ideal P := Ideal.span {sVar, yVar}
+def centre : Ideal (MvPolynomial (Fin 2) R) := Ideal.span {sVar, yVar}
 
 /-- The `s`-pivot affine chart homomorphism: `s ↦ s`, `y ↦ sY`. -/
-def sPivot : P →+* P :=
+def sPivot : MvPolynomial (Fin 2) R →+* MvPolynomial (Fin 2) R :=
   MvPolynomial.eval₂Hom MvPolynomial.C fun i =>
     if i = 0 then MvPolynomial.X 0 else MvPolynomial.X 0 * MvPolynomial.X 1
 
-/-- The `y`-pivot sibling chart homomorphism: `s ↦ yS`, `y ↦ y`.  In the
-target ring `X 0` denotes `y` and `X 1` denotes `S`. -/
-def yPivot : P →+* P :=
+/-- The `y`-pivot sibling chart homomorphism: `s ↦ yS`, `y ↦ y`. -/
+def yPivot : MvPolynomial (Fin 2) R →+* MvPolynomial (Fin 2) R :=
   MvPolynomial.eval₂Hom MvPolynomial.C fun i =>
     if i = 0 then MvPolynomial.X 0 * MvPolynomial.X 1 else MvPolynomial.X 0
 
-@[simp] theorem sPivot_s : sPivot (R := R) sVar = MvPolynomial.X 0 := by
+@[simp] theorem sPivot_s : sPivot (R := R) (sVar (R := R)) = MvPolynomial.X 0 := by
   simp [sPivot, sVar]
 
 @[simp] theorem sPivot_y :
-    sPivot (R := R) yVar = MvPolynomial.X 0 * MvPolynomial.X 1 := by
+    sPivot (R := R) (yVar (R := R)) = MvPolynomial.X 0 * MvPolynomial.X 1 := by
   simp [sPivot, yVar]
 
 @[simp] theorem yPivot_s :
-    yPivot (R := R) sVar = MvPolynomial.X 0 * MvPolynomial.X 1 := by
+    yPivot (R := R) (sVar (R := R)) = MvPolynomial.X 0 * MvPolynomial.X 1 := by
   simp [yPivot, sVar]
 
-@[simp] theorem yPivot_y : yPivot (R := R) yVar = MvPolynomial.X 0 := by
+@[simp] theorem yPivot_y : yPivot (R := R) (yVar (R := R)) = MvPolynomial.X 0 := by
   simp [yPivot, yVar]
 
 /-- Exact controlled-transform identity in the active chart. -/
 theorem sPivot_cusp (N : Nat) :
-    sPivot (R := R) (cusp (N + 1)) =
+    sPivot (R := R) (cusp (R := R) (N + 1)) =
       (MvPolynomial.X 0) ^ 2 *
         ((MvPolynomial.X 1) ^ 2 + (MvPolynomial.X 0) ^ (2 * N + 1)) := by
   simp [cusp, sPivot, sVar, yVar]
@@ -58,10 +56,9 @@ theorem sPivot_cusp (N : Nat) :
   rw [hexp, pow_add]
   ring
 
-/-- Exact controlled-transform identity in the sibling chart; the factor in
-parentheses has unit constant term. -/
+/-- Exact controlled-transform identity in the sibling chart. -/
 theorem yPivot_cusp (N : Nat) :
-    yPivot (R := R) (cusp (N + 1)) =
+    yPivot (R := R) (cusp (R := R) (N + 1)) =
       (MvPolynomial.X 0) ^ 2 *
         (1 + (MvPolynomial.X 0) ^ (2 * N + 1) *
           (MvPolynomial.X 1) ^ (2 * (N + 1) + 1)) := by
@@ -72,10 +69,10 @@ theorem yPivot_cusp (N : Nat) :
 
 /-- Both coordinate generators lie in the actual centre. -/
 theorem s_mem_centre : sVar (R := R) ∈ centre (R := R) := by
-  exact Ideal.subset_span (by simp [sVar])
+  exact Ideal.subset_span (by simp)
 
- theorem y_mem_centre : yVar (R := R) ∈ centre (R := R) := by
-  exact Ideal.subset_span (by simp [yVar])
+theorem y_mem_centre : yVar (R := R) ∈ centre (R := R) := by
+  exact Ideal.subset_span (by simp)
 
 /-- Every positive-depth odd cusp equation lies in the square of `(s,y)`. -/
 theorem cusp_mem_centre_sq (N : Nat) :
@@ -90,15 +87,14 @@ theorem cusp_mem_centre_sq (N : Nat) :
     exact (centre (R := R) ^ 2).mul_mem_left _ hs2
   exact (centre (R := R) ^ 2).add_mem hy2 hspow
 
-/-- The principal mark-two odd-cusp packet is permissible for the actual
-coordinate centre. -/
+/-- The principal mark-two odd-cusp packet is permissible. -/
 theorem marked_cusp_permissible (N : Nat) :
     MarkedIdeal.Permissible
-      (R := P)
+      (R := MvPolynomial (Fin 2) R)
       ⟨Ideal.span {cusp (R := R) (N + 1)}, 2, by omega⟩
       (centre (R := R)) := by
-  exact MarkedIdeal.permissible_span_singleton (R := P) (by omega)
-    (cusp_mem_centre_sq N)
+  exact MarkedIdeal.permissible_span_singleton
+    (R := MvPolynomial (Fin 2) R) (by omega) (cusp_mem_centre_sq N)
 
 end OddCuspAffine
 end PCRLean
