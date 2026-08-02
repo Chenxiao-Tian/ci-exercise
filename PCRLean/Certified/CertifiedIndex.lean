@@ -1,3 +1,4 @@
+import PCRLean.Chambers.FrobeniusContent
 import PCRLean.Chambers.OddCusp
 import PCRLean.Chambers.RamifiedQuadratic
 import PCRLean.Chambers.ArtinSchreier
@@ -26,6 +27,8 @@ theorem generational_backend_wf :
 
 end PCRLean.Certified
 
+#print axioms PCRLean.Chambers.FrobeniusContent.active_factorization
+#print axioms PCRLean.Chambers.FrobeniusContent.sibling_factorization
 #print axioms PCRLean.Chambers.OddCusp.sChart_factorization
 #print axioms PCRLean.Chambers.OddCusp.yChart_factorization
 #print axioms PCRLean.Chambers.RamifiedQuadratic.collision_factorization
