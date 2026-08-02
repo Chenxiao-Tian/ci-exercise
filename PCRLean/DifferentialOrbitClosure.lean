@@ -109,6 +109,34 @@ theorem orbitAnnihilator_le_seedKernel
   exact DifferentialOrbitKernel.annihilator_le_ker_of_mem
     (seed_mem_orbitModule ops seed)
 
+/-- If a finite family spans the orbit module, membership in the persistent
+kernel is checked by that finite family alone. -/
+theorem mem_orbitAnnihilator_iff_of_span_eq
+    (ops : ι → Module.End K V)
+    (seed : Dual (K := K) (V := V))
+    (s : Finset (Dual (K := K) (V := V)))
+    (hspan : orbitModule ops seed =
+      Submodule.span K (s : Set (Dual (K := K) (V := V))))
+    (x : V) :
+    x ∈ DifferentialOrbitKernel.annihilator (orbitModule ops seed) ↔
+      ∀ f ∈ s, f x = 0 := by
+  constructor
+  · intro hx f hf
+    apply hx f
+    rw [hspan]
+    exact Submodule.subset_span hf
+  · intro hgen
+    rw [DifferentialOrbitKernel.mem_annihilator_iff]
+    intro f hf
+    rw [hspan] at hf
+    induction hf using Submodule.span_induction with
+    | mem f hf => exact hgen f hf
+    | zero => simp
+    | add f g hf hg hff hgg =>
+        rw [map_add, hff, hgg, add_zero]
+    | smul a f hf hff =>
+        rw [map_smul, hff, smul_zero]
+
 section FiniteDimensional
 
 variable [FiniteDimensional K V]
@@ -128,6 +156,21 @@ theorem exists_finite_raw_orbit_generators
   rcases (Submodule.fg_span_iff_fg_span_finset_subset
     (R := K) (orbitSet ops seed)).mp hfg with ⟨s, hs, heq⟩
   exact ⟨s, hs, by simpa [orbitModule] using heq⟩
+
+/-- The entire infinite operator orbit therefore has a finite raw subpacket
+that both spans it and cuts out exactly the same persistent kernel. -/
+theorem exists_finite_kernel_packet
+    (ops : ι → Module.End K V)
+    (seed : Dual (K := K) (V := V)) :
+    ∃ s : Finset (Dual (K := K) (V := V)),
+      (s : Set (Dual (K := K) (V := V))) ⊆ orbitSet ops seed ∧
+      orbitModule ops seed = Submodule.span K (s : Set (Dual (K := K) (V := V))) ∧
+      ∀ x : V,
+        x ∈ DifferentialOrbitKernel.annihilator (orbitModule ops seed) ↔
+          ∀ f ∈ s, f x = 0 := by
+  rcases exists_finite_raw_orbit_generators ops seed with ⟨s, hs, hspan⟩
+  exact ⟨s, hs, hspan, fun x =>
+    mem_orbitAnnihilator_iff_of_span_eq ops seed s hspan x⟩
 
 end FiniteDimensional
 
