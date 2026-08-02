@@ -13,7 +13,7 @@ rank drop with unchanged trace memory.
 
 The resulting conditional resolution theorem is kernel checked. The module
 does not postulate that arbitrary positive-characteristic singularities already
-admit such a system; constructing it is the remaining geometric theorem.
+provide such a system; constructing it is the remaining geometric theorem.
 -/
 
 namespace PCRLean
@@ -30,7 +30,7 @@ variable {R : Type u} {M : Type v}
 variable [Semiring R] [AddCommMonoid M] [Module R M]
 variable [IsNoetherian R M]
 
-/-- A fully certified geometric realization of one fixed patched program.  The
+/-- A fully certified geometric realization of one fixed patched program. The
 program is an explicit parameter so that the universe of geometric states is
 fixed before the remaining certificate fields are elaborated. -/
 structure System
@@ -79,7 +79,7 @@ theorem no_infinite_branch :
 end System
 
 /-- The exact universal target, represented as a proposition rather than as a
-project axiom.  It asks for a patched program and a fully gated realization of
+project axiom. It asks for a patched program and a fully gated realization of
 that program for the chosen input language. -/
 def UniversalSystemExists (Input : Type w) : Prop :=
   ∃ (P : PatchedProgram.{u, v, x} (R := R) (M := M)),
