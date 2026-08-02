@@ -4,6 +4,7 @@ import PCRLean.QuadraticDebt
 import PCRLean.NoRecharge
 import PCRLean.PolynomialCharts
 import PCRLean.FrobeniusPacket
+import PCRLean.PolynomialFrobeniusDescent
 import PCRLean.EulerRadicial
 import PCRLean.RadicialJacobian
 import PCRLean.QuasilinearSplit
