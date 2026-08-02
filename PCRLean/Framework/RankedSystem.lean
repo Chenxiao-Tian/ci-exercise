@@ -34,9 +34,7 @@ theorem step_sub_rank :
 /-- A ranked transition system admits no infinite descending branch. -/
 theorem step_wellFounded : WellFounded S.step := by
   have hNat : WellFounded ((· < ·) : ℕ → ℕ → Prop) := Nat.lt_wfRel.wf
-  apply (hNat.onFun S.rank).mono
-  intro child parent hstep
-  exact S.step_decreases hstep
+  exact (hNat.onFun (f := S.rank)).mono (fun _ _ hstep => S.step_decreases hstep)
 
 /-- Equivalent no-infinite-chain formulation. -/
 theorem no_infinite_chain :
