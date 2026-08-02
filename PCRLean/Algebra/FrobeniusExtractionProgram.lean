@@ -24,22 +24,19 @@ open Polynomial
 variable {K : Type*} [Field K]
 variable (p : ℕ) [Fact p.Prime] [CharP K p] [PerfectRing K p]
 
-/-- The extraction states are univariate polynomials. -/
-abbrev State := K[X]
-
 /-- The degree is the well-founded extraction rank. -/
-def rank (f : State) : ℕ := f.natDegree
+def rank (f : K[X]) : ℕ := f.natDegree
 
 /-- A packet is terminal when it is constant or has a visible differential. -/
-def terminal (f : State) : Prop :=
+def terminal (f : K[X]) : Prop :=
   f.natDegree = 0 ∨ derivative f ≠ 0
 
 /-- Terminality is the exact certified outcome for this extractor. -/
-def resolved : State → Prop := terminal p
+def resolved (f : K[X]) : Prop := terminal p f
 
 /-- One canonical Frobenius-root extraction step. -/
-inductive Step : State → State → Prop
-  | extract (f : State)
+inductive Step : K[X] → K[X] → Prop
+  | extract (f : K[X])
       (hder : derivative f = 0)
       (hdeg : 0 < f.natDegree) :
       Step (PCRLean.Algebra.FrobeniusPolynomialRoot.rootPolynomial p f) f
@@ -73,7 +70,8 @@ theorem root_degree_strict_drop {f : K[X]}
   exact hfirst.trans_le hsecond
 
 /-- Every extraction edge strictly lowers the rank. -/
-theorem step_decreases {child parent : K[X]} (h : Step p child parent) :
+theorem step_decreases {child parent : K[X]}
+    (h : Step (K := K) p child parent) :
     rank p child < rank p parent := by
   cases h with
   | extract f hder hdeg =>
@@ -81,7 +79,7 @@ theorem step_decreases {child parent : K[X]} (h : Step p child parent) :
 
 /-- Every nonterminal packet admits its canonical root step. -/
 theorem progress (f : K[X]) :
-    ¬ terminal p f → ∃ g, Step p g f := by
+    ¬ terminal p f → ∃ g, Step (K := K) p g f := by
   intro hterm
   have hdeg : 0 < f.natDegree := by
     by_contra h
@@ -95,7 +93,7 @@ theorem progress (f : K[X]) :
 /-- The complete finite root-extraction program. -/
 def program : PCRLean.Framework.CertifiedProgram where
   State := K[X]
-  step := Step p
+  step := Step (K := K) p
   rank := rank p
   step_decreases := step_decreases p
   terminal := terminal p
@@ -106,8 +104,8 @@ def program : PCRLean.Framework.CertifiedProgram where
 /-- Every univariate polynomial reaches a constant packet or one with nonzero
 formal derivative after finitely many canonical Frobenius-root extractions. -/
 theorem reaches_visible_or_constant (f : K[X]) :
-    ∃ g, Relation.ReflTransGen (Step p) g f ∧
+    ∃ g, Relation.ReflTransGen (Step (K := K) p) g f ∧
       (g.natDegree = 0 ∨ derivative g ≠ 0) :=
-  (program p).reaches_resolved f
+  (program (K := K) p).reaches_resolved f
 
 end PCRLean.Algebra.FrobeniusExtractionProgram
