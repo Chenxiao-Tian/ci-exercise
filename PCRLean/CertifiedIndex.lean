@@ -10,6 +10,7 @@ import PCRLean.QuasilinearSplit
 import PCRLean.CechEffectivity
 import PCRLean.CartierFiniteMemory
 import PCRLean.NoetherianTraceMemory
+import PCRLean.TraceKernelDebt
 import PCRLean.DifferentialOrbitKernel
 import PCRLean.DifferentialOrbitClosure
 import PCRLean.NoetherianOperatorOrbit
