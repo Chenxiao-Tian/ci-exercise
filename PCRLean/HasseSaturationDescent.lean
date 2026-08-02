@@ -6,14 +6,14 @@ import PCRLean.DifferentialIdealSaturation
 # Canonical Hasse saturation and Frobenius cores
 
 For an ideal in a monogenic Frobenius frame, take the least actual ideal
-containing it and stable under the finite transported Hasse operators.  The
+containing it and stable under the finite transported Hasse operators. The
 saturation is canonical: it is defined by an intersection and retains no
 choice of generators or order of closure operations.
 
 The monogenic Hasse descent theorem applies automatically to this saturation.
 Thus the saturated ideal is exactly the extension of its contraction to the
-Frobenius base.  This supplies a canonical actual base ideal, called the
-Frobenius core.  If the saturation is proper, then the core is proper; over a
+Frobenius base. This supplies a canonical actual base ideal, called the
+Frobenius core. If the saturation is proper, then the core is proper; over a
 Noetherian base it is finitely generated.
 
 The resulting dichotomy is finite and intrinsic on the chosen Frobenius chart:
@@ -32,11 +32,10 @@ variable {R : Type u} {A : Type v}
 variable [CommRing R] [CommRing A] [Algebra R A]
 variable {q : Nat} {t : R}
 
-abbrev Frame := MonogenicFrobeniusFrame.Frame
-
 namespace Frame
 
-variable (F : Frame (R := R) (A := A) q t)
+variable (F : MonogenicFrobeniusFrame.Frame
+  (R := R) (A := A) q t)
 
 /-- The transported finite Hasse operator, retaining only its additive-map
 structure for canonical ideal saturation. -/
@@ -47,7 +46,8 @@ def transportedHasseAddHom (d : Fin q) : A →+ A :=
 /-- The least ideal containing `I` and stable under every transported finite
 Hasse operator. -/
 def hasseSaturation (I : Ideal A) : Ideal A :=
-  DifferentialIdealSaturation.saturation F.transportedHasseAddHom I
+  DifferentialIdealSaturation.saturation
+    (F.transportedHasseAddHom) I
 
 /-- The contraction of the canonical Hasse saturation to the Frobenius base. -/
 def frobeniusCore (I : Ideal A) : Ideal R :=
