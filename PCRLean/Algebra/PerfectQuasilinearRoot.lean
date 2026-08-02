@@ -28,13 +28,18 @@ noncomputable def root (e : ℕ) (a : R) : R :=
   simpa [root] using
     (iterate_frobeniusEquiv_symm_pow_p_pow (R := R) p a e)
 
+/-- The Frobenius exponent is positive because `p` is prime. -/
+theorem charPow_pos (e : ℕ) : 0 < p ^ e := by
+  exact pow_pos (Fact.out : p.Prime).pos e
+
 /-- Frobenius powers distribute over a finite sum. -/
 theorem finset_sum_pow_char_pow {ι : Type*} (s : Finset ι)
     (f : ι → R) (e : ℕ) :
     (∑ i ∈ s, f i) ^ (p ^ e) = ∑ i ∈ s, (f i) ^ (p ^ e) := by
   classical
   induction s using Finset.induction_on with
-  | empty => simp
+  | empty =>
+      simp [zero_pow (Nat.ne_of_gt (charPow_pos p e))]
   | @insert a s ha ih =>
       simp only [Finset.sum_insert ha]
       rw [add_pow_char_pow, ih]
