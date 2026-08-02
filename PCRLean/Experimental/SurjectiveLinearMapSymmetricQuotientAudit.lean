@@ -1,0 +1,7 @@
+import PCRLean.Experimental.SurjectiveLinearMapSymmetricQuotient
+
+#print axioms PCRLean.Experimental.SurjectiveLinearMapSymmetricQuotient.project_comp_liftBackOfSurjective
+#print axioms PCRLean.Experimental.SurjectiveLinearMapSymmetricQuotient.split_kernelIdeal_eq
+#print axioms PCRLean.Experimental.SurjectiveLinearMapSymmetricQuotient.ker_projectAlg_eq_kernelIdeal
+#print axioms PCRLean.Experimental.SurjectiveLinearMapSymmetricQuotient.quotientEquiv
+#print axioms PCRLean.Experimental.SurjectiveLinearMapSymmetricQuotient.kernelIdeal_ne_top
