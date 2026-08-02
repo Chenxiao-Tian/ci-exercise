@@ -50,6 +50,10 @@ import PCRLean
 #print axioms PCRLean.DifferentialIdealSaturation.saturation_fg
 #print axioms PCRLean.DifferentialIdealConjugacy.stable_map
 #print axioms PCRLean.DifferentialIdealConjugacy.map_saturation_eq
+#print axioms PCRLean.MatrixStableSubmodule.mem_iff_forall_coordinate_mem
+#print axioms PCRLean.MatrixStableSubmodule.fromIdeal_fullyInvariant
+#print axioms PCRLean.MatrixStableSubmodule.eq_fromIdeal
+#print axioms PCRLean.MatrixStableSubmodule.coordinateIdeal_fromIdeal
 #print axioms PCRLean.SplitKernelCentre.SplitMap.equivKernelProd
 #print axioms PCRLean.SplitKernelCentre.SplitMap.isCompl_kernel_range_rightInv
 #print axioms PCRLean.FiniteKernelCentre.mem_ker_evaluationMap_iff
