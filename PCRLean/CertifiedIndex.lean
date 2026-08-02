@@ -8,7 +8,7 @@ namespace PCRLean
 /-- Machine-readable summary of the kernel-certified component layer.
 This theorem intentionally states only what the imported Lean proofs establish. -/
 theorem certified_component_summary :
-    GenRank.wellFounded GenRank.Lt ∧
+    WellFounded GenRank.Lt ∧
     (∀ N : Nat, 0 < OddCusp.certifiedWordLength N) ∧
     (∀ B : Nat, ∃ N, B < QuadraticDebt.collisionDebt N) ∧
     Function.Injective NoRecharge.freshBirthIdentity := by
