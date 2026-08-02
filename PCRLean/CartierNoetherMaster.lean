@@ -58,6 +58,7 @@ theorem every_input_resolves (input : Input) :
       P (S.initState input)
   exact ⟨finish, hreach, S.terminal_sound finish hterminal⟩
 
+include S in
 /-- Every forward geometric step exposes all mandatory centre and transform
 gates. -/
 theorem every_step_all_gates {parent child : P.State}
