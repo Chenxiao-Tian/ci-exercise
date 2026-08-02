@@ -42,7 +42,8 @@ theorem rankLt_wellFounded : WellFounded (RankLt (R := R) (M := M)) := by
       (inferInstance : IsNoetherian R M))
     Nat.lt_wfRel.wf
 
-/-- One of the two certified transition modes. -/
+/-- One of the two certified transition modes. The first argument is the child
+rank and the second is the parent rank. -/
 inductive RankStep : Rank (R := R) (M := M) → Rank (R := R) (M := M) → Prop
   | newTrace {C D : Submodule R M} {n m : Nat}
       (hCD : D > C) : RankStep (D, n) (C, m)
@@ -62,7 +63,7 @@ theorem rankStep_wellFounded :
   exact Subrelation.wf rankStep_decreases rankLt_wellFounded
 
 /-- A geometric program equipped with a fixed Noetherian memory and a finite
-local rank. `classify` is the substantive bridge: every actual geometric step
+local rank. `classify` is the substantive bridge: every forward geometric step
 must either create a genuinely independent ancestor trace or pay the local
 rank without changing memory. -/
 structure PatchedProgram where
@@ -71,9 +72,9 @@ structure PatchedProgram where
   terminal : State → Prop
   memory : State → Submodule R M
   localRank : State → Nat
-  classify : ∀ {child parent}, step child parent →
+  classify : ∀ {parent child}, step parent child →
     RankStep (memory child, localRank child) (memory parent, localRank parent)
-  progress : ∀ s, ¬ terminal s → ∃ t, step t s
+  progress : ∀ s, ¬ terminal s → ∃ t, step s t
 
 namespace PatchedProgram
 
@@ -83,15 +84,16 @@ variable (P : PatchedProgram (R := R) (M := M))
 def compiledRank (s : P.State) : Rank (R := R) (M := M) :=
   (P.memory s, P.localRank s)
 
-/-- Every geometric step strictly decreases the compiled lexicographic rank. -/
-theorem step_decreases {child parent : P.State} (h : P.step child parent) :
+/-- Every forward geometric step strictly decreases the compiled rank. -/
+theorem step_decreases {parent child : P.State} (h : P.step parent child) :
     RankLt (P.compiledRank child) (P.compiledRank parent) := by
   exact rankStep_decreases (P.classify h)
 
 /-- The patched program compiled into the general verified termination
 backend. Terminal soundness is deliberately supplied by a later geometric
 layer rather than hidden here. -/
-def toProgram : ResolutionCompiler.Program where
+def toProgram (P : PatchedProgram (R := R) (M := M)) :
+    ResolutionCompiler.Program where
   State := P.State
   Rank := Rank (R := R) (M := M)
   step := P.step
@@ -105,12 +107,12 @@ def toProgram : ResolutionCompiler.Program where
 /-- Every state reaches a terminal state in finitely many steps. -/
 theorem terminal_reachable (s : P.State) :
     ∃ t, ResolutionCompiler.Reaches P.step s t ∧ P.terminal t := by
-  exact P.toProgram.terminal_reachable s
+  exact (toProgram P).terminal_reachable s
 
 /-- No infinite execution branch can satisfy the patched classification. -/
 theorem no_infinite_execution :
     ¬ ∃ f : Nat → P.State, ∀ n, P.step (f n) (f (n + 1)) :=
-  P.toProgram.no_infinite_execution
+  (toProgram P).no_infinite_execution
 
 end PatchedProgram
 
