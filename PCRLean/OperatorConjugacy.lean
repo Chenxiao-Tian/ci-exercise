@@ -5,9 +5,9 @@ import PCRLean.OperatorSaturation
 # Presentation invariance under operator conjugacy
 
 A canonical Hasse--Cartier packet must not depend on the chosen finite
-presentation of its ancestor module.  This file proves the linear-algebraic
+presentation of its ancestor module. This file proves the linear-algebraic
 transport theorem: conjugate operator families carry canonical operator
-saturations to one another.  Consequently a change of frame cannot create or
+saturations to one another. Consequently a change of frame cannot create or
 destroy the saturated trace packet.
 
 A geometric application still has to show that changes of Rees presentation,
@@ -72,7 +72,7 @@ theorem map_saturation_le
       apply Submodule.subset_span
       refine ⟨e seed, ?_, word, ?_⟩
       · exact ⟨seed, hseed, rfl⟩
-      · exact (applyWord_conjugate e opsD opsE h word seed).symm
+      · exact applyWord_conjugate e opsD opsE h word seed
   | zero =>
       simpa using (OperatorSaturation.saturation opsE
         (N.map e.toLinearMap)).zero_mem
