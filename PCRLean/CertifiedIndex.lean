@@ -23,6 +23,8 @@ import PCRLean.MatrixStableSubmodule
 import PCRLean.FiniteFreeEndomorphismDescent
 import PCRLean.IdealEndomorphismDescent
 import PCRLean.OperatorSpanFullness
+import PCRLean.EndomorphismGeneration
+import PCRLean.BiorthogonalEndomorphismBasis
 import PCRLean.SplitKernelCentre
 import PCRLean.FiniteKernelCentre
 import PCRLean.ProjectiveKernelCentre
