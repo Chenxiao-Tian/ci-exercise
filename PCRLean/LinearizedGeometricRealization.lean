@@ -5,13 +5,13 @@ import PCRLean.SplitConormalFrame
 /-!
 # Linearized geometric realization of a finite operator packet
 
-A Noetherian Hasse--Cartier orbit yields a finite packet of functionals.  If the
-finite evaluation map has an explicit section, its persistent annihilator is a
-split direct summand of the ambient tangent module.  This is the exact
+A Noetherian Hasse--Cartier orbit yields a finite packet of functionals. If the
+finite evaluation map has an explicit splitting, its persistent annihilator is
+a split direct summand of the ambient tangent module. This is the exact
 linearized regular-centre theorem.
 
-The remaining geometric bridge is to produce the section Zariski-locally from
-an intrinsic packet and to integrate the split conormal frame to actual
+The remaining geometric bridge is to produce the splitting Zariski-locally
+from an intrinsic packet and to integrate the split conormal frame to actual
 functions defining a regular permissible centre.
 -/
 
@@ -43,7 +43,7 @@ def packetEval
     funext d
     simp
 
-/-- A finite orbit packet together with an explicit transverse section. -/
+/-- A finite orbit packet together with an explicit transverse splitting. -/
 structure Certificate
     (ops : ι → Module.End K D) (seed : D)
     (pair : D →ₗ[K] DualV (K := K) (V := V)) where
@@ -53,9 +53,9 @@ structure Certificate
   packet_spans :
     NoetherianOperatorOrbit.orbitModule ops seed =
       Submodule.span K (packet : Set D)
-  section : (↥packet → K) →ₗ[K] V
+  split : (↥packet → K) →ₗ[K] V
   rightInverse :
-    (packetEval pair packet).comp section = LinearMap.id
+    (packetEval pair packet).comp split = LinearMap.id
 
 namespace Certificate
 
@@ -67,7 +67,7 @@ variable {ops : ι → Module.End K D} {seed : D}
 def splitFrame :
     SplitConormalFrame.Frame (K := K) (V := V) (ι := ↥C.packet) where
   eval := packetEval pair C.packet
-  section := C.section
+  split := C.split
   rightInverse := C.rightInverse
 
 /-- Vanishing of the packet evaluation is exactly vanishing of every packet
@@ -96,12 +96,12 @@ theorem persistentKernel_eq_evalKer :
   rw [LinearMap.mem_ker, C.packetEval_eq_zero_iff]
 
 /-- The persistent operator kernel is a split direct summand; this is the
-linear regularity conclusion supplied by the section certificate. -/
+linear regularity conclusion supplied by the splitting certificate. -/
 theorem persistentKernel_isCompl :
     IsCompl
       (NoetherianOperatorOrbit.annihilatorVia pair
         (NoetherianOperatorOrbit.orbitModule ops seed))
-      (LinearMap.range C.section) := by
+      (LinearMap.range C.split) := by
   rw [C.persistentKernel_eq_evalKer]
   exact (C.splitFrame).isCompl_ker_range
 
@@ -110,7 +110,7 @@ module. -/
 theorem persistentKernel_sup_range_eq_top :
     NoetherianOperatorOrbit.annihilatorVia pair
         (NoetherianOperatorOrbit.orbitModule ops seed) ⊔
-      LinearMap.range C.section = ⊤ :=
+      LinearMap.range C.split = ⊤ :=
   C.persistentKernel_isCompl.sup_eq_top
 
 /-- The persistent kernel has trivial intersection with the transverse packet
@@ -119,7 +119,7 @@ theorem persistentKernel_disjoint_range :
     Disjoint
       (NoetherianOperatorOrbit.annihilatorVia pair
         (NoetherianOperatorOrbit.orbitModule ops seed))
-      (LinearMap.range C.section) :=
+      (LinearMap.range C.split) :=
   C.persistentKernel_isCompl.disjoint
 
 end Certificate
