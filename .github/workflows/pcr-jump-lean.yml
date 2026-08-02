@@ -43,7 +43,8 @@ jobs:
       - name: Compile historical-jump architecture
         run: |
           set -o pipefail
-          lake env lean PCRLean/JumpIndex.lean 2>&1 | tee jump-build.txt
+          lake build PCRLean.JumpIndex 2>&1 | tee jump-build.txt
+          lake env lean PCRLean/JumpIndex.lean 2>&1 | tee -a jump-build.txt
       - name: Audit jump declarations
         run: |
           set -o pipefail
