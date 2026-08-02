@@ -6,13 +6,13 @@ import PCRLean.ResolutionCompiler
 
 This file isolates the algebraic core of a history-inspired termination idea.
 A future trace is represented by a vector in one fixed finite-dimensional
-operator module.  When a genuinely new trace appears, the consumed subspace is
-enlarged by that vector.  Its codimension debt drops exactly by one.  Repeated
+operator module. When a genuinely new trace appears, the consumed subspace is
+enlarged by that vector. Its codimension debt drops exactly by one. Repeated
 operator images cannot remain algebraically independent forever, and every
 endomorphism satisfies a monic polynomial recurrence by Cayley--Hamilton.
 
 The file does not assert that arbitrary geometric transforms in positive
-characteristic have already been embedded into such a fixed module.  That is
+characteristic have already been embedded into such a fixed module. That is
 the geometric realization problem to be proved separately.
 -/
 
@@ -24,7 +24,7 @@ noncomputable section
 universe u v
 
 variable {K : Type u} {V : Type v}
-variable [DivisionRing K] [AddCommGroup V] [Module K V]
+variable [Field K] [AddCommGroup V] [Module K V]
 variable [FiniteDimensional K V]
 
 /-- Enlarge the consumed memory by one newly observed trace. -/
@@ -37,7 +37,9 @@ theorem le_consume (C : Submodule K V) (x : V) : C ≤ consume C x := by
 
 /-- The newly consumed trace belongs to the enlarged memory. -/
 theorem mem_consume (C : Submodule K V) (x : V) : x ∈ consume C x := by
-  exact le_sup_right (Submodule.subset_span (by simp))
+  have hspan : x ∈ Submodule.span K {x} :=
+    Submodule.subset_span (by simp)
+  exact (show Submodule.span K {x} ≤ consume C x from le_sup_right) hspan
 
 /-- A genuinely new trace strictly enlarges the consumed subspace. -/
 theorem consume_strict {C : Submodule K V} {x : V} (hx : x ∉ C) :
@@ -127,7 +129,7 @@ theorem no_infinite_independent_births :
   program.no_infinite_execution
 
 /-- Every endomorphism of finite memory satisfies a monic polynomial
-recurrence.  When the endomorphism is a Cartier/Frobenius trace operator, this
+recurrence. When the endomorphism is a Cartier/Frobenius trace operator, this
 is the finite additive-recurrence certificate. -/
 theorem endomorphism_has_monic_recurrence (T : Module.End K V) :
     ∃ p : Polynomial K, p.Monic ∧ Polynomial.aeval T p = 0 := by
