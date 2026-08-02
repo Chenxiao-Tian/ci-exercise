@@ -12,6 +12,7 @@ import PCRLean.CartierFiniteMemory
 import PCRLean.NoetherianTraceMemory
 import PCRLean.DifferentialOrbitKernel
 import PCRLean.NoetherianPatchingCompiler
+import PCRLean.CartierNoetherMaster
 import PCRLean.ActualIdealGluing
 import PCRLean.SourcePartition
 import PCRLean.MarkedIdeal
