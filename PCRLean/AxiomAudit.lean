@@ -48,6 +48,8 @@ import PCRLean
 #print axioms PCRLean.DifferentialIdealSaturation.saturation_stable
 #print axioms PCRLean.DifferentialIdealSaturation.saturation_idempotent
 #print axioms PCRLean.DifferentialIdealSaturation.saturation_fg
+#print axioms PCRLean.DifferentialIdealConjugacy.stable_map
+#print axioms PCRLean.DifferentialIdealConjugacy.map_saturation_eq
 #print axioms PCRLean.SplitKernelCentre.SplitMap.equivKernelProd
 #print axioms PCRLean.SplitKernelCentre.SplitMap.isCompl_kernel_range_rightInv
 #print axioms PCRLean.FiniteKernelCentre.mem_ker_evaluationMap_iff
