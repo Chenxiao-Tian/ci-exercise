@@ -30,7 +30,7 @@ abbrev A := CoordinateBlowupChart.P (R := K) (α := α) (ι := ι)
 
 /-- Keep passive variables and kill all centre variables. -/
 def passiveEval : A (K := K) (α := α) (ι := ι) →+* MvPolynomial α K :=
-  MvPolynomial.eval₂Hom (RingHom.id K)
+  MvPolynomial.eval₂Hom MvPolynomial.C
     (fun s => match s with
       | Sum.inl a => MvPolynomial.X a
       | Sum.inr _ => 0)
@@ -45,11 +45,17 @@ def passiveEval : A (K := K) (α := α) (ι := ι) →+* MvPolynomial α K :=
         (MvPolynomial.X (Sum.inl a)) = MvPolynomial.X a := by
   simp [passiveEval]
 
+@[simp] theorem passiveEval_centreX (i : ι) :
+    passiveEval (K := K) (α := α) (ι := ι)
+        (MvPolynomial.X (Sum.inr i)) = 0 := by
+  simp [passiveEval]
+
 @[simp] theorem passiveEval_centreVar (i : ι) :
     passiveEval (K := K) (α := α) (ι := ι)
         (CoordinateBlowupChart.centreVar
           (R := K) (α := α) (ι := ι) i) = 0 := by
-  simp [passiveEval, CoordinateBlowupChart.centreVar]
+  simpa [CoordinateBlowupChart.centreVar] using
+    passiveEval_centreX (K := K) (α := α) i
 
 /-- Re-embed the passive part after elimination. -/
 def passiveProjection : A (K := K) (α := α) (ι := ι) →+*
@@ -67,11 +73,17 @@ def passiveProjection : A (K := K) (α := α) (ι := ι) →+*
         (MvPolynomial.X (Sum.inl a)) = MvPolynomial.X (Sum.inl a) := by
   simp [passiveProjection]
 
+@[simp] theorem passiveProjection_centreX (i : ι) :
+    passiveProjection (K := K) (α := α) (ι := ι)
+        (MvPolynomial.X (Sum.inr i)) = 0 := by
+  simp [passiveProjection]
+
 @[simp] theorem passiveProjection_centreVar (i : ι) :
     passiveProjection (K := K) (α := α) (ι := ι)
         (CoordinateBlowupChart.centreVar
           (R := K) (α := α) (ι := ι) i) = 0 := by
-  simp [passiveProjection, CoordinateBlowupChart.centreVar]
+  simpa [CoordinateBlowupChart.centreVar] using
+    passiveProjection_centreX (K := K) (α := α) i
 
 /-- Every centre coordinate belongs to the actual coordinate-centre ideal. -/
 theorem centreVar_mem (i : ι) :
@@ -102,11 +114,12 @@ theorem sub_passiveProjection_mem (p : A (K := K) (α := α) (ι := ι)) :
           exact (CoordinateBlowupChart.centreIdeal
             (R := K) (α := α) (ι := ι)).mul_mem_left _ hp
       | inr i =>
-          rw [map_mul, passiveProjection_centreVar]
+          rw [map_mul, passiveProjection_centreX]
           simp only [mul_zero, sub_zero]
-          exact (CoordinateBlowupChart.centreIdeal
-            (R := K) (α := α) (ι := ι)).mul_mem_left p
-              (centreVar_mem (K := K) (α := α) i)
+          simpa [CoordinateBlowupChart.centreVar] using
+            (CoordinateBlowupChart.centreIdeal
+              (R := K) (α := α) (ι := ι)).mul_mem_left p
+                (centreVar_mem (K := K) (α := α) i)
 
 /-- The actual coordinate-centre ideal is contained in the elimination kernel. -/
 theorem centreIdeal_le_ker :
@@ -156,7 +169,7 @@ noncomputable def quotientEquiv :
       (ker_passiveEval_eq_centreIdeal
         (K := K) (α := α) (ι := ι)).symm).trans
     (RingHom.quotientKerEquivOfSurjective
-      (passiveEval (K := K) (α := α) (ι := ι))
+      (f := passiveEval (K := K) (α := α) (ι := ι))
       (passiveEval_surjective (K := K) (α := α) (ι := ι)))
 
 /-- The quotient equivalence evaluates representatives by killing centre
@@ -168,7 +181,7 @@ coordinates. -/
           (CoordinateBlowupChart.centreIdeal
             (R := K) (α := α) (ι := ι)) p) =
       passiveEval (K := K) (α := α) (ι := ι) p := by
-  rfl
+  simp [quotientEquiv]
 
 end
 
