@@ -97,13 +97,13 @@ theorem embed_classify
           | inl m =>
               have hk := ih k
               rw [hclass] at hk
-              simpa [classify, embedClassified, embedMultiplication,
-                hclass] using congrArg Sum.inr hk
+              change Sum.inr (embedMultiplication rest m) = Sum.inr k
+              exact congrArg Sum.inr hk
           | inr d =>
               have hk := ih k
               rw [hclass] at hk
-              simpa [classify, embedClassified, embedHasse,
-                hclass] using congrArg Sum.inr hk
+              change Sum.inr (embedHasse rest d) = Sum.inr k
+              exact congrArg Sum.inr hk
 
 /-- A finite-product frame whose multiplication packet has been realized by
 actual multiplication in the algebra. -/
