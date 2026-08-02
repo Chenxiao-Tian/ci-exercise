@@ -10,6 +10,7 @@ import PCRLean.Chambers.RamifiedQuadraticProgram
 import PCRLean.Chambers.ArtinSchreier
 import PCRLean.Chambers.ArtinSchreierProgram
 import PCRLean.Termination.Generational
+import PCRLean.Termination.FiniteSources
 import PCRLean.Termination.PacketMultiset
 import PCRLean.Framework.RankedSystem
 import PCRLean.Framework.FiniteChartProgram
@@ -25,7 +26,7 @@ import PCRLean.NoGo.CoordinatewiseDropCycle
 Only declarations proved without `sorry`, `admit`, or project-specific axioms
 are imported here.  This is deliberately not a theorem of arbitrary-dimensional
 resolution.  It is the current kernel-checked algebraic, chart-program,
-termination, and obstruction-audit layer.
+termination, finite-source, and obstruction-audit layer.
 -/
 
 namespace PCRLean.Certified
@@ -42,6 +43,13 @@ theorem generational_backend_wf :
 theorem packet_multiset_backend_wf {α : Type*} [Preorder α] [WellFoundedLT α] :
     WellFounded (PacketMultiset.PacketLt : Multiset α → Multiset α → Prop) :=
   PacketMultiset.packetLt_wellFounded
+
+/-- A genuinely finite ancestor carrier cannot finance infinitely many births
+when the payment map is injective. -/
+theorem finite_carrier_excludes_infinite_births
+    {Coupon : Type*} [Finite Coupon] (pay : ℕ → Coupon) :
+    ¬ Function.Injective pay :=
+  FiniteSources.no_infinite_financed_births pay
 
 end PCRLean.Certified
 
@@ -70,6 +78,11 @@ end PCRLean.Certified
 #print axioms PCRLean.Chambers.ArtinSchreierProgram.step_decreases
 #print axioms PCRLean.Chambers.ArtinSchreierProgram.active_reaches_classified_exit
 #print axioms PCRLean.Termination.Generational.genLt_wellFounded
+#print axioms PCRLean.Termination.FiniteSources.financed_birth_bound
+#print axioms PCRLean.Termination.FiniteSources.financed_birth_finset_bound
+#print axioms PCRLean.Termination.FiniteSources.active_identity_bound
+#print axioms PCRLean.Termination.FiniteSources.no_infinite_financed_births
+#print axioms PCRLean.Termination.FiniteSources.clone_breaks_injectivity
 #print axioms PCRLean.Termination.PacketMultiset.packetLt_wellFounded
 #print axioms PCRLean.Termination.PacketMultiset.replace_block_lt
 #print axioms PCRLean.Termination.PacketMultiset.PacketSystem.step_wellFounded
@@ -86,3 +99,4 @@ end PCRLean.Certified
 #print axioms PCRLean.NoGo.CoordinatewiseDropCycle.not_wellFounded
 #print axioms PCRLean.Certified.generational_backend_wf
 #print axioms PCRLean.Certified.packet_multiset_backend_wf
+#print axioms PCRLean.Certified.finite_carrier_excludes_infinite_births
