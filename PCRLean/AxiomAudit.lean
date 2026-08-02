@@ -45,7 +45,7 @@ import PCRLean
 #print axioms PCRLean.OperatorSaturation.saturation_idempotent
 #print axioms PCRLean.OperatorSaturation.exists_finite_raw_saturation_generators
 #print axioms PCRLean.SplitKernelCentre.SplitMap.equivKernelProd
-#print axioms PCRLean.SplitKernelCentre.SplitMap.isCompl_kernel_range_section
+#print axioms PCRLean.SplitKernelCentre.SplitMap.isCompl_kernel_range_rightInv
 #print axioms PCRLean.FiniteKernelCentre.mem_ker_evaluationMap_iff
 #print axioms PCRLean.FiniteKernelCentre.evaluationMap_surjective_of_linearIndependent
 #print axioms PCRLean.FiniteKernelCentre.exists_splitPacket_of_linearIndependent
@@ -56,6 +56,11 @@ import PCRLean
 #print axioms PCRLean.ProjectiveKernelCentre.exists_splitPacket_of_surjective
 #print axioms PCRLean.ProjectiveKernelCentre.exists_complement_of_surjective
 #print axioms PCRLean.ProjectiveKernelCentre.persistentKernel_isCompl_of_surjective
+#print axioms PCRLean.CoordinateKernelIdeal.retract_surjective
+#print axioms PCRLean.CoordinateKernelIdeal.quotientEquiv
+#print axioms PCRLean.CoordinateKernelIdeal.ideal_ne_top
+#print axioms PCRLean.CoordinateKernelIdeal.ideal_fg
+#print axioms PCRLean.CoordinateKernelIdeal.quotient_isRegularRing
 #print axioms PCRLean.NoetherianPatchingCompiler.rankLt_wellFounded
 #print axioms PCRLean.NoetherianPatchingCompiler.rankStep_wellFounded
 #print axioms PCRLean.NoetherianPatchingCompiler.PatchedProgram.terminal_reachable
