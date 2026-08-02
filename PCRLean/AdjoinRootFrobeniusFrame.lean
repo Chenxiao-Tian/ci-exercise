@@ -53,7 +53,7 @@ theorem root_pow_eq_algebraMap (q : Nat) (t : R) :
   have hzero :
       AdjoinRoot.root (definingPolynomial (R := R) q t) ^ q -
           algebraMap R (AdjoinRoot (definingPolynomial (R := R) q t)) t = 0 := by
-    simpa [definingPolynomial] using
+    simpa [definingPolynomial, AdjoinRoot.algebraMap_eq] using
       (AdjoinRoot.eval₂_root (definingPolynomial (R := R) q t))
   exact sub_eq_zero.mp hzero
 
