@@ -3,7 +3,7 @@ import Mathlib
 /-!
 # Artin-Schreier quadratic collision: exact two-parameter recurrence
 
-This file formalizes the ring identity underlying the collision step
+This file formalizes both standard charts of the collision step
 `(m+1,r+2) -> (m,r)` for `z^2 + t^m z + u t^r`, together with the exact
 arithmetic of the frozen collision depth `min(m, floor(r/2))`.
 -/
@@ -12,13 +12,29 @@ namespace PCRLean.Chambers.ArtinSchreier
 
 variable {R : Type*} [CommRing R]
 
-/-- Substitution `z = tz₁` factors the exceptional square and changes
-`(m+1,r+2)` to `(m,r)`. -/
+/-- In the `t`-pivot chart, substitution `z = tz₁` factors the exceptional
+square and changes `(m+1,r+2)` to `(m,r)`. -/
 theorem collision_factorization (t z u : R) (m r : ℕ) :
     (t * z) ^ 2 + t ^ (m + 1) * (t * z) + u * t ^ (r + 2) =
       t ^ 2 * (z ^ 2 + t ^ m * z + u * t ^ r) := by
   rw [mul_pow, pow_succ, pow_add]
   ring
+
+/-- In the sibling `z`-pivot chart, substitution `t=zT` exposes the unit
+constant term of the controlled transform whenever both residual exponents
+are positive. -/
+theorem sibling_factorization (z T u : R) (m r : ℕ) :
+    z ^ 2 + (z * T) ^ (m + 1) * z + u * (z * T) ^ (r + 2) =
+      z ^ 2 * (1 + z ^ m * T ^ (m + 1) + u * z ^ r * T ^ (r + 2)) := by
+  rw [mul_pow, pow_succ, pow_add]
+  ring
+
+@[simp] theorem sibling_exceptional_value_of_pos
+    (T u : R) {m r : ℕ} (hm : 0 < m) (hr : 0 < r) :
+    1 + (0 : R) ^ m * T ^ (m + 1) + u * (0 : R) ^ r * T ^ (r + 2) = 1 := by
+  have hm0 : m ≠ 0 := Nat.ne_of_gt hm
+  have hr0 : r ≠ 0 := Nat.ne_of_gt hr
+  simp [hm0, hr0]
 
 /-- The number of forced collision steps before a regular tail. -/
 def collisionDepth (m r : ℕ) : ℕ := min m (r / 2)
