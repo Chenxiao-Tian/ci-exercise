@@ -55,8 +55,14 @@ theorem ownerIdeal_le_centre_pow
         (R := R) (α := α) (ι := ι)) ^ q := by
   rw [ownerIdeal, Ideal.span_le]
   rintro z ⟨i, rfl⟩
-  exact Ideal.pow_mem_pow
-    (Ideal.subset_span ⟨i.1, rfl⟩) q
+  have hi :
+      CoordinateBlowupChart.centreVar (R := R) (α := α) i.1 ∈
+        CoordinateBlowupChart.centreIdeal
+          (R := R) (α := α) (ι := ι) := by
+    rw [CoordinateBlowupChart.centreIdeal]
+    apply Ideal.subset_span
+    exact ⟨i.1, rfl⟩
+  exact Ideal.pow_mem_pow hi q
 
 /-- All owners are simultaneously permissible for the same coordinate centre. -/
 theorem jointIdeal_le_centre_pow
