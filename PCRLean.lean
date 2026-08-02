@@ -4,6 +4,7 @@ import PCRLean.Algebra.CharacteristicTwoGauge
 import PCRLean.Algebra.SquareCleaningDerivative
 import PCRLean.Algebra.OddContactDerivative
 import PCRLean.Algebra.QuasilinearPolar
+import PCRLean.Algebra.PerfectQuasilinearRoot
 import PCRLean.Chambers.FrobeniusContent
 import PCRLean.Chambers.FrobeniusContentProgram
 import PCRLean.Chambers.OddCusp
