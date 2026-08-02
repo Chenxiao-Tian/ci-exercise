@@ -18,6 +18,7 @@ import PCRLean.OperatorSaturation
 import PCRLean.SplitKernelCentre
 import PCRLean.FiniteKernelCentre
 import PCRLean.ProjectiveKernelCentre
+import PCRLean.CoordinateKernelIdeal
 import PCRLean.NoetherianPatchingCompiler
 import PCRLean.CartierNoetherMaster
 import PCRLean.ActualIdealGluing
