@@ -68,7 +68,7 @@ inductive Step : State → State → Prop
 /-- Every actual local chart edge strictly lowers the rank. -/
 theorem step_decreases {child parent : State} (h : Step child parent) :
     rank child < rank parent := by
-  cases h <;> simp [rank] <;> omega
+  cases h <;> simp [rank]
 
 /-- Terminal predicate for the local chart model. -/
 def terminal : State → Prop
