@@ -2,6 +2,7 @@ import PCRLean.Chambers.FrobeniusContent
 import PCRLean.Chambers.OddCusp
 import PCRLean.Chambers.OddCuspProgram
 import PCRLean.Chambers.RamifiedQuadratic
+import PCRLean.Chambers.RamifiedQuadraticProgram
 import PCRLean.Chambers.ArtinSchreier
 import PCRLean.Termination.Generational
 import PCRLean.Framework.RankedSystem
@@ -40,6 +41,12 @@ end PCRLean.Certified
 #print axioms PCRLean.Chambers.OddCuspProgram.active_reaches_resolved
 #print axioms PCRLean.Chambers.RamifiedQuadratic.collision_factorization
 #print axioms PCRLean.Chambers.RamifiedQuadratic.sibling_factorization
+#print axioms PCRLean.Chambers.RamifiedQuadraticProgram.oddTail_tPivot
+#print axioms PCRLean.Chambers.RamifiedQuadraticProgram.oddTail_zPivot
+#print axioms PCRLean.Chambers.RamifiedQuadraticProgram.oddTail_second_zPivot
+#print axioms PCRLean.Chambers.RamifiedQuadraticProgram.oddTail_second_tPivot
+#print axioms PCRLean.Chambers.RamifiedQuadraticProgram.step_decreases
+#print axioms PCRLean.Chambers.RamifiedQuadraticProgram.active_reaches_resolved
 #print axioms PCRLean.Chambers.ArtinSchreier.collision_factorization
 #print axioms PCRLean.Chambers.ArtinSchreier.sibling_factorization
 #print axioms PCRLean.Termination.Generational.genLt_wellFounded
