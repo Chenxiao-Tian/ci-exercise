@@ -42,10 +42,8 @@ theorem no_infinite_financed_births
     {Coupon : Type*} [Finite Coupon] (pay : ℕ → Coupon) :
     ¬ Function.Injective pay := by
   intro hpay
-  letI : Fintype Coupon := Fintype.ofFinite Coupon
-  have hcard : Fintype.card ℕ ≤ Fintype.card Coupon :=
-    Fintype.card_le_of_injective pay hpay
-  simpa using hcard
+  obtain ⟨i, j, hij, heq⟩ := Finite.exists_ne_map_eq_of_infinite pay
+  exact hij (hpay heq)
 
 /-- A finite source universe alone does not justify source splitting or
 cloning; injectivity is precisely the additional invariant used by the bound. -/
