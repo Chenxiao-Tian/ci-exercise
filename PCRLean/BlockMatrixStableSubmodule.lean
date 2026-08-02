@@ -142,7 +142,8 @@ def fromRowModule
   carrier := {x | ∀ i, rowAt (R := R) i x ∈ P}
   zero_mem' := by
     intro i
-    simpa [rowAt] using P.zero_mem
+    change (0 : Row (R := R) (μ := μ)) ∈ P
+    exact P.zero_mem
   add_mem' := by
     intro x y hx hy i
     exact P.add_mem (hx i) (hy i)
