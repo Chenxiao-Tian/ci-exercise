@@ -22,6 +22,9 @@ import PCRLean
 #print axioms PCRLean.CartierFiniteMemory.debt_consume_add_one
 #print axioms PCRLean.CartierFiniteMemory.no_infinite_independent_births
 #print axioms PCRLean.CartierFiniteMemory.endomorphism_has_monic_recurrence
+#print axioms PCRLean.NoetherianTraceMemory.no_infinite_independent_births
+#print axioms PCRLean.NoetherianTraceMemory.eventually_disjoint_kernel_range
+#print axioms PCRLean.NoetherianTraceMemory.eventually_kernel_tower_stabilizes
 #print axioms PCRLean.OwnerJoint.aggregate_permissible
 #print axioms PCRLean.PolynomialCharts.oddCusp_sPivot_identity
 #print axioms PCRLean.PolynomialCharts.oddCusp_yPivot_identity
