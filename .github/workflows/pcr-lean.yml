@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - pcr-lean-formalization-20260801
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
