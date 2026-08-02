@@ -1,4 +1,5 @@
 import PCRLean.Chambers.FrobeniusContent
+import PCRLean.Chambers.FrobeniusContentProgram
 import PCRLean.Chambers.OddCusp
 import PCRLean.Chambers.OddCuspProgram
 import PCRLean.Chambers.RamifiedQuadratic
