@@ -39,6 +39,19 @@ theorem sibling_factorization (z T u : R) (m r : ℕ) :
 /-- The number of forced collision steps before a regular tail. -/
 def collisionDepth (m r : ℕ) : ℕ := min m (r / 2)
 
+/-- One inverse collision step adds exactly one layer of collision debt. -/
+theorem collisionDepth_add_step (m r : ℕ) :
+    collisionDepth (m + 1) (r + 2) = collisionDepth m r + 1 := by
+  unfold collisionDepth
+  have hdiv : (r + 2) / 2 = r / 2 + 1 := by omega
+  rw [hdiv]
+  by_cases h : m ≤ r / 2
+  · have h' : m + 1 ≤ r / 2 + 1 := by omega
+    rw [Nat.min_eq_left h', Nat.min_eq_left h]
+  · have h' : r / 2 ≤ m := by omega
+    have h'' : r / 2 + 1 ≤ m + 1 := by omega
+    rw [Nat.min_eq_right h'', Nat.min_eq_right h']
+
 /-- In the etale-tail regime `2m <= r`, the depth is exactly `m`. -/
 theorem depth_of_etale_regime {m r : ℕ} (h : 2 * m ≤ r) :
     collisionDepth m r = m := by
