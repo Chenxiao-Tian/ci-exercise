@@ -5,13 +5,13 @@ import PCRLean.EndomorphismGeneration
 # Biorthogonal frames generate the full endomorphism algebra
 
 A complete dual frame consists of vectors and coefficient functionals with the
-usual reconstruction identity.  Its rank-one operators become the coordinate
-matrix units after conjugation by the coefficient map.  Thus stability under
+usual reconstruction identity. Its rank-one operators become the coordinate
+matrix units after conjugation by the coefficient map. Thus stability under
 these finitely many rank-one operators forces full endomorphism invariance and,
 for ideals in a unit-normalized algebra frame, descent from the base ring.
 
 In a local Frobenius chart the vectors are the finite Frobenius monomial basis
-and the functionals are Cartier/Hasse coefficient extractors.  The remaining
+and the functionals are Cartier/Hasse coefficient extractors. The remaining
 geometric task is to identify those concrete coefficient extractors and their
 rank-one composites inside the chosen transformed operator packet.
 -/
@@ -27,7 +27,7 @@ variable {R : Type u} {M : Type v} {ι : Type w}
 variable [CommRing R] [AddCommGroup M] [Module R M]
 variable [Fintype ι] [DecidableEq ι]
 
-/-- A finite complete dual frame.  Reconstruction is included as an explicit
+/-- A finite complete dual frame. Reconstruction is included as an explicit
 certificate, so no freeness or projectivity instance must be inferred. -/
 structure Frame where
   vector : ι → M
@@ -109,15 +109,19 @@ theorem conjugate_rankOne_eq_matrixUnit (i j : ι) :
     EndomorphismGeneration.conjugateToCoordinates
         F.coordinateEquiv (F.rankOne i j) =
       MatrixStableSubmodule.matrixUnit (R := R) i j := by
-  ext a k
+  apply LinearMap.ext
+  intro a
+  funext k
+  change F.functional k
+      (F.functional j (F.synthesize a) • F.vector i) =
+    Pi.single i (a j) k
+  have hj : F.functional j (F.synthesize a) = a j := by
+    exact congrFun (F.evaluate_synthesize a) j
+  rw [map_smul, hj, F.biorthogonal k i]
   by_cases hki : k = i
   · subst k
-    simp [EndomorphismGeneration.conjugateToCoordinates,
-      coordinateEquiv, evaluate, synthesize, rankOne,
-      F.biorthogonal]
-  · simp [EndomorphismGeneration.conjugateToCoordinates,
-      coordinateEquiv, evaluate, synthesize, rankOne,
-      F.biorthogonal, hki]
+    simp
+  · simp [hki]
 
 /-- The finite family of all rank-one frame operators. -/
 def rankOnePacket : (ι × ι) → Module.End R M :=
@@ -144,13 +148,14 @@ def unitFrame {A : Type*} [CommRing A] [Algebra R A]
   coord := F.coordinateEquiv
   unitIndex := i₀
   coord_one := by
-    ext j
-    change F.functional j 1 = Pi.single i₀ 1 j
-    rw [← hunit]
+    funext j
+    change F.functional j 1 =
+      (Pi.single i₀ (1 : R) : ι → R) j
+    rw [← hunit, F.biorthogonal j i₀]
     by_cases hji : j = i₀
     · subst j
-      simp [F.biorthogonal]
-    · simp [F.biorthogonal, hji]
+      simp
+    · simp [hji]
 
 section Ideal
 
@@ -167,10 +172,9 @@ theorem ideal_eq_map_comap_of_rankOne_stable
         (IdealEndomorphismDescent.idealSubmodule (R := R) I)
         (F.rankOnePacket ij)) :
     I = (I.comap (algebraMap R A)).map (algebraMap R A) := by
-  apply EndomorphismGeneration.ideal_eq_map_comap_of_generated_matrixUnits
-    (F.unitFrame i₀ hunit) F.rankOnePacket I
-  · simpa [unitFrame] using F.conjugated_rankOnePacket_generatesMatrixUnits
-  · exact hstable
+  refine EndomorphismGeneration.ideal_eq_map_comap_of_generated_matrixUnits
+    (F.unitFrame i₀ hunit) F.rankOnePacket I ?_ hstable
+  exact F.conjugated_rankOnePacket_generatesMatrixUnits
 
 end Ideal
 
