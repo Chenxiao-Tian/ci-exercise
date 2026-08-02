@@ -28,6 +28,9 @@ import PCRLean
 #print axioms PCRLean.DifferentialOrbitKernel.annihilator_antitone
 #print axioms PCRLean.DifferentialOrbitKernel.annihilator_invariant
 #print axioms PCRLean.DifferentialOrbitKernel.annihilator_family_invariant
+#print axioms PCRLean.DifferentialOrbitClosure.orbitModule_stable
+#print axioms PCRLean.DifferentialOrbitClosure.orbitModule_familyStable
+#print axioms PCRLean.DifferentialOrbitClosure.orbitAnnihilator_invariant
 #print axioms PCRLean.NoetherianPatchingCompiler.rankLt_wellFounded
 #print axioms PCRLean.NoetherianPatchingCompiler.rankStep_wellFounded
 #print axioms PCRLean.NoetherianPatchingCompiler.PatchedProgram.terminal_reachable
