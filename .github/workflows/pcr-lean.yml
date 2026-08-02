@@ -62,8 +62,9 @@ jobs:
         run: |
           set -o pipefail
           lake env lean PCRLean/AxiomAudit.lean 2>&1 | tee axiom-audit.txt
-          if grep -E 'PCRLean\..*Axiom|ResolutionAxiom|DefectEscapeAxiom|PacketizationAxiom' axiom-audit.txt; then
-            echo 'Project-specific axiom detected.' >&2
+          lake env lean PCRLean/BridgeAxiomAudit.lean 2>&1 | tee -a axiom-audit.txt
+          if grep -E 'PCRLean\..*Axiom|ResolutionAxiom|DefectEscapeAxiom|PacketizationAxiom|sorryAx' axiom-audit.txt; then
+            echo 'Project-specific axiom or unresolved proof placeholder detected.' >&2
             exit 1
           fi
 
