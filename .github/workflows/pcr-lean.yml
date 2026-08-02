@@ -67,8 +67,11 @@ jobs:
           set -euo pipefail
           modules=(
             PCRLean.Algebra.MarkedIdeal
+            PCRLean.Algebra.ControlledTransform
             PCRLean.Algebra.CharacteristicTwoGauge
+            PCRLean.Algebra.SquareCleaningDerivative
             PCRLean.Algebra.OddContactDerivative
+            PCRLean.Algebra.QuasilinearPolar
             PCRLean.Chambers.FrobeniusContent
             PCRLean.Chambers.FrobeniusContentProgram
             PCRLean.Chambers.OddCusp
@@ -89,6 +92,7 @@ jobs:
             PCRLean.NoGo.PersistentObstruction
             PCRLean.NoGo.FreshBirth
             PCRLean.NoGo.CoordinatewiseDropCycle
+            PCRLean.NoGo.FiniteJetBlindness
             PCRLean.Certified.CertifiedIndex
             PCRLean
           )
