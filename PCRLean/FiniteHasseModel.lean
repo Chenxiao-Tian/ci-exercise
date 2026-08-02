@@ -162,16 +162,18 @@ theorem diagonalHasse_basis (t : R) (b c : Fin q) :
     diagonalHasse (R := R) q t b (basisVector (R := R) q c) =
       (Nat.choose c.1 b.1 : R) • basisVector (R := R) q c := by
   by_cases hbc : b.1 ≤ c.1
-  · rw [diagonalHasse, LinearMap.comp_apply,
-      hasse_basis_of_le (R := R) q b c hbc, map_smul]
-    have hsum : b.1 + (c.1 - b.1) = c.1 :=
-      Nat.add_sub_of_le hbc
-    have hlt : b.1 + (c.1 - b.1) < q :=
-      hsum ▸ c.2
-    rw [multiply_basis_of_lt (R := R) q t b
-      ⟨c.1 - b.1, lt_of_le_of_lt (Nat.sub_le _ _) c.2⟩ hlt]
-    have hindex :
-        (⟨b.1 + (c.1 - b.1), hlt⟩ : Fin q) = c := by
+  · let r : Fin q :=
+      ⟨c.1 - b.1, lt_of_le_of_lt (Nat.sub_le _ _) c.2⟩
+    have hhasse :
+        hasse (R := R) q b (basisVector (R := R) q c) =
+          (Nat.choose c.1 b.1 : R) • basisVector (R := R) q r := by
+      simpa [r] using hasse_basis_of_le (R := R) q b c hbc
+    have hsum : b.1 + r.1 = c.1 := by
+      simpa [r] using Nat.add_sub_of_le hbc
+    have hlt : b.1 + r.1 < q := hsum ▸ c.2
+    rw [diagonalHasse, LinearMap.comp_apply, hhasse, map_smul,
+      multiply_basis_of_lt (R := R) q t b r hlt]
+    have hindex : (⟨b.1 + r.1, hlt⟩ : Fin q) = c := by
       apply Fin.ext
       exact hsum
     rw [hindex]
@@ -227,16 +229,30 @@ theorem transfer_projector (t : R) (i j : Fin q) :
       MatrixStableSubmodule.matrixUnit (R := R) i j := by
   apply end_ext_basis (R := R) q
   intro c
-  rw [LinearMap.comp_apply, matrixUnit_basis (R := R) q j j c]
   by_cases hcj : c = j
   · subst c
-    simp only [if_pos rfl]
-    rw [transfer, LinearMap.comp_apply,
+    have hproject :
+        MatrixStableSubmodule.matrixUnit (R := R) j j
+          (basisVector (R := R) q j) =
+            basisVector (R := R) q j := by
+      simpa using matrixUnit_basis (R := R) q j j j
+    have htarget :
+        MatrixStableSubmodule.matrixUnit (R := R) i j
+          (basisVector (R := R) q j) =
+            basisVector (R := R) q i := by
+      simpa using matrixUnit_basis (R := R) q i j j
+    rw [LinearMap.comp_apply, hproject, transfer, LinearMap.comp_apply,
       hasse_basis_self (R := R) q j,
-      multiply_basis_zero (R := R) q t i,
-      matrixUnit_basis (R := R) q i j j, if_pos rfl]
-  · rw [if_neg hcj, map_zero,
-      matrixUnit_basis (R := R) q i j c, if_neg hcj]
+      multiply_basis_zero (R := R) q t i, htarget]
+  · have hproject :
+        MatrixStableSubmodule.matrixUnit (R := R) j j
+          (basisVector (R := R) q c) = 0 := by
+      simpa [hcj] using matrixUnit_basis (R := R) q j j c
+    have htarget :
+        MatrixStableSubmodule.matrixUnit (R := R) i j
+          (basisVector (R := R) q c) = 0 := by
+      simpa [hcj] using matrixUnit_basis (R := R) q i j c
+    rw [LinearMap.comp_apply, hproject, map_zero, htarget]
 
 /-- Primitive finite packet: multiplication operators and Hasse operators only. -/
 def primitivePacket (t : R) :
