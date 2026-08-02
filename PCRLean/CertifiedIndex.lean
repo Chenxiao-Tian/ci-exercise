@@ -15,6 +15,7 @@ import PCRLean.DifferentialOrbitClosure
 import PCRLean.NoetherianOperatorOrbit
 import PCRLean.SplitKernelCentre
 import PCRLean.FiniteKernelCentre
+import PCRLean.ProjectiveKernelCentre
 import PCRLean.NoetherianPatchingCompiler
 import PCRLean.CartierNoetherMaster
 import PCRLean.ActualIdealGluing
