@@ -11,9 +11,9 @@ an actual gated successor and every successor is classified either as a new
 independent trace in one fixed Noetherian ancestor module or as a strict local
 rank drop with unchanged trace memory.
 
-The resulting resolution theorem is fully kernel checked. The module does not
-postulate that arbitrary positive-characteristic singularities already admit
-such a system; constructing it is the remaining geometric theorem.
+The resulting conditional resolution theorem is kernel checked. The module
+does not postulate that arbitrary positive-characteristic singularities already
+admit such a system; constructing it is the remaining geometric theorem.
 -/
 
 namespace PCRLean
@@ -24,39 +24,44 @@ open NoetherianPatchingCompiler
 
 noncomputable section
 
-universe u v w
+universe u v w x
 
 variable {R : Type u} {M : Type v}
 variable [Semiring R] [AddCommMonoid M] [Module R M]
 variable [IsNoetherian R M]
 
-/-- A fully certified geometric system using the patched Noetherian rank. -/
-structure System where
+/-- A fully certified geometric realization of one fixed patched program.  The
+program is an explicit parameter so that the universe of geometric states is
+fixed before the remaining certificate fields are elaborated. -/
+structure System
+    (P : PatchedProgram.{u, v, x} (R := R) (M := M)) where
   Input : Type w
-  P : PatchedProgram (R := R) (M := M)
   initState : Input → P.State
   isResolved : P.State → Prop
   terminal_sound : ∀ s, P.terminal s → isResolved s
-  step_gated : ∀ {child parent}, P.step child parent →
-    Nonempty (CentreGateCertificate P.State child parent)
+  step_gated : ∀ {parent child}, P.step parent child →
+    Nonempty (CentreGateCertificate P.State parent child)
 
 namespace System
 
-variable (S : System (R := R) (M := M))
+variable {P : PatchedProgram.{u, v, x} (R := R) (M := M)}
+variable (S : System (R := R) (M := M) P)
 
 /-- Every input reaches a geometrically resolved state after finitely many
 certified steps. -/
-theorem every_input_resolves (x : S.Input) :
-    ∃ finish,
-      Reaches S.P.step (S.initState x) finish ∧ S.isResolved finish := by
+theorem every_input_resolves (input : S.Input) :
+    ∃ finish : P.State,
+      Reaches P.step (S.initState input) finish ∧ S.isResolved finish := by
   obtain ⟨finish, hreach, hterminal⟩ :=
-    S.P.terminal_reachable (S.initState x)
+    NoetherianPatchingCompiler.PatchedProgram.terminal_reachable
+      P (S.initState input)
   exact ⟨finish, hreach, S.terminal_sound finish hterminal⟩
 
-/-- Every geometric step exposes all mandatory centre and transform gates. -/
-theorem every_step_all_gates {child parent : S.P.State}
-    (h : S.P.step child parent) :
-    ∃ C : CentreGateCertificate S.P.State child parent,
+/-- Every forward geometric step exposes all mandatory centre and transform
+gates. -/
+theorem every_step_all_gates {parent child : P.State}
+    (h : P.step parent child) :
+    ∃ C : CentreGateCertificate P.State parent child,
       C.actualFiniteTypeIdeal ∧ C.regularImmersion ∧
       C.markedPermissible ∧ C.passiveSafe ∧ C.boundarySNC ∧
       C.allStandardCharts ∧ C.overlapGluing ∧ C.hereditaryReentry ∧
@@ -67,16 +72,18 @@ theorem every_step_all_gates {child parent : S.P.State}
 /-- No infinite branch can satisfy the fixed-memory/local-drop
 classification. -/
 theorem no_infinite_branch :
-    ¬ ∃ f : Nat → S.P.State,
-      ∀ n, S.P.step (f n) (f (n + 1)) :=
-  S.P.no_infinite_execution
+    ¬ ∃ f : Nat → P.State,
+      ∀ n, P.step (f n) (f (n + 1)) :=
+  NoetherianPatchingCompiler.PatchedProgram.no_infinite_execution P
 
 end System
 
 /-- The exact universal target, represented as a proposition rather than as a
-project axiom. -/
+project axiom.  It asks for a patched program and a fully gated realization of
+that program for the chosen input language. -/
 def UniversalSystemExists (Input : Type w) : Prop :=
-  ∃ S : System (R := R) (M := M), S.Input = Input
+  ∃ (P : PatchedProgram.{u, v, x} (R := R) (M := M)),
+    ∃ S : System (R := R) (M := M) P, S.Input = Input
 
 end
 
