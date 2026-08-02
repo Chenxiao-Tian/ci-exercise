@@ -56,11 +56,11 @@ def asqDebt (m r : Nat) : Nat := min m (r / 2)
 
 /-- The ASQ debt never exceeds either visible bound. -/
 theorem asqDebt_le_left (m r : Nat) : asqDebt m r ≤ m := by
-  exact min_le_left _ _
+  exact Nat.min_le_left _ _
 
 /-- The ASQ debt never exceeds half the tail order. -/
 theorem asqDebt_le_right (m r : Nat) : asqDebt m r ≤ r / 2 := by
-  exact min_le_right _ _
+  exact Nat.min_le_right _ _
 
 end QuadraticDebt
 end PCRLean
