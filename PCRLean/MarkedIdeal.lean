@@ -7,7 +7,7 @@ universe u
 
 variable (R : Type u) [CommRing R]
 
-/-- An affine marked ideal.  This is the finite algebraic input used by the
+/-- An affine marked ideal. This is the finite algebraic input used by the
 explicit chamber proofs. -/
 structure Packet where
   ideal : Ideal R
@@ -32,7 +32,8 @@ theorem permissible_span_singleton {f : R} {m : Nat} (hm : 0 < m)
 /-- Permissibility is monotone when the centre ideal is enlarged. -/
 theorem permissible_mono {P : Packet R} {C D : Ideal R}
     (hP : Permissible P C) (hCD : C ≤ D) : Permissible P D := by
-  exact hP.trans (Ideal.pow_le_pow_right hCD P.mark)
+  apply hP.trans
+  gcongr
 
 /-- A product of equations each lying in the appropriate centre powers lies in
 the sum of the marks. -/
@@ -47,14 +48,15 @@ theorem sup_permissible {I J C : Ideal R} {m : Nat}
     (hI : I ≤ C ^ m) (hJ : J ≤ C ^ m) : I ⊔ J ≤ C ^ m := by
   exact sup_le hI hJ
 
-/-- Radical support is strictly weaker than marked-square containment. -/
-theorem radical_support_not_square_span :
-    Polynomial.X ∈ (Ideal.span {Polynomial.X} : Ideal (Polynomial ℤ)).radical ∧
+/-- Ordinary generator support is strictly weaker than marked-square
+containment: `X` is in `(X)` but not in `(X^2)`. -/
+theorem generator_support_not_square_span :
+    Polynomial.X ∈ (Ideal.span {Polynomial.X} : Ideal (Polynomial ℤ)) ∧
       Polynomial.X ∉ (Ideal.span {Polynomial.X ^ 2} : Ideal (Polynomial ℤ)) := by
   constructor
-  · exact Ideal.subset_radical (Ideal.mem_span_singleton_self Polynomial.X)
+  · exact Ideal.mem_span_singleton_self Polynomial.X
   · rw [Ideal.mem_span_singleton]
-    exact Polynomial.not_dvd_of_natDegree_lt (by simp) (by norm_num)
+    exact (Polynomial.monic_X.pow 2).not_dvd_of_natDegree_lt (by simp) (by simp)
 
 end MarkedIdeal
 end PCRLean
