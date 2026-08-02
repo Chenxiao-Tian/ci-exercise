@@ -1,5 +1,7 @@
 import PCRLean.Algebra.MarkedIdeal
+import PCRLean.Algebra.ControlledTransform
 import PCRLean.Algebra.CharacteristicTwoGauge
+import PCRLean.Algebra.SquareCleaningDerivative
 import PCRLean.Algebra.OddContactDerivative
 import PCRLean.Chambers.FrobeniusContent
 import PCRLean.Chambers.FrobeniusContentProgram
@@ -63,8 +65,12 @@ end PCRLean.Certified
 #print axioms PCRLean.Algebra.oddCusp_principal_permissible
 #print axioms PCRLean.Algebra.ramifiedQuadratic_principal_permissible
 #print axioms PCRLean.Algebra.artinSchreier_principal_permissible
+#print axioms PCRLean.Algebra.ControlledTransform.Certificate.compose
+#print axioms PCRLean.Algebra.ControlledTransform.ChartPackage.factorization
 #print axioms PCRLean.Algebra.CharacteristicTwoGauge.purelyInseparable_cleaning
 #print axioms PCRLean.Algebra.CharacteristicTwoGauge.artinSchreier_cleaning
+#print axioms PCRLean.Algebra.SquareCleaningDerivative.derivative_square
+#print axioms PCRLean.Algebra.SquareCleaningDerivative.jacobian_span_invariant
 #print axioms PCRLean.Algebra.OddContactDerivative.derivative_odd_power
 #print axioms PCRLean.Algebra.OddContactDerivative.derivative_even_power
 #print axioms PCRLean.Chambers.FrobeniusContent.active_factorization
