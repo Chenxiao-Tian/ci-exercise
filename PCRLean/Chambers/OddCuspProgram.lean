@@ -66,7 +66,7 @@ inductive Step : State → State → Prop
 /-- Every actual chart edge strictly lowers the complete local rank. -/
 theorem step_decreases {child parent : State} (h : Step child parent) :
     rank child < rank parent := by
-  cases h <;> simp [rank] <;> omega
+  cases h <;> simp [rank]
 
 /-- The local odd-cusp chart tree is well founded. -/
 def rankedSystem : PCRLean.Framework.RankedSystem where
