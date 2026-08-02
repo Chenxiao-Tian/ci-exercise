@@ -27,8 +27,13 @@ itself belongs to its Jacobian ideal. -/
 theorem self_mem_jacobian_of_odd_homogeneous
     {H : MvPolynomial σ R} {N : Nat}
     (hH : H.IsHomogeneous (2 * N + 1)) : H ∈ jacobianIdeal H := by
-  rw [← EulerRadicial.odd_euler_identity hH]
-  exact (jacobianIdeal H).sum_mem fun i _ => X_mul_pderiv_mem H i
+  have hsum :
+      (∑ i : σ, MvPolynomial.X i * MvPolynomial.pderiv i H) ∈ jacobianIdeal H := by
+    exact (jacobianIdeal H).sum_mem fun i _ => X_mul_pderiv_mem H i
+  exact Eq.mp
+    (congrArg (fun Q : MvPolynomial σ R => Q ∈ jacobianIdeal H)
+      (EulerRadicial.odd_euler_identity hH))
+    hsum
 
 /-- Square cleaning leaves the full Jacobian ideal unchanged. -/
 theorem jacobianIdeal_square_cleaning (H G : MvPolynomial σ R) :
