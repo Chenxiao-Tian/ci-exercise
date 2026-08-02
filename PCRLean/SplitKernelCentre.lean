@@ -79,7 +79,7 @@ def fromProd : (LinearMap.ker S.map × W) →ₗ[K] V where
   map_smul' a x := by
     dsimp
     rw [map_smul]
-    exact smul_add a (x.1 : V) (S.rightInv x.2)
+    exact (smul_add a (x.1 : V) (S.rightInv x.2)).symm
 
 @[simp] theorem fromProd_toProd (v : V) :
     S.fromProd (S.toProd v) = v := by
