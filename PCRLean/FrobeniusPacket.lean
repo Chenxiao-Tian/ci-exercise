@@ -39,16 +39,18 @@ variable {R : Type*} [CommRing R]
 theorem principalRoot_active_identity (x z G : R) (q N : Nat) :
     (x * z) ^ q + x ^ (q * (N + 1)) * G =
       x ^ q * (z ^ q + x ^ (q * N) * G) := by
-  have hqN : q * (N + 1) = q + q * N := by omega
+  have hqN : q * (N + 1) = q + q * N := by
+    simp [Nat.mul_add, Nat.add_comm]
   rw [mul_pow, hqN, pow_add]
   ring
 
-/-- Exact sibling-chart identity for the same principal root packet.  After
+/-- Exact sibling-chart identity for the same principal root packet. After
 controlled division by `z^q` the first term is the unit `1`. -/
 theorem principalRoot_sibling_identity (z X G : R) (q N : Nat) :
     z ^ q + (z * X) ^ (q * (N + 1)) * G =
       z ^ q * (1 + z ^ (q * N) * X ^ (q * (N + 1)) * G) := by
-  have hqN : q * (N + 1) = q + q * N := by omega
+  have hqN : q * (N + 1) = q + q * N := by
+    simp [Nat.mul_add, Nat.add_comm]
   rw [mul_pow, hqN, pow_add]
   ring
 
