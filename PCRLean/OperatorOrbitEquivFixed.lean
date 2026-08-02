@@ -6,7 +6,7 @@ import PCRLean.NoetherianOperatorOrbit
 
 An operator-conjugating linear equivalence carries every finite operator word
 and the generated orbit module to the corresponding data in the new
-presentation.  The geometric theorem producing such equivalences from changes
+presentation. The geometric theorem producing such equivalences from changes
 of marked presentation remains separate.
 -/
 
@@ -49,7 +49,7 @@ theorem map_mem_orbitSet
     {d : D} (hd : d ∈ NoetherianOperatorOrbit.orbitSet ops seed) :
     e d ∈ NoetherianOperatorOrbit.orbitSet ops' (e seed) := by
   rcases hd with ⟨word, rfl⟩
-  exact ⟨word, (applyWord_intertwines e ops ops' h word seed).symm⟩
+  exact ⟨word, applyWord_intertwines e ops ops' h word seed⟩
 
 /-- The full operator-orbit submodule is carried exactly to the orbit module
 in the equivalent presentation. -/
