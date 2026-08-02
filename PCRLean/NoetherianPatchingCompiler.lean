@@ -7,10 +7,10 @@ import PCRLean.ResolutionCompiler
 This file combines two historically distinct termination mechanisms.
 A geometric step may either enlarge one fixed Noetherian ancestor-memory module
 (the Hilbert--Noether mechanism), or keep that memory unchanged and decrease a
-finite local rank (the Hironaka/finite-centre-word mechanism).  The resulting
+finite local rank (the Hironaka/finite-centre-word mechanism). The resulting
 lexicographic relation is well founded.
 
-The theorem is a genuine termination compiler.  It does not assert that every
+The theorem is a genuine termination compiler. It does not assert that every
 positive-characteristic blowup step satisfies the required classification;
 that is the geometric birth-realization theorem.
 -/
@@ -38,7 +38,8 @@ def RankLt : Rank (R := R) (M := M) → Rank (R := R) (M := M) → Prop :=
 well-foundedness. -/
 theorem rankLt_wellFounded : WellFounded (RankLt (R := R) (M := M)) := by
   exact WellFounded.prod_lex
-    (inferInstance : IsNoetherian R M).wf
+    (IsNoetherian.wf (R := R) (M := M)
+      (inferInstance : IsNoetherian R M))
     Nat.lt_wfRel.wf
 
 /-- One of the two certified transition modes. -/
@@ -61,7 +62,7 @@ theorem rankStep_wellFounded :
   exact Subrelation.wf rankStep_decreases rankLt_wellFounded
 
 /-- A geometric program equipped with a fixed Noetherian memory and a finite
-local rank.  `classify` is the substantive bridge: every actual geometric step
+local rank. `classify` is the substantive bridge: every actual geometric step
 must either create a genuinely independent ancestor trace or pay the local
 rank without changing memory. -/
 structure PatchedProgram where
@@ -88,7 +89,7 @@ theorem step_decreases {child parent : P.State} (h : P.step child parent) :
   exact rankStep_decreases (P.classify h)
 
 /-- The patched program compiled into the general verified termination
-backend.  Terminal soundness is deliberately supplied by a later geometric
+backend. Terminal soundness is deliberately supplied by a later geometric
 layer rather than hidden here. -/
 def toProgram : ResolutionCompiler.Program where
   State := P.State
