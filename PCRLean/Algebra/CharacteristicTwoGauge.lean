@@ -55,7 +55,9 @@ theorem tail_update_compose (a u g h : R) :
 difference between two cleaned tails modulo the square image. -/
 theorem purelyInseparable_tail_difference (u g h : R) :
     (u + g ^ 2) - (u + h ^ 2) = g ^ 2 + h ^ 2 := by
-  simp only [CharTwo.sub_eq_add]
-  ring
+  rw [CharTwo.sub_eq_add]
+  calc
+    (u + g ^ 2) + (u + h ^ 2) = (u + u) + (g ^ 2 + h ^ 2) := by ac_rfl
+    _ = g ^ 2 + h ^ 2 := by rw [CharTwo.add_self_eq_zero, zero_add]
 
 end PCRLean.Algebra.CharacteristicTwoGauge
