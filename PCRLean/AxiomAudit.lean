@@ -38,6 +38,10 @@ import PCRLean
 #print axioms PCRLean.NoetherianOperatorOrbit.exists_finite_kernel_packet
 #print axioms PCRLean.SplitKernelCentre.SplitMap.equivKernelProd
 #print axioms PCRLean.SplitKernelCentre.SplitMap.isCompl_kernel_range_section
+#print axioms PCRLean.FiniteKernelCentre.mem_ker_evaluationMap_iff
+#print axioms PCRLean.FiniteKernelCentre.SplitPacket.equivKernelProd
+#print axioms PCRLean.FiniteKernelCentre.OrbitPacket.annihilator_eq_ker_evaluation
+#print axioms PCRLean.FiniteKernelCentre.OrbitPacket.persistentKernel_isCompl
 #print axioms PCRLean.NoetherianPatchingCompiler.rankLt_wellFounded
 #print axioms PCRLean.NoetherianPatchingCompiler.rankStep_wellFounded
 #print axioms PCRLean.NoetherianPatchingCompiler.PatchedProgram.terminal_reachable
