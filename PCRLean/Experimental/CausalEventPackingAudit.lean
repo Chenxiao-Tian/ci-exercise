@@ -1,0 +1,7 @@
+import PCRLean.Experimental.CausalEventPacking
+
+#print axioms PCRLean.Experimental.CausalEventPacking.Section.chosenSource_mem
+#print axioms PCRLean.Experimental.CausalEventPacking.Section.source_owner_unique
+#print axioms PCRLean.Experimental.CausalEventPacking.Section.chosenSource_injective
+#print axioms PCRLean.Experimental.CausalEventPacking.Section.card_events_le_card_sources
+#print axioms PCRLean.Experimental.CausalEventPacking.Section.no_fresh_disjoint_support_of_cover
