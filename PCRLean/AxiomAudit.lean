@@ -44,6 +44,10 @@ import PCRLean
 #print axioms PCRLean.OperatorSaturation.saturation_le_of_le_of_stable
 #print axioms PCRLean.OperatorSaturation.saturation_idempotent
 #print axioms PCRLean.OperatorSaturation.exists_finite_raw_saturation_generators
+#print axioms PCRLean.DifferentialIdealSaturation.le_saturation
+#print axioms PCRLean.DifferentialIdealSaturation.saturation_stable
+#print axioms PCRLean.DifferentialIdealSaturation.saturation_idempotent
+#print axioms PCRLean.DifferentialIdealSaturation.saturation_fg
 #print axioms PCRLean.SplitKernelCentre.SplitMap.equivKernelProd
 #print axioms PCRLean.SplitKernelCentre.SplitMap.isCompl_kernel_range_rightInv
 #print axioms PCRLean.FiniteKernelCentre.mem_ker_evaluationMap_iff
