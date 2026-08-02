@@ -15,6 +15,7 @@ import PCRLean.DifferentialOrbitKernel
 import PCRLean.DifferentialOrbitClosure
 import PCRLean.NoetherianOperatorOrbit
 import PCRLean.OperatorSaturation
+import PCRLean.OperatorConjugacy
 import PCRLean.SplitKernelCentre
 import PCRLean.FiniteKernelCentre
 import PCRLean.ProjectiveKernelCentre
