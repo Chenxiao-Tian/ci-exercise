@@ -5,13 +5,14 @@ import PCRLean.SplitKernelCentre
 /-!
 # Finite operator packets and split kernel centres
 
-A Noetherian operator orbit admits a finite packet.  Pair that packet with an
-ambient direction space.  The finite evaluation map cuts out the persistent
-kernel.  If the evaluation map is split surjective, the kernel is a direct
-summand and hence the local linear model of a regular centre.
+A Noetherian operator orbit admits a finite packet. Pair that packet with an
+ambient direction space. The finite evaluation map cuts out the persistent
+kernel. A linearly independent trace packet has a surjective evaluation map,
+so it admits a linear section and its kernel is automatically a direct summand.
 
-The geometric problem is to prove this split-surjectivity locally on the
-correct constant-rank stratum and to glue the resulting frames.
+The geometric problem is to realize the finite packet as a locally free
+constant-rank coefficient bundle and to glue the resulting linear centres as
+actual regular closed subschemes.
 -/
 
 namespace PCRLean
@@ -61,11 +62,62 @@ theorem mem_ker_evaluationMap_iff
     ext d
     exact h d.1 d.2
 
+/-- Coercion of linear functionals to ordinary functions, as a linear map. -/
+def dualToFun : DualV (K := K) (V := V) →ₗ[K] (V → K) where
+  toFun f := fun x => f x
+  map_add' f g := rfl
+  map_smul' a f := rfl
+
+/-- Coercion of linear functionals to functions is injective. -/
+theorem dualToFun_injective :
+    Function.Injective (dualToFun (K := K) (V := V)) := by
+  intro f g h
+  ext x
+  exact congrFun h x
+
+/-- A linearly independent finite family of functionals gives a surjective
+coordinate-evaluation map. This is the algebraic bridge from an independent
+Hasse--Cartier packet to a split persistent direction kernel. -/
+theorem evaluationMap_surjective_of_linearIndependent
+    (pair : D →ₗ[K] DualV (K := K) (V := V))
+    (s : Finset D)
+    (hli : LinearIndependent K (fun d : s => pair d.1)) :
+    Function.Surjective (evaluationMap pair s) := by
+  rw [← LinearMap.range_eq_top]
+  let coeDual := dualToFun (K := K) (V := V)
+  let f : s → V → K := fun d => coeDual (pair d.1)
+  have hliFun : LinearIndependent K f := by
+    have hmap := hli.map_injOn coeDual
+      (dualToFun_injective (K := K) (V := V)).injOn
+    simpa [f, coeDual, Function.comp_def] using hmap
+  have hspan :
+      Submodule.span K (Set.range (Function.flip f)) = ⊤ :=
+    (span_flip_eq_top_iff_linearIndependent).2 hliFun
+  apply top_unique
+  rw [← hspan]
+  apply Submodule.span_le.mpr
+  rintro y ⟨x, rfl⟩
+  exact ⟨x, by
+    ext d
+    rfl⟩
+
 /-- A finite packet whose evaluation map has a chosen section. -/
 structure SplitPacket (pair : D →ₗ[K] DualV (K := K) (V := V))
     (s : Finset D) where
   section : ((d : s) → K) →ₗ[K] V
   rightInverse : (evaluationMap pair s).comp section = LinearMap.id
+
+/-- Every linearly independent finite trace packet admits a split packet
+certificate. -/
+theorem exists_splitPacket_of_linearIndependent
+    (pair : D →ₗ[K] DualV (K := K) (V := V))
+    (s : Finset D)
+    (hli : LinearIndependent K (fun d : s => pair d.1)) :
+    Nonempty (SplitPacket pair s) := by
+  have hsurj := evaluationMap_surjective_of_linearIndependent pair s hli
+  rcases (evaluationMap pair s).exists_rightInverse_of_surjective
+      (LinearMap.range_eq_top.mpr hsurj) with ⟨section, hsection⟩
+  exact ⟨⟨section, hsection⟩⟩
 
 namespace SplitPacket
 
@@ -144,6 +196,17 @@ theorem persistentKernel_isCompl
       (LinearMap.range S.section) := by
   rw [P.annihilator_eq_ker_evaluation]
   exact S.isCompl_kernel_range_section
+
+/-- Linear independence of the finite trace packet is already sufficient to
+produce a complementary persistent-kernel direction. -/
+theorem exists_complement_of_linearIndependent
+    (hli : LinearIndependent K (fun d : P.packet => pair d.1)) :
+    ∃ Q : Submodule K V,
+      IsCompl
+        (NoetherianOperatorOrbit.annihilatorVia pair
+          (NoetherianOperatorOrbit.orbitModule ops seed)) Q := by
+  rcases exists_splitPacket_of_linearIndependent pair P.packet hli with ⟨S⟩
+  exact ⟨LinearMap.range S.section, P.persistentKernel_isCompl S⟩
 
 end OrbitPacket
 
