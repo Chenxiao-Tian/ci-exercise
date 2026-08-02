@@ -1,17 +1,18 @@
 import Mathlib
 import Mathlib.Algebra.MvPolynomial.Rename
 import Mathlib.RingTheory.Ideal.Quotient.Operations
+import Mathlib.RingTheory.RegularLocalRing.Polynomial
 
 /-!
 # Coordinate kernels as actual affine regular-centre models
 
 An injective map of variable sets embeds a smaller polynomial ring into a
-larger one.  Killing the complementary variables is a surjective algebra
-retraction.  Its kernel is therefore an actual ideal, and the quotient by this
+larger one. Killing the complementary variables is a surjective algebra
+retraction. Its kernel is therefore an actual ideal, and the quotient by this
 ideal is canonically isomorphic to the smaller polynomial ring.
 
 This is the affine algebraic core of the assertion that a split linear kernel
-cuts out a regular coordinate centre.  The geometric application still has to
+cuts out a regular coordinate centre. The geometric application still has to
 choose such coordinates locally, prove overlap compatibility, and descend the
 ideal sheaf.
 -/
@@ -102,6 +103,13 @@ theorem quotient_nonempty (f : σ → τ) (hf : Function.Injective f) :
     Nonempty ((MvPolynomial τ R ⧸ ideal (R := R) f hf) ≃+*
       MvPolynomial σ R) :=
   ⟨quotientEquiv (R := R) f hf⟩
+
+/-- When the coefficient ring is regular and the retained coordinate set is
+finite, the quotient by the actual coordinate-kernel ideal is a regular ring. -/
+theorem quotient_isRegularRing [IsRegularRing R] [Finite σ]
+    (f : σ → τ) (hf : Function.Injective f) :
+    IsRegularRing (MvPolynomial τ R ⧸ ideal (R := R) f hf) := by
+  exact IsRegularRing.of_ringEquiv (quotientEquiv (R := R) f hf).symm
 
 end
 
