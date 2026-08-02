@@ -34,8 +34,12 @@ theorem correctedRoot_eq_of_coboundary
     (i j : ι) :
     correctedRoot root gauge i = correctedRoot root gauge j := by
   have hij := h i j
-  simp [transition, correctedRoot] at hij ⊢
-  linarith
+  change root j - root i = gauge j - gauge i at hij
+  change root i - gauge i = root j - gauge j
+  calc
+    root i - gauge i = root i + (gauge j - gauge i) - gauge j := by abel
+    _ = root i + (root j - root i) - gauge j := by rw [← hij]
+    _ = root j - gauge j := by abel
 
 /-- Given one chosen patch, a vanishing Čech obstruction produces a single
 global value represented by every corrected local root. -/
@@ -59,7 +63,7 @@ theorem globalRoot_independent
     correctedRoot root gauge i = correctedRoot root gauge j :=
   correctedRoot_eq_of_coboundary root gauge h i j
 
-/-- A nonzero cycle sum refutes coboundary effectivity.  This is the finite
+/-- A nonzero cycle sum refutes coboundary effectivity. This is the finite
 algebraic no-go certificate used by the torsor layer. -/
 theorem not_coboundary_of_triangle_defect
     (c : ι → ι → A) {i j k : ι}
