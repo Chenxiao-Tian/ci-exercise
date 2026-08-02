@@ -4,6 +4,7 @@ import PCRLean.QuadraticDebt
 import PCRLean.NoRecharge
 import PCRLean.PolynomialCharts
 import PCRLean.SourcePartition
+import PCRLean.MarkedIdeal
 import PCRLean.ResolutionCompiler
 
 namespace PCRLean
