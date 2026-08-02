@@ -12,6 +12,7 @@ import PCRLean.Chambers.ArtinSchreierProgram
 import PCRLean.Chambers.AllChartPrograms
 import PCRLean.Termination.Generational
 import PCRLean.Termination.FiniteSources
+import PCRLean.Termination.GenerationSystem
 import PCRLean.Termination.PacketMultiset
 import PCRLean.Framework.RankedSystem
 import PCRLean.Framework.FiniteChartProgram
