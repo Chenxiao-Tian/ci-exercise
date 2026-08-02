@@ -14,6 +14,9 @@ import PCRLean.Chambers.RamifiedQuadratic
 import PCRLean.Chambers.RamifiedQuadraticProgram
 import PCRLean.Chambers.ArtinSchreier
 import PCRLean.Chambers.ArtinSchreierProgram
+import PCRLean.Chambers.PurelyInseparable
+import PCRLean.Chambers.PurelyInseparableProgram
+import PCRLean.Chambers.RadicialDifferential
 import PCRLean.Chambers.AllChartPrograms
 import PCRLean.Chambers.ClosedGrammar
 import PCRLean.Termination.Generational
