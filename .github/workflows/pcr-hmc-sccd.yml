@@ -13,8 +13,8 @@ permissions:
   contents: read
 
 concurrency:
-  group: pcr-hmc-sccd-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+  group: pcr-hmc-sccd-${{ github.sha }}
+  cancel-in-progress: false
 
 jobs:
   hmc-sccd-check:
@@ -58,7 +58,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: pcr-hmc-sccd-audit
+          name: pcr-hmc-sccd-audit-${{ github.sha }}
           path: |
             hmc-sccd-build.txt
             hmc-sccd-axioms.txt
