@@ -18,11 +18,6 @@ arbitrary-input enrollment theorem is not assumed or hidden.
 
 namespace PCRLean.Chambers.ClosedGrammar
 
-namespace F := PCRLean.Chambers.FrobeniusContentProgram
-namespace O := PCRLean.Chambers.OddCuspProgram
-namespace R := PCRLean.Chambers.RamifiedQuadraticProgram
-namespace A := PCRLean.Chambers.ArtinSchreierProgram
-
 /-- Packet families whose current certified programs end in resolved leaves. -/
 inductive ResolvedPacket where
   | frobeniusContent (depth : ℕ)
@@ -34,27 +29,36 @@ inductive ResolvedPacket where
 def Resolves : ResolvedPacket → Prop
   | .frobeniusContent depth =>
       ∃ finish,
-        Relation.ReflTransGen F.Step finish (F.State.active depth) ∧
-        F.resolved finish
+        Relation.ReflTransGen
+          PCRLean.Chambers.FrobeniusContentProgram.Step finish
+          (PCRLean.Chambers.FrobeniusContentProgram.State.active depth) ∧
+        PCRLean.Chambers.FrobeniusContentProgram.resolved finish
   | .oddCusp depth =>
       ∃ finish,
-        Relation.ReflTransGen O.Step finish (O.State.active depth) ∧
-        O.resolved finish
+        Relation.ReflTransGen
+          PCRLean.Chambers.OddCuspProgram.Step finish
+          (PCRLean.Chambers.OddCuspProgram.State.active depth) ∧
+        PCRLean.Chambers.OddCuspProgram.resolved finish
   | .ramifiedQuadratic depth =>
       ∃ finish,
-        Relation.ReflTransGen R.Step finish (R.State.active depth) ∧
-        R.resolved finish
+        Relation.ReflTransGen
+          PCRLean.Chambers.RamifiedQuadraticProgram.Step finish
+          (PCRLean.Chambers.RamifiedQuadraticProgram.State.active depth) ∧
+        PCRLean.Chambers.RamifiedQuadraticProgram.resolved finish
 
 /-- Every packet in the current resolved grammar has a kernel-checked finite
 path to a resolved state. -/
 theorem resolves_every_packet (p : ResolvedPacket) : Resolves p := by
   cases p with
   | frobeniusContent depth =>
-      exact F.program.reaches_resolved (F.State.active depth)
+      exact PCRLean.Chambers.FrobeniusContentProgram.program.reaches_resolved
+        (PCRLean.Chambers.FrobeniusContentProgram.State.active depth)
   | oddCusp depth =>
-      exact O.program.reaches_resolved (O.State.active depth)
+      exact PCRLean.Chambers.OddCuspProgram.program.reaches_resolved
+        (PCRLean.Chambers.OddCuspProgram.State.active depth)
   | ramifiedQuadratic depth =>
-      exact R.program.reaches_resolved (R.State.active depth)
+      exact PCRLean.Chambers.RamifiedQuadraticProgram.program.reaches_resolved
+        (PCRLean.Chambers.RamifiedQuadraticProgram.State.active depth)
 
 /-- The wider grammar includes the characteristic-two Artin--Schreier family,
 whose certified program reaches a classified exit rather than claiming that
@@ -69,14 +73,18 @@ def HasCertifiedOutcome : ClassifiedPacket → Prop
   | .resolved packet => Resolves packet
   | .artinSchreier m r =>
       ∃ finish,
-        Relation.ReflTransGen A.Step finish (A.State.active m r) ∧
-        A.classifiedExit finish
+        Relation.ReflTransGen
+          PCRLean.Chambers.ArtinSchreierProgram.Step finish
+          (PCRLean.Chambers.ArtinSchreierProgram.State.active m r) ∧
+        PCRLean.Chambers.ArtinSchreierProgram.classifiedExit finish
 
 /-- Every packet in the current wider grammar reaches its certified outcome. -/
 theorem classifies_every_packet (p : ClassifiedPacket) :
     HasCertifiedOutcome p := by
   cases p with
   | resolved packet => exact resolves_every_packet packet
-  | artinSchreier m r => exact A.program.reaches_resolved (A.State.active m r)
+  | artinSchreier m r =>
+      exact PCRLean.Chambers.ArtinSchreierProgram.program.reaches_resolved
+        (PCRLean.Chambers.ArtinSchreierProgram.State.active m r)
 
 end PCRLean.Chambers.ClosedGrammar
