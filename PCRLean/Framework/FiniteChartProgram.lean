@@ -28,7 +28,7 @@ structure FiniteChartProgram where
     rank child < rank parent
   child_legal : ∀ {child parent}, child ∈ children parent →
     legal child parent
-  progress : ∀ parent, ¬ terminal parent → (children parent).Nonempty
+  progress : ∀ parent, ¬ terminal parent → children parent ≠ []
   terminal_resolved : ∀ {state}, terminal state → resolved state
 
 namespace FiniteChartProgram
@@ -52,7 +52,7 @@ inductive ResolvesAll : P.State → Prop
   | terminal {state} : P.terminal state → ResolvesAll state
   | branch {state} :
       ¬ P.terminal state →
-      (P.children state).Nonempty →
+      P.children state ≠ [] →
       (∀ child, child ∈ P.children state → P.legal child state) →
       (∀ child, child ∈ P.children state → ResolvesAll child) →
       ResolvesAll state
@@ -68,8 +68,7 @@ theorem resolvesAll (start : P.State) : P.ResolvesAll start := by
           (fun child hmem => P.child_legal hmem)
           (fun child hmem => ih child hmem)
 
-/-- Every leaf occurring in a certified all-chart tree is terminal.  This
-predicate is useful when extracting a paper-level terminal statement. -/
+/-- A leaf is a state whose complete successor list is empty. -/
 def IsLeaf (state : P.State) : Prop :=
   P.children state = []
 
@@ -77,9 +76,7 @@ def IsLeaf (state : P.State) : Prop :=
 theorem terminal_of_leaf {state : P.State} (hleaf : P.IsLeaf state) :
     P.terminal state := by
   by_contra hterminal
-  obtain ⟨child, hchild⟩ := P.progress state hterminal
-  rw [hleaf] at hchild
-  simpa using hchild
+  exact (P.progress state hterminal) hleaf
 
 /-- Therefore every leaf is resolved. -/
 theorem resolved_of_leaf {state : P.State} (hleaf : P.IsLeaf state) :
