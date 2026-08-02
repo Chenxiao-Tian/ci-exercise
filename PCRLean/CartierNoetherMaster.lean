@@ -30,12 +30,12 @@ variable {R : Type u} {M : Type v}
 variable [Semiring R] [AddCommMonoid M] [Module R M]
 variable [IsNoetherian R M]
 
-/-- A fully certified geometric realization of one fixed patched program. The
-program is an explicit parameter so that the universe of geometric states is
-fixed before the remaining certificate fields are elaborated. -/
+/-- A fully certified geometric realization of one fixed patched program and
+one fixed input language. Both are explicit parameters, which keeps all
+subsequent dependent projections universe-stable. -/
 structure System
-    (P : PatchedProgram.{u, v, x} (R := R) (M := M)) where
-  Input : Type w
+    (P : PatchedProgram.{u, v, x} (R := R) (M := M))
+    (Input : Type w) where
   initState : Input → P.State
   isResolved : P.State → Prop
   terminal_sound : ∀ s, P.terminal s → isResolved s
@@ -45,11 +45,12 @@ structure System
 namespace System
 
 variable {P : PatchedProgram.{u, v, x} (R := R) (M := M)}
-variable (S : System (R := R) (M := M) P)
+variable {Input : Type w}
+variable (S : System (R := R) (M := M) P Input)
 
 /-- Every input reaches a geometrically resolved state after finitely many
 certified steps. -/
-theorem every_input_resolves (input : S.Input) :
+theorem every_input_resolves (input : Input) :
     ∃ finish : P.State,
       Reaches P.step (S.initState input) finish ∧ S.isResolved finish := by
   obtain ⟨finish, hreach, hterminal⟩ :=
@@ -66,7 +67,7 @@ theorem every_step_all_gates {parent child : P.State}
       C.markedPermissible ∧ C.passiveSafe ∧ C.boundarySNC ∧
       C.allStandardCharts ∧ C.overlapGluing ∧ C.hereditaryReentry ∧
       C.nonidentity ∧ C.rankDecrease := by
-  obtain ⟨C⟩ := CartierNoetherMaster.System.step_gated S h
+  obtain ⟨C⟩ := System.step_gated S h
   exact ⟨C, C.all_gates⟩
 
 /-- No infinite branch can satisfy the fixed-memory/local-drop
@@ -82,8 +83,8 @@ end System
 project axiom. It asks for a patched program and a fully gated realization of
 that program for the chosen input language. -/
 def UniversalSystemExists (Input : Type w) : Prop :=
-  ∃ (P : PatchedProgram.{u, v, x} (R := R) (M := M)),
-    ∃ S : System (R := R) (M := M) P, S.Input = Input
+  ∃ P : PatchedProgram.{u, v, x} (R := R) (M := M),
+    Nonempty (System (R := R) (M := M) P Input)
 
 end
 
