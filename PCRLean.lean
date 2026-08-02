@@ -3,6 +3,7 @@ import PCRLean.Algebra.ControlledTransform
 import PCRLean.Algebra.CharacteristicTwoGauge
 import PCRLean.Algebra.SquareCleaningDerivative
 import PCRLean.Algebra.OddContactDerivative
+import PCRLean.Algebra.QuasilinearPolar
 import PCRLean.Chambers.FrobeniusContent
 import PCRLean.Chambers.FrobeniusContentProgram
 import PCRLean.Chambers.OddCusp
@@ -23,4 +24,5 @@ import PCRLean.Framework.UniversalCompiler
 import PCRLean.NoGo.PersistentObstruction
 import PCRLean.NoGo.FreshBirth
 import PCRLean.NoGo.CoordinatewiseDropCycle
+import PCRLean.NoGo.FiniteJetBlindness
 import PCRLean.Certified.CertifiedIndex
