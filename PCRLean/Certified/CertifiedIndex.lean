@@ -4,6 +4,7 @@ import PCRLean.Algebra.CharacteristicTwoGauge
 import PCRLean.Algebra.SquareCleaningDerivative
 import PCRLean.Algebra.OddContactDerivative
 import PCRLean.Algebra.QuasilinearPolar
+import PCRLean.Algebra.PerfectQuasilinearRoot
 import PCRLean.Chambers.FrobeniusContent
 import PCRLean.Chambers.FrobeniusContentProgram
 import PCRLean.Chambers.OddCusp
@@ -79,6 +80,10 @@ end PCRLean.Certified
 #print axioms PCRLean.Algebra.QuasilinearPolar.frobenius_polar_zero
 #print axioms PCRLean.Algebra.QuasilinearPolar.scalar_frobenius_polar_zero
 #print axioms PCRLean.Algebra.QuasilinearPolar.diagonal_frobenius_polar_zero
+#print axioms PCRLean.Algebra.PerfectQuasilinearRoot.root_pow
+#print axioms PCRLean.Algebra.PerfectQuasilinearRoot.finset_sum_pow_char_pow
+#print axioms PCRLean.Algebra.PerfectQuasilinearRoot.linearRoot_pow
+#print axioms PCRLean.Algebra.PerfectQuasilinearRoot.cleaning_identity
 #print axioms PCRLean.Chambers.FrobeniusContent.active_factorization
 #print axioms PCRLean.Chambers.FrobeniusContent.sibling_factorization
 #print axioms PCRLean.Chambers.FrobeniusContentProgram.step_decreases
