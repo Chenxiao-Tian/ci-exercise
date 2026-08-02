@@ -21,6 +21,13 @@ jobs:
 
       - name: Install pinned Lean toolchain
         uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: false
+          use-github-cache: false
 
       - name: Record versions
         run: |
