@@ -6,6 +6,7 @@ This branch is the official persistent MLE–Lean research line of the positive-
 - GitHub branch: `pcr-lean-formalization-20260801`
 - Pull request: `#2` (draft, open, unmerged)
 - Current formal node: `MLEL-M004 / HMC-SCCD`
+- Audited code head: `0f57fe5fa3a8541e0b95d717f94085b45b960d7c`
 - Global status: `OPEN_GAP`
 - Arbitrary-dimensional positive-characteristic resolution proved: `false`
 
@@ -13,23 +14,23 @@ Baseline inclusion preserves evidence labels. A Lean declaration is certified on
 
 ## Current green certified layer
 
-At branch head `be31eeea5249e87f99a2d0e8390e69d4f7aeabd6`, the full PCRLean kernel workflow completed successfully:
+At the audited code head, the full PCRLean kernel workflow completed successfully:
 
 ```text
 workflow = PCR Lean kernel verification
-run      = 30768792809
-job      = 91552178167
+run      = 30769310996
+job      = 91553530229
 result   = success
 ```
 
-The workflow completed placeholder rejection, the full certified build, kernel axiom audit, exact source snapshot, and audit-artifact upload.
+The workflow completed placeholder rejection, the full certified-index build, kernel axiom audit, exact source snapshot, and audit-artifact upload.
 
-The dedicated HMC-SCCD workflow also completed successfully:
+The dedicated HMC-SCCD workflow also completed successfully at the same code head:
 
 ```text
 workflow = PCR HMC-SCCD verification
-run      = 30768792795
-job      = 91552174841
+run      = 30769310950
+job      = 91553529694
 result   = success
 ```
 
@@ -59,39 +60,49 @@ PCRLean.HMCSCCD.GatedSystem.every_step_all_gates
 PCRLean.HMCSCCD.GatedSystem.no_infinite_branch
 ```
 
-## Current failed candidate chain
+## Current MLEL-002 repair frontier
 
-The dedicated `MLEL-002 / FCR-GEO` end-to-end workflow is not green at the current branch head:
+The dedicated `MLEL-002 / FCR-GEO` workflow was rerun after fifteen repair commits. Placeholder rejection succeeded, and the earlier failure set was substantially reduced:
 
 ```text
 workflow = PCR MLEL-002 verification
-run      = 30768792785
-job      = 91552174757
+run      = 30769310958
+job      = 91553529729
 result   = failure
+axiom audit = skipped after build failure
 ```
 
-The current failing modules are:
+Current failing modules and exact first errors:
 
 ```text
 PCRLean.CoordinateBoundarySNC
-PCRLean.CoordinateCentreKernelBridge
-PCRLean.CoordinatePassiveSafety
-PCRLean.CoordinateCentrePrincipalization
-PCRLean.MultiOwnerHasseCore
+  line 38: parser error around an invalid `rcases` pattern
+
+PCRLean.CoordinateRootPacket
+  line 75: invalid `⟨...⟩` notation because the expected type is not determined
 ```
 
-Accordingly, `MLEL-002 / FCR-GEO` remains a candidate restricted geometric chamber. It is not a currently certified complete chain. The success of `HMCSCCD.lean` does not silently certify these separate coordinate, boundary, passive-safety, principalization, or multi-owner modules.
+The latest dedicated build now succeeds for several modules that failed in the preceding audit, including:
+
+```text
+PCRLean.CoordinateCentreKernelBridge
+PCRLean.CoordinatePassiveSafety
+PCRLean.MultiOwnerHasseCore
+PCRLean.CoordinateCentreProper
+```
+
+Thus the repair is real but incomplete. `MLEL-002 / FCR-GEO` remains a candidate restricted geometric chamber rather than a certified complete chain. The success of `HMCSCCD.lean` does not silently certify the remaining boundary-SNC and root-packet obligations.
 
 ## Exact unresolved frontiers
 
-1. universal intrinsic finite Frobenius-frame construction and frame-independent gluing;
-2. arbitrary proper Frobenius core to an actual regular finite-type owner-safe centre word;
-3. universal joint active/passive/SNC legality, normal flatness, and passive Tor safety;
-4. scheme-level blowup, strict transform, controlled transform, every standard chart and overlap, and hereditary no-reset after cleaning, saturation, normalization, and integral closure;
-5. fully quasilinear rank-zero radicial-core descent;
-6. geometric finite-source birth realization with no split and no clone;
-7. projection-free immediate-defect escape;
-8. finite functorial globalization and derivation of principalization, embedded resolution, and nonembedded resolution.
+1. close the two current reduced-chamber Lean failures and complete the dedicated axiom audit;
+2. universal intrinsic finite Frobenius-frame construction and frame-independent gluing;
+3. arbitrary proper Frobenius core to an actual regular finite-type owner-safe centre word;
+4. universal joint active/passive/SNC legality, normal flatness, and passive Tor safety;
+5. scheme-level blowup, strict transform, controlled transform, every standard chart and overlap, and hereditary no-reset after cleaning, saturation, normalization, and integral closure;
+6. fully quasilinear rank-zero radicial-core descent;
+7. geometric finite-source birth realization with no split and no clone;
+8. projection-free immediate-defect escape and finite functorial globalization.
 
 No frontier may be crossed by `axiom`, `sorry`, `admit`, an unproved typeclass instance, or an imported MLE assertion.
 
@@ -100,6 +111,8 @@ No frontier may be crossed by `axiom`, `sorry`, `admit`, an unproved typeclass i
 ```text
 MLEL_M004_ACCEPTED                         = true
 HMC_SCCD_RESTRICTED_KERNEL_EXIT            = true
+MLEL_002_REPAIR_PROGRESS                   = true
+MLEL_002_CURRENT_FAILED_MODULE_COUNT       = 2
 MLEL_002_COMPLETE_CHAIN_CERTIFIED          = false
 GENERAL_GEOMETRIC_REALIZATION              = false
 GENERAL_POSITIVE_CHARACTERISTIC_RESOLUTION = false
