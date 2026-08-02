@@ -14,8 +14,12 @@ they hold for arbitrary singularities.
 
 namespace PCRLean.Framework
 
-/-- The non-numerical certificates attached to one geometric transition. -/
-structure GeometricEdgeCertificate {State : Type*} (child parent : State) : Prop where
+/-- The non-numerical certificates attached to one geometric transition.
+
+This record lives in `Type`, rather than `Prop`, because it contains the seven
+propositions themselves together with their proof fields.  No theorem can
+manufacture this record without supplying all seven proofs. -/
+structure GeometricEdgeCertificate {State : Type*} (child parent : State) where
   actualIdeal : Prop
   regularCentre : Prop
   markedPermissible : Prop
