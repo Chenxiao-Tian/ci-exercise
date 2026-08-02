@@ -1,3 +1,6 @@
+import PCRLean.Algebra.MarkedIdeal
+import PCRLean.Algebra.CharacteristicTwoGauge
+import PCRLean.Algebra.OddContactDerivative
 import PCRLean.Chambers.FrobeniusContent
 import PCRLean.Chambers.FrobeniusContentProgram
 import PCRLean.Chambers.OddCusp
@@ -9,5 +12,10 @@ import PCRLean.Chambers.ArtinSchreierProgram
 import PCRLean.Termination.Generational
 import PCRLean.Termination.PacketMultiset
 import PCRLean.Framework.RankedSystem
+import PCRLean.Framework.FiniteChartProgram
+import PCRLean.Framework.GeometricProgram
+import PCRLean.Framework.UniversalCompiler
 import PCRLean.NoGo.PersistentObstruction
+import PCRLean.NoGo.FreshBirth
+import PCRLean.NoGo.CoordinatewiseDropCycle
 import PCRLean.Certified.CertifiedIndex
