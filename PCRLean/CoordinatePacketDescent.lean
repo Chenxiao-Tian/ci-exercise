@@ -6,12 +6,12 @@ import PCRLean.IdealEndomorphismDescent
 # Descent from a coordinate operator packet
 
 A finite free algebra equipped with a unit-normalized coordinate frame inherits
-endomorphisms from any packet on its coordinate module by conjugation.  If the
+endomorphisms from any packet on its coordinate module by conjugation. If the
 coordinate packet generates the matrix units, stability of an ideal under the
 transported packet forces the ideal to descend from the base ring.
 
 This file is the formal transport bridge used to apply the finite
-Frobenius--Hasse coordinate model to actual local algebras.  The remaining
+Frobenius--Hasse coordinate model to actual local algebras. The remaining
 chart-specific task is to identify the transported multiplication and Hasse
 operators with the intrinsic operators on a polynomial, monogenic or etale
 Frobenius chart.
@@ -55,6 +55,7 @@ theorem conjugate_pullbackOperator
   apply LinearMap.ext
   intro y
   obtain ⟨x, rfl⟩ := e.surjective y
+  change e (pullbackOperator e T x) = T (e x)
   exact pullbackOperator_apply e T x
 
 /-- Pull back every operator in a coordinate packet. -/
@@ -64,8 +65,7 @@ def pullbackPacket
     κ → Module.End R A :=
   fun k => pullbackOperator e (ops k)
 
-/-- The conjugated pullback packet is definitionally the original coordinate
-packet, up to extensional equality of endomorphisms. -/
+/-- The conjugated pullback packet is the original coordinate packet. -/
 theorem conjugated_pullbackPacket
     (e : A ≃ₗ[R] Coordinates (R := R) (ι := ι))
     (ops : κ → Module.End R (Coordinates (R := R) (ι := ι)))
@@ -83,22 +83,13 @@ theorem conjugated_pullback_generatesMatrixUnits
     EndomorphismGeneration.GeneratesMatrixUnits
       (fun k => EndomorphismGeneration.conjugateToCoordinates e
         (pullbackPacket e ops k)) := by
-  intro i j
-  have h := hgen i j
-  induction h with
-  | zero => exact EndomorphismGeneration.Generated.zero
-  | identity => exact EndomorphismGeneration.Generated.identity
-  | generator k =>
-      simpa [pullbackPacket, conjugated_pullbackPacket] using
-        (EndomorphismGeneration.Generated.generator
-          (ops := fun k => EndomorphismGeneration.conjugateToCoordinates e
-            (pullbackPacket e ops k)) k)
-  | add hS hT ihS ihT =>
-      exact EndomorphismGeneration.Generated.add ihS ihT
-  | smul r hT ihT =>
-      exact EndomorphismGeneration.Generated.smul r ihT
-  | comp hS hT ihS ihT =>
-      exact EndomorphismGeneration.Generated.comp ihS ihT
+  have heq :
+      (fun k => EndomorphismGeneration.conjugateToCoordinates e
+        (pullbackPacket e ops k)) = ops := by
+    funext k
+    exact conjugated_pullbackPacket e ops k
+  rw [heq]
+  exact hgen
 
 /-- Main transport theorem: an ideal stable under the pullback of a
 matrix-unit-generating coordinate packet is extended from its contraction to
