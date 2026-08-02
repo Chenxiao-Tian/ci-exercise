@@ -58,8 +58,10 @@ theorem operator_mem_imageIdeal
 theorem operator_mem_closureStep
     (ops : ι → A →+ A) (I : Ideal A)
     (i : ι) {x : A} (hx : x ∈ I) :
-    ops i x ∈ closureStep ops I :=
-  le_sup_right (operator_mem_imageIdeal ops I i hx)
+    ops i x ∈ closureStep ops I := by
+  exact
+    (show operatorImageIdeal ops I ≤ closureStep ops I from le_sup_right)
+      (operator_mem_imageIdeal ops I i hx)
 
 /-- The operator-image ideal is monotone in its seed. -/
 theorem operatorImageIdeal_mono
