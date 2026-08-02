@@ -33,6 +33,7 @@ import PCRLean.ProductMatrixUnitGeneration
 import PCRLean.IteratedHasseProduct
 import PCRLean.IdealOperatorPacketDescent
 import PCRLean.MonogenicFrobeniusFrame
+import PCRLean.AdjoinRootFrobeniusFrame
 import PCRLean.HasseSaturationDescent
 import PCRLean.SplitKernelCentre
 import PCRLean.FiniteKernelCentre
