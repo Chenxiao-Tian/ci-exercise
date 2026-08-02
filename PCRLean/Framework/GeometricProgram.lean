@@ -17,7 +17,7 @@ namespace PCRLean.Framework
 /-- The non-numerical certificates attached to one geometric transition.
 
 This record lives in `Type`, rather than `Prop`, because it contains the seven
-propositions themselves together with their proof fields.  No theorem can
+propositions themselves together with their proof fields.  No declaration can
 manufacture this record without supplying all seven proofs. -/
 structure GeometricEdgeCertificate {State : Type*} (child parent : State) where
   actualIdeal : Prop
@@ -76,8 +76,10 @@ theorem resolvesAll (start : P.State) :
     (P.toFiniteChartProgram).ResolvesAll start :=
   P.toFiniteChartProgram.resolvesAll start
 
-/-- Extract the complete eight-gate record for any listed child chart. -/
-theorem certificate_of_child {child parent : P.State}
+/-- Extract the complete eight-gate record for any listed child chart.  Since
+the result is data in `Type`, this is a definition rather than a proposition-
+valued theorem declaration. -/
+def certificate_of_child {child parent : P.State}
     (hchild : child ∈ P.children parent) :
     GeometricEdgeCertificate child parent :=
   P.certificateData (P.child_certified hchild)
