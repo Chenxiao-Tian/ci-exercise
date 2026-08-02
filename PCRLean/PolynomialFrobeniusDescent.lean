@@ -55,7 +55,7 @@ theorem derivative_eq_zero_iff_exists_pow
   · rintro ⟨g, rfl⟩
     rw [Polynomial.derivative_pow]
     have hpzero : (p : K) = 0 := CharP.cast_eq_zero K p
-    rw [hpzero, map_zero, zero_mul]
+    simp [hpzero]
 
 /-- Stability of the principal ideal under ordinary differentiation forces an
 actual Frobenius root. -/
