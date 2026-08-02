@@ -30,6 +30,7 @@ import PCRLean.PascalSeparation
 import PCRLean.FiniteHasseModel
 import PCRLean.CoordinatePacketDescent
 import PCRLean.ProductMatrixUnitGeneration
+import PCRLean.IdealOperatorPacketDescent
 import PCRLean.SplitKernelCentre
 import PCRLean.FiniteKernelCentre
 import PCRLean.ProjectiveKernelCentre
