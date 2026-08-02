@@ -5,10 +5,10 @@ import Mathlib.RingTheory.Ideal.Lattice
 # Canonical differential-operator saturation of an ideal
 
 A presentation-independent packet should depend on an ideal rather than on a
-chosen list of generators.  Given any family of additive operators on a
+chosen list of generators. Given any family of additive operators on a
 commutative ring, this file defines the least ideal containing a seed ideal and
-stable under every operator.  The definition is an intersection, so no choice
-of generators or order of closure operations is retained.  On a Noetherian
+stable under every operator. The definition is an intersection, so no choice
+of generators or order of closure operations is retained. On a Noetherian
 ring the resulting actual ideal is finitely generated.
 
 For Hasse--Schmidt or Cartier applications, a separate theorem must show that
@@ -140,7 +140,8 @@ theorem saturation_fg (ops : ι → R →+ R) (I : Ideal R) :
 /-- A finite set of actual ring elements generates the canonical saturation. -/
 theorem exists_finite_generators (ops : ι → R →+ R) (I : Ideal R) :
     ∃ s : Finset R, saturation ops I = Ideal.span (s : Set R) := by
-  exact (saturation_fg ops I).fg_iff_finset.mp (saturation_fg ops I)
+  rcases saturation_fg ops I with ⟨s, hs⟩
+  exact ⟨s, hs⟩
 
 end Noetherian
 
