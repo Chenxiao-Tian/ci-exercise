@@ -52,11 +52,8 @@ theorem conjugate_pullbackOperator
     (T : Module.End R (Coordinates (R := R) (ι := ι))) :
     EndomorphismGeneration.conjugateToCoordinates e
         (pullbackOperator e T) = T := by
-  apply LinearMap.ext
-  intro y
-  obtain ⟨x, rfl⟩ := e.surjective y
-  change e (pullbackOperator e T x) = T (e x)
-  exact pullbackOperator_apply e T x
+  ext y
+  simp [EndomorphismGeneration.conjugateToCoordinates, pullbackOperator]
 
 /-- Pull back every operator in a coordinate packet. -/
 def pullbackPacket
