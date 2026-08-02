@@ -5,17 +5,20 @@ import PCRLean.NoRecharge
 import PCRLean.PolynomialCharts
 import PCRLean.FrobeniusPacket
 import PCRLean.EulerRadicial
+import PCRLean.RadicialJacobian
 import PCRLean.SourcePartition
 import PCRLean.MarkedIdeal
 import PCRLean.CentrePermissibility
+import PCRLean.OddCuspAffine
 import PCRLean.ReesFoundation
 import PCRLean.ResolutionCompiler
 import PCRLean.ChamberPrograms
+import PCRLean.ConditionalMaster
 
 namespace PCRLean
 
 /-- Machine-readable summary of the kernel-certified component layer.
-This theorem intentionally states only what the imported Lean proofs establishes. -/
+This theorem intentionally states only what the imported Lean proofs establish. -/
 theorem certified_component_summary :
     WellFounded GenRank.Lt ∧
     (∀ N : Nat, 0 < OddCusp.certifiedWordLength N) ∧
