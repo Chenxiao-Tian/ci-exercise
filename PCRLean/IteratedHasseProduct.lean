@@ -94,8 +94,12 @@ theorem multiPrimitivePacket_generatesMatrixUnits
       intro i j
       cases i
       cases j
-      rw [punit_matrixUnit (R := R)]
-      exact EndomorphismGeneration.Generated.identity
+      have hId :
+          EndomorphismGeneration.Generated
+            (multiPrimitivePacket (R := R) [])
+            (LinearMap.id : Module.End R (PUnit → R)) :=
+        EndomorphismGeneration.Generated.identity
+      exact (punit_matrixUnit (R := R)).symm ▸ hId
   | cons s rest ih =>
       change EndomorphismGeneration.GeneratesMatrixUnits
         (ProductMatrixUnitGeneration.productPacket
