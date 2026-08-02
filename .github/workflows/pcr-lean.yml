@@ -61,17 +61,28 @@ jobs:
           lake update
           lake exe cache get
           lake build
-      - name: Independent leanchecker verification
-        uses: leanprover/lean-action@v1
-        with:
-          auto-config: false
-          build: false
-          test: false
-          lint: false
-          use-github-cache: false
-          use-mathlib-cache: false
-          leanchecker: true
-          nanoda: false
+      - name: Replay every PCRLean module with the bundled kernel checker
+        shell: bash
+        run: |
+          set -euo pipefail
+          modules=(
+            PCRLean.Chambers.FrobeniusContent
+            PCRLean.Chambers.FrobeniusContentProgram
+            PCRLean.Chambers.OddCusp
+            PCRLean.Chambers.OddCuspProgram
+            PCRLean.Chambers.RamifiedQuadratic
+            PCRLean.Chambers.RamifiedQuadraticProgram
+            PCRLean.Chambers.ArtinSchreier
+            PCRLean.Termination.Generational
+            PCRLean.Framework.RankedSystem
+            PCRLean.NoGo.PersistentObstruction
+            PCRLean.Certified.CertifiedIndex
+            PCRLean
+          )
+          for module in "${modules[@]}"; do
+            echo "leanchecker: $module"
+            lake env leanchecker "$module"
+          done
 
   nanoda:
     runs-on: ubuntu-latest
