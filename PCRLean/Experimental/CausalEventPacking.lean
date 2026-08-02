@@ -5,12 +5,12 @@ import PCRLean.SourcePartition
 # Experimental causal event packing
 
 A jump-capable identity carries a nonempty finite support in one fixed finite
-ancestor-source set.  Distinct active identities must have disjoint supports.
+ancestor-source set. Distinct active identities must have disjoint supports.
 This is the one-stage packing shadow of the proposed causal event cosheaf.
 
 The theorem proves a strict conservation law: the number of simultaneously
 active jump-capable identities cannot exceed the number of fixed ancestor
-sources.  It rules out independent cloning at one state, but it does not yet
+sources. It rules out independent cloning at one state, but it does not yet
 construct supports for arbitrary geometric births or prove hereditary transport
 through every chart.
 -/
@@ -63,6 +63,7 @@ theorem chosenSource_injective : Function.Injective C.chosenSource := by
 
 /-- Finite-source packing bound: active jump-capable identities are bounded by
 fixed ancestor sources. -/
+include C in
 theorem card_events_le_card_sources :
     Fintype.card Event ≤ Fintype.card Source := by
   exact Fintype.card_le_of_injective
