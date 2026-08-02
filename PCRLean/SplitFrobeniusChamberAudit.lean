@@ -1,0 +1,10 @@
+import PCRLean.FrobeniusPowerIdeal
+import PCRLean.CoordinateCentrePrincipalization
+import PCRLean.SplitFrobeniusChamber
+
+#print axioms PCRLean.FrobeniusPowerIdeal.RootEquiv.baseExtension_eq_powerIdeal
+#print axioms PCRLean.FrobeniusPowerIdeal.coordinateCentre_powerIdeal_eq
+#print axioms PCRLean.FrobeniusPowerIdeal.coordinatePowerIdeal_eq_sourceIdeal
+#print axioms PCRLean.SplitFrobeniusChamber.baseExtension_eq_coordinateSource
+#print axioms PCRLean.SplitFrobeniusChamber.baseExtension_permissible
+#print axioms PCRLean.SplitFrobeniusChamber.oneStep_certificate

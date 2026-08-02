@@ -1,0 +1,108 @@
+name: PCR MLEL-002 joint-core repair
+
+on:
+  push:
+    branches:
+      - pcr-lean-formalization-20260801
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pcr-mlel002-autorepair-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  repair-joint-core:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout MLE-Lean branch
+        uses: actions/checkout@v4
+        with:
+          ref: pcr-lean-formalization-20260801
+          fetch-depth: 0
+
+      - name: Install pinned Lean
+        run: |
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf \
+            | sh -s -- -y --default-toolchain leanprover/lean4:v4.30.0
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Resolve pinned mathlib
+        run: |
+          lake update
+          lake exe cache get
+
+      - name: Replace the sole pending joint-core proof and kernel-check candidates
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import subprocess
+
+          path = Path('PCRLean/HMCSCCD.lean')
+          original = path.read_text()
+          needle = ':= by\n  sorry'
+          if needle not in original:
+              print('No pending joint-core placeholder remains; nothing to repair.')
+              raise SystemExit(0)
+
+          candidates = [
+              ':= by\n  classical\n  simp_all [jointActive, jointCore]',
+              ':= by\n  classical\n  simp_all [jointActive, jointCore, OwnerJoint.activeUnion]',
+              ':= by\n  classical\n  ext x\n  simp_all [jointActive, jointCore]',
+              ':= by\n  classical\n  ext x\n  simp_all [jointActive, jointCore, OwnerJoint.activeUnion]',
+              ':= by\n  classical\n  simp_all',
+              ':= by\n  classical\n  aesop',
+              ':= by\n  classical\n  aesop (add simp [jointActive, jointCore])',
+              ':= by\n  classical\n  aesop (add simp [jointActive, jointCore, OwnerJoint.activeUnion])',
+              ':= by\n  classical\n  ext x\n  aesop',
+          ]
+
+          failures = []
+          for number, candidate in enumerate(candidates, 1):
+              path.write_text(original.replace(needle, candidate, 1))
+              result = subprocess.run(
+                  ['lake', 'build', 'PCRLean.HMCSCCD'],
+                  text=True,
+                  stdout=subprocess.PIPE,
+                  stderr=subprocess.STDOUT,
+              )
+              if result.returncode == 0:
+                  print(f'Candidate {number} kernel-builds.')
+                  print(result.stdout)
+                  break
+              failures.append((number, result.stdout[-5000:]))
+          else:
+              path.write_text(original)
+              for number, tail in failures:
+                  print(f'--- candidate {number} failure tail ---')
+                  print(tail)
+              raise SystemExit('No candidate proof compiled.')
+
+          repaired = path.read_text()
+          if needle in repaired or '\nsorry' in repaired:
+              raise SystemExit('Placeholder remained after purported repair.')
+          PY
+
+      - name: Audit the repaired theorem
+        run: |
+          lake env lean PCRLean/HMCSCCDAudit.lean 2>&1 | tee mlel002-hmcsccd-axioms.txt
+          if grep -E 'sorryAx|PCRLean\..*Axiom|ResolutionAxiom|PacketizationAxiom' \
+              mlel002-hmcsccd-axioms.txt; then
+            echo 'Unpermitted axiom remains in the MLEL-002 chamber.' >&2
+            exit 1
+          fi
+
+      - name: Commit the kernel-checked repair
+        run: |
+          if git diff --quiet -- PCRLean/HMCSCCD.lean; then
+            echo 'No source change to commit.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add PCRLean/HMCSCCD.lean
+          git commit -m 'MLEL-002: prove joint active/core extension equality'
+          git push origin HEAD:pcr-lean-formalization-20260801

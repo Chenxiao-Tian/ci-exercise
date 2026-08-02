@@ -1,0 +1,8 @@
+import PCRLean.CoordinateControlledTransform
+
+#print axioms PCRLean.CoordinateControlledTransform.pivotIdeal_pow_eq_span_pow
+#print axioms PCRLean.CoordinateControlledTransform.exists_controlledTransform
+#print axioms PCRLean.CoordinateControlledTransform.controlledTransform_factorization
+#print axioms PCRLean.CoordinateControlledTransform.rootTransform_factorization
+#print axioms PCRLean.CoordinateControlledTransform.rootPower_reentry
+#print axioms PCRLean.CoordinateControlledTransform.exists_rootPower_controlledTransform

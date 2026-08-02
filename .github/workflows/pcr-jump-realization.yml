@@ -1,0 +1,53 @@
+name: PCR Jump realization verification
+
+on:
+  push:
+    branches:
+      - pcr-lean-formalization-20260801
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pcr-jump-realization-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  realization-kernel-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf \
+            | sh -s -- -y --default-toolchain leanprover/lean4:v4.30.0
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve mathlib
+        run: |
+          lake update
+          lake exe cache get
+      - name: Reject placeholders
+        run: |
+          if grep -R -nE '^[[:space:]]*(axiom|sorry|admit)([[:space:]]|$)' \
+              --include='*.lean' PCRLean PCRLean.lean; then
+            exit 1
+          fi
+      - name: Compile realization index
+        run: |
+          lake env lean PCRLean/JumpRealizationIndex.lean 2>&1 | tee realization-build.txt
+      - name: Reject unpermitted axioms
+        run: |
+          if grep -E 'sorryAx|PCRLean\..*Axiom|ResolutionAxiom|PacketizationAxiom' \
+              realization-build.txt; then
+            exit 1
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pcr-jump-realization-audit
+          path: realization-build.txt
+          if-no-files-found: warn
