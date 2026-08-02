@@ -10,6 +10,8 @@ import PCRLean.SourcePartition
 import PCRLean.MarkedIdeal
 import PCRLean.CentrePermissibility
 import PCRLean.OddCuspAffine
+import PCRLean.TameQuadraticAffine
+import PCRLean.ASQAffine
 import PCRLean.ReesFoundation
 import PCRLean.ResolutionCompiler
 import PCRLean.ChamberPrograms
