@@ -122,7 +122,8 @@ theorem map_top_algebraMap
   apply top_unique
   intro x hx
   have hOne : (1 : A) ∈ Ideal.map (algebraMap R A) (⊤ : Ideal R) :=
-    Ideal.mem_map_of_mem (algebraMap R A) (by trivial)
+    Ideal.mem_map_of_mem (algebraMap R A)
+      (show (1 : R) ∈ (⊤ : Ideal R) by trivial)
   simpa using
     (Ideal.map (algebraMap R A) (⊤ : Ideal R)).mul_mem_left x hOne
 
