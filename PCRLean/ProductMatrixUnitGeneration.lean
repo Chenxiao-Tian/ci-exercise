@@ -42,11 +42,16 @@ def liftLeft
   map_add' := by
     intro f g
     funext p
-    simp
+    change T ((fun i => f (i, p.2)) + (fun i => g (i, p.2))) p.1 =
+      (T (fun i => f (i, p.2)) + T (fun i => g (i, p.2))) p.1
+    exact congrFun (T.map_add
+      (fun i => f (i, p.2)) (fun i => g (i, p.2))) p.1
   map_smul' := by
     intro r f
     funext p
-    simp
+    change T (r • (fun i => f (i, p.2))) p.1 =
+      (r • T (fun i => f (i, p.2))) p.1
+    exact congrFun (T.map_smul r (fun i => f (i, p.2))) p.1
 
 /-- Lift an endomorphism of the right coordinate module fibrewise to the
 product coordinate module. -/
@@ -57,11 +62,16 @@ def liftRight
   map_add' := by
     intro f g
     funext p
-    simp
+    change T ((fun k => f (p.1, k)) + (fun k => g (p.1, k))) p.2 =
+      (T (fun k => f (p.1, k)) + T (fun k => g (p.1, k))) p.2
+    exact congrFun (T.map_add
+      (fun k => f (p.1, k)) (fun k => g (p.1, k))) p.2
   map_smul' := by
     intro r f
     funext p
-    simp
+    change T (r • (fun k => f (p.1, k))) p.2 =
+      (r • T (fun k => f (p.1, k))) p.2
+    exact congrFun (T.map_smul r (fun k => f (p.1, k))) p.2
 
 @[simp] theorem liftLeft_apply
     (T : Module.End R (LeftCoordinates (R := R) (ι := ι)))
