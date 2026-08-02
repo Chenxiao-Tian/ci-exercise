@@ -38,7 +38,10 @@ private theorem child_decreases {child parent : State} (h : child ∈ children p
   cases parent with
   | active n =>
       cases n with
-      | zero => simp [children, FrobeniusContentProgram.rank] at h ⊢
+      | zero =>
+          simp [children] at h
+          subst child
+          simp [FrobeniusContentProgram.rank]
       | succ n =>
           simp [children] at h
           rcases h with rfl | rfl <;> simp [FrobeniusContentProgram.rank]
@@ -62,7 +65,7 @@ def program : FiniteChartProgram where
   resolved := FrobeniusContentProgram.resolved
   legal := legal
   child_decreases := child_decreases
-  child_legal := by intro; trivial
+  child_legal := fun {_ _} _ => True.intro
   progress := progress
   terminal_resolved := by intro _ h; exact h
 
@@ -120,7 +123,7 @@ def program : FiniteChartProgram where
   resolved := OddCuspProgram.resolved
   legal := legal
   child_decreases := child_decreases
-  child_legal := by intro; trivial
+  child_legal := fun {_ _} _ => True.intro
   progress := progress
   terminal_resolved := by intro _ h; exact h
 
@@ -193,7 +196,7 @@ def program : FiniteChartProgram where
   resolved := RamifiedQuadraticProgram.resolved
   legal := legal
   child_decreases := child_decreases
-  child_legal := by intro; trivial
+  child_legal := fun {_ _} _ => True.intro
   progress := progress
   terminal_resolved := by intro _ h; exact h
 
@@ -242,7 +245,10 @@ private theorem child_decreases {child parent : State} (h : child ∈ children p
                   rcases h with rfl | rfl <;> simp [ArtinSchreierProgram.rank]
               | succ r =>
                   simp [children] at h
-                  rcases h with rfl | rfl <;> simp [ArtinSchreierProgram.rank]
+                  rcases h with rfl | rfl
+                  · simp [ArtinSchreierProgram.rank]
+                    omega
+                  · simp [ArtinSchreierProgram.rank]
   | wildSecondContact =>
       simp [children] at h
       subst child
@@ -280,7 +286,7 @@ def program : FiniteChartProgram where
   resolved := ArtinSchreierProgram.classifiedExit
   legal := legal
   child_decreases := child_decreases
-  child_legal := by intro; trivial
+  child_legal := fun {_ _} _ => True.intro
   progress := progress
   terminal_resolved := by intro _ h; exact h
 
