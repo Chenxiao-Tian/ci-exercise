@@ -133,9 +133,9 @@ theorem mem_orbitAnnihilator_iff_of_span_eq
     | mem f hf => exact hgen f hf
     | zero => simp
     | add f g hf hg hff hgg =>
-        rw [map_add, hff, hgg, add_zero]
+        simpa using congrArg₂ (fun a b : K => a + b) hff hgg
     | smul a f hf hff =>
-        rw [map_smul, hff, smul_zero]
+        simpa using congrArg (fun b : K => a * b) hff
 
 section FiniteDimensional
 
