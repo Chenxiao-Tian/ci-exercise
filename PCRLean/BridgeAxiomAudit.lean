@@ -6,6 +6,10 @@ import PCRLean.CoordinatePacketDescent
 import PCRLean.ProductMatrixUnitGeneration
 import PCRLean.IteratedHasseProduct
 import PCRLean.IdealOperatorPacketDescent
+import PCRLean.MonogenicFrobeniusFrame
+import PCRLean.AdjoinRootFrobeniusFrame
+import PCRLean.HasseSaturationDescent
+import PCRLean.DifferentialIdealIteration
 
 #print axioms PCRLean.FiniteFreeEndomorphismDescent.map_fullyInvariant
 #print axioms PCRLean.FiniteFreeEndomorphismDescent.mem_iff_coefficients_mem
@@ -31,3 +35,11 @@ import PCRLean.IdealOperatorPacketDescent
 #print axioms PCRLean.IteratedHasseProduct.ideal_eq_map_comap_of_multiPrimitive_stable
 #print axioms PCRLean.IdealOperatorPacketDescent.ideal_eq_map_comap_of_partitionedPacket
 #print axioms PCRLean.IdealOperatorPacketDescent.ideal_eq_map_comap_of_hasse_stable
+#print axioms PCRLean.MonogenicFrobeniusFrame.Frame.ideal_eq_map_comap_of_hasse_stable
+#print axioms PCRLean.MonogenicFrobeniusFrame.ideal_eq_map_comap_of_powerBasis_hasse_stable
+#print axioms PCRLean.AdjoinRootFrobeniusFrame.ideal_eq_map_comap_of_hasse_stable
+#print axioms PCRLean.HasseSaturationDescent.hasseSaturation_eq_map_core
+#print axioms PCRLean.HasseSaturationDescent.hasseSaturation_dichotomy
+#print axioms PCRLean.DifferentialIdealIteration.saturation_closureStep
+#print axioms PCRLean.DifferentialIdealIteration.reaches_saturation
+#print axioms PCRLean.DifferentialIdealIteration.no_infinite_closure_execution
