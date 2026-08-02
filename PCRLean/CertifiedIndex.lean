@@ -22,6 +22,7 @@ import PCRLean.DifferentialIdealConjugacy
 import PCRLean.MatrixStableSubmodule
 import PCRLean.FiniteFreeEndomorphismDescent
 import PCRLean.IdealEndomorphismDescent
+import PCRLean.OperatorSpanFullness
 import PCRLean.SplitKernelCentre
 import PCRLean.FiniteKernelCentre
 import PCRLean.ProjectiveKernelCentre
