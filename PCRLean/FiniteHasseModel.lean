@@ -4,20 +4,20 @@ import PCRLean.PascalSeparation
 /-!
 # Finite Frobenius--Hasse model
 
-Fix `q > 0` and a commutative base ring `R`.  On the free module with basis
+Fix `q > 0` and a commutative base ring `R`. On the free module with basis
 `1,x,...,x^(q-1)`, define multiplication by `x^a` using the monogenic relation
 `x^q = t`, and define the Hasse operator `H_b` by
 
 `H_b(x^c) = choose(c,b) x^(c-b)`.
 
-The composites `x^b H_b` are the Pascal diagonal operators.  Finite Pascal
-separation therefore produces every coordinate projector.  Moreover
-`x^i H_j E_{jj} = E_{ij}`.  It follows that the primitive finite packet
+The composites `x^b H_b` are the Pascal diagonal operators. Finite Pascal
+separation therefore produces every coordinate projector. Moreover
+`x^i H_j E_{jj} = E_{ij}`. It follows that the primitive finite packet
 consisting only of multiplication operators and Hasse operators generates the
 full endomorphism algebra.
 
 This is the explicit finite algebraic core of the local identity
-`D_A^(e) = End_(A^(p^e))(A)` on a one-variable Frobenius frame.  The next
+`D_A^(e) = End_(A^(p^e))(A)` on a one-variable Frobenius frame. The next
 geometric step is to transport this model to actual polynomial or etale
 Frobenius charts and tensor the construction across several variables.
 -/
@@ -89,7 +89,8 @@ theorem end_ext_basis
 def hasseImage (b c : Fin q) : Coordinates (R := R) q :=
   if h : b.1 ≤ c.1 then
     (Nat.choose c.1 b.1 : R) •
-      basisVector (R := R) q ⟨c.1 - b.1, by omega⟩
+      basisVector (R := R) q
+        ⟨c.1 - b.1, lt_of_le_of_lt (Nat.sub_le _ _) c.2⟩
   else 0
 
 /-- The finite Hasse operator of order `b`. -/
@@ -100,7 +101,8 @@ def hasse (b : Fin q) : Module.End R (Coordinates (R := R) q) :=
 theorem hasse_basis_of_le (b c : Fin q) (h : b.1 ≤ c.1) :
     hasse (R := R) q b (basisVector (R := R) q c) =
       (Nat.choose c.1 b.1 : R) •
-        basisVector (R := R) q ⟨c.1 - b.1, by omega⟩ := by
+        basisVector (R := R) q
+          ⟨c.1 - b.1, lt_of_le_of_lt (Nat.sub_le _ _) c.2⟩ := by
   simp [hasse, hasseImage, h]
 
 /-- Hasse action vanishes above the exponent. -/
@@ -112,11 +114,12 @@ theorem hasse_basis_of_lt (b c : Fin q) (h : c.1 < b.1) :
 vector. -/
 theorem hasse_basis_self (b : Fin q) :
     hasse (R := R) q b (basisVector (R := R) q b) =
-      basisVector (R := R) q ⟨0, by omega⟩ := by
+      basisVector (R := R) q
+        ⟨0, Nat.zero_lt_of_lt b.2⟩ := by
   simpa using hasse_basis_of_le (R := R) q b b le_rfl
 
 /-- The image of `x^c` under multiplication by `x^a` in the relation
-`x^q = t`.  Since `a,c < q`, at most one wrap occurs. -/
+`x^q = t`. Since `a,c < q`, at most one wrap occurs. -/
 def multiplyImage (t : R) (a c : Fin q) : Coordinates (R := R) q :=
   if h : a.1 + c.1 < q then
     basisVector (R := R) q ⟨a.1 + c.1, h⟩
@@ -140,10 +143,13 @@ theorem multiply_basis_of_lt (t : R) (a c : Fin q)
 monomial basis vector. -/
 theorem multiply_basis_zero (t : R) (a : Fin q) :
     multiply (R := R) q t a
-      (basisVector (R := R) q ⟨0, by omega⟩) =
+      (basisVector (R := R) q
+        ⟨0, Nat.zero_lt_of_lt a.2⟩) =
         basisVector (R := R) q a := by
-  have hlt : a.1 + 0 < q := by simpa using a.2
-  rw [multiply_basis_of_lt (R := R) q t a ⟨0, by omega⟩ hlt]
+  let z : Fin q := ⟨0, Nat.zero_lt_of_lt a.2⟩
+  have hlt : a.1 + z.1 < q := by
+    simpa [z] using a.2
+  rw [multiply_basis_of_lt (R := R) q t a z hlt]
   congr
 
 /-- The Hasse diagonal composite. -/
@@ -158,12 +164,17 @@ theorem diagonalHasse_basis (t : R) (b c : Fin q) :
   by_cases hbc : b.1 ≤ c.1
   · rw [diagonalHasse, LinearMap.comp_apply,
       hasse_basis_of_le (R := R) q b c hbc, map_smul]
-    have hlt : b.1 + (c.1 - b.1) < q := by omega
+    have hsum : b.1 + (c.1 - b.1) = c.1 :=
+      Nat.add_sub_of_le hbc
+    have hlt : b.1 + (c.1 - b.1) < q :=
+      hsum ▸ c.2
     rw [multiply_basis_of_lt (R := R) q t b
-      ⟨c.1 - b.1, by omega⟩ hlt]
-    congr 2
-    apply Fin.ext
-    omega
+      ⟨c.1 - b.1, lt_of_le_of_lt (Nat.sub_le _ _) c.2⟩ hlt]
+    have hindex :
+        (⟨b.1 + (c.1 - b.1), hlt⟩ : Fin q) = c := by
+      apply Fin.ext
+      exact hsum
+    rw [hindex]
   · have hcb : c.1 < b.1 := Nat.lt_of_not_ge hbc
     have hchoose : Nat.choose c.1 b.1 = 0 :=
       Nat.choose_eq_zero_of_lt hcb
@@ -219,8 +230,9 @@ theorem transfer_projector (t : R) (i j : Fin q) :
   rw [LinearMap.comp_apply, matrixUnit_basis (R := R) q j j c]
   by_cases hcj : c = j
   · subst c
-    simp only [if_pos rfl, transfer, LinearMap.comp_apply]
-    rw [hasse_basis_self (R := R) q j,
+    simp only [if_pos rfl]
+    rw [transfer, LinearMap.comp_apply,
+      hasse_basis_self (R := R) q j,
       multiply_basis_zero (R := R) q t i,
       matrixUnit_basis (R := R) q i j j, if_pos rfl]
   · rw [if_neg hcj, map_zero,
@@ -263,6 +275,10 @@ theorem factoryGenerator_generated (t : R)
         (transfer (R := R) q t) k) := by
   cases k with
   | inl b =>
+      change EndomorphismGeneration.Generated
+        (primitivePacket (R := R) q t)
+        (DiagonalMatrixUnitFactory.diagonal
+          (PascalSeparation.pascalWeight (R := R) q) b)
       rw [← diagonalHasse_eq_pascalDiagonal (R := R) q t b]
       exact EndomorphismGeneration.Generated.comp
         (EndomorphismGeneration.Generated.generator
@@ -270,6 +286,9 @@ theorem factoryGenerator_generated (t : R)
         (EndomorphismGeneration.Generated.generator
           (ops := primitivePacket (R := R) q t) (Sum.inr b))
   | inr ij =>
+      change EndomorphismGeneration.Generated
+        (primitivePacket (R := R) q t)
+        (transfer (R := R) q t ij.1 ij.2)
       exact EndomorphismGeneration.Generated.comp
         (EndomorphismGeneration.Generated.generator
           (ops := primitivePacket (R := R) q t) (Sum.inl ij.1))
