@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - pcr-jump-fast-20260802-u2-u6
+  pull_request:
+    branches:
+      - pcr-jump-lean-20260802-u2-root-boundary
   workflow_dispatch:
 
 permissions:
