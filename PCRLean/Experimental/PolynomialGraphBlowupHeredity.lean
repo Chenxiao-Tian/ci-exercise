@@ -9,18 +9,18 @@ Let `R` be a domain and let the centre in `R[Z_i]` be the polynomial graph
 
 `Z_i - h_i = 0`.
 
-Translation sends this centre to the coordinate centre.  Composing translation
+Translation sends this centre to the coordinate centre. Composing translation
 with the standard coordinate blowup chart therefore gives an actual chart map
-for the graph centre.  In the chart with pivot `k`, every graph generator has
+for the graph centre. In the chart with pivot `k`, every graph generator has
 the exact factorization
 
 `φ_k(Z_i - h_i) = E_k * r_{k,i}`,
 
-where the pivot residual is `1`.  Consequently the full packet of `q`-th powers
+where the pivot residual is `1`. Consequently the full packet of `q`-th powers
 is marked-permissible and its controlled root ideal is the unit ideal on every
 standard chart.
 
-The theorem treats polynomial graph centres in one affine chart.  Scheme-level
+The theorem treats polynomial graph centres in one affine chart. Scheme-level
 overlap localizations, boundary divisors, passive modules and reconstruction of
 the next differential packet remain separate obligations.
 -/
@@ -176,7 +176,11 @@ theorem one_mem_transformedRootIdeal
 theorem transformedRootIdeal_eq_top
     (k : ι) (q : Nat) :
     transformedRootIdeal (R := R) k q = ⊤ := by
-  exact Ideal.eq_top_iff_one.mpr (one_mem_transformedRootIdeal (R := R) k q)
+  apply top_unique
+  intro x hx
+  have h1 := one_mem_transformedRootIdeal (R := R) k q
+  simpa using
+    (transformedRootIdeal (R := R) k q).mul_mem_left x h1
 
 /-- Terminal chart packets agree pairwise. -/
 theorem transformedRootIdeal_eq
