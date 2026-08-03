@@ -1,0 +1,7 @@
+import PCRLean.Experimental.DualPacketCoordinateNormalization
+
+#print axioms PCRLean.Experimental.DualPacketCoordinateNormalization.centreCovector_linearIndependent
+#print axioms PCRLean.Experimental.DualPacketCoordinateNormalization.fullBasis_inl
+#print axioms PCRLean.Experimental.DualPacketCoordinateNormalization.centreIdeal_eq_basisIdeal
+#print axioms PCRLean.Experimental.DualPacketCoordinateNormalization.map_centreIdeal_eq_coordinateCentreIdeal
+#print axioms PCRLean.Experimental.DualPacketCoordinateNormalization.map_actualIdeal_eq_coordinateCentreIdeal
