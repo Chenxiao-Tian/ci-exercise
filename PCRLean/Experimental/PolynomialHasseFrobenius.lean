@@ -9,13 +9,13 @@ derivative of a `p`-th power is the `p`-th power of the `k`-th Hasse derivative:
 
 `D^[p*k](f^p) = (D^[k] f)^p`.
 
-The proof avoids a separate Lucas-congruence development.  Map `f` to a
+The proof avoids a separate Lucas-congruence development. Map `f` to a
 polynomial ring over itself, Taylor-expand at the coefficient-ring variable,
-and compare the coefficient of degree `p*k`.  Frobenius expansion shows that
+and compare the coefficient of degree `p*k`. Frobenius expansion shows that
 this coefficient is the `p`-th power of the degree-`k` Taylor coefficient.
 
 This is the exact local operator identity required by finite Hasse integral
-compression.  Its multivariable version follows by iterating the one-variable
+compression. Its multivariable version follows by iterating the one-variable
 identity along coordinate Hasse operators.
 -/
 
@@ -51,7 +51,7 @@ theorem coeff_pow_prime_mul
   rw [← Polynomial.map_frobenius_expand (p := p) f]
   rw [Polynomial.coeff_map,
     Polynomial.coeff_expand_mul (Fact.out : p.Prime).pos]
-  rfl
+  rw [frobenius_def]
 
 end Characteristic
 
@@ -90,12 +90,21 @@ theorem hasseDeriv_pow_primePower
   induction e with
   | zero => simp
   | succ e ih =>
-      rw [pow_succ, pow_succ]
-      rw [← pow_mul]
-      rw [show k * (p ^ e * p) = (k * p ^ e) * p by ring]
-      rw [hasseDeriv_pow_prime p]
-      rw [ih]
-      rw [pow_mul]
+      calc
+        Polynomial.hasseDeriv (k * (p ^ (e + 1)))
+            (f ^ (p ^ (e + 1))) =
+          Polynomial.hasseDeriv ((k * p ^ e) * p)
+            ((f ^ (p ^ e)) ^ p) := by
+              rw [pow_succ, pow_mul]
+              congr 2
+              ring
+        _ = (Polynomial.hasseDeriv (k * p ^ e)
+              (f ^ (p ^ e))) ^ p :=
+          hasseDeriv_pow_prime p (f ^ (p ^ e)) (k * p ^ e)
+        _ = ((Polynomial.hasseDeriv k f) ^ (p ^ e)) ^ p := by
+          rw [ih]
+        _ = (Polynomial.hasseDeriv k f) ^ (p ^ (e + 1)) := by
+          rw [pow_succ, pow_mul]
 
 end Main
 
