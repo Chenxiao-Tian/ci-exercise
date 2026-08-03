@@ -18,7 +18,7 @@ extension:
 `O_{coker φ_S}([b_S]) = O_{coker φ_R}([b_R]) S`.
 
 Under faithful flatness, vanishing of the obstruction ideal is equivalent on
-both sides.  This isolates the precise remaining geometric task for
+both sides. This isolates the precise remaining geometric task for
 localization and overlap descent: construct the cokernel comparison map and
 its compatible frame, rather than reproving determinantal formulas chart by
 chart.
@@ -103,8 +103,13 @@ theorem source_eq_bot_of_target_eq_bot
     [Module.FaithfullyFlat R S]
     (hS : CokernelOrderIdeal.obstructionIdeal φS bS = ⊥) :
     CokernelOrderIdeal.obstructionIdeal φR bR = ⊥ := by
+  have htarget :
+      ProjectiveSectionOrderIdeal.orderIdeal
+          (C.map (obstruction φR bR)) = ⊥ := by
+    rw [C.obstruction_map]
+    exact hS
   exact C.toCompatibleFrames.source_orderIdeal_eq_bot_of_target_eq_bot
-    (obstruction φR bR) (by simpa [C.obstruction_map] using hS)
+    (obstruction φR bR) htarget
 
 /-- Under faithful flatness, effectivity detected by the canonical order ideal
 is equivalent before and after compatible cokernel base change. -/
