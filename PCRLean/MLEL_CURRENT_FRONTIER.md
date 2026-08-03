@@ -1,104 +1,113 @@
 # MLE–Lean Current Frontier
 
-**Canonical line:** `PCR-MLE-LEAN`  
-**GitHub branch:** `pcr-lean-formalization-20260801`  
-**Pull request:** `#2`  
-**Current accepted formal node:** `MLEL-M004 / HMC-SCCD`  
-**Current repair frontier:** `MLEL-002 / FCR-GEO`, reduced to two failed modules  
-**Audited code head:** `0f57fe5fa3a8541e0b95d717f94085b45b960d7c`  
-**Synchronized:** 2026-08-02  
+**Current accepted node:** `MLEL-M004 / HMC-SCCD`  
+**Current experimental frontier:** `MLEL-X20260803-GRAPH-MACRO`  
+**Official baseline branch:** `pcr-lean-formalization-20260801`  
+**Experimental branch:** `pcr-jump-integral-heredity-20260803`  
+**Experimental source head:** `2da9394f1ce1c74e30382595ec8bc9e7b88a7e39`  
+**Clean-room PR:** `#24`  
+**Clean-room run:** `30837634276` (`queued` at synchronization)  
+**Synchronized:** `2026-08-03`  
 **Global status:** `OPEN_GAP`  
-**General arbitrary-dimensional resolution proved:** `false`
-
-The branch HEAD may advance through documentation-only synchronization commits after the audited code head above. The theorem evidence below remains tied to the exact workflow runs and source scopes stated here.
+**General resolution proved:** `false`
 
 ## Canonical load set
 
 ```text
-PCR_MLE_LEAN_CHARTER_1_0.md
+PCRLean/FORMAL_STATUS.md
+PCRLean/FORMAL_FRONTIER.md
+PCRLean/MLEL_CURRENT_FRONTIER.md
+PCRLean/ResearchProtocols/PCR_JUMP_LEAN_2_0_BASELINE.md
+PCRLean/ResearchRecords/MLEL_JUMP_GRAPH_MACRO_FRONTIER_2026-08-03.md
+MLEL_M004_HMC_SCCD_REPORT.md
 positive_characteristic_resolution_MLE_Lean_line_memory_0_001.md
-PCR_MLE_LEAN_PROMPT_REGISTRY_1_0.md
 PCR_MLE_LEAN_CONVERSATION_ARCHIVE.md
 PCR_MLE_LEAN_PROGRESS_LEDGER.csv
 PCR_MLE_LEAN_BASELINE_STATE.json
-PCR_COMPOSITE_MASTER_MANIFEST_2026-08-02_WITH_MLE_LEAN.md
-MLEL_M004_HMC_SCCD_REPORT.md
-MLEL-002/MLEL_002_CURRENT_STATUS_CORRECTION.md
-PCRLean/FORMAL_STATUS.md
-PCRLean/FORMAL_FRONTIER.md
-PCRLean/THEOREM_LEDGER.csv
 ```
 
-## Current certified frontier
+## Certified frontier
 
-`MLEL-M004 / HMC-SCCD` is kernel-verified in its exact restricted domains:
+`MLEL-M004 / HMC-SCCD` remains the highest accepted kernel-verified node in its exact restricted domains:
 
 - simultaneous active Hasse-core and passive Morita-row-core descent on a realized finite product Frobenius frame;
-- proper finitely generated active core under Noetherian and proper-saturation hypotheses;
-- well-founded source-causal rank combining fixed-ancestor trace memory and the finite-source generational rank;
-- conditional finite resolution and no-infinite-branch theorems for a supplied fully gated geometric system.
+- proper finitely generated active core under Noetherian/properness hypotheses;
+- well-founded source-causal rank;
+- conditional finite resolution/no-infinite-branch compiler for a supplied fully gated geometric system.
+
+No 2026-08-03 experimental declaration is imported into `CertifiedIndex` or otherwise promoted to the Certified Graph.
+
+## Strongest experimental frontier
+
+The current experimental dependency graph assembles a local polynomial-graph resolution macro containing:
 
 ```text
-HMC-SCCD workflow:
-  run 30769310950
-  job 91553529694
-  result success
-
-Full PCRLean kernel workflow:
-  run 30769310996
-  job 91553530229
-  result success
+actual proper finite-type regular graph centre
+Frobenius-normal ideal filtration
+arbitrary-mark active permissibility
+induced-flat passive Tor safety along every centre power
+flat restriction of passive data to the centre
+exact regular intersection with every finite coefficient-boundary stratum
+all standard chart factorizations
+terminal unit packet or pure exceptional debt
+source-preserving cleanup and strict finite-source rank decrease
 ```
 
-Both workflows completed placeholder rejection, build, and kernel axiom audit at the audited code head.
-
-## Current reduced MLEL-002 gap
-
-The latest repair round materially improved `MLEL-002 / FCR-GEO` but did not close it:
+The exact archival report is:
 
 ```text
-workflow run 30769310958
-job         91553529729
-result      failure
-placeholder rejection success
-axiom audit skipped after build failure
+PCRLean/ResearchRecords/MLEL_JUMP_GRAPH_MACRO_FRONTIER_2026-08-03.md
 ```
 
-The failure set is now exactly:
+The clean-room target is PR #24, run `30837634276`. The run was queued at synchronization, so the evidence label remains:
 
 ```text
-PCRLean.CoordinateBoundarySNC
-  parser/proof-term failure at line 38
-
-PCRLean.CoordinateRootPacket
-  missing expected type for `⟨...⟩` at line 75
+EXACTLY_DEFINED / PROOF_TERM_WRITTEN / CLEANROOM_PENDING
 ```
 
-The same dedicated build succeeded for `CoordinateCentreKernelBridge`, `CoordinatePassiveSafety`, `MultiOwnerHasseCore`, and the new `CoordinateCentreProper`. Therefore the latest state is a two-module repair frontier, not the older five-module failure and not a certified complete chain.
+not `LEAN-KERNEL-VERIFIED`.
+
+## Mathematical bridge now separated from the unknown theorem
+
+Over a perfect base field, a regular finite-type centre is smooth, and a closed immersion between smooth schemes is étale-locally a coordinate subspace. Thus once an algorithm constructs an actual regular centre, the local graph/coordinate atlas exists by standard geometry. The remaining bridge is its Lean formalization, exact ideal and chart descent, and integration into the hereditary resolution state.
+
+## Updated open bridges
+
+```text
+H1  universal finite intrinsic packet extraction and presentation independence
+H2  universal actual centre synthesis, including hybrid/rank-zero cases
+H3  scheme-level etale graph atlas formalization and actual ideal/chart gluing
+H4  arbitrary passive modules and full SNC/codimension legality
+H5  hereditary next-packet reconstruction after every chart and normalization
+H6  geometric source supports for genuine births; no split/no clone
+H7  projection-free immediate-defect carrier
+H8  finite functorial globalization and final resolution compilers
+```
 
 ## Highest-posterior architecture
 
 ```text
-intrinsic finite Frobenius frame
--> finite multiplication/Hasse packet generating all matrix units
--> simultaneous active Hasse core and passive Morita row core
--> actual proper regular owner-safe root-centre word
--> boundary-compatible hereditary all-chart source-conservative reentry
--> Noetherian trace / finite-source causal descent
--> finite functorial global serialization
+intrinsic finite Frobenius–Hasse packet
+-> graded Frobenius normalization and ceiling marks
+-> cotangent/conormal or canonical hybrid centre
+-> actual regular centre or finite centre word
+-> etale polynomial-graph atlas
+-> joint local graph macro
+-> hereditary no-reset packet reconstruction
+-> source-causal birth and cleanup ledger
+-> immediate-defect escape
+-> Noetherian/multiset/degree/debt termination
+-> finite global serialization
 -> principalization and resolution
 ```
-
-Only the finite-frame algebraic core and conditional causal backend are currently certified in the exact scopes stated above. The reduced coordinate-geometric chamber still lacks the boundary-SNC and root-packet proof terms; universal geometry remains open beyond that chamber.
 
 ## Truth boundary
 
 ```text
 MLEL_M004_ACCEPTED                         = true
-HMC_SCCD_RESTRICTED_KERNEL_EXIT            = true
-MLEL_002_REPAIR_PROGRESS                   = true
-MLEL_002_CURRENT_FAILED_MODULE_COUNT       = 2
-MLEL_002_COMPLETE_CHAIN_CERTIFIED          = false
+LATEST_EXPERIMENTAL_LOCAL_MACRO_WRITTEN    = true
+LATEST_CLEANROOM_GREEN                     = false
+LATEST_EXPERIMENTAL_RESULTS_PROMOTED       = false
 GENERAL_GEOMETRIC_REALIZATION              = false
 GENERAL_POSITIVE_CHARACTERISTIC_RESOLUTION = false
 FORMAL_GLOBAL_STATUS                       = OPEN_GAP
