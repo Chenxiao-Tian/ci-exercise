@@ -1,0 +1,11 @@
+import PCRLean.Experimental.SplitSurjectionBaseChange
+
+#print axioms PCRLean.Experimental.SplitSurjectionBaseChange.baseChange_project_liftBack
+#print axioms PCRLean.Experimental.SplitSurjectionBaseChange.residualLinear_mem_ker
+#print axioms PCRLean.Experimental.SplitSurjectionBaseChange.baseChange_residualLinear
+#print axioms PCRLean.Experimental.SplitSurjectionBaseChange.baseChange_residual_tmul
+#print axioms PCRLean.Experimental.SplitSurjectionBaseChange.baseChange_residual_mem
+#print axioms PCRLean.Experimental.SplitSurjectionBaseChange.ker_baseChange_eq
+#print axioms PCRLean.Experimental.SplitSurjectionBaseChange.baseChangedKernelIdeal_eq
+#print axioms PCRLean.Experimental.SplitSurjectionBaseChange.pureKernelGenerator_mem
+#print axioms PCRLean.Experimental.SplitSurjectionBaseChange.quotientEquiv
