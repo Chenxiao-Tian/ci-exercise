@@ -1,0 +1,3 @@
+import PCRLean.Experimental.FiniteDimensionalSymmetricRegularBridge
+
+#print axioms PCRLean.Experimental.FiniteDimensionalSymmetricRegularBridge.isRegularRing
