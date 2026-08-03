@@ -1,4 +1,5 @@
 import PCRLean.Experimental.DeterminantMinorRegularCentre
+import PCRLean.Experimental.SpanningMinorRegularCentre
 import PCRLean.Experimental.IntrinsicKernelIdealEquiv
 import PCRLean.Experimental.IntrinsicKernelIdealComposition
 import PCRLean.Experimental.IntrinsicKernelIdealBiEquiv
@@ -21,6 +22,8 @@ hereditary blowup transport, globalization, or the general resolution theorem.
 namespace PCRLean.Experimental.U2EquivCausalIndex
 
 #print axioms PCRLean.Experimental.DeterminantMinorRegularCentre.finiteFreeCertificate
+#print axioms PCRLean.Experimental.SpanningMinorRegularCentre.CertificateData.ker_fullEval_eq_selectedEval
+#print axioms PCRLean.Experimental.SpanningMinorRegularCentre.CertificateData.finiteFreeRegularCertificate
 #print axioms PCRLean.Experimental.IntrinsicKernelIdealEquiv.map_kernelIdeal_eq
 #print axioms PCRLean.Experimental.IntrinsicKernelIdealComposition.kernelIdeal_le_comp
 #print axioms PCRLean.Experimental.IntrinsicKernelIdealComposition.kernelIdeal_comp_equiv
