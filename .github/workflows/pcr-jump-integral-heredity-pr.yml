@@ -48,7 +48,9 @@ jobs:
               PCRLean/Experimental/MultivariatePointIdealBridge.lean \
               PCRLean/Experimental/MultivariatePointIdealBridgeAudit.lean \
               PCRLean/Experimental/CoordinateSubspaceOrderHeredity.lean \
-              PCRLean/Experimental/CoordinateSubspaceOrderHeredityAudit.lean; then
+              PCRLean/Experimental/CoordinateSubspaceOrderHeredityAudit.lean \
+              PCRLean/Experimental/AffineCoordinateSubspaceHeredity.lean \
+              PCRLean/Experimental/AffineCoordinateSubspaceHeredityAudit.lean; then
             echo 'Forbidden proof placeholder or custom axiom found.' >&2
             exit 1
           fi
@@ -92,6 +94,11 @@ jobs:
           set -o pipefail
           lake build PCRLean.Experimental.CoordinateSubspaceOrderHeredity 2>&1 \
             | tee coordinate-subspace-build.txt
+      - name: Build affine positive-dimensional centre bridge
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.AffineCoordinateSubspaceHeredity 2>&1 \
+            | tee affine-coordinate-subspace-build.txt
       - name: Kernel axiom audit
         run: |
           set -o pipefail
@@ -111,11 +118,13 @@ jobs:
             | tee point-ideal-bridge-axioms.txt
           lake env lean PCRLean/Experimental/CoordinateSubspaceOrderHeredityAudit.lean 2>&1 \
             | tee coordinate-subspace-axioms.txt
+          lake env lean PCRLean/Experimental/AffineCoordinateSubspaceHeredityAudit.lean 2>&1 \
+            | tee affine-coordinate-subspace-axioms.txt
           cat integral-heredity-axioms.txt mark-scaling-boundary-axioms.txt \
               order-basechange-axioms.txt universal-marked-equivalence-axioms.txt \
               multivariate-heredity-axioms.txt order-ideal-bridge-axioms.txt \
               point-ideal-bridge-axioms.txt coordinate-subspace-axioms.txt \
-              > combined-axioms.txt
+              affine-coordinate-subspace-axioms.txt > combined-axioms.txt
           if grep -E 'sorryAx|PCRLean\..*Axiom|ResolutionAxiom|PacketizationAxiom' \
               combined-axioms.txt; then
             echo 'Unpermitted axiom detected.' >&2
@@ -135,6 +144,7 @@ jobs:
             order-ideal-bridge-build.txt
             point-ideal-bridge-build.txt
             coordinate-subspace-build.txt
+            affine-coordinate-subspace-build.txt
             integral-heredity-axioms.txt
             mark-scaling-boundary-axioms.txt
             order-basechange-axioms.txt
@@ -143,5 +153,6 @@ jobs:
             order-ideal-bridge-axioms.txt
             point-ideal-bridge-axioms.txt
             coordinate-subspace-axioms.txt
+            affine-coordinate-subspace-axioms.txt
             combined-axioms.txt
           if-no-files-found: warn
