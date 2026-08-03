@@ -1,0 +1,4 @@
+import PCRLean.Experimental.FittingFrobeniusNormalCompiler
+
+#print axioms PCRLean.Experimental.FittingFrobeniusNormalCompiler.reflectsFrobeniusPowers
+#print axioms PCRLean.Experimental.FittingFrobeniusNormalCompiler.power_mem_scaled_iff
