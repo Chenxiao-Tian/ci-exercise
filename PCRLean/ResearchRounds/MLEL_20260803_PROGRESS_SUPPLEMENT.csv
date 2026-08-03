@@ -1,0 +1,8 @@
+id,date,category,status,statement_or_artifact,lean_module_or_file,notes
+MLEL-A002-JUMP2,2026-08-03,PROTOCOL,BASELINE-PROTOCOL,PCR-JUMP-LEAN 2.0,PCRLean/ResearchProtocols/PCR_JUMP_LEAN_2_0_BASELINE.md,No mathematical theorem promoted
+MLEL-X012,2026-08-03,EXPERIMENTAL_MATH,PROOF-WRITTEN,Graded marked Frobenius equivalence and positive-dimensional ideal powers,UniversalMarkedFrobeniusEquivalence; CoordinateSubspaceOrderHeredity,Exact clean-room status remains external evidence
+MLEL-X013,2026-08-03,EXPERIMENTAL_MATH,PROOF-WRITTEN,Frobenius-normal filtration and normal-cone layer interface,FrobeniusNormalCentre; GradedPowerReflection; NormalConeLayer,Scheme quasi-regular theorem remains open
+MLEL-X014,2026-08-03,EXPERIMENTAL_MATH,PROOF-WRITTEN,Actual polynomial graph centre quotient and all-chart blowup,PolynomialGraphCentreQuotient; PolynomialGraphBlowupHeredity,Local affine graph chamber
+MLEL-X015,2026-08-03,EXPERIMENTAL_MATH,PROOF-WRITTEN,Arbitrary-mark residual equals pure exceptional debt,PolynomialGraphMarkedTransformDebt; PolynomialGraphArbitraryMarkCertificate,Debt cocycle/no-reset remains open
+MLEL-X016,2026-08-03,EXPERIMENTAL_MATH,PROOF-WRITTEN-CI-PENDING,Faithfully flat descent of ideal containment centre uniqueness and marked permissibility,PCRLean.Experimental.FaithfullyFlatMarkedCentreDescent,No promotion before clean audit
+MLEL-SYNC006,2026-08-03,BASELINE_SYNC,SYNCHRONIZED-EXPERIMENTAL-RECORD,Current conversation outputs and frontier stored in MLE–Lean baseline,PCRLean/ResearchRounds/MLEL_20260803_GFH_PGC_FFMD.md,Certified Graph unchanged and OPEN_GAP preserved
