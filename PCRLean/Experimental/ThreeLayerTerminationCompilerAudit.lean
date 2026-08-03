@@ -1,0 +1,9 @@
+import PCRLean.Experimental.ThreeLayerTerminationCompiler
+
+#print axioms PCRLean.Experimental.ThreeLayerTerminationCompiler.innerLt_wellFounded
+#print axioms PCRLean.Experimental.ThreeLayerTerminationCompiler.rankLt_wellFounded
+#print axioms PCRLean.Experimental.ThreeLayerTerminationCompiler.rankStep_decreases
+#print axioms PCRLean.Experimental.ThreeLayerTerminationCompiler.rankStep_wellFounded
+#print axioms PCRLean.Experimental.ThreeLayerTerminationCompiler.Program.step_decreases
+#print axioms PCRLean.Experimental.ThreeLayerTerminationCompiler.Program.terminal_reachable
+#print axioms PCRLean.Experimental.ThreeLayerTerminationCompiler.Program.no_infinite_execution
