@@ -1,0 +1,68 @@
+name: PCR final proof blueprint clean room
+
+on:
+  pull_request:
+    branches:
+      - pcr-final-proof-blueprint-ci-base-20260803
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pcr-final-proof-blueprint-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  blueprint-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          set -o pipefail
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf \
+            | sh -s -- -y --default-toolchain leanprover/lean4:v4.30.0
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned mathlib
+        run: |
+          set -o pipefail
+          lake update
+          lake exe cache get
+      - name: Reject placeholders
+        run: |
+          set -o pipefail
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)([[:space:]]|$)' \
+              PCRLean/Blueprint/FinalResolution.lean \
+              PCRLean/Blueprint/FinalResolutionAudit.lean; then
+            echo 'Forbidden proof placeholder or project axiom found.' >&2
+            exit 1
+          fi
+      - name: Build blueprint compiler
+        run: |
+          set -o pipefail
+          lake build PCRLean.Blueprint.FinalResolution 2>&1 \
+            | tee final-proof-blueprint-build.txt
+      - name: Kernel axiom audit
+        run: |
+          set -o pipefail
+          lake env lean PCRLean/Blueprint/FinalResolutionAudit.lean 2>&1 \
+            | tee final-proof-blueprint-axioms.txt
+          if grep -E 'sorryAx|PCRLean\..*Axiom|ResolutionAxiom|PacketizationAxiom' \
+              final-proof-blueprint-axioms.txt; then
+            echo 'Unpermitted axiom detected.' >&2
+            exit 1
+          fi
+      - name: Record exact commit
+        run: |
+          git rev-parse HEAD | tee final-proof-blueprint-commit.txt
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pcr-final-proof-blueprint-${{ github.sha }}
+          path: |
+            final-proof-blueprint-build.txt
+            final-proof-blueprint-axioms.txt
+            final-proof-blueprint-commit.txt
+          if-no-files-found: warn
