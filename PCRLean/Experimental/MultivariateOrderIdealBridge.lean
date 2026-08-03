@@ -1,22 +1,25 @@
 import Mathlib
+import Mathlib.RingTheory.MvPolynomial.Ideal
 import PCRLean.Experimental.MultivariateFrobeniusOrderHeredity
 
 /-!
 # Multivariate order as actual ideal-power containment
 
-Let `m = (X_i)` be the actual affine ideal of the origin.  If every supported
-monomial of a polynomial has total degree at least `n`, then the polynomial
-belongs to `m^n`.  Thus the support lower-bound semantics used for
-multivariate order produces a genuine marked-power certificate for an actual
-finite-type centre.
+Let `m = (X_i)` be the actual affine ideal of the origin. Mathlib proves the
+exact monomial-ideal theorem
+
+`f ∈ m^n ↔ ∀ d ∈ support(f), n ≤ degree(d)`.
+
+The support lower-bound semantics used for multivariate order is precisely the
+right-hand side. Thus pointwise order is not merely a combinatorial proxy: it
+is exactly actual ideal-power containment.
 
 Combined with Frobenius order heredity, a prime-power equation `g^(p^e)` whose
-root has order at least `n` belongs to `m^((p^e)*n)`.  This closes the direction
-needed for marked permissibility in the affine principal rank-zero chamber.
+root has order at least `n` belongs to `m^((p^e)*n)`. This closes marked
+permissibility for the affine principal rank-zero chamber.
 
-The converse ideal-membership theorem, translation to arbitrary local points,
-regular immersion, owner/passive legality and scheme-level gluing remain
-separate.
+Translation to arbitrary local points is handled separately. Regular immersion,
+owner/passive legality and scheme-level gluing remain open beyond this chamber.
 -/
 
 namespace PCRLean
@@ -35,58 +38,40 @@ open InitialFormFrobeniusCleaning
 
 /-- Actual coordinate ideal of the affine origin. -/
 def originIdeal : Ideal (MvPolynomial σ K) :=
-  Ideal.span (Set.range (MvPolynomial.X : σ → MvPolynomial σ K))
+  MvPolynomial.idealOfVars σ K
+
+/-- Our exponent-degree notation agrees with mathlib's `Finsupp.degree`. -/
+theorem exponentDegree_eq_degree (d : σ →₀ Nat) :
+    exponentDegree d = Finsupp.degree d := by
+  rfl
 
 /-- Every coordinate belongs to the origin ideal. -/
 theorem X_mem_originIdeal (i : σ) :
     MvPolynomial.X i ∈ originIdeal (K := K) (σ := σ) :=
   Ideal.subset_span ⟨i, rfl⟩
 
-/-- Powers of a proper ideal form a decreasing filtration. -/
-theorem pow_le_pow_of_le
-    (I : Ideal (MvPolynomial σ K)) {m n : Nat} (hmn : m ≤ n) :
-    I ^ n ≤ I ^ m := by
-  obtain ⟨k, rfl⟩ := Nat.exists_eq_add_of_le hmn
-  rw [pow_add]
-  calc
-    I ^ m * I ^ k ≤ I ^ m * ⊤ := mul_le_mul_left' le_top _
-    _ = I ^ m := by simp
+/-- Exact equivalence between support order and actual ideal-power membership. -/
+theorem mem_originIdeal_pow_iff_orderGE
+    (f : MvPolynomial σ K) (mark : Nat) :
+    f ∈ (originIdeal (K := K) (σ := σ)) ^ mark ↔
+      OrderGE f mark := by
+  rw [originIdeal, MvPolynomial.mem_pow_idealOfVars_iff]
+  exact forall₂_congr fun d hd => by
+    rw [exponentDegree_eq_degree]
 
-/-- One monomial belongs to the power indexed by its full total degree. -/
-theorem monomial_mem_originIdeal_pow_degree
-    (d : σ →₀ Nat) (a : K) :
-    MvPolynomial.monomial d a ∈
-      (originIdeal (K := K) (σ := σ)) ^ exponentDegree d := by
-  induction d using Finsupp.induction with
-  | zero => simp [exponentDegree]
-  | single_add i e d hi he ih =>
-      rw [exponentDegree, Finsupp.sum, Finsupp.support_single_ne_zero _ he,
-        Finset.sum_insert hi, Finsupp.single_eq_same]
-      rw [MvPolynomial.monomial_single_add, pow_add]
-      exact Ideal.mul_mem_mul
-        (Ideal.pow_mem_pow (X_mem_originIdeal (K := K) i) e) ih
-
-/-- A monomial of degree at least `mark` belongs to the corresponding origin
-ideal power. -/
-theorem monomial_mem_originIdeal_pow_of_le
-    (mark : Nat) (d : σ →₀ Nat) (a : K)
-    (hdegree : mark ≤ exponentDegree d) :
-    MvPolynomial.monomial d a ∈
-      (originIdeal (K := K) (σ := σ)) ^ mark := by
-  exact pow_le_pow_of_le
-    (originIdeal (K := K) (σ := σ)) hdegree
-    (monomial_mem_originIdeal_pow_degree (K := K) d a)
-
-/-- Main integration theorem: the support lower-bound order predicate implies
-actual marked-power containment. -/
+/-- Support order compiles into actual marked-power containment. -/
 theorem mem_originIdeal_pow_of_orderGE
     (f : MvPolynomial σ K) (mark : Nat)
     (horder : OrderGE f mark) :
-    f ∈ (originIdeal (K := K) (σ := σ)) ^ mark := by
-  rw [MvPolynomial.as_sum f]
-  exact Ideal.sum_mem _ fun d hd =>
-    monomial_mem_originIdeal_pow_of_le (K := K) mark d
-      (MvPolynomial.coeff d f) (horder d hd)
+    f ∈ (originIdeal (K := K) (σ := σ)) ^ mark :=
+  (mem_originIdeal_pow_iff_orderGE f mark).mpr horder
+
+/-- Actual ideal-power membership recovers the support-order predicate. -/
+theorem orderGE_of_mem_originIdeal_pow
+    (f : MvPolynomial σ K) (mark : Nat)
+    (hmem : f ∈ (originIdeal (K := K) (σ := σ)) ^ mark) :
+    OrderGE f mark :=
+  (mem_originIdeal_pow_iff_orderGE f mark).mp hmem
 
 /-- Prime-power order heredity compiles directly into a marked-power
 certificate for the actual origin ideal. -/
