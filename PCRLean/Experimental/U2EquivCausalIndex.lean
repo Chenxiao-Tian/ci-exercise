@@ -14,8 +14,8 @@ import PCRLean.Experimental.CausalBudgetCompiler
 This isolated target forces the current intrinsic-centre reduction and causal
 termination slice through Lean. It is experimental and is not imported by the
 official MLE–Lean baseline. In particular it does not assert universal
-Frobenius packet realization, localization descent, hereditary blowup
-transport, globalization, or the general resolution theorem.
+Frobenius packet realization, image-local-freeness, localization descent,
+hereditary blowup transport, globalization, or the general resolution theorem.
 -/
 
 namespace PCRLean.Experimental.U2EquivCausalIndex
