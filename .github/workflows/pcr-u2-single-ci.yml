@@ -4,13 +4,16 @@ on:
   push:
     branches:
       - pcr-u2-single-ci-20260803
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: pcr-u2-single-ci-${{ github.ref }}
+  group: pcr-u2-single-ci-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
