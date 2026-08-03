@@ -6,6 +6,8 @@ import PCRLean.Experimental.SurjectiveLinearMapSymmetricQuotient
 import PCRLean.Experimental.SurjectiveFreeRegularCentre
 import PCRLean.Experimental.FiniteFreeSymmetricAlgebraRegular
 import PCRLean.Experimental.BiorthogonalRegularCentre
+import PCRLean.Experimental.InvertibleMinorRegularCentre
+import PCRLean.Experimental.DetUnitMinorRegularCentre
 import PCRLean.Experimental.IntrinsicCentreGaugeInvariance
 import PCRLean.Experimental.IntrinsicCentreTransport
 
@@ -42,6 +44,12 @@ import PCRLean.Experimental.IntrinsicCentreTransport
 #print axioms PCRLean.Experimental.BiorthogonalRegularCentre.coefficientSymmetricAlgebra_isRegularRing
 #print axioms PCRLean.Experimental.BiorthogonalRegularCentre.quotient_isRegularRing
 #print axioms PCRLean.Experimental.BiorthogonalRegularCentre.finiteFreeCertificate
+
+#print axioms PCRLean.Experimental.InvertibleMinorRegularCentre.MinorCertificate.packet_transverse
+#print axioms PCRLean.Experimental.InvertibleMinorRegularCentre.MinorCertificate.finiteFreeCertificate
+#print axioms PCRLean.Experimental.DetUnitMinorRegularCentre.UnitMinorCertificate.inverse_identity
+#print axioms PCRLean.Experimental.DetUnitMinorRegularCentre.UnitMinorCertificate.toMinorCertificate
+#print axioms PCRLean.Experimental.DetUnitMinorRegularCentre.UnitMinorCertificate.finiteFreeCertificate
 
 #print axioms PCRLean.Experimental.IntrinsicCentreGaugeInvariance.kernelIdeal_equiv_comp_eq
 #print axioms PCRLean.Experimental.IntrinsicCentreGaugeInvariance.GaugeAtlas.kernelIdeal_eq
