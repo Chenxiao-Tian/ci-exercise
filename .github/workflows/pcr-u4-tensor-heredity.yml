@@ -4,13 +4,16 @@ on:
   push:
     branches:
       - pcr-u4-tensor-heredity-20260803
+  pull_request:
+    branches:
+      - pcr-u4-tensor-heredity-base-20260803
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: pcr-u4-tensor-heredity-${{ github.ref }}
+  group: pcr-u4-tensor-heredity-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
