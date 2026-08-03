@@ -1,4 +1,5 @@
 import Mathlib
+import Mathlib.LinearAlgebra.SymmetricAlgebra.Basis
 import PCRLean.Experimental.ArbitraryFiniteLinearPacketRegularCentre
 import PCRLean.Experimental.FinitePacketAutomaticRegularCentre
 
@@ -6,14 +7,14 @@ import PCRLean.Experimental.FinitePacketAutomaticRegularCentre
 # Experimental boundary of automatic finite-packet centres
 
 Every finite linear packet on a finite-dimensional vector space has an
-intrinsic degree-one ideal with regular quotient.  That algebraic regularity is
+intrinsic degree-one ideal with regular quotient. That algebraic regularity is
 not yet a legal blowup-centre theorem: the ideal may be bottom, in which case
 the corresponding closed subscheme is the whole ambient affine space.
 
-This file isolates the missing `nonWhole` gate.  If the packet map is
-injective, its intrinsic kernel ideal is exactly bottom.  Hence a non-bottom
-packet centre forces a genuine common kernel.  The identity packet supplies a
-minimal counterexample to the invalid implication
+This file isolates the missing `nonWhole` gate. The intrinsic centre ideal is
+bottom exactly when the packet map is injective. Hence a strict packet centre
+exists exactly when the packet retains a genuine common-kernel direction. The
+identity packet supplies a minimal counterexample to the invalid implication
 
 `regular quotient -> legal nontrivial centre`.
 
@@ -43,8 +44,40 @@ certificate. -/
 def StrictCentre (project : V →ₗ[K] W) : Prop :=
   centreIdeal project ≠ ⊥ ∧ centreIdeal project ≠ ⊤
 
+/-- Every degree-one vector in the packet kernel belongs to the intrinsic
+centre ideal. -/
+theorem kernelGenerator_mem
+    (project : V →ₗ[K] W)
+    (z : LinearMap.ker project) :
+    SymmetricAlgebra.ι K V z.1 ∈ centreIdeal project := by
+  unfold centreIdeal kernelIdealOf
+  apply Ideal.subset_span
+  exact ⟨z, rfl⟩
+
+/-- The degree-one embedding into a symmetric algebra is injective for a free
+module over a field. The proof separates vectors by basis-coordinate linear
+functionals and the universal property of the symmetric algebra. -/
+theorem symmetricIota_injective [Module.Free K V] :
+    Function.Injective (SymmetricAlgebra.ι K V) := by
+  let basis := Module.Free.chooseBasis K V
+  intro a b hab
+  apply basis.repr.injective
+  ext i
+  let coordinate : V →ₗ[K] K where
+    toFun z := basis.repr z i
+    map_add' := by
+      intro z t
+      simp
+    map_smul' := by
+      intro c z
+      simp
+  have h := congrArg
+    (fun z : SymmetricAlgebra K V =>
+      (SymmetricAlgebra.lift coordinate) z) hab
+  simpa [coordinate] using h
+
 /-- An injective packet map has zero kernel, so the intrinsic degree-one ideal
-is bottom.  Algebraically regular quotient data alone therefore need not give a
+is bottom. Algebraically regular quotient data alone therefore need not give a
 usable centre. -/
 theorem centreIdeal_eq_bot_of_injective
     (project : V →ₗ[K] W)
@@ -54,10 +87,43 @@ theorem centreIdeal_eq_bot_of_injective
   apply le_antisymm
   · rw [Ideal.span_le]
     rintro z ⟨k, rfl⟩
-    have hk : k.1 = 0 := hinj (LinearMap.mem_ker.mp k.2)
+    have hk0 : project k.1 = project 0 := by
+      simpa using LinearMap.mem_ker.mp k.2
+    have hk : k.1 = 0 := hinj hk0
     rw [hk]
     simp
   · exact bot_le
+
+/-- Conversely, if the intrinsic ideal is bottom then the packet map is
+injective. The only substantive input is injectivity of the symmetric-algebra
+degree-one embedding. -/
+theorem injective_of_centreIdeal_eq_bot
+    [Module.Free K V]
+    (project : V →ₗ[K] W)
+    (hbot : centreIdeal project = ⊥) :
+    Function.Injective project := by
+  intro a b hab
+  have hker : a - b ∈ LinearMap.ker project := by
+    apply LinearMap.mem_ker.mpr
+    rw [map_sub, hab, sub_self]
+  have hmem := kernelGenerator_mem project ⟨a - b, hker⟩
+  rw [hbot] at hmem
+  have hi :
+      SymmetricAlgebra.ι K V (a - b) =
+        SymmetricAlgebra.ι K V 0 := by
+    simpa using hmem
+  have hz : a - b = 0 := symmetricIota_injective hi
+  exact sub_eq_zero.mp hz
+
+/-- Exact algebraic boundary: the intrinsic packet centre is the whole ambient
+closed subscheme precisely when the packet separates all directions. -/
+theorem centreIdeal_eq_bot_iff_injective
+    [Module.Free K V]
+    (project : V →ₗ[K] W) :
+    centreIdeal project = ⊥ ↔ Function.Injective project := by
+  constructor
+  · exact injective_of_centreIdeal_eq_bot project
+  · exact centreIdeal_eq_bot_of_injective project
 
 /-- The identity packet is the minimal full-rank boundary example. -/
 theorem identityCentreIdeal_eq_bot :
@@ -66,7 +132,7 @@ theorem identityCentreIdeal_eq_bot :
   intro a b hab
   simpa using hab
 
-/-- A non-bottom intrinsic packet ideal forces failure of injectivity.  Thus a
+/-- A non-bottom intrinsic packet ideal forces failure of injectivity. Thus a
 legal nonwhole packet centre requires an actual common-kernel direction. -/
 theorem not_injective_of_centreIdeal_ne_bot
     (project : V →ₗ[K] W)
@@ -102,8 +168,17 @@ theorem strictCentre_iff_ne_bot (project : V →ₗ[K] W) :
   · intro hbot
     exact ⟨hbot, centreIdeal_ne_top project⟩
 
+/-- In finite dimension the strict-centre gate is exactly failure of
+injectivity of the packet map. This is the precise algebraic boundary that a
+geometric packetization theorem must control. -/
+theorem strictCentre_iff_not_injective
+    (project : V →ₗ[K] W) :
+    StrictCentre project ↔ ¬ Function.Injective project := by
+  exact (strictCentre_iff_ne_bot project).trans
+    (not_congr (centreIdeal_eq_bot_iff_injective project))
+
 /-- Minimal falsifier: the identity packet has a regular quotient but its
-centre ideal is bottom.  Therefore regularity and properness of the quotient do
+centre ideal is bottom. Therefore regularity and properness of the quotient do
 not imply a legal nonwhole blowup centre. -/
 theorem identityPacket_regular_quotient_but_not_strict :
     IsRegularRing
