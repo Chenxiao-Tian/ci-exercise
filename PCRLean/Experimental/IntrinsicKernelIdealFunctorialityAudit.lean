@@ -1,0 +1,7 @@
+import PCRLean.Experimental.IntrinsicKernelIdealFunctoriality
+
+#print axioms PCRLean.Experimental.IntrinsicKernelIdealFunctoriality.symmetricMap_ι
+#print axioms PCRLean.Experimental.IntrinsicKernelIdealFunctoriality.kernelIdealOf_eq_of_ker_eq
+#print axioms PCRLean.Experimental.IntrinsicKernelIdealFunctoriality.map_kernelIdealOf_le
+#print axioms PCRLean.Experimental.IntrinsicKernelIdealFunctoriality.splitSurjection_kernelIdeal_eq
+#print axioms PCRLean.Experimental.IntrinsicKernelIdealFunctoriality.map_splitSurjection_kernelIdeal_le
