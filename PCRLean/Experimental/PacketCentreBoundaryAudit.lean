@@ -11,4 +11,5 @@ import PCRLean.Experimental.PacketCentreBoundary
 #print axioms PCRLean.Experimental.PacketCentreBoundary.strictCentre_iff_ne_bot
 #print axioms PCRLean.Experimental.PacketCentreBoundary.strictCentre_iff_not_injective
 #print axioms PCRLean.Experimental.PacketCentreBoundary.identityPacket_regular_quotient_but_not_strict
+#print axioms PCRLean.Experimental.PacketCentreBoundary.generatorCentre_not_markTwo_permissible
 #print axioms PCRLean.Experimental.PacketCentreBoundary.packetMap_not_injective_of_centreIdeal_ne_bot
