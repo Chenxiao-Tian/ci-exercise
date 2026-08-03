@@ -130,7 +130,7 @@ theorem mem_graphIdeal_square_of_rows_eq_zero
 /-- The graph conormal coefficient map is injective. -/
 theorem toRows_injective (h : ι → R) :
     Function.Injective (toRows (R := R) (ι := ι) h) := by
-  rw [LinearMap.injective_iff_map_eq_zero]
+  rw [injective_iff_map_eq_zero]
   intro z hz
   obtain ⟨x, rfl⟩ := (GraphI (R := R) (ι := ι) h).toCotangent_surjective z
   apply ((GraphI (R := R) (ι := ι) h).toCotangent_eq_zero x).mpr
