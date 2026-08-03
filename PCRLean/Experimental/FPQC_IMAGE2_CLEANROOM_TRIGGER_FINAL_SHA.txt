@@ -1,0 +1,2 @@
+This file intentionally contains no claimed result. Its commit SHA is the exact
+head to which the clean-room workflow result must be attached.
