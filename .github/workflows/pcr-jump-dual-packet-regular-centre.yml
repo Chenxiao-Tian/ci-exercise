@@ -1,0 +1,72 @@
+name: PCR Jump dual-packet regular centre
+
+on:
+  push:
+    branches:
+      - pcr-jump-lean-20260802-u2-root-boundary
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pcr-jump-dual-packet-regular-centre-${{ github.sha }}
+  cancel-in-progress: false
+
+jobs:
+  dual-packet-regular-centre-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          set -o pipefail
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf \
+            | sh -s -- -y --default-toolchain leanprover/lean4:v4.30.0
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned mathlib
+        run: |
+          set -o pipefail
+          lake update
+          lake exe cache get
+      - name: Reject placeholders
+        run: |
+          set -o pipefail
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)([[:space:]]|$)' \
+              PCRLean/FinitePacketEvaluation.lean \
+              PCRLean/Experimental/IntrinsicKernelIdealFunctoriality.lean \
+              PCRLean/Experimental/FiniteDimensionalSymmetricRegularBridge.lean \
+              PCRLean/Experimental/FiniteDimensionalIntrinsicRegularCentre.lean \
+              PCRLean/Experimental/SurjectiveFiniteDimensionalRegularCentre.lean \
+              PCRLean/Experimental/DualPacketRegularCentre.lean \
+              PCRLean/Experimental/DualPacketRegularCentreAudit.lean; then
+            echo 'Forbidden proof placeholder or custom axiom found.' >&2
+            exit 1
+          fi
+      - name: Build dual-packet regular centre
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.DualPacketRegularCentre 2>&1 \
+            | tee dual-packet-regular-centre-build.txt
+      - name: Kernel axiom audit
+        run: |
+          set -o pipefail
+          lake env lean PCRLean/Experimental/DualPacketRegularCentreAudit.lean 2>&1 \
+            | tee dual-packet-regular-centre-axioms.txt
+          if grep -E 'sorryAx|PCRLean\..*Axiom|ResolutionAxiom|PacketizationAxiom' \
+              dual-packet-regular-centre-axioms.txt; then
+            echo 'Unpermitted axiom detected.' >&2
+            exit 1
+          fi
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pcr-jump-dual-packet-regular-centre-${{ github.sha }}
+          path: |
+            dual-packet-regular-centre-build.txt
+            dual-packet-regular-centre-axioms.txt
+          if-no-files-found: warn
