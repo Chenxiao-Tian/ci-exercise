@@ -14,7 +14,10 @@ import PCRLean.Experimental.AffineLinearFrameExactFrobeniusHeredity
 import PCRLean.Experimental.FrobeniusNormalCentre
 import PCRLean.Experimental.FrobeniusNormalCentreCounterexample
 import PCRLean.Experimental.GradedPowerReflection
+import PCRLean.Experimental.NormalConeLayer
+import PCRLean.Experimental.CoordinateNormalConeFrobeniusReduced
 import PCRLean.Experimental.FrobeniusNormalFaithfullyFlatDescent
+import PCRLean.Experimental.FrobeniusNormalLocalCoordinateModel
 import PCRLean.Experimental.CoordinateControlledTransformHeredity
 
 /-!
@@ -31,7 +34,8 @@ Lean build through the complete current experimental heredity chain:
 * the Frobenius-normal centre interface;
 * the nonreduced dual-number no-go;
 * the graded-layer sufficient condition;
-* faithfully flat descent; and
+* actual normal-cone quotient layers and coordinate nonvanishing;
+* faithfully flat descent and local coordinate-model compilation; and
 * exact commutation of prime-power compression with coordinate controlled
   transforms.
 
