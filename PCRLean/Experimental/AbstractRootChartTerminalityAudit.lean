@@ -1,0 +1,7 @@
+import PCRLean.Experimental.AbstractRootChartTerminality
+
+#print axioms PCRLean.Experimental.AbstractRootChartTerminality.RootChart.pow_factorization
+#print axioms PCRLean.Experimental.AbstractRootChartTerminality.RootChart.one_mem_transformedRootIdeal
+#print axioms PCRLean.Experimental.AbstractRootChartTerminality.RootChart.transformedRootIdeal_eq_top
+#print axioms PCRLean.Experimental.AbstractRootChartTerminality.RootChart.transformedRootIdeal_eq
+#print axioms PCRLean.Experimental.AbstractRootChartTerminality.RootChart.transformedOwnerIdeal_eq_top_of_mem
