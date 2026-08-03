@@ -5,15 +5,16 @@ import Mathlib.RingTheory.FiniteType
 import Mathlib.RingTheory.RegularLocalRing.Polynomial
 
 /-!
-# Finite free symmetric algebras are Noetherian and regular
+# Finite free symmetric algebras are finite type, Noetherian, and regular
 
-A finite free module has a basis indexed by a finite type.  Its symmetric
+A finite free module has a basis indexed by a finite type. Its symmetric
 algebra is therefore algebra-equivalent to a polynomial ring in finitely many
-variables.  Hilbert's basis theorem gives Noetherianity and polynomial
-regularity gives regularity.
+variables. Hilbert's basis theorem gives Noetherianity over a Noetherian base,
+and polynomial regularity gives regularity over a regular base.
 
-This file isolates the ring-theoretic automation needed by the intrinsic
-conormal-centre certificates.
+No field hypothesis is needed. This file isolates the ring-theoretic automation
+required by intrinsic conormal-centre certificates on regular affine charts and
+their localizations.
 -/
 
 namespace PCRLean
@@ -24,11 +25,11 @@ noncomputable section
 
 universe u v
 
-variable {K : Type u} [Field K]
+variable {K : Type u} [CommRing K]
 variable {M : Type v} [AddCommGroup M] [Module K M]
 variable [Module.Free K M] [Module.Finite K M]
 
-/-- A finite free symmetric algebra is of finite type over the ground field. -/
+/-- A finite free symmetric algebra is of finite type over the ground ring. -/
 theorem finiteType : Algebra.FiniteType K (SymmetricAlgebra K M) := by
   let b := Module.Free.chooseBasis K M
   letI : Fintype (Module.Free.ChooseBasisIndex K M) :=
@@ -40,12 +41,14 @@ theorem finiteType : Algebra.FiniteType K (SymmetricAlgebra K M) := by
     (SymmetricAlgebra.equivMvPolynomial b).symm
 
 /-- Hilbert's basis theorem transferred through the polynomial model. -/
-theorem isNoetherianRing : IsNoetherianRing (SymmetricAlgebra K M) := by
+theorem isNoetherianRing [IsNoetherianRing K] :
+    IsNoetherianRing (SymmetricAlgebra K M) := by
   letI : Algebra.FiniteType K (SymmetricAlgebra K M) := finiteType
   exact Algebra.FiniteType.isNoetherianRing K (SymmetricAlgebra K M)
 
 /-- Polynomial regularity transferred through the basis equivalence. -/
-theorem isRegularRing : IsRegularRing (SymmetricAlgebra K M) := by
+theorem isRegularRing [IsRegularRing K] :
+    IsRegularRing (SymmetricAlgebra K M) := by
   let b := Module.Free.chooseBasis K M
   letI : Fintype (Module.Free.ChooseBasisIndex K M) :=
     Module.Free.ChooseBasisIndex.fintype K M
