@@ -55,10 +55,14 @@ def graphLinearCoefficients (h : ι → R) :
     (R := R) (ι := ι) (translatedElement h x)
   map_add' := by
     intro x y
-    rfl
+    ext i
+    simp [CoordinateCentreCotangentBasis.linearCoefficients,
+      translatedElement]
   map_smul' := by
     intro r x
-    rfl
+    ext i
+    simp [CoordinateCentreCotangentBasis.linearCoefficients,
+      translatedElement, Algebra.smul_def]
 
 /-- Products in the graph ideal have zero translated degree-one row. -/
 theorem graphLinearCoefficients_mul_zero
