@@ -16,9 +16,10 @@ This separates the two genuine obstructions in the rank-zero chamber:
 * exponent divisibility is forced by derivative vanishing;
 * coefficient root extraction requires perfectness (or a radicial extension).
 
+The theorem is valid for an arbitrary variable type; every polynomial has
+finite support, so no global finiteness hypothesis on the variables is needed.
 The main dichotomy says that a nonconstant polynomial either has a visible
-first derivative or admits a strict Frobenius-root descent.  Iterating this
-well-founded dichotomy is the proposed perfect-field rank-zero exit.
+first derivative or admits a strict Frobenius-root descent.
 -/
 
 namespace PCRLean
@@ -30,7 +31,7 @@ noncomputable section
 universe u v
 
 variable {K : Type u} [Field K]
-variable {σ : Type v} [Fintype σ] [DecidableEq σ]
+variable {σ : Type v} [DecidableEq σ]
 variable (p : Nat) [Fact p.Prime] [CharP K p]
 
 /-- The Euler operator `X_i ∂_i` acts diagonally on coefficients. -/
