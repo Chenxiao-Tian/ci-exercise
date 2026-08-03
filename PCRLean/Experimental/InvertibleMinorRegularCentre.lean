@@ -5,13 +5,17 @@ import PCRLean.Experimental.BiorthogonalRegularCentre
 # Experimental regular centre from an invertible evaluation minor
 
 A finite Fitting chart is represented by packet rows, test vectors, and an
-explicit inverse for their square evaluation matrix.  The inverse matrix
-constructs transverse vectors by finite linear combination.  These vectors are
-biorthogonal to the packet, so the packet evaluation is split surjective and
-defines the intrinsic actual regular centre of the preceding module.
+explicit inverse for their square evaluation matrix. The inverse matrix
+constructs transverse vectors by finite linear combination. These vectors are
+biorthogonal to the packet, so packet evaluation is split surjective and
+defines an intrinsic actual proper regular centre.
+
+For a finite-dimensional source vector space the ambient symmetric algebra is
+automatically Noetherian, so the entire local regular-centre certificate follows
+from the inverse minor alone.
 
 Geometrically, the inverse certificate is produced after localizing where a
-maximal minor is a unit.  This file does not prove that such charts cover every
+maximal minor is a unit. This file does not prove that such charts cover every
 proper Frobenius/Fitting core, nor that their centre ideals glue or transform
 hereditarily.
 -/
@@ -85,10 +89,17 @@ theorem centreIdeal_ne_top : C.centreIdeal ≠ ⊤ :=
 /-- Assemble a proper finite-type regular centre from the invertible-minor
 certificate. -/
 noncomputable def certificate
-    [IsNoetherianRing (SymmetricAlgebra K V)]
-    [IsRegularRing (SymmetricAlgebra K (ι → K))] :
+    [IsNoetherianRing (SymmetricAlgebra K V)] :
     SurjectiveFreeRegularCentre.Certificate C.toBiorthogonalFrame.eval :=
   BiorthogonalRegularCentre.certificate C.toBiorthogonalFrame
+
+/-- In the finite-dimensional chamber the inverse evaluation minor is the only
+remaining input. -/
+noncomputable def finiteDimensionalCertificate
+    [Module.Free K V] [Module.Finite K V] :
+    SurjectiveFreeRegularCentre.Certificate C.toBiorthogonalFrame.eval :=
+  BiorthogonalRegularCentre.finiteDimensionalCertificate
+    C.toBiorthogonalFrame
 
 end MinorCertificate
 
