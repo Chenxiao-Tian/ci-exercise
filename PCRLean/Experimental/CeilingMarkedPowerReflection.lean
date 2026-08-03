@@ -5,7 +5,7 @@ import PCRLean.Experimental.FrobeniusNormalCentre
 /-!
 # Arbitrary-mark power reflection by ceiling division
 
-Exact reflection at scaled marks is not the end of the story.  If a marked
+Exact reflection at scaled marks is not the end of the story. If a marked
 equation has the form `g^q` but its mark `m` is not divisible by `q`, the
 correct rooted mark is
 
@@ -15,9 +15,9 @@ Under the one-layer associated-graded injectivity condition, the exact law is
 
 `g^q ∈ I^m ↔ g ∈ I^(ceil(m/q))`.
 
-The proof avoids a fragile arithmetic implementation of ceiling division.  It
+The proof avoids a fragile arithmetic implementation of ceiling division. It
 defines the ceiling as the least natural number satisfying `m ≤ q*n` and then
-builds membership one filtration layer at a time.  Minimality guarantees that
+builds membership one filtration layer at a time. Minimality guarantees that
 before the final layer one has `q*r + 1 ≤ m`, allowing the graded injectivity
 hypothesis to advance from `I^r` to `I^(r+1)`.
 
@@ -38,41 +38,36 @@ universe u
 
 variable {A : Type u} [CommRing A]
 
+/-- Existence of an admissible ceiling quotient for positive `q`. -/
+theorem ceilQuot_exists (q mark : Nat) (hq : 0 < q) :
+    ∃ n : Nat, mark ≤ q * n := by
+  refine ⟨mark, ?_⟩
+  have hqone : 1 ≤ q := hq
+  simpa using Nat.mul_le_mul_right mark hqone
+
 /-- Least `n` such that `mark ≤ q*n`, for positive `q`. -/
 noncomputable def ceilQuot (q mark : Nat) (hq : 0 < q) : Nat :=
-  Nat.find (show ∃ n : Nat, mark ≤ q * n by
-    refine ⟨mark, ?_⟩
-    have hqone : 1 ≤ q := hq
-    simpa using Nat.mul_le_mul_right mark hqone)
+  Nat.find (ceilQuot_exists q mark hq)
 
 /-- The defining upper inequality. -/
 theorem le_mul_ceilQuot
     (q mark : Nat) (hq : 0 < q) :
     mark ≤ q * ceilQuot q mark hq :=
-  Nat.find_spec (show ∃ n : Nat, mark ≤ q * n by
-    refine ⟨mark, ?_⟩
-    have hqone : 1 ≤ q := hq
-    simpa using Nat.mul_le_mul_right mark hqone)
+  Nat.find_spec (ceilQuot_exists q mark hq)
 
 /-- Minimality of the ceiling quotient. -/
 theorem not_le_mul_of_lt_ceilQuot
     (q mark : Nat) (hq : 0 < q)
     {r : Nat} (hr : r < ceilQuot q mark hq) :
     ¬ mark ≤ q * r :=
-  Nat.find_min'
-    (show ∃ n : Nat, mark ≤ q * n by
-      refine ⟨mark, ?_⟩
-      have hqone : 1 ≤ q := hq
-      simpa using Nat.mul_le_mul_right mark hqone)
-    hr
+  Nat.find_min (ceilQuot_exists q mark hq) hr
 
 /-- Adjunction: the ceiling quotient is at most every admissible quotient. -/
 theorem ceilQuot_le
     (q mark : Nat) (hq : 0 < q)
     {n : Nat} (hn : mark ≤ q * n) :
     ceilQuot q mark hq ≤ n :=
-  Nat.find_min' (show ∃ r : Nat, mark ≤ q * r by
-    exact ⟨n, hn⟩) hn
+  Nat.find_min' (ceilQuot_exists q mark hq) hn
 
 /-- Every filtration level below the ceiling is forced successively. -/
 theorem mem_pow_of_power_mem_arbitrary_mark
@@ -124,12 +119,8 @@ theorem ceilQuot_mul
     ceilQuot q (q * mark) hq = mark := by
   apply Nat.le_antisymm
   · exact ceilQuot_le q (q * mark) hq le_rfl
-  · by_contra h
-    have hlt : mark < ceilQuot q (q * mark) hq :=
-      Nat.lt_of_not_ge h
-    have hnot := not_le_mul_of_lt_ceilQuot
-      q (q * mark) hq hlt
-    exact hnot le_rfl
+  · exact Nat.le_of_mul_le_mul_left
+      (le_mul_ceilQuot q (q * mark) hq) hq
 
 /-- Prime-power arbitrary-mark compression. -/
 theorem frobeniusPower_mem_iff_ceilQuot
