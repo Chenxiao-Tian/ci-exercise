@@ -1,0 +1,8 @@
+import PCRLean.Experimental.FittingGraphCechEffectivity
+
+#print axioms PCRLean.Experimental.FittingGraphCechEffectivity.SectionAtlas.top_le_iSup_chartOpen
+#print axioms PCRLean.Experimental.FittingGraphCechEffectivity.SectionAtlas.exists_gluedSection
+#print axioms PCRLean.Experimental.FittingGraphCechEffectivity.SectionAtlas.gluedSection_spec
+#print axioms PCRLean.Experimental.FittingGraphCechEffectivity.SectionAtlas.globalCoefficient_toSection
+#print axioms PCRLean.Experimental.FittingGraphCechEffectivity.SectionAtlas.globalCoefficient_restricts
+#print axioms PCRLean.Experimental.FittingGraphCechEffectivity.SectionAtlas.globalGraph_restricts

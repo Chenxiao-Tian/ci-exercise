@@ -1,0 +1,6 @@
+import PCRLean.Experimental.PolynomialGraphJointLegalityCertificate
+
+#print axioms PCRLean.Experimental.PolynomialGraphJointLegalityCertificate.certificate
+#print axioms PCRLean.Experimental.PolynomialGraphJointLegalityCertificate.allPowerTorSafe
+#print axioms PCRLean.Experimental.PolynomialGraphJointLegalityCertificate.centreRestrictionFlat
+#print axioms PCRLean.Experimental.PolynomialGraphJointLegalityCertificate.terminal_or_positiveDebt

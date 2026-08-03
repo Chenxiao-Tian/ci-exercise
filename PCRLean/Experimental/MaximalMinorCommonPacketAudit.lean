@@ -1,0 +1,7 @@
+import PCRLean.Experimental.MaximalMinorCommonPacket
+
+#print axioms PCRLean.Experimental.MaximalMinorCommonPacket.atlas
+#print axioms PCRLean.Experimental.MaximalMinorCommonPacket.data
+#print axioms PCRLean.Experimental.MaximalMinorCommonPacket.localMatrix_apply
+#print axioms PCRLean.Experimental.MaximalMinorCommonPacket.localRhs_apply
+#print axioms PCRLean.Experimental.MaximalMinorCommonPacket.local_det_isUnit

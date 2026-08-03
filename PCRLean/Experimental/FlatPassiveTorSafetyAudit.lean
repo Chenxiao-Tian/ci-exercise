@@ -1,0 +1,7 @@
+import PCRLean.Experimental.FlatPassiveTorSafety
+
+#print axioms PCRLean.Experimental.FlatPassiveTorSafety.torSafe_of_flat
+#print axioms PCRLean.Experimental.FlatPassiveTorSafety.torSafe_of_free
+#print axioms PCRLean.Experimental.FlatPassiveTorSafety.torSafe_of_projective
+#print axioms PCRLean.Experimental.FlatPassiveTorSafety.torSafe_family_of_flat
+#print axioms PCRLean.Experimental.FlatPassiveTorSafety.owners_torSafe_of_flat

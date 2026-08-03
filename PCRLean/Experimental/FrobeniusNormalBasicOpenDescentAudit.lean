@@ -1,0 +1,5 @@
+import PCRLean.Experimental.FrobeniusNormalBasicOpenDescent
+
+#print axioms PCRLean.Experimental.FrobeniusNormalBasicOpenDescent.exists_power_smul_mem_of_map_mem
+#print axioms PCRLean.Experimental.FrobeniusNormalBasicOpenDescent.reflectsFrobeniusPowers_of_basicOpenCover
+#print axioms PCRLean.Experimental.FrobeniusNormalBasicOpenDescent.power_mem_scaled_iff_of_basicOpenCover

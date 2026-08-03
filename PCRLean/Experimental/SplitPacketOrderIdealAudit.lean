@@ -1,0 +1,9 @@
+import PCRLean.Experimental.SplitPacketOrderIdeal
+
+#print axioms PCRLean.Experimental.SplitPacketOrderIdeal.SplitInjection.injective
+#print axioms PCRLean.Experimental.SplitPacketOrderIdeal.SplitInjection.retract_residual
+#print axioms PCRLean.Experimental.SplitPacketOrderIdeal.SplitInjection.map_retract_add_residual
+#print axioms PCRLean.Experimental.SplitPacketOrderIdeal.SplitInjection.residual_eq_zero_iff_mem_range
+#print axioms PCRLean.Experimental.SplitPacketOrderIdeal.SplitInjection.target_mem_range_sup_defect
+#print axioms PCRLean.Experimental.SplitPacketOrderIdeal.SplitInjection.defectIdeal_eq_bot_iff_effective
+#print axioms PCRLean.Experimental.SplitPacketOrderIdeal.SplitInjection.defectIdeal_fg

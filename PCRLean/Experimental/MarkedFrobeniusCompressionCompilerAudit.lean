@@ -1,0 +1,7 @@
+import PCRLean.Experimental.MarkedFrobeniusCompressionCompiler
+
+#print axioms PCRLean.Experimental.MarkedFrobeniusCompressionCompiler.one_owner_iff
+#print axioms PCRLean.Experimental.MarkedFrobeniusCompressionCompiler.family_iff
+#print axioms PCRLean.Experimental.MarkedFrobeniusCompressionCompiler.family_root_identity_iff
+#print axioms PCRLean.Experimental.MarkedFrobeniusCompressionCompiler.multiOwner_iff
+#print axioms PCRLean.Experimental.MarkedFrobeniusCompressionCompiler.multiOwner_variableLevel_iff

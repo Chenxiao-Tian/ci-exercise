@@ -1,0 +1,5 @@
+import PCRLean.Experimental.FaithfullyFlatGraphBoundaryDescent
+
+#print axioms PCRLean.Experimental.FaithfullyFlatGraphBoundaryDescent.BoundaryGraphModel.combined_extension
+#print axioms PCRLean.Experimental.FaithfullyFlatGraphBoundaryDescent.BoundaryGraphModel.transverse
+#print axioms PCRLean.Experimental.FaithfullyFlatGraphBoundaryDescent.descend

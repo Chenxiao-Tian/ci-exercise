@@ -1,0 +1,11 @@
+import PCRLean.Experimental.PolynomialGraphCentreHeredity
+
+#print axioms PCRLean.Experimental.PolynomialGraphCentreHeredity.translate_comp_neg
+#print axioms PCRLean.Experimental.PolynomialGraphCentreHeredity.translate_neg_comp
+#print axioms PCRLean.Experimental.PolynomialGraphCentreHeredity.map_graphIdeal_eq_originIdeal
+#print axioms PCRLean.Experimental.PolynomialGraphCentreHeredity.mem_graphIdeal_pow_iff
+#print axioms PCRLean.Experimental.PolynomialGraphCentreHeredity.graphOrderGE_power_iff
+#print axioms PCRLean.Experimental.PolynomialGraphCentreHeredity.frobeniusPower_mem_graphIdeal_pow_iff
+#print axioms PCRLean.Experimental.PolynomialGraphCentreHeredity.graphIdeal_reflectsFrobeniusPowers
+#print axioms PCRLean.Experimental.PolynomialGraphCentreHeredity.graphIdeal_ne_top
+#print axioms PCRLean.Experimental.PolynomialGraphCentreHeredity.graphIdeal_fg

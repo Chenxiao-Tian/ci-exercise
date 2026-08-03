@@ -1,0 +1,5 @@
+import PCRLean.Experimental.ModuleImageGraphAtlas
+
+#print axioms PCRLean.Experimental.ModuleImageGraphAtlas.Data.localCentre_eq_map_globalCentre
+#print axioms PCRLean.Experimental.ModuleImageGraphAtlas.Data.localRegularCertificate
+#print axioms PCRLean.Experimental.ModuleImageGraphAtlas.Data.certificate

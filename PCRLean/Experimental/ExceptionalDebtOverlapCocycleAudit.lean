@@ -1,0 +1,5 @@
+import PCRLean.Experimental.ExceptionalDebtOverlapCocycle
+
+#print axioms PCRLean.Experimental.ExceptionalDebtOverlapCocycle.trans
+#print axioms PCRLean.Experimental.ExceptionalDebtOverlapCocycle.map_debtIdeal_trans
+#print axioms PCRLean.Experimental.ExceptionalDebtOverlapCocycle.map_eventDebt_trans

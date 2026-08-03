@@ -1,0 +1,9 @@
+import PCRLean.Experimental.FaithfullyFlatGraphCentreCompiler
+
+#print axioms PCRLean.Experimental.FaithfullyFlatGraphCentreCompiler.Model.centre_ne_top
+#print axioms PCRLean.Experimental.FaithfullyFlatGraphCentreCompiler.Model.centre_ne_bot
+#print axioms PCRLean.Experimental.FaithfullyFlatGraphCentreCompiler.Model.extended_source_le_extended_centre_pow
+#print axioms PCRLean.Experimental.FaithfullyFlatGraphCentreCompiler.Model.source_le_centre_pow
+#print axioms PCRLean.Experimental.FaithfullyFlatGraphCentreCompiler.Model.source_permissible
+#print axioms PCRLean.Experimental.FaithfullyFlatGraphCentreCompiler.Model.centre_reflectsFrobeniusPowers
+#print axioms PCRLean.Experimental.FaithfullyFlatGraphCentreCompiler.certificate

@@ -1,0 +1,5 @@
+import PCRLean.Experimental.CokernelOrderIdeal
+
+#print axioms PCRLean.Experimental.CokernelOrderIdeal.obstruction_mem_orderIdeal_smul_top
+#print axioms PCRLean.Experimental.CokernelOrderIdeal.obstructionIdeal_eq_bot_iff_exists
+#print axioms PCRLean.Experimental.CokernelOrderIdeal.obstructionIdeal_fg

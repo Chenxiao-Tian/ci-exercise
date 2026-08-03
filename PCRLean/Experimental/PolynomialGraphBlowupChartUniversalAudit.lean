@@ -1,0 +1,6 @@
+import PCRLean.Experimental.PolynomialGraphBlowupChartUniversal
+
+#print axioms PCRLean.Experimental.PolynomialGraphBlowupChartUniversal.graphChartAlgHom_X
+#print axioms PCRLean.Experimental.PolynomialGraphBlowupChartUniversal.chartLift_comp_graphChart
+#print axioms PCRLean.Experimental.PolynomialGraphBlowupChartUniversal.chartLift_unique
+#print axioms PCRLean.Experimental.PolynomialGraphBlowupChartUniversal.existsUnique_chartLift

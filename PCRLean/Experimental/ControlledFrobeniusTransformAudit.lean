@@ -1,0 +1,8 @@
+import PCRLean.Experimental.ControlledFrobeniusTransform
+
+#print axioms PCRLean.Experimental.ControlledFrobeniusTransform.root_factorization
+#print axioms PCRLean.Experimental.ControlledFrobeniusTransform.source_factorization
+#print axioms PCRLean.Experimental.ControlledFrobeniusTransform.family_root_factorization
+#print axioms PCRLean.Experimental.ControlledFrobeniusTransform.multiOwner_root_factorization
+#print axioms PCRLean.Experimental.ControlledFrobeniusTransform.multiOwner_variablePower_factorization
+#print axioms PCRLean.Experimental.ControlledFrobeniusTransform.isUnit_pow_of_isUnit

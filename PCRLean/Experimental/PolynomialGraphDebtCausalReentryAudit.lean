@@ -1,0 +1,8 @@
+import PCRLean.Experimental.PolynomialGraphDebtCausalReentry
+
+#print axioms PCRLean.Experimental.PolynomialGraphDebtCausalReentry.unused_child_eq_parent
+#print axioms PCRLean.Experimental.PolynomialGraphDebtCausalReentry.cleanupHeight_decreases
+#print axioms PCRLean.Experimental.PolynomialGraphDebtCausalReentry.cleanupStep
+#print axioms PCRLean.Experimental.PolynomialGraphDebtCausalReentry.rank_decreases
+#print axioms PCRLean.Experimental.PolynomialGraphDebtCausalReentry.reentryCertificate
+#print axioms PCRLean.Experimental.PolynomialGraphDebtCausalReentry.allCharts_sameRankDrop

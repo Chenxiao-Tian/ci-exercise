@@ -1,0 +1,6 @@
+import PCRLean.Experimental.FrobeniusNormalTransport
+
+#print axioms PCRLean.Experimental.FrobeniusNormalTransport.mem_map_pow_iff
+#print axioms PCRLean.Experimental.FrobeniusNormalTransport.reflectsFrobeniusPowers_map_equiv
+#print axioms PCRLean.Experimental.FrobeniusNormalTransport.power_mem_scaled_iff_map_equiv
+#print axioms PCRLean.Experimental.FrobeniusNormalTransport.gradedPowerInjective_map_equiv

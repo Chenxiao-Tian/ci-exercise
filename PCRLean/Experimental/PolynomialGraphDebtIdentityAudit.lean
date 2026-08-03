@@ -1,0 +1,7 @@
+import PCRLean.Experimental.PolynomialGraphDebtIdentity
+
+#print axioms PCRLean.Experimental.PolynomialGraphDebtIdentity.markIndex_succ_val
+#print axioms PCRLean.Experimental.PolynomialGraphDebtIdentity.debtKey_actualMark
+#print axioms PCRLean.Experimental.PolynomialGraphDebtIdentity.debtKey_exponent
+#print axioms PCRLean.Experimental.PolynomialGraphDebtIdentity.occurrence_key_independent_of_chart
+#print axioms PCRLean.Experimental.PolynomialGraphDebtIdentity.graphResidualIdeal_eq_keyExponent

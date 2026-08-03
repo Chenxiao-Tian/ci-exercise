@@ -1,0 +1,10 @@
+import PCRLean.Experimental.PolynomialGraphPassiveSafety
+
+#print axioms PCRLean.Experimental.PolynomialGraphPassiveSafety.inducedPassive_flat
+#print axioms PCRLean.Experimental.PolynomialGraphPassiveSafety.restrictedPassive_flat
+#print axioms PCRLean.Experimental.PolynomialGraphPassiveSafety.torOneSafeAlong_allIdeals
+#print axioms PCRLean.Experimental.PolynomialGraphPassiveSafety.graphIdeal_torOneSafe
+#print axioms PCRLean.Experimental.PolynomialGraphPassiveSafety.graphIdeal_pow_torOneSafe
+#print axioms PCRLean.Experimental.PolynomialGraphPassiveSafety.graphRestriction_flat
+#print axioms PCRLean.Experimental.PolynomialGraphPassiveSafety.preserves_injective_relation
+#print axioms PCRLean.Experimental.PolynomialGraphPassiveSafety.certificate

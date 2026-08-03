@@ -1,0 +1,10 @@
+import PCRLean.Experimental.FittingLinearSystemAtlas
+
+#print axioms PCRLean.Experimental.FittingLinearSystemAtlas.Data.det_isUnit
+#print axioms PCRLean.Experimental.FittingLinearSystemAtlas.Data.localSystem
+#print axioms PCRLean.Experimental.FittingLinearSystemAtlas.Data.matrix_mulVec_graph
+#print axioms PCRLean.Experimental.FittingLinearSystemAtlas.Data.matrix_mulVec_graph_apply
+#print axioms PCRLean.Experimental.FittingLinearSystemAtlas.Data.equationIdeal_eq_graphIdeal
+#print axioms PCRLean.Experimental.FittingLinearSystemAtlas.Data.toGraphAtlasData
+#print axioms PCRLean.Experimental.FittingLinearSystemAtlas.Data.localCentreCertificate
+#print axioms PCRLean.Experimental.FittingLinearSystemAtlas.Data.certificate

@@ -1,0 +1,6 @@
+import PCRLean.Experimental.AugmentedMinorRangeNecessity
+
+#print axioms PCRLean.Experimental.AugmentedMinorRangeNecessity.det_eliminateLastColumn
+#print axioms PCRLean.Experimental.AugmentedMinorRangeNecessity.det_zeroLastColumn
+#print axioms PCRLean.Experimental.AugmentedMinorRangeNecessity.augmented_mul_eliminateLastColumn
+#print axioms PCRLean.Experimental.AugmentedMinorRangeNecessity.det_augmented_eq_zero_of_solution

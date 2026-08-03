@@ -1,0 +1,10 @@
+import PCRLean.Experimental.ConormalAffinePacketOverRing
+
+#print axioms PCRLean.Experimental.ConormalAffinePacketOverRing.coordinate_eq_sum_basisVector
+#print axioms PCRLean.Experimental.ConormalAffinePacketOverRing.Packet.matrix_mulVec_coordinate_apply
+#print axioms PCRLean.Experimental.ConormalAffinePacketOverRing.Packet.matrix_mulVec_coordinate
+#print axioms PCRLean.Experimental.ConormalAffinePacketOverRing.Packet.solution_iff
+#print axioms PCRLean.Experimental.ConormalAffinePacketOverRing.Packet.coordinate_solution_iff
+#print axioms PCRLean.Experimental.ConormalAffinePacketOverRing.Packet.intrinsicSolution_solves
+#print axioms PCRLean.Experimental.ConormalAffinePacketOverRing.Packet.solution_eq_intrinsicSolution
+#print axioms PCRLean.Experimental.ConormalAffinePacketOverRing.Packet.existsUnique_intrinsicSolution

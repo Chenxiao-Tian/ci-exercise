@@ -1,0 +1,6 @@
+import PCRLean.Experimental.FittingLinearSystemRowGlobalResolutionMacro
+
+#print axioms PCRLean.Experimental.FittingLinearSystemRowGlobalResolutionMacro.globalGraph
+#print axioms PCRLean.Experimental.FittingLinearSystemRowGlobalResolutionMacro.globalCentre
+#print axioms PCRLean.Experimental.FittingLinearSystemRowGlobalResolutionMacro.certificate
+#print axioms PCRLean.Experimental.FittingLinearSystemRowGlobalResolutionMacro.allLocalSystemIdeals_fromGlobal

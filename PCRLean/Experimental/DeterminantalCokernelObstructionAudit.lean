@@ -1,0 +1,6 @@
+import PCRLean.Experimental.DeterminantalCokernelObstruction
+
+#print axioms PCRLean.Experimental.DeterminantalCokernelObstruction.obstruction_eq_zero_iff
+#print axioms PCRLean.Experimental.DeterminantalCokernelObstruction.obstruction_eq_zero_iff_exists
+#print axioms PCRLean.Experimental.DeterminantalCokernelObstruction.cyclicObstruction_eq_bot_iff
+#print axioms PCRLean.Experimental.DeterminantalCokernelObstruction.cyclicObstruction_eq_bot_iff_exists

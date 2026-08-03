@@ -1,0 +1,7 @@
+import PCRLean.Experimental.SplitRetractionBoundaryQuotient
+
+#print axioms PCRLean.Experimental.SplitRetractionBoundaryQuotient.Retraction.project_section_apply
+#print axioms PCRLean.Experimental.SplitRetractionBoundaryQuotient.Retraction.boundaryMap_surjective
+#print axioms PCRLean.Experimental.SplitRetractionBoundaryQuotient.Retraction.ker_boundaryMap_eq_liftedBoundaryIdeal
+#print axioms PCRLean.Experimental.SplitRetractionBoundaryQuotient.Retraction.quotientEquiv
+#print axioms PCRLean.Experimental.SplitRetractionBoundaryQuotient.Retraction.liftedBoundaryIdeal_injective

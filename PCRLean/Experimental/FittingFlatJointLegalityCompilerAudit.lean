@@ -1,0 +1,3 @@
+import PCRLean.Experimental.FittingFlatJointLegalityCompiler
+
+#print axioms PCRLean.Experimental.FittingFlatJointLegalityCompiler.compile

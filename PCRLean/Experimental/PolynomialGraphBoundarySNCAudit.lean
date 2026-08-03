@@ -1,0 +1,9 @@
+import PCRLean.Experimental.PolynomialGraphBoundarySNC
+
+#print axioms PCRLean.Experimental.PolynomialGraphBoundarySNC.translate_boundaryGenerator
+#print axioms PCRLean.Experimental.PolynomialGraphBoundarySNC.map_boundaryIdeal_eq
+#print axioms PCRLean.Experimental.PolynomialGraphBoundarySNC.map_combinedGraphIdeal_eq_coordinate
+#print axioms PCRLean.Experimental.PolynomialGraphBoundarySNC.graphChartMap_boundaryGenerator
+#print axioms PCRLean.Experimental.PolynomialGraphBoundarySNC.map_boundaryIdeal_chart_eq
+#print axioms PCRLean.Experimental.PolynomialGraphBoundarySNC.combined_directions_injective
+#print axioms PCRLean.Experimental.PolynomialGraphBoundarySNC.certificate

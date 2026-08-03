@@ -1,0 +1,8 @@
+import PCRLean.Experimental.CeilingControlledTransformDebt
+
+#print axioms PCRLean.Experimental.CeilingControlledTransformDebt.mark_add_deficit
+#print axioms PCRLean.Experimental.CeilingControlledTransformDebt.deficit_lt
+#print axioms PCRLean.Experimental.CeilingControlledTransformDebt.deficit_mul
+#print axioms PCRLean.Experimental.CeilingControlledTransformDebt.root_factorization_with_debt
+#print axioms PCRLean.Experimental.CeilingControlledTransformDebt.source_factorization_with_debt
+#print axioms PCRLean.Experimental.CeilingControlledTransformDebt.root_factorization_scaled_mark

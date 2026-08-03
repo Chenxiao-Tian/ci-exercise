@@ -1,0 +1,9 @@
+import PCRLean.Experimental.NormalConeLayer
+
+#print axioms PCRLean.Experimental.NormalConeLayer.initialClass_eq_zero_iff
+#print axioms PCRLean.Experimental.NormalConeLayer.initialClass_ne_zero_iff
+#print axioms PCRLean.Experimental.NormalConeLayer.pow_mem_scaled
+#print axioms PCRLean.Experimental.NormalConeLayer.gradedPowerInjective_of_initialPowerNonvanishing
+#print axioms PCRLean.Experimental.NormalConeLayer.initialPowerNonvanishing_of_gradedPowerInjective
+#print axioms PCRLean.Experimental.NormalConeLayer.initialPowerNonvanishing_iff_gradedPowerInjective
+#print axioms PCRLean.Experimental.NormalConeLayer.reflectsFrobeniusPowers_of_initialPowerNonvanishing

@@ -1,0 +1,7 @@
+import PCRLean.Experimental.AffinePacketHybridEffectivity
+
+#print axioms PCRLean.Experimental.AffinePacketHybridEffectivity.equation_eq_graphCombination_add_residual
+#print axioms PCRLean.Experimental.AffinePacketHybridEffectivity.equation_mem_hybridIdeal
+#print axioms PCRLean.Experimental.AffinePacketHybridEffectivity.equationIdeal_le_hybridIdeal
+#print axioms PCRLean.Experimental.AffinePacketHybridEffectivity.poweredEquationIdeal_le_hybridIdeal_pow
+#print axioms PCRLean.Experimental.AffinePacketHybridEffectivity.hybridIdeal_bot

@@ -1,0 +1,5 @@
+import PCRLean.Experimental.ExceptionalDebtTermination
+
+#print axioms PCRLean.Experimental.ExceptionalDebtTermination.rankLt_wellFounded
+#print axioms PCRLean.Experimental.ExceptionalDebtTermination.step_decreases
+#print axioms PCRLean.Experimental.ExceptionalDebtTermination.step_wellFounded

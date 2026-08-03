@@ -1,0 +1,6 @@
+import PCRLean.Experimental.MaximalMinorAtlas
+
+#print axioms PCRLean.Experimental.MaximalMinorAtlas.FullRankCover.toAtlas
+#print axioms PCRLean.Experimental.MaximalMinorAtlas.FullRankCover.basicOpen_cover
+#print axioms PCRLean.Experimental.MaximalMinorAtlas.FullRankCover.point_mem_some_minor
+#print axioms PCRLean.Experimental.MaximalMinorAtlas.FullRankCover.determinant_isUnit_away

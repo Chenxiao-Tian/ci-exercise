@@ -1,0 +1,6 @@
+import PCRLean.Experimental.FrobeniusNormalCentreCounterexample
+
+#print axioms PCRLean.Experimental.FrobeniusNormalCentreCounterexample.eps_ne_zero
+#print axioms PCRLean.Experimental.FrobeniusNormalCentreCounterexample.eps_sq_mem_bottom_sq
+#print axioms PCRLean.Experimental.FrobeniusNormalCentreCounterexample.eps_not_mem_bottom
+#print axioms PCRLean.Experimental.FrobeniusNormalCentreCounterexample.bottom_not_reflects_twoPowers

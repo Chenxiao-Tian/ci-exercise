@@ -1,0 +1,11 @@
+import PCRLean.Experimental.OrderIdealMarkedClosureCompiler
+
+#print axioms PCRLean.Experimental.OrderIdealMarkedClosureCompiler.base_le_closure
+#print axioms PCRLean.Experimental.OrderIdealMarkedClosureCompiler.component_le_closure
+#print axioms PCRLean.Experimental.OrderIdealMarkedClosureCompiler.exists_cardinalMinimal
+#print axioms PCRLean.Experimental.OrderIdealMarkedClosureCompiler.certificate
+#print axioms PCRLean.Experimental.OrderIdealMarkedClosureCompiler.Certificate.owner_le_power
+#print axioms PCRLean.Experimental.OrderIdealMarkedClosureCompiler.Certificate.base_le
+#print axioms PCRLean.Experimental.OrderIdealMarkedClosureCompiler.Certificate.selected_component_le
+#print axioms PCRLean.Experimental.OrderIdealMarkedClosureCompiler.Certificate.erase_not_acceptable
+#print axioms PCRLean.Experimental.OrderIdealMarkedClosureCompiler.Certificate.ideal_fg

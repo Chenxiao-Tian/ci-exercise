@@ -1,0 +1,6 @@
+import PCRLean.Experimental.ExceptionalDebtOverlapTransport
+
+#print axioms PCRLean.Experimental.ExceptionalDebtOverlapTransport.span_singleton_unit_mul
+#print axioms PCRLean.Experimental.ExceptionalDebtOverlapTransport.Overlap.map_exceptionalIdeal
+#print axioms PCRLean.Experimental.ExceptionalDebtOverlapTransport.Overlap.map_debtIdeal
+#print axioms PCRLean.Experimental.ExceptionalDebtOverlapTransport.EventOverlap.map_eventDebt

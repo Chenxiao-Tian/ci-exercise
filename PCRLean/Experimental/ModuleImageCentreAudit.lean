@@ -1,0 +1,7 @@
+import PCRLean.Experimental.ModuleImageCentre
+
+#print axioms PCRLean.Experimental.ModuleImageCentre.imageIdeal_comp_of_surjective
+#print axioms PCRLean.Experimental.ModuleImageCentre.SpanningFrame.apply_mem_generatedIdeal
+#print axioms PCRLean.Experimental.ModuleImageCentre.SpanningFrame.generatedIdeal_eq_imageIdeal
+#print axioms PCRLean.Experimental.ModuleImageCentre.SpanningFrame.imageIdeal_fg
+#print axioms PCRLean.Experimental.ModuleImageCentre.SpanningFrame.map_imageIdeal_eq_generatedIdeal

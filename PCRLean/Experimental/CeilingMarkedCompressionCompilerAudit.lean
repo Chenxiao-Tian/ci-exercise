@@ -1,0 +1,6 @@
+import PCRLean.Experimental.CeilingMarkedCompressionCompiler
+
+#print axioms PCRLean.Experimental.CeilingMarkedCompressionCompiler.one_owner_iff
+#print axioms PCRLean.Experimental.CeilingMarkedCompressionCompiler.family_iff
+#print axioms PCRLean.Experimental.CeilingMarkedCompressionCompiler.family_root_identity_iff
+#print axioms PCRLean.Experimental.CeilingMarkedCompressionCompiler.multiOwner_iff

@@ -1,0 +1,7 @@
+import PCRLean.Experimental.FittingGraphCentreAtlas
+
+#print axioms PCRLean.Experimental.FittingGraphCentreAtlas.GraphAtlasData.localCentreCertificate
+#print axioms PCRLean.Experimental.FittingGraphCentreAtlas.GraphAtlasData.localArbitraryMarkCertificate
+#print axioms PCRLean.Experimental.FittingGraphCentreAtlas.GraphAtlasData.determinant_isUnit
+#print axioms PCRLean.Experimental.FittingGraphCentreAtlas.GraphAtlasData.point_has_graph_chart
+#print axioms PCRLean.Experimental.FittingGraphCentreAtlas.GraphAtlasData.certificate
