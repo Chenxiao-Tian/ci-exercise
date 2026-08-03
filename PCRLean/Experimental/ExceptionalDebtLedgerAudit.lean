@@ -1,0 +1,8 @@
+import PCRLean.Experimental.ExceptionalDebtLedger
+
+#print axioms PCRLean.Experimental.ExceptionalDebtLedger.actualMark_le_block
+#print axioms PCRLean.Experimental.ExceptionalDebtLedger.exponent_lt_block
+#print axioms PCRLean.Experimental.ExceptionalDebtLedger.Occurrence.exponent_transport
+#print axioms PCRLean.Experimental.ExceptionalDebtLedger.card_register_of_fresh
+#print axioms PCRLean.Experimental.ExceptionalDebtLedger.ledger_card_le_capacity
+#print axioms PCRLean.Experimental.ExceptionalDebtLedger.fresh_history_length_le_capacity
