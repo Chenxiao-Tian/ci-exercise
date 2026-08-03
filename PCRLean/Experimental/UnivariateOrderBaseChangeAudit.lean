@@ -1,0 +1,8 @@
+import PCRLean.Experimental.UnivariateOrderBaseChange
+
+#print axioms PCRLean.Experimental.UnivariateOrderBaseChange.trailingDegree_map_eq
+#print axioms PCRLean.Experimental.UnivariateOrderBaseChange.natTrailingDegree_map_eq
+#print axioms PCRLean.Experimental.UnivariateOrderBaseChange.atOriginSingular_map_iff
+#print axioms PCRLean.Experimental.UnivariateOrderBaseChange.taylor_map_eq
+#print axioms PCRLean.Experimental.UnivariateOrderBaseChange.atPointSingular_map_iff
+#print axioms PCRLean.Experimental.UnivariateOrderBaseChange.family_atPointSingular_map_iff
