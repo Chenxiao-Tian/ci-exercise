@@ -4,6 +4,7 @@ import PCRLean.Experimental.ReducedPolynomialGraphCentreHeredity
 import PCRLean.Experimental.ReducedGraphCentreQuotient
 import PCRLean.Experimental.CoordinateCentreCotangentBasis
 import PCRLean.Experimental.PolynomialGraphCentreCotangentBasis
+import PCRLean.Experimental.ReducedRegularGraphCentreCertificate
 import PCRLean.Experimental.ReducedFrobeniusNormalLocalModel
 import PCRLean.Experimental.ReducedNormalConePowerModel
 
@@ -22,6 +23,8 @@ heredity layer:
 * reducedness and regularity of graph-centre quotients;
 * explicit free bases of coordinate and polynomial graph conormal modules
   `I/I²`;
+* a single typed local certificate combining actual ideal, finite generation,
+  regular quotient, free conormal, and Frobenius-normality;
 * faithfully flat descent from reduced coordinate and graph local models; and
 * an abstract reduced normal-cone power model compiling layer embeddings into
   full Frobenius-normality.
