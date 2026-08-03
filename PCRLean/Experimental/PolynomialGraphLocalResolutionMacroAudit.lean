@@ -1,0 +1,6 @@
+import PCRLean.Experimental.PolynomialGraphLocalResolutionMacro
+
+#print axioms PCRLean.Experimental.PolynomialGraphLocalResolutionMacro.certificate
+#print axioms PCRLean.Experimental.PolynomialGraphLocalResolutionMacro.activePermissible
+#print axioms PCRLean.Experimental.PolynomialGraphLocalResolutionMacro.passiveTorSafe
+#print axioms PCRLean.Experimental.PolynomialGraphLocalResolutionMacro.boundaryStratumRegular
