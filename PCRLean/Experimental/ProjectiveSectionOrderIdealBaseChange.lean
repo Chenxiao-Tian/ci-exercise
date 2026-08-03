@@ -16,7 +16,7 @@ Then the intrinsic order ideal transports exactly:
 `O_Q(f x) = O_P(x) S`.
 
 No flatness hypothesis is needed for this statement: all base-change data is
-contained in the compatible-frame certificate.  In geometric applications one
+contained in the compatible-frame certificate. In geometric applications one
 constructs `G` from a localized or tensor-base-changed frame, after which this
 theorem supplies exact overlap and localization naturality of the cokernel
 order ideal.
@@ -93,9 +93,16 @@ theorem source_orderIdeal_eq_bot_of_target_eq_bot
     [Module.FaithfullyFlat R S]
     (x : P) (hx : orderIdeal (C.map x) = ⊥) :
     orderIdeal x = ⊥ := by
-  apply (Ideal.map_eq_bot_iff_of_flat (algebraMap R S)).mp
-  rw [C.map_orderIdeal_eq x]
-  exact hx
+  calc
+    orderIdeal x =
+        (Ideal.map (algebraMap R S) (orderIdeal x)).comap
+          (algebraMap R S) := by
+      symm
+      exact Ideal.comap_map_eq_self_of_faithfullyFlat
+        (orderIdeal x)
+    _ = (orderIdeal (C.map x)).comap (algebraMap R S) := by
+      rw [C.map_orderIdeal_eq x]
+    _ = ⊥ := by rw [hx]; simp
 
 /-- Under faithful flatness, zero-section detection is equivalent before and
 after compatible base change. -/
