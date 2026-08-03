@@ -8,17 +8,17 @@ import PCRLean.Experimental.PolynomialGraphBaseChange
 
 For determinant charts `D(d_c)` and `D(d_d)`, use the canonical overlap
 
-`D(d_c d_d)`.
+`D(d_c d_d) = D(d_c) ∩ D(d_d)`.
 
 There are canonical localization maps from both chart rings to the overlap
-ring.  If the two graph tuples have the same image there, exact base change of
+ring. If the two graph tuples have the same image there, exact base change of
 graph ideals implies that the two actual local centre ideals have identical
 extensions to the overlap.
 
 This is the affine pairwise descent condition required for a coherent centre
-sheaf.  Triple-overlap cocycle packaging and scheme-level sheaf effectivity are
-still separate obligations, but no choice of local generators remains hidden
-in the overlap equation.
+sheaf. The chosen order `d_c*d_d` matches `PrimeSpectrum.basicOpen_mul`
+exactly, which allows the next module to compare these maps to structure-sheaf
+restriction maps without a commutativity transport.
 -/
 
 namespace PCRLean
@@ -38,14 +38,15 @@ open FittingGraphCentreAtlas
 
 variable {A : FittingMinorAtlas.Atlas (R := R) (Chart := Chart)}
 
-/-- Canonical double-localization overlap. -/
+/-- Canonical double-localization overlap, ordered exactly as the intersection
+`D(d_c) ∩ D(d_d)`. -/
 abbrev OverlapRing (c d : Chart) :=
-  Localization.Away (A.determinant d * A.determinant c)
+  Localization.Away (A.determinant c * A.determinant d)
 
 /-- Map from the first determinant chart to the overlap. -/
 noncomputable def leftMap (c d : Chart) :
     ChartRing A c →+* OverlapRing (A := A) c d :=
-  IsLocalization.Away.awayToAwayLeft
+  IsLocalization.Away.awayToAwayRight
     (S := ChartRing A c)
     (P := OverlapRing (A := A) c d)
     (A.determinant c) (A.determinant d)
@@ -53,7 +54,7 @@ noncomputable def leftMap (c d : Chart) :
 /-- Map from the second determinant chart to the same overlap. -/
 noncomputable def rightMap (c d : Chart) :
     ChartRing A d →+* OverlapRing (A := A) c d :=
-  IsLocalization.Away.awayToAwayRight
+  IsLocalization.Away.awayToAwayLeft
     (S := ChartRing A d)
     (P := OverlapRing (A := A) c d)
     (A.determinant d) (A.determinant c)
@@ -62,7 +63,7 @@ noncomputable def rightMap (c d : Chart) :
     (c d : Chart) (r : R) :
     leftMap (A := A) c d (algebraMap R (ChartRing A c) r) =
       algebraMap R (OverlapRing (A := A) c d) r := by
-  exact IsLocalization.Away.awayToAwayLeft_eq
+  exact IsLocalization.Away.awayToAwayRight_eq
     (S := ChartRing A c)
     (P := OverlapRing (A := A) c d)
     (A.determinant c) (A.determinant d) r
@@ -71,7 +72,7 @@ noncomputable def rightMap (c d : Chart) :
     (c d : Chart) (r : R) :
     rightMap (A := A) c d (algebraMap R (ChartRing A d) r) =
       algebraMap R (OverlapRing (A := A) c d) r := by
-  exact IsLocalization.Away.awayToAwayRight_eq
+  exact IsLocalization.Away.awayToAwayLeft_eq
     (S := ChartRing A d)
     (P := OverlapRing (A := A) c d)
     (A.determinant d) (A.determinant c) r
