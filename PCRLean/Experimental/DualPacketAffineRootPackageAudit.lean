@@ -1,0 +1,7 @@
+import PCRLean.Experimental.DualPacketAffineRootPackage
+
+#print axioms PCRLean.Experimental.DualPacketAffineRootPackage.rootGenerator_mem
+#print axioms PCRLean.Experimental.DualPacketAffineRootPackage.actualRootPowerIdeal_le_actualIdeal_pow
+#print axioms PCRLean.Experimental.DualPacketAffineRootPackage.actualRootPacket_permissible
+#print axioms PCRLean.Experimental.DualPacketAffineRootPackage.map_rootPowerIdeal_eq_actualRootPowerIdeal
+#print axioms PCRLean.Experimental.DualPacketAffineRootPackage.actualRootPowerIdeal_eq_of_span_eq
