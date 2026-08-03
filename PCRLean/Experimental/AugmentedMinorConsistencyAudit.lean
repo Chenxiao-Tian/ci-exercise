@@ -1,0 +1,8 @@
+import PCRLean.Experimental.AugmentedMinorConsistency
+
+#print axioms PCRLean.Experimental.AugmentedMinorConsistency.schurComplement_entry
+#print axioms PCRLean.Experimental.AugmentedMinorConsistency.det_schurComplement
+#print axioms PCRLean.Experimental.AugmentedMinorConsistency.det_augmented
+#print axioms PCRLean.Experimental.AugmentedMinorConsistency.equation_of_det_augmented_eq_zero
+#print axioms PCRLean.Experimental.AugmentedMinorConsistency.det_augmented_eq_zero_of_equation
+#print axioms PCRLean.Experimental.AugmentedMinorConsistency.det_augmented_eq_zero_iff
