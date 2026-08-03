@@ -1,0 +1,99 @@
+name: PCR Jump intrinsic order-ideal hybrid clean room
+
+on:
+  pull_request:
+    branches:
+      - pcr-jump-oih-ci-base-20260803
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pcr-jump-oih-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  oih-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          set -o pipefail
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf \
+            | sh -s -- -y --default-toolchain leanprover/lean4:v4.30.0
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned mathlib
+        run: |
+          set -o pipefail
+          lake update
+          lake exe cache get
+      - name: Reject placeholders in exact X029 proof slice
+        run: |
+          set -o pipefail
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)([[:space:]]|$)' \
+              PCRLean/Experimental/IntrinsicOrderIdealHybridKernelIndex.lean \
+              PCRLean/Experimental/IntrinsicOrderIdealHybridKernelIndexAudit.lean \
+              PCRLean/Experimental/MaximalMinorRangeCriterion.lean \
+              PCRLean/Experimental/MaximalMinorEquationIdeal.lean \
+              PCRLean/Experimental/MaximalMinorGlobalResolutionMacro.lean \
+              PCRLean/Experimental/MaximalMinorPresentationIndependence.lean \
+              PCRLean/Experimental/MaximalMinorAffineEquivalence.lean \
+              PCRLean/Experimental/MaximalMinorColumnChange.lean \
+              PCRLean/Experimental/ConormalAffinePacketCoordinates.lean \
+              PCRLean/Experimental/ConormalPacketFrameIndependence.lean \
+              PCRLean/Experimental/ConormalAffinePacketOverRing.lean \
+              PCRLean/Experimental/NoetherianAffineOrbitPacket.lean \
+              PCRLean/Experimental/NoetherianAffineOrbitPacketCanonicity.lean \
+              PCRLean/Experimental/AffineConormalIdeal.lean \
+              PCRLean/Experimental/AffineConormalIdealCoordinates.lean \
+              PCRLean/Experimental/AffineConormalRegularCentre.lean \
+              PCRLean/Experimental/NoetherianAffineOrbitIdeal.lean \
+              PCRLean/Experimental/ProjectiveMoritaDescent.lean \
+              PCRLean/Experimental/DeterminantalCokernelObstruction.lean \
+              PCRLean/Experimental/ProjectiveSectionOrderIdeal.lean \
+              PCRLean/Experimental/ProjectiveSectionOrderIdealMinimality.lean \
+              PCRLean/Experimental/ProjectiveSectionOrderIdealBaseChange.lean \
+              PCRLean/Experimental/CokernelOrderIdeal.lean \
+              PCRLean/Experimental/CokernelOrderIdealBaseChange.lean \
+              PCRLean/Experimental/CokernelOrderIdealCompiler.lean \
+              PCRLean/Experimental/SplitPacketOrderIdeal.lean \
+              PCRLean/Experimental/AffinePacketHybridEffectivity.lean \
+              PCRLean/Experimental/SplitMatrixOrderIdealHybrid.lean \
+              PCRLean/Experimental/OrderIdealMarkedClosureCompiler.lean \
+              PCRLean/Experimental/SplitMatrixMarkedHybridCompiler.lean \
+              PCRLean/Experimental/SplitMatrixMarkedHybridRegularCentre.lean \
+              PCRLean/Experimental/NestedPolynomialGraphHybrid.lean \
+              PCRLean/Experimental/NestedPolynomialGraphFlattening.lean; then
+            echo 'Forbidden proof placeholder or custom axiom found.' >&2
+            exit 1
+          fi
+      - name: Build integrated X029 index
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.IntrinsicOrderIdealHybridKernelIndex 2>&1 \
+            | tee x029-build.txt
+      - name: Kernel axiom audit
+        run: |
+          set -o pipefail
+          lake env lean PCRLean/Experimental/IntrinsicOrderIdealHybridKernelIndexAudit.lean 2>&1 \
+            | tee x029-axioms.txt
+          if grep -E 'sorryAx|PCRLean\..*Axiom|ResolutionAxiom|PacketizationAxiom' \
+              x029-axioms.txt; then
+            echo 'Unpermitted axiom detected.' >&2
+            exit 1
+          fi
+      - name: Record exact commit
+        run: |
+          git rev-parse HEAD | tee x029-commit.txt
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pcr-jump-x029-${{ github.sha }}
+          path: |
+            x029-build.txt
+            x029-axioms.txt
+            x029-commit.txt
+          if-no-files-found: warn
