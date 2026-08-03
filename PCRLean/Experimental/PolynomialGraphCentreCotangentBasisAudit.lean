@@ -1,0 +1,7 @@
+import PCRLean.Experimental.PolynomialGraphCentreCotangentBasis
+
+#print axioms PCRLean.Experimental.PolynomialGraphCentreCotangentBasis.graphLinearCoefficients_mul_zero
+#print axioms PCRLean.Experimental.PolynomialGraphCentreCotangentBasis.toRows_surjective
+#print axioms PCRLean.Experimental.PolynomialGraphCentreCotangentBasis.mem_graphIdeal_square_of_rows_eq_zero
+#print axioms PCRLean.Experimental.PolynomialGraphCentreCotangentBasis.toRows_injective
+#print axioms PCRLean.Experimental.PolynomialGraphCentreCotangentBasis.cotangentEquivRows
