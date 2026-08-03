@@ -1,0 +1,14 @@
+import PCRLean.Experimental.DualPacketRegularCentre
+
+#print axioms PCRLean.Experimental.DualPacketRegularCentre.ker_conormalQuotient_eq_packetSpan
+#print axioms PCRLean.Experimental.DualPacketRegularCentre.conormalQuotient_surjective
+#print axioms PCRLean.Experimental.DualPacketRegularCentre.centreIdeal_eq_kernelIdeal
+#print axioms PCRLean.Experimental.DualPacketRegularCentre.packetGenerator_mem
+#print axioms PCRLean.Experimental.DualPacketRegularCentre.mem_commonTangentKernel_iff
+#print axioms PCRLean.Experimental.DualPacketRegularCentre.annihilates_packetSpan_iff
+#print axioms PCRLean.Experimental.DualPacketRegularCentre.commonTangentKernel_eq_annihilator
+#print axioms PCRLean.Experimental.DualPacketRegularCentre.centreIdeal_eq_of_span_eq
+#print axioms PCRLean.Experimental.DualPacketRegularCentre.quotientEquiv
+#print axioms PCRLean.Experimental.DualPacketRegularCentre.centreIdeal_ne_top
+#print axioms PCRLean.Experimental.DualPacketRegularCentre.centreIdeal_fg
+#print axioms PCRLean.Experimental.DualPacketRegularCentre.quotient_isRegularRing
