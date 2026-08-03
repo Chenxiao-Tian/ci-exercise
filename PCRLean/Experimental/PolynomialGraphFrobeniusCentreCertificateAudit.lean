@@ -1,0 +1,5 @@
+import PCRLean.Experimental.PolynomialGraphFrobeniusCentreCertificate
+
+#print axioms PCRLean.Experimental.PolynomialGraphFrobeniusCentreCertificate.graphGenerator_ne_zero
+#print axioms PCRLean.Experimental.PolynomialGraphFrobeniusCentreCertificate.graphIdeal_ne_bot
+#print axioms PCRLean.Experimental.PolynomialGraphFrobeniusCentreCertificate.certificate
