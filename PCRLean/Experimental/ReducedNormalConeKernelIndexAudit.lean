@@ -10,6 +10,9 @@ import PCRLean.Experimental.ReducedNormalConeKernelIndex
 #print axioms PCRLean.Experimental.ReducedGraphCentreQuotient.quotientEquiv
 #print axioms PCRLean.Experimental.ReducedGraphCentreQuotient.quotient_isReduced
 #print axioms PCRLean.Experimental.ReducedGraphCentreQuotient.quotient_isRegularRing
+#print axioms PCRLean.Experimental.CoordinateCentreCotangentBasis.toRows_injective
+#print axioms PCRLean.Experimental.CoordinateCentreCotangentBasis.toRows_surjective
+#print axioms PCRLean.Experimental.CoordinateCentreCotangentBasis.cotangentEquivRows
 #print axioms PCRLean.Experimental.ReducedFrobeniusNormalLocalModel.reflects_of_reducedCoordinateModel
 #print axioms PCRLean.Experimental.ReducedFrobeniusNormalLocalModel.reflects_of_reducedGraphModel
 #print axioms PCRLean.Experimental.ReducedNormalConePowerModel.PowerModel.initialPowerNonvanishing
