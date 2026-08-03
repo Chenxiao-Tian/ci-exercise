@@ -1,0 +1,4 @@
+import PCRLean.Experimental.NoetherianOrbitFiniteFrobeniusAffineChamber
+
+#print axioms PCRLean.Experimental.NoetherianOrbitFiniteFrobeniusAffineChamber.assemble
+#print axioms PCRLean.Experimental.NoetherianOrbitFiniteFrobeniusAffineChamber.exists_certificate
