@@ -1,0 +1,7 @@
+import PCRLean.Experimental.PolynomialGraphBoundaryStratum
+
+#print axioms PCRLean.Experimental.PolynomialGraphBoundaryStratum.liftedBoundaryIdeal_eq_combinedIdeal
+#print axioms PCRLean.Experimental.PolynomialGraphBoundaryStratum.quotientEquiv
+#print axioms PCRLean.Experimental.PolynomialGraphBoundaryStratum.combinedIdeal_ne_top
+#print axioms PCRLean.Experimental.PolynomialGraphBoundaryStratum.quotient_isRegularRing
+#print axioms PCRLean.Experimental.PolynomialGraphBoundaryStratum.certificate
