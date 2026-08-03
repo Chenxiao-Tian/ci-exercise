@@ -6,7 +6,7 @@ import PCRLean.Experimental.InvertibleLinearSystemGraph
 # Determinant-unit linear systems define polynomial graph centres
 
 For a square matrix `M` with unit determinant, mathlib's nonsingular inverse
-provides a canonical two-sided inverse.  Therefore every affine linear system
+provides a canonical two-sided inverse. Therefore every affine linear system
 
 `M Z = b`
 
@@ -14,7 +14,7 @@ compiles directly to the graph
 
 `Z = M⁻¹ b`.
 
-The actual equation ideal is proved equal to the actual graph ideal.  No inverse
+The actual equation ideal is proved equal to the actual graph ideal. No inverse
 matrix or graph tuple has to be supplied as extra geometric data once the
 Fitting determinant is a unit.
 -/
@@ -52,6 +52,17 @@ noncomputable def toInvertibleSystem :
 /-- Canonical graph solution. -/
 noncomputable def solution : ι → R :=
   S.matrix⁻¹.mulVec S.rhs
+
+/-- The canonical solution satisfies the original system. -/
+theorem matrix_mulVec_solution :
+    S.matrix.mulVec S.solution = S.rhs := by
+  simpa [solution, toInvertibleSystem] using
+    S.toInvertibleSystem.matrix_mulVec_solution
+
+/-- Pointwise form of the solution equation. -/
+theorem matrix_mulVec_solution_apply (i : ι) :
+    S.matrix.mulVec S.solution i = S.rhs i := by
+  rw [S.matrix_mulVec_solution]
 
 /-- Actual system-equation ideal. -/
 noncomputable def equationIdeal : Ideal (MvPolynomial ι R) :=
