@@ -4,13 +4,16 @@ on:
   push:
     branches:
       - pcr-u2-surjective-regular-20260803
+  pull_request:
+    branches:
+      - pcr-jump-lean-20260802-u2-root-boundary
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: pcr-u2-surjective-regular-${{ github.ref }}
+  group: pcr-u2-surjective-regular-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
