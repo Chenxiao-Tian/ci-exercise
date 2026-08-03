@@ -1,0 +1,6 @@
+import PCRLean.Experimental.FittingGraphCentreOverlap
+
+#print axioms PCRLean.Experimental.FittingGraphCentreOverlap.leftMap_algebraMap
+#print axioms PCRLean.Experimental.FittingGraphCentreOverlap.rightMap_algebraMap
+#print axioms PCRLean.Experimental.FittingGraphCentreOverlap.Compatible.overlapIdeal_eq
+#print axioms PCRLean.Experimental.FittingGraphCentreOverlap.Compatible.certificate
