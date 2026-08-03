@@ -1,0 +1,11 @@
+import PCRLean.Experimental.LinearHybridSubspaceCentre
+
+#print axioms PCRLean.Experimental.LinearHybridSubspaceCentre.centreIdeal_eq_span_subspace
+#print axioms PCRLean.Experimental.LinearHybridSubspaceCentre.quotientEquiv
+#print axioms PCRLean.Experimental.LinearHybridSubspaceCentre.centreIdeal_ne_top
+#print axioms PCRLean.Experimental.LinearHybridSubspaceCentre.centreIdeal_fg
+#print axioms PCRLean.Experimental.LinearHybridSubspaceCentre.quotient_isRegularRing
+#print axioms PCRLean.Experimental.LinearHybridSubspaceCentre.centreIdeal_eq_bot_iff
+#print axioms PCRLean.Experimental.LinearHybridSubspaceCentre.strictCentre_iff_subspace_ne_bot
+#print axioms PCRLean.Experimental.LinearHybridSubspaceCentre.combined_quotient_isRegularRing
+#print axioms PCRLean.Experimental.LinearHybridSubspaceCentre.combined_strict_iff_join_ne_bot
