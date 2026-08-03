@@ -80,7 +80,24 @@ theorem hasseDeriv_pow_prime
   rw [Polynomial.taylor_coeff] at hc
   rw [coeff_pow_prime_mul p] at hc
   rw [Polynomial.taylor_coeff] at hc
-  simpa [F, map_hasseDeriv, eval_X_map_C] using hc
+  have hleft :
+      (Polynomial.hasseDeriv (k * p) (F ^ p)).eval Polynomial.X =
+        Polynomial.hasseDeriv (k * p) (f ^ p) := by
+    have hpow : F ^ p = (f ^ p).map (Polynomial.C : R →+* T) := by
+      simp [F]
+    rw [hpow, ← map_hasseDeriv]
+    exact eval_X_map_C _
+  have hright :
+      ((Polynomial.hasseDeriv k F).eval Polynomial.X) ^ p =
+        (Polynomial.hasseDeriv k f) ^ p := by
+    have heval :
+        (Polynomial.hasseDeriv k F).eval Polynomial.X =
+          Polynomial.hasseDeriv k f := by
+      dsimp [F]
+      rw [← map_hasseDeriv]
+      exact eval_X_map_C _
+    rw [heval]
+  exact hleft.symm.trans (hc.trans hright)
 
 /-- Iterated prime-power version. -/
 theorem hasseDeriv_pow_primePower
