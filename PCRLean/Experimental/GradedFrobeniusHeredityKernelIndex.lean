@@ -34,10 +34,13 @@ import PCRLean.Experimental.PolynomialGraphBoundaryIntersection
 import PCRLean.Experimental.PolynomialGraphBoundaryStrata
 import PCRLean.Experimental.PolynomialGraphBoundaryRegularSequence
 import PCRLean.Experimental.PolynomialGraphJointLegalityCertificate
+import PCRLean.Experimental.PolynomialGraphSupportEquality
+import PCRLean.Experimental.PolynomialGraphActionBoundary
 import PCRLean.Experimental.CausalEventLedger
 import PCRLean.Experimental.PolynomialGraphDebtCausalReentry
 import PCRLean.Experimental.PolynomialGraphLocalResolutionMacro
 import PCRLean.Experimental.FittingMinorAtlas
+import PCRLean.Experimental.FittingMinorFaithfulCover
 import PCRLean.Experimental.FittingGraphCentreAtlas
 import PCRLean.Experimental.PolynomialGraphBaseChange
 import PCRLean.Experimental.FittingGraphCentreOverlap
@@ -50,37 +53,55 @@ import PCRLean.Experimental.DetUnitLinearSystemGraph
 import PCRLean.Experimental.FittingLinearSystemAtlas
 import PCRLean.Experimental.FittingLinearSystemOverlap
 import PCRLean.Experimental.FittingLinearSystemGlobalResolutionMacro
+import PCRLean.Experimental.FittingLinearSystemRowCompatibility
+import PCRLean.Experimental.FittingLinearSystemRowGlobalResolutionMacro
+import PCRLean.Experimental.FittingLinearSystemCommonPacket
+import PCRLean.Experimental.AugmentedMinorConsistency
+import PCRLean.Experimental.AugmentedMinorRangeNecessity
+import PCRLean.Experimental.FittingAugmentedMinorConsistency
+import PCRLean.Experimental.FittingAugmentedMinorGlobalResolutionMacro
+import PCRLean.Experimental.MaximalMinorAtlas
+import PCRLean.Experimental.MaximalMinorCommonPacket
+import PCRLean.Experimental.MaximalMinorAugmentedPacket
+import PCRLean.Experimental.MaximalMinorRangeCriterion
+import PCRLean.Experimental.MaximalMinorGlobalResolutionMacro
+import PCRLean.Experimental.MaximalMinorPresentationIndependence
 
 /-!
 # Integrated graded Frobenius heredity index
 
 This file has no new mathematical assumptions. Its purpose is to force one
-Lean build through the complete current experimental affine graph-centre chain:
+Lean build through the complete current experimental affine centre-synthesis
+chain:
 
 * exact order scaling for prime powers and arbitrary-mark ceiling compression;
 * Frobenius-normal centre filtrations and normal-cone nonvanishing;
-* actual proper finite-type regular graph centres;
+* actual proper finite-type regular polynomial graph centres;
+* exact reduced support of the graph-root packet;
+* explicit separation of the principal Cartier action boundary;
 * active, induced-flat passive and SNC-sequence legality;
 * all standard controlled-transform charts;
 * pure exceptional debt classified as source-conservative cleanup;
 * finite determinant basic-open covers;
+* jointly faithful equality reflection on those covers;
 * affine structure-sheaf Čech effectivity and exact global graph ideals;
-* an exact ideal equality converting an invertible affine linear system into
-  the graph of its unique solution;
-* automatic inversion from a determinant-unit minor;
-* one determinant-normalized system on every Fitting chart;
-* automatic graph overlap compatibility from equality of the matrices and
-  right-hand sides on double localizations; and
-* one actual global affine graph centre and complete global resolution macro,
-  with no graph tuple or centre ideal supplied independently.
+* determinant-unit affine systems and presentation-independent common packets;
+* the Schur augmented-minor consistency theorem;
+* necessity of augmented-minor vanishing for every actual solution;
+* the exact maximal-minor range criterion:
+  maximal minors generate one and augmented minors vanish iff the rectangular
+  packet has a unique solution;
+* invariance of that criterion and of the global graph under intrinsic changes
+  of equation frame; and
+* one canonical global affine resolution macro obtained directly from the two
+  finite determinantal conditions.
 
-Conditional on extracting a finite compatible determinant-normalized linear
-system atlas from the intrinsic Frobenius/Hasse/Fitting state, the entire affine
-actual-centre, joint-legality, chart, Čech and causal macro is closed in the
-stated chamber. The remaining universal work is that extraction theorem,
-hereditary next-state reconstruction, immediate defect, and non-affine global
-serialization. The index is experimental and does not assert general
-resolution.
+The remaining universal work is to extract the finite rectangular packet and
+the two determinantal identities from an arbitrary intrinsic
+Frobenius--Hasse state, prove a genuine nonidentity action in the higher-rank
+scheme chamber, reconstruct the next state hereditarily, treat immediate
+defect, and serialize globally. The index is experimental and does not assert
+general resolution.
 -/
 
 namespace PCRLean
