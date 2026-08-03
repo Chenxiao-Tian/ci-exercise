@@ -1,0 +1,4 @@
+import PCRLean.Experimental.MultiOwnerPerfectFrobeniusPresentationChamber
+
+#print axioms PCRLean.Experimental.MultiOwnerPerfectFrobeniusPresentationChamber.finiteRootRealization_of_purePresentation
+#print axioms PCRLean.Experimental.MultiOwnerPerfectFrobeniusPresentationChamber.certificate
