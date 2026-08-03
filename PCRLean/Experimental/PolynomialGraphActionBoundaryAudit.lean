@@ -1,0 +1,6 @@
+import PCRLean.Experimental.PolynomialGraphActionBoundary
+
+#print axioms PCRLean.Experimental.PolynomialGraphActionBoundary.graphIdeal_eq_span_singleton
+#print axioms PCRLean.Experimental.PolynomialGraphActionBoundary.exists_principal_generator
+#print axioms PCRLean.Experimental.PolynomialGraphActionBoundary.actionClass
+#print axioms PCRLean.Experimental.PolynomialGraphActionBoundary.principal_of_cartierClass
