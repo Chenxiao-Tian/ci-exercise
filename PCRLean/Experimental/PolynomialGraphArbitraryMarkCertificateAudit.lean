@@ -1,0 +1,6 @@
+import PCRLean.Experimental.PolynomialGraphArbitraryMarkCertificate
+
+#print axioms PCRLean.Experimental.PolynomialGraphArbitraryMarkCertificate.pow_le_pow_of_le
+#print axioms PCRLean.Experimental.PolynomialGraphArbitraryMarkCertificate.certificate
+#print axioms PCRLean.Experimental.PolynomialGraphArbitraryMarkCertificate.exactMark_terminal
+#print axioms PCRLean.Experimental.PolynomialGraphArbitraryMarkCertificate.strictSubmark_positiveDebt
