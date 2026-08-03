@@ -7,12 +7,12 @@ import PCRLean.Experimental.FrobeniusSupportDomain
 # Frobenius-reduced normal cone of a coordinate centre
 
 For the positive-dimensional coordinate centre, an element in `I^r` but not
-`I^(r+1)` has at least one monomial of exact normal degree `r`.  Prime-power
+`I^(r+1)` has at least one monomial of exact normal degree `r`. Prime-power
 Frobenius sends that monomial to a supported monomial of exact normal degree
-`p^e r`.  Hence the power cannot enter `I^(p^e r + 1)`.
+`p^e r`. Hence the power cannot enter `I^(p^e r + 1)`.
 
 This proves `InitialPowerNonvanishing (p^e) I` in the quotient-layer language
-of the normal cone.  Consequently the normal cone is Frobenius-reduced in every
+of the normal cone. Consequently the normal cone is Frobenius-reduced in every
 prime-power degree and the full filtration reflection theorem follows from the
 graded-layer compiler.
 
@@ -57,15 +57,15 @@ theorem initialPowerNonvanishing (e : Nat) :
   have horder :
       CoordinateCentreExactFrobeniusHeredity.NormalOrderGE
         (K := K) (α := α) (ι := ι) x r :=
-    (CoordinateCentreExactFrobeniusHeredity
-      .mem_centreIdeal_pow_iff_normalOrderGE x r).mp hx
+    (CoordinateCentreExactFrobeniusHeredity.mem_centreIdeal_pow_iff_normalOrderGE
+      x r).mp hx
   have hnotOrderNext :
       ¬ CoordinateCentreExactFrobeniusHeredity.NormalOrderGE
         (K := K) (α := α) (ι := ι) x (r + 1) := by
     intro hnext
     exact hxNotNext
-      ((CoordinateCentreExactFrobeniusHeredity
-        .mem_centreIdeal_pow_iff_normalOrderGE x (r + 1)).mpr hnext)
+      ((CoordinateCentreExactFrobeniusHeredity.mem_centreIdeal_pow_iff_normalOrderGE
+        x (r + 1)).mpr hnext)
   let y := CoordinateCentreExactFrobeniusHeredity.normalPolynomialEquiv
     (K := K) (α := α) (ι := ι) x
   change FrobeniusSupportDomain.OrderGE y r at horder
@@ -83,9 +83,10 @@ theorem initialPowerNonvanishing (e : Nat) :
       CoordinateCentreExactFrobeniusHeredity.NormalOrderGE
         (K := K) (α := α) (ι := ι)
         (x ^ (p ^ e)) (p ^ e * r + 1) :=
-    (CoordinateCentreExactFrobeniusHeredity
-      .mem_centreIdeal_pow_iff_normalOrderGE
-        (x ^ (p ^ e)) (p ^ e * r + 1)).mp hxPowerNext
+    (CoordinateCentreExactFrobeniusHeredity.mem_centreIdeal_pow_iff_normalOrderGE
+      (x ^ (p ^ e)) (p ^ e * r + 1)).mp hxPowerNext
+  unfold CoordinateCentreExactFrobeniusHeredity.NormalOrderGE at hpowerOrder
+  rw [map_pow] at hpowerOrder
   change FrobeniusSupportDomain.OrderGE
     (y ^ (p ^ e)) (p ^ e * r + 1) at hpowerOrder
   have hscaled := FrobeniusSupportDomain.scaled_mem_support
