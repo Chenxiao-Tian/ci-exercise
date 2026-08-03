@@ -1,0 +1,5 @@
+import PCRLean.Experimental.DualPacketBoundaryTransversality
+
+#print axioms PCRLean.Experimental.DualPacketBoundaryTransversality.Certificate.eq_zero_of_mem_both
+#print axioms PCRLean.Experimental.DualPacketBoundaryTransversality.Certificate.mixed_relation_coefficients_zero
+#print axioms PCRLean.Experimental.DualPacketBoundaryTransversality.Certificate.isCompl_of_sup_eq_top
