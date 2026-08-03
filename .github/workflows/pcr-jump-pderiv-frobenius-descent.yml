@@ -39,7 +39,9 @@ jobs:
               PCRLean/Experimental/PDerivFrobeniusDescent.lean \
               PCRLean/Experimental/PDerivFrobeniusDescentAudit.lean \
               PCRLean/Experimental/FrobeniusPrimitiveDecomposition.lean \
-              PCRLean/Experimental/FrobeniusPrimitiveDecompositionAudit.lean; then
+              PCRLean/Experimental/FrobeniusPrimitiveDecompositionAudit.lean \
+              PCRLean/Experimental/DerivativeZeroFinitePresentation.lean \
+              PCRLean/Experimental/DerivativeZeroFinitePresentationAudit.lean; then
             echo 'Forbidden proof placeholder or custom axiom found.' >&2
             exit 1
           fi
@@ -53,6 +55,11 @@ jobs:
           set -o pipefail
           lake build PCRLean.Experimental.FrobeniusPrimitiveDecomposition 2>&1 \
             | tee frobenius-primitive-build.txt
+      - name: Build finite presentation descent
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.DerivativeZeroFinitePresentation 2>&1 \
+            | tee derivative-zero-presentation-build.txt
       - name: Kernel axiom audit
         run: |
           set -o pipefail
@@ -60,8 +67,10 @@ jobs:
             | tee pderiv-frobenius-axioms.txt
           lake env lean PCRLean/Experimental/FrobeniusPrimitiveDecompositionAudit.lean 2>&1 \
             | tee frobenius-primitive-axioms.txt
+          lake env lean PCRLean/Experimental/DerivativeZeroFinitePresentationAudit.lean 2>&1 \
+            | tee derivative-zero-presentation-axioms.txt
           cat pderiv-frobenius-axioms.txt frobenius-primitive-axioms.txt \
-            > combined-axioms.txt
+              derivative-zero-presentation-axioms.txt > combined-axioms.txt
           if grep -E 'sorryAx|PCRLean\..*Axiom|ResolutionAxiom|PacketizationAxiom' \
               combined-axioms.txt; then
             echo 'Unpermitted axiom detected.' >&2
@@ -75,7 +84,9 @@ jobs:
           path: |
             pderiv-frobenius-build.txt
             frobenius-primitive-build.txt
+            derivative-zero-presentation-build.txt
             pderiv-frobenius-axioms.txt
             frobenius-primitive-axioms.txt
+            derivative-zero-presentation-axioms.txt
             combined-axioms.txt
           if-no-files-found: warn
