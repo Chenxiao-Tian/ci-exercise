@@ -1,4 +1,5 @@
 import Mathlib
+import Mathlib.LinearAlgebra.FiniteDimensional.Basic
 import PCRLean.Experimental.IntrinsicCentreGaugeInvariance
 import PCRLean.Experimental.SurjectiveFreeRegularCentre
 import PCRLean.Experimental.FiniteFreeSymmetricAlgebraRegular
@@ -7,21 +8,22 @@ import PCRLean.Experimental.FiniteFreeSymmetricAlgebraRegular
 # Experimental regular centres from range restriction
 
 Every linear map factors canonically as a surjection onto its range followed by
-the range inclusion.  Mathlib proves that `rangeRestrict` is surjective and has
-exactly the same kernel as the original map.  Therefore the intrinsic centre
+the range inclusion. Mathlib proves that `rangeRestrict` is surjective and has
+exactly the same kernel as the original map. Therefore the intrinsic centre
 ideal attached to an arbitrary linear packet is already the intrinsic centre
 ideal of a surjection onto its image.
 
 Consequently, whenever the image module is free, the quotient by the actual
-kernel ideal is the symmetric algebra of that image.  If the ambient module and
+kernel ideal is the symmetric algebra of that image. If the ambient module and
 the image are finite free over a nontrivial regular base ring, the kernel ideal
-is proper and finite type and its quotient is regular.
+is proper and finite type and its quotient is regular. Over a field, finite
+dimensionality of the source makes all image-module hypotheses automatic.
 
 This is a major reduction of U2: the remaining local geometric problem is not
 to manufacture a surjective packet, but to prove that the image of the
 Frobenius/Fitting packet is finite locally free on a finite principal-open
-stratification.  Localization compatibility, overlap descent, owner legality
-and hereditary blowup transport remain separate obligations.
+stratification. Localization compatibility, overlap descent, owner legality and
+hereditary blowup transport remain separate obligations.
 -/
 
 namespace PCRLean
@@ -128,6 +130,19 @@ noncomputable def finiteFreeCertificate
     FiniteFreeSymmetricAlgebraRegular.isRegularRing
       (K := R) (M := LinearMap.range project)
   exact certificate project
+
+/-- Over a field, every finite-dimensional linear packet automatically satisfies
+all finite-free image hypotheses. No assumption on the codomain dimension or
+on surjectivity is needed. -/
+noncomputable def finiteDimensionalCertificate
+    {K : Type*} [Field K]
+    {E : Type*} {F : Type*}
+    [AddCommGroup E] [Module K E]
+    [AddCommGroup F] [Module K F]
+    [FiniteDimensional K E]
+    (project : E →ₗ[K] F) :
+    Certificate project := by
+  exact finiteFreeCertificate project
 
 end
 
