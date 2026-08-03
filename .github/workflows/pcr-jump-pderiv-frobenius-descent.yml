@@ -37,7 +37,9 @@ jobs:
           set -o pipefail
           if grep -nE '^[[:space:]]*(axiom|sorry|admit)([[:space:]]|$)' \
               PCRLean/Experimental/PDerivFrobeniusDescent.lean \
-              PCRLean/Experimental/PDerivFrobeniusDescentAudit.lean; then
+              PCRLean/Experimental/PDerivFrobeniusDescentAudit.lean \
+              PCRLean/Experimental/FrobeniusPrimitiveDecomposition.lean \
+              PCRLean/Experimental/FrobeniusPrimitiveDecompositionAudit.lean; then
             echo 'Forbidden proof placeholder or custom axiom found.' >&2
             exit 1
           fi
@@ -46,13 +48,22 @@ jobs:
           set -o pipefail
           lake build PCRLean.Experimental.PDerivFrobeniusDescent 2>&1 \
             | tee pderiv-frobenius-build.txt
+      - name: Build primitive decomposition
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.FrobeniusPrimitiveDecomposition 2>&1 \
+            | tee frobenius-primitive-build.txt
       - name: Kernel axiom audit
         run: |
           set -o pipefail
           lake env lean PCRLean/Experimental/PDerivFrobeniusDescentAudit.lean 2>&1 \
             | tee pderiv-frobenius-axioms.txt
+          lake env lean PCRLean/Experimental/FrobeniusPrimitiveDecompositionAudit.lean 2>&1 \
+            | tee frobenius-primitive-axioms.txt
+          cat pderiv-frobenius-axioms.txt frobenius-primitive-axioms.txt \
+            > combined-axioms.txt
           if grep -E 'sorryAx|PCRLean\..*Axiom|ResolutionAxiom|PacketizationAxiom' \
-              pderiv-frobenius-axioms.txt; then
+              combined-axioms.txt; then
             echo 'Unpermitted axiom detected.' >&2
             exit 1
           fi
@@ -63,5 +74,8 @@ jobs:
           name: pcr-jump-pderiv-frobenius-${{ github.sha }}
           path: |
             pderiv-frobenius-build.txt
+            frobenius-primitive-build.txt
             pderiv-frobenius-axioms.txt
+            frobenius-primitive-axioms.txt
+            combined-axioms.txt
           if-no-files-found: warn
