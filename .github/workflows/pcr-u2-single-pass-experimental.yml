@@ -13,8 +13,8 @@ permissions:
   contents: read
 
 concurrency:
-  group: pcr-u2-exact-single-pass-${{ github.ref }}
-  cancel-in-progress: true
+  group: pcr-u2-exact-single-pass-${{ github.sha }}
+  cancel-in-progress: false
 
 jobs:
   u2-exact-single-pass:
@@ -47,6 +47,8 @@ jobs:
             PCRLean/Experimental/SurjectiveFreeRegularCentre.lean
             PCRLean/Experimental/FiniteFreeSymmetricAlgebraRegular.lean
             PCRLean/Experimental/BiorthogonalRegularCentre.lean
+            PCRLean/Experimental/InvertibleMinorRegularCentre.lean
+            PCRLean/Experimental/DetUnitMinorRegularCentre.lean
             PCRLean/Experimental/IntrinsicCentreGaugeInvariance.lean
             PCRLean/Experimental/IntrinsicCentreTransport.lean
             PCRLean/Experimental/U2SingleCIAudit.lean
@@ -91,19 +93,27 @@ jobs:
         run: |
           set -o pipefail
           lake build PCRLean.Experimental.BiorthogonalRegularCentre 2>&1 | tee 09-biorthogonal-centre-build.txt
+      - name: Build explicit inverse-minor compiler
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.InvertibleMinorRegularCentre 2>&1 | tee 10-invertible-minor-build.txt
+      - name: Build determinant-unit minor compiler
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.DetUnitMinorRegularCentre 2>&1 | tee 11-det-unit-minor-build.txt
       - name: Build target gauge invariance
         run: |
           set -o pipefail
-          lake build PCRLean.Experimental.IntrinsicCentreGaugeInvariance 2>&1 | tee 10-target-gauge-build.txt
+          lake build PCRLean.Experimental.IntrinsicCentreGaugeInvariance 2>&1 | tee 12-target-gauge-build.txt
       - name: Build source-target centre transport
         run: |
           set -o pipefail
-          lake build PCRLean.Experimental.IntrinsicCentreTransport 2>&1 | tee 11-centre-transport-build.txt
+          lake build PCRLean.Experimental.IntrinsicCentreTransport 2>&1 | tee 13-centre-transport-build.txt
       - name: Unified kernel axiom audit
         run: |
           set -o pipefail
-          lake env lean PCRLean/Experimental/U2SingleCIAudit.lean 2>&1 | tee 12-u2-axioms.txt
-          if grep -E 'sorryAx|PCRLean\..*Axiom|ResolutionAxiom|PacketizationAxiom' 12-u2-axioms.txt; then
+          lake env lean PCRLean/Experimental/U2SingleCIAudit.lean 2>&1 | tee 14-u2-axioms.txt
+          if grep -E 'sorryAx|PCRLean\..*Axiom|ResolutionAxiom|PacketizationAxiom' 14-u2-axioms.txt; then
             echo 'Unpermitted axiom detected.' >&2
             exit 1
           fi
@@ -114,5 +124,5 @@ jobs:
           name: pcr-u2-exact-single-pass-${{ github.sha }}
           path: |
             *-build.txt
-            12-u2-axioms.txt
+            14-u2-axioms.txt
           if-no-files-found: warn
