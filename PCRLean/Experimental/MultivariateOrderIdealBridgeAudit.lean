@@ -1,0 +1,8 @@
+import PCRLean.Experimental.MultivariateOrderIdealBridge
+
+#print axioms PCRLean.Experimental.MultivariateOrderIdealBridge.X_mem_originIdeal
+#print axioms PCRLean.Experimental.MultivariateOrderIdealBridge.pow_le_pow_of_le
+#print axioms PCRLean.Experimental.MultivariateOrderIdealBridge.monomial_mem_originIdeal_pow_degree
+#print axioms PCRLean.Experimental.MultivariateOrderIdealBridge.monomial_mem_originIdeal_pow_of_le
+#print axioms PCRLean.Experimental.MultivariateOrderIdealBridge.mem_originIdeal_pow_of_orderGE
+#print axioms PCRLean.Experimental.MultivariateOrderIdealBridge.frobeniusPower_mem_originIdeal_pow
