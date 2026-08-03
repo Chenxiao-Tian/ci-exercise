@@ -1,0 +1,3 @@
+import PCRLean.Experimental.NoetherianOrbitCanonicalFrobeniusBlowupChamber
+
+#print axioms PCRLean.Experimental.NoetherianOrbitCanonicalFrobeniusBlowupChamber.certificate
