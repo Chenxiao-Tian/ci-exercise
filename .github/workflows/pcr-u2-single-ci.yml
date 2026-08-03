@@ -1,0 +1,128 @@
+name: PCR U2 single-pass intrinsic-centre verification
+
+on:
+  push:
+    branches:
+      - pcr-u2-single-ci-20260803
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pcr-u2-single-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  u2-single-pass:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          set -o pipefail
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf \
+            | sh -s -- -y --default-toolchain leanprover/lean4:v4.30.0
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned mathlib once
+        run: |
+          set -o pipefail
+          lake update
+          lake exe cache get
+      - name: Reject proof placeholders
+        run: |
+          set -o pipefail
+          files=(
+            PCRLean/SplitConormalFrame.lean
+            PCRLean/BiorthogonalSplitFrame.lean
+            PCRLean/FunctionalPacketIdeal.lean
+            PCRLean/LinearCoordinateChange.lean
+            PCRLean/Experimental/LinearSplitCentreQuotient.lean
+            PCRLean/Experimental/CausalEventPacking.lean
+            PCRLean/Experimental/SplitSurjectionSymmetricQuotient.lean
+            PCRLean/Experimental/SurjectiveLinearMapSymmetricQuotient.lean
+            PCRLean/Experimental/SurjectiveFreeRegularCentre.lean
+            PCRLean/Experimental/FiniteFreeSymmetricAlgebraRegular.lean
+            PCRLean/Experimental/BiorthogonalRegularCentre.lean
+            PCRLean/Experimental/IntrinsicCentreGaugeInvariance.lean
+            PCRLean/Experimental/IntrinsicCentreTransport.lean
+            PCRLean/Experimental/U2SingleCIAudit.lean
+          )
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)([[:space:]]|$)' "${files[@]}"; then
+            echo 'Forbidden proof placeholder or custom axiom found.' >&2
+            exit 1
+          fi
+      - name: Build commutative-ring split frames
+        run: |
+          set -o pipefail
+          lake build PCRLean.BiorthogonalSplitFrame 2>&1 \
+            | tee 01-split-frames-build.txt
+      - name: Build corrected linear coordinate automorphism
+        run: |
+          set -o pipefail
+          lake build PCRLean.LinearCoordinateChange 2>&1 \
+            | tee 02-linear-coordinate-build.txt
+      - name: Build transported linear centre
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.LinearSplitCentreQuotient 2>&1 \
+            | tee 03-linear-centre-build.txt
+      - name: Build causal event packing
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.CausalEventPacking 2>&1 \
+            | tee 04-causal-event-build.txt
+      - name: Build intrinsic split-surjection quotient
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.SplitSurjectionSymmetricQuotient 2>&1 \
+            | tee 05-split-surjection-build.txt
+      - name: Build automatic free-target splitting
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.SurjectiveLinearMapSymmetricQuotient 2>&1 \
+            | tee 06-surjective-free-build.txt
+      - name: Build intrinsic regular-centre certificate
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.SurjectiveFreeRegularCentre 2>&1 \
+            | tee 07-regular-centre-build.txt
+      - name: Build finite-free symmetric algebra automation
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.FiniteFreeSymmetricAlgebraRegular 2>&1 \
+            | tee 08-finite-free-symmetric-build.txt
+      - name: Build biorthogonal regular-ring centre
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.BiorthogonalRegularCentre 2>&1 \
+            | tee 09-biorthogonal-centre-build.txt
+      - name: Build target gauge invariance
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.IntrinsicCentreGaugeInvariance 2>&1 \
+            | tee 10-target-gauge-build.txt
+      - name: Build source-target centre transport
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.IntrinsicCentreTransport 2>&1 \
+            | tee 11-centre-transport-build.txt
+      - name: Unified kernel axiom audit
+        run: |
+          set -o pipefail
+          lake env lean PCRLean/Experimental/U2SingleCIAudit.lean 2>&1 \
+            | tee 12-u2-axioms.txt
+          if grep -E 'sorryAx|PCRLean\..*Axiom|ResolutionAxiom|PacketizationAxiom' \
+              12-u2-axioms.txt; then
+            echo 'Unpermitted axiom detected.' >&2
+            exit 1
+          fi
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pcr-u2-single-ci-${{ github.sha }}
+          path: |
+            *-build.txt
+            12-u2-axioms.txt
+          if-no-files-found: warn
