@@ -1,0 +1,10 @@
+import PCRLean.Experimental.ReducedGraphCentreQuotient
+
+#print axioms PCRLean.Experimental.ReducedGraphCentreQuotient.sub_constantProjection_mem
+#print axioms PCRLean.Experimental.ReducedGraphCentreQuotient.ker_graphEval_eq_graphIdeal
+#print axioms PCRLean.Experimental.ReducedGraphCentreQuotient.graphEval_surjective
+#print axioms PCRLean.Experimental.ReducedGraphCentreQuotient.quotientEquiv
+#print axioms PCRLean.Experimental.ReducedGraphCentreQuotient.graphIdeal_ne_top
+#print axioms PCRLean.Experimental.ReducedGraphCentreQuotient.graphIdeal_fg
+#print axioms PCRLean.Experimental.ReducedGraphCentreQuotient.quotient_isReduced
+#print axioms PCRLean.Experimental.ReducedGraphCentreQuotient.quotient_isRegularRing
