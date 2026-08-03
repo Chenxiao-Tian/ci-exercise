@@ -1,0 +1,6 @@
+import PCRLean.Experimental.MultiOwnerFiniteFrobeniusPacketChamber
+
+#print axioms PCRLean.Experimental.MultiOwnerFiniteFrobeniusPacketChamber.fullRootRealization_of_finite
+#print axioms PCRLean.Experimental.MultiOwnerFiniteFrobeniusPacketChamber.every_owner_permissible
+#print axioms PCRLean.Experimental.MultiOwnerFiniteFrobeniusPacketChamber.jointOwnerIdeal_permissible
+#print axioms PCRLean.Experimental.MultiOwnerFiniteFrobeniusPacketChamber.certificate
