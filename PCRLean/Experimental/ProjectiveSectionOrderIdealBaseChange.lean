@@ -20,6 +20,13 @@ contained in the compatible-frame certificate. In geometric applications one
 constructs `G` from a localized or tensor-base-changed frame, after which this
 theorem supplies exact overlap and localization naturality of the cokernel
 order ideal.
+
+Under faithful flatness, the three geometric states of the order ideal are all
+reflected exactly:
+
+* zero — the pure graph/effective chamber;
+* proper nonzero — the genuine hybrid defect chamber; and
+* unit — the no-proper-centre obstruction chamber.
 -/
 
 namespace PCRLean
@@ -113,6 +120,49 @@ theorem orderIdeal_eq_bot_iff
   constructor
   · exact C.source_orderIdeal_eq_bot_of_target_eq_bot x
   · exact C.orderIdeal_eq_bot_of_source_eq_bot x
+
+/-- A unit source order ideal remains the unit ideal after arbitrary compatible
+base change. -/
+theorem orderIdeal_eq_top_of_source_eq_top
+    (x : P) (hx : orderIdeal x = ⊤) :
+    orderIdeal (C.map x) = ⊤ := by
+  rw [← C.map_orderIdeal_eq x, hx, Ideal.map_top]
+
+/-- Faithful flatness reflects the unit-ideal obstruction. -/
+theorem source_orderIdeal_eq_top_of_target_eq_top
+    [Module.FaithfullyFlat R S]
+    (x : P) (hx : orderIdeal (C.map x) = ⊤) :
+    orderIdeal x = ⊤ := by
+  calc
+    orderIdeal x =
+        (Ideal.map (algebraMap R S) (orderIdeal x)).comap
+          (algebraMap R S) := by
+      symm
+      exact Ideal.comap_map_eq_self_of_faithfullyFlat
+        (orderIdeal x)
+    _ = (orderIdeal (C.map x)).comap (algebraMap R S) := by
+      rw [C.map_orderIdeal_eq x]
+    _ = ⊤ := by rw [hx]; simp
+
+/-- Unit obstruction is equivalent before and after faithfully flat base
+change. -/
+theorem orderIdeal_eq_top_iff
+    [Module.FaithfullyFlat R S]
+    (x : P) :
+    orderIdeal (C.map x) = ⊤ ↔ orderIdeal x = ⊤ := by
+  constructor
+  · exact C.source_orderIdeal_eq_top_of_target_eq_top x
+  · exact C.orderIdeal_eq_top_of_source_eq_top x
+
+/-- The genuine proper-nonzero hybrid chamber is faithfully-flat local. -/
+theorem properNonzero_iff
+    [Module.FaithfullyFlat R S]
+    (x : P) :
+    (orderIdeal (C.map x) ≠ ⊥ ∧ orderIdeal (C.map x) ≠ ⊤) ↔
+      (orderIdeal x ≠ ⊥ ∧ orderIdeal x ≠ ⊤) := by
+  rw [ne_eq, ne_eq, ne_eq, ne_eq,
+    not_congr (C.orderIdeal_eq_bot_iff x),
+    not_congr (C.orderIdeal_eq_top_iff x)]
 
 end CompatibleFrames
 
