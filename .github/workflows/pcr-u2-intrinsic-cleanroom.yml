@@ -1,0 +1,126 @@
+name: PCR U2 intrinsic-centre clean room
+
+on:
+  push:
+    branches:
+      - pcr-u2-intrinsic-centre-20260803
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pcr-u2-intrinsic-cleanroom-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  intrinsic-centre-cleanroom:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          set -o pipefail
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf \
+            | sh -s -- -y --default-toolchain leanprover/lean4:v4.30.0
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned mathlib once
+        run: |
+          set -o pipefail
+          lake update
+          lake exe cache get
+      - name: Reject placeholders in the isolated proof slice
+        run: |
+          set -o pipefail
+          files=(
+            PCRLean/Experimental/CausalEventPacking.lean
+            PCRLean/Experimental/CausalEventPackingAudit.lean
+            PCRLean/FunctionalPacketIdeal.lean
+            PCRLean/LinearCoordinateChange.lean
+            PCRLean/Experimental/LinearSplitCentreQuotient.lean
+            PCRLean/Experimental/LinearSplitCentreQuotientAudit.lean
+            PCRLean/Experimental/SplitSurjectionSymmetricQuotient.lean
+            PCRLean/Experimental/SplitSurjectionSymmetricQuotientAudit.lean
+            PCRLean/Experimental/SurjectiveLinearMapSymmetricQuotient.lean
+            PCRLean/Experimental/SurjectiveLinearMapSymmetricQuotientAudit.lean
+            PCRLean/Experimental/SurjectiveFreeRegularCentre.lean
+            PCRLean/Experimental/SurjectiveFreeRegularCentreAudit.lean
+          )
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)([[:space:]]|$)' "${files[@]}"; then
+            echo 'Forbidden proof placeholder or custom axiom found.' >&2
+            exit 1
+          fi
+      - name: Build causal event packing
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.CausalEventPacking 2>&1 \
+            | tee causal-event-build.txt
+      - name: Audit causal event packing
+        run: |
+          set -o pipefail
+          lake env lean PCRLean/Experimental/CausalEventPackingAudit.lean 2>&1 \
+            | tee causal-event-axioms.txt
+      - name: Build full linear coordinate automorphism
+        run: |
+          set -o pipefail
+          lake build PCRLean.LinearCoordinateChange 2>&1 \
+            | tee linear-coordinate-build.txt
+      - name: Build transported linear centre
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.LinearSplitCentreQuotient 2>&1 \
+            | tee linear-split-centre-build.txt
+      - name: Audit transported linear centre
+        run: |
+          set -o pipefail
+          lake env lean PCRLean/Experimental/LinearSplitCentreQuotientAudit.lean 2>&1 \
+            | tee linear-split-centre-axioms.txt
+      - name: Build intrinsic split-surjection quotient
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.SplitSurjectionSymmetricQuotient 2>&1 \
+            | tee split-surjection-build.txt
+      - name: Audit intrinsic split-surjection quotient
+        run: |
+          set -o pipefail
+          lake env lean PCRLean/Experimental/SplitSurjectionSymmetricQuotientAudit.lean 2>&1 \
+            | tee split-surjection-axioms.txt
+      - name: Build free-target surjection quotient
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.SurjectiveLinearMapSymmetricQuotient 2>&1 \
+            | tee surjective-free-quotient-build.txt
+      - name: Audit free-target surjection quotient
+        run: |
+          set -o pipefail
+          lake env lean PCRLean/Experimental/SurjectiveLinearMapSymmetricQuotientAudit.lean 2>&1 \
+            | tee surjective-free-quotient-axioms.txt
+      - name: Build intrinsic regular-centre certificate
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.SurjectiveFreeRegularCentre 2>&1 \
+            | tee surjective-free-regular-centre-build.txt
+      - name: Audit intrinsic regular-centre certificate
+        run: |
+          set -o pipefail
+          lake env lean PCRLean/Experimental/SurjectiveFreeRegularCentreAudit.lean 2>&1 \
+            | tee surjective-free-regular-centre-axioms.txt
+      - name: Reject unpermitted axioms
+        run: |
+          set -o pipefail
+          cat *-axioms.txt > combined-axioms.txt
+          if grep -E 'sorryAx|PCRLean\..*Axiom|ResolutionAxiom|PacketizationAxiom' \
+              combined-axioms.txt; then
+            echo 'Unpermitted axiom detected.' >&2
+            exit 1
+          fi
+      - name: Upload clean-room evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pcr-u2-intrinsic-cleanroom-${{ github.sha }}
+          path: |
+            *-build.txt
+            *-axioms.txt
+            combined-axioms.txt
+          if-no-files-found: warn
