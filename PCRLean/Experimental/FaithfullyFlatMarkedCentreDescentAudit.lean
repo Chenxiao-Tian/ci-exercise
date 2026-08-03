@@ -1,0 +1,9 @@
+import PCRLean.Experimental.FaithfullyFlatMarkedCentreDescent
+
+#print axioms PCRLean.Experimental.FaithfullyFlatMarkedCentreDescent.le_of_map_le_map
+#print axioms PCRLean.Experimental.FaithfullyFlatMarkedCentreDescent.eq_of_map_eq_map
+#print axioms PCRLean.Experimental.FaithfullyFlatMarkedCentreDescent.permissible_of_map
+#print axioms PCRLean.Experimental.FaithfullyFlatMarkedCentreDescent.ne_top_of_map_ne_top
+#print axioms PCRLean.Experimental.FaithfullyFlatMarkedCentreDescent.ne_bot_of_map_ne_bot
+#print axioms PCRLean.Experimental.FaithfullyFlatMarkedCentreDescent.centre_unique
+#print axioms PCRLean.Experimental.FaithfullyFlatMarkedCentreDescent.descendGraphModel
