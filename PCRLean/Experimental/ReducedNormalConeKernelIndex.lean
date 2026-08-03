@@ -2,6 +2,7 @@ import PCRLean.Experimental.FrobeniusSupportReduced
 import PCRLean.Experimental.ReducedCoordinateCentreExactFrobeniusHeredity
 import PCRLean.Experimental.ReducedPolynomialGraphCentreHeredity
 import PCRLean.Experimental.ReducedGraphCentreQuotient
+import PCRLean.Experimental.CoordinateCentreCotangentBasis
 import PCRLean.Experimental.ReducedFrobeniusNormalLocalModel
 import PCRLean.Experimental.ReducedNormalConePowerModel
 
@@ -18,6 +19,7 @@ heredity layer:
 * necessity of reducedness for graph centres;
 * the exact graph evaluation kernel and quotient certificate;
 * reducedness and regularity of graph-centre quotients;
+* an explicit free basis of the coordinate-centre conormal module `I/I²`;
 * faithfully flat descent from reduced coordinate and graph local models; and
 * an abstract reduced normal-cone power model compiling layer embeddings into
   full Frobenius-normality.
