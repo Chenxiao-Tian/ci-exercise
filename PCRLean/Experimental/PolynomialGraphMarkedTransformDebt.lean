@@ -99,7 +99,7 @@ theorem transformedMarkedRootIdeal_eq_pivotPower
     rw [hx']
     apply Ideal.subset_span
     refine ⟨k, ?_⟩
-    exact (pivot_controlledResidual (R := R) k q mark).symm
+    exact pivot_controlledResidual (R := R) k q mark
 
 /-- At the exact Frobenius mark the transformed packet is terminal. -/
 theorem transformedMarkedRootIdeal_eq_top_of_exactMark
@@ -111,7 +111,7 @@ theorem transformedMarkedRootIdeal_eq_top_of_exactMark
 /-- At an arbitrary smaller mark, the transformed packet is completely
 monomial: it is the exceptional ideal to the debt exponent `q-mark`. -/
 theorem transformedMarkedRootIdeal_is_pureDebt
-    (k : ι) (q mark : Nat) (hmark : mark ≤ q) :
+    (k : ι) (q mark : Nat) (_hmark : mark ≤ q) :
     transformedMarkedRootIdeal (R := R) k q mark =
       (pivotIdeal (R := R) k) ^ (q - mark) :=
   transformedMarkedRootIdeal_eq_pivotPower (R := R) k q mark
