@@ -1,0 +1,8 @@
+import PCRLean.Experimental.InvertibleMinorRegularCentre
+
+#print axioms PCRLean.Experimental.InvertibleMinorRegularCentre.MinorCertificate.packet_transverse
+#print axioms PCRLean.Experimental.InvertibleMinorRegularCentre.MinorCertificate.toBiorthogonalFrame
+#print axioms PCRLean.Experimental.InvertibleMinorRegularCentre.MinorCertificate.eval_surjective
+#print axioms PCRLean.Experimental.InvertibleMinorRegularCentre.MinorCertificate.quotientEquiv
+#print axioms PCRLean.Experimental.InvertibleMinorRegularCentre.MinorCertificate.centreIdeal_ne_top
+#print axioms PCRLean.Experimental.InvertibleMinorRegularCentre.MinorCertificate.certificate
