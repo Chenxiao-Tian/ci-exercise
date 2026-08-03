@@ -1,0 +1,25 @@
+{
+  "record_id": "PCR-JUMP-LEAN-CONVERSATION-DELTA-20260803",
+  "date": "2026-08-03",
+  "accepted_formal_node": "MLEL-M004 / HMC-SCCD",
+  "formal_global_status": "OPEN_GAP",
+  "final_main_theorem_kernel_verified": false,
+  "general_positive_characteristic_resolution_proved": false,
+  "experimental_theorems_promoted": false,
+  "protocol": "PCR-JUMP-LEAN 2.0",
+  "experiment_branch": "pcr-jump-integral-heredity-20260803",
+  "corrected_cleanroom_base": "pcr-jump-fpqc-image2-ci-base-20260803",
+  "corrected_cleanroom_head": "pcr-jump-fpqc-image2-ci-head4-20260803",
+  "architecture": [
+    "intrinsic finite Frobenius/Hasse operator orbit",
+    "global ambient module-image ideal",
+    "finite Fitting graph atlas for base changes of the same ideal",
+    "gauge and faithfully-flat descent",
+    "one global ordinary blowup",
+    "local all-chart transform and exceptional-debt certificates",
+    "hereditary global-state reconstruction"
+  ],
+  "next_bridge": "global ambient module-image ideal + finite Fitting graph atlas + Rees/blowup localization compatibility",
+  "persistent_library_path": "/正特征奇点消解/MLE-Lean线/ConversationRounds/2026-08-03-FPQC-Image/",
+  "certified_graph_changed": false
+}
