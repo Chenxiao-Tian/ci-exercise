@@ -1,0 +1,6 @@
+import PCRLean.Experimental.FittingAugmentedMinorGlobalResolutionMacro
+
+#print axioms PCRLean.Experimental.FittingAugmentedMinorGlobalResolutionMacro.globalGraph
+#print axioms PCRLean.Experimental.FittingAugmentedMinorGlobalResolutionMacro.globalCentre
+#print axioms PCRLean.Experimental.FittingAugmentedMinorGlobalResolutionMacro.certificate
+#print axioms PCRLean.Experimental.FittingAugmentedMinorGlobalResolutionMacro.allLocalSystemIdeals_fromGlobal
