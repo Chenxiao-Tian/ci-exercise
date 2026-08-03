@@ -1,0 +1,6 @@
+import PCRLean.Experimental.ImperfectCoefficientObstruction
+
+#print axioms PCRLean.Experimental.ImperfectCoefficientObstruction.derivative_obstructionPolynomial
+#print axioms PCRLean.Experimental.ImperfectCoefficientObstruction.coefficient_is_pow_of_polynomial_root
+#print axioms PCRLean.Experimental.ImperfectCoefficientObstruction.no_polynomial_root_of_not_coefficient_pow
+#print axioms PCRLean.Experimental.ImperfectCoefficientObstruction.derivative_zero_but_no_root
