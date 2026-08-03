@@ -1,0 +1,9 @@
+import PCRLean.Experimental.MaximalMinorAffineEquivalence
+
+#print axioms PCRLean.Experimental.MaximalMinorAffineEquivalence.PacketEquivalence.solution_iff
+#print axioms PCRLean.Experimental.MaximalMinorAffineEquivalence.PacketEquivalence.inverse_solution_iff
+#print axioms PCRLean.Experimental.MaximalMinorAffineEquivalence.PacketEquivalence.exists_solution_iff
+#print axioms PCRLean.Experimental.MaximalMinorAffineEquivalence.PacketEquivalence.existsUnique_solution_iff
+#print axioms PCRLean.Experimental.MaximalMinorAffineEquivalence.PacketEquivalence.augmentedRankCondition_iff
+#print axioms PCRLean.Experimental.MaximalMinorAffineEquivalence.PacketEquivalence.transportAugmented
+#print axioms PCRLean.Experimental.MaximalMinorAffineEquivalence.PacketEquivalence.globalGraph_eq
