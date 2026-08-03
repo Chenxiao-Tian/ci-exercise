@@ -1,0 +1,6 @@
+import PCRLean.Experimental.SplitRetractionTransversality
+
+#print axioms PCRLean.Experimental.SplitRetractionTransversality.residual_mem_kernel
+#print axioms PCRLean.Experimental.SplitRetractionTransversality.residual_mul
+#print axioms PCRLean.Experimental.SplitRetractionTransversality.map_le_decompositionIdeal
+#print axioms PCRLean.Experimental.SplitRetractionTransversality.kernel_transverse_mappedIdeal
