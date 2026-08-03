@@ -4,13 +4,16 @@ on:
   push:
     branches:
       - pcr-u2-equiv-causal-20260803
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: pcr-u2-equiv-causal-child
+  group: pcr-u2-equiv-causal-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -38,6 +41,7 @@ jobs:
             PCRLean/Experimental/BiorthogonalRegularCentre.lean
             PCRLean/Experimental/InvertibleMinorRegularCentre.lean
             PCRLean/Experimental/DeterminantMinorRegularCentre.lean
+            PCRLean/Experimental/SpanningMinorRegularCentre.lean
             PCRLean/Experimental/IntrinsicKernelIdealEquiv.lean
             PCRLean/Experimental/IntrinsicKernelIdealComposition.lean
             PCRLean/Experimental/IntrinsicKernelIdealBiEquiv.lean
