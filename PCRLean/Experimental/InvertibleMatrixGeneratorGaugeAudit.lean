@@ -1,0 +1,6 @@
+import PCRLean.Experimental.InvertibleMatrixGeneratorGauge
+
+#print axioms PCRLean.Experimental.InvertibleMatrixGeneratorGauge.Gauge.inverse_transform
+#print axioms PCRLean.Experimental.InvertibleMatrixGeneratorGauge.Gauge.original_combination
+#print axioms PCRLean.Experimental.InvertibleMatrixGeneratorGauge.Gauge.generatedIdeal_transform_eq
+#print axioms PCRLean.Experimental.InvertibleMatrixGeneratorGauge.Atlas.ideal_eq
