@@ -1,0 +1,8 @@
+import PCRLean.Experimental.SplitSurjectionTensorHeredity
+
+#print axioms PCRLean.Experimental.SplitSurjectionTensorHeredity.tensor_rightInverse
+#print axioms PCRLean.Experimental.SplitSurjectionTensorHeredity.tensorProject_surjective
+#print axioms PCRLean.Experimental.SplitSurjectionTensorHeredity.tmul_mem_tensorKernel
+#print axioms PCRLean.Experimental.SplitSurjectionTensorHeredity.tmul_generator_mem_tensorKernelIdeal
+#print axioms PCRLean.Experimental.SplitSurjectionTensorHeredity.tensorQuotientEquiv
+#print axioms PCRLean.Experimental.SplitSurjectionTensorHeredity.tensorRegularCertificate
