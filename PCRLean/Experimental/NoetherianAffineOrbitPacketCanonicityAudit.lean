@@ -1,0 +1,7 @@
+import PCRLean.Experimental.NoetherianAffineOrbitPacketCanonicity
+
+#print axioms PCRLean.Experimental.NoetherianAffineOrbitPacketCanonicity.C_exists_solution_iff_orbit
+#print axioms PCRLean.Experimental.NoetherianAffineOrbitPacketCanonicity.E_exists_solution_iff_orbit
+#print axioms PCRLean.Experimental.NoetherianAffineOrbitPacketCanonicity.augmentedRankCondition_iff
+#print axioms PCRLean.Experimental.NoetherianAffineOrbitPacketCanonicity.transportAugmented
+#print axioms PCRLean.Experimental.NoetherianAffineOrbitPacketCanonicity.intrinsicSolution_eq
