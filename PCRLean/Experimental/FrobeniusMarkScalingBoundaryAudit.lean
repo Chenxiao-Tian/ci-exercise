@@ -1,0 +1,8 @@
+import PCRLean.Experimental.FrobeniusMarkScalingBoundary
+
+#print axioms PCRLean.Experimental.FrobeniusMarkScalingBoundary.X_pow_singular_at_scaled_mark
+#print axioms PCRLean.Experimental.FrobeniusMarkScalingBoundary.X_not_singular_at_unscaled_mark
+#print axioms PCRLean.Experimental.FrobeniusMarkScalingBoundary.unscaled_mark_counterexample
+#print axioms PCRLean.Experimental.FrobeniusMarkScalingBoundary.family_pow_iff
+#print axioms PCRLean.Experimental.FrobeniusMarkScalingBoundary.singularSet_pow_eq
+#print axioms PCRLean.Experimental.FrobeniusMarkScalingBoundary.derivativeZero_family_singularSet_eq
