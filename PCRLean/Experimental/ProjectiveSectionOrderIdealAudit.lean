@@ -1,0 +1,6 @@
+import PCRLean.Experimental.ProjectiveSectionOrderIdeal
+
+#print axioms PCRLean.Experimental.ProjectiveSectionOrderIdeal.frameOrderIdeal_eq_orderIdeal
+#print axioms PCRLean.Experimental.ProjectiveSectionOrderIdeal.section_mem_orderIdeal_smul_top
+#print axioms PCRLean.Experimental.ProjectiveSectionOrderIdeal.orderIdeal_eq_bot_iff
+#print axioms PCRLean.Experimental.ProjectiveSectionOrderIdeal.orderIdeal_fg
