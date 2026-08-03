@@ -15,11 +15,12 @@ import PCRLean.Experimental.FrobeniusNormalCentre
 import PCRLean.Experimental.FrobeniusNormalCentreCounterexample
 import PCRLean.Experimental.GradedPowerReflection
 import PCRLean.Experimental.FrobeniusNormalFaithfullyFlatDescent
+import PCRLean.Experimental.CoordinateControlledTransformHeredity
 
 /-!
 # Integrated graded Frobenius heredity index
 
-This file has no new mathematical assumptions.  Its purpose is to force one
+This file has no new mathematical assumptions. Its purpose is to force one
 Lean build through the complete current experimental heredity chain:
 
 * exact order scaling for prime powers;
@@ -29,8 +30,10 @@ Lean build through the complete current experimental heredity chain:
 * exact coordinate-centre root reflection;
 * the Frobenius-normal centre interface;
 * the nonreduced dual-number no-go;
-* the graded-layer sufficient condition; and
-* faithfully flat descent.
+* the graded-layer sufficient condition;
+* faithfully flat descent; and
+* exact commutation of prime-power compression with coordinate controlled
+  transforms.
 
 The index is experimental and does not assert general resolution.
 -/
