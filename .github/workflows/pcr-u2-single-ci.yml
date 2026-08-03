@@ -4,35 +4,41 @@ on:
   push:
     branches:
       - pcr-u2-single-ci-20260803
-  pull_request:
-    branches:
-      - main
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
-  group: pcr-u2-single-ci-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+  group: pcr-u2-single-ci-${{ github.sha }}
+  cancel-in-progress: false
 
 jobs:
   u2-single-pass:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install pinned Lean
+
+      - id: install
+        name: Install pinned Lean
+        continue-on-error: true
         run: |
           set -o pipefail
           curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf \
             | sh -s -- -y --default-toolchain leanprover/lean4:v4.30.0
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
-      - name: Resolve pinned mathlib once
+
+      - id: dependencies
+        name: Resolve pinned mathlib once
+        continue-on-error: true
         run: |
           set -o pipefail
-          lake update
-          lake exe cache get
-      - name: Reject proof placeholders
+          lake update 2>&1 | tee 00-lake-update.txt
+          lake exe cache get 2>&1 | tee 00-cache-get.txt
+
+      - id: placeholders
+        name: Reject proof placeholders
+        continue-on-error: true
         run: |
           set -o pipefail
           files=(
@@ -51,66 +57,103 @@ jobs:
             PCRLean/Experimental/IntrinsicCentreTransport.lean
             PCRLean/Experimental/U2SingleCIAudit.lean
           )
-          if grep -nE '^[[:space:]]*(axiom|sorry|admit)([[:space:]]|$)' "${files[@]}"; then
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)([[:space:]]|$)' "${files[@]}" \
+              | tee 00-placeholders.txt; then
             echo 'Forbidden proof placeholder or custom axiom found.' >&2
             exit 1
           fi
-      - name: Build commutative-ring split frames
+
+      - id: split_frames
+        name: Build commutative-ring split frames
+        continue-on-error: true
         run: |
           set -o pipefail
           lake build PCRLean.BiorthogonalSplitFrame 2>&1 \
             | tee 01-split-frames-build.txt
-      - name: Build corrected linear coordinate automorphism
+
+      - id: linear_coordinate
+        name: Build corrected linear coordinate automorphism
+        continue-on-error: true
         run: |
           set -o pipefail
           lake build PCRLean.LinearCoordinateChange 2>&1 \
             | tee 02-linear-coordinate-build.txt
-      - name: Build transported linear centre
+
+      - id: linear_centre
+        name: Build transported linear centre
+        continue-on-error: true
         run: |
           set -o pipefail
           lake build PCRLean.Experimental.LinearSplitCentreQuotient 2>&1 \
             | tee 03-linear-centre-build.txt
-      - name: Build causal event packing
+
+      - id: causal_event
+        name: Build causal event packing
+        continue-on-error: true
         run: |
           set -o pipefail
           lake build PCRLean.Experimental.CausalEventPacking 2>&1 \
             | tee 04-causal-event-build.txt
-      - name: Build intrinsic split-surjection quotient
+
+      - id: split_surjection
+        name: Build intrinsic split-surjection quotient
+        continue-on-error: true
         run: |
           set -o pipefail
           lake build PCRLean.Experimental.SplitSurjectionSymmetricQuotient 2>&1 \
             | tee 05-split-surjection-build.txt
-      - name: Build automatic free-target splitting
+
+      - id: surjective_free
+        name: Build automatic free-target splitting
+        continue-on-error: true
         run: |
           set -o pipefail
           lake build PCRLean.Experimental.SurjectiveLinearMapSymmetricQuotient 2>&1 \
             | tee 06-surjective-free-build.txt
-      - name: Build intrinsic regular-centre certificate
+
+      - id: regular_centre
+        name: Build intrinsic regular-centre certificate
+        continue-on-error: true
         run: |
           set -o pipefail
           lake build PCRLean.Experimental.SurjectiveFreeRegularCentre 2>&1 \
             | tee 07-regular-centre-build.txt
-      - name: Build finite-free symmetric algebra automation
+
+      - id: finite_free_symmetric
+        name: Build finite-free symmetric algebra automation
+        continue-on-error: true
         run: |
           set -o pipefail
           lake build PCRLean.Experimental.FiniteFreeSymmetricAlgebraRegular 2>&1 \
             | tee 08-finite-free-symmetric-build.txt
-      - name: Build biorthogonal regular-ring centre
+
+      - id: biorthogonal_centre
+        name: Build biorthogonal regular-ring centre
+        continue-on-error: true
         run: |
           set -o pipefail
           lake build PCRLean.Experimental.BiorthogonalRegularCentre 2>&1 \
             | tee 09-biorthogonal-centre-build.txt
-      - name: Build target gauge invariance
+
+      - id: target_gauge
+        name: Build target gauge invariance
+        continue-on-error: true
         run: |
           set -o pipefail
           lake build PCRLean.Experimental.IntrinsicCentreGaugeInvariance 2>&1 \
             | tee 10-target-gauge-build.txt
-      - name: Build source-target centre transport
+
+      - id: source_target_transport
+        name: Build source-target centre transport
+        continue-on-error: true
         run: |
           set -o pipefail
           lake build PCRLean.Experimental.IntrinsicCentreTransport 2>&1 \
             | tee 11-centre-transport-build.txt
-      - name: Unified kernel axiom audit
+
+      - id: audit
+        name: Unified kernel axiom audit
+        continue-on-error: true
         run: |
           set -o pipefail
           lake env lean PCRLean/Experimental/U2SingleCIAudit.lean 2>&1 \
@@ -120,12 +163,105 @@ jobs:
             echo 'Unpermitted axiom detected.' >&2
             exit 1
           fi
-      - name: Upload evidence
+
+      - name: Write exact CI certificate back to the branch
         if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: pcr-u2-single-ci-${{ github.sha }}
-          path: |
-            *-build.txt
-            12-u2-axioms.txt
-          if-no-files-found: warn
+        env:
+          INSTALL: ${{ steps.install.outcome }}
+          DEPENDENCIES: ${{ steps.dependencies.outcome }}
+          PLACEHOLDERS: ${{ steps.placeholders.outcome }}
+          SPLIT_FRAMES: ${{ steps.split_frames.outcome }}
+          LINEAR_COORDINATE: ${{ steps.linear_coordinate.outcome }}
+          LINEAR_CENTRE: ${{ steps.linear_centre.outcome }}
+          CAUSAL_EVENT: ${{ steps.causal_event.outcome }}
+          SPLIT_SURJECTION: ${{ steps.split_surjection.outcome }}
+          SURJECTIVE_FREE: ${{ steps.surjective_free.outcome }}
+          REGULAR_CENTRE: ${{ steps.regular_centre.outcome }}
+          FINITE_FREE_SYMMETRIC: ${{ steps.finite_free_symmetric.outcome }}
+          BIORTHOGONAL_CENTRE: ${{ steps.biorthogonal_centre.outcome }}
+          TARGET_GAUGE: ${{ steps.target_gauge.outcome }}
+          SOURCE_TARGET_TRANSPORT: ${{ steps.source_target_transport.outcome }}
+          AUDIT: ${{ steps.audit.outcome }}
+        run: |
+          result=PCRLean/Experimental/U2_CI_RESULT.md
+          {
+            echo '# PCR U2 Exact CI Certificate'
+            echo
+            echo "- source commit: \`${GITHUB_SHA}\`"
+            echo "- workflow run: \`${GITHUB_RUN_ID}\`"
+            echo "- generated at: \`$(date -u +%Y-%m-%dT%H:%M:%SZ)\`"
+            echo
+            echo '| Gate | Outcome |'
+            echo '|---|---|'
+            echo "| install | ${INSTALL} |"
+            echo "| dependencies | ${DEPENDENCIES} |"
+            echo "| placeholder rejection | ${PLACEHOLDERS} |"
+            echo "| commutative-ring split frames | ${SPLIT_FRAMES} |"
+            echo "| full linear coordinate automorphism | ${LINEAR_COORDINATE} |"
+            echo "| transported linear centre | ${LINEAR_CENTRE} |"
+            echo "| causal event packing | ${CAUSAL_EVENT} |"
+            echo "| intrinsic split-surjection quotient | ${SPLIT_SURJECTION} |"
+            echo "| automatic free-target splitting | ${SURJECTIVE_FREE} |"
+            echo "| intrinsic regular centre | ${REGULAR_CENTRE} |"
+            echo "| finite-free symmetric algebra | ${FINITE_FREE_SYMMETRIC} |"
+            echo "| biorthogonal regular centre | ${BIORTHOGONAL_CENTRE} |"
+            echo "| target gauge invariance | ${TARGET_GAUGE} |"
+            echo "| source-target centre transport | ${SOURCE_TARGET_TRANSPORT} |"
+            echo "| unified axiom audit | ${AUDIT} |"
+            echo
+            echo '## Failure tails'
+          } > "$result"
+
+          for f in 00-lake-update.txt 00-cache-get.txt 00-placeholders.txt \
+                   01-split-frames-build.txt 02-linear-coordinate-build.txt \
+                   03-linear-centre-build.txt 04-causal-event-build.txt \
+                   05-split-surjection-build.txt 06-surjective-free-build.txt \
+                   07-regular-centre-build.txt 08-finite-free-symmetric-build.txt \
+                   09-biorthogonal-centre-build.txt 10-target-gauge-build.txt \
+                   11-centre-transport-build.txt 12-u2-axioms.txt; do
+            if [ -f "$f" ]; then
+              {
+                echo
+                echo "### ${f}"
+                echo '```text'
+                tail -n 80 "$f"
+                echo '```'
+              } >> "$result"
+            fi
+          done
+
+          git config user.name 'PCR Lean CI'
+          git config user.email 'actions@users.noreply.github.com'
+          git add "$result"
+          git commit -m "PCR U2 CI: record exact verification outcomes" || true
+          git push origin HEAD:pcr-u2-single-ci-20260803
+
+      - name: Fail workflow when any proof gate failed
+        if: always()
+        env:
+          INSTALL: ${{ steps.install.outcome }}
+          DEPENDENCIES: ${{ steps.dependencies.outcome }}
+          PLACEHOLDERS: ${{ steps.placeholders.outcome }}
+          SPLIT_FRAMES: ${{ steps.split_frames.outcome }}
+          LINEAR_COORDINATE: ${{ steps.linear_coordinate.outcome }}
+          LINEAR_CENTRE: ${{ steps.linear_centre.outcome }}
+          CAUSAL_EVENT: ${{ steps.causal_event.outcome }}
+          SPLIT_SURJECTION: ${{ steps.split_surjection.outcome }}
+          SURJECTIVE_FREE: ${{ steps.surjective_free.outcome }}
+          REGULAR_CENTRE: ${{ steps.regular_centre.outcome }}
+          FINITE_FREE_SYMMETRIC: ${{ steps.finite_free_symmetric.outcome }}
+          BIORTHOGONAL_CENTRE: ${{ steps.biorthogonal_centre.outcome }}
+          TARGET_GAUGE: ${{ steps.target_gauge.outcome }}
+          SOURCE_TARGET_TRANSPORT: ${{ steps.source_target_transport.outcome }}
+          AUDIT: ${{ steps.audit.outcome }}
+        run: |
+          for value in "$INSTALL" "$DEPENDENCIES" "$PLACEHOLDERS" \
+                       "$SPLIT_FRAMES" "$LINEAR_COORDINATE" "$LINEAR_CENTRE" \
+                       "$CAUSAL_EVENT" "$SPLIT_SURJECTION" "$SURJECTIVE_FREE" \
+                       "$REGULAR_CENTRE" "$FINITE_FREE_SYMMETRIC" \
+                       "$BIORTHOGONAL_CENTRE" "$TARGET_GAUGE" \
+                       "$SOURCE_TARGET_TRANSPORT" "$AUDIT"; do
+            if [ "$value" != success ]; then
+              exit 1
+            fi
+          done
