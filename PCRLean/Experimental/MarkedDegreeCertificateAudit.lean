@@ -1,0 +1,9 @@
+import PCRLean.Experimental.MarkedDegreeCertificate
+
+#print axioms PCRLean.Experimental.MarkedDegreeCertificate.pow_le_pow_of_le
+#print axioms PCRLean.Experimental.MarkedDegreeCertificate.mixedMonomial_mem_total_pow
+#print axioms PCRLean.Experimental.MarkedDegreeCertificate.mixedMonomial_mem_marked_pow
+#print axioms PCRLean.Experimental.MarkedDegreeCertificate.coefficient_mul_mixedMonomial_mem_marked_pow
+#print axioms PCRLean.Experimental.MarkedDegreeCertificate.purePower_mem_marked_pow
+#print axioms PCRLean.Experimental.MarkedDegreeCertificate.tameQuadratic_mem_square
+#print axioms PCRLean.Experimental.MarkedDegreeCertificate.artinSchreierQuadratic_mem_square
