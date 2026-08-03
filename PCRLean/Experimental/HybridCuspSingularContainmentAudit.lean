@@ -1,0 +1,8 @@
+import PCRLean.Experimental.HybridCuspSingularContainment
+
+#print axioms PCRLean.Experimental.HybridCuspSingularContainment.hybridIdeal_pow_le_hybridIdeal
+#print axioms PCRLean.Experimental.HybridCuspSingularContainment.cusp_mem_hybridIdeal
+#print axioms PCRLean.Experimental.HybridCuspSingularContainment.x_pow_mem_hybridIdeal
+#print axioms PCRLean.Experimental.HybridCuspSingularContainment.pderiv_mem_hybridIdeal
+#print axioms PCRLean.Experimental.HybridCuspSingularContainment.jacobianIdeal_le_hybridIdeal
+#print axioms PCRLean.Experimental.HybridCuspSingularContainment.singularIdeal_le_hybridIdeal
