@@ -1,0 +1,73 @@
+name: PCR Jump finite-packet intrinsic regular centre
+
+on:
+  push:
+    branches:
+      - pcr-jump-lean-20260802-u2-root-boundary
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pcr-jump-finite-packet-regular-centre-${{ github.sha }}
+  cancel-in-progress: false
+
+jobs:
+  finite-packet-regular-centre-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          set -o pipefail
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf \
+            | sh -s -- -y --default-toolchain leanprover/lean4:v4.30.0
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned mathlib
+        run: |
+          set -o pipefail
+          lake update
+          lake exe cache get
+      - name: Reject placeholders
+        run: |
+          set -o pipefail
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)([[:space:]]|$)' \
+              PCRLean/LinearizedGeometricRealization.lean \
+              PCRLean/Experimental/SplitSurjectionSymmetricQuotient.lean \
+              PCRLean/Experimental/SplitSurjectionActualCentre.lean \
+              PCRLean/Experimental/SplitSurjectionRegularCentre.lean \
+              PCRLean/Experimental/FiniteDimensionalSymmetricRegularBridge.lean \
+              PCRLean/Experimental/FiniteDimensionalIntrinsicRegularCentre.lean \
+              PCRLean/Experimental/FinitePacketIntrinsicRegularCentre.lean \
+              PCRLean/Experimental/FinitePacketIntrinsicRegularCentreAudit.lean; then
+            echo 'Forbidden proof placeholder or custom axiom found.' >&2
+            exit 1
+          fi
+      - name: Build finite-packet regular centre
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.FinitePacketIntrinsicRegularCentre 2>&1 \
+            | tee finite-packet-regular-centre-build.txt
+      - name: Kernel axiom audit
+        run: |
+          set -o pipefail
+          lake env lean PCRLean/Experimental/FinitePacketIntrinsicRegularCentreAudit.lean 2>&1 \
+            | tee finite-packet-regular-centre-axioms.txt
+          if grep -E 'sorryAx|PCRLean\..*Axiom|ResolutionAxiom|PacketizationAxiom' \
+              finite-packet-regular-centre-axioms.txt; then
+            echo 'Unpermitted axiom detected.' >&2
+            exit 1
+          fi
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pcr-jump-finite-packet-regular-centre-${{ github.sha }}
+          path: |
+            finite-packet-regular-centre-build.txt
+            finite-packet-regular-centre-axioms.txt
+          if-no-files-found: warn
