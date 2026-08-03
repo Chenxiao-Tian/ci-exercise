@@ -34,7 +34,9 @@ jobs:
           set -o pipefail
           if grep -nE '^[[:space:]]*(axiom|sorry|admit)([[:space:]]|$)' \
               PCRLean/Experimental/PacketCentreBoundary.lean \
-              PCRLean/Experimental/PacketCentreBoundaryAudit.lean; then
+              PCRLean/Experimental/PacketCentreBoundaryAudit.lean \
+              PCRLean/Experimental/HybridDefectRootCusp.lean \
+              PCRLean/Experimental/HybridDefectRootCuspAudit.lean; then
             echo 'Forbidden proof placeholder or custom axiom found.' >&2
             exit 1
           fi
@@ -43,25 +45,40 @@ jobs:
           set -o pipefail
           lake build PCRLean.Experimental.PacketCentreBoundary 2>&1 \
             | tee packet-centre-boundary-build.txt
-      - name: Kernel axiom audit
+      - name: Audit packet-centre boundary
         run: |
           set -o pipefail
           lake env lean PCRLean/Experimental/PacketCentreBoundaryAudit.lean 2>&1 \
             | tee packet-centre-boundary-axioms.txt
+      - name: Build hybrid defect-root cusp
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.HybridDefectRootCusp 2>&1 \
+            | tee hybrid-defect-root-build.txt
+      - name: Audit hybrid defect-root cusp
+        run: |
+          set -o pipefail
+          lake env lean PCRLean/Experimental/HybridDefectRootCuspAudit.lean 2>&1 \
+            | tee hybrid-defect-root-axioms.txt
+      - name: Reject unpermitted axioms
+        run: |
+          set -o pipefail
+          cat *-axioms.txt > combined-axioms.txt
           if grep -E 'sorryAx|PCRLean\..*Axiom|ResolutionAxiom|PacketizationAxiom' \
-              packet-centre-boundary-axioms.txt; then
+              combined-axioms.txt; then
             echo 'Unpermitted axiom detected.' >&2
             exit 1
           fi
       - name: Record exact commit
-        run: printf '%s\n' "${GITHUB_SHA}" > packet-centre-boundary-commit.txt
+        run: printf '%s\n' "${GITHUB_SHA}" > exact-commit.txt
       - name: Upload evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: pcr-jump-packet-centre-boundary-${{ github.sha }}
           path: |
-            packet-centre-boundary-build.txt
-            packet-centre-boundary-axioms.txt
-            packet-centre-boundary-commit.txt
+            *-build.txt
+            *-axioms.txt
+            combined-axioms.txt
+            exact-commit.txt
           if-no-files-found: warn
