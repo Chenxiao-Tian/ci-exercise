@@ -1,22 +1,24 @@
 import Mathlib
 import PCRLean.Experimental.UnivariateFrobeniusOrderHeredity
 import PCRLean.Experimental.UnivariateOrderBaseChange
+import PCRLean.Experimental.FrobeniusMarkScalingBoundary
 
 /-!
 # Universal marked Frobenius equivalence
 
 Bare integral equivalence forgets the grading and is therefore too weak for
-resolution.  The correct local principal relation remembers the mark and tests
+resolution. The correct local principal relation remembers the mark and tests
 the singular condition after every faithful coefficient extension.
 
 Two marked equations are universally marked-equivalent if, after every
 injective map to a field in the chosen universe, they have the same marked
-singular condition at every rational point of the target field.  Prime-power
+singular condition at every rational point of the target field. Prime-power
 root compression is universally marked-equivalent precisely when the mark is
-scaled by the same prime power.
+scaled by the same prime power. The coordinate example proves that omitting
+this mark scaling destroys universal equivalence.
 
 This is a one-variable principal model for the proposed graded integral
-closure class of a differential Rees algebra.  The scheme-level theory must
+closure class of a differential Rees algebra. The scheme-level theory must
 replace rational-point order by local order at arbitrary primes and include
 nonprincipal finite presentations, differential saturation and transforms.
 -/
@@ -104,6 +106,27 @@ theorem family_pow_equivalent
     rw [Polynomial.map_pow]
     exact (UnivariateFrobeniusOrderHeredity.atPointSingular_pow_iff
       q (mark j) hq a ((root j).map φ)).mpr (h j)
+
+/-- Without dividing the mark, even `X^q` and `X` fail universal marked
+equivalence when `q > 1`. Thus bare integral equivalence cannot be the state
+relation used by resolution. -/
+theorem unscaled_coordinate_not_equivalent
+    (q : Nat) (hq : 1 < q) :
+    ¬ Equivalent (v := u)
+      ((Polynomial.X : K[X]) ^ q) q (Polynomial.X : K[X]) q := by
+  intro h
+  have hiff := h K (RingHom.id K) Function.injective_id 0
+  have hleft :
+      AtPointSingular 0 ((Polynomial.X : K[X]) ^ q) q := by
+    simpa [AtPointSingular] using
+      FrobeniusMarkScalingBoundary.X_pow_singular_at_scaled_mark
+        (K := K) q (lt_trans Nat.zero_lt_one hq)
+  have hright :
+      ¬ AtPointSingular 0 (Polynomial.X : K[X]) q := by
+    simpa [AtPointSingular] using
+      FrobeniusMarkScalingBoundary.X_not_singular_at_unscaled_mark
+        (K := K) q hq
+  exact hright (hiff.mp hleft)
 
 section Perfect
 
