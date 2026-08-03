@@ -1,0 +1,9 @@
+import PCRLean.Experimental.MaximalMinorEquationIdeal
+
+#print axioms PCRLean.Experimental.MaximalMinorEquationIdeal.equation_eq_graph_combination
+#print axioms PCRLean.Experimental.MaximalMinorEquationIdeal.equationIdeal_le_graphIdeal
+#print axioms PCRLean.Experimental.MaximalMinorEquationIdeal.selectedEquationVector_eq_mulVec
+#print axioms PCRLean.Experimental.MaximalMinorEquationIdeal.adjugate_mulVec_selectedEquationVector
+#print axioms PCRLean.Experimental.MaximalMinorEquationIdeal.determinant_mul_graphGenerator_mem
+#print axioms PCRLean.Experimental.MaximalMinorEquationIdeal.graphGenerator_mem_equationIdeal
+#print axioms PCRLean.Experimental.MaximalMinorEquationIdeal.equationIdeal_eq_graphIdeal
