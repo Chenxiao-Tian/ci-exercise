@@ -41,26 +41,41 @@ namespace FullFrame
 
 variable (F : FullFrame (K := K) (σ := σ))
 
-/-- Every vector in the coordinate direction space is the sum of its standard
-coordinate components. -/
-theorem sum_coord_smul_basisVector
+/-- Every coordinate vector is the finite sum of its standard-basis
+coordinates. -/
+theorem direction_eq_sum_basis
     (x : Direction (K := K) (σ := σ)) :
-    (∑ i : σ, x i •
-      FunctionalPacketIdeal.basisVector (K := K) (σ := σ) i) = x := by
+    x = ∑ i : σ, x i •
+      FunctionalPacketIdeal.basisVector (K := K) (σ := σ) i := by
   classical
   funext j
   simp [FunctionalPacketIdeal.basisVector]
 
-/-- Evaluation of a functional can be recovered from its standard coordinate
-row. -/
-theorem functional_coordinate_expansion
-    (f : Dual (K := K) (σ := σ))
-    (x : Direction (K := K) (σ := σ)) :
-    ∑ i : σ,
-        f (FunctionalPacketIdeal.basisVector (K := K) (σ := σ) i) * x i =
-      f x := by
-  have h := congrArg f (sum_coord_smul_basisVector (K := K) (σ := σ) x)
-  simpa [map_sum, map_smul, mul_comm] using h
+/-- Expanding a transverse frame vector in the standard basis converts
+biorthogonality into the matrix row identity used by inverse substitution. -/
+theorem functional_vector_row (i j : σ) :
+    (∑ x : σ,
+        F.functional i
+            (FunctionalPacketIdeal.basisVector (K := K) (σ := σ) x) *
+          F.vector j x) =
+      if j = i then 1 else 0 := by
+  classical
+  have h := F.biorthogonal i j
+  rw [F.direction_eq_sum_basis (F.vector j)] at h
+  simp only [map_sum, map_smul] at h
+  simpa [mul_comm, eq_comm] using h
+
+/-- The reconstruction formula gives the complementary matrix row identity. -/
+theorem vector_functional_row (i j : σ) :
+    (∑ x : σ,
+        F.vector x i *
+          F.functional x
+            (FunctionalPacketIdeal.basisVector (K := K) (σ := σ) j)) =
+      if j = i then 1 else 0 := by
+  classical
+  have h := F.reconstruct
+    (FunctionalPacketIdeal.basisVector (K := K) (σ := σ) j) i
+  simpa [FunctionalPacketIdeal.basisVector, mul_comm, eq_comm] using h.symm
 
 /-- Linear form corresponding to the `i`th new coordinate. -/
 def forwardVariable (i : σ) : MvPolynomial σ K :=
@@ -87,107 +102,75 @@ def inverse : MvPolynomial σ K →ₐ[K] MvPolynomial σ K :=
     F.inverse (MvPolynomial.X i) = F.inverseVariable i := by
   simp [inverse]
 
-/-- Applying the inverse substitution to a packet linear form gives the
+/-- Applying inverse substitution to a packet linear form gives the
 corresponding ordinary coordinate. -/
 theorem inverse_forwardVariable (i : σ) :
     F.inverse (F.forwardVariable i) = MvPolynomial.X i := by
   classical
-  have hrow : ∀ j : σ,
-      ∑ x : σ,
-        F.functional i
-            (FunctionalPacketIdeal.basisVector (K := K) (σ := σ) x) *
-          F.vector j x =
-        if i = j then 1 else 0 := by
-    intro j
-    calc
-      ∑ x : σ,
-          F.functional i
-              (FunctionalPacketIdeal.basisVector (K := K) (σ := σ) x) *
-            F.vector j x =
-          F.functional i (F.vector j) :=
-        functional_coordinate_expansion
-          (K := K) (σ := σ) (F.functional i) (F.vector j)
-      _ = if i = j then 1 else 0 := F.biorthogonal i j
   rw [forwardVariable, FunctionalPacketIdeal.functionalPolynomial,
     LinearPacketIdeal.linearPolynomial]
-  simp only [map_sum, map_mul, MvPolynomial.map_C,
-    inverse_X, inverseVariable, LinearPacketIdeal.linearPolynomial]
-  calc
+  simp only [map_sum, map_mul, inverse, MvPolynomial.aeval_C,
+    MvPolynomial.aeval_X, inverseVariable]
+  change
     (∑ x : σ,
         MvPolynomial.C
             (F.functional i
               (FunctionalPacketIdeal.basisVector (K := K) (σ := σ) x)) *
-          ∑ j : σ, MvPolynomial.C (F.vector j x) * MvPolynomial.X j) =
-      ∑ j : σ,
-        MvPolynomial.C
-            (∑ x : σ,
-              F.functional i
-                  (FunctionalPacketIdeal.basisVector (K := K) (σ := σ) x) *
-                F.vector j x) *
-          MvPolynomial.X j := by
-      simp_rw [Finset.mul_sum]
-      rw [Finset.sum_comm]
-      apply Finset.sum_congr rfl
-      intro j hj
-      simp_rw [← mul_assoc]
-      rw [← Finset.sum_mul]
-      congr 1
-      rw [map_sum]
-      apply Finset.sum_congr rfl
-      intro x hx
-      simp [map_mul]
-    _ = MvPolynomial.X i := by
-      simp_rw [hrow]
-      simp
+          LinearPacketIdeal.packetGenerator
+            (fun x j : σ => F.vector j x) x) =
+      MvPolynomial.X i
+  rw [← LinearPacketIdeal.linearPolynomial_combination
+    (packet := fun x j : σ => F.vector j x)
+    (coeff := fun x =>
+      F.functional i
+        (FunctionalPacketIdeal.basisVector (K := K) (σ := σ) x))]
+  have hrow :
+      (fun j : σ => ∑ x : σ,
+        F.functional i
+            (FunctionalPacketIdeal.basisVector (K := K) (σ := σ) x) *
+          F.vector j x) =
+        LinearPacketIdeal.coordinateRow (K := K) i := by
+    funext j
+    simpa [LinearPacketIdeal.coordinateRow] using
+      F.functional_vector_row i j
+  rw [hrow]
+  exact LinearPacketIdeal.linearPolynomial_coordinateRow (K := K) i
 
-/-- Applying the forward substitution to an inverse coordinate form gives the
+/-- Applying forward substitution to an inverse coordinate form gives the
 original coordinate. -/
 theorem forward_inverseVariable (i : σ) :
     F.forward (F.inverseVariable i) = MvPolynomial.X i := by
   classical
-  have hrow : ∀ j : σ,
-      ∑ x : σ,
+  rw [inverseVariable, LinearPacketIdeal.linearPolynomial]
+  simp only [map_sum, map_mul, forward, MvPolynomial.aeval_C,
+    MvPolynomial.aeval_X, forwardVariable,
+    FunctionalPacketIdeal.functionalPolynomial,
+    FunctionalPacketIdeal.coefficientRow]
+  change
+    (∑ x : σ,
+        MvPolynomial.C (F.vector x i) *
+          LinearPacketIdeal.packetGenerator
+            (fun x j : σ =>
+              F.functional x
+                (FunctionalPacketIdeal.basisVector
+                  (K := K) (σ := σ) j)) x) =
+      MvPolynomial.X i
+  rw [← LinearPacketIdeal.linearPolynomial_combination
+    (packet := fun x j : σ =>
+      F.functional x
+        (FunctionalPacketIdeal.basisVector (K := K) (σ := σ) j))
+    (coeff := fun x => F.vector x i)]
+  have hrow :
+      (fun j : σ => ∑ x : σ,
         F.vector x i *
           F.functional x
-            (FunctionalPacketIdeal.basisVector (K := K) (σ := σ) j) =
-        if j = i then 1 else 0 := by
-    intro j
-    have h := F.reconstruct
-      (FunctionalPacketIdeal.basisVector (K := K) (σ := σ) j) i
-    simpa [FunctionalPacketIdeal.basisVector, mul_comm] using h
-  rw [inverseVariable, LinearPacketIdeal.linearPolynomial]
-  simp only [map_sum, map_mul, MvPolynomial.map_C,
-    forward_X, forwardVariable,
-    FunctionalPacketIdeal.functionalPolynomial,
-    LinearPacketIdeal.linearPolynomial]
-  calc
-    (∑ x : σ, MvPolynomial.C (F.vector x i) *
-        ∑ j : σ,
-          MvPolynomial.C
-              (F.functional x
-                (FunctionalPacketIdeal.basisVector (K := K) (σ := σ) j)) *
-            MvPolynomial.X j) =
-      ∑ j : σ,
-        MvPolynomial.C
-            (∑ x : σ,
-              F.vector x i *
-                F.functional x
-                  (FunctionalPacketIdeal.basisVector (K := K) (σ := σ) j)) *
-          MvPolynomial.X j := by
-      simp_rw [Finset.mul_sum]
-      rw [Finset.sum_comm]
-      apply Finset.sum_congr rfl
-      intro j hj
-      simp_rw [← mul_assoc]
-      rw [← Finset.sum_mul]
-      congr 1
-      rw [map_sum]
-      apply Finset.sum_congr rfl
-      intro x hx
-      simp [map_mul]
-    _ = MvPolynomial.X i := by
-      simp_rw [hrow]
-      simp
+            (FunctionalPacketIdeal.basisVector (K := K) (σ := σ) j)) =
+        LinearPacketIdeal.coordinateRow (K := K) i := by
+    funext j
+    simpa [LinearPacketIdeal.coordinateRow] using
+      F.vector_functional_row i j
+  rw [hrow]
+  exact LinearPacketIdeal.linearPolynomial_coordinateRow (K := K) i
 
 /-- Inverse after forward is the identity algebra homomorphism. -/
 theorem inverse_comp_forward :
