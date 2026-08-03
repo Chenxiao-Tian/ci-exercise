@@ -1,0 +1,8 @@
+import PCRLean.Experimental.PrincipalRootActionBoundary
+
+#print axioms PCRLean.Experimental.PrincipalRootActionBoundary.rootIdeal_isPrincipal
+#print axioms PCRLean.Experimental.PrincipalRootActionBoundary.pow_mem_rootIdeal_pow
+#print axioms PCRLean.Experimental.PrincipalRootActionBoundary.purePower_permissible
+#print axioms PCRLean.Experimental.PrincipalRootActionBoundary.rootIdeal_ne_top_of_not_isUnit
+#print axioms PCRLean.Experimental.PrincipalRootActionBoundary.rootIdeal_ne_bot_of_ne_zero
+#print axioms PCRLean.Experimental.PrincipalRootActionBoundary.pureRootCertificate
