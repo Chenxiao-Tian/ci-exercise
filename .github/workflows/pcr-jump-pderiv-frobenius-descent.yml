@@ -41,7 +41,9 @@ jobs:
               PCRLean/Experimental/FrobeniusPrimitiveDecomposition.lean \
               PCRLean/Experimental/FrobeniusPrimitiveDecompositionAudit.lean \
               PCRLean/Experimental/DerivativeZeroFinitePresentation.lean \
-              PCRLean/Experimental/DerivativeZeroFinitePresentationAudit.lean; then
+              PCRLean/Experimental/DerivativeZeroFinitePresentationAudit.lean \
+              PCRLean/Experimental/InitialFormFrobeniusCleaning.lean \
+              PCRLean/Experimental/InitialFormFrobeniusCleaningAudit.lean; then
             echo 'Forbidden proof placeholder or custom axiom found.' >&2
             exit 1
           fi
@@ -60,6 +62,11 @@ jobs:
           set -o pipefail
           lake build PCRLean.Experimental.DerivativeZeroFinitePresentation 2>&1 \
             | tee derivative-zero-presentation-build.txt
+      - name: Build initial-form cleaning
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.InitialFormFrobeniusCleaning 2>&1 \
+            | tee initial-form-cleaning-build.txt
       - name: Kernel axiom audit
         run: |
           set -o pipefail
@@ -69,8 +76,11 @@ jobs:
             | tee frobenius-primitive-axioms.txt
           lake env lean PCRLean/Experimental/DerivativeZeroFinitePresentationAudit.lean 2>&1 \
             | tee derivative-zero-presentation-axioms.txt
+          lake env lean PCRLean/Experimental/InitialFormFrobeniusCleaningAudit.lean 2>&1 \
+            | tee initial-form-cleaning-axioms.txt
           cat pderiv-frobenius-axioms.txt frobenius-primitive-axioms.txt \
-              derivative-zero-presentation-axioms.txt > combined-axioms.txt
+              derivative-zero-presentation-axioms.txt initial-form-cleaning-axioms.txt \
+              > combined-axioms.txt
           if grep -E 'sorryAx|PCRLean\..*Axiom|ResolutionAxiom|PacketizationAxiom' \
               combined-axioms.txt; then
             echo 'Unpermitted axiom detected.' >&2
@@ -85,8 +95,10 @@ jobs:
             pderiv-frobenius-build.txt
             frobenius-primitive-build.txt
             derivative-zero-presentation-build.txt
+            initial-form-cleaning-build.txt
             pderiv-frobenius-axioms.txt
             frobenius-primitive-axioms.txt
             derivative-zero-presentation-axioms.txt
+            initial-form-cleaning-axioms.txt
             combined-axioms.txt
           if-no-files-found: warn
