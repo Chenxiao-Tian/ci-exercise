@@ -52,6 +52,8 @@ jobs:
               PCRLean/Experimental/ReducedRegularGraphCentreCertificateAudit.lean \
               PCRLean/Experimental/ReducedFrobeniusNormalLocalModel.lean \
               PCRLean/Experimental/ReducedFrobeniusNormalLocalModelAudit.lean \
+              PCRLean/Experimental/FaithfullyFlatGraphCentreDescent.lean \
+              PCRLean/Experimental/FaithfullyFlatGraphCentreDescentAudit.lean \
               PCRLean/Experimental/ReducedNormalConePowerModel.lean \
               PCRLean/Experimental/ReducedNormalConePowerModelAudit.lean \
               PCRLean/Experimental/ReducedNormalConeKernelIndex.lean \
@@ -83,6 +85,8 @@ jobs:
             | tee graph-centre-certificate-axioms.txt
           lake env lean PCRLean/Experimental/ReducedFrobeniusNormalLocalModelAudit.lean 2>&1 \
             | tee reduced-local-model-axioms.txt
+          lake env lean PCRLean/Experimental/FaithfullyFlatGraphCentreDescentAudit.lean 2>&1 \
+            | tee faithfully-flat-graph-descent-axioms.txt
           lake env lean PCRLean/Experimental/ReducedNormalConePowerModelAudit.lean 2>&1 \
             | tee reduced-power-model-axioms.txt
           lake env lean PCRLean/Experimental/ReducedNormalConeKernelIndexAudit.lean 2>&1 \
