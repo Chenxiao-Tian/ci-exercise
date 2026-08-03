@@ -13,8 +13,9 @@ import PCRLean.Experimental.IntrinsicCentreGaugeInvariance
 
 This isolated target forces the current intrinsic-centre chain through Lean.
 It is not imported by the official MLE–Lean baseline and does not state a
-general resolution theorem.  The exact theorem boundary is an invertible local
-evaluation minor, not an arbitrary positive-characteristic singularity.
+general resolution theorem. The exact theorem boundary is an invertible local
+evaluation minor over a regular affine base, not an arbitrary
+positive-characteristic singularity.
 -/
 
 namespace PCRLean.Experimental.U2FittingMinorCleanroomIndex
@@ -27,8 +28,8 @@ namespace PCRLean.Experimental.U2FittingMinorCleanroomIndex
 #print axioms PCRLean.Experimental.FiniteFreeSymmetricAlgebraRegular.finiteType
 #print axioms PCRLean.Experimental.FiniteFreeSymmetricAlgebraRegular.isNoetherianRing
 #print axioms PCRLean.Experimental.FiniteFreeSymmetricAlgebraRegular.isRegularRing
-#print axioms PCRLean.Experimental.BiorthogonalRegularCentre.finiteDimensionalCertificate
-#print axioms PCRLean.Experimental.InvertibleMinorRegularCentre.MinorCertificate.finiteDimensionalCertificate
+#print axioms PCRLean.Experimental.BiorthogonalRegularCentre.finiteFreeCertificate
+#print axioms PCRLean.Experimental.InvertibleMinorRegularCentre.MinorCertificate.finiteFreeCertificate
 #print axioms PCRLean.Experimental.IntrinsicCentreGaugeInvariance.GaugeAtlas.kernelIdeal_eq
 
 end PCRLean.Experimental.U2FittingMinorCleanroomIndex
