@@ -1,0 +1,12 @@
+import PCRLean.Experimental.NoetherianOrbitPacketCanonicity
+
+#print axioms PCRLean.Experimental.NoetherianOrbitPacketCanonicity.range_packetSubtype
+#print axioms PCRLean.Experimental.NoetherianOrbitPacketCanonicity.sourcePacketSpan_eq
+#print axioms PCRLean.Experimental.NoetherianOrbitPacketCanonicity.packetSpan_eq
+#print axioms PCRLean.Experimental.NoetherianOrbitPacketCanonicity.abstractCentre_eq
+#print axioms PCRLean.Experimental.NoetherianOrbitPacketCanonicity.actualCentre_eq
+#print axioms PCRLean.Experimental.NoetherianOrbitPacketCanonicity.commonTangentKernel_eq
+#print axioms PCRLean.Experimental.NoetherianOrbitPacketCanonicity.actualRootPowerIdeal_eq
+#print axioms PCRLean.Experimental.NoetherianOrbitPacketCanonicity.packetPowerIdeal_eq
+#print axioms PCRLean.Experimental.NoetherianOrbitPacketCanonicity.actualCentre_eq_canonical
+#print axioms PCRLean.Experimental.NoetherianOrbitPacketCanonicity.packetPowerIdeal_eq_canonical
