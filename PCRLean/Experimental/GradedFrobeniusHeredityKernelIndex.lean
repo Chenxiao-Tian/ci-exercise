@@ -28,6 +28,7 @@ import PCRLean.Experimental.PolynomialGraphCentreQuotient
 import PCRLean.Experimental.PolynomialGraphBlowupHeredity
 import PCRLean.Experimental.PolynomialGraphMarkedTransformDebt
 import PCRLean.Experimental.PolynomialGraphFrobeniusCentreCertificate
+import PCRLean.Experimental.PolynomialGraphArbitraryMarkCertificate
 
 /-!
 # Integrated graded Frobenius heredity index
@@ -46,9 +47,10 @@ Lean build through the complete current experimental heredity chain:
 * faithfully flat descent and local coordinate/graph models;
 * arbitrary-mark ceiling compression and bounded exceptional debt;
 * exact commutation with coordinate controlled transforms;
-* exact classification of graph-root residuals as a pure exceptional power; and
+* exact classification of graph-root residuals as a pure exceptional power;
+* a complete arbitrary-mark graph-centre certificate; and
 * actual proper finite-type regular polynomial graph centres with explicit
-  all-chart terminal root packets.
+  all-chart terminal or pure-debt behavior.
 
 The index is experimental and does not assert general resolution.
 -/
