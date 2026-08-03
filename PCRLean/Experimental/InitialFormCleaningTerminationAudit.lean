@@ -1,0 +1,9 @@
+import PCRLean.Experimental.InitialFormCleaningTermination
+
+#print axioms PCRLean.Experimental.InitialFormCleaningTermination.support_disjoint
+#print axioms PCRLean.Experimental.InitialFormCleaningTermination.remainder_support_subset
+#print axioms PCRLean.Experimental.InitialFormCleaningTermination.initial_support_subset
+#print axioms PCRLean.Experimental.InitialFormCleaningTermination.remainder_support_ssubset
+#print axioms PCRLean.Experimental.InitialFormCleaningTermination.cleaned_support_card_lt
+#print axioms PCRLean.Experimental.InitialFormCleaningTermination.cleaningStep_decreases
+#print axioms PCRLean.Experimental.InitialFormCleaningTermination.no_infinite_cleaning_chain
