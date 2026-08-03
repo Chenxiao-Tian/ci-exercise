@@ -1,0 +1,6 @@
+import PCRLean.Experimental.FrobeniusNormalFaithfullyFlatDescent
+
+#print axioms PCRLean.Experimental.FrobeniusNormalFaithfullyFlatDescent.mem_iff_map_mem_extended
+#print axioms PCRLean.Experimental.FrobeniusNormalFaithfullyFlatDescent.extendedIdeal_pow
+#print axioms PCRLean.Experimental.FrobeniusNormalFaithfullyFlatDescent.reflectsFrobeniusPowers_of_extended
+#print axioms PCRLean.Experimental.FrobeniusNormalFaithfullyFlatDescent.power_mem_scaled_iff_of_extended
