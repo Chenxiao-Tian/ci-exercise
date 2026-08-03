@@ -1,0 +1,7 @@
+import PCRLean.Experimental.MinimalHybridCentre
+
+#print axioms PCRLean.Experimental.MinimalHybridCentre.MinimalCertificate.erase_not_acceptable
+#print axioms PCRLean.Experimental.MinimalHybridCentre.MinimalCertificate.all_components_indispensable
+#print axioms PCRLean.Experimental.MinimalHybridCentre.exists_minimalCertificate
+#print axioms PCRLean.Experimental.MinimalHybridCentre.exists_minimal_permissible_hybrid
+#print axioms PCRLean.Experimental.MinimalHybridCentre.minimal_card_ge_two_of_empty_and_singletons_fail

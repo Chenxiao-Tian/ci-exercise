@@ -1,0 +1,9 @@
+import PCRLean.Experimental.HybridMarkedSynthesis
+
+#print axioms PCRLean.Experimental.HybridMarkedSynthesis.pow_le_hybrid_left
+#print axioms PCRLean.Experimental.HybridMarkedSynthesis.pow_le_hybrid_right
+#print axioms PCRLean.Experimental.HybridMarkedSynthesis.add_mem_hybrid_pow
+#print axioms PCRLean.Experimental.HybridMarkedSynthesis.sub_mem_hybrid_pow
+#print axioms PCRLean.Experimental.HybridMarkedSynthesis.principalPacket_permissible_of_add_components
+#print axioms PCRLean.Experimental.HybridMarkedSynthesis.principalPacket_permissible_of_sub_components
+#print axioms PCRLean.Experimental.HybridMarkedSynthesis.sup_packet_le_hybrid_pow
