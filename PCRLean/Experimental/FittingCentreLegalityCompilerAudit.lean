@@ -1,0 +1,4 @@
+import PCRLean.Experimental.FittingCentreLegalityCompiler
+
+#print axioms PCRLean.Experimental.FittingCentreLegalityCompiler.compile
+#print axioms PCRLean.Experimental.FittingCentreLegalityCompiler.power_mem_scaled_iff
