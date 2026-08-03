@@ -5,17 +5,18 @@ This branch is the official persistent MLE–Lean research line of the positive-
 - Research line: `PCR-MLE-LEAN`
 - GitHub branch: `pcr-lean-formalization-20260801`
 - Pull request: `#2` (draft, open, unmerged)
-- Current formal node: `MLEL-M004 / HMC-SCCD`
+- Current accepted formal node: `MLEL-M004 / HMC-SCCD`
+- Current experimental archive node: `MLEL-X20260803-GRAPH-MACRO`
 - Default jump-search protocol: `PCR-JUMP-LEAN 2.0 / MLEL-A002-JUMP2`
-- Audited code head: `0f57fe5fa3a8541e0b95d717f94085b45b960d7c`
+- Audited certified-code head: `0f57fe5fa3a8541e0b95d717f94085b45b960d7c`
 - Global status: `OPEN_GAP`
 - Arbitrary-dimensional positive-characteristic resolution proved: `false`
 
-Baseline inclusion preserves evidence labels. A Lean declaration is certified only in the exact domain built and audited by the kernel; an MLE manuscript remains an estimate; a conditional compiler does not establish universal geometric hypotheses; a failed dedicated workflow remains failed.
+Baseline inclusion preserves evidence labels. A Lean declaration is certified only in the exact domain built and audited by the kernel; an MLE manuscript remains an estimate; a conditional compiler does not establish universal geometric hypotheses; an experimental archive entry does not enter the Certified Graph.
 
 ## Current green certified layer
 
-At the audited code head, the full PCRLean kernel workflow completed successfully:
+At the audited certified-code head, the full PCRLean kernel workflow completed successfully:
 
 ```text
 workflow = PCR Lean kernel verification
@@ -24,9 +25,7 @@ job      = 91553530229
 result   = success
 ```
 
-The workflow completed placeholder rejection, the full certified-index build, kernel axiom audit, exact source snapshot, and audit-artifact upload.
-
-The dedicated HMC-SCCD workflow also completed successfully at the same code head:
+The dedicated HMC-SCCD workflow also completed successfully:
 
 ```text
 workflow = PCR HMC-SCCD verification
@@ -45,92 +44,105 @@ The certified restricted exits include:
 - a well-founded lexicographic rank coupling fixed-ancestor Noetherian trace memory to the finite-source generational rank;
 - conditional finite termination for source-causal programs and fully gated ordinary-centre systems.
 
-Principal declarations:
+Principal declarations remain the `PCRLean.HMCSCCD` theorem family recorded in `MLEL_M004_HMC_SCCD_REPORT.md`.
 
-```text
-PCRLean.HMCSCCD.fullPacket_stable_of_split_stable
-PCRLean.HMCSCCD.passive_eq_fromRowModule_of_split_stable
-PCRLean.HMCSCCD.exists_active_passive_core
-PCRLean.HMCSCCD.exists_proper_fg_active_passive_core
-PCRLean.HMCSCCD.causalRankLt_wellFounded
-PCRLean.HMCSCCD.causalRankStep_wellFounded
-PCRLean.HMCSCCD.CausalProgram.terminal_reachable
-PCRLean.HMCSCCD.CausalProgram.no_infinite_execution
-PCRLean.HMCSCCD.GatedSystem.every_input_resolves
-PCRLean.HMCSCCD.GatedSystem.every_step_all_gates
-PCRLean.HMCSCCD.GatedSystem.no_infinite_branch
-```
+## Earlier MLEL-002 repair frontier
 
-## Current MLEL-002 repair frontier
-
-The dedicated `MLEL-002 / FCR-GEO` workflow was rerun after fifteen repair commits. Placeholder rejection succeeded, and the earlier failure set was substantially reduced:
+The last dedicated `MLEL-002 / FCR-GEO` repair run recorded in the certified baseline was:
 
 ```text
 workflow = PCR MLEL-002 verification
 run      = 30769310958
 job      = 91553529729
 result   = failure
+placeholder rejection = success
 axiom audit = skipped after build failure
 ```
 
-Current failing modules and exact first errors:
+At that checkpoint the failure set had been reduced to:
 
 ```text
 PCRLean.CoordinateBoundarySNC
-  line 38: parser error around an invalid `rcases` pattern
-
 PCRLean.CoordinateRootPacket
-  line 75: invalid `⟨...⟩` notation because the expected type is not determined
 ```
 
-The latest dedicated build now succeeds for several modules that failed in the preceding audit, including:
+This historical repair state remains recorded; later experimental graph-centre work does not silently certify the old MLEL-002 chain.
+
+## Archived experimental frontier — 2026-08-03
+
+By explicit user instruction, every research output of the current PCR-JUMP-LEAN conversation is archived in the MLE–Lean research baseline, while theorem promotion remains separate.
+
+The exact archival record is:
 
 ```text
-PCRLean.CoordinateCentreKernelBridge
-PCRLean.CoordinatePassiveSafety
-PCRLean.MultiOwnerHasseCore
-PCRLean.CoordinateCentreProper
+PCRLean/ResearchRecords/MLEL_JUMP_GRAPH_MACRO_FRONTIER_2026-08-03.md
 ```
 
-Thus the repair is real but incomplete. `MLEL-002 / FCR-GEO` remains a candidate restricted geometric chamber rather than a certified complete chain. The success of `HMCSCCD.lean` does not silently certify the remaining boundary-SNC and root-packet obligations.
+Experimental source:
+
+```text
+branch = pcr-jump-integral-heredity-20260803
+head   = 2da9394f1ce1c74e30382595ec8bc9e7b88a7e39
+```
+
+Exact clean-room target:
+
+```text
+PR     = #24
+run    = 30837634276
+status = queued at archival synchronization
+```
+
+The strongest local experimental macro combines, for one polynomial graph centre:
+
+- actual proper finite-type regular centre data;
+- Frobenius-normal ideal powers and arbitrary-mark active permissibility;
+- exact controlled transforms on every standard chart;
+- residual ideal `(E_k)^(p^e-mark)`;
+- induced-flat passive Tor safety along every centre power;
+- flat passive restriction to the centre;
+- exact regular intersection with every finite coefficient-boundary stratum;
+- source-preserving classification of exceptional debt as cleanup rather than birth;
+- strict concrete finite-source rank decrease.
+
+The integrated experimental module is:
+
+```text
+PCRLean.Experimental.PolynomialGraphLocalResolutionMacro
+```
+
+This is currently `EXPERIMENTAL-WRITTEN-CLEANROOM-PENDING`, not kernel-certified and not imported by `CertifiedIndex`.
 
 ## Exact unresolved frontiers
 
-1. close the two current reduced-chamber Lean failures and complete the dedicated axiom audit;
-2. universal intrinsic finite Frobenius-frame construction and frame-independent gluing;
-3. arbitrary proper Frobenius core to an actual regular finite-type owner-safe centre word;
-4. universal joint active/passive/SNC legality, normal flatness, and passive Tor safety;
-5. scheme-level blowup, strict transform, controlled transform, every standard chart and overlap, and hereditary no-reset after cleaning, saturation, normalization, and integral closure;
-6. fully quasilinear rank-zero radicial-core descent;
-7. geometric finite-source birth realization with no split and no clone;
-8. projection-free immediate-defect escape and finite functorial globalization.
+1. universal intrinsic finite Frobenius–Hasse packet extraction and presentation-independent gluing;
+2. universal actual-centre synthesis, including hybrid, nonlinear and rank-zero cases;
+3. scheme-level étale graph-atlas formalization and exact ideal/chart descent;
+4. arbitrary passive modules, full normal flatness and genuine SNC/codimension legality beyond the induced-flat/regular-strata chamber;
+5. hereditary reconstruction of every differential packet and ledger after all charts, cleaning, saturation, normalization and integral closure;
+6. geometric finite-source support for genuine births, with no split and no clone;
+7. projection-free immediate-defect escape;
+8. finite functorial globalization and the principalization/resolution compilers.
 
-No frontier may be crossed by `axiom`, `sorry`, `admit`, an unproved typeclass instance, or an imported MLE assertion.
+No frontier may be crossed by `axiom`, `sorry`, `admit`, an unproved typeclass instance, stale CI evidence, or an imported experimental theorem.
 
 ## Baseline method protocol
 
-`PCR-JUMP-LEAN 2.0` is now the default protocol for future isolated jump-search missions. Its canonical baseline files are:
+`PCR-JUMP-LEAN 2.0` remains the default protocol. It preserves PCR-JUMP-LEAN 1.0 and adds evidence levels E0–E10, exact-commit clean-room CI, the Experimental-to-Certified import firewall, bridge queue B00–B21 and missions IFCCS, HKITF, CSCN, with RZRC as the rank-zero fallback.
 
-```text
-PCRLean/ResearchProtocols/PCR_JUMP_LEAN_2_0_BASELINE.md
-PCRLean/ResearchProtocols/PCR_JUMP_LEAN_2_0_BASELINE_RECORD.json
-```
-
-The protocol adds evidence levels E0–E10, exact-commit clean-room CI, an Experimental-to-Certified import firewall, the bridge queue B00–B21, and the priority missions IFCCS, HKITF, CSCN, with RZRC as the rank-zero fallback.
-
-Protocol adoption is methodological only. It does not change any theorem evidence label, promote an experimental declaration, or alter `OPEN_GAP`.
+Protocol adoption and research archival do not promote experimental declarations.
 
 ## Current truth statement
 
 ```text
-MLEL_M004_ACCEPTED                         = true
-HMC_SCCD_RESTRICTED_KERNEL_EXIT            = true
-MLEL_002_REPAIR_PROGRESS                   = true
-MLEL_002_CURRENT_FAILED_MODULE_COUNT       = 2
-MLEL_002_COMPLETE_CHAIN_CERTIFIED          = false
-PCR_JUMP_LEAN_2_0_BASELINE_PROTOCOL        = true
-EXPERIMENTAL_THEOREMS_PROMOTED_BY_PROTOCOL = false
-GENERAL_GEOMETRIC_REALIZATION              = false
-GENERAL_POSITIVE_CHARACTERISTIC_RESOLUTION = false
-FORMAL_GLOBAL_STATUS                       = OPEN_GAP
+MLEL_M004_ACCEPTED                          = true
+HMC_SCCD_RESTRICTED_KERNEL_EXIT             = true
+PCR_JUMP_LEAN_2_0_BASELINE_PROTOCOL         = true
+ALL_CURRENT_CONVERSATION_OUTPUTS_ARCHIVED   = true
+LATEST_EXPERIMENTAL_LOCAL_MACRO_WRITTEN     = true
+LATEST_EXPERIMENTAL_CLEANROOM_GREEN         = false
+EXPERIMENTAL_THEOREMS_PROMOTED              = false
+GENERAL_GEOMETRIC_REALIZATION               = false
+GENERAL_POSITIVE_CHARACTERISTIC_RESOLUTION  = false
+FORMAL_GLOBAL_STATUS                        = OPEN_GAP
 ```
