@@ -1,0 +1,9 @@
+import PCRLean.Experimental.RangeRestrictedRegularCentre
+
+#print axioms PCRLean.Experimental.RangeRestrictedRegularCentre.rangeProject_surjective
+#print axioms PCRLean.Experimental.RangeRestrictedRegularCentre.ker_rangeProject
+#print axioms PCRLean.Experimental.RangeRestrictedRegularCentre.kernelIdeal_rangeProject_eq
+#print axioms PCRLean.Experimental.RangeRestrictedRegularCentre.quotientEquiv
+#print axioms PCRLean.Experimental.RangeRestrictedRegularCentre.kernelIdeal_ne_top
+#print axioms PCRLean.Experimental.RangeRestrictedRegularCentre.certificate
+#print axioms PCRLean.Experimental.RangeRestrictedRegularCentre.finiteFreeCertificate
