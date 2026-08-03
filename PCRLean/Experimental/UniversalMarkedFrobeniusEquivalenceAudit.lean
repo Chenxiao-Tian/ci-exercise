@@ -1,0 +1,9 @@
+import PCRLean.Experimental.UniversalMarkedFrobeniusEquivalence
+
+#print axioms PCRLean.Experimental.UniversalMarkedFrobeniusEquivalence.Equivalent.refl
+#print axioms PCRLean.Experimental.UniversalMarkedFrobeniusEquivalence.Equivalent.symm
+#print axioms PCRLean.Experimental.UniversalMarkedFrobeniusEquivalence.Equivalent.trans
+#print axioms PCRLean.Experimental.UniversalMarkedFrobeniusEquivalence.pow_equivalent
+#print axioms PCRLean.Experimental.UniversalMarkedFrobeniusEquivalence.root_equivalent
+#print axioms PCRLean.Experimental.UniversalMarkedFrobeniusEquivalence.family_pow_equivalent
+#print axioms PCRLean.Experimental.UniversalMarkedFrobeniusEquivalence.derivativeZero_root_equivalent
