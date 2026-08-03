@@ -6,13 +6,13 @@ import PCRLean.MarkedIdeal
 
 The basic positive-characteristic cusp shows that the actual centre mechanism
 cannot be a disjoint choice between an ordinary derivative defect and a pure
-Frobenius root.  In characteristic `p`, the `y^p` term is invisible to the
+Frobenius root. In characteristic `p`, the `y^p` term is invisible to the
 ordinary `y` derivative, while the `x^(p+1)` term exposes the `x` direction.
 The marked equation is permissible for the hybrid centre `(x,y)`.
 
 Thus the correct local object is allowed to be a sum of a defect ideal and a
-Frobenius-root ideal.  This file proves only the exact polynomial identity,
-partial-derivative identities, and marked-power containment.  It does not prove
+Frobenius-root ideal. This file proves only the exact polynomial identity,
+partial-derivative identities, and marked-power containment. It does not prove
 a universal packet construction or all-chart descent.
 -/
 
@@ -36,10 +36,8 @@ def x : P (K := K) := MvPolynomial.X false
 def y : P (K := K) := MvPolynomial.X true
 
 /-- The basic cusp equation. -/
-def cusp : P (K := K) := y - x
-  where
-    y := (y (K := K)) ^ p
-    x := (x (K := K)) ^ (p + 1)
+def cusp : P (K := K) :=
+  (y (K := K)) ^ p - (x (K := K)) ^ (p + 1)
 
 /-- The hybrid actual centre containing both the visible defect and the
 Frobenius-root direction. -/
