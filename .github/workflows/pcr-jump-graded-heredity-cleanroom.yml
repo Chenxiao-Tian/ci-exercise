@@ -1,0 +1,84 @@
+name: PCR Jump graded heredity clean room
+
+on:
+  pull_request:
+    branches:
+      - pcr-jump-graded-heredity-ci-base-20260803
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pcr-jump-graded-heredity-cleanroom-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  graded-heredity-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          set -o pipefail
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf \
+            | sh -s -- -y --default-toolchain leanprover/lean4:v4.30.0
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned mathlib
+        run: |
+          set -o pipefail
+          lake update
+          lake exe cache get
+      - name: Reject placeholders
+        run: |
+          set -o pipefail
+          files=(
+            PCRLean/Experimental/UnivariateFrobeniusOrderHeredity.lean
+            PCRLean/Experimental/FrobeniusMarkScalingBoundary.lean
+            PCRLean/Experimental/UnivariateOrderBaseChange.lean
+            PCRLean/Experimental/UniversalMarkedFrobeniusEquivalence.lean
+            PCRLean/Experimental/MultivariateFrobeniusOrderHeredity.lean
+            PCRLean/Experimental/MultivariateOrderIdealBridge.lean
+            PCRLean/Experimental/MultivariatePointIdealBridge.lean
+            PCRLean/Experimental/CoordinateSubspaceOrderHeredity.lean
+            PCRLean/Experimental/AffineCoordinateSubspaceHeredity.lean
+            PCRLean/Experimental/LinearFrameSubspaceHeredity.lean
+            PCRLean/Experimental/FrobeniusSupportDomain.lean
+            PCRLean/Experimental/CoordinateCentreExactFrobeniusHeredity.lean
+            PCRLean/Experimental/AffineLinearFrameExactFrobeniusHeredity.lean
+            PCRLean/Experimental/FrobeniusNormalCentre.lean
+            PCRLean/Experimental/FrobeniusNormalCentreCounterexample.lean
+            PCRLean/Experimental/GradedPowerReflection.lean
+            PCRLean/Experimental/FrobeniusNormalFaithfullyFlatDescent.lean
+            PCRLean/Experimental/CoordinateControlledTransformHeredity.lean
+            PCRLean/Experimental/GradedFrobeniusHeredityKernelIndex.lean
+            PCRLean/Experimental/GradedFrobeniusHeredityKernelIndexAudit.lean
+          )
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)([[:space:]]|$)' "${files[@]}"; then
+            echo 'Forbidden proof placeholder or custom axiom found.' >&2
+            exit 1
+          fi
+      - name: Build integrated graph
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.GradedFrobeniusHeredityKernelIndex 2>&1 \
+            | tee graded-heredity-build.txt
+      - name: Kernel axiom audit
+        run: |
+          set -o pipefail
+          lake env lean PCRLean/Experimental/GradedFrobeniusHeredityKernelIndexAudit.lean 2>&1 \
+            | tee graded-heredity-axioms.txt
+          if grep -E 'sorryAx|PCRLean\..*Axiom|ResolutionAxiom|PacketizationAxiom' \
+              graded-heredity-axioms.txt; then
+            echo 'Unpermitted axiom detected.' >&2
+            exit 1
+          fi
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pcr-jump-graded-heredity-${{ github.sha }}
+          path: |
+            graded-heredity-build.txt
+            graded-heredity-axioms.txt
+          if-no-files-found: warn
