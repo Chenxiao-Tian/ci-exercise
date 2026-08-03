@@ -48,8 +48,9 @@ theorem remainder_support_subset
   intro m hmRemainder
   have hnotInitial : m ∉ D.initial.support := by
     exact (Finset.disjoint_right.mp (support_disjoint D)) hmRemainder
-  have hcoeffInitial : MvPolynomial.coeff m D.initial = 0 :=
-    MvPolynomial.notMem_support_iff.mp hnotInitial
+  have hcoeffInitial : MvPolynomial.coeff m D.initial = 0 := by
+    by_contra hne
+    exact hnotInitial (MvPolynomial.mem_support_iff.mpr hne)
   have hcoeffRemainder : MvPolynomial.coeff m D.remainder ≠ 0 :=
     MvPolynomial.mem_support_iff.mp hmRemainder
   rw [D.equation, MvPolynomial.mem_support_iff, MvPolynomial.coeff_add,
@@ -64,8 +65,9 @@ theorem initial_support_subset
   intro m hmInitial
   have hnotRemainder : m ∉ D.remainder.support :=
     (Finset.disjoint_left.mp (support_disjoint D)) hmInitial
-  have hcoeffRemainder : MvPolynomial.coeff m D.remainder = 0 :=
-    MvPolynomial.notMem_support_iff.mp hnotRemainder
+  have hcoeffRemainder : MvPolynomial.coeff m D.remainder = 0 := by
+    by_contra hne
+    exact hnotRemainder (MvPolynomial.mem_support_iff.mpr hne)
   have hcoeffInitial : MvPolynomial.coeff m D.initial ≠ 0 :=
     MvPolynomial.mem_support_iff.mp hmInitial
   rw [D.equation, MvPolynomial.mem_support_iff, MvPolynomial.coeff_add,
