@@ -7,18 +7,18 @@ import PCRLean.Experimental.FiniteHasseIntegralCompression
 # Integral-equivalent Rees presentations
 
 Resolution should not distinguish two finite graded presentations merely because
-one contains lower-weight Frobenius roots or a finite Hasse root packet.  The
+one contains lower-weight Frobenius roots or a finite Hasse root packet. The
 correct state is the equivalence class determined by ambient integral elements.
 
 For subalgebras `S,T` of one ambient algebra `B`, define them to be integrally
 equivalent when every ambient element is integral over `S` exactly when it is
-integral over `T`.  This is an equivalence relation.  Single-root, finite-root,
+integral over `T`. This is an equivalence relation. Single-root, finite-root,
 and finite Hasse-compatible root adjoining all produce equivalent
 presentations.
 
-The relation is deliberately presentation-level.  The remaining geometric
-bridge must prove that singular loci, legal centres, controlled transforms and
-history data depend only on this equivalence class.
+The relation is deliberately presentation-level. The remaining geometric bridge
+must prove that singular loci, legal centres, controlled transforms and history
+data depend only on this equivalence class.
 -/
 
 namespace PCRLean
@@ -157,18 +157,19 @@ namespace Chain
 
 variable {n : Nat} (C : Chain (R := R) (B := B) n)
 
+/-- Every presentation in the chain is integrally equivalent to the first. -/
+theorem zero_to (i : Fin (n + 1)) :
+    IntegralEquivalent (C.presentation 0) (C.presentation i) := by
+  induction i using Fin.induction with
+  | zero => exact IntegralEquivalent.refl _
+  | succ i ih =>
+      exact IntegralEquivalent.trans ih (C.adjacent i)
+
 /-- A finite chain of integral-equivalent rewrites has equivalent endpoints. -/
 theorem endpoint_integralEquivalent :
     IntegralEquivalent (C.presentation 0)
-      (C.presentation ⟨n, Nat.lt_succ_self n⟩) := by
-  induction n with
-  | zero => exact IntegralEquivalent.refl _
-  | succ n ih =>
-      let Cprefix : Chain (R := R) (B := B) n where
-        presentation i := C.presentation ⟨i.1, lt_trans i.2 (Nat.lt_succ_self _)⟩
-        adjacent i := C.adjacent i
-      exact IntegralEquivalent.trans Cprefix.endpoint_integralEquivalent
-        (C.adjacent ⟨n, Nat.lt_succ_self n⟩)
+      (C.presentation ⟨n, Nat.lt_succ_self n⟩) :=
+  C.zero_to ⟨n, Nat.lt_succ_self n⟩
 
 end Chain
 
