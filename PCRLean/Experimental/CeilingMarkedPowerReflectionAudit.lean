@@ -1,0 +1,10 @@
+import PCRLean.Experimental.CeilingMarkedPowerReflection
+
+#print axioms PCRLean.Experimental.CeilingMarkedPowerReflection.ceilQuot_exists
+#print axioms PCRLean.Experimental.CeilingMarkedPowerReflection.le_mul_ceilQuot
+#print axioms PCRLean.Experimental.CeilingMarkedPowerReflection.not_le_mul_of_lt_ceilQuot
+#print axioms PCRLean.Experimental.CeilingMarkedPowerReflection.ceilQuot_le
+#print axioms PCRLean.Experimental.CeilingMarkedPowerReflection.mem_pow_of_power_mem_arbitrary_mark
+#print axioms PCRLean.Experimental.CeilingMarkedPowerReflection.power_mem_iff_ceilQuot
+#print axioms PCRLean.Experimental.CeilingMarkedPowerReflection.ceilQuot_mul
+#print axioms PCRLean.Experimental.CeilingMarkedPowerReflection.frobeniusPower_mem_iff_ceilQuot
