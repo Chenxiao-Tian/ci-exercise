@@ -5,13 +5,14 @@ import PCRLean.MarkedIdeal
 # Experimental finite minimal hybrid-centre compiler
 
 Suppose a finite family of actual ideal components has a marked-permissible
-join.  Components may represent intrinsic packet kernels, Frobenius roots,
+join. Components may represent intrinsic packet kernels, Frobenius roots,
 ordinary/Hasse defects, boundary corrections, or owner corrections.
 
-This file proves that one can select a cardinality-minimal permissible subfamily.
-Every selected component is indispensable: deleting it destroys permissibility.
-The result formalizes the finite synthesis step suggested by the cusp
-`y^p-x^(p+1)`, where neither `(x)` nor `(y)` is permissible but `(x,y)` is.
+This file proves that one can select a cardinality-minimal permissible
+subfamily. Every selected component is indispensable: deleting it destroys
+permissibility. The result formalizes the finite synthesis step suggested by
+the cusp `y^p-x^(p+1)`, where neither `(x)` nor `(y)` is permissible but
+`(x,y)` is.
 
 The theorem does not prove that the selected join is regular, contained in the
 singular locus, owner-safe, boundary-transverse, or hereditary under blowup.
@@ -85,7 +86,6 @@ theorem exists_minimalCertificate
       selected.card = n ∧ Acceptable P component selected
   have hex : ∃ n, property n := by
     exact ⟨Finset.univ.card, Finset.univ, rfl, hfull⟩
-  let n := Nat.find hex
   obtain ⟨selected, hcard, hacceptable⟩ := Nat.find_spec hex
   refine ⟨{
     selected := selected
@@ -116,28 +116,25 @@ theorem exists_minimal_permissible_hybrid
   exact ⟨C.selected, C.acceptable, C.cardinalMinimal,
     C.all_components_indispensable⟩
 
-/-- If no individual component is permissible but the full join is, every
-minimal hybrid necessarily uses at least two components. -/
-theorem minimal_card_ge_two_of_singletons_fail
+/-- If neither the empty family nor any singleton is permissible, every
+cardinality-minimal permissible hybrid necessarily uses at least two
+components. -/
+theorem minimal_card_ge_two_of_empty_and_singletons_fail
     {P : MarkedIdeal.Packet R}
     {component : ι → Ideal R}
     (C : MinimalCertificate P component)
+    (hempty : ¬ Acceptable P component ∅)
     (hsingleton : ∀ i : ι,
       ¬ Acceptable P component {i}) :
     2 ≤ C.selected.card := by
   by_contra hnot
-  have hle : C.selected.card ≤ 1 := by omega
-  rcases Finset.card_eq_zero_or_card_eq_one.mp
-      (show C.selected.card = 0 ∨ C.selected.card = 1 by omega) with hzero | hone
+  have hcases : C.selected.card = 0 ∨ C.selected.card = 1 := by
+    omega
+  rcases hcases with hzero | hone
   · have hsel : C.selected = ∅ := Finset.card_eq_zero.mp hzero
-    subst C.selected
-    -- The empty join is bottom.  For a positive marked packet this case can
-    -- only survive if the marked ideal itself is bottom; the current theorem
-    -- needs an explicit nonempty hypothesis to exclude it.
-    simp [Acceptable, combinedCentre, MarkedIdeal.Permissible] at C.acceptable
+    exact hempty (hsel ▸ C.acceptable)
   · obtain ⟨i, hi⟩ := Finset.card_eq_one.mp hone
-    subst C.selected
-    exact hsingleton i C.acceptable
+    exact hsingleton i (hi ▸ C.acceptable)
 
 end
 
