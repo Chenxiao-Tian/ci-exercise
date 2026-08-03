@@ -3,13 +3,15 @@ import Mathlib
 /-!
 # Split conormal frames and regular linear kernels
 
-A finite packet of conormal functionals defines a regular linear centre once
-its evaluation map has an explicit linear right inverse. The splitting is a
-concrete regularity certificate: the ambient tangent module decomposes as the
-common kernel of the packet plus a transverse free summand.
+A finite packet of conormal functionals defines a split linear centre once its
+evaluation map has an explicit linear right inverse. The splitting is a
+concrete direct-summand certificate: the ambient module decomposes as the common
+kernel of the packet plus a transverse free summand.
 
-The geometric realization problem is to construct such a split frame from the
-intrinsic Hasse--Cartier packet on a neighbourhood of the proposed centre.
+All statements in this file hold over an arbitrary commutative ring; no field
+or division hypothesis is used. The geometric realization problem is to
+construct such a split frame from the intrinsic Hasse--Cartier packet on a
+neighbourhood of the proposed centre.
 -/
 
 namespace PCRLean
@@ -19,23 +21,23 @@ noncomputable section
 
 universe u v w
 
-variable {K : Type u} {V : Type v} {ι : Type w}
-variable [Field K] [AddCommGroup V] [Module K V]
+variable {R : Type u} {V : Type v} {ι : Type w}
+variable [CommRing R] [AddCommGroup V] [Module R V]
 
 /-- A conormal evaluation map with an explicit right inverse. -/
 structure Frame where
-  eval : V →ₗ[K] (ι → K)
-  split : (ι → K) →ₗ[K] V
+  eval : V →ₗ[R] (ι → R)
+  split : (ι → R) →ₗ[R] V
   rightInverse : eval.comp split = LinearMap.id
 
 namespace Frame
 
-variable (F : Frame (K := K) (V := V) (ι := ι))
+variable (F : Frame (R := R) (V := V) (ι := ι))
 
 /-- Pointwise form of the right-inverse identity. -/
-theorem eval_split (a : ι → K) : F.eval (F.split a) = a := by
+theorem eval_split (a : ι → R) : F.eval (F.split a) = a := by
   have h := congrArg
-    (fun L : (ι → K) →ₗ[K] (ι → K) => L a) F.rightInverse
+    (fun L : (ι → R) →ₗ[R] (ι → R) => L a) F.rightInverse
   simpa using h
 
 /-- A split conormal evaluation is surjective. -/
