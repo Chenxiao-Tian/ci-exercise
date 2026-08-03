@@ -10,19 +10,19 @@ prime-power filtration by
 
 `x^(p^e) ∈ I^((p^e)*m) → x ∈ I^m`.
 
-The reverse implication is automatic for every ideal.  Hence the reflection
+The reverse implication is automatic for every ideal. Hence the reflection
 property is exactly the structural content needed for scaled Frobenius mark
 compression.
 
 The positive-dimensional coordinate, affine coordinate, linear-frame and
 affine-frame centres constructed in the preceding files all satisfy this
-property.  This packages a large family of coordinate calculations into one
+property. This packages a large family of coordinate calculations into one
 interface.
 
 The proposed scheme-level bridge is now precise: prove that every actual
 regular centre used by the resolution algorithm has a Frobenius-normal power
 filtration, for example by proving normality of its Rees algebra or reducedness
-of its associated graded algebra.  That general theorem is not asserted here.
+of its associated graded algebra. That general theorem is not asserted here.
 -/
 
 namespace PCRLean
@@ -46,7 +46,7 @@ theorem power_mem_scaled_of_mem
     (I : Ideal A) (q mark : Nat) {x : A}
     (hx : x ∈ I ^ mark) :
     x ^ q ∈ I ^ (q * mark) := by
-  have hp := Ideal.pow_mem_pow hx q
+  have hp : x ^ q ∈ (I ^ mark) ^ q := Ideal.pow_mem_pow hx q
   simpa [pow_mul, Nat.mul_comm] using hp
 
 /-- Reflection plus the automatic forward implication gives exact marked
@@ -76,9 +76,8 @@ theorem coordinateCentre_reflects :
         (R := K) (α := α) (ι := ι)) := by
   intro e mark x hx
   exact
-    (CoordinateCentreExactFrobeniusHeredity
-      .frobeniusPower_mem_centreIdeal_pow_iff
-        p e mark x).mp hx
+    (CoordinateCentreExactFrobeniusHeredity.frobeniusPower_mem_centreIdeal_pow_iff
+      p e mark x).mp hx
 
 /-- Affine coordinate centres are Frobenius-normal. -/
 theorem affineCoordinateCentre_reflects (b : ι → K) :
@@ -87,9 +86,8 @@ theorem affineCoordinateCentre_reflects (b : ι → K) :
         (α := α) b) := by
   intro e mark x hx
   exact
-    (AffineLinearFrameExactFrobeniusHeredity
-      .frobeniusPower_mem_affineCentreIdeal_pow_iff
-        p e mark b x).mp hx
+    (AffineLinearFrameExactFrobeniusHeredity.frobeniusPower_mem_affineCentreIdeal_pow_iff
+      p e mark b x).mp hx
 
 /-- Linearly transported centres through the origin are Frobenius-normal. -/
 theorem linearFrameCentre_reflects
@@ -99,9 +97,8 @@ theorem linearFrameCentre_reflects
       (LinearFrameSubspaceHeredity.frameCentreIdeal F) := by
   intro e mark x hx
   exact
-    (AffineLinearFrameExactFrobeniusHeredity
-      .frobeniusPower_mem_frameCentreIdeal_pow_iff
-        F p e mark x).mp hx
+    (AffineLinearFrameExactFrobeniusHeredity.frobeniusPower_mem_frameCentreIdeal_pow_iff
+      F p e mark x).mp hx
 
 /-- Arbitrary globally framed affine linear centres are Frobenius-normal. -/
 theorem affineFrameCentre_reflects
@@ -109,13 +106,11 @@ theorem affineFrameCentre_reflects
       (K := K) (σ := α ⊕ ι))
     (b : ι → K) :
     ReflectsFrobeniusPowers p
-      (AffineLinearFrameExactFrobeniusHeredity
-        .affineFrameCentreIdeal F b) := by
+      (AffineLinearFrameExactFrobeniusHeredity.affineFrameCentreIdeal F b) := by
   intro e mark x hx
   exact
-    (AffineLinearFrameExactFrobeniusHeredity
-      .frobeniusPower_mem_affineFrameCentreIdeal_pow_iff
-        F p e mark b x).mp hx
+    (AffineLinearFrameExactFrobeniusHeredity.frobeniusPower_mem_affineFrameCentreIdeal_pow_iff
+      F p e mark b x).mp hx
 
 end Coordinate
 
