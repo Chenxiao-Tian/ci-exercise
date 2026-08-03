@@ -1,0 +1,9 @@
+import PCRLean.Experimental.PolynomialGraphCentreQuotient
+
+#print axioms PCRLean.Experimental.PolynomialGraphCentreQuotient.sub_constantProjection_mem
+#print axioms PCRLean.Experimental.PolynomialGraphCentreQuotient.graphIdeal_le_ker
+#print axioms PCRLean.Experimental.PolynomialGraphCentreQuotient.ker_graphEval_eq_graphIdeal
+#print axioms PCRLean.Experimental.PolynomialGraphCentreQuotient.graphEval_surjective
+#print axioms PCRLean.Experimental.PolynomialGraphCentreQuotient.quotientEquiv
+#print axioms PCRLean.Experimental.PolynomialGraphCentreQuotient.quotient_isRegularRing
+#print axioms PCRLean.Experimental.PolynomialGraphCentreQuotient.certificate
