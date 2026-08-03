@@ -1,0 +1,7 @@
+import PCRLean.Experimental.FittingMinorAtlas
+
+#print axioms PCRLean.Experimental.FittingMinorAtlas.Atlas.basicOpen_cover
+#print axioms PCRLean.Experimental.FittingMinorAtlas.Atlas.exists_determinant_not_mem
+#print axioms PCRLean.Experimental.FittingMinorAtlas.Atlas.point_mem_some_basicOpen
+#print axioms PCRLean.Experimental.FittingMinorAtlas.Atlas.determinant_isUnit_away
+#print axioms PCRLean.Experimental.FittingMinorAtlas.Atlas.localization_range_eq_basicOpen
