@@ -1,12 +1,14 @@
 # MLE–Lean Current Frontier
 
 **Current accepted node:** `MLEL-M004 / HMC-SCCD`  
-**Current experimental frontier:** `MLEL-X20260803-GRAPH-MACRO-SNC`  
+**Current archived experimental frontier:** `MLEL-X031 / ACI-MMR-OIH`  
+**Current proof-architecture node:** `MLEL-D001 / FCPP-ATLAS`  
 **Official baseline branch:** `pcr-lean-formalization-20260801`  
-**Experimental branch:** `pcr-jump-integral-heredity-20260803`  
-**Experimental source head:** `2fd1b04b47915745e189b92859688436968f9466`  
-**Clean-room PR:** `#25`  
-**Clean-room run:** `30839499119` (`queued` at synchronization)  
+**Experimental source branch:** `pcr-jump-integral-heredity-20260803`  
+**X031 frozen source head:** `1edbe17181b638c366bf650b578e4d5f40e89185`  
+**X031 clean-room:** PR `#31`, run `30854334500` (`queued` at archival)  
+**D001 architecture branch:** `pcr-blueprint-d001-20260803`  
+**D001 clean-room:** PR `#32`, run `30858121934`, job `91833782154` (`queued` at archival)  
 **Synchronized:** `2026-08-03`  
 **Global status:** `OPEN_GAP`  
 **General resolution proved:** `false`
@@ -18,7 +20,8 @@ PCRLean/FORMAL_STATUS.md
 PCRLean/FORMAL_FRONTIER.md
 PCRLean/MLEL_CURRENT_FRONTIER.md
 PCRLean/ResearchProtocols/PCR_JUMP_LEAN_2_0_BASELINE.md
-PCRLean/ResearchRecords/MLEL_JUMP_GRAPH_MACRO_FRONTIER_2026-08-03.md
+PCRLean/ResearchRecords/MLEL_X031_ACI_MMR_OIH_REPORT.md
+PCRLean/ResearchRecords/MLEL_D001_FCPP_ATLAS_BASELINE.md
 MLEL_M004_HMC_SCCD_REPORT.md
 positive_characteristic_resolution_MLE_Lean_line_memory_0_001.md
 PCR_MLE_LEAN_CONVERSATION_ARCHIVE.md
@@ -28,81 +31,98 @@ PCR_MLE_LEAN_BASELINE_STATE.json
 
 ## Certified frontier
 
-`MLEL-M004 / HMC-SCCD` remains the highest accepted kernel-verified node. No 2026-08-03 experimental declaration is imported into `CertifiedIndex` or otherwise promoted to the Certified Graph.
+`MLEL-M004 / HMC-SCCD` remains the highest accepted kernel-verified node. It certifies, in its exact restricted domains, realized finite Hasse–Morita active/passive core descent and a conditional source-causal termination backend. No 2026-08-03 experimental or architecture declaration is imported into `CertifiedIndex`.
 
-## Strongest experimental frontier
+## Experimental mathematical frontier — X031 / ACI-MMR-OIH
 
-The local polynomial-graph macro now combines:
+The latest archived centre-synthesis design has two complementary branches.
+
+### Zero-obstruction branch
 
 ```text
-actual proper finite-type regular graph centre
-Frobenius-normal centre filtration
-arbitrary-mark active permissibility
-induced-flat passive Tor safety along every centre power
-flat passive restriction to the centre
-exact regular intersection with every finite coefficient-boundary stratum
-exact preservation/reflection of ordered boundary regular sequences
-all standard chart factorizations
-terminal or pure exceptional debt outcome
-source-preserving cleanup and strict GenRank decrease
+finite affine conormal packet Mz=b
+-> maximal minors cover
+-> augmented maximal minors vanish
+-> unique global solution
+-> original packet ideal = actual graph-centre ideal
+-> presentation/frame independence
+-> local active/passive/SNC/all-chart/causal graph macro
 ```
 
-The exact archival report is:
+### Nonzero-obstruction branch
 
 ```text
-PCRLean/ResearchRecords/MLEL_JUMP_GRAPH_MACRO_FRONTIER_2026-08-03.md
+cokernel obstruction class
+-> intrinsic order ideal
+-> graph / proper-hybrid / unit-obstruction trichotomy
+-> finite cardinal-minimal marked closure
+-> graph-plus-defect regularity reduction
+-> nested graph flattening when the coefficient closure is graph-valued
 ```
 
-Clean-room PR #25, run `30839499119`, was queued at synchronization. Evidence remains:
+X031 is `EXACTLY_DEFINED / PROOF_TERMS_WRITTEN / CLEANROOM_PENDING`, not kernel-certified.
+
+## Proof-architecture frontier — D001 / FCPP-ATLAS
+
+The final proof is frozen as a six-paper, 520-page central planning architecture:
 
 ```text
-EXACTLY_DEFINED / PROOF_TERM_WRITTEN / CLEANROOM_PENDING
+Paper I   FND   82 pages   intrinsic states, equivalences, finite packets
+Paper II  CTR  108 pages   actual-centre synthesis and regularization
+Paper III HER  116 pages   joint legality and hereditary all-chart reentry
+Paper IV  TRM   96 pages   birth, defect, recurrent classes, termination
+Paper V   GLB   74 pages   global descent and functorial serialization
+Paper VI  FIN   44 pages   final resolution theorem and reproducibility
 ```
 
-not `LEAN-KERNEL-VERIFIED`.
+The dictionary contains 65 load-bearing groups, expanded into 325 uniformly numbered `DEF/LEM/PROP/THM/COMP` entries, with 1,340 explicit dependency edges. The machine DAG is acyclic.
 
-## Mathematical bridge now separated from the unknown theorem
+The architecture Lean specification checks only:
 
-Over a perfect field, a regular finite-type centre is smooth, and a closed immersion between smooth schemes is étale-locally a coordinate subspace. Thus once an algorithm constructs an actual regular centre, the local graph/coordinate atlas exists by standard geometry. The remaining bridge is its Lean formalization, exact ideal/chart descent and integration into the hereditary resolution state.
+1. every dependency lowers an explicit finite rank;
+2. the dependency relation is well founded;
+3. a proof package for all nodes yields the final claim;
+4. the six paper endpoints are strictly ordered.
 
-## Updated open bridges
+It does not prove any unproved mathematical obligation.
+
+## Critical theorem spine
 
 ```text
-H1  universal finite intrinsic packet extraction and presentation independence
-H2  universal actual centre synthesis, including hybrid/rank-zero/nonlinear cases
-H3  scheme-level etale graph atlas and exact ideal/chart gluing
-H4  arbitrary passive modules, full normal flatness and global SNC/divisor gluing
-H5  hereditary next-packet reconstruction after every chart and normalization
-H6  geometric source supports for genuine births; no split/no clone
-H7  projection-free immediate-defect carrier
-H8  finite functorial globalization and final resolution compilers
+G01–G13   semantic state and finite intrinsic packet
+G14–G26   universal actual centre / centre-word synthesis
+G27–G41   joint legality and hereditary no-reset transform
+G42–G53   birth/defect/SCC elimination and local termination
+G54–G61   ideal-sheaf descent and finite functorial globalization
+G62–G65   embedded/nonembedded resolution and paper–Lean audit
 ```
 
-## Highest-posterior architecture
+## Exact open load-bearing groups
+
+The main unresolved compilers remain:
 
 ```text
-intrinsic finite Frobenius–Hasse packet
--> graded Frobenius normalization and ceiling marks
--> cotangent/conormal or canonical hybrid centre
--> actual regular centre or finite centre word
--> etale polynomial-graph atlas
--> joint local graph macro with passive and SNC-sequence gates
--> hereditary no-reset packet reconstruction
--> source-causal birth and cleanup ledger
--> immediate-defect escape
--> Noetherian/multiset/degree/debt termination
--> finite global serialization
--> principalization and resolution
+G26  universal actual-centre synthesis
+G31  universal joint active/passive/boundary legality
+G41  hereditary all-chart reentry without reset
+G43  complete geometric birth realization
+G47  recurrent-SCC exit theorem
+G49–G51  immediate-defect carrier and escape
+G52–G53  geometric completeness of the composite termination rank
+G54–G60  non-affine descent, functorial serialization and global sequence
+G62–G65  final theorem, consequences and semantic proof/code closure
 ```
 
 ## Truth boundary
 
 ```text
 MLEL_M004_ACCEPTED                         = true
-LATEST_EXPERIMENTAL_SNC_MACRO_WRITTEN      = true
-LATEST_CLEANROOM_GREEN                     = false
-LATEST_EXPERIMENTAL_RESULTS_PROMOTED       = false
-GENERAL_GEOMETRIC_REALIZATION              = false
+MLEL_X031_ARCHIVED                         = true
+MLEL_D001_ARCHITECTURE_FROZEN              = true
+D001_LIBRARY_ARCHIVE_COMPLETE              = true
+D001_ARCHITECTURE_CLEANROOM_GREEN          = false
+EXPERIMENTAL_RESULTS_PROMOTED              = false
+FINAL_MAIN_THEOREM_KERNEL_VERIFIED         = false
 GENERAL_POSITIVE_CHARACTERISTIC_RESOLUTION = false
 FORMAL_GLOBAL_STATUS                       = OPEN_GAP
 ```
