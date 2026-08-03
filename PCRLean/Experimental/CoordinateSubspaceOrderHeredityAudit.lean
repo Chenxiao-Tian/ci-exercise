@@ -1,0 +1,8 @@
+import PCRLean.Experimental.CoordinateSubspaceOrderHeredity
+
+#print axioms PCRLean.Experimental.CoordinateSubspaceOrderHeredity.centreDegree_add
+#print axioms PCRLean.Experimental.CoordinateSubspaceOrderHeredity.centreDegree_scale
+#print axioms PCRLean.Experimental.CoordinateSubspaceOrderHeredity.monomial_mem_centreIdeal_pow_centreDegree
+#print axioms PCRLean.Experimental.CoordinateSubspaceOrderHeredity.mem_centreIdeal_pow_of_centreOrderGE
+#print axioms PCRLean.Experimental.CoordinateSubspaceOrderHeredity.centreOrderGE_power_iff
+#print axioms PCRLean.Experimental.CoordinateSubspaceOrderHeredity.frobeniusPower_mem_centreIdeal_pow
