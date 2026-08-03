@@ -1,0 +1,21 @@
+{
+  "record_id": "MLEL-EXP-20260803-GFH-PGC-FFMD",
+  "date": "2026-08-03",
+  "protocol": "PCR-JUMP-LEAN 2.0 / MLEL-A002-JUMP2",
+  "official_accepted_node": "MLEL-M004 / HMC-SCCD",
+  "certified_graph_changed": false,
+  "experimental_branch": "pcr-jump-integral-heredity-20260803",
+  "integrated_index": "PCRLean.Experimental.GradedFrobeniusHeredityKernelIndex",
+  "new_bridge": "PCRLean.Experimental.FaithfullyFlatMarkedCentreDescent",
+  "mathematical_outputs": {
+    "graded_frobenius_heredity": "experimental",
+    "polynomial_graph_actual_centre": "experimental",
+    "all_chart_graph_factorization": "experimental",
+    "pure_exceptional_debt": "experimental",
+    "faithfully_flat_marked_descent": "proof-written-ci-pending"
+  },
+  "persistent_library_path": "/正特征奇点消解/MLE-Lean线/ResearchRounds/2026-08-03_GFH_PGC_FFMD/",
+  "general_positive_characteristic_resolution": false,
+  "final_main_theorem_kernel_verified": false,
+  "formal_global_status": "OPEN_GAP"
+}
