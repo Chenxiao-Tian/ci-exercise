@@ -1,0 +1,7 @@
+import PCRLean.Experimental.FittingGraphGlobalResolutionMacro
+
+#print axioms PCRLean.Experimental.FittingGraphGlobalResolutionMacro.globalGraph
+#print axioms PCRLean.Experimental.FittingGraphGlobalResolutionMacro.globalCentre
+#print axioms PCRLean.Experimental.FittingGraphGlobalResolutionMacro.certificate
+#print axioms PCRLean.Experimental.FittingGraphGlobalResolutionMacro.actualGlobalCentreCertificate
+#print axioms PCRLean.Experimental.FittingGraphGlobalResolutionMacro.allLocalCentres_fromGlobal
