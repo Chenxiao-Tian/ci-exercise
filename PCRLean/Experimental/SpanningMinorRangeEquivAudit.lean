@@ -1,0 +1,10 @@
+import PCRLean.Experimental.SpanningMinorRangeEquiv
+
+#print axioms PCRLean.Experimental.SpanningMinorRangeEquiv.rangeToSelected_mk
+#print axioms PCRLean.Experimental.SpanningMinorRangeEquiv.rangeToSelected_selectedToRange
+#print axioms PCRLean.Experimental.SpanningMinorRangeEquiv.selectedToRange_rangeToSelected
+#print axioms PCRLean.Experimental.SpanningMinorRangeEquiv.rangeEquivSelected
+#print axioms PCRLean.Experimental.SpanningMinorRangeEquiv.rangeBasis
+#print axioms PCRLean.Experimental.SpanningMinorRangeEquiv.range_free
+#print axioms PCRLean.Experimental.SpanningMinorRangeEquiv.range_finite
+#print axioms PCRLean.Experimental.SpanningMinorRangeEquiv.rangeRegularCertificate
