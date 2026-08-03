@@ -1,6 +1,8 @@
 # PCR U4 Tensor Heredity Status
 
 This branch is an isolated experiment over `55e1218fcb1d1f97b8c66f88f85a2a23ebe79722`.
+Its clean-room PR audit is isolated through base branch
+`pcr-u4-tensor-heredity-base-20260803`.
 
 ## Candidate theorem
 
