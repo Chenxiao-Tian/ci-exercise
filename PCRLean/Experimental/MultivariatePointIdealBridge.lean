@@ -4,8 +4,8 @@ import PCRLean.Experimental.MultivariateOrderIdealBridge
 /-!
 # Multivariate rational-point ideals and order transport
 
-Translation by a rational point is a polynomial automorphism.  It carries the
-actual point ideal `(X_i-a_i)` to the actual origin ideal `(X_i)`.  Hence the
+Translation by a rational point is a polynomial automorphism. It carries the
+actual point ideal `(X_i-a_i)` to the actual origin ideal `(X_i)`. Hence the
 support-order certificate for the translated equation transports back to an
 actual power-containment certificate in the point ideal.
 
@@ -14,7 +14,7 @@ statement to marked permissibility along an explicit coherent affine centre at
 an arbitrary rational point.
 
 The centre here is a closed point, not the general positive-dimensional centre
-needed by resolution.  Regular-subspace centres, localization at arbitrary
+needed by resolution. Regular-subspace centres, localization at arbitrary
 scheme points, owner/passive legality and blowup transforms remain separate.
 -/
 
@@ -84,7 +84,8 @@ theorem map_pointIdeal_eq_originIdeal (a : σ → K) :
   · rw [pointIdeal, originIdeal, Ideal.map_le_iff_le_comap, Ideal.span_le]
     rintro x ⟨i, rfl⟩
     rw [Ideal.mem_comap]
-    simp [pointGenerator, translate, X_mem_originIdeal]
+    simpa [pointGenerator, translate] using
+      (X_mem_originIdeal (K := K) i)
   · rw [originIdeal, Ideal.span_le]
     rintro x ⟨i, rfl⟩
     have hm := Ideal.mem_map_of_mem (translate a) (pointGenerator_mem a i)
@@ -98,8 +99,7 @@ theorem map_originIdeal_eq_pointIdeal (a : σ → K) :
   · rw [originIdeal, pointIdeal, Ideal.map_le_iff_le_comap, Ideal.span_le]
     rintro x ⟨i, rfl⟩
     rw [Ideal.mem_comap]
-    simp [pointGenerator, translate]
-    exact pointGenerator_mem a i
+    simpa [pointGenerator, translate] using pointGenerator_mem a i
   · rw [pointIdeal, Ideal.span_le]
     rintro x ⟨i, rfl⟩
     have hm := Ideal.mem_map_of_mem (translate (-a))
@@ -136,10 +136,13 @@ theorem mem_pointIdeal_pow_iff
   · intro hf
     have hm := Ideal.mem_map_of_mem (translate (-a)) hf
     rw [map_originIdeal_pow_eq_pointIdeal_pow] at hm
-    have hcomp := congrArg
-      (fun H : MvPolynomial σ K →ₐ[K] MvPolynomial σ K => H f)
-      (translate_neg_comp a)
-    simpa [AlgHom.comp_apply] using hcomp ▸ hm
+    have hvalue : translate (-a) (translate a f) = f := by
+      have hcomp := congrArg
+        (fun H : MvPolynomial σ K →ₐ[K] MvPolynomial σ K => H f)
+        (translate_neg_comp a)
+      simpa [AlgHom.comp_apply] using hcomp
+    rw [← hvalue]
+    exact hm
 
 /-- A pointwise support-order certificate gives actual marked-power containment
 in the rational-point ideal. -/
