@@ -1,0 +1,5 @@
+import PCRLean.Experimental.FiniteFreeSymmetricAlgebraRegular
+
+#print axioms PCRLean.Experimental.FiniteFreeSymmetricAlgebraRegular.finiteType
+#print axioms PCRLean.Experimental.FiniteFreeSymmetricAlgebraRegular.isNoetherianRing
+#print axioms PCRLean.Experimental.FiniteFreeSymmetricAlgebraRegular.isRegularRing
