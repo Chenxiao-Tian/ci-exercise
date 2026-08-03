@@ -1,0 +1,12 @@
+import PCRLean.Experimental.SurjectiveLinearMapRegularCentre
+
+#print axioms PCRLean.Experimental.SurjectiveLinearMapRegularCentre.splitOfSurjective
+#print axioms PCRLean.Experimental.SurjectiveLinearMapRegularCentre.split_kernelIdeal_eq
+#print axioms PCRLean.Experimental.SurjectiveLinearMapRegularCentre.ker_projectAlg_eq_kernelIdeal
+#print axioms PCRLean.Experimental.SurjectiveLinearMapRegularCentre.quotientEquiv
+#print axioms PCRLean.Experimental.SurjectiveLinearMapRegularCentre.kernelIdeal_ne_top
+#print axioms PCRLean.Experimental.SurjectiveLinearMapRegularCentre.kernelIdeal_fg
+#print axioms PCRLean.Experimental.SurjectiveLinearMapRegularCentre.quotient_isRegularRing
+#print axioms PCRLean.Experimental.SurjectiveLinearMapRegularCentre.certificate
+#print axioms PCRLean.Experimental.SurjectiveLinearMapRegularCentre.symmetricAlgebra_isRegularRing
+#print axioms PCRLean.Experimental.SurjectiveLinearMapRegularCentre.finiteDimensionalCertificate
