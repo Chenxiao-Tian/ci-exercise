@@ -1,9 +1,0 @@
-import PCRLean.Experimental.PolynomialGraphCentreQuotient
-
-#print axioms PCRLean.Experimental.PolynomialGraphCentreQuotient.sub_constantProjection_mem
-#print axioms PCRLean.Experimental.PolynomialGraphCentreQuotient.ker_graphEval_eq_graphIdeal
-#print axioms PCRLean.Experimental.PolynomialGraphCentreQuotient.graphEval_surjective
-#print axioms PCRLean.Experimental.PolynomialGraphCentreQuotient.quotientEquiv
-#print axioms PCRLean.Experimental.PolynomialGraphCentreQuotient.graphIdeal_ne_top
-#print axioms PCRLean.Experimental.PolynomialGraphCentreQuotient.graphIdeal_fg
-#print axioms PCRLean.Experimental.PolynomialGraphCentreQuotient.quotient_isReduced
