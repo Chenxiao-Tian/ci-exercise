@@ -7,8 +7,8 @@ import PCRLean.LinearPacketIdeal
 
 A full family of linear functionals together with a biorthogonal reconstruction
 frame defines a linear automorphism of affine space and hence an algebra
-automorphism of its polynomial ring. Under this automorphism the packet
-linear forms are ordinary coordinate variables.
+automorphism of its polynomial ring. Under this automorphism the packet linear
+forms are ordinary coordinate variables.
 
 This is the algebraic regularity bridge for full-rank linear packets. A
 constant-rank packet is reduced to this situation after adjoining a basis of
@@ -32,17 +32,40 @@ abbrev Dual := (σ → K) →ₗ[K] K
 structure FullFrame where
   functional : σ → Dual (K := K) (σ := σ)
   vector : σ → Direction (K := K) (σ := σ)
-  biorthogonal : ∀ i j, functional i (vector j) = if i = j then 1 else 0
+  biorthogonal : ∀ i j : σ,
+    functional i (vector j) = if i = j then 1 else 0
   reconstruct : ∀ (x : Direction (K := K) (σ := σ)) (i : σ),
-    x i = ∑ j, functional j x * vector j i
+    x i = ∑ j : σ, functional j x * vector j i
 
 namespace FullFrame
 
 variable (F : FullFrame (K := K) (σ := σ))
 
+/-- Every vector in the coordinate direction space is the sum of its standard
+coordinate components. -/
+theorem sum_coord_smul_basisVector
+    (x : Direction (K := K) (σ := σ)) :
+    (∑ i : σ, x i •
+      FunctionalPacketIdeal.basisVector (K := K) (σ := σ) i) = x := by
+  classical
+  funext j
+  simp [FunctionalPacketIdeal.basisVector]
+
+/-- Evaluation of a functional can be recovered from its standard coordinate
+row. -/
+theorem functional_coordinate_expansion
+    (f : Dual (K := K) (σ := σ))
+    (x : Direction (K := K) (σ := σ)) :
+    ∑ i : σ,
+        f (FunctionalPacketIdeal.basisVector (K := K) (σ := σ) i) * x i =
+      f x := by
+  have h := congrArg f (sum_coord_smul_basisVector (K := K) (σ := σ) x)
+  simpa [map_sum, map_smul, mul_comm] using h
+
 /-- Linear form corresponding to the `i`th new coordinate. -/
 def forwardVariable (i : σ) : MvPolynomial σ K :=
-  FunctionalPacketIdeal.functionalPolynomial (F.functional i)
+  FunctionalPacketIdeal.functionalPolynomial
+    (K := K) (σ := σ) (F.functional i)
 
 /-- Linear form expressing the old `i`th coordinate in the new frame. -/
 def inverseVariable (i : σ) : MvPolynomial σ K :=
@@ -69,49 +92,102 @@ corresponding ordinary coordinate. -/
 theorem inverse_forwardVariable (i : σ) :
     F.inverse (F.forwardVariable i) = MvPolynomial.X i := by
   classical
+  have hrow : ∀ j : σ,
+      ∑ x : σ,
+        F.functional i
+            (FunctionalPacketIdeal.basisVector (K := K) (σ := σ) x) *
+          F.vector j x =
+        if i = j then 1 else 0 := by
+    intro j
+    calc
+      ∑ x : σ,
+          F.functional i
+              (FunctionalPacketIdeal.basisVector (K := K) (σ := σ) x) *
+            F.vector j x =
+          F.functional i (F.vector j) :=
+        functional_coordinate_expansion
+          (K := K) (σ := σ) (F.functional i) (F.vector j)
+      _ = if i = j then 1 else 0 := F.biorthogonal i j
   rw [forwardVariable, FunctionalPacketIdeal.functionalPolynomial,
     LinearPacketIdeal.linearPolynomial]
-  simp only [map_sum, map_mul, map_apply, MvPolynomial.map_C,
-    inverse_X, inverseVariable]
-  rw [Finset.sum_comm]
-  apply MvPolynomial.induction_on
-    (p := ∑ x, MvPolynomial.C
-      (F.functional i (FunctionalPacketIdeal.basisVector (K := K) x)) *
-      LinearPacketIdeal.linearPolynomial (fun j => F.vector j x))
-    (fun n a => by simp)
-    (fun p q hp hq => by simp [hp, hq])
-  simp [LinearPacketIdeal.linearPolynomial,
-    FunctionalPacketIdeal.basisVector]
-  have hrow : ∀ j, ∑ x,
-      F.functional i (FunctionalPacketIdeal.basisVector (K := K) x) *
-        F.vector j x = if j = i then 1 else 0 := by
-    intro j
-    have h := F.reconstruct
-      (FunctionalPacketIdeal.basisVector (K := K) i) j
-    simpa [FunctionalPacketIdeal.basisVector, mul_comm] using h
-  simp_rw [hrow]
-  simp
+  simp only [map_sum, map_mul, MvPolynomial.map_C,
+    inverse_X, inverseVariable, LinearPacketIdeal.linearPolynomial]
+  calc
+    (∑ x : σ,
+        MvPolynomial.C
+            (F.functional i
+              (FunctionalPacketIdeal.basisVector (K := K) (σ := σ) x)) *
+          ∑ j : σ, MvPolynomial.C (F.vector j x) * MvPolynomial.X j) =
+      ∑ j : σ,
+        MvPolynomial.C
+            (∑ x : σ,
+              F.functional i
+                  (FunctionalPacketIdeal.basisVector (K := K) (σ := σ) x) *
+                F.vector j x) *
+          MvPolynomial.X j := by
+      simp_rw [Finset.mul_sum]
+      rw [Finset.sum_comm]
+      apply Finset.sum_congr rfl
+      intro j hj
+      simp_rw [← mul_assoc]
+      rw [← Finset.sum_mul]
+      congr 1
+      rw [map_sum]
+      apply Finset.sum_congr rfl
+      intro x hx
+      simp [map_mul]
+    _ = MvPolynomial.X i := by
+      simp_rw [hrow]
+      simp
 
 /-- Applying the forward substitution to an inverse coordinate form gives the
 original coordinate. -/
 theorem forward_inverseVariable (i : σ) :
     F.forward (F.inverseVariable i) = MvPolynomial.X i := by
   classical
-  rw [inverseVariable, LinearPacketIdeal.linearPolynomial]
-  simp only [map_sum, map_mul, map_apply, MvPolynomial.map_C,
-    forward_X, forwardVariable,
-    FunctionalPacketIdeal.functionalPolynomial,
-    LinearPacketIdeal.linearPolynomial]
-  rw [Finset.sum_comm]
-  have hrow : ∀ j, ∑ x, F.vector x i *
-      F.functional x (FunctionalPacketIdeal.basisVector (K := K) j) =
+  have hrow : ∀ j : σ,
+      ∑ x : σ,
+        F.vector x i *
+          F.functional x
+            (FunctionalPacketIdeal.basisVector (K := K) (σ := σ) j) =
         if j = i then 1 else 0 := by
     intro j
     have h := F.reconstruct
-      (FunctionalPacketIdeal.basisVector (K := K) i) j
-    simpa [FunctionalPacketIdeal.basisVector] using h
-  simp_rw [hrow]
-  simp
+      (FunctionalPacketIdeal.basisVector (K := K) (σ := σ) j) i
+    simpa [FunctionalPacketIdeal.basisVector, mul_comm] using h
+  rw [inverseVariable, LinearPacketIdeal.linearPolynomial]
+  simp only [map_sum, map_mul, MvPolynomial.map_C,
+    forward_X, forwardVariable,
+    FunctionalPacketIdeal.functionalPolynomial,
+    LinearPacketIdeal.linearPolynomial]
+  calc
+    (∑ x : σ, MvPolynomial.C (F.vector x i) *
+        ∑ j : σ,
+          MvPolynomial.C
+              (F.functional x
+                (FunctionalPacketIdeal.basisVector (K := K) (σ := σ) j)) *
+            MvPolynomial.X j) =
+      ∑ j : σ,
+        MvPolynomial.C
+            (∑ x : σ,
+              F.vector x i *
+                F.functional x
+                  (FunctionalPacketIdeal.basisVector (K := K) (σ := σ) j)) *
+          MvPolynomial.X j := by
+      simp_rw [Finset.mul_sum]
+      rw [Finset.sum_comm]
+      apply Finset.sum_congr rfl
+      intro j hj
+      simp_rw [← mul_assoc]
+      rw [← Finset.sum_mul]
+      congr 1
+      rw [map_sum]
+      apply Finset.sum_congr rfl
+      intro x hx
+      simp [map_mul]
+    _ = MvPolynomial.X i := by
+      simp_rw [hrow]
+      simp
 
 /-- Inverse after forward is the identity algebra homomorphism. -/
 theorem inverse_comp_forward :
