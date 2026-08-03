@@ -1,0 +1,51 @@
+import PCRLean.Experimental.CausalEventPacking
+import PCRLean.LinearCoordinateChange
+import PCRLean.Experimental.LinearSplitCentreQuotient
+import PCRLean.Experimental.SplitSurjectionSymmetricQuotient
+import PCRLean.Experimental.SurjectiveLinearMapSymmetricQuotient
+import PCRLean.Experimental.SurjectiveFreeRegularCentre
+import PCRLean.Experimental.FiniteFreeSymmetricAlgebraRegular
+import PCRLean.Experimental.BiorthogonalRegularCentre
+import PCRLean.Experimental.IntrinsicCentreGaugeInvariance
+import PCRLean.Experimental.IntrinsicCentreTransport
+
+/-! Unified kernel audit for the isolated U2/U6 proof slice. -/
+
+#print axioms PCRLean.Experimental.CausalEventPacking.Section.chosenSource_injective
+#print axioms PCRLean.Experimental.CausalEventPacking.Section.card_events_le_card_sources
+#print axioms PCRLean.Experimental.CausalEventPacking.Section.no_fresh_disjoint_support_of_cover
+
+#print axioms PCRLean.LinearCoordinateChange.FullFrame.inverse_forwardVariable
+#print axioms PCRLean.LinearCoordinateChange.FullFrame.forward_inverseVariable
+#print axioms PCRLean.LinearCoordinateChange.FullFrame.polynomialEquiv
+
+#print axioms PCRLean.Experimental.LinearSplitCentreQuotient.coordinateQuotientEquivLinear
+#print axioms PCRLean.Experimental.LinearSplitCentreQuotient.linearCentreQuotientEquiv
+#print axioms PCRLean.Experimental.LinearSplitCentreQuotient.linearCentreIdeal_ne_top
+
+#print axioms PCRLean.Experimental.SplitSurjectionSymmetricQuotient.SplitSurjection.ker_projectAlg_eq_kernelIdeal
+#print axioms PCRLean.Experimental.SplitSurjectionSymmetricQuotient.SplitSurjection.quotientEquiv
+
+#print axioms PCRLean.Experimental.SurjectiveLinearMapSymmetricQuotient.project_comp_liftBackOfSurjective
+#print axioms PCRLean.Experimental.SurjectiveLinearMapSymmetricQuotient.ker_projectAlg_eq_kernelIdeal
+#print axioms PCRLean.Experimental.SurjectiveLinearMapSymmetricQuotient.quotientEquiv
+
+#print axioms PCRLean.Experimental.SurjectiveFreeRegularCentre.quotient_isRegularRing
+#print axioms PCRLean.Experimental.SurjectiveFreeRegularCentre.certificate
+
+#print axioms PCRLean.Experimental.FiniteFreeSymmetricAlgebraRegular.finiteType
+#print axioms PCRLean.Experimental.FiniteFreeSymmetricAlgebraRegular.isNoetherianRing
+#print axioms PCRLean.Experimental.FiniteFreeSymmetricAlgebraRegular.isRegularRing
+
+#print axioms PCRLean.BiorthogonalSplitFrame.Frame.rightInverse
+#print axioms PCRLean.BiorthogonalSplitFrame.Frame.kernel_isCompl_transverseRange
+#print axioms PCRLean.Experimental.BiorthogonalRegularCentre.coefficientSymmetricAlgebra_isRegularRing
+#print axioms PCRLean.Experimental.BiorthogonalRegularCentre.quotient_isRegularRing
+#print axioms PCRLean.Experimental.BiorthogonalRegularCentre.finiteFreeCertificate
+
+#print axioms PCRLean.Experimental.IntrinsicCentreGaugeInvariance.kernelIdeal_equiv_comp_eq
+#print axioms PCRLean.Experimental.IntrinsicCentreGaugeInvariance.GaugeAtlas.kernelIdeal_eq
+
+#print axioms PCRLean.Experimental.IntrinsicCentreTransport.symmetricEquiv_ι
+#print axioms PCRLean.Experimental.IntrinsicCentreTransport.map_kernelIdeal_eq
+#print axioms PCRLean.Experimental.IntrinsicCentreTransport.map_kernelIdeal_eq_of_sourceGauge
