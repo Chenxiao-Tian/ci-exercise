@@ -1,0 +1,5 @@
+import PCRLean.Experimental.PerfectFrobeniusPureIdealEscape
+
+#print axioms PCRLean.Experimental.PerfectFrobeniusPureIdealEscape.packetPowerIdeal_rootPacket_eq_pureFrobeniusIdeal
+#print axioms PCRLean.Experimental.PerfectFrobeniusPureIdealEscape.actualRootPowerIdeal_rootPacket_eq_pureFrobeniusIdeal
+#print axioms PCRLean.Experimental.PerfectFrobeniusPureIdealEscape.recoveredActualIdeal_ne_bot
