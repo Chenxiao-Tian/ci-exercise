@@ -1,0 +1,10 @@
+import PCRLean.Experimental.ExceptionalDebtLineage
+
+#print axioms PCRLean.Experimental.ExceptionalDebtLineage.Event.debt_lt_block
+#print axioms PCRLean.Experimental.ExceptionalDebtLineage.Event.debt_pos_of_mark_lt
+#print axioms PCRLean.Experimental.ExceptionalDebtLineage.enroll_idempotent
+#print axioms PCRLean.Experimental.ExceptionalDebtLineage.source_mem_used_after_enroll
+#print axioms PCRLean.Experimental.ExceptionalDebtLineage.support_not_disjoint_used_after_enroll
+#print axioms PCRLean.Experimental.ExceptionalDebtLineage.graphEvent_debt
+#print axioms PCRLean.Experimental.ExceptionalDebtLineage.graphResidualIdeal_eq_eventDebt
+#print axioms PCRLean.Experimental.ExceptionalDebtLineage.graphEvent_positiveDebt_of_strictSubmark
