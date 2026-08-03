@@ -53,8 +53,8 @@ theorem linearCoefficients_mul_zero
   ext i
   change MvPolynomial.coeff (Finsupp.single i 1) (x.1 * y.1) = 0
   have hxy : x.1 * y.1 ∈
-      (MvPolynomial.idealOfVars ι R) ^ 2 :=
-    Ideal.mul_mem_mul x.2 y.2
+      (MvPolynomial.idealOfVars ι R) ^ 2 := by
+    simpa [pow_two] using (Ideal.mul_mem_mul x.2 y.2)
   have hdegree :=
     (MvPolynomial.mem_pow_idealOfVars_iff 2 (x.1 * y.1)).mp hxy
   by_contra hcoeff
@@ -116,7 +116,7 @@ theorem mem_square_of_linearCoefficients_eq_zero
 /-- The coefficient-row map is injective. -/
 theorem toRows_injective :
     Function.Injective (toRows (R := R) (ι := ι)) := by
-  rw [LinearMap.injective_iff_map_eq_zero]
+  rw [injective_iff_map_eq_zero]
   intro z hz
   obtain ⟨x, rfl⟩ := (I (R := R) (ι := ι)).toCotangent_surjective z
   apply ((I (R := R) (ι := ι)).toCotangent_eq_zero x).mpr
