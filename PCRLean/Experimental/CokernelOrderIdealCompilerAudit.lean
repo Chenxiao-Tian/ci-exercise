@@ -1,0 +1,5 @@
+import PCRLean.Experimental.CokernelOrderIdealCompiler
+
+#print axioms PCRLean.Experimental.CokernelOrderIdealCompiler.compile
+#print axioms PCRLean.Experimental.CokernelOrderIdealCompiler.graphBranch_iff_exists_solution
+#print axioms PCRLean.Experimental.CokernelOrderIdealCompiler.hybridIdeal_fg
