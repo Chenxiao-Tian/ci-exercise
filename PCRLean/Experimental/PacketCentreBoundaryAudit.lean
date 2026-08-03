@@ -1,0 +1,9 @@
+import PCRLean.Experimental.PacketCentreBoundary
+
+#print axioms PCRLean.Experimental.PacketCentreBoundary.centreIdeal_eq_bot_of_injective
+#print axioms PCRLean.Experimental.PacketCentreBoundary.identityCentreIdeal_eq_bot
+#print axioms PCRLean.Experimental.PacketCentreBoundary.not_injective_of_centreIdeal_ne_bot
+#print axioms PCRLean.Experimental.PacketCentreBoundary.zeroCentreIdeal_eq_span_iota
+#print axioms PCRLean.Experimental.PacketCentreBoundary.strictCentre_iff_ne_bot
+#print axioms PCRLean.Experimental.PacketCentreBoundary.identityPacket_regular_quotient_but_not_strict
+#print axioms PCRLean.Experimental.PacketCentreBoundary.packetMap_not_injective_of_centreIdeal_ne_bot
