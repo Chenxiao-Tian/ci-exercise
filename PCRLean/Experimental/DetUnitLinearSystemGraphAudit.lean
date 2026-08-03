@@ -1,6 +1,8 @@
 import PCRLean.Experimental.DetUnitLinearSystemGraph
 
 #print axioms PCRLean.Experimental.DetUnitLinearSystemGraph.System.toInvertibleSystem
+#print axioms PCRLean.Experimental.DetUnitLinearSystemGraph.System.matrix_mulVec_solution
+#print axioms PCRLean.Experimental.DetUnitLinearSystemGraph.System.matrix_mulVec_solution_apply
 #print axioms PCRLean.Experimental.DetUnitLinearSystemGraph.System.equationIdeal_eq_graphIdeal
 #print axioms PCRLean.Experimental.DetUnitLinearSystemGraph.System.quotientEquiv
 #print axioms PCRLean.Experimental.DetUnitLinearSystemGraph.System.centreCertificate
