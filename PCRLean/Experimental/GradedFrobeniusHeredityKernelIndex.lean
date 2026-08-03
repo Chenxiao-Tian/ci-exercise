@@ -29,12 +29,19 @@ import PCRLean.Experimental.PolynomialGraphBlowupHeredity
 import PCRLean.Experimental.PolynomialGraphMarkedTransformDebt
 import PCRLean.Experimental.PolynomialGraphFrobeniusCentreCertificate
 import PCRLean.Experimental.PolynomialGraphArbitraryMarkCertificate
+import PCRLean.Experimental.PolynomialGraphPassiveSafety
+import PCRLean.Experimental.PolynomialGraphBoundaryIntersection
+import PCRLean.Experimental.PolynomialGraphBoundaryStrata
+import PCRLean.Experimental.PolynomialGraphJointLegalityCertificate
+import PCRLean.Experimental.CausalEventLedger
+import PCRLean.Experimental.PolynomialGraphDebtCausalReentry
+import PCRLean.Experimental.PolynomialGraphLocalResolutionMacro
 
 /-!
 # Integrated graded Frobenius heredity index
 
 This file has no new mathematical assumptions. Its purpose is to force one
-Lean build through the complete current experimental heredity chain:
+Lean build through the complete current experimental graph-chamber chain:
 
 * exact order scaling for prime powers;
 * necessary mark scaling and universal marked equivalence;
@@ -46,11 +53,13 @@ Lean build through the complete current experimental heredity chain:
 * the graded-layer and normal-cone sufficient conditions;
 * faithfully flat descent and local coordinate/graph models;
 * arbitrary-mark ceiling compression and bounded exceptional debt;
-* exact commutation with coordinate controlled transforms;
-* exact classification of graph-root residuals as a pure exceptional power;
-* a complete arbitrary-mark graph-centre certificate; and
-* actual proper finite-type regular polynomial graph centres with explicit
-  all-chart terminal or pure-debt behavior.
+* exact controlled transforms and pure exceptional residual classification;
+* actual proper finite-type regular polynomial graph centres;
+* induced-flat passive Tor safety and flat centre restriction;
+* exact regular intersection with every finite coefficient-boundary stratum;
+* source-conservative classification of graph debt as cleanup, not birth; and
+* one complete local resolution macro exposing terminality or strict causal
+  rank decrease on every standard chart.
 
 The index is experimental and does not assert general resolution.
 -/
