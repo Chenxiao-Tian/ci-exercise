@@ -1,0 +1,6 @@
+import PCRLean.Experimental.DetUnitLinearSystemGraph
+
+#print axioms PCRLean.Experimental.DetUnitLinearSystemGraph.System.toInvertibleSystem
+#print axioms PCRLean.Experimental.DetUnitLinearSystemGraph.System.equationIdeal_eq_graphIdeal
+#print axioms PCRLean.Experimental.DetUnitLinearSystemGraph.System.quotientEquiv
+#print axioms PCRLean.Experimental.DetUnitLinearSystemGraph.System.centreCertificate
