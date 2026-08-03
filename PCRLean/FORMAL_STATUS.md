@@ -6,6 +6,7 @@ This branch is the official persistent MLE–Lean research line of the positive-
 - GitHub branch: `pcr-lean-formalization-20260801`
 - Pull request: `#2` (draft, open, unmerged)
 - Current formal node: `MLEL-M004 / HMC-SCCD`
+- Default jump-search protocol: `PCR-JUMP-LEAN 2.0 / MLEL-A002-JUMP2`
 - Audited code head: `0f57fe5fa3a8541e0b95d717f94085b45b960d7c`
 - Global status: `OPEN_GAP`
 - Arbitrary-dimensional positive-characteristic resolution proved: `false`
@@ -106,6 +107,19 @@ Thus the repair is real but incomplete. `MLEL-002 / FCR-GEO` remains a candidate
 
 No frontier may be crossed by `axiom`, `sorry`, `admit`, an unproved typeclass instance, or an imported MLE assertion.
 
+## Baseline method protocol
+
+`PCR-JUMP-LEAN 2.0` is now the default protocol for future isolated jump-search missions. Its canonical baseline files are:
+
+```text
+PCRLean/ResearchProtocols/PCR_JUMP_LEAN_2_0_BASELINE.md
+PCRLean/ResearchProtocols/PCR_JUMP_LEAN_2_0_BASELINE_RECORD.json
+```
+
+The protocol adds evidence levels E0–E10, exact-commit clean-room CI, an Experimental-to-Certified import firewall, the bridge queue B00–B21, and the priority missions IFCCS, HKITF, CSCN, with RZRC as the rank-zero fallback.
+
+Protocol adoption is methodological only. It does not change any theorem evidence label, promote an experimental declaration, or alter `OPEN_GAP`.
+
 ## Current truth statement
 
 ```text
@@ -114,6 +128,8 @@ HMC_SCCD_RESTRICTED_KERNEL_EXIT            = true
 MLEL_002_REPAIR_PROGRESS                   = true
 MLEL_002_CURRENT_FAILED_MODULE_COUNT       = 2
 MLEL_002_COMPLETE_CHAIN_CERTIFIED          = false
+PCR_JUMP_LEAN_2_0_BASELINE_PROTOCOL        = true
+EXPERIMENTAL_THEOREMS_PROMOTED_BY_PROTOCOL = false
 GENERAL_GEOMETRIC_REALIZATION              = false
 GENERAL_POSITIVE_CHARACTERISTIC_RESOLUTION = false
 FORMAL_GLOBAL_STATUS                       = OPEN_GAP
