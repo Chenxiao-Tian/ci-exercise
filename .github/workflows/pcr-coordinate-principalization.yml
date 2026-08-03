@@ -1,0 +1,63 @@
+name: PCR Coordinate Principalization verification
+
+on:
+  push:
+    branches:
+      - pcr-lean-formalization-20260801
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pcr-coordinate-principalization-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  coordinate-principalization-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          set -o pipefail
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf \
+            | sh -s -- -y --default-toolchain leanprover/lean4:v4.30.0
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned mathlib
+        run: |
+          set -o pipefail
+          lake update
+          lake exe cache get
+      - name: Reject placeholders
+        run: |
+          set -o pipefail
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)([[:space:]]|$)' \
+              PCRLean/CoordinateBlowupChart.lean \
+              PCRLean/CoordinateControlledTransform.lean \
+              PCRLean/FiniteRootPacketTransform.lean \
+              PCRLean/CoordinateCentrePrincipalization.lean \
+              PCRLean/CoordinatePrincipalizationAudit.lean; then
+            echo 'Forbidden proof placeholder or custom axiom found.' >&2
+            exit 1
+          fi
+      - name: Build and audit coordinate principalization
+        run: |
+          set -o pipefail
+          lake build PCRLean.FiniteRootPacketTransform 2>&1 | tee coordinate-principalization-build.txt
+          lake build PCRLean.CoordinateCentrePrincipalization 2>&1 | tee -a coordinate-principalization-build.txt
+          lake env lean PCRLean/CoordinatePrincipalizationAudit.lean 2>&1 | tee coordinate-principalization-axioms.txt
+          if grep -E 'sorryAx|PCRLean\..*Axiom|ResolutionAxiom|PacketizationAxiom' \
+              coordinate-principalization-axioms.txt; then
+            echo 'Unpermitted axiom detected.' >&2
+            exit 1
+          fi
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pcr-coordinate-principalization-audit
+          path: |
+            coordinate-principalization-build.txt
+            coordinate-principalization-axioms.txt
+          if-no-files-found: warn

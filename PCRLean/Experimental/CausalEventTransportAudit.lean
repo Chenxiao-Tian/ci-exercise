@@ -1,0 +1,10 @@
+import PCRLean.Experimental.CausalEventTransport
+
+#print axioms PCRLean.Experimental.CausalEventTransport.AnchoredSection.anchor_injective
+#print axioms PCRLean.Experimental.CausalEventTransport.AnchoredSection.ofSection
+#print axioms PCRLean.Experimental.CausalEventTransport.Transport.parent_injective
+#print axioms PCRLean.Experimental.CausalEventTransport.Transport.no_clone
+#print axioms PCRLean.Experimental.CausalEventTransport.Transport.card_child_le_card_parent
+#print axioms PCRLean.Experimental.CausalEventTransport.Transport.comp
+#print axioms PCRLean.Experimental.CausalEventTransport.Transport.comp_parent_injective
+#print axioms PCRLean.Experimental.CausalEventTransport.Transport.card_grandchild_le_card_parent

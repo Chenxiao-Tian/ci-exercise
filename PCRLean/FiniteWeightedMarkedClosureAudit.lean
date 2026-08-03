@@ -1,0 +1,10 @@
+import PCRLean.FiniteWeightedMarkedClosure
+
+#print axioms PCRLean.FiniteWeightedMarkedClosure.mem_wordsAtResidual_iff
+#print axioms PCRLean.FiniteWeightedMarkedClosure.wordImageIdeal_le_power
+#print axioms PCRLean.FiniteWeightedMarkedClosure.levelIdeal_le_power
+#print axioms PCRLean.FiniteWeightedMarkedClosure.source_le_topLevel
+#print axioms PCRLean.FiniteWeightedMarkedClosure.wordImageIdeal_le_levelIdeal
+#print axioms PCRLean.FiniteWeightedMarkedClosure.all_levels_permissible
+#print axioms PCRLean.FiniteWeightedMarkedClosure.levelIdeal_eq_bot_of_mark_lt
+#print axioms PCRLean.FiniteWeightedMarkedClosure.exists_finite_level_generators

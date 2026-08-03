@@ -1,0 +1,87 @@
+name: PCR U2 fitting-minor child clean room
+
+on:
+  push:
+    branches:
+      - pcr-u2-fitting-minor-cleanroom-20260803
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pcr-u2-fitting-minor-child
+  cancel-in-progress: true
+
+jobs:
+  cleanroom:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          set -o pipefail
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf \
+            | sh -s -- -y --default-toolchain leanprover/lean4:v4.30.0
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned mathlib once
+        run: |
+          set -o pipefail
+          lake update
+          lake exe cache get
+      - name: Reject placeholders
+        run: |
+          set -o pipefail
+          files=(
+            PCRLean/Experimental/CausalEventPacking.lean
+            PCRLean/FunctionalPacketIdeal.lean
+            PCRLean/LinearCoordinateChange.lean
+            PCRLean/Experimental/LinearSplitCentreQuotient.lean
+            PCRLean/Experimental/SplitSurjectionSymmetricQuotient.lean
+            PCRLean/Experimental/SurjectiveLinearMapSymmetricQuotient.lean
+            PCRLean/Experimental/SurjectiveFreeRegularCentre.lean
+            PCRLean/Experimental/FiniteFreeSymmetricAlgebraRegular.lean
+            PCRLean/BiorthogonalSplitFrame.lean
+            PCRLean/Experimental/BiorthogonalRegularCentre.lean
+            PCRLean/Experimental/InvertibleMinorRegularCentre.lean
+            PCRLean/Experimental/IntrinsicCentreGaugeInvariance.lean
+            PCRLean/Experimental/U2FittingMinorCleanroomIndex.lean
+          )
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)([[:space:]]|$)' "${files[@]}"; then
+            echo 'Forbidden proof placeholder or custom axiom found.' >&2
+            exit 1
+          fi
+      - name: Build clean-room index
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.U2FittingMinorCleanroomIndex 2>&1 \
+            | tee u2-fitting-minor-build.txt
+      - name: Audit component declarations
+        run: |
+          set -o pipefail
+          for f in \
+            PCRLean/Experimental/CausalEventPackingAudit.lean \
+            PCRLean/Experimental/LinearSplitCentreQuotientAudit.lean \
+            PCRLean/Experimental/SplitSurjectionSymmetricQuotientAudit.lean \
+            PCRLean/Experimental/SurjectiveLinearMapSymmetricQuotientAudit.lean \
+            PCRLean/Experimental/SurjectiveFreeRegularCentreAudit.lean \
+            PCRLean/Experimental/FiniteFreeSymmetricAlgebraRegularAudit.lean \
+            PCRLean/Experimental/BiorthogonalRegularCentreAudit.lean \
+            PCRLean/Experimental/InvertibleMinorRegularCentreAudit.lean \
+            PCRLean/Experimental/IntrinsicCentreGaugeInvarianceAudit.lean; do
+              lake env lean "$f"
+          done 2>&1 | tee u2-fitting-minor-axioms.txt
+          if grep -E 'sorryAx|PCRLean\..*Axiom|ResolutionAxiom|PacketizationAxiom' \
+              u2-fitting-minor-axioms.txt; then
+            echo 'Unpermitted axiom detected.' >&2
+            exit 1
+          fi
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pcr-u2-fitting-minor-${{ github.sha }}
+          path: |
+            u2-fitting-minor-build.txt
+            u2-fitting-minor-axioms.txt
+          if-no-files-found: warn

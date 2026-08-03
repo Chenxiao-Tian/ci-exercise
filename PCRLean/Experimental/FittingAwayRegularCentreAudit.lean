@@ -1,0 +1,5 @@
+import PCRLean.Experimental.FittingAwayRegularCentre
+
+#print axioms PCRLean.Experimental.FittingAwayRegularCentre.mapped_det_isUnit
+#print axioms PCRLean.Experimental.FittingAwayRegularCentre.evaluation_det_isUnit
+#print axioms PCRLean.Experimental.FittingAwayRegularCentre.finiteFreeCertificate

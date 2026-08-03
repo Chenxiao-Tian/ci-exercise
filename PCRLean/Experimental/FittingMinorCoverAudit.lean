@@ -1,0 +1,6 @@
+import PCRLean.Experimental.FittingMinorCover
+
+#print axioms PCRLean.Experimental.FittingMinorCover.Cover.determinantSet_finite
+#print axioms PCRLean.Experimental.FittingMinorCover.Cover.exists_det_not_mem_prime
+#print axioms PCRLean.Experimental.FittingMinorCover.Cover.not_all_det_mem_prime
+#print axioms PCRLean.Experimental.FittingMinorCover.Cover.exists_det_not_mem_of_ne_top

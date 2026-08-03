@@ -1,0 +1,9 @@
+import PCRLean.Experimental.SpanningMinorRegularCentre
+
+#print axioms PCRLean.Experimental.SpanningMinorRegularCentre.CertificateData.ker_fullEval_eq_selectedEval
+#print axioms PCRLean.Experimental.SpanningMinorRegularCentre.CertificateData.centreIdeal_eq_selectedCentre
+#print axioms PCRLean.Experimental.SpanningMinorRegularCentre.CertificateData.quotientEquiv
+#print axioms PCRLean.Experimental.SpanningMinorRegularCentre.CertificateData.centreIdeal_ne_top
+#print axioms PCRLean.Experimental.SpanningMinorRegularCentre.CertificateData.quotient_isRegularRing
+#print axioms PCRLean.Experimental.SpanningMinorRegularCentre.CertificateData.regularCertificate
+#print axioms PCRLean.Experimental.SpanningMinorRegularCentre.CertificateData.finiteFreeRegularCertificate

@@ -1,0 +1,4 @@
+import PCRLean.Experimental.SurjectiveFreeRegularCentre
+
+#print axioms PCRLean.Experimental.SurjectiveFreeRegularCentre.quotient_isRegularRing
+#print axioms PCRLean.Experimental.SurjectiveFreeRegularCentre.certificate

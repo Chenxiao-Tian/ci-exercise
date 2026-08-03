@@ -1,0 +1,9 @@
+import PCRLean.Experimental.SplitConormalSymmetricQuotient
+
+#print axioms PCRLean.Experimental.SplitConormalSymmetricQuotient.keep_comp_embedK
+#print axioms PCRLean.Experimental.SplitConormalSymmetricQuotient.ι_sub_projection_ι
+#print axioms PCRLean.Experimental.SplitConormalSymmetricQuotient.sub_projection_mem
+#print axioms PCRLean.Experimental.SplitConormalSymmetricQuotient.transverseIdeal_le_ker
+#print axioms PCRLean.Experimental.SplitConormalSymmetricQuotient.ker_keep_eq_transverseIdeal
+#print axioms PCRLean.Experimental.SplitConormalSymmetricQuotient.keep_surjective
+#print axioms PCRLean.Experimental.SplitConormalSymmetricQuotient.quotientEquiv

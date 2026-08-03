@@ -1,0 +1,82 @@
+name: PCR U2 range Fitting and U6 causal clean room
+
+on:
+  push:
+    branches:
+      - pcr-u2-equiv-causal-20260803
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pcr-u2-equiv-causal-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  cleanroom:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          set -o pipefail
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf \
+            | sh -s -- -y --default-toolchain leanprover/lean4:v4.30.0
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned mathlib once
+        run: |
+          set -o pipefail
+          lake update
+          lake exe cache get
+      - name: Reject placeholders
+        run: |
+          set -o pipefail
+          files=(
+            PCRLean/BiorthogonalSplitFrame.lean
+            PCRLean/Experimental/FiniteFreeSymmetricAlgebraRegular.lean
+            PCRLean/Experimental/BiorthogonalRegularCentre.lean
+            PCRLean/Experimental/InvertibleMinorRegularCentre.lean
+            PCRLean/Experimental/DeterminantMinorRegularCentre.lean
+            PCRLean/Experimental/SpanningMinorRegularCentre.lean
+            PCRLean/Experimental/IntrinsicKernelIdealEquiv.lean
+            PCRLean/Experimental/IntrinsicKernelIdealComposition.lean
+            PCRLean/Experimental/IntrinsicKernelIdealBiEquiv.lean
+            PCRLean/Experimental/FittingAwayRegularCentre.lean
+            PCRLean/Experimental/FittingMinorCover.lean
+            PCRLean/Experimental/RangeRestrictedRegularCentre.lean
+            PCRLean/Experimental/CausalEventTransport.lean
+            PCRLean/Experimental/CausalBudgetCompiler.lean
+            PCRLean/Experimental/U2EquivCausalIndex.lean
+          )
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)([[:space:]]|$)' "${files[@]}"; then
+            echo 'Forbidden proof placeholder or custom axiom found.' >&2
+            exit 1
+          fi
+      - name: Build range-Fitting-causal index
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.U2EquivCausalIndex 2>&1 \
+            | tee u2-equiv-causal-build.txt
+      - name: Kernel axiom audit
+        run: |
+          set -o pipefail
+          lake env lean PCRLean/Experimental/U2EquivCausalIndex.lean 2>&1 \
+            | tee u2-equiv-causal-axioms.txt
+          if grep -E 'sorryAx|PCRLean\..*Axiom|ResolutionAxiom|PacketizationAxiom' \
+              u2-equiv-causal-axioms.txt; then
+            echo 'Unpermitted axiom detected.' >&2
+            exit 1
+          fi
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pcr-u2-equiv-causal-${{ github.sha }}
+          path: |
+            u2-equiv-causal-build.txt
+            u2-equiv-causal-axioms.txt
+          if-no-files-found: warn

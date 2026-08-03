@@ -1,0 +1,6 @@
+import PCRLean.Experimental.IntrinsicCentreTransport
+
+#print axioms PCRLean.Experimental.IntrinsicCentreTransport.symmetricMap_ι
+#print axioms PCRLean.Experimental.IntrinsicCentreTransport.symmetricEquiv_ι
+#print axioms PCRLean.Experimental.IntrinsicCentreTransport.map_kernelIdeal_eq
+#print axioms PCRLean.Experimental.IntrinsicCentreTransport.map_kernelIdeal_eq_of_sourceGauge

@@ -1,0 +1,9 @@
+import PCRLean.WeightedMarkedEquivalence
+import PCRLean.FiniteWeightedClosureConjugacy
+
+#print axioms PCRLean.WeightedMarkedEquivalence.source_iff_closurePermissible
+#print axioms PCRLean.WeightedMarkedEquivalence.markedPermissible_iff_closurePermissible
+#print axioms PCRLean.WeightedMarkedEquivalence.closurePermissible_iff_bounded
+#print axioms PCRLean.WeightedMarkedEquivalence.permissible_congr_of_level_eq
+#print axioms PCRLean.FiniteWeightedClosureConjugacy.map_wordImageIdeal_eq
+#print axioms PCRLean.FiniteWeightedClosureConjugacy.map_levelIdeal_eq
