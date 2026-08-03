@@ -23,6 +23,7 @@ import PCRLean.Experimental.ReducedNormalConeKernelIndex
 #print axioms PCRLean.Experimental.FaithfullyFlatGraphCentreDescent.quotientMap_injective
 #print axioms PCRLean.Experimental.FaithfullyFlatGraphCentreDescent.quotient_isReduced_of_graphModel
 #print axioms PCRLean.Experimental.FaithfullyFlatGraphCentreDescent.ideal_ne_top_of_graphModel
+#print axioms PCRLean.Experimental.FaithfullyFlatGraphCentreDescent.ideal_fg_of_graphModel
 #print axioms PCRLean.Experimental.ReducedNormalConePowerModel.PowerModel.initialPowerNonvanishing
 #print axioms PCRLean.Experimental.ReducedNormalConePowerModel.reflectsFrobeniusPowers_of_models
 #print axioms PCRLean.Experimental.ReducedNormalConeKernelIndex.loaded
