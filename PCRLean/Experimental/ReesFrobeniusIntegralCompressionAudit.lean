@@ -1,0 +1,7 @@
+import PCRLean.Experimental.ReesFrobeniusIntegralCompression
+
+#print axioms PCRLean.Experimental.ReesFrobeniusIntegralCompression.weightedTerm_pow
+#print axioms PCRLean.Experimental.ReesFrobeniusIntegralCompression.isIntegral_of_pow_mem
+#print axioms PCRLean.Experimental.ReesFrobeniusIntegralCompression.weightedRoot_isIntegral
+#print axioms PCRLean.Experimental.ReesFrobeniusIntegralCompression.weightedRoot_isIntegral_over_adjoin
+#print axioms PCRLean.Experimental.ReesFrobeniusIntegralCompression.weightedIteratedRoot_isIntegral
