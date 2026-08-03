@@ -1,0 +1,8 @@
+import PCRLean.Experimental.NoetherianAffineOrbitIdeal
+
+#print axioms PCRLean.Experimental.NoetherianAffineOrbitIdeal.ideal_eq
+#print axioms PCRLean.Experimental.NoetherianAffineOrbitIdeal.ideal_eq_canonical
+#print axioms PCRLean.Experimental.NoetherianAffineOrbitIdeal.indexedIdeal_eq_ideal
+#print axioms PCRLean.Experimental.NoetherianAffineOrbitIdeal.regularCentreCertificate
+#print axioms PCRLean.Experimental.NoetherianAffineOrbitIdeal.regularCentreCertificate_ideal_eq
+#print axioms PCRLean.Experimental.NoetherianAffineOrbitIdeal.regularCentreCertificate_ideal_eq_canonical
