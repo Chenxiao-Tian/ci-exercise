@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0",
+  "record_id": "MLEL-JUMP-RNC-2026-08-03",
+  "record_date": "2026-08-03",
+  "baseline_line": "PCR-MLE-LEAN",
+  "protocol": "PCR-JUMP-LEAN 2.0",
+  "record_class": "RESEARCH_INFORMATION_BASELINE",
+  "evidence_level": "EXACTLY_DEFINED_PROOF_TERM_CANDIDATE_CI_PENDING",
+  "certified_graph_changed": false,
+  "general_positive_characteristic_resolution_proved": false,
+  "formal_global_status": "OPEN_GAP",
+  "source": {
+    "repository": "Chenxiao-Tian/ci-exercise",
+    "branches": [
+      "pcr-jump-integral-heredity-20260803",
+      "pcr-jump-reduced-normal-cone-20260803"
+    ],
+    "pull_requests": [19, 21],
+    "head_policy": "dynamic experimental head; exact theorem certification requires a commit-matched clean-room audit"
+  },
+  "permanent_boundaries": [
+    "Bare integral equivalence does not preserve marked singular data without mark scaling.",
+    "Nonreduced coefficient rings or normal cones can destroy prime-power root reflection.",
+    "Regular quotient, regular immersion, marked permissibility, nonidentity, passive safety, and boundary SNC are independent gates.",
+    "A principal Cartier root centre may be permissible while its blowup is an identity."
+  ],
+  "new_objects": [
+    "Frobenius-normal centre filtration",
+    "normal-cone initial-power nonvanishing",
+    "reduced normal-cone power model",
+    "polynomial graph centre",
+    "graded marked equivalence with ceiling compression and bounded exceptional debt"
+  ],
+  "research_results_recorded": [
+    "Prime-power support scaling over reduced characteristic-p coefficient rings.",
+    "Coordinate-centre Frobenius reflection is equivalent to reducedness of the passive coefficient ring in the local model.",
+    "Polynomial graph-centre Frobenius reflection is equivalent to reducedness of the coefficient ring in the local model.",
+    "Graph evaluation has kernel exactly the graph ideal and quotient canonically equal to the base ring.",
+    "Coordinate and polynomial graph conormal modules have explicit finite free-basis candidates.",
+    "Properness, finite generation, reduced quotient, and Frobenius-normality have faithfully flat descent candidates.",
+    "Finiteness of a faithfully flat scalar extension of I/I^2 descends to finiteness of I/I^2.",
+    "A reduced normal-cone power model compiles initial-layer nonvanishing into full Frobenius reflection."
+  ],
+  "current_highest_posterior_bridge": "finite etale/fpqc polynomial-graph atlas for every actual regular centre, with effective ideal and conormal descent and compatibility with owners, boundary, and controlled transforms",
+  "open_gaps": [
+    "exact-head clean-room builds and axiom audits",
+    "scheme-level finite etale/fpqc graph atlas existence",
+    "effective overlap descent of actual ideals and conormal frames",
+    "finite projective or locally free conormal descent",
+    "nonprincipal differential Rees and Hasse-saturation heredity",
+    "joint active/passive legality",
+    "SNC boundary and bounded exceptional-debt heredity",
+    "all-chart no-reset reentry",
+    "geometric birth-source realization",
+    "immediate-defect escape",
+    "finite global serialization",
+    "principalization and resolution compilers"
+  ],
+  "truth_flags": {
+    "reduced_normal_cone_architecture_recorded": true,
+    "graph_centre_local_certificate_recorded": true,
+    "faithfully_flat_descent_frontier_recorded": true,
+    "conormal_finiteness_descent_candidate_recorded": true,
+    "new_experimental_theorems_baseline_certified": false,
+    "general_geometric_realization": false,
+    "final_main_theorem_kernel_verified": false
+  }
+}
