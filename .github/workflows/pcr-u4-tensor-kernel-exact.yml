@@ -1,0 +1,68 @@
+name: PCR U4 exact tensor kernel
+
+on:
+  push:
+    branches:
+      - pcr-u4-tensor-kernel-exact-20260803
+  pull_request:
+    branches:
+      - pcr-u4-tensor-heredity-20260803
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pcr-u4-tensor-kernel-exact-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  tensor-kernel-exact-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          set -o pipefail
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf \
+            | sh -s -- -y --default-toolchain leanprover/lean4:v4.30.0
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned mathlib
+        run: |
+          set -o pipefail
+          lake update
+          lake exe cache get
+      - name: Reject placeholders
+        run: |
+          set -o pipefail
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)([[:space:]]|$)' \
+              PCRLean/Experimental/SplitSurjectionTensorHeredity.lean \
+              PCRLean/Experimental/SplitSurjectionTensorKernelExact.lean \
+              PCRLean/Experimental/SplitSurjectionTensorKernelExactAudit.lean; then
+            echo 'Forbidden proof placeholder or custom axiom found.' >&2
+            exit 1
+          fi
+      - name: Build exact tensor-kernel theorem
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.SplitSurjectionTensorKernelExact 2>&1 \
+            | tee tensor-kernel-exact-build.txt
+      - name: Kernel axiom audit
+        run: |
+          set -o pipefail
+          lake env lean PCRLean/Experimental/SplitSurjectionTensorKernelExactAudit.lean 2>&1 \
+            | tee tensor-kernel-exact-axioms.txt
+          if grep -E 'sorryAx|PCRLean\..*Axiom|ResolutionAxiom|PacketizationAxiom' \
+              tensor-kernel-exact-axioms.txt; then
+            echo 'Unpermitted axiom detected.' >&2
+            exit 1
+          fi
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pcr-u4-tensor-kernel-exact-${{ github.sha }}
+          path: |
+            tensor-kernel-exact-build.txt
+            tensor-kernel-exact-axioms.txt
+          if-no-files-found: warn
