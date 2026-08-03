@@ -1,0 +1,37 @@
+{
+  "registry_node": "PCR-ARCH-001 / FPR-TOP-225",
+  "date": "2026-08-03",
+  "epistemic_class": "MLE_ESTIMATE / PROOF_ENGINEERING_DICTIONARY",
+  "publication_plan": {
+    "paper_count": 5,
+    "equivalent_pages": 520,
+    "allocation": {
+      "I": 88,
+      "II": 104,
+      "III": 110,
+      "IV": 86,
+      "V": 132
+    }
+  },
+  "dictionary": {
+    "nodes": 225,
+    "edges": 602,
+    "acyclic": true,
+    "pdf_pages": 80
+  },
+  "lean_specification": {
+    "module": "PCRLean.Blueprint.FinalResolution",
+    "purpose": "verify explicit five-paper interfaces imply a finite legal ordinary-blowup execution and final resolution outputs",
+    "proves_interface_inhabitation": false,
+    "custom_axioms_introduced": false,
+    "cleanroom_status": "PENDING_OR_UNCONFIRMED_UNTIL_WORKFLOW_COMPLETES"
+  },
+  "official_state": {
+    "accepted_node": "MLEL-M004 / HMC-SCCD",
+    "certified_graph_changed": false,
+    "experimental_results_promoted": false,
+    "final_main_theorem_kernel_verified": false,
+    "general_positive_characteristic_resolution": false,
+    "formal_global_status": "OPEN_GAP"
+  }
+}
