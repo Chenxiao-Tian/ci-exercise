@@ -1,0 +1,6 @@
+import PCRLean.Experimental.ReducedNormalConePowerModel
+
+#print axioms PCRLean.Experimental.ReducedNormalConePowerModel.PowerModel.encode_ne_zero
+#print axioms PCRLean.Experimental.ReducedNormalConePowerModel.PowerModel.initialPowerNonvanishing
+#print axioms PCRLean.Experimental.ReducedNormalConePowerModel.PowerModel.gradedPowerInjective
+#print axioms PCRLean.Experimental.ReducedNormalConePowerModel.reflectsFrobeniusPowers_of_models

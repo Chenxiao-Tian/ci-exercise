@@ -1,0 +1,109 @@
+name: PCR Jump reduced normal-cone verification
+
+on:
+  push:
+    branches:
+      - pcr-jump-reduced-normal-cone-20260803
+  pull_request:
+    branches:
+      - pcr-jump-integral-heredity-20260803
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pcr-jump-reduced-normal-cone-${{ github.sha }}
+  cancel-in-progress: false
+
+jobs:
+  reduced-normal-cone-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          set -o pipefail
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf \
+            | sh -s -- -y --default-toolchain leanprover/lean4:v4.30.0
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned mathlib
+        run: |
+          set -o pipefail
+          lake update
+          lake exe cache get
+      - name: Reject placeholders
+        run: |
+          set -o pipefail
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)([[:space:]]|$)' \
+              PCRLean/Experimental/FrobeniusSupportReduced.lean \
+              PCRLean/Experimental/FrobeniusSupportReducedAudit.lean \
+              PCRLean/Experimental/ReducedCoordinateCentreExactFrobeniusHeredity.lean \
+              PCRLean/Experimental/ReducedCoordinateCentreExactFrobeniusHeredityAudit.lean \
+              PCRLean/Experimental/ReducedPolynomialGraphCentreHeredity.lean \
+              PCRLean/Experimental/ReducedPolynomialGraphCentreHeredityAudit.lean \
+              PCRLean/Experimental/ReducedGraphCentreQuotient.lean \
+              PCRLean/Experimental/ReducedGraphCentreQuotientAudit.lean \
+              PCRLean/Experimental/CoordinateCentreCotangentBasis.lean \
+              PCRLean/Experimental/CoordinateCentreCotangentBasisAudit.lean \
+              PCRLean/Experimental/PolynomialGraphCentreCotangentBasis.lean \
+              PCRLean/Experimental/PolynomialGraphCentreCotangentBasisAudit.lean \
+              PCRLean/Experimental/ReducedRegularGraphCentreCertificate.lean \
+              PCRLean/Experimental/ReducedRegularGraphCentreCertificateAudit.lean \
+              PCRLean/Experimental/ReducedFrobeniusNormalLocalModel.lean \
+              PCRLean/Experimental/ReducedFrobeniusNormalLocalModelAudit.lean \
+              PCRLean/Experimental/FaithfullyFlatGraphCentreDescent.lean \
+              PCRLean/Experimental/FaithfullyFlatGraphCentreDescentAudit.lean \
+              PCRLean/Experimental/ReducedNormalConePowerModel.lean \
+              PCRLean/Experimental/ReducedNormalConePowerModelAudit.lean \
+              PCRLean/Experimental/ReducedNormalConeKernelIndex.lean \
+              PCRLean/Experimental/ReducedNormalConeKernelIndexAudit.lean; then
+            echo 'Forbidden proof placeholder or custom axiom found.' >&2
+            exit 1
+          fi
+      - name: Build reduced normal-cone index
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.ReducedNormalConeKernelIndex 2>&1 \
+            | tee reduced-normal-cone-build.txt
+      - name: Kernel axiom audit
+        run: |
+          set -o pipefail
+          lake env lean PCRLean/Experimental/FrobeniusSupportReducedAudit.lean 2>&1 \
+            | tee frobenius-support-reduced-axioms.txt
+          lake env lean PCRLean/Experimental/ReducedCoordinateCentreExactFrobeniusHeredityAudit.lean 2>&1 \
+            | tee reduced-coordinate-centre-axioms.txt
+          lake env lean PCRLean/Experimental/ReducedPolynomialGraphCentreHeredityAudit.lean 2>&1 \
+            | tee reduced-graph-centre-axioms.txt
+          lake env lean PCRLean/Experimental/ReducedGraphCentreQuotientAudit.lean 2>&1 \
+            | tee reduced-graph-quotient-axioms.txt
+          lake env lean PCRLean/Experimental/CoordinateCentreCotangentBasisAudit.lean 2>&1 \
+            | tee coordinate-cotangent-axioms.txt
+          lake env lean PCRLean/Experimental/PolynomialGraphCentreCotangentBasisAudit.lean 2>&1 \
+            | tee graph-cotangent-axioms.txt
+          lake env lean PCRLean/Experimental/ReducedRegularGraphCentreCertificateAudit.lean 2>&1 \
+            | tee graph-centre-certificate-axioms.txt
+          lake env lean PCRLean/Experimental/ReducedFrobeniusNormalLocalModelAudit.lean 2>&1 \
+            | tee reduced-local-model-axioms.txt
+          lake env lean PCRLean/Experimental/FaithfullyFlatGraphCentreDescentAudit.lean 2>&1 \
+            | tee faithfully-flat-graph-descent-axioms.txt
+          lake env lean PCRLean/Experimental/ReducedNormalConePowerModelAudit.lean 2>&1 \
+            | tee reduced-power-model-axioms.txt
+          lake env lean PCRLean/Experimental/ReducedNormalConeKernelIndexAudit.lean 2>&1 \
+            | tee reduced-normal-cone-index-axioms.txt
+          cat *-axioms.txt > combined-axioms.txt
+          if grep -E 'sorryAx|PCRLean\..*Axiom|ResolutionAxiom|PacketizationAxiom' \
+              combined-axioms.txt; then
+            echo 'Unpermitted axiom detected.' >&2
+            exit 1
+          fi
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pcr-jump-reduced-normal-cone-${{ github.sha }}
+          path: |
+            reduced-normal-cone-build.txt
+            *-axioms.txt
+            combined-axioms.txt
+          if-no-files-found: warn

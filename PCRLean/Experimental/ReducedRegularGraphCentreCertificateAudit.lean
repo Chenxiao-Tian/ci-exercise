@@ -1,0 +1,4 @@
+import PCRLean.Experimental.ReducedRegularGraphCentreCertificate
+
+#print axioms PCRLean.Experimental.ReducedRegularGraphCentreCertificate.certificate
+#print axioms PCRLean.Experimental.ReducedRegularGraphCentreCertificate.power_mem_scaled_iff

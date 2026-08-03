@@ -1,0 +1,7 @@
+import PCRLean.Experimental.CoordinateCentreCotangentBasis
+
+#print axioms PCRLean.Experimental.CoordinateCentreCotangentBasis.linearCoefficients_mul_zero
+#print axioms PCRLean.Experimental.CoordinateCentreCotangentBasis.toRows_surjective
+#print axioms PCRLean.Experimental.CoordinateCentreCotangentBasis.mem_square_of_linearCoefficients_eq_zero
+#print axioms PCRLean.Experimental.CoordinateCentreCotangentBasis.toRows_injective
+#print axioms PCRLean.Experimental.CoordinateCentreCotangentBasis.cotangentEquivRows

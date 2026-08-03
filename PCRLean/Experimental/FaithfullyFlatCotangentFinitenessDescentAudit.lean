@@ -1,0 +1,4 @@
+import PCRLean.Experimental.FaithfullyFlatCotangentFinitenessDescent
+
+#print axioms PCRLean.Experimental.FaithfullyFlatCotangentFinitenessDescent.cotangent_finite_of_tensorProduct
+#print axioms PCRLean.Experimental.FaithfullyFlatCotangentFinitenessDescent.cotangent_finite_of_baseChange_equiv
