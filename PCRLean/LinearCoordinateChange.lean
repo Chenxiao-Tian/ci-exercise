@@ -7,10 +7,10 @@ import PCRLean.LinearPacketIdeal
 
 A full family of linear functionals together with a biorthogonal reconstruction
 frame defines a linear automorphism of affine space and hence an algebra
-automorphism of its polynomial ring.  Under this automorphism the packet
+automorphism of its polynomial ring. Under this automorphism the packet
 linear forms are ordinary coordinate variables.
 
-This is the algebraic regularity bridge for full-rank linear packets.  A
+This is the algebraic regularity bridge for full-rank linear packets. A
 constant-rank packet is reduced to this situation after adjoining a basis of
 its persistent kernel.
 -/
@@ -26,14 +26,15 @@ variable {K : Type u} [Field K]
 variable {σ : Type v} [Fintype σ] [DecidableEq σ]
 
 abbrev Direction := σ → K
-abbrev Dual := Module.Dual K Direction
+abbrev Dual := (σ → K) →ₗ[K] K
 
 /-- A full dual frame with explicit reconstruction of every direction vector. -/
 structure FullFrame where
   functional : σ → Dual (K := K) (σ := σ)
   vector : σ → Direction (K := K) (σ := σ)
   biorthogonal : ∀ i j, functional i (vector j) = if i = j then 1 else 0
-  reconstruct : ∀ x i, x i = ∑ j, functional j x * vector j i
+  reconstruct : ∀ (x : Direction (K := K) (σ := σ)) (i : σ),
+    x i = ∑ j, functional j x * vector j i
 
 namespace FullFrame
 
@@ -79,14 +80,12 @@ theorem inverse_forwardVariable (i : σ) :
       LinearPacketIdeal.linearPolynomial (fun j => F.vector j x))
     (fun n a => by simp)
     (fun p q hp hq => by simp [hp, hq])
-  -- The preceding induction target is already linear; normalize directly.
   simp [LinearPacketIdeal.linearPolynomial,
     FunctionalPacketIdeal.basisVector]
   have hrow : ∀ j, ∑ x,
       F.functional i (FunctionalPacketIdeal.basisVector (K := K) x) *
         F.vector j x = if j = i then 1 else 0 := by
     intro j
-    -- Apply the reconstruction identity to the standard basis vector.
     have h := F.reconstruct
       (FunctionalPacketIdeal.basisVector (K := K) i) j
     simpa [FunctionalPacketIdeal.basisVector, mul_comm] using h
@@ -115,34 +114,27 @@ theorem forward_inverseVariable (i : σ) :
   simp
 
 /-- Inverse after forward is the identity algebra homomorphism. -/
-theorem inverse_comp_forward : F.inverse.comp F.forward = AlgHom.id K _ := by
+theorem inverse_comp_forward :
+    F.inverse.comp F.forward = AlgHom.id K (MvPolynomial σ K) := by
   ext i
   simp [F.inverse_forwardVariable]
 
 /-- Forward after inverse is the identity algebra homomorphism. -/
-theorem forward_comp_inverse : F.forward.comp F.inverse = AlgHom.id K _ := by
+theorem forward_comp_inverse :
+    F.forward.comp F.inverse = AlgHom.id K (MvPolynomial σ K) := by
   ext i
   simp [F.forward_inverseVariable]
 
 /-- The resulting polynomial algebra equivalence. -/
-def polynomialEquiv : MvPolynomial σ K ≃ₐ[K] MvPolynomial σ K where
-  toAlgHom := F.forward
-  invFun := F.inverse
-  left_inv := by
-    intro p
-    have h := congrArg (fun H : MvPolynomial σ K →ₐ[K] MvPolynomial σ K => H p)
-      F.inverse_comp_forward
-    simpa using h
-  right_inv := by
-    intro p
-    have h := congrArg (fun H : MvPolynomial σ K →ₐ[K] MvPolynomial σ K => H p)
-      F.forward_comp_inverse
-    simpa using h
+noncomputable def polynomialEquiv :
+    MvPolynomial σ K ≃ₐ[K] MvPolynomial σ K :=
+  AlgEquiv.ofAlgHom F.forward F.inverse
+    F.forward_comp_inverse F.inverse_comp_forward
 
 /-- The automorphism sends ordinary coordinates to the packet forms. -/
 @[simp] theorem polynomialEquiv_X (i : σ) :
     F.polynomialEquiv (MvPolynomial.X i) = F.forwardVariable i := by
-  rfl
+  simp [polynomialEquiv]
 
 end FullFrame
 
