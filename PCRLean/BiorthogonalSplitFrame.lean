@@ -5,13 +5,14 @@ import PCRLean.SplitConormalFrame
 # Biorthogonal split conormal frames
 
 A finite conormal packet is split as soon as one can exhibit transverse vectors
-biorthogonal to the packet.  The explicit section sends a coefficient vector to
-the corresponding linear combination of transverse vectors.  Biorthogonality
+biorthogonal to the packet. The explicit section sends a coefficient vector to
+the corresponding linear combination of transverse vectors. Biorthogonality
 makes this section a right inverse of evaluation, hence the persistent kernel
 is a direct summand.
 
-In geometry, an invertible Jacobian minor supplies the biorthogonal transverse
-vectors locally.  The Fitting ideal of those minors records exactly where this
+Every proof here is valid over an arbitrary commutative ring. In geometry, an
+invertible Jacobian minor supplies the biorthogonal transverse vectors after
+localization; the Fitting ideal of those minors records exactly where the
 certificate fails.
 -/
 
@@ -22,7 +23,7 @@ noncomputable section
 
 universe u v w
 
-variable {K : Type u} [Field K]
+variable {K : Type u} [CommRing K]
 variable {V : Type v} [AddCommGroup V] [Module K V]
 variable {ι : Type w} [Fintype ι] [DecidableEq ι]
 
