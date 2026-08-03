@@ -37,6 +37,10 @@ import PCRLean.Experimental.PolynomialGraphJointLegalityCertificate
 import PCRLean.Experimental.CausalEventLedger
 import PCRLean.Experimental.PolynomialGraphDebtCausalReentry
 import PCRLean.Experimental.PolynomialGraphLocalResolutionMacro
+import PCRLean.Experimental.FittingMinorAtlas
+import PCRLean.Experimental.FittingGraphCentreAtlas
+import PCRLean.Experimental.PolynomialGraphBaseChange
+import PCRLean.Experimental.FittingGraphCentreOverlap
 
 /-!
 # Integrated graded Frobenius heredity index
@@ -58,13 +62,18 @@ Lean build through the complete current experimental graph-chamber chain:
 * actual proper finite-type regular polynomial graph centres;
 * induced-flat passive Tor safety and flat centre restriction;
 * exact regular intersection with every finite coefficient-boundary stratum;
-* exact transport of ordered boundary regular sequences, providing the local
-  non-zero-divisor/codimension part of the SNC gate;
-* source-conservative classification of graph debt as cleanup, not birth; and
+* exact transport of ordered boundary regular sequences;
+* source-conservative classification of graph debt as cleanup, not birth;
 * one complete local resolution macro exposing terminality or strict causal
-  rank decrease on every standard chart.
+  rank decrease on every standard chart;
+* a finite determinant basic-open cover of the base;
+* one actual graph-centre certificate on every determinant chart; and
+* exact equality of the extended local centre ideals on every double
+  localization overlap, conditional only on pointwise graph compatibility.
 
-The index is experimental and does not assert general resolution.
+The remaining affine descent step is Čech effectivity for compatible graph
+functions on a finite principal-open cover. The index is experimental and does
+not assert general resolution.
 -/
 
 namespace PCRLean
