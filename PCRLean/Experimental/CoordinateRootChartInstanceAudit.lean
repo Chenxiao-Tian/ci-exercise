@@ -1,0 +1,5 @@
+import PCRLean.Experimental.CoordinateRootChartInstance
+
+#print axioms PCRLean.Experimental.CoordinateRootChartInstance.transformedRootIdeal_eq_coordinate
+#print axioms PCRLean.Experimental.CoordinateRootChartInstance.transformedRootIdeal_eq_top
+#print axioms PCRLean.Experimental.CoordinateRootChartInstance.transformedRootIdeal_eq
