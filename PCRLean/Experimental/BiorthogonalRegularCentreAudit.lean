@@ -1,0 +1,10 @@
+import PCRLean.Experimental.BiorthogonalRegularCentre
+
+#print axioms PCRLean.Experimental.BiorthogonalRegularCentre.eval_surjective
+#print axioms PCRLean.Experimental.BiorthogonalRegularCentre.mem_eval_ker_iff
+#print axioms PCRLean.Experimental.BiorthogonalRegularCentre.centreIdeal_eq_span_commonKernel
+#print axioms PCRLean.Experimental.BiorthogonalRegularCentre.quotientEquiv
+#print axioms PCRLean.Experimental.BiorthogonalRegularCentre.centreIdeal_ne_top
+#print axioms PCRLean.Experimental.BiorthogonalRegularCentre.centreIdeal_fg
+#print axioms PCRLean.Experimental.BiorthogonalRegularCentre.quotient_isRegularRing
+#print axioms PCRLean.Experimental.BiorthogonalRegularCentre.certificate
