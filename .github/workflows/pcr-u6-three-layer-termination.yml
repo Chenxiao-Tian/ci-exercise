@@ -1,0 +1,67 @@
+name: PCR U6 three-layer termination
+
+on:
+  push:
+    branches:
+      - pcr-u6-three-layer-termination-20260803
+  pull_request:
+    branches:
+      - pcr-jump-lean-20260802-u2-root-boundary
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pcr-u6-three-layer-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  three-layer-termination-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          set -o pipefail
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf \
+            | sh -s -- -y --default-toolchain leanprover/lean4:v4.30.0
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned mathlib
+        run: |
+          set -o pipefail
+          lake update
+          lake exe cache get
+      - name: Reject placeholders
+        run: |
+          set -o pipefail
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)([[:space:]]|$)' \
+              PCRLean/Experimental/ThreeLayerTerminationCompiler.lean \
+              PCRLean/Experimental/ThreeLayerTerminationCompilerAudit.lean; then
+            echo 'Forbidden proof placeholder or custom axiom found.' >&2
+            exit 1
+          fi
+      - name: Build three-layer compiler
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.ThreeLayerTerminationCompiler 2>&1 \
+            | tee three-layer-build.txt
+      - name: Kernel axiom audit
+        run: |
+          set -o pipefail
+          lake env lean PCRLean/Experimental/ThreeLayerTerminationCompilerAudit.lean 2>&1 \
+            | tee three-layer-axioms.txt
+          if grep -E 'sorryAx|PCRLean\..*Axiom|ResolutionAxiom|PacketizationAxiom' \
+              three-layer-axioms.txt; then
+            echo 'Unpermitted axiom detected.' >&2
+            exit 1
+          fi
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pcr-u6-three-layer-${{ github.sha }}
+          path: |
+            three-layer-build.txt
+            three-layer-axioms.txt
+          if-no-files-found: warn
