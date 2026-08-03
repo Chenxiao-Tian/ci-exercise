@@ -1,0 +1,101 @@
+name: PCR U2 split-surjection arbitrary base change
+
+on:
+  push:
+    branches:
+      - pcr-u2-basechange-20260803
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pcr-u2-basechange-${{ github.sha }}
+  cancel-in-progress: false
+
+jobs:
+  u2-basechange:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          set -o pipefail
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf \
+            | sh -s -- -y --default-toolchain leanprover/lean4:v4.30.0
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned mathlib
+        run: |
+          set -o pipefail
+          lake update
+          lake exe cache get
+      - id: placeholders
+        name: Reject placeholders
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)([[:space:]]|$)' \
+              PCRLean/Experimental/SplitSurjectionBaseChange.lean \
+              PCRLean/Experimental/SplitSurjectionBaseChangeAudit.lean \
+              | tee basechange-placeholders.txt; then
+            exit 1
+          fi
+      - id: build
+        name: Build arbitrary base-change theorem
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.SplitSurjectionBaseChange 2>&1 \
+            | tee basechange-build.txt
+      - id: audit
+        name: Axiom audit
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          lake env lean PCRLean/Experimental/SplitSurjectionBaseChangeAudit.lean 2>&1 \
+            | tee basechange-axioms.txt
+          if grep -E 'sorryAx|PCRLean\..*Axiom|ResolutionAxiom|PacketizationAxiom' \
+              basechange-axioms.txt; then
+            exit 1
+          fi
+      - name: Write result certificate
+        if: always()
+        env:
+          PLACEHOLDERS: ${{ steps.placeholders.outcome }}
+          BUILD: ${{ steps.build.outcome }}
+          AUDIT: ${{ steps.audit.outcome }}
+        run: |
+          result=PCRLean/Experimental/U2_BASECHANGE_CI_RESULT.md
+          {
+            echo '# U2 Arbitrary Base Change CI Result'
+            echo
+            echo "- source commit: \`${GITHUB_SHA}\`"
+            echo "- workflow run: \`${GITHUB_RUN_ID}\`"
+            echo "- placeholder rejection: ${PLACEHOLDERS}"
+            echo "- build: ${BUILD}"
+            echo "- axiom audit: ${AUDIT}"
+            for f in basechange-placeholders.txt basechange-build.txt basechange-axioms.txt; do
+              if [ -f "$f" ]; then
+                echo
+                echo "## ${f}"
+                echo '```text'
+                tail -n 140 "$f"
+                echo '```'
+              fi
+            done
+          } > "$result"
+          git config user.name 'PCR Lean CI'
+          git config user.email 'actions@users.noreply.github.com'
+          git add "$result"
+          git commit -m 'PCR U2 CI: record arbitrary base-change result' || true
+          git push origin HEAD:pcr-u2-basechange-20260803
+      - name: Enforce success
+        if: always()
+        env:
+          PLACEHOLDERS: ${{ steps.placeholders.outcome }}
+          BUILD: ${{ steps.build.outcome }}
+          AUDIT: ${{ steps.audit.outcome }}
+        run: |
+          test "$PLACEHOLDERS" = success
+          test "$BUILD" = success
+          test "$AUDIT" = success
