@@ -32,6 +32,7 @@ import PCRLean.Experimental.PolynomialGraphArbitraryMarkCertificate
 import PCRLean.Experimental.PolynomialGraphPassiveSafety
 import PCRLean.Experimental.PolynomialGraphBoundaryIntersection
 import PCRLean.Experimental.PolynomialGraphBoundaryStrata
+import PCRLean.Experimental.PolynomialGraphBoundaryRegularSequence
 import PCRLean.Experimental.PolynomialGraphJointLegalityCertificate
 import PCRLean.Experimental.CausalEventLedger
 import PCRLean.Experimental.PolynomialGraphDebtCausalReentry
@@ -57,6 +58,8 @@ Lean build through the complete current experimental graph-chamber chain:
 * actual proper finite-type regular polynomial graph centres;
 * induced-flat passive Tor safety and flat centre restriction;
 * exact regular intersection with every finite coefficient-boundary stratum;
+* exact transport of ordered boundary regular sequences, providing the local
+  non-zero-divisor/codimension part of the SNC gate;
 * source-conservative classification of graph debt as cleanup, not birth; and
 * one complete local resolution macro exposing terminality or strict causal
   rank decrease on every standard chart.
