@@ -1,173 +1,147 @@
 # PCRLean exact formal frontier
 
-This branch contains genuine Lean kernel checks. It does not contain a proof of arbitrary-dimensional resolution in positive characteristic.
+This branch contains genuine Lean kernel checks and a separately labelled archive of experimental research. It does not contain a proof of arbitrary-dimensional resolution in positive characteristic.
 
-## Verified Hasse--Morita core layer
+## Certified Hasse--Morita core layer
 
-On a declared realized finite product Frobenius frame, the following implications are kernel-checked:
+On a declared realized finite product Frobenius frame, the kernel-checked layer proves:
 
-1. the recursive finite packet splits into multiplication and genuine Hasse indices;
-2. separate passive stability under those two index classes implies stability under the full packet;
-3. finite Hasse matrix-unit generation forces a passive block submodule to descend from one common row submodule;
-4. active Hasse-only saturation and passive Morita descent can therefore be performed simultaneously;
-5. over a Noetherian base, a proper active saturation yields a proper finitely generated descended core together with the passive row core.
+1. multiplication/Hasse packet classification and matrix-unit generation;
+2. active Hasse-only saturation and exact core descent;
+3. passive block Morita descent to one row core;
+4. simultaneous active and passive core construction;
+5. proper finitely generated active core over a Noetherian base, conditional on proper saturation.
 
-The principal declarations are:
+Principal declarations:
 
-- `PCRLean.HMCSCCD.fullPacket_stable_of_split_stable`;
-- `PCRLean.HMCSCCD.passive_eq_fromRowModule_of_split_stable`;
-- `PCRLean.HMCSCCD.exists_active_passive_core`;
-- `PCRLean.HMCSCCD.exists_proper_fg_active_passive_core`.
+```text
+PCRLean.HMCSCCD.fullPacket_stable_of_split_stable
+PCRLean.HMCSCCD.passive_eq_fromRowModule_of_split_stable
+PCRLean.HMCSCCD.exists_active_passive_core
+PCRLean.HMCSCCD.exists_proper_fg_active_passive_core
+```
 
-These statements do not construct a realized Frobenius frame for an arbitrary singularity, prove that the descended core is regular, or establish arbitrary passive Tor safety.
+These theorems do not construct a universal Frobenius frame or a universal regular centre.
 
-## Verified source-causal backend
+## Certified source-causal backend
 
-A fixed-ancestor Noetherian trace module can be coupled lexicographically to the certified finite-source generational rank. An accepted transition is either a strict new-trace event or a source-conservative `GenStep`. The resulting relation is well founded.
+A fixed-ancestor Noetherian trace module coupled to the finite-source generational rank gives a well-founded relation. For a supplied geometric program carrying all centre, owner, passive, boundary, chart, overlap, reentry and rank certificates, the existing compiler proves finite reachability and excludes infinite branches.
 
-The declarations are:
+Principal declarations:
 
-- `PCRLean.HMCSCCD.causalRankLt_wellFounded`;
-- `PCRLean.HMCSCCD.causalRankStep_wellFounded`;
-- `PCRLean.HMCSCCD.CausalProgram.terminal_reachable`;
-- `PCRLean.HMCSCCD.CausalProgram.no_infinite_execution`.
+```text
+PCRLean.HMCSCCD.causalRankLt_wellFounded
+PCRLean.HMCSCCD.causalRankStep_wellFounded
+PCRLean.HMCSCCD.CausalProgram.terminal_reachable
+PCRLean.HMCSCCD.CausalProgram.no_infinite_execution
+PCRLean.HMCSCCD.GatedSystem.every_input_resolves
+PCRLean.HMCSCCD.GatedSystem.every_step_all_gates
+PCRLean.HMCSCCD.GatedSystem.no_infinite_branch
+```
 
-For a supplied geometric system whose steps carry actual finite-type ideal, regularity, owner permissibility, passive safety, SNC boundary, all-chart, overlap, hereditary-reentry, nonidentity and rank certificates, Lean also verifies finite resolution and excludes an infinite branch:
+This is a conditional backend, not universal geometry.
 
-- `PCRLean.HMCSCCD.GatedSystem.every_input_resolves`;
-- `PCRLean.HMCSCCD.GatedSystem.every_step_all_gates`;
-- `PCRLean.HMCSCCD.GatedSystem.no_infinite_branch`.
+## Archived experimental graph-macro frontier
 
-This is a conditional compiler. It does not prove universal existence of the gated geometric system or universal source-witness realization.
+The archival record
 
-## Earlier verified backend
+```text
+PCRLean/ResearchRecords/MLEL_JUMP_GRAPH_MACRO_FRONTIER_2026-08-03.md
+```
 
-The following logical implication is kernel-checked:
+summarizes the current strongest experimental chamber. Its source branch is
 
-1. every nonterminal state has a successor;
-2. every successor is produced by a finite-type actual centre action carrying all declared legality, chart, overlap, reentry and rank certificates;
-3. one fixed well-founded rank strictly decreases on every step;
-4. terminal states are geometrically resolved.
+```text
+pcr-jump-integral-heredity-20260803
+```
 
-Then every input reaches a resolved terminal state after finitely many steps, and no infinite branch exists.
+at dependency-index head
 
-The Lean declarations are:
+```text
+2da9394f1ce1c74e30382595ec8bc9e7b88a7e39.
+```
 
-- `PCRLean.ResolutionCompiler.Program.terminal_reachable`;
-- `PCRLean.ResolutionCompiler.Program.no_infinite_execution`;
-- `PCRLean.ConditionalMaster.System.every_input_resolves`;
-- `PCRLean.ConditionalMaster.System.every_step_all_gates`.
+The local macro assembles:
 
-## Verified local algebra
+```text
+actual polynomial graph centre
+exact quotient and regular centre ring
+Frobenius-normal filtration
+arbitrary-mark active permissibility
+induced-flat passive Tor safety and flat centre restriction
+exact regular intersection with finite coefficient-boundary strata
+all standard chart factorizations
+terminality or pure exceptional debt
+source-preserving cleanup and strict finite-source rank decrease
+```
 
-- odd-cusp active and sibling chart identities;
-- tame ramified quadratic collision identity and debt recurrence;
-- Artin-Schreier collision update and finite parameter measure;
-- principal Frobenius-root active and sibling chart identities;
-- iterated Frobenius additivity and cleaning identity;
-- finite multiplication--Hasse packet generation of matrix units;
-- finite-free ideal descent and Hasse-only core descent;
-- passive block Morita descent under the lifted finite packet;
-- mark-two containment for binary quadratic centre packets;
-- finite-source generation and no-recharge logic;
-- clone, fresh-birth, radical/support and fixed-direction-depth no-go theorems;
-- affine Rees algebra coefficient criterion and finite-type foundation.
+The exact clean-room target is PR #24, run `30837634276`; it was queued when archived. Hence this chamber remains experimental and is not imported by the Certified Graph.
 
-## Exact unresolved Lean goals
+## Mathematical bridge now localized
 
-### U1. Arbitrary-input packetization and gluing
+Over a perfect field, a regular finite-type centre is smooth, and a closed immersion between smooth schemes is étale-locally a coordinate subspace. Consequently, after an actual regular centre has been constructed, existence of local coordinate/graph models is standard geometry. The formal frontier is to implement that scheme-level atlas and descend the exact ideals, charts, passive data, boundary strata and history without reset.
 
-Construct a finite, intrinsic, presentation-independent state from an arbitrary differential Rees algebra or marked ideal, compatible with smooth/etale base change, cleaning and integral-closure equivalence. Prove that local Hasse saturations, active cores and passive Morita cores glue independently of the chosen Frobenius frame.
+## Exact unresolved goals
 
-### U2. Actual-centre effectivity
+### U1. Universal packetization
 
-From an arbitrary proper Frobenius core or singular/nonreduced direction packet, construct a finite-type ideal whose closed subscheme is regular, nonidentity, marked-permissible and SNC-compatible. Remove the split-coordinate and root-equivalence hypotheses of the restricted `MLEL-002 / FCR-GEO` chamber by a Fitting/flattening and descent theorem. Formal or completed centres are insufficient.
+Construct a finite, intrinsic, presentation-independent Frobenius--Hasse state from arbitrary marked/differential Rees data and prove compatibility with smooth/étale base change, cleaning and integral-closure equivalence.
 
-### U3. Joint legality
+### U2. Universal actual-centre synthesis
 
-Prove that the same centre is permissible for all active owners and normal-flat/Tor-safe for every passive owner, or construct a finite certified centre word when no single centre exists. The verified passive Morita row core is an algebraic descent result, not yet universal Tor safety.
+From arbitrary proper core/direction/Fitting data construct an actual finite-type ideal defining a regular, nonwhole, nonidentity centre in the marked singular locus. Cover hybrid and rank-zero nonlinear chambers or produce a finite certified centre word.
 
-### U4. Complete transform and hereditary reentry
+### U3. Scheme-level graph atlas and gluing
 
-Define scheme-level blowup, strict transform and controlled transform; prove every standard chart and overlap; reconstruct active cores, passive row cores and all ledgers after cleaning, saturation, normalization and integral closure without resetting ancestry, source or debt.
+Formalize the étale coordinate/graph model of a regular immersion. Prove exact descent of centre ideals, chart maps, overlaps and local certificates.
 
-### U5. Fully quasilinear kernel
+### U4. Universal joint legality
 
-Resolve the characteristic-two rank-zero polar chamber by an actual regular radicial core or prove a structural reduction to a lower certified class.
+Extend beyond induced-flat passive modules and regular coefficient-boundary strata. Prove arbitrary passive Tor/normal-flat safety, genuine SNC transversality and codimension compatibility for all owners, or produce an owner-safe centre word.
 
-### U6. Geometric birth realization
+### U5. Hereditary transform and no reset
 
-Show every new jump-capable identity is a source merge, a paid birth from one fixed finite ancestor carrier, or accompanies an earlier strict geometric drop. Prove no split and no clone on every chart. The source-causal backend proves termination after this classification is supplied; it does not construct the classification geometrically.
+Define scheme-level blowup, strict/controlled transform and next-packet reconstruction on every chart and overlap. Prove cleaning, saturation, normalization and integral closure do not reset owner, source, debt or history identities.
+
+### U6. Genuine-birth realization
+
+Assign hereditary finite source supports to every genuinely new jump-capable identity. Prove no split and no clone. Local graph exceptional debt is already classified experimentally as cleanup, not birth.
 
 ### U7. Immediate defect
 
-Produce a projection-free finite-type actual centre word changing the intrinsic pro-isomorphism class, rather than using approximation stage as a rank.
+Produce a projection-free finite-type actual carrier and centre word changing the intrinsic defect/pro-isomorphism class.
 
 ### U8. Globalization
 
-Glue local actual ideals, handle symmetry without arbitrary singleton choices, serialize finitely, prove smooth/etale functoriality, and derive principalization, embedded resolution and nonembedded resolution.
+Glue and serialize local centres finitely, preserve smooth/étale functoriality, compile a global well-founded program, and derive principalization, embedded resolution and nonembedded resolution.
 
-## Current MLE architecture after MLEL-M004
-
-The highest-posterior proof chain is now:
-
-```text
-intrinsic finite Frobenius frame
--> multiplication/Hasse matrix-unit generation
--> simultaneous active Hasse core and passive Morita row core
--> actual regular owner-safe centre word
--> all-chart source-conservative reentry
--> Noetherian trace / finite-source causal descent
--> finite global serialization
--> principalization and resolution.
-```
-
-Only the finite-frame algebraic core and conditional causal backend are certified in the general abstract forms stated above. Universal geometric realization remains open.
-
-## PCR-JUMP-LEAN 2.0 bridge decomposition
-
-The baseline method protocol `PCR-JUMP-LEAN 2.0 / MLEL-A002-JUMP2` refines the open geometric middle without promoting any experimental theorem. Its default candidate chain is:
+## Current highest-posterior architecture
 
 ```text
 intrinsic finite Frobenius--Hasse packet
--> finite conormal evaluation morphism
--> finite Fitting determinant atlas
--> split finite-projective quotient on each determinant chart
--> intrinsic kernel ideal sheaf
+-> graded Frobenius normalization and ceiling marks
+-> cotangent/conormal or canonical hybrid centre synthesis
 -> actual regular centre or finite centre word
--> joint legality
--> hereditary all-chart transform
--> causal source-support ledger
--> global well-founded compiler.
+-> etale polynomial-graph atlas
+-> joint local graph macro
+-> hereditary no-reset packet reconstruction
+-> source-causal birth and cleanup ledger
+-> immediate-defect escape
+-> Noetherian/multiset/degree/debt termination
+-> finite global serialization
+-> principalization and resolution
 ```
-
-The three primary missions are:
-
-```text
-IFCCS  Intrinsic Fitting--Conormal Centre Sheaf
-HKITF  Hereditary Kernel-Ideal Transform Functor
-CSCN   Causal Source Cosheaf and Noetherian Ledger
-```
-
-The rank-zero fallback is:
-
-```text
-RZRC    Rank-Zero Radicial Core
-```
-
-These are candidate bridge programs. They may guide Experimental work but cannot be used as Lean premises in the official baseline.
 
 ## Non-negotiable rule
 
-No item U1-U8 may be crossed by `axiom`, `sorry`, `admit`, an unproved typeclass instance, or an imported experimental MLE theorem. A complete proof exists in this branch only when all eight goals have kernel-checked constructions and the final `#print axioms` audit contains no project-specific assumptions.
-
-Protocol adoption also imposes:
+No U1--U8 bridge may be crossed by `axiom`, `sorry`, `admit`, an unproved typeclass instance, stale CI evidence, semantic weakening, or an Experimental-to-Certified import. A complete proof exists only when the exact general main theorem and every dependency are kernel-checked and the paper/Lean semantics agree.
 
 ```text
-no stale CI evidence
-no Experimental-to-Certified import
-no theorem promotion without explicit user authorization
-no paper/Lean semantic weakening
+CURRENT_CERTIFIED_NODE                     = MLEL-M004 / HMC-SCCD
+LATEST_EXPERIMENTAL_LOCAL_MACRO_WRITTEN    = true
+LATEST_EXPERIMENTAL_CLEANROOM_GREEN        = false
+LATEST_EXPERIMENTAL_RESULTS_PROMOTED       = false
+FINAL_MAIN_THEOREM_KERNEL_VERIFIED         = false
+GENERAL_POSITIVE_CHARACTERISTIC_RESOLUTION = false
+FORMAL_GLOBAL_STATUS                       = OPEN_GAP
 ```
-
-Current global status: `OPEN_GAP`.
