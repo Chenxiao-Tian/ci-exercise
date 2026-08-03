@@ -1,0 +1,10 @@
+import PCRLean.Experimental.AffineConormalRegularCentre
+
+#print axioms PCRLean.Experimental.AffineConormalRegularCentre.mem_mapped_centre_iff
+#print axioms PCRLean.Experimental.AffineConormalRegularCentre.ker_intrinsicEval_eq_centreIdeal
+#print axioms PCRLean.Experimental.AffineConormalRegularCentre.intrinsicEval_surjective
+#print axioms PCRLean.Experimental.AffineConormalRegularCentre.quotientEquiv
+#print axioms PCRLean.Experimental.AffineConormalRegularCentre.centreIdeal_ne_top
+#print axioms PCRLean.Experimental.AffineConormalRegularCentre.centreIdeal_fg
+#print axioms PCRLean.Experimental.AffineConormalRegularCentre.quotient_isRegularRing
+#print axioms PCRLean.Experimental.AffineConormalRegularCentre.certificate
