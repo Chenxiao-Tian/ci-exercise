@@ -1,0 +1,5 @@
+import PCRLean.Experimental.PolynomialGraphBoundaryStrata
+
+#print axioms PCRLean.Experimental.PolynomialGraphBoundaryStrata.graphStratumQuotientEquiv
+#print axioms PCRLean.Experimental.PolynomialGraphBoundaryStrata.graphStratum_isRegularRing
+#print axioms PCRLean.Experimental.PolynomialGraphBoundaryStrata.certificate
