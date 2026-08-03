@@ -1,0 +1,6 @@
+import PCRLean.Experimental.FittingMinorFaithfulCover
+
+#print axioms PCRLean.Experimental.FittingMinorFaithfulCover.restrict_globalSection
+#print axioms PCRLean.Experimental.FittingMinorFaithfulCover.eq_of_chart_algebraMap_eq
+#print axioms PCRLean.Experimental.FittingMinorFaithfulCover.eq_zero_of_chart_algebraMap_eq_zero
+#print axioms PCRLean.Experimental.FittingMinorFaithfulCover.funext_of_chart_algebraMap_eq
