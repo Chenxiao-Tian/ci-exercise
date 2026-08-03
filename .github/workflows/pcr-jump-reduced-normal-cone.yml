@@ -44,6 +44,8 @@ jobs:
               PCRLean/Experimental/ReducedPolynomialGraphCentreHeredityAudit.lean \
               PCRLean/Experimental/ReducedFrobeniusNormalLocalModel.lean \
               PCRLean/Experimental/ReducedFrobeniusNormalLocalModelAudit.lean \
+              PCRLean/Experimental/ReducedNormalConePowerModel.lean \
+              PCRLean/Experimental/ReducedNormalConePowerModelAudit.lean \
               PCRLean/Experimental/ReducedNormalConeKernelIndex.lean \
               PCRLean/Experimental/ReducedNormalConeKernelIndexAudit.lean; then
             echo 'Forbidden proof placeholder or custom axiom found.' >&2
@@ -65,6 +67,8 @@ jobs:
             | tee reduced-graph-centre-axioms.txt
           lake env lean PCRLean/Experimental/ReducedFrobeniusNormalLocalModelAudit.lean 2>&1 \
             | tee reduced-local-model-axioms.txt
+          lake env lean PCRLean/Experimental/ReducedNormalConePowerModelAudit.lean 2>&1 \
+            | tee reduced-power-model-axioms.txt
           lake env lean PCRLean/Experimental/ReducedNormalConeKernelIndexAudit.lean 2>&1 \
             | tee reduced-normal-cone-index-axioms.txt
           cat *-axioms.txt > combined-axioms.txt
