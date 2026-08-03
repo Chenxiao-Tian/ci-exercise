@@ -1,0 +1,6 @@
+import PCRLean.Experimental.FinitePacketCentreAntitone
+
+#print axioms PCRLean.Experimental.FinitePacketCentreAntitone.packetKer_antitone
+#print axioms PCRLean.Experimental.FinitePacketCentreAntitone.centreIdeal_antitone
+#print axioms PCRLean.Experimental.FinitePacketCentreAntitone.centreIdeal_eq_of_span_eq
+#print axioms PCRLean.Experimental.FinitePacketCentreAntitone.centreIdeal_le_of_each_old_row_in_new_span
