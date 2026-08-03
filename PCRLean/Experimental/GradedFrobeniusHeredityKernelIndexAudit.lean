@@ -41,6 +41,8 @@ import PCRLean.Experimental.GradedFrobeniusHeredityKernelIndex
 #print axioms PCRLean.Experimental.PolynomialGraphBoundaryIntersection.combinedIdeal_eq_comap
 #print axioms PCRLean.Experimental.PolynomialGraphBoundaryIntersection.quotientEquiv
 #print axioms PCRLean.Experimental.PolynomialGraphBoundaryStrata.certificate
+#print axioms PCRLean.Experimental.PolynomialGraphBoundaryRegularSequence.isRegular_restrict_iff
+#print axioms PCRLean.Experimental.PolynomialGraphBoundaryRegularSequence.isRegular_restrict
 #print axioms PCRLean.Experimental.PolynomialGraphJointLegalityCertificate.certificate
 #print axioms PCRLean.Experimental.CausalEventLedger.Step.noInfinitePath
 #print axioms PCRLean.Experimental.PolynomialGraphDebtCausalReentry.cleanupStep
@@ -49,4 +51,5 @@ import PCRLean.Experimental.GradedFrobeniusHeredityKernelIndex
 #print axioms PCRLean.Experimental.PolynomialGraphLocalResolutionMacro.activePermissible
 #print axioms PCRLean.Experimental.PolynomialGraphLocalResolutionMacro.passiveTorSafe
 #print axioms PCRLean.Experimental.PolynomialGraphLocalResolutionMacro.boundaryStratumRegular
+#print axioms PCRLean.Experimental.PolynomialGraphLocalResolutionMacro.boundarySequenceRegular
 #print axioms PCRLean.Experimental.GradedFrobeniusHeredityKernelIndex.loaded
