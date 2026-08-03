@@ -1,0 +1,8 @@
+import PCRLean.Experimental.NoetherianCentreWordStack
+
+#print axioms PCRLean.Experimental.NoetherianCentreWordStack.wordExpansion_isDershowitzMannaLT
+#print axioms PCRLean.Experimental.NoetherianCentreWordStack.wordExpansion_wellFounded
+#print axioms PCRLean.Experimental.NoetherianCentreWordStack.rankLt_wellFounded
+#print axioms PCRLean.Experimental.NoetherianCentreWordStack.rankStep_wellFounded
+#print axioms PCRLean.Experimental.NoetherianCentreWordStack.Program.terminal_reachable
+#print axioms PCRLean.Experimental.NoetherianCentreWordStack.Program.no_infinite_execution

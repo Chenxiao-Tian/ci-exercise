@@ -1,0 +1,13 @@
+import PCRLean.WeightedOperatorLedger
+import PCRLean.FrobeniusRootCentre
+
+#print axioms PCRLean.WeightedOperatorLedger.applyWord_mem_power
+#print axioms PCRLean.WeightedOperatorLedger.length_le_wordCost
+#print axioms PCRLean.WeightedOperatorLedger.mem_wordsAtMost_iff
+#print axioms PCRLean.WeightedOperatorLedger.mem_boundedWords_iff
+#print axioms PCRLean.WeightedOperatorLedger.descendantPacket_permissible
+#print axioms PCRLean.WeightedOperatorLedger.finite_visible_descendants
+#print axioms PCRLean.FrobeniusRootCentre.RootSection.baseExtension_le_rootIdeal_pow
+#print axioms PCRLean.FrobeniusRootCentre.RootSection.markedPacket_permissible
+#print axioms PCRLean.FrobeniusRootCentre.RootSection.baseExtension_pow_le_rootIdeal_pow_mul
+#print axioms PCRLean.FrobeniusRootCentre.RootSection.markedPacket_permissible_of_le_baseExtension_pow

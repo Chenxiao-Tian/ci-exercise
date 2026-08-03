@@ -1,0 +1,13 @@
+import PCRLean.FrobeniusRootCentre
+import PCRLean.SplitFrobeniusRootCentre
+import PCRLean.CoordinateFrobeniusRootCentre
+
+#print axioms PCRLean.FrobeniusRootCentre.RootSection.baseExtension_le_rootIdeal_pow
+#print axioms PCRLean.FrobeniusRootCentre.RootSection.markedPacket_permissible
+#print axioms PCRLean.FrobeniusRootCentre.RootSection.baseExtension_pow_le_rootIdeal_pow_mul
+#print axioms PCRLean.SplitFrobeniusRootCentre.SplitRootSection.rootIdeal_map_retract
+#print axioms PCRLean.SplitFrobeniusRootCentre.SplitRootSection.rootIdeal_ne_top
+#print axioms PCRLean.SplitFrobeniusRootCentre.SplitRootSection.exists_proper_permissible_rootCentre
+#print axioms PCRLean.CoordinateFrobeniusRootCentre.rootIdeal_ne_top
+#print axioms PCRLean.CoordinateFrobeniusRootCentre.quotient_is_smaller_polynomial_ring
+#print axioms PCRLean.CoordinateFrobeniusRootCentre.coordinateRootCentre_certificate

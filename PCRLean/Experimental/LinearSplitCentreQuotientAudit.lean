@@ -1,0 +1,5 @@
+import PCRLean.Experimental.LinearSplitCentreQuotient
+
+#print axioms PCRLean.Experimental.LinearSplitCentreQuotient.coordinateQuotientEquivLinear
+#print axioms PCRLean.Experimental.LinearSplitCentreQuotient.linearCentreQuotientEquiv
+#print axioms PCRLean.Experimental.LinearSplitCentreQuotient.linearCentreIdeal_ne_top

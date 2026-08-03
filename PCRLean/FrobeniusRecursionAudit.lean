@@ -1,0 +1,11 @@
+import PCRLean.FrobeniusMarkScaling
+import PCRLean.PowerTransformFunctoriality
+
+#print axioms PCRLean.FrobeniusMarkScaling.powerIdeal_le_centre_pow_mul
+#print axioms PCRLean.FrobeniusMarkScaling.markedPacket_permissible
+#print axioms PCRLean.FrobeniusMarkScaling.powerIdeal_pow
+#print axioms PCRLean.FrobeniusMarkScaling.root_mark_strictly_smaller
+#print axioms PCRLean.PowerTransformFunctoriality.Factorization.pow
+#print axioms PCRLean.PowerTransformFunctoriality.pow_factorization
+#print axioms PCRLean.PowerTransformFunctoriality.pow_factorization_target
+#print axioms PCRLean.PowerTransformFunctoriality.finite_packet_pow

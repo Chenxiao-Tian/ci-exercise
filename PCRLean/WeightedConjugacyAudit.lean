@@ -1,0 +1,7 @@
+import PCRLean.WeightedOperatorConjugacy
+
+#print axioms PCRLean.WeightedOperatorConjugacy.Conjugacy.wordCost_eq
+#print axioms PCRLean.WeightedOperatorConjugacy.Conjugacy.applyWord_eq
+#print axioms PCRLean.WeightedOperatorConjugacy.Conjugacy.descendantPair_eq
+#print axioms PCRLean.WeightedOperatorConjugacy.Conjugacy.map_mem_descendantPacket
+#print axioms PCRLean.WeightedOperatorConjugacy.Conjugacy.mem_descendantPacket_iff

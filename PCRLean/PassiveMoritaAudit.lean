@@ -1,0 +1,7 @@
+import PCRLean.PassiveHasseMoritaDescent
+
+#print axioms PCRLean.PassiveHasseMoritaDescent.generated_liftLeft
+#print axioms PCRLean.PassiveHasseMoritaDescent.liftLeft_matrixUnit
+#print axioms PCRLean.PassiveHasseMoritaDescent.liftedPacket_generatesLeftMatrixUnits
+#print axioms PCRLean.PassiveHasseMoritaDescent.leftInvariant_of_liftedPacket_stable
+#print axioms PCRLean.PassiveHasseMoritaDescent.eq_fromRowModule_of_liftedPacket_stable

@@ -1,0 +1,5 @@
+import PCRLean.Experimental.SplitSurjectionActualCentre
+
+#print axioms PCRLean.Experimental.SplitSurjectionActualCentre.kernelIdeal_ne_top
+#print axioms PCRLean.Experimental.SplitSurjectionActualCentre.kernelIdeal_fg
+#print axioms PCRLean.Experimental.SplitSurjectionActualCentre.certificate
