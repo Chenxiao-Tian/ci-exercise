@@ -51,7 +51,18 @@ jobs:
               PCRLean/Experimental/FiniteReesFrobeniusCompression.lean \
               PCRLean/Experimental/FiniteReesFrobeniusCompressionAudit.lean \
               PCRLean/Experimental/FiniteHasseIntegralCompression.lean \
-              PCRLean/Experimental/FiniteHasseIntegralCompressionAudit.lean; then
+              PCRLean/Experimental/FiniteHasseIntegralCompressionAudit.lean \
+              PCRLean/Experimental/IntegralEquivalentReesPresentations.lean \
+              PCRLean/Experimental/IntegralEquivalentReesPresentationsAudit.lean \
+              PCRLean/Experimental/PolynomialHasseFrobenius.lean \
+              PCRLean/Experimental/PolynomialHasseFrobeniusAudit.lean \
+              PCRLean/Experimental/UnivariateHasseIntegralCompression.lean \
+              PCRLean/Experimental/UnivariateHasseIntegralCompressionAudit.lean \
+              PCRLean/Experimental/RankZeroFrobeniusReesExit.lean \
+              PCRLean/Experimental/RankZeroFrobeniusReesExitAudit.lean \
+              PCRLean/Experimental/ImperfectCoefficientObstruction.lean \
+              PCRLean/Experimental/ImperfectCoefficientObstructionAudit.lean \
+              PCRLean/Experimental/RankZeroFrobeniusReesKernelIndex.lean; then
             echo 'Forbidden proof placeholder or custom axiom found.' >&2
             exit 1
           fi
@@ -95,30 +106,57 @@ jobs:
           set -o pipefail
           lake build PCRLean.Experimental.FiniteHasseIntegralCompression 2>&1 \
             | tee finite-hasse-compression-build.txt
+      - name: Build integral-equivalent presentation language
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.IntegralEquivalentReesPresentations 2>&1 \
+            | tee integral-equivalent-presentations-build.txt
+      - name: Build polynomial Hasse-Frobenius identity
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.PolynomialHasseFrobenius 2>&1 \
+            | tee polynomial-hasse-frobenius-build.txt
+      - name: Build concrete univariate Hasse compression
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.UnivariateHasseIntegralCompression 2>&1 \
+            | tee univariate-hasse-compression-build.txt
+      - name: Build combined rank-zero exit
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.RankZeroFrobeniusReesExit 2>&1 \
+            | tee rank-zero-exit-build.txt
+      - name: Build imperfect-field no-go
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.ImperfectCoefficientObstruction 2>&1 \
+            | tee imperfect-obstruction-build.txt
+      - name: Build integrated index
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.RankZeroFrobeniusReesKernelIndex 2>&1 \
+            | tee integrated-index-build.txt
       - name: Kernel axiom audit
         run: |
           set -o pipefail
-          lake env lean PCRLean/Experimental/PDerivFrobeniusDescentAudit.lean 2>&1 \
-            | tee pderiv-frobenius-axioms.txt
-          lake env lean PCRLean/Experimental/FrobeniusPrimitiveDecompositionAudit.lean 2>&1 \
-            | tee frobenius-primitive-axioms.txt
-          lake env lean PCRLean/Experimental/DerivativeZeroFinitePresentationAudit.lean 2>&1 \
-            | tee derivative-zero-presentation-axioms.txt
-          lake env lean PCRLean/Experimental/InitialFormFrobeniusCleaningAudit.lean 2>&1 \
-            | tee initial-form-cleaning-axioms.txt
-          lake env lean PCRLean/Experimental/InitialFormCleaningTerminationAudit.lean 2>&1 \
-            | tee cleaning-termination-axioms.txt
-          lake env lean PCRLean/Experimental/ReesFrobeniusIntegralCompressionAudit.lean 2>&1 \
-            | tee rees-integral-compression-axioms.txt
-          lake env lean PCRLean/Experimental/FiniteReesFrobeniusCompressionAudit.lean 2>&1 \
-            | tee finite-rees-compression-axioms.txt
-          lake env lean PCRLean/Experimental/FiniteHasseIntegralCompressionAudit.lean 2>&1 \
-            | tee finite-hasse-compression-axioms.txt
-          cat pderiv-frobenius-axioms.txt frobenius-primitive-axioms.txt \
-              derivative-zero-presentation-axioms.txt initial-form-cleaning-axioms.txt \
-              cleaning-termination-axioms.txt rees-integral-compression-axioms.txt \
-              finite-rees-compression-axioms.txt finite-hasse-compression-axioms.txt \
-              > combined-axioms.txt
+          for audit in \
+            PDerivFrobeniusDescentAudit \
+            FrobeniusPrimitiveDecompositionAudit \
+            DerivativeZeroFinitePresentationAudit \
+            InitialFormFrobeniusCleaningAudit \
+            InitialFormCleaningTerminationAudit \
+            ReesFrobeniusIntegralCompressionAudit \
+            FiniteReesFrobeniusCompressionAudit \
+            FiniteHasseIntegralCompressionAudit \
+            IntegralEquivalentReesPresentationsAudit \
+            PolynomialHasseFrobeniusAudit \
+            UnivariateHasseIntegralCompressionAudit \
+            RankZeroFrobeniusReesExitAudit \
+            ImperfectCoefficientObstructionAudit; do
+              lake env lean "PCRLean/Experimental/${audit}.lean" 2>&1 \
+                | tee "${audit}-axioms.txt"
+          done
+          cat *-axioms.txt > combined-axioms.txt
           if grep -E 'sorryAx|PCRLean\..*Axiom|ResolutionAxiom|PacketizationAxiom' \
               combined-axioms.txt; then
             echo 'Unpermitted axiom detected.' >&2
@@ -130,21 +168,7 @@ jobs:
         with:
           name: pcr-jump-pderiv-frobenius-${{ github.sha }}
           path: |
-            pderiv-frobenius-build.txt
-            frobenius-primitive-build.txt
-            derivative-zero-presentation-build.txt
-            initial-form-cleaning-build.txt
-            cleaning-termination-build.txt
-            rees-integral-compression-build.txt
-            finite-rees-compression-build.txt
-            finite-hasse-compression-build.txt
-            pderiv-frobenius-axioms.txt
-            frobenius-primitive-axioms.txt
-            derivative-zero-presentation-axioms.txt
-            initial-form-cleaning-axioms.txt
-            cleaning-termination-axioms.txt
-            rees-integral-compression-axioms.txt
-            finite-rees-compression-axioms.txt
-            finite-hasse-compression-axioms.txt
+            *-build.txt
+            *-axioms.txt
             combined-axioms.txt
           if-no-files-found: warn
