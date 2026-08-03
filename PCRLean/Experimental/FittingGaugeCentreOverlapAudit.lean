@@ -1,0 +1,5 @@
+import PCRLean.Experimental.FittingGaugeCentreOverlap
+
+#print axioms PCRLean.Experimental.FittingGaugeCentreOverlap.map_generatedIdeal
+#print axioms PCRLean.Experimental.FittingGaugeCentreOverlap.Compatible.overlapIdeal_eq
+#print axioms PCRLean.Experimental.FittingGaugeCentreOverlap.Compatible.certificate
