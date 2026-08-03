@@ -10,16 +10,23 @@ For an `R`-flat passive module `N`, consider the induced ambient module
 
 `M = P ⊗[R] N`.
 
-The tensor-product flatness instance makes `M` flat over `P`.  Consequently
-tensoring any injective `P`-linear relation with `M` stays injective.  In
+The tensor-product flatness instance makes `M` flat over `P`. Consequently
+tensoring any injective `P`-linear relation with `M` stays injective. In
 particular, for the graph ideal and every one of its powers, the maps
 
 `I_h^n ⊗[P] M → P ⊗[P] M`
 
-are injective.  This is the exact `Tor₁`-vanishing gate for induced-flat passive
+are injective. This is the exact `Tor₁`-vanishing gate for induced-flat passive
 data along the graph centre.
 
-The result does not cover arbitrary passive modules.  It isolates a large,
+Moreover, the restriction
+
+`(P/I_h) ⊗[P] M`
+
+is flat over the centre ring `P/I_h`. Thus the passive datum remains flat after
+restriction to the actual centre, not merely Tor-safe at the first inclusion.
+
+The result does not cover arbitrary passive modules. It isolates a large,
 functorial chamber in which passive safety follows from an actual module
 construction rather than being inferred from active marked containment.
 -/
@@ -49,6 +56,20 @@ abbrev InducedPassive : Type max u v w :=
 theorem inducedPassive_flat :
     Module.Flat (P (R := R) (ι := ι))
       (InducedPassive (R := R) (ι := ι) (N := N)) := by
+  infer_instance
+
+/-- Restriction of the passive module to an arbitrary closed subscheme. -/
+abbrev RestrictedPassive
+    (I : Ideal (P (R := R) (ι := ι))) : Type _ :=
+  (P (R := R) (ι := ι) ⧸ I) ⊗[P (R := R) (ι := ι)]
+    InducedPassive (R := R) (ι := ι) (N := N)
+
+/-- Restriction of an induced-flat passive module remains flat over every
+quotient centre ring. -/
+theorem restrictedPassive_flat
+    (I : Ideal (P (R := R) (ι := ι))) :
+    Module.Flat (P (R := R) (ι := ι) ⧸ I)
+      (RestrictedPassive (R := R) (ι := ι) (N := N) I) := by
   infer_instance
 
 /-- Tensor-injectivity formulation of the first Tor-vanishing gate. -/
@@ -81,6 +102,15 @@ theorem graphIdeal_pow_torOneSafe
   torOneSafeAlong_allIdeals (R := R) (ι := ι) (N := N)
     ((graphIdeal h) ^ n)
 
+/-- The passive datum remains flat after restriction to the graph centre. -/
+theorem graphRestriction_flat
+    (h : ι → R) :
+    Module.Flat (P (R := R) (ι := ι) ⧸ graphIdeal h)
+      (RestrictedPassive (R := R) (ι := ι) (N := N)
+        (graphIdeal h)) :=
+  restrictedPassive_flat (R := R) (ι := ι) (N := N)
+    (graphIdeal h)
+
 /-- More generally, every injective passive relation remains injective after
 base change to the induced passive module. -/
 theorem preserves_injective_relation
@@ -95,8 +125,12 @@ theorem preserves_injective_relation
 
 /-- A compact passive-safety certificate for one graph centre. -/
 structure Certificate (h : ι → R) where
-  flat : Module.Flat (P (R := R) (ι := ι))
+  ambientFlat : Module.Flat (P (R := R) (ι := ι))
     (InducedPassive (R := R) (ι := ι) (N := N))
+  centreRestrictionFlat :
+    Module.Flat (P (R := R) (ι := ι) ⧸ graphIdeal h)
+      (RestrictedPassive (R := R) (ι := ι) (N := N)
+        (graphIdeal h))
   graphTorSafe :
     TorOneSafeAlong (R := R) (ι := ι) (N := N) (graphIdeal h)
   allPowerTorSafe : ∀ n : Nat,
@@ -106,7 +140,9 @@ structure Certificate (h : ι → R) where
 /-- Assemble the induced-flat passive certificate. -/
 noncomputable def certificate (h : ι → R) :
     Certificate (R := R) (ι := ι) (N := N) h where
-  flat := inducedPassive_flat (R := R) (ι := ι) (N := N)
+  ambientFlat := inducedPassive_flat (R := R) (ι := ι) (N := N)
+  centreRestrictionFlat := graphRestriction_flat
+    (R := R) (ι := ι) (N := N) h
   graphTorSafe := graphIdeal_torOneSafe
     (R := R) (ι := ι) (N := N) h
   allPowerTorSafe := graphIdeal_pow_torOneSafe
