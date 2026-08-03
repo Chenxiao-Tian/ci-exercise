@@ -1,0 +1,5 @@
+import PCRLean.Experimental.DualPacketExactTransport
+
+#print axioms PCRLean.Experimental.DualPacketExactTransport.map_centreIdeal_eq
+#print axioms PCRLean.Experimental.DualPacketExactTransport.map_rootPowerIdeal_eq
+#print axioms PCRLean.Experimental.DualPacketExactTransport.map_centre_and_root_eq
