@@ -1,0 +1,7 @@
+import PCRLean.Experimental.BoundaryTransversalityGate
+
+#print axioms PCRLean.Experimental.BoundaryTransversalityGate.transverse_comm
+#print axioms PCRLean.Experimental.BoundaryTransversalityGate.sup_square_decomposition
+#print axioms PCRLean.Experimental.BoundaryTransversalityGate.transverse_of_inf_eq_bot
+#print axioms PCRLean.Experimental.BoundaryTransversalityGate.X_mem_inf_not_mul
+#print axioms PCRLean.Experimental.BoundaryTransversalityGate.XIdeal_not_self_transverse
