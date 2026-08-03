@@ -1,0 +1,5 @@
+import PCRLean.Experimental.IntrinsicKernelRootPacketExactSquare
+
+#print axioms PCRLean.Experimental.IntrinsicKernelRootPacketExactSquare.map_rootPowerIdeal_eq
+#print axioms PCRLean.Experimental.IntrinsicKernelRootPacketExactSquare.map_centre_and_root_eq
+#print axioms PCRLean.Experimental.IntrinsicKernelRootPacketExactSquare.target_rootPacket_permissible
