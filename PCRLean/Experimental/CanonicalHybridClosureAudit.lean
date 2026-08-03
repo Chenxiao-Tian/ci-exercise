@@ -1,0 +1,8 @@
+import PCRLean.Experimental.CanonicalHybridClosure
+
+#print axioms PCRLean.Experimental.CanonicalHybridClosure.MinimalCertificate.selected_mem_minimalFamilies
+#print axioms PCRLean.Experimental.CanonicalHybridClosure.MinimalCertificate.selected_subset_canonicalSelected
+#print axioms PCRLean.Experimental.CanonicalHybridClosure.MinimalCertificate.combinedCentre_le_canonicalCentre
+#print axioms PCRLean.Experimental.CanonicalHybridClosure.MinimalCertificate.canonical_acceptable
+#print axioms PCRLean.Experimental.CanonicalHybridClosure.canonical_acceptable_of_full
+#print axioms PCRLean.Experimental.CanonicalHybridClosure.mem_canonicalSelected_of_mem_minimal
