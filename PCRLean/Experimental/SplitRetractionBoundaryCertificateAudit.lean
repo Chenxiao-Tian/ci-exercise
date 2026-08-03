@@ -1,0 +1,5 @@
+import PCRLean.Experimental.SplitRetractionBoundaryCertificate
+
+#print axioms PCRLean.Experimental.SplitRetractionBoundaryCertificate.liftedBoundaryIdeal_ne_top
+#print axioms PCRLean.Experimental.SplitRetractionBoundaryCertificate.quotient_isRegularRing
+#print axioms PCRLean.Experimental.SplitRetractionBoundaryCertificate.certificate
