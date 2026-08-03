@@ -2,6 +2,7 @@ import Mathlib
 import PCRLean.Experimental.PolynomialGraphArbitraryMarkCertificate
 import PCRLean.Experimental.PolynomialGraphPassiveSafety
 import PCRLean.Experimental.PolynomialGraphBoundaryStrata
+import PCRLean.Experimental.PolynomialGraphBoundaryRegularSequence
 import PCRLean.Experimental.PolynomialGraphDebtCausalReentry
 
 /-!
@@ -23,6 +24,7 @@ The output supplies, for the same actual centre:
 * active marked permissibility;
 * passive Tor safety along all centre powers and flat centre restriction;
 * exact regular intersection with every boundary stratum;
+* exact transport of ordered boundary regular sequences;
 * every standard blowup chart and exact controlled factorization; and
 * a source-conservative causal transition.
 
@@ -198,6 +200,17 @@ theorem boundaryStratumRegular
   (certificate (R := R) (ι := ι) (N := N)
     p h boundary hboundary activeSources e mark hmark_pos hmark_le)
       .boundaryStrata.regular s
+
+/-- An ordered regular boundary sequence remains regular on the graph centre.
+This is the local non-zero-divisor/codimension component of the SNC gate. -/
+theorem boundarySequenceRegular
+    (h : ι → R)
+    {rs : List R}
+    (hrs : RingTheory.Sequence.IsRegular R rs) :
+    RingTheory.Sequence.IsRegular
+      (PolynomialGraphBoundaryRegularSequence.Q (R := R) h)
+      (PolynomialGraphBoundaryRegularSequence.restrictSequence h rs) :=
+  PolynomialGraphBoundaryRegularSequence.isRegular_restrict h hrs
 
 end
 
