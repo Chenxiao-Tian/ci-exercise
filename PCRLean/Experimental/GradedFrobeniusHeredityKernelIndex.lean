@@ -41,6 +41,10 @@ import PCRLean.Experimental.FittingMinorAtlas
 import PCRLean.Experimental.FittingGraphCentreAtlas
 import PCRLean.Experimental.PolynomialGraphBaseChange
 import PCRLean.Experimental.FittingGraphCentreOverlap
+import PCRLean.Experimental.FittingGraphCechEffectivity
+import PCRLean.Experimental.FittingGraphSectionAtlas
+import PCRLean.Experimental.FittingGraphRestrictionCompatibility
+import PCRLean.Experimental.FittingGraphGlobalResolutionMacro
 
 /-!
 # Integrated graded Frobenius heredity index
@@ -67,13 +71,19 @@ Lean build through the complete current experimental graph-chamber chain:
 * one complete local resolution macro exposing terminality or strict causal
   rank decrease on every standard chart;
 * a finite determinant basic-open cover of the base;
-* one actual graph-centre certificate on every determinant chart; and
-* exact equality of the extended local centre ideals on every double
-  localization overlap, conditional only on pointwise graph compatibility.
+* one actual graph-centre certificate on every determinant chart;
+* exact equality of extended local centre ideals on double localizations;
+* affine structure-sheaf Čech effectivity for compatible graph sections;
+* identification of explicit localization overlap maps with sheaf restriction
+  maps by the universal property of localization; and
+* one actual global graph tuple and global centre ideal whose base change is
+  every local candidate, together with the complete global affine graph macro.
 
-The remaining affine descent step is Čech effectivity for compatible graph
-functions on a finite principal-open cover. The index is experimental and does
-not assert general resolution.
+Conditional on extracting compatible finite Fitting graph data, affine centre
+gluing is therefore closed. The remaining universal work is extraction from an
+arbitrary Frobenius/Hasse/Fitting state and globalization across a non-affine
+ambient scheme. The index is experimental and does not assert general
+resolution.
 -/
 
 namespace PCRLean
