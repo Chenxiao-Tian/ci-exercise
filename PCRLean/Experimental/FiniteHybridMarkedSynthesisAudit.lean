@@ -1,0 +1,9 @@
+import PCRLean.Experimental.FiniteHybridMarkedSynthesis
+
+#print axioms PCRLean.Experimental.FiniteHybridMarkedSynthesis.component_le_hybridCentre
+#print axioms PCRLean.Experimental.FiniteHybridMarkedSynthesis.component_pow_le_hybrid_pow
+#print axioms PCRLean.Experimental.FiniteHybridMarkedSynthesis.sum_mem_hybrid_pow
+#print axioms PCRLean.Experimental.FiniteHybridMarkedSynthesis.EquationDecomposition.equation_mem_hybrid_pow
+#print axioms PCRLean.Experimental.FiniteHybridMarkedSynthesis.EquationDecomposition.principalPacket_permissible
+#print axioms PCRLean.Experimental.FiniteHybridMarkedSynthesis.ownerJoin_le_hybrid_pow
+#print axioms PCRLean.Experimental.FiniteHybridMarkedSynthesis.ownerJoin_permissible
