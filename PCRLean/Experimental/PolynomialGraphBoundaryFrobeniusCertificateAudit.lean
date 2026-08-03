@@ -1,0 +1,3 @@
+import PCRLean.Experimental.PolynomialGraphBoundaryFrobeniusCertificate
+
+#print axioms PCRLean.Experimental.PolynomialGraphBoundaryFrobeniusCertificate.certificate
