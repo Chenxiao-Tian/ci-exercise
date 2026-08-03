@@ -5,12 +5,12 @@ import PCRLean.MarkedIdeal
 # Experimental marked-degree certificate
 
 If generators `z` and `t` belong to one actual centre ideal `C`, then a mixed
-term `z^a * t^b` belongs to `C^(a+b)`.  Since ideal powers decrease with the
+term `z^a * t^b` belongs to `C^(a+b)`. Since ideal powers decrease with the
 exponent, any lower mark `d <= a+b` is also controlled.
 
 This finite degree certificate unifies the local marked-containment checks in
 odd cusps, tame quadratics, Artin--Schreier chambers, and hybrid Frobenius-root
-examples.  It proves only marked-power membership, not regularity or transform
+examples. It proves only marked-power membership, not regularity or transform
 closure.
 -/
 
@@ -66,10 +66,7 @@ theorem purePower_mem_marked_pow
     {C : Ideal R} {z : R} {a d : Nat}
     (hz : z ∈ C) (hdegree : d ≤ a) :
     z ^ a ∈ C ^ d := by
-  have htotal : z ^ a * (1 : R) ^ 0 ∈ C ^ d := by
-    exact mixedMonomial_mem_marked_pow hz C.one_mem_top
-      (by simpa using hdegree)
-  simpa using htotal
+  exact pow_le_pow_of_le C hdegree (Ideal.pow_mem_pow hz a)
 
 /-- Tame quadratic template: `z^2-u*t^N` is mark-two controlled by `(z,t)` as
 soon as `2 <= N`. -/
