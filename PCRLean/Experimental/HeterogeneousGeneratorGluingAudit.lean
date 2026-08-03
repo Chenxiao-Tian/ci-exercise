@@ -1,0 +1,5 @@
+import PCRLean.Experimental.HeterogeneousGeneratorGluing
+
+#print axioms PCRLean.Experimental.HeterogeneousGeneratorGluing.generatedIdeal_le_of_combinations
+#print axioms PCRLean.Experimental.HeterogeneousGeneratorGluing.generatedIdeal_eq_of_mutual_combinations
+#print axioms PCRLean.Experimental.HeterogeneousGeneratorGluing.FrameEquivalence.ideal_eq
