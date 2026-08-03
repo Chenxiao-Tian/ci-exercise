@@ -1,0 +1,10 @@
+import PCRLean.Experimental.DualPacketBlowupChart
+
+#print axioms PCRLean.Experimental.DualPacketBlowupChart.actualCoordinateEquiv_basisGenerator
+#print axioms PCRLean.Experimental.DualPacketBlowupChart.basisGenerator_factorization
+#print axioms PCRLean.Experimental.DualPacketBlowupChart.controlledRoot_pivot
+#print axioms PCRLean.Experimental.DualPacketBlowupChart.centreCovector_packetSpan_eq
+#print axioms PCRLean.Experimental.DualPacketBlowupChart.actualRootPowerIdeal_eq_basisPowerIdeal
+#print axioms PCRLean.Experimental.DualPacketBlowupChart.basisGenerator_pow_factorization
+#print axioms PCRLean.Experimental.DualPacketBlowupChart.transformedRootIdeal_eq_top
+#print axioms PCRLean.Experimental.DualPacketBlowupChart.nonempty_centreIndex_of_positive_finrank
