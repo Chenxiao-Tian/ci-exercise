@@ -18,7 +18,15 @@ import PCRLean.Experimental.NormalConeLayer
 import PCRLean.Experimental.CoordinateNormalConeFrobeniusReduced
 import PCRLean.Experimental.FrobeniusNormalFaithfullyFlatDescent
 import PCRLean.Experimental.FrobeniusNormalLocalCoordinateModel
+import PCRLean.Experimental.FrobeniusNormalTransport
+import PCRLean.Experimental.CeilingMarkedPowerReflection
+import PCRLean.Experimental.ControlledFrobeniusTransform
+import PCRLean.Experimental.CeilingControlledTransformDebt
 import PCRLean.Experimental.CoordinateControlledTransformHeredity
+import PCRLean.Experimental.PolynomialGraphCentreHeredity
+import PCRLean.Experimental.PolynomialGraphCentreQuotient
+import PCRLean.Experimental.PolynomialGraphBlowupHeredity
+import PCRLean.Experimental.PolynomialGraphFrobeniusCentreCertificate
 
 /-!
 # Integrated graded Frobenius heredity index
@@ -33,11 +41,12 @@ Lean build through the complete current experimental heredity chain:
 * exact coordinate-centre root reflection;
 * the Frobenius-normal centre interface;
 * the nonreduced dual-number no-go;
-* the graded-layer sufficient condition;
-* actual normal-cone quotient layers and coordinate nonvanishing;
-* faithfully flat descent and local coordinate-model compilation; and
-* exact commutation of prime-power compression with coordinate controlled
-  transforms.
+* the graded-layer and normal-cone sufficient conditions;
+* faithfully flat descent and local coordinate/graph models;
+* arbitrary-mark ceiling compression and bounded exceptional debt;
+* exact commutation with coordinate controlled transforms; and
+* actual proper finite-type regular polynomial graph centres with explicit
+  all-chart terminal root packets.
 
 The index is experimental and does not assert general resolution.
 -/
