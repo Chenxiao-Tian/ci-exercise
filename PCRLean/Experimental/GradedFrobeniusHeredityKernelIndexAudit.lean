@@ -52,4 +52,10 @@ import PCRLean.Experimental.GradedFrobeniusHeredityKernelIndex
 #print axioms PCRLean.Experimental.PolynomialGraphLocalResolutionMacro.passiveTorSafe
 #print axioms PCRLean.Experimental.PolynomialGraphLocalResolutionMacro.boundaryStratumRegular
 #print axioms PCRLean.Experimental.PolynomialGraphLocalResolutionMacro.boundarySequenceRegular
+#print axioms PCRLean.Experimental.FittingMinorAtlas.Atlas.basicOpen_cover
+#print axioms PCRLean.Experimental.FittingGraphCentreAtlas.GraphAtlasData.point_has_graph_chart
+#print axioms PCRLean.Experimental.FittingGraphCentreAtlas.GraphAtlasData.certificate
+#print axioms PCRLean.Experimental.PolynomialGraphBaseChange.map_graphIdeal_eq
+#print axioms PCRLean.Experimental.FittingGraphCentreOverlap.Compatible.overlapIdeal_eq
+#print axioms PCRLean.Experimental.FittingGraphCentreOverlap.Compatible.certificate
 #print axioms PCRLean.Experimental.GradedFrobeniusHeredityKernelIndex.loaded
