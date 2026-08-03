@@ -1,6 +1,8 @@
 import PCRLean.Experimental.MaximalMinorGlobalResolutionMacro
 
 #print axioms PCRLean.Experimental.MaximalMinorGlobalResolutionMacro.localizedAugmentedCertificate
+#print axioms PCRLean.Experimental.MaximalMinorGlobalResolutionMacro.fullPacketIdeal_eq_globalCentre
 #print axioms PCRLean.Experimental.MaximalMinorGlobalResolutionMacro.certificate
 #print axioms PCRLean.Experimental.MaximalMinorGlobalResolutionMacro.allLocalSystemIdeals_fromGlobal
+#print axioms PCRLean.Experimental.MaximalMinorGlobalResolutionMacro.allLocalSystemIdeals_fromFullPacket
 #print axioms PCRLean.Experimental.MaximalMinorGlobalResolutionMacro.globalGraph_localizes
