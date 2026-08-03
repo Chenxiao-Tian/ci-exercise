@@ -1,0 +1,13 @@
+import PCRLean.Experimental.FittingLinearSystemOverlap
+
+#print axioms PCRLean.Experimental.FittingLinearSystemOverlap.map_mulVec
+#print axioms PCRLean.Experimental.FittingLinearSystemOverlap.Compatible.commonInverse_mul_commonMatrix
+#print axioms PCRLean.Experimental.FittingLinearSystemOverlap.Compatible.commonMatrix_mulVec_injective
+#print axioms PCRLean.Experimental.FittingLinearSystemOverlap.Compatible.leftSolution_solves
+#print axioms PCRLean.Experimental.FittingLinearSystemOverlap.Compatible.rightSolution_solves
+#print axioms PCRLean.Experimental.FittingLinearSystemOverlap.Compatible.solution_eq
+#print axioms PCRLean.Experimental.FittingLinearSystemOverlap.Compatible.graph_eq
+#print axioms PCRLean.Experimental.FittingLinearSystemOverlap.Compatible.toGraphCompatible
+#print axioms PCRLean.Experimental.FittingLinearSystemOverlap.Compatible.overlapIdeal_eq
+#print axioms PCRLean.Experimental.FittingLinearSystemOverlap.Compatible.globalGraph_localizes
+#print axioms PCRLean.Experimental.FittingLinearSystemOverlap.Compatible.localEquationIdeal_is_globalCentreBaseChange
