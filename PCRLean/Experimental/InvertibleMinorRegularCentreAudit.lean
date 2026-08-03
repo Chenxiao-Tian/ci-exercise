@@ -6,3 +6,4 @@ import PCRLean.Experimental.InvertibleMinorRegularCentre
 #print axioms PCRLean.Experimental.InvertibleMinorRegularCentre.MinorCertificate.quotientEquiv
 #print axioms PCRLean.Experimental.InvertibleMinorRegularCentre.MinorCertificate.centreIdeal_ne_top
 #print axioms PCRLean.Experimental.InvertibleMinorRegularCentre.MinorCertificate.certificate
+#print axioms PCRLean.Experimental.InvertibleMinorRegularCentre.MinorCertificate.finiteDimensionalCertificate
