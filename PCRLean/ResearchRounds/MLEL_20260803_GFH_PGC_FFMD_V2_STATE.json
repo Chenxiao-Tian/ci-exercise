@@ -1,0 +1,42 @@
+{
+  "record_id": "MLEL-EXP-20260803-GFH-PGC-FFMD-V2",
+  "date": "2026-08-03",
+  "protocol": "PCR-JUMP-LEAN 2.0 / MLEL-A002-JUMP2",
+  "official_accepted_node": "MLEL-M004 / HMC-SCCD",
+  "certified_graph_changed": false,
+  "experimental_results_promoted": false,
+  "experimental_branch": "pcr-jump-integral-heredity-20260803",
+  "integrated_index": "PCRLean.Experimental.GradedFrobeniusHeredityKernelIndex",
+  "persistent_library_path": "/正特征奇点消解/MLE-Lean线/ResearchRounds/2026-08-03_GFH_PGC_FFMD_V2/",
+  "persistent_package": "/正特征奇点消解/MLE-Lean线/ResearchRounds/PCR_MLE_LEAN_BASELINE_SUPPLEMENT_2026-08-03_V2.zip",
+  "evidence_authority": "PCR_MLE_LEAN_BASELINE_STATE_2026-08-03_V2.json and CLEANROOM_STATUS_V7.json in persistent package",
+  "experimental_modules": [
+    "FaithfullyFlatMarkedCentreDescent",
+    "SplitRetractionBoundaryQuotient",
+    "SplitRetractionBoundaryCertificate",
+    "PolynomialGraphBoundaryStratum",
+    "BoundaryTransversalityGate",
+    "SplitRetractionTransversality",
+    "FaithfullyFlatTransversalityDescent",
+    "FaithfullyFlatGraphBoundaryDescent",
+    "PolynomialGraphBoundaryFrobeniusCertificate",
+    "PassiveTorGate",
+    "ExceptionalDebtLedger",
+    "PolynomialGraphDebtIdentity",
+    "ExceptionalDebtTermination"
+  ],
+  "open_bridges": [
+    "adapted etale or fpqc graph atlas",
+    "scheme regular immersion and conormal local freeness descent",
+    "full SNC including conormal direct sum and codimension additivity",
+    "general passive Tor and normal flatness",
+    "all-chart overlap descent and hereditary packet reconstruction",
+    "debt no-reset and source no-clone",
+    "nonlinear rank-zero and immediate-defect escape",
+    "finite functorial globalization",
+    "final principalization and resolution compiler"
+  ],
+  "general_positive_characteristic_resolution": false,
+  "final_main_theorem_kernel_verified": false,
+  "formal_global_status": "OPEN_GAP"
+}
