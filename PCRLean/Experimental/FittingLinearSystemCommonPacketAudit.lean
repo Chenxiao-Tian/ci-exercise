@@ -1,0 +1,12 @@
+import PCRLean.Experimental.FittingLinearSystemCommonPacket
+
+#print axioms PCRLean.Experimental.FittingLinearSystemCommonPacket.Data.localMatrix_det_eq
+#print axioms PCRLean.Experimental.FittingLinearSystemCommonPacket.Data.toSystemAtlas
+#print axioms PCRLean.Experimental.FittingLinearSystemCommonPacket.Data.Consistent.rightSolution_solves
+#print axioms PCRLean.Experimental.FittingLinearSystemCommonPacket.Data.Consistent.leftSolution_solves_right
+#print axioms PCRLean.Experimental.FittingLinearSystemCommonPacket.Data.Consistent.rightInverse_mul_rightMatrix
+#print axioms PCRLean.Experimental.FittingLinearSystemCommonPacket.Data.Consistent.solution_eq
+#print axioms PCRLean.Experimental.FittingLinearSystemCommonPacket.Data.Consistent.graph_eq
+#print axioms PCRLean.Experimental.FittingLinearSystemCommonPacket.Data.Consistent.toGraphCompatible
+#print axioms PCRLean.Experimental.FittingLinearSystemCommonPacket.Data.Consistent.globalGraph_localizes
+#print axioms PCRLean.Experimental.FittingLinearSystemCommonPacket.Data.Consistent.localEquationIdeal_is_globalCentreBaseChange
