@@ -1,0 +1,9 @@
+import PCRLean.Experimental.CoordinateControlledTransformHeredity
+
+#print axioms PCRLean.Experimental.CoordinateControlledTransformHeredity.existsData
+#print axioms PCRLean.Experimental.CoordinateControlledTransformHeredity.exceptional_pow_ne_zero
+#print axioms PCRLean.Experimental.CoordinateControlledTransformHeredity.quotient_unique
+#print axioms PCRLean.Experimental.CoordinateControlledTransformHeredity.powerData
+#print axioms PCRLean.Experimental.CoordinateControlledTransformHeredity.quotient_power_eq
+#print axioms PCRLean.Experimental.CoordinateControlledTransformHeredity.quotient_primePower_eq
+#print axioms PCRLean.Experimental.CoordinateControlledTransformHeredity.canonicalCompatibleData
