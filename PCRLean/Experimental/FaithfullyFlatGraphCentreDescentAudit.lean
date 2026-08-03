@@ -3,4 +3,5 @@ import PCRLean.Experimental.FaithfullyFlatGraphCentreDescent
 #print axioms PCRLean.Experimental.FaithfullyFlatGraphCentreDescent.quotientMap_injective
 #print axioms PCRLean.Experimental.FaithfullyFlatGraphCentreDescent.quotient_isReduced_of_extended
 #print axioms PCRLean.Experimental.FaithfullyFlatGraphCentreDescent.ideal_ne_top_of_graphModel
+#print axioms PCRLean.Experimental.FaithfullyFlatGraphCentreDescent.ideal_fg_of_graphModel
 #print axioms PCRLean.Experimental.FaithfullyFlatGraphCentreDescent.quotient_isReduced_of_graphModel
