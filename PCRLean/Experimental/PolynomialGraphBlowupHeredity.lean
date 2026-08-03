@@ -1,0 +1,192 @@
+import Mathlib
+import PCRLean.MarkedIdeal
+import PCRLean.Experimental.PolynomialGraphCentreHeredity
+
+/-!
+# All-chart blowup heredity for polynomial graph centres
+
+Let `R` be a domain and let the centre in `R[Z_i]` be the polynomial graph
+
+`Z_i - h_i = 0`.
+
+Translation sends this centre to the coordinate centre.  Composing translation
+with the standard coordinate blowup chart therefore gives an actual chart map
+for the graph centre.  In the chart with pivot `k`, every graph generator has
+the exact factorization
+
+`φ_k(Z_i - h_i) = E_k * r_{k,i}`,
+
+where the pivot residual is `1`.  Consequently the full packet of `q`-th powers
+is marked-permissible and its controlled root ideal is the unit ideal on every
+standard chart.
+
+The theorem treats polynomial graph centres in one affine chart.  Scheme-level
+overlap localizations, boundary divisors, passive modules and reconstruction of
+the next differential packet remain separate obligations.
+-/
+
+namespace PCRLean
+namespace Experimental
+namespace PolynomialGraphBlowupHeredity
+
+noncomputable section
+
+universe u v
+
+variable {R : Type u} [CommRing R] [IsDomain R]
+variable {ι : Type v} [DecidableEq ι]
+
+open PolynomialGraphCentreHeredity
+
+abbrev P := MvPolynomial ι R
+
+/-- Standard coordinate blowup chart in the polynomial ring `R[Z_i]`. -/
+def coordinateChartMap (k : ι) :
+    P (R := R) (ι := ι) →+* P :=
+  MvPolynomial.eval₂Hom MvPolynomial.C fun i =>
+    if i = k then MvPolynomial.X k
+    else MvPolynomial.X k * MvPolynomial.X i
+
+@[simp] theorem coordinateChartMap_pivot (k : ι) :
+    coordinateChartMap (R := R) k (MvPolynomial.X k) =
+      MvPolynomial.X k := by
+  simp [coordinateChartMap]
+
+@[simp] theorem coordinateChartMap_nonpivot
+    (k i : ι) (hki : i ≠ k) :
+    coordinateChartMap (R := R) k (MvPolynomial.X i) =
+      MvPolynomial.X k * MvPolynomial.X i := by
+  simp [coordinateChartMap, hki]
+
+/-- Graph-centre chart map: first translate the graph to the origin, then use
+the standard coordinate chart. -/
+def graphChartMap (h : ι → R) (k : ι) :
+    P (R := R) (ι := ι) →+* P :=
+  (coordinateChartMap (R := R) k).comp (translate h).toRingHom
+
+/-- Exceptional pivot coordinate. -/
+def exceptional (k : ι) : P (R := R) (ι := ι) :=
+  MvPolynomial.X k
+
+/-- Explicit controlled root in the pivot chart. -/
+def explicitRootTransform (k i : ι) : P (R := R) (ι := ι) :=
+  if i = k then 1 else MvPolynomial.X i
+
+/-- Exact factorization of every graph generator on every standard chart. -/
+theorem graphGenerator_factorization
+    (h : ι → R) (k i : ι) :
+    graphChartMap h k (graphGenerator h i) =
+      exceptional (R := R) k * explicitRootTransform (R := R) k i := by
+  by_cases hki : i = k
+  · subst i
+    simp [graphChartMap, coordinateChartMap, exceptional,
+      explicitRootTransform]
+  · simp [graphChartMap, coordinateChartMap, exceptional,
+      explicitRootTransform, hki]
+
+/-- Exact factorization of every graph-generator power. -/
+theorem graphGenerator_pow_factorization
+    (h : ι → R) (k i : ι) (q : Nat) :
+    graphChartMap h k ((graphGenerator h i) ^ q) =
+      (exceptional (R := R) k) ^ q *
+        (explicitRootTransform (R := R) k i) ^ q := by
+  rw [map_pow, graphGenerator_factorization, mul_pow]
+
+/-- Principal exceptional ideal in one graph-centre chart. -/
+def pivotIdeal (k : ι) : Ideal (P (R := R) (ι := ι)) :=
+  Ideal.span {exceptional (R := R) k}
+
+/-- The exceptional pivot belongs to its principal ideal. -/
+theorem exceptional_mem_pivotIdeal (k : ι) :
+    exceptional (R := R) k ∈ pivotIdeal (R := R) k :=
+  Ideal.mem_span_singleton_self _
+
+/-- Every transformed graph generator is divisible by the exceptional pivot. -/
+theorem graphChartMap_generator_mem_pivotIdeal
+    (h : ι → R) (k i : ι) :
+    graphChartMap h k (graphGenerator h i) ∈
+      pivotIdeal (R := R) k := by
+  rw [graphGenerator_factorization]
+  exact (pivotIdeal (R := R) k).mul_mem_right _
+    (exceptional_mem_pivotIdeal (R := R) k)
+
+/-- The full graph ideal maps into the exceptional ideal on every chart. -/
+theorem map_graphIdeal_le_pivotIdeal
+    (h : ι → R) (k : ι) :
+    (graphIdeal h).map (graphChartMap h k) ≤ pivotIdeal (R := R) k := by
+  rw [Ideal.map_le_iff_le_comap, graphIdeal, Ideal.span_le]
+  rintro x ⟨i, rfl⟩
+  exact graphChartMap_generator_mem_pivotIdeal h k i
+
+/-- All powers of the graph ideal map into the matching exceptional powers. -/
+theorem map_graphIdeal_pow_le_pivotIdeal_pow
+    (h : ι → R) (k : ι) (mark : Nat) :
+    ((graphIdeal h) ^ mark).map (graphChartMap h k) ≤
+      (pivotIdeal (R := R) k) ^ mark := by
+  rw [Ideal.map_pow]
+  gcongr
+  exact map_graphIdeal_le_pivotIdeal h k
+
+/-- Elementwise all-chart divisibility for a graph-permissible equation. -/
+theorem graphChartMap_mem_pivot_pow
+    (h : ι → R) (k : ι) {mark : Nat}
+    {f : P (R := R) (ι := ι)}
+    (hf : f ∈ (graphIdeal h) ^ mark) :
+    graphChartMap h k f ∈ (pivotIdeal (R := R) k) ^ mark := by
+  apply map_graphIdeal_pow_le_pivotIdeal_pow h k mark
+  exact Ideal.mem_map_of_mem (graphChartMap h k) hf
+
+/-- Source ideal generated by all `q`-th powers of the graph equations. -/
+def sourceIdeal (h : ι → R) (q : Nat) :
+    Ideal (P (R := R) (ι := ι)) :=
+  Ideal.span (Set.range fun i : ι => (graphGenerator h i) ^ q)
+
+/-- The source packet is contained in the marked graph-centre power. -/
+theorem sourceIdeal_le_graphIdeal_pow
+    (h : ι → R) (q : Nat) :
+    sourceIdeal h q ≤ (graphIdeal h) ^ q := by
+  rw [sourceIdeal, Ideal.span_le]
+  rintro x ⟨i, rfl⟩
+  exact Ideal.pow_mem_pow (graphGenerator_mem h i) q
+
+/-- Marked permissibility of the graph root packet. -/
+theorem sourcePacket_permissible
+    (h : ι → R) {q : Nat} (hq : 0 < q) :
+    MarkedIdeal.Permissible
+      (R := P (R := R) (ι := ι))
+      ⟨sourceIdeal h q, q, hq⟩
+      (graphIdeal h) :=
+  sourceIdeal_le_graphIdeal_pow h q
+
+/-- Controlled root ideal on one graph-centre chart. -/
+def transformedRootIdeal (k : ι) (q : Nat) :
+    Ideal (P (R := R) (ι := ι)) :=
+  Ideal.span (Set.range fun i : ι =>
+    (explicitRootTransform (R := R) k i) ^ q)
+
+/-- The pivot controlled root is the unit. -/
+theorem one_mem_transformedRootIdeal
+    (k : ι) (q : Nat) :
+    (1 : P (R := R) (ι := ι)) ∈ transformedRootIdeal (R := R) k q := by
+  apply Ideal.subset_span
+  refine ⟨k, ?_⟩
+  simp [explicitRootTransform]
+
+/-- The full controlled graph-root packet is terminal on every chart. -/
+theorem transformedRootIdeal_eq_top
+    (k : ι) (q : Nat) :
+    transformedRootIdeal (R := R) k q = ⊤ := by
+  exact Ideal.eq_top_iff_one.mpr (one_mem_transformedRootIdeal (R := R) k q)
+
+/-- Terminal chart packets agree pairwise. -/
+theorem transformedRootIdeal_eq
+    (i j : ι) (q : Nat) :
+    transformedRootIdeal (R := R) i q =
+      transformedRootIdeal (R := R) j q := by
+  rw [transformedRootIdeal_eq_top, transformedRootIdeal_eq_top]
+
+end
+
+end PolynomialGraphBlowupHeredity
+end Experimental
+end PCRLean
