@@ -10,10 +10,14 @@ Frobenius root. In characteristic `p`, the `y^p` term is invisible to the
 ordinary `y` derivative, while the `x^(p+1)` term exposes the `x` direction.
 The marked equation is permissible for the hybrid centre `(x,y)`.
 
-Thus the correct local object is allowed to be a sum of a defect ideal and a
-Frobenius-root ideal. This file proves only the exact polynomial identity,
-partial-derivative identities, and marked-power containment. It does not prove
-a universal packet construction or all-chart descent.
+Blowing up this hybrid centre gives two explicit chart identities. In the
+`x`-pivot chart the controlled transform is `T^p-x`, with unit derivative in
+the `x` direction. In the sibling `y`-pivot chart the controlled factor is
+`1-y*S^(p+1)`, whose restriction to the exceptional divisor is `1`. Thus the
+toy family supplies a complete finite all-chart exit macro.
+
+This file does not prove a universal packet construction or a hereditary
+transform theorem beyond this exact chamber.
 -/
 
 namespace PCRLean
@@ -21,6 +25,34 @@ namespace Experimental
 namespace HybridDefectRootCusp
 
 noncomputable section
+
+section RingIdentities
+
+variable {R : Type*} [CommRing R]
+
+/-- Exact `x`-pivot chart identity after substituting `y = x*T` and factoring
+the exceptional multiplicity `x^n`. -/
+theorem xPivot_identity (x T : R) (n : Nat) :
+    (x * T) ^ n - x ^ (n + 1) =
+      x ^ n * (T ^ n - x) := by
+  rw [mul_pow, pow_succ]
+  ring
+
+/-- Exact sibling `y`-pivot chart identity after substituting `x = y*S` and
+factoring the exceptional multiplicity `y^n`. -/
+theorem yPivot_identity (y S : R) (n : Nat) :
+    y ^ n - (y * S) ^ (n + 1) =
+      y ^ n * (1 - y * S ^ (n + 1)) := by
+  rw [mul_pow, pow_succ]
+  ring
+
+/-- The sibling controlled factor has no point on the exceptional divisor:
+setting the exceptional coordinate to zero leaves the unit `1`. -/
+theorem yPivot_factor_at_exceptional (S : R) (n : Nat) :
+    1 - 0 * S ^ (n + 1) = (1 : R) := by
+  simp
+
+end RingIdentities
 
 universe u
 
@@ -105,6 +137,24 @@ theorem pderiv_x_cusp :
     rw [Nat.cast_add, hp]
     simp
   simp [cusp, x, y, MvPolynomial.pderiv_pow, hp, hp1]
+
+/-- Controlled transform on the active `x`-pivot chart. -/
+def activeTransform : P (K := K) :=
+  (y (K := K)) ^ p - x (K := K)
+
+/-- The active transform is smooth in the defect coordinate: its partial
+derivative is the unit `-1`. -/
+theorem pderiv_x_activeTransform :
+    MvPolynomial.pderiv false (activeTransform (K := K) p) = -1 := by
+  simp [activeTransform, x, y, MvPolynomial.pderiv_pow]
+
+/-- The remaining Frobenius direction of the active transform is still
+ordinary-derivative invisible. -/
+theorem pderiv_y_activeTransform :
+    MvPolynomial.pderiv true (activeTransform (K := K) p) = 0 := by
+  have hp : (p : P (K := K)) = 0 :=
+    CharP.cast_eq_zero (P (K := K)) p
+  simp [activeTransform, x, y, MvPolynomial.pderiv_pow, hp]
 
 end
 
