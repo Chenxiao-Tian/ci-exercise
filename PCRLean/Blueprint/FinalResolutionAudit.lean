@@ -1,0 +1,10 @@
+import PCRLean.Blueprint.FinalResolution
+
+#print axioms PCRLean.Blueprint.FinalResolution.dependencyTable_length
+#print axioms PCRLean.Blueprint.FinalResolution.dependencyEdgeCount_eq
+#print axioms PCRLean.Blueprint.FinalResolution.dependencies_point_backward
+#print axioms PCRLean.Blueprint.FinalResolution.GeometrySpec.exists_terminal_execution
+#print axioms PCRLean.Blueprint.FinalResolution.GeometrySpec.compileStrongResolution
+#print axioms PCRLean.Blueprint.FinalResolution.GeometrySpec.compilePrincipalization
+#print axioms PCRLean.Blueprint.FinalResolution.GeometrySpec.compileEmbeddedResolution
+#print axioms PCRLean.Blueprint.FinalResolution.GeometrySpec.compileNonembeddedResolution
