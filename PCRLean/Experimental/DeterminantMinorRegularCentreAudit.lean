@@ -1,0 +1,6 @@
+import PCRLean.Experimental.DeterminantMinorRegularCentre
+
+#print axioms PCRLean.Experimental.DeterminantMinorRegularCentre.inverse_identity
+#print axioms PCRLean.Experimental.DeterminantMinorRegularCentre.toMinorCertificate
+#print axioms PCRLean.Experimental.DeterminantMinorRegularCentre.eval_surjective
+#print axioms PCRLean.Experimental.DeterminantMinorRegularCentre.finiteFreeCertificate
