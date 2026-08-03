@@ -7,3 +7,4 @@ import PCRLean.Experimental.RangeRestrictedRegularCentre
 #print axioms PCRLean.Experimental.RangeRestrictedRegularCentre.kernelIdeal_ne_top
 #print axioms PCRLean.Experimental.RangeRestrictedRegularCentre.certificate
 #print axioms PCRLean.Experimental.RangeRestrictedRegularCentre.finiteFreeCertificate
+#print axioms PCRLean.Experimental.RangeRestrictedRegularCentre.finiteDimensionalCertificate
