@@ -44,7 +44,9 @@ jobs:
               PCRLean/Experimental/MultivariateFrobeniusOrderHeredity.lean \
               PCRLean/Experimental/MultivariateFrobeniusOrderHeredityAudit.lean \
               PCRLean/Experimental/MultivariateOrderIdealBridge.lean \
-              PCRLean/Experimental/MultivariateOrderIdealBridgeAudit.lean; then
+              PCRLean/Experimental/MultivariateOrderIdealBridgeAudit.lean \
+              PCRLean/Experimental/MultivariatePointIdealBridge.lean \
+              PCRLean/Experimental/MultivariatePointIdealBridgeAudit.lean; then
             echo 'Forbidden proof placeholder or custom axiom found.' >&2
             exit 1
           fi
@@ -78,6 +80,11 @@ jobs:
           set -o pipefail
           lake build PCRLean.Experimental.MultivariateOrderIdealBridge 2>&1 \
             | tee order-ideal-bridge-build.txt
+      - name: Build rational-point ideal bridge
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.MultivariatePointIdealBridge 2>&1 \
+            | tee point-ideal-bridge-build.txt
       - name: Kernel axiom audit
         run: |
           set -o pipefail
@@ -93,10 +100,12 @@ jobs:
             | tee multivariate-heredity-axioms.txt
           lake env lean PCRLean/Experimental/MultivariateOrderIdealBridgeAudit.lean 2>&1 \
             | tee order-ideal-bridge-axioms.txt
+          lake env lean PCRLean/Experimental/MultivariatePointIdealBridgeAudit.lean 2>&1 \
+            | tee point-ideal-bridge-axioms.txt
           cat integral-heredity-axioms.txt mark-scaling-boundary-axioms.txt \
               order-basechange-axioms.txt universal-marked-equivalence-axioms.txt \
               multivariate-heredity-axioms.txt order-ideal-bridge-axioms.txt \
-              > combined-axioms.txt
+              point-ideal-bridge-axioms.txt > combined-axioms.txt
           if grep -E 'sorryAx|PCRLean\..*Axiom|ResolutionAxiom|PacketizationAxiom' \
               combined-axioms.txt; then
             echo 'Unpermitted axiom detected.' >&2
@@ -114,11 +123,13 @@ jobs:
             universal-marked-equivalence-build.txt
             multivariate-heredity-build.txt
             order-ideal-bridge-build.txt
+            point-ideal-bridge-build.txt
             integral-heredity-axioms.txt
             mark-scaling-boundary-axioms.txt
             order-basechange-axioms.txt
             universal-marked-equivalence-axioms.txt
             multivariate-heredity-axioms.txt
             order-ideal-bridge-axioms.txt
+            point-ideal-bridge-axioms.txt
             combined-axioms.txt
           if-no-files-found: warn
