@@ -9,3 +9,4 @@ import PCRLean.Experimental.BiorthogonalRegularCentre
 #print axioms PCRLean.Experimental.BiorthogonalRegularCentre.coefficientSymmetricAlgebra_isRegularRing
 #print axioms PCRLean.Experimental.BiorthogonalRegularCentre.quotient_isRegularRing
 #print axioms PCRLean.Experimental.BiorthogonalRegularCentre.certificate
+#print axioms PCRLean.Experimental.BiorthogonalRegularCentre.finiteDimensionalCertificate
