@@ -1,0 +1,12 @@
+import PCRLean.Experimental.MaximalMinorColumnChange
+
+#print axioms PCRLean.Experimental.MaximalMinorColumnChange.selectedMatrix_mul_right
+#print axioms PCRLean.Experimental.MaximalMinorColumnChange.determinant_mul_right
+#print axioms PCRLean.Experimental.MaximalMinorColumnChange.fullRankCover
+#print axioms PCRLean.Experimental.MaximalMinorColumnChange.solution_forward
+#print axioms PCRLean.Experimental.MaximalMinorColumnChange.solution_backward
+#print axioms PCRLean.Experimental.MaximalMinorColumnChange.exists_solution_iff
+#print axioms PCRLean.Experimental.MaximalMinorColumnChange.augmentedRankCondition_iff
+#print axioms PCRLean.Experimental.MaximalMinorColumnChange.transportAugmented
+#print axioms PCRLean.Experimental.MaximalMinorColumnChange.transformed_globalGraph_eq
+#print axioms PCRLean.Experimental.MaximalMinorColumnChange.mulVec_transformed_globalGraph
