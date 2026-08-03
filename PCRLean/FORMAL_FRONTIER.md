@@ -124,8 +124,50 @@ intrinsic finite Frobenius frame
 
 Only the finite-frame algebraic core and conditional causal backend are certified in the general abstract forms stated above. Universal geometric realization remains open.
 
+## PCR-JUMP-LEAN 2.0 bridge decomposition
+
+The baseline method protocol `PCR-JUMP-LEAN 2.0 / MLEL-A002-JUMP2` refines the open geometric middle without promoting any experimental theorem. Its default candidate chain is:
+
+```text
+intrinsic finite Frobenius--Hasse packet
+-> finite conormal evaluation morphism
+-> finite Fitting determinant atlas
+-> split finite-projective quotient on each determinant chart
+-> intrinsic kernel ideal sheaf
+-> actual regular centre or finite centre word
+-> joint legality
+-> hereditary all-chart transform
+-> causal source-support ledger
+-> global well-founded compiler.
+```
+
+The three primary missions are:
+
+```text
+IFCCS  Intrinsic Fitting--Conormal Centre Sheaf
+HKITF  Hereditary Kernel-Ideal Transform Functor
+CSCN   Causal Source Cosheaf and Noetherian Ledger
+```
+
+The rank-zero fallback is:
+
+```text
+RZRC    Rank-Zero Radicial Core
+```
+
+These are candidate bridge programs. They may guide Experimental work but cannot be used as Lean premises in the official baseline.
+
 ## Non-negotiable rule
 
 No item U1-U8 may be crossed by `axiom`, `sorry`, `admit`, an unproved typeclass instance, or an imported experimental MLE theorem. A complete proof exists in this branch only when all eight goals have kernel-checked constructions and the final `#print axioms` audit contains no project-specific assumptions.
+
+Protocol adoption also imposes:
+
+```text
+no stale CI evidence
+no Experimental-to-Certified import
+no theorem promotion without explicit user authorization
+no paper/Lean semantic weakening
+```
 
 Current global status: `OPEN_GAP`.
