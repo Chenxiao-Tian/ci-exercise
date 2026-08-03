@@ -44,6 +44,8 @@ jobs:
               PCRLean/Experimental/DerivativeZeroFinitePresentationAudit.lean \
               PCRLean/Experimental/InitialFormFrobeniusCleaning.lean \
               PCRLean/Experimental/InitialFormFrobeniusCleaningAudit.lean \
+              PCRLean/Experimental/InitialFormCleaningTermination.lean \
+              PCRLean/Experimental/InitialFormCleaningTerminationAudit.lean \
               PCRLean/Experimental/ReesFrobeniusIntegralCompression.lean \
               PCRLean/Experimental/ReesFrobeniusIntegralCompressionAudit.lean \
               PCRLean/Experimental/FiniteReesFrobeniusCompression.lean \
@@ -71,6 +73,11 @@ jobs:
           set -o pipefail
           lake build PCRLean.Experimental.InitialFormFrobeniusCleaning 2>&1 \
             | tee initial-form-cleaning-build.txt
+      - name: Build cleaning termination
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.InitialFormCleaningTermination 2>&1 \
+            | tee cleaning-termination-build.txt
       - name: Build Rees integral compression
         run: |
           set -o pipefail
@@ -92,14 +99,16 @@ jobs:
             | tee derivative-zero-presentation-axioms.txt
           lake env lean PCRLean/Experimental/InitialFormFrobeniusCleaningAudit.lean 2>&1 \
             | tee initial-form-cleaning-axioms.txt
+          lake env lean PCRLean/Experimental/InitialFormCleaningTerminationAudit.lean 2>&1 \
+            | tee cleaning-termination-axioms.txt
           lake env lean PCRLean/Experimental/ReesFrobeniusIntegralCompressionAudit.lean 2>&1 \
             | tee rees-integral-compression-axioms.txt
           lake env lean PCRLean/Experimental/FiniteReesFrobeniusCompressionAudit.lean 2>&1 \
             | tee finite-rees-compression-axioms.txt
           cat pderiv-frobenius-axioms.txt frobenius-primitive-axioms.txt \
               derivative-zero-presentation-axioms.txt initial-form-cleaning-axioms.txt \
-              rees-integral-compression-axioms.txt finite-rees-compression-axioms.txt \
-              > combined-axioms.txt
+              cleaning-termination-axioms.txt rees-integral-compression-axioms.txt \
+              finite-rees-compression-axioms.txt > combined-axioms.txt
           if grep -E 'sorryAx|PCRLean\..*Axiom|ResolutionAxiom|PacketizationAxiom' \
               combined-axioms.txt; then
             echo 'Unpermitted axiom detected.' >&2
@@ -115,12 +124,14 @@ jobs:
             frobenius-primitive-build.txt
             derivative-zero-presentation-build.txt
             initial-form-cleaning-build.txt
+            cleaning-termination-build.txt
             rees-integral-compression-build.txt
             finite-rees-compression-build.txt
             pderiv-frobenius-axioms.txt
             frobenius-primitive-axioms.txt
             derivative-zero-presentation-axioms.txt
             initial-form-cleaning-axioms.txt
+            cleaning-termination-axioms.txt
             rees-integral-compression-axioms.txt
             finite-rees-compression-axioms.txt
             combined-axioms.txt
