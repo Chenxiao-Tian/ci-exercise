@@ -61,14 +61,17 @@ theorem chosenSource_injective : Function.Injective C.chosenSource := by
   · exact C.chosenSource_mem e
   · simpa [hef] using C.chosenSource_mem f
 
+include C
+
 /-- Finite-source packing bound: active jump-capable identities are bounded by
 fixed ancestor sources. -/
-include C in
 theorem card_events_le_card_sources :
     Fintype.card Event ≤ Fintype.card Source := by
   exact Fintype.card_le_of_injective
     (fun e => chosenSource C e)
     (chosenSource_injective C)
+
+omit C
 
 /-- If every ancestor source is already assigned, a new disjoint nonempty event
 cannot be inserted without merging or releasing an old support. -/
