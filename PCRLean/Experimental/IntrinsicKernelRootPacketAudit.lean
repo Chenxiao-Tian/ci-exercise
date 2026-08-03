@@ -1,0 +1,7 @@
+import PCRLean.Experimental.IntrinsicKernelRootPacket
+
+#print axioms PCRLean.Experimental.IntrinsicKernelRootPacket.rootGenerator_mem
+#print axioms PCRLean.Experimental.IntrinsicKernelRootPacket.rootPowerIdeal_le_kernelIdeal_pow
+#print axioms PCRLean.Experimental.IntrinsicKernelRootPacket.rootPacket_permissible
+#print axioms PCRLean.Experimental.IntrinsicKernelRootPacket.rootPowerIdeal_eq_of_ker_eq
+#print axioms PCRLean.Experimental.IntrinsicKernelRootPacket.map_rootPowerIdeal_le

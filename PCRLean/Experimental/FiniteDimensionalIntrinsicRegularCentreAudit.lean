@@ -1,0 +1,7 @@
+import PCRLean.Experimental.FiniteDimensionalIntrinsicRegularCentre
+
+#print axioms PCRLean.Experimental.FiniteDimensionalIntrinsicRegularCentre.source_isNoetherianRing
+#print axioms PCRLean.Experimental.FiniteDimensionalIntrinsicRegularCentre.quotient_isRegularRing
+#print axioms PCRLean.Experimental.FiniteDimensionalIntrinsicRegularCentre.certificate
+#print axioms PCRLean.Experimental.FiniteDimensionalIntrinsicRegularCentre.kernelIdeal_ne_top
+#print axioms PCRLean.Experimental.FiniteDimensionalIntrinsicRegularCentre.kernelIdeal_fg

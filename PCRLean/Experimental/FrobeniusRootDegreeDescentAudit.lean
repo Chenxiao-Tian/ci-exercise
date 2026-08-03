@@ -1,0 +1,7 @@
+import PCRLean.Experimental.FrobeniusRootDegreeDescent
+
+#print axioms PCRLean.Experimental.FrobeniusRootDegreeDescent.totalDegree_decreases
+#print axioms PCRLean.Experimental.FrobeniusRootDegreeDescent.no_infinite_root_chain
+#print axioms PCRLean.Experimental.FrobeniusRootDegreeDescent.iteratedRoot_totalDegree_lt
+#print axioms PCRLean.Experimental.FrobeniusRootDegreeDescent.rootLinearPolynomial_totalDegree_pos
+#print axioms PCRLean.Experimental.FrobeniusRootDegreeDescent.pureFrobenius_root_degree_lt

@@ -1,0 +1,5 @@
+import PCRLean.Experimental.NoetherianOrbitAutomaticRegularCentre
+
+#print axioms PCRLean.Experimental.NoetherianOrbitAutomaticRegularCentre.exists_certificate
+#print axioms PCRLean.Experimental.NoetherianOrbitAutomaticRegularCentre.Certificate.persistentGenerator_mem
+#print axioms PCRLean.Experimental.NoetherianOrbitAutomaticRegularCentre.Certificate.persistentKernel_eq_packetKernel

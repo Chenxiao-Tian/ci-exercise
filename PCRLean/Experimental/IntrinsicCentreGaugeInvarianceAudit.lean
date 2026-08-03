@@ -1,0 +1,6 @@
+import PCRLean.Experimental.IntrinsicCentreGaugeInvariance
+
+#print axioms PCRLean.Experimental.IntrinsicCentreGaugeInvariance.kernelIdeal_eq_of_ker_eq
+#print axioms PCRLean.Experimental.IntrinsicCentreGaugeInvariance.ker_equiv_comp_eq
+#print axioms PCRLean.Experimental.IntrinsicCentreGaugeInvariance.kernelIdeal_equiv_comp_eq
+#print axioms PCRLean.Experimental.IntrinsicCentreGaugeInvariance.GaugeAtlas.kernelIdeal_eq

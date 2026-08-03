@@ -1,0 +1,14 @@
+import PCRLean.NoetherianOperatorOrbit
+import PCRLean.OperatorOrbitEquivFixed
+import PCRLean.SplitConormalFrame
+import PCRLean.LinearizedGeometricRealization
+
+namespace PCRLean.JumpRealizationIndex
+
+#print axioms PCRLean.NoetherianOperatorOrbit.exists_finite_kernel_packet
+#print axioms PCRLean.OperatorOrbitEquivFixed.map_orbitModule_eq
+#print axioms PCRLean.SplitConormalFrame.Frame.isCompl_ker_range
+#print axioms PCRLean.LinearizedGeometricRealization.Certificate.persistentKernel_eq_evalKer
+#print axioms PCRLean.LinearizedGeometricRealization.Certificate.persistentKernel_isCompl
+
+end PCRLean.JumpRealizationIndex

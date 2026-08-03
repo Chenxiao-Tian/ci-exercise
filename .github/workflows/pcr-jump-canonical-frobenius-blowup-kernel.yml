@@ -1,0 +1,84 @@
+name: PCR Jump canonical Frobenius blowup kernel
+
+on:
+  push:
+    branches:
+      - pcr-jump-lean-20260802-u2-root-boundary
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pcr-jump-canonical-frobenius-blowup-kernel-${{ github.sha }}
+  cancel-in-progress: false
+
+jobs:
+  canonical-frobenius-blowup-kernel-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          set -o pipefail
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf \
+            | sh -s -- -y --default-toolchain leanprover/lean4:v4.30.0
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned mathlib
+        run: |
+          set -o pipefail
+          lake update
+          lake exe cache get
+      - name: Reject placeholders in the corrected integrated kernel
+        run: |
+          set -o pipefail
+          files=(
+            PCRLean/Experimental/DualPacketAffineLinearRealization.lean
+            PCRLean/Experimental/DualPacketAffineQuotient.lean
+            PCRLean/Experimental/DualPacketAffineRootPackage.lean
+            PCRLean/Experimental/FrobeniusFiniteRootGeneration.lean
+            PCRLean/Experimental/NoetherianOrbitPacketCanonicity.lean
+            PCRLean/Experimental/NoetherianOrbitCanonicalFrobeniusAffineChamber.lean
+            PCRLean/Experimental/DualPacketCoordinateNormalization.lean
+            PCRLean/Experimental/LeftCoordinateBlowupChart.lean
+            PCRLean/Experimental/DualPacketBlowupChart.lean
+            PCRLean/Experimental/NoetherianOrbitCanonicalFrobeniusBlowupChamber.lean
+            PCRLean/Experimental/DualPacketRankZeroNoGo.lean
+            PCRLean/Experimental/PerfectFrobeniusRankZeroEscape.lean
+            PCRLean/Experimental/PerfectFrobeniusPureIdealEscape.lean
+            PCRLean/Experimental/MultiOwnerPerfectFrobeniusEscapeChamber.lean
+            PCRLean/Experimental/PerfectFrobeniusFinitePresentation.lean
+            PCRLean/Experimental/MultiOwnerPerfectFrobeniusPresentationChamber.lean
+            PCRLean/Experimental/CanonicalFrobeniusBlowupKernelIndex.lean
+          )
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)([[:space:]]|$)' "${files[@]}"; then
+            echo 'Forbidden proof placeholder or custom axiom found.' >&2
+            exit 1
+          fi
+      - name: Build integrated corrected kernel
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.CanonicalFrobeniusBlowupKernelIndex 2>&1 \
+            | tee canonical-frobenius-blowup-kernel-build.txt
+      - name: Integrated axiom audit
+        run: |
+          set -o pipefail
+          lake env lean PCRLean/Experimental/CanonicalFrobeniusBlowupKernelIndex.lean 2>&1 \
+            | tee canonical-frobenius-blowup-kernel-axioms.txt
+          if grep -E 'sorryAx|PCRLean\..*Axiom|ResolutionAxiom|PacketizationAxiom' \
+              canonical-frobenius-blowup-kernel-axioms.txt; then
+            echo 'Unpermitted axiom detected.' >&2
+            exit 1
+          fi
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pcr-jump-canonical-frobenius-blowup-kernel-${{ github.sha }}
+          path: |
+            canonical-frobenius-blowup-kernel-build.txt
+            canonical-frobenius-blowup-kernel-axioms.txt
+          if-no-files-found: warn

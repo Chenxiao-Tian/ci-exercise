@@ -1,0 +1,6 @@
+import PCRLean.Experimental.IntrinsicKernelIdealMonotonicity
+
+#print axioms PCRLean.Experimental.IntrinsicKernelIdealMonotonicity.kernelIdealOf_mono
+#print axioms PCRLean.Experimental.IntrinsicKernelIdealMonotonicity.kernelIdealOf_le_comp
+#print axioms PCRLean.Experimental.IntrinsicKernelIdealMonotonicity.ker_comp_eq_of_injective
+#print axioms PCRLean.Experimental.IntrinsicKernelIdealMonotonicity.kernelIdealOf_comp_eq_of_injective

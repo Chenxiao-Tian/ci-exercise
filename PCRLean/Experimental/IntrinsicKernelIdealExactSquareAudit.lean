@@ -1,0 +1,6 @@
+import PCRLean.Experimental.IntrinsicKernelIdealExactSquare
+
+#print axioms PCRLean.Experimental.IntrinsicKernelIdealExactSquare.KernelExactSquare.map_kernelIdealOf_eq
+#print axioms PCRLean.Experimental.IntrinsicKernelIdealExactSquare.KernelExactSquare.refl
+#print axioms PCRLean.Experimental.IntrinsicKernelIdealExactSquare.KernelExactSquare.comp
+#print axioms PCRLean.Experimental.IntrinsicKernelIdealExactSquare.KernelExactSquare.map_kernelIdealOf_eq_comp

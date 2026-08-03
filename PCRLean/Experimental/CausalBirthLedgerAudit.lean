@@ -1,0 +1,9 @@
+import PCRLean.Experimental.CausalBirthLedger
+
+#print axioms PCRLean.Experimental.CausalBirthLedger.rankLt_wellFounded
+#print axioms PCRLean.Experimental.CausalBirthLedger.card_union_fresh_lt
+#print axioms PCRLean.Experimental.CausalBirthLedger.enrollFreshSupport_step
+#print axioms PCRLean.Experimental.CausalBirthLedger.used_mono_of_step
+#print axioms PCRLean.Experimental.CausalBirthLedger.step_decreases
+#print axioms PCRLean.Experimental.CausalBirthLedger.no_infinite_execution
+#print axioms PCRLean.Experimental.CausalBirthLedger.no_infinite_fresh_births

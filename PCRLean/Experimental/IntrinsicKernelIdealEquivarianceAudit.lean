@@ -1,0 +1,4 @@
+import PCRLean.Experimental.IntrinsicKernelIdealEquivariance
+
+#print axioms PCRLean.Experimental.IntrinsicKernelIdealEquivariance.map_kernelIdealOf_eq_of_equiv
+#print axioms PCRLean.Experimental.IntrinsicKernelIdealEquivariance.map_splitSurjection_kernelIdeal_eq_of_equiv

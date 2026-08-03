@@ -1,0 +1,11 @@
+import PCRLean.Experimental.DualPacketAffineQuotient
+
+#print axioms PCRLean.Experimental.DualPacketAffineQuotient.polyToSym_symToPoly
+#print axioms PCRLean.Experimental.DualPacketAffineQuotient.symToPoly_polyToSym
+#print axioms PCRLean.Experimental.DualPacketAffineQuotient.actualProjectAlg_surjective
+#print axioms PCRLean.Experimental.DualPacketAffineQuotient.ker_actualProjectAlg_eq_actualIdeal
+#print axioms PCRLean.Experimental.DualPacketAffineQuotient.quotientEquiv
+#print axioms PCRLean.Experimental.DualPacketAffineQuotient.actualIdeal_ne_top
+#print axioms PCRLean.Experimental.DualPacketAffineQuotient.actualIdeal_fg
+#print axioms PCRLean.Experimental.DualPacketAffineQuotient.quotient_isRegularRing
+#print axioms PCRLean.Experimental.DualPacketAffineQuotient.certificate

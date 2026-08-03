@@ -1,0 +1,68 @@
+name: PCR Jump causal birth ledger
+
+on:
+  push:
+    branches:
+      - pcr-jump-lean-20260802-u2-root-boundary
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pcr-jump-causal-birth-ledger-${{ github.sha }}
+  cancel-in-progress: false
+
+jobs:
+  causal-birth-ledger-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          set -o pipefail
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf \
+            | sh -s -- -y --default-toolchain leanprover/lean4:v4.30.0
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned mathlib
+        run: |
+          set -o pipefail
+          lake update
+          lake exe cache get
+      - name: Reject placeholders
+        run: |
+          set -o pipefail
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)([[:space:]]|$)' \
+              PCRLean/GenerationalRank.lean \
+              PCRLean/Experimental/CausalBirthLedger.lean \
+              PCRLean/Experimental/CausalBirthLedgerAudit.lean; then
+            echo 'Forbidden proof placeholder or custom axiom found.' >&2
+            exit 1
+          fi
+      - name: Build causal birth ledger
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.CausalBirthLedger 2>&1 \
+            | tee causal-birth-ledger-build.txt
+      - name: Kernel axiom audit
+        run: |
+          set -o pipefail
+          lake env lean PCRLean/Experimental/CausalBirthLedgerAudit.lean 2>&1 \
+            | tee causal-birth-ledger-axioms.txt
+          if grep -E 'sorryAx|PCRLean\..*Axiom|ResolutionAxiom|PacketizationAxiom' \
+              causal-birth-ledger-axioms.txt; then
+            echo 'Unpermitted axiom detected.' >&2
+            exit 1
+          fi
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pcr-jump-causal-birth-ledger-${{ github.sha }}
+          path: |
+            causal-birth-ledger-build.txt
+            causal-birth-ledger-axioms.txt
+          if-no-files-found: warn

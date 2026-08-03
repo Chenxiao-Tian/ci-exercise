@@ -1,0 +1,6 @@
+import PCRLean.Experimental.FrobeniusFiniteRootGeneration
+
+#print axioms PCRLean.Experimental.FrobeniusFiniteRootGeneration.packetPowerGenerator_mem
+#print axioms PCRLean.Experimental.FrobeniusFiniteRootGeneration.functionalPolynomial_pow_mem_packetPowerIdeal
+#print axioms PCRLean.Experimental.FrobeniusFiniteRootGeneration.actualRootPowerIdeal_eq_packetPowerIdeal
+#print axioms PCRLean.Experimental.FrobeniusFiniteRootGeneration.packetPowerIdeal_permissible

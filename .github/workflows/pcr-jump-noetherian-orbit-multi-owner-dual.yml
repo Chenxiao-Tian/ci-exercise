@@ -1,0 +1,73 @@
+name: PCR Jump Noetherian-orbit multi-owner dual chamber
+
+on:
+  push:
+    branches:
+      - pcr-jump-lean-20260802-u2-root-boundary
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pcr-jump-noetherian-orbit-multi-owner-dual-${{ github.sha }}
+  cancel-in-progress: false
+
+jobs:
+  noetherian-orbit-multi-owner-dual-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          set -o pipefail
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf \
+            | sh -s -- -y --default-toolchain leanprover/lean4:v4.30.0
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned mathlib
+        run: |
+          set -o pipefail
+          lake update
+          lake exe cache get
+      - name: Reject placeholders
+        run: |
+          set -o pipefail
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)([[:space:]]|$)' \
+              PCRLean/NoetherianOperatorOrbit.lean \
+              PCRLean/MultiOwnerHasseCore.lean \
+              PCRLean/Experimental/DualPacketRegularCentre.lean \
+              PCRLean/Experimental/DualPacketRootPackage.lean \
+              PCRLean/Experimental/NoetherianOrbitDualRegularCentre.lean \
+              PCRLean/Experimental/MultiOwnerDualFrobeniusChamber.lean \
+              PCRLean/Experimental/NoetherianOrbitMultiOwnerDualChamber.lean \
+              PCRLean/Experimental/NoetherianOrbitMultiOwnerDualChamberAudit.lean; then
+            echo 'Forbidden proof placeholder or custom axiom found.' >&2
+            exit 1
+          fi
+      - name: Build combined U1-U3 dual chamber
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.NoetherianOrbitMultiOwnerDualChamber 2>&1 \
+            | tee noetherian-orbit-multi-owner-dual-build.txt
+      - name: Kernel axiom audit
+        run: |
+          set -o pipefail
+          lake env lean PCRLean/Experimental/NoetherianOrbitMultiOwnerDualChamberAudit.lean 2>&1 \
+            | tee noetherian-orbit-multi-owner-dual-axioms.txt
+          if grep -E 'sorryAx|PCRLean\..*Axiom|ResolutionAxiom|PacketizationAxiom' \
+              noetherian-orbit-multi-owner-dual-axioms.txt; then
+            echo 'Unpermitted axiom detected.' >&2
+            exit 1
+          fi
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pcr-jump-noetherian-orbit-multi-owner-dual-${{ github.sha }}
+          path: |
+            noetherian-orbit-multi-owner-dual-build.txt
+            noetherian-orbit-multi-owner-dual-axioms.txt
+          if-no-files-found: warn

@@ -1,0 +1,5 @@
+import PCRLean.Experimental.NoetherianOrbitCanonicalFrobeniusAffineChamber
+
+#print axioms PCRLean.Experimental.NoetherianOrbitCanonicalFrobeniusAffineChamber.certificate
+#print axioms PCRLean.Experimental.NoetherianOrbitCanonicalFrobeniusAffineChamber.canonicalCentre_ne_top
+#print axioms PCRLean.Experimental.NoetherianOrbitCanonicalFrobeniusAffineChamber.canonicalCentre_fg

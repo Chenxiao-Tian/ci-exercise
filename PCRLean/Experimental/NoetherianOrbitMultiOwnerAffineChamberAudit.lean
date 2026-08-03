@@ -1,0 +1,4 @@
+import PCRLean.Experimental.NoetherianOrbitMultiOwnerAffineChamber
+
+#print axioms PCRLean.Experimental.NoetherianOrbitMultiOwnerAffineChamber.assemble
+#print axioms PCRLean.Experimental.NoetherianOrbitMultiOwnerAffineChamber.exists_certificate

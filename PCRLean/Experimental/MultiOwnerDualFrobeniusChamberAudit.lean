@@ -1,0 +1,6 @@
+import PCRLean.Experimental.MultiOwnerDualFrobeniusChamber
+
+#print axioms PCRLean.Experimental.MultiOwnerDualFrobeniusChamber.owner_le_rootSource
+#print axioms PCRLean.Experimental.MultiOwnerDualFrobeniusChamber.every_owner_permissible
+#print axioms PCRLean.Experimental.MultiOwnerDualFrobeniusChamber.jointOwnerIdeal_permissible
+#print axioms PCRLean.Experimental.MultiOwnerDualFrobeniusChamber.certificate
