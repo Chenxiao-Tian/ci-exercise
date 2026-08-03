@@ -6,14 +6,15 @@ import PCRLean.Experimental.PDerivFrobeniusDescent
 
 Over a perfect field of characteristic `p`, a nonconstant polynomial with all
 first partial derivatives zero has an explicit `p`-th root of strictly smaller
-total degree.  Strong induction therefore factors every polynomial as
+total degree. Strong induction therefore factors every polynomial as
 
 `f = primitive ^ (p^e)`
 
 where the final factor is either constant or has a nonzero first partial
-derivative.  This is a finite, choice-free rank-zero exit at the polynomial
-level.  It does not yet identify the geometric Hasse core with the principal
-ideal of the chosen polynomial, nor prove descent over imperfect fields.
+derivative. The theorem works for an arbitrary variable type because each
+individual polynomial has finite support. It is a finite rank-zero exit at the
+polynomial level, but does not yet identify a geometric Hasse core with the
+principal ideal of the chosen polynomial or prove imperfect-field descent.
 -/
 
 namespace PCRLean
@@ -25,7 +26,7 @@ noncomputable section
 universe u v
 
 variable {K : Type u} [Field K]
-variable {σ : Type v} [Fintype σ] [DecidableEq σ]
+variable {σ : Type v} [DecidableEq σ]
 variable (p : Nat) [Fact p.Prime] [CharP K p] [PerfectField K p]
 
 open PDerivFrobeniusDescent
@@ -51,8 +52,7 @@ theorem exists_frobeniusPrimitive_decomposition
     · refine ⟨0, f, ?_, Or.inl ?_⟩
       · simp
       · simpa [hdegree] using hn
-    · have hfpos : 0 < f.totalDegree := by
-        omega
+    · have hfpos : 0 < f.totalDegree := by omega
       rcases visible_or_strict_root p f hfpos with hvis | hroot
       · exact ⟨0, f, by simp, Or.inr hvis⟩
       · rcases hroot with ⟨g, hfg, hgpos, hglt⟩
