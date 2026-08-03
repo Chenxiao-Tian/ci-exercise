@@ -1,0 +1,9 @@
+import PCRLean.Experimental.OwnerUnionKernelCollapse
+
+#print axioms PCRLean.Experimental.OwnerUnionKernelCollapse.leftOwner_not_injective
+#print axioms PCRLean.Experimental.OwnerUnionKernelCollapse.rightOwner_not_injective
+#print axioms PCRLean.Experimental.OwnerUnionKernelCollapse.leftOwner_strictCentre
+#print axioms PCRLean.Experimental.OwnerUnionKernelCollapse.rightOwner_strictCentre
+#print axioms PCRLean.Experimental.OwnerUnionKernelCollapse.jointOwner_injective
+#print axioms PCRLean.Experimental.OwnerUnionKernelCollapse.jointOwner_centreIdeal_eq_bot
+#print axioms PCRLean.Experimental.OwnerUnionKernelCollapse.individual_strict_but_joint_bottom
