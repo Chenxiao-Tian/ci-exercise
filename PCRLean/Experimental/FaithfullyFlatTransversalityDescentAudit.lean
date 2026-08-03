@@ -1,0 +1,4 @@
+import PCRLean.Experimental.FaithfullyFlatTransversalityDescent
+
+#print axioms PCRLean.Experimental.FaithfullyFlatTransversalityDescent.transverse_of_map
+#print axioms PCRLean.Experimental.FaithfullyFlatTransversalityDescent.transverse_of_map'
