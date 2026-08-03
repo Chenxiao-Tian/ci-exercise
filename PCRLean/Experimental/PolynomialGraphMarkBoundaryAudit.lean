@@ -1,0 +1,6 @@
+import PCRLean.Experimental.PolynomialGraphMarkBoundary
+
+#print axioms PCRLean.Experimental.PolynomialGraphMarkBoundary.graphGenerator_not_mem_square
+#print axioms PCRLean.Experimental.PolynomialGraphMarkBoundary.graphGenerator_pow_not_mem_succ
+#print axioms PCRLean.Experimental.PolynomialGraphMarkBoundary.sourceIdeal_not_le_graphIdeal_pow_of_block_lt_mark
+#print axioms PCRLean.Experimental.PolynomialGraphMarkBoundary.sourcePacket_not_permissible_of_block_lt_mark
