@@ -37,6 +37,8 @@ jobs:
               PCRLean/Experimental/PacketCentreBoundaryAudit.lean \
               PCRLean/Experimental/HybridDefectRootCusp.lean \
               PCRLean/Experimental/HybridDefectRootCuspAudit.lean \
+              PCRLean/Experimental/HybridMarkedSynthesis.lean \
+              PCRLean/Experimental/HybridMarkedSynthesisAudit.lean \
               PCRLean/Experimental/MinimalHybridCentre.lean \
               PCRLean/Experimental/MinimalHybridCentreAudit.lean; then
             echo 'Forbidden proof placeholder or custom axiom found.' >&2
@@ -52,6 +54,16 @@ jobs:
           set -o pipefail
           lake env lean PCRLean/Experimental/PacketCentreBoundaryAudit.lean 2>&1 \
             | tee packet-centre-boundary-axioms.txt
+      - name: Build hybrid marked synthesis
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.HybridMarkedSynthesis 2>&1 \
+            | tee hybrid-marked-synthesis-build.txt
+      - name: Audit hybrid marked synthesis
+        run: |
+          set -o pipefail
+          lake env lean PCRLean/Experimental/HybridMarkedSynthesisAudit.lean 2>&1 \
+            | tee hybrid-marked-synthesis-axioms.txt
       - name: Build hybrid defect-root cusp
         run: |
           set -o pipefail
