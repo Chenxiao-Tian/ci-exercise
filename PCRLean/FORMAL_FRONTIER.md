@@ -1,6 +1,6 @@
 # PCRLean exact formal frontier
 
-This branch separates kernel-certified mathematics, experimental mathematics, and architecture-only proof planning. It does not contain a proof of arbitrary-dimensional resolution in positive characteristic.
+This branch separates kernel-certified mathematics, experimental mathematics, architecture-only proof planning and research meta protocols. It does not contain a proof of arbitrary-dimensional resolution in positive characteristic.
 
 ## Certified layer
 
@@ -38,6 +38,34 @@ Independent audit `MLEL-D001-A001` verified unique IDs, five entries per group, 
 
 D001 clean-room target: PR #32, run `30858121934`, job `91833782154`; queued at revalidation.
 
+## Fractal proof-refinement and edge-certification protocol
+
+`MLEL-A003 / FPE-EDGE` registers `PCR-FRACTAL-PROOF-LEAN 1.0` as the controlling refinement protocol layered on top of D001.
+
+D001 supplies the first finite seed graph. A003 requires every unresolved D001 entry to be recursively refined until it reaches an atomic Lean-proofable claim. Dependency arrows are promoted to first-class theorem nodes. A valid edge must prove:
+
+```text
+child claims -> parent claim
+case coverage when branches are used
+actual witness construction
+interface compatibility
+base-change/chart/owner/history naturality
+strict well-founded rank decrease
+```
+
+The Candidate Graph may be rewritten by examples, counterexamples, experiments and new mathematical tools. The Certified Graph is monotone and may contain only exact kernel-checked claims and edge certificates.
+
+`PCRLean.Blueprint.FractalProofEngine.root_of_edgePackage` is architecture-only. It proves that a well-founded finite graph with supplied semantic edge proofs yields a designated root claim. It provides none of the missing positive-characteristic-resolution mathematics.
+
+The final completion gate is:
+
+```text
+FINAL_MAIN_THEOREM_KERNEL_VERIFIED = true
+ALL_CLAIM_NODES_ON_CERTIFIED_CUT   = proved
+ALL_EDGE_CERTIFICATES_ON_CUT       = proved
+PAPER_LEAN_SEMANTIC_MISMATCH       = 0
+```
+
 ## Open load-bearing groups
 
 ```text
@@ -51,14 +79,16 @@ G54-G60   non-affine descent and finite functorial globalization
 G62-G65   final resolution, consequences and paper-Lean closure
 ```
 
-No open group may be crossed by `axiom`, `sorry`, `admit`, an unproved instance, stale CI evidence, semantic weakening, or an Experimental-to-Certified import.
+No open group or refinement edge may be crossed by `axiom`, `sorry`, `admit`, an unproved instance, stale CI evidence, semantic weakening, or an Experimental-to-Certified import.
 
 ```text
 CURRENT_CERTIFIED_NODE                     = MLEL-M004 / HMC-SCCD
 CURRENT_EXPERIMENTAL_NODE                  = MLEL-X031 / ACI-MMR-OIH
 CURRENT_ARCHITECTURE_NODE                  = MLEL-D001 / FCPP-ATLAS
+CURRENT_META_PROTOCOL                      = MLEL-A003 / FPE-EDGE
 D001_STATIC_TOPOLOGY_AUDIT_PASSED          = true
 D001_CLEANROOM_GREEN                       = false
+A003_CLEANROOM_GREEN                       = false
 FINAL_MAIN_THEOREM_KERNEL_VERIFIED         = false
 GENERAL_POSITIVE_CHARACTERISTIC_RESOLUTION = false
 FORMAL_GLOBAL_STATUS                       = OPEN_GAP
