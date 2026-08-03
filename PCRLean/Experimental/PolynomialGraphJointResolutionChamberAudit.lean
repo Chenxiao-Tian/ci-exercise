@@ -1,0 +1,4 @@
+import PCRLean.Experimental.PolynomialGraphJointResolutionChamber
+
+#print axioms PCRLean.Experimental.PolynomialGraphJointResolutionChamber.certificate
+#print axioms PCRLean.Experimental.PolynomialGraphJointResolutionChamber.cleanup_rank_decreases
