@@ -2,24 +2,26 @@ import Mathlib.RingTheory.Flat.FaithfullyFlat.Algebra
 import PCRLean.Experimental.FrobeniusNormalCentre
 import PCRLean.Experimental.FrobeniusNormalFaithfullyFlatDescent
 import PCRLean.Experimental.AffineLinearFrameExactFrobeniusHeredity
+import PCRLean.Experimental.PolynomialGraphCentreHeredity
 
 /-!
-# Faithfully flat coordinate models for Frobenius-normal centres
+# Faithfully flat coordinate and graph models for Frobenius-normal centres
 
-This file packages the exact local-to-global input required from geometry.
 Suppose a centre ideal `I ⊂ A` becomes, after a faithfully flat extension
 `A → B`, an ideal `J ⊂ B` whose power filtration reflects prime-power roots.
 Then `I` reflects them as well.
 
-Two concrete specializations are recorded:
+Concrete specializations are recorded for:
 
-* the extended ideal is a standard positive-dimensional coordinate centre;
-* the extended ideal is an arbitrary globally framed affine linear centre.
+* a standard positive-dimensional coordinate centre;
+* an arbitrary globally framed affine linear centre; and
+* a polynomial graph centre `Z_i - h_i` over a coefficient domain.
 
-Thus the unresolved geometric bridge can now be stated without hidden choices:
-construct a faithfully flat (in particular, surjective étale) coordinate model
-in which the actual centre ideal pulls back exactly to one of these ideals.
-The algebraic descent theorem is already separated from that existence problem.
+Thus the unresolved geometric bridge is stated without hidden choices:
+construct a faithfully flat, typically surjective étale, local model in which
+the actual centre ideal pulls back exactly to one of these ideals.  The
+algebraic descent of Frobenius heredity is separated from that existence
+problem.
 -/
 
 namespace PCRLean
@@ -117,6 +119,44 @@ theorem power_mem_scaled_iff_of_coordinateModel
     e mark x
 
 end PolynomialModels
+
+section GraphModels
+
+variable {R : Type w} [CommRing R] [IsDomain R]
+variable {ι : Type x} [DecidableEq ι]
+
+abbrev GP := MvPolynomial ι R
+
+variable [Algebra A (GP (R := R) (ι := ι))]
+variable [Module.FaithfullyFlat A (GP (R := R) (ι := ι))]
+variable (p : Nat) [Fact p.Prime] [CharP R p]
+
+/-- A faithfully flat polynomial-graph model makes the original centre
+Frobenius-normal. -/
+theorem reflects_of_graphModel
+    (I : Ideal A) (h : ι → R)
+    (hmodel : FrobeniusNormalFaithfullyFlatDescent.extendedIdeal
+        (B := GP (R := R) (ι := ι)) I =
+      PolynomialGraphCentreHeredity.graphIdeal h) :
+    FrobeniusNormalCentre.ReflectsFrobeniusPowers p I := by
+  exact reflects_of_model
+    (B := GP (R := R) (ι := ι)) p I
+    (PolynomialGraphCentreHeredity.graphIdeal h) hmodel
+    (PolynomialGraphCentreHeredity.graphIdeal_reflectsFrobeniusPowers p h)
+
+/-- Exact marked heredity in the base ring from a polynomial graph model. -/
+theorem power_mem_scaled_iff_of_graphModel
+    (I : Ideal A) (h : ι → R)
+    (hmodel : FrobeniusNormalFaithfullyFlatDescent.extendedIdeal
+        (B := GP (R := R) (ι := ι)) I =
+      PolynomialGraphCentreHeredity.graphIdeal h)
+    (e mark : Nat) (x : A) :
+    x ^ (p ^ e) ∈ I ^ ((p ^ e) * mark) ↔ x ∈ I ^ mark := by
+  exact FrobeniusNormalCentre.power_mem_scaled_iff p I
+    (reflects_of_graphModel (R := R) (ι := ι) p I h hmodel)
+    e mark x
+
+end GraphModels
 
 end
 
