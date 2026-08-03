@@ -1,0 +1,8 @@
+import PCRLean.Experimental.IntrinsicKernelIdealComposition
+
+#print axioms PCRLean.Experimental.IntrinsicKernelIdealComposition.ker_le_ker_comp
+#print axioms PCRLean.Experimental.IntrinsicKernelIdealComposition.kernelIdeal_le_comp
+#print axioms PCRLean.Experimental.IntrinsicKernelIdealComposition.ker_comp_eq_of_injective
+#print axioms PCRLean.Experimental.IntrinsicKernelIdealComposition.kernelIdeal_comp_eq_of_injective
+#print axioms PCRLean.Experimental.IntrinsicKernelIdealComposition.kernelIdeal_comp_equiv
+#print axioms PCRLean.Experimental.IntrinsicKernelIdealComposition.surjective_comp
