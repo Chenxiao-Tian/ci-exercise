@@ -1,0 +1,7 @@
+import PCRLean.Experimental.GradedPowerReflection
+
+#print axioms PCRLean.Experimental.GradedPowerReflection.pow_le_pow_of_le
+#print axioms PCRLean.Experimental.GradedPowerReflection.reflects_power_of_gradedPowerInjective
+#print axioms PCRLean.Experimental.GradedPowerReflection.power_mem_scaled_iff_of_gradedPowerInjective
+#print axioms PCRLean.Experimental.GradedPowerReflection.reflectsFrobeniusPowers_of_frobeniusGradedReduced
+#print axioms PCRLean.Experimental.GradedPowerReflection.frobeniusPower_mem_scaled_iff_of_frobeniusGradedReduced
