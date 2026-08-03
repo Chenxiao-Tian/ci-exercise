@@ -1,0 +1,9 @@
+import PCRLean.Experimental.FrobeniusSupportDomain
+
+#print axioms PCRLean.Experimental.FrobeniusSupportDomain.scaleExponent_injective
+#print axioms PCRLean.Experimental.FrobeniusSupportDomain.exponentDegree_scale
+#print axioms PCRLean.Experimental.FrobeniusSupportDomain.frobeniusPower_expansion
+#print axioms PCRLean.Experimental.FrobeniusSupportDomain.scaled_mem_support
+#print axioms PCRLean.Experimental.FrobeniusSupportDomain.mem_support_power_exists_scaled
+#print axioms PCRLean.Experimental.FrobeniusSupportDomain.mem_support_power_iff
+#print axioms PCRLean.Experimental.FrobeniusSupportDomain.orderGE_power_iff
