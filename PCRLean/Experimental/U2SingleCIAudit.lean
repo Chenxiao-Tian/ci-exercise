@@ -19,8 +19,9 @@ import PCRLean.Experimental.IntrinsicCentreTransport
 #print axioms PCRLean.LinearCoordinateChange.FullFrame.forward_inverseVariable
 #print axioms PCRLean.LinearCoordinateChange.FullFrame.polynomialEquiv
 
-#print axioms PCRLean.Experimental.LinearSplitCentreQuotient.transportedIdeal_eq
-#print axioms PCRLean.Experimental.LinearSplitCentreQuotient.quotientEquiv
+#print axioms PCRLean.Experimental.LinearSplitCentreQuotient.coordinateQuotientEquivLinear
+#print axioms PCRLean.Experimental.LinearSplitCentreQuotient.linearCentreQuotientEquiv
+#print axioms PCRLean.Experimental.LinearSplitCentreQuotient.linearCentreIdeal_ne_top
 
 #print axioms PCRLean.Experimental.SplitSurjectionSymmetricQuotient.SplitSurjection.ker_projectAlg_eq_kernelIdeal
 #print axioms PCRLean.Experimental.SplitSurjectionSymmetricQuotient.SplitSurjection.quotientEquiv
