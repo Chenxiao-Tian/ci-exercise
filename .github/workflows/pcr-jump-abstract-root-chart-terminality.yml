@@ -1,0 +1,67 @@
+name: PCR Jump abstract root-chart terminality
+
+on:
+  push:
+    branches:
+      - pcr-jump-lean-20260802-u2-root-boundary
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pcr-jump-abstract-root-chart-terminality-${{ github.sha }}
+  cancel-in-progress: false
+
+jobs:
+  abstract-root-chart-terminality-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          set -o pipefail
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf \
+            | sh -s -- -y --default-toolchain leanprover/lean4:v4.30.0
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned mathlib
+        run: |
+          set -o pipefail
+          lake update
+          lake exe cache get
+      - name: Reject placeholders
+        run: |
+          set -o pipefail
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)([[:space:]]|$)' \
+              PCRLean/Experimental/AbstractRootChartTerminality.lean \
+              PCRLean/Experimental/AbstractRootChartTerminalityAudit.lean; then
+            echo 'Forbidden proof placeholder or custom axiom found.' >&2
+            exit 1
+          fi
+      - name: Build abstract root-chart terminality
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.AbstractRootChartTerminality 2>&1 \
+            | tee abstract-root-chart-terminality-build.txt
+      - name: Kernel axiom audit
+        run: |
+          set -o pipefail
+          lake env lean PCRLean/Experimental/AbstractRootChartTerminalityAudit.lean 2>&1 \
+            | tee abstract-root-chart-terminality-axioms.txt
+          if grep -E 'sorryAx|PCRLean\..*Axiom|ResolutionAxiom|PacketizationAxiom' \
+              abstract-root-chart-terminality-axioms.txt; then
+            echo 'Unpermitted axiom detected.' >&2
+            exit 1
+          fi
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pcr-jump-abstract-root-chart-terminality-${{ github.sha }}
+          path: |
+            abstract-root-chart-terminality-build.txt
+            abstract-root-chart-terminality-axioms.txt
+          if-no-files-found: warn
