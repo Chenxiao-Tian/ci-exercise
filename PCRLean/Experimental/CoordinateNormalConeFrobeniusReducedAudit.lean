@@ -1,0 +1,5 @@
+import PCRLean.Experimental.CoordinateNormalConeFrobeniusReduced
+
+#print axioms PCRLean.Experimental.CoordinateNormalConeFrobeniusReduced.initialPowerNonvanishing
+#print axioms PCRLean.Experimental.CoordinateNormalConeFrobeniusReduced.frobeniusInitialPowerNonvanishing
+#print axioms PCRLean.Experimental.CoordinateNormalConeFrobeniusReduced.reflectsFrobeniusPowers_via_normalCone
