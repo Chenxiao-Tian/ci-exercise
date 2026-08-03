@@ -1,0 +1,5 @@
+import PCRLean.Experimental.MarkedPermissibilityBasicOpenDescent
+
+#print axioms PCRLean.Experimental.MarkedPermissibilityBasicOpenDescent.le_pow_of_basicOpenCover
+#print axioms PCRLean.Experimental.MarkedPermissibilityBasicOpenDescent.permissible_of_basicOpenCover
+#print axioms PCRLean.Experimental.MarkedPermissibilityBasicOpenDescent.owners_permissible_of_basicOpenCover
