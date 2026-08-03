@@ -7,22 +7,22 @@ import PCRLean.Experimental.DetUnitLinearSystemGraph
 # Fitting atlases of determinant-unit linear systems
 
 A finite Fitting atlas provides determinants `d_c` whose basic opens cover the
-base.  On the chart `R_{d_c}`, suppose a square affine linear system has
+base. On the chart `R_{d_c}`, suppose a square affine linear system has
 coefficient matrix `M_c` and
 
 `det(M_c) = image(d_c)`.
 
 The distinguished determinant is a unit on the chart, so the matrix is
-canonically invertible.  The system therefore produces a graph tuple
+canonically invertible. The system therefore produces a graph tuple
 
 `h_c = M_c⁻¹ b_c`
 
 and the system-equation ideal is exactly the graph ideal.
 
 This module removes the local graph tuple from the input of the Fitting graph
-atlas.  The remaining compatibility problem is to prove that systems obtained
+atlas. The remaining compatibility problem is to prove that systems obtained
 from the same core agree after double localization; the next overlap compiler
-then derives compatibility of the solutions automatically.
+derives compatibility of the solutions automatically.
 -/
 
 namespace PCRLean
@@ -71,6 +71,17 @@ noncomputable def localSystem (c : Chart) :
 noncomputable def graph (c : Chart) : ι → ChartRing A c :=
   (D.localSystem c).solution
 
+/-- The graph tuple solves the local affine linear system. -/
+theorem matrix_mulVec_graph (c : Chart) :
+    (D.matrix c).mulVec (D.graph c) = D.rhs c := by
+  simpa [graph, localSystem] using
+    (D.localSystem c).matrix_mulVec_solution
+
+/-- Pointwise local system equation. -/
+theorem matrix_mulVec_graph_apply (c : Chart) (i : ι) :
+    (D.matrix c).mulVec (D.graph c) i = D.rhs c i := by
+  rw [D.matrix_mulVec_graph]
+
 /-- The local system equations generate exactly the local graph ideal. -/
 theorem equationIdeal_eq_graphIdeal (c : Chart) :
     (D.localSystem c).equationIdeal =
@@ -96,6 +107,8 @@ structure Certificate (p : Nat) [Fact p.Prime] [CharP R p]
   cover :
     (⨆ c : Chart, PrimeSpectrum.basicOpen (A.determinant c)) = ⊤
   determinantUnit : ∀ c : Chart, IsUnit (D.matrix c).det
+  equationSolved : ∀ c : Chart,
+    (D.matrix c).mulVec (D.graph c) = D.rhs c
   equationEqualsGraph : ∀ c : Chart,
     (D.localSystem c).equationIdeal =
       PolynomialGraphCentreHeredity.graphIdeal (D.graph c)
@@ -109,6 +122,7 @@ noncomputable def certificate
     (e : Nat) : Certificate A D p e where
   cover := A.basicOpen_cover
   determinantUnit := D.det_isUnit
+  equationSolved := D.matrix_mulVec_graph
   equationEqualsGraph := D.equationIdeal_eq_graphIdeal
   localCentre := D.localCentreCertificate p
 
