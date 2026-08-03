@@ -4,3 +4,4 @@ import PCRLean.Experimental.OperatorOrbitImageCentre
 #print axioms PCRLean.Experimental.OperatorOrbitImageCentre.functionalPolynomial_mem_orbitCentre
 #print axioms PCRLean.Experimental.OperatorOrbitImageCentre.extendedIntegration_mem_packetIdeal
 #print axioms PCRLean.Experimental.OperatorOrbitImageCentre.orbitCentre_eq_packetIdeal
+#print axioms PCRLean.Experimental.OperatorOrbitImageCentre.exists_finite_raw_packet_presentation
