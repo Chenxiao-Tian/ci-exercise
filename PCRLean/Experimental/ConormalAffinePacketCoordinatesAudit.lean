@@ -1,0 +1,9 @@
+import PCRLean.Experimental.ConormalAffinePacketCoordinates
+
+#print axioms PCRLean.Experimental.ConormalAffinePacketCoordinates.Packet.matrix_mulVec_coordinate_apply
+#print axioms PCRLean.Experimental.ConormalAffinePacketCoordinates.Packet.matrix_mulVec_coordinate
+#print axioms PCRLean.Experimental.ConormalAffinePacketCoordinates.Packet.solution_iff
+#print axioms PCRLean.Experimental.ConormalAffinePacketCoordinates.Packet.coordinate_solution_iff
+#print axioms PCRLean.Experimental.ConormalAffinePacketCoordinates.Packet.intrinsicSolution_solves
+#print axioms PCRLean.Experimental.ConormalAffinePacketCoordinates.Packet.solution_eq_intrinsicSolution
+#print axioms PCRLean.Experimental.ConormalAffinePacketCoordinates.Packet.existsUnique_intrinsicSolution
