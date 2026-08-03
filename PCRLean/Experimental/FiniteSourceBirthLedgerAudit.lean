@@ -1,0 +1,7 @@
+import PCRLean.Experimental.FiniteSourceBirthLedger
+
+#print axioms PCRLean.Experimental.FiniteSourceBirthLedger.used_card_le_total
+#print axioms PCRLean.Experimental.FiniteSourceBirthLedger.used_card_strictly_increases
+#print axioms PCRLean.Experimental.FiniteSourceBirthLedger.unusedCount_strictly_decreases
+#print axioms PCRLean.Experimental.FiniteSourceBirthLedger.no_step_from_full
+#print axioms PCRLean.Experimental.FiniteSourceBirthLedger.no_infinite_birth_path
