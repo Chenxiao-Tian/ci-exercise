@@ -1,5 +1,6 @@
 import Mathlib
 import Mathlib.RingTheory.Flat.FaithfullyFlat.Algebra
+import Mathlib.RingTheory.Finiteness.Descent
 import Mathlib.RingTheory.Ideal.Quotient.Operations
 import PCRLean.Experimental.ReducedGraphCentreQuotient
 import PCRLean.Experimental.ReducedPolynomialGraphCentreHeredity
@@ -11,14 +12,15 @@ For a faithfully flat algebra `A → B`, the natural map
 
 `A/I → B/IB`
 
-is injective.  Hence reducedness of the extended centre quotient descends to
-`A/I`.  If the extended ideal is an actual polynomial graph ideal, its
-properness also forces the original ideal to be proper.
+is injective. Hence reducedness of the extended centre quotient descends to
+`A/I`. If the extended ideal is an actual polynomial graph ideal, its
+properness and finite generation also descend.
 
 Together with the previously proved Frobenius-filtration descent, this retains
-three essential pieces of the local centre certificate after fpqc descent:
+four essential pieces of the local centre certificate after fpqc descent:
 
 * nonidentity of the centre;
+* finite generation of its actual ideal;
 * reducedness of the centre coordinate ring; and
 * exact marked Frobenius reflection.
 
@@ -110,6 +112,16 @@ theorem ideal_ne_top_of_graphModel
     simp
   apply ReducedGraphCentreQuotient.graphIdeal_ne_top h
   rw [← hmodel, hmapTop]
+
+/-- Finite generation of an actual graph ideal descends faithfully flatly. -/
+theorem ideal_fg_of_graphModel
+    (I : Ideal A) (h : ι → R)
+    (hmodel : I.map (algebraMap A (GraphRing (R := R) (ι := ι))) =
+      graphIdeal h) :
+    I.FG := by
+  apply Ideal.FG.of_FG_map_of_faithfullyFlat
+  rw [hmodel]
+  exact ReducedGraphCentreQuotient.graphIdeal_fg h
 
 /-- A reduced polynomial graph model makes the original centre quotient
 reduced. -/
