@@ -81,7 +81,9 @@ theorem rootAdjoin_isIntegral
       (Algebra.adjoin S {weightedTerm m g}) := by
   apply Algebra.IsIntegral.adjoin
   intro x hx
-  rcases hx with rfl
+  have hxEq : x = weightedTerm m g := by
+    simpa only [Set.mem_singleton_iff] using hx
+  subst x
   exact weightedRoot_isIntegral p S m f g hroot hsource
 
 /-- Adjoining one root is a finite-type algebra extension. -/
