@@ -34,7 +34,9 @@ jobs:
           set -o pipefail
           if grep -nE '^[[:space:]]*(axiom|sorry|admit)([[:space:]]|$)' \
               PCRLean/Experimental/UnivariateFrobeniusOrderHeredity.lean \
-              PCRLean/Experimental/UnivariateFrobeniusOrderHeredityAudit.lean; then
+              PCRLean/Experimental/UnivariateFrobeniusOrderHeredityAudit.lean \
+              PCRLean/Experimental/FrobeniusMarkScalingBoundary.lean \
+              PCRLean/Experimental/FrobeniusMarkScalingBoundaryAudit.lean; then
             echo 'Forbidden proof placeholder or custom axiom found.' >&2
             exit 1
           fi
@@ -43,13 +45,22 @@ jobs:
           set -o pipefail
           lake build PCRLean.Experimental.UnivariateFrobeniusOrderHeredity 2>&1 \
             | tee integral-heredity-build.txt
+      - name: Build finite-family and boundary bridge
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.FrobeniusMarkScalingBoundary 2>&1 \
+            | tee mark-scaling-boundary-build.txt
       - name: Kernel axiom audit
         run: |
           set -o pipefail
           lake env lean PCRLean/Experimental/UnivariateFrobeniusOrderHeredityAudit.lean 2>&1 \
             | tee integral-heredity-axioms.txt
+          lake env lean PCRLean/Experimental/FrobeniusMarkScalingBoundaryAudit.lean 2>&1 \
+            | tee mark-scaling-boundary-axioms.txt
+          cat integral-heredity-axioms.txt mark-scaling-boundary-axioms.txt \
+            > combined-axioms.txt
           if grep -E 'sorryAx|PCRLean\..*Axiom|ResolutionAxiom|PacketizationAxiom' \
-              integral-heredity-axioms.txt; then
+              combined-axioms.txt; then
             echo 'Unpermitted axiom detected.' >&2
             exit 1
           fi
@@ -60,5 +71,8 @@ jobs:
           name: pcr-jump-integral-heredity-${{ github.sha }}
           path: |
             integral-heredity-build.txt
+            mark-scaling-boundary-build.txt
             integral-heredity-axioms.txt
+            mark-scaling-boundary-axioms.txt
+            combined-axioms.txt
           if-no-files-found: warn
