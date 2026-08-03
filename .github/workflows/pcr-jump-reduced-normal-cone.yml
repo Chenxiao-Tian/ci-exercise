@@ -46,6 +46,8 @@ jobs:
               PCRLean/Experimental/ReducedGraphCentreQuotientAudit.lean \
               PCRLean/Experimental/CoordinateCentreCotangentBasis.lean \
               PCRLean/Experimental/CoordinateCentreCotangentBasisAudit.lean \
+              PCRLean/Experimental/PolynomialGraphCentreCotangentBasis.lean \
+              PCRLean/Experimental/PolynomialGraphCentreCotangentBasisAudit.lean \
               PCRLean/Experimental/ReducedFrobeniusNormalLocalModel.lean \
               PCRLean/Experimental/ReducedFrobeniusNormalLocalModelAudit.lean \
               PCRLean/Experimental/ReducedNormalConePowerModel.lean \
@@ -73,6 +75,8 @@ jobs:
             | tee reduced-graph-quotient-axioms.txt
           lake env lean PCRLean/Experimental/CoordinateCentreCotangentBasisAudit.lean 2>&1 \
             | tee coordinate-cotangent-axioms.txt
+          lake env lean PCRLean/Experimental/PolynomialGraphCentreCotangentBasisAudit.lean 2>&1 \
+            | tee graph-cotangent-axioms.txt
           lake env lean PCRLean/Experimental/ReducedFrobeniusNormalLocalModelAudit.lean 2>&1 \
             | tee reduced-local-model-axioms.txt
           lake env lean PCRLean/Experimental/ReducedNormalConePowerModelAudit.lean 2>&1 \
