@@ -1,0 +1,5 @@
+import PCRLean.Experimental.PolynomialGraphBaseChange
+
+#print axioms PCRLean.Experimental.PolynomialGraphBaseChange.polynomialMap_graphGenerator
+#print axioms PCRLean.Experimental.PolynomialGraphBaseChange.map_graphIdeal_eq
+#print axioms PCRLean.Experimental.PolynomialGraphBaseChange.map_graphIdeal_eq_of_pointwise
