@@ -3,6 +3,7 @@ import Mathlib.LinearAlgebra.SymmetricAlgebra.Basis
 import Mathlib.RingTheory.RegularLocalRing.Polynomial
 import PCRLean.BiorthogonalSplitFrame
 import PCRLean.Experimental.SurjectiveFreeRegularCentre
+import PCRLean.Experimental.FiniteFreeSymmetricAlgebraRegular
 
 /-!
 # Experimental regular centre from a biorthogonal packet
@@ -15,8 +16,10 @@ algebra quotient.
 
 Because the finite coefficient space `ι → K` has its standard basis, its
 symmetric algebra is a finite-variable polynomial ring over the field `K` and
-is regular. Thus only Noetherianity of the ambient symmetric algebra remains as
-an external finiteness assumption for the actual centre certificate.
+is regular. If the source direction space is finite free, its symmetric algebra
+is likewise Noetherian. Hence a finite-dimensional biorthogonal packet supplies
+an actual proper finite-type regular centre with no additional ring-theoretic
+hypotheses.
 
 This is the direct Fitting-chart-to-centre bridge. It does not prove that every
 Frobenius/Fitting core has a nonempty constant-rank chart, that the local ideals
@@ -120,6 +123,16 @@ noncomputable def certificate
   letI : IsRegularRing (SymmetricAlgebra K (ι → K)) :=
     coefficientSymmetricAlgebra_isRegularRing (K := K) (ι := ι)
   exact SurjectiveFreeRegularCentre.certificate F.eval F.eval_surjective
+
+/-- In the finite-dimensional chamber every remaining ring-theoretic
+hypothesis is automatic. -/
+noncomputable def finiteDimensionalCertificate
+    [Module.Free K V] [Module.Finite K V] :
+    SurjectiveFreeRegularCentre.Certificate F.eval := by
+  letI : IsNoetherianRing (SymmetricAlgebra K V) :=
+    FiniteFreeSymmetricAlgebraRegular.isNoetherianRing
+      (K := K) (M := V)
+  exact F.certificate
 
 end
 
