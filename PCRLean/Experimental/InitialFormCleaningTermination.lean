@@ -5,9 +5,9 @@ import PCRLean.Experimental.InitialFormFrobeniusCleaning
 # Finite termination of initial-form Frobenius cleaning
 
 A lowest homogeneous initial form and its strictly higher remainder have
-disjoint monomial supports.  If the initial form is nonzero, removing it by the
+disjoint monomial supports. If the initial form is nonzero, removing it by the
 canonical Frobenius cleaning leaves a polynomial whose support is a strict
-subset of the original support.  Hence support cardinality is a well-founded
+subset of the original support. Hence support cardinality is a well-founded
 rank for repeated cleaning.
 
 This gives a finite cleaning theorem without requiring an a priori degree bound.
@@ -86,7 +86,9 @@ theorem remainder_support_ssubset
     have hmNotRemainder : m ∉ D.remainder.support :=
       (Finset.disjoint_left.mp (support_disjoint D)) hmInitial
     intro heq
-    exact hmNotRemainder (heq ▸ hmOriginal)
+    apply hmNotRemainder
+    rw [heq]
+    exact hmOriginal
   exact lt_of_le_of_ne hsubset hne
 
 /-- Frobenius cleaning of a nonzero initial form strictly lowers support
