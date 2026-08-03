@@ -9,6 +9,12 @@ import PCRLean.Experimental.HybridDefectRootCusp
 #print axioms PCRLean.Experimental.HybridDefectRootCusp.x_pow_succ_mem_hybridIdeal_pow
 #print axioms PCRLean.Experimental.HybridDefectRootCusp.cusp_mem_hybridIdeal_pow
 #print axioms PCRLean.Experimental.HybridDefectRootCusp.markedCusp_permissible
+#print axioms PCRLean.Experimental.HybridDefectRootCusp.evalXZero_cusp
+#print axioms PCRLean.Experimental.HybridDefectRootCusp.evalYZero_cusp
+#print axioms PCRLean.Experimental.HybridDefectRootCusp.cusp_not_mem_rootIdeal_pow
+#print axioms PCRLean.Experimental.HybridDefectRootCusp.cusp_not_mem_defectIdeal_pow
+#print axioms PCRLean.Experimental.HybridDefectRootCusp.rootIdeal_not_permissible
+#print axioms PCRLean.Experimental.HybridDefectRootCusp.defectIdeal_not_permissible
 #print axioms PCRLean.Experimental.HybridDefectRootCusp.pderiv_y_cusp
 #print axioms PCRLean.Experimental.HybridDefectRootCusp.pderiv_x_cusp
 #print axioms PCRLean.Experimental.HybridDefectRootCusp.pderiv_x_activeTransform
