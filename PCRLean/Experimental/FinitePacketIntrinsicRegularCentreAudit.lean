@@ -1,0 +1,9 @@
+import PCRLean.Experimental.FinitePacketIntrinsicRegularCentre
+
+#print axioms PCRLean.Experimental.FinitePacketIntrinsicRegularCentre.kernelGenerator_mem
+#print axioms PCRLean.Experimental.FinitePacketIntrinsicRegularCentre.persistentGenerator_mem
+#print axioms PCRLean.Experimental.FinitePacketIntrinsicRegularCentre.quotientEquiv
+#print axioms PCRLean.Experimental.FinitePacketIntrinsicRegularCentre.regularCentreCertificate
+#print axioms PCRLean.Experimental.FinitePacketIntrinsicRegularCentre.centreIdeal_ne_top
+#print axioms PCRLean.Experimental.FinitePacketIntrinsicRegularCentre.centreIdeal_fg
+#print axioms PCRLean.Experimental.FinitePacketIntrinsicRegularCentre.quotient_isRegularRing
