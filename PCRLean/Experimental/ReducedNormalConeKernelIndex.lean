@@ -2,6 +2,7 @@ import PCRLean.Experimental.FrobeniusSupportReduced
 import PCRLean.Experimental.ReducedCoordinateCentreExactFrobeniusHeredity
 import PCRLean.Experimental.ReducedPolynomialGraphCentreHeredity
 import PCRLean.Experimental.ReducedFrobeniusNormalLocalModel
+import PCRLean.Experimental.ReducedNormalConePowerModel
 
 /-!
 # Integrated reduced normal-cone kernel index
@@ -13,11 +14,14 @@ heredity layer:
 * exact coordinate-centre reflection;
 * necessity of reducedness for coordinate centres;
 * exact polynomial graph-centre reflection;
-* necessity of reducedness for graph centres; and
-* faithfully flat descent from reduced coordinate and graph local models.
+* necessity of reducedness for graph centres;
+* faithfully flat descent from reduced coordinate and graph local models; and
+* an abstract reduced normal-cone power model compiling layer embeddings into
+  full Frobenius-normality.
 
-The index is experimental.  It does not assert existence of the required
-scheme-level graph atlas and does not prove resolution.
+The index is experimental. It does not assert existence of the required
+scheme-level graph atlas or associated-graded model and does not prove
+resolution.
 -/
 
 namespace PCRLean
