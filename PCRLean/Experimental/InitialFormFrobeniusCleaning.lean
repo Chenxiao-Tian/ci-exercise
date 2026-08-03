@@ -5,18 +5,19 @@ import PCRLean.Experimental.PDerivFrobeniusDescent
 # Frobenius cleaning of a rank-zero initial form
 
 Geometric rank zero is normally a statement about the lowest-order homogeneous
-initial form, not about the whole local equation.  This file isolates the
+initial form, not about the whole local equation. This file isolates the
 correct affine graded bridge.
 
 Write `f = F + h`, where `F` is homogeneous of degree `n` and every monomial of
-`h` has degree strictly larger than `n`.  If every first partial derivative of
-`F` vanishes, then over a perfect field `F = G^p`.  Subtracting the actual
+`h` has degree strictly larger than `n`. If every first partial derivative of
+`F` vanishes, then over a perfect field `F = G^p`. Subtracting the actual
 polynomial `G^p` from `f` leaves exactly `h`, hence strictly raises the order.
+The argument uses only the finite support of the given polynomial and therefore
+works for an arbitrary variable type.
 
-This is the algebraic cleaning step required before a rank-zero packet can be
-re-entered.  A general resolution theorem must still construct this initial
-decomposition in regular local charts and prove compatibility with owners,
-boundaries and transforms.
+A general resolution theorem must still construct this initial decomposition in
+regular local charts and prove compatibility with owners, boundaries and
+transforms.
 -/
 
 namespace PCRLean
@@ -28,7 +29,7 @@ noncomputable section
 universe u v
 
 variable {K : Type u} [Field K]
-variable {σ : Type v} [Fintype σ] [DecidableEq σ]
+variable {σ : Type v} [DecidableEq σ]
 variable (p : Nat) [Fact p.Prime] [CharP K p] [PerfectField K p]
 
 /-- Total degree of one exponent vector. -/
@@ -85,15 +86,16 @@ theorem cleaned_higher (hrank : D.RankZero) :
 /-- A nonzero rank-zero initial form has degree divisible by the characteristic. -/
 theorem prime_dvd_initial_degree
     (hrank : D.RankZero) (hinit : D.initial ≠ 0) : p ∣ n := by
-  obtain ⟨m, hm⟩ := D.initial.support_nonempty.mpr hinit
+  obtain ⟨m, hm⟩ := MvPolynomial.support_nonempty.mpr hinit
   have hcoord : ∀ i, p ∣ m i := by
     intro i
     exact PDerivFrobeniusDescent.exponent_dvd_of_pderiv_eq_zero
       p D.initial i (hrank i) hm
   have hsum : p ∣ exponentDegree m := by
-    rw [exponentDegree, Finsupp.sum]
+    unfold exponentDegree
     exact Finset.dvd_sum fun i hi => hcoord i
-  simpa [D.initial_homogeneous m hm] using hsum
+  rw [D.initial_homogeneous m hm] at hsum
+  exact hsum
 
 /-- If the initial form has positive degree, its canonical root has strictly
 smaller total degree. -/
