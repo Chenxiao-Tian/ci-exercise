@@ -1,0 +1,8 @@
+import PCRLean.Experimental.FrobeniusNormalCentre
+
+#print axioms PCRLean.Experimental.FrobeniusNormalCentre.power_mem_scaled_of_mem
+#print axioms PCRLean.Experimental.FrobeniusNormalCentre.power_mem_scaled_iff
+#print axioms PCRLean.Experimental.FrobeniusNormalCentre.coordinateCentre_reflects
+#print axioms PCRLean.Experimental.FrobeniusNormalCentre.affineCoordinateCentre_reflects
+#print axioms PCRLean.Experimental.FrobeniusNormalCentre.linearFrameCentre_reflects
+#print axioms PCRLean.Experimental.FrobeniusNormalCentre.affineFrameCentre_reflects
