@@ -1,0 +1,8 @@
+import PCRLean.Experimental.ConormalPacketFrameIndependence
+
+#print axioms PCRLean.Experimental.ConormalPacketFrameIndependence.first_exists_solution_iff_intrinsic
+#print axioms PCRLean.Experimental.ConormalPacketFrameIndependence.second_exists_solution_iff_intrinsic
+#print axioms PCRLean.Experimental.ConormalPacketFrameIndependence.augmentedRankCondition_iff
+#print axioms PCRLean.Experimental.ConormalPacketFrameIndependence.transportAugmented
+#print axioms PCRLean.Experimental.ConormalPacketFrameIndependence.intrinsicSolution_eq
+#print axioms PCRLean.Experimental.ConormalPacketFrameIndependence.coordinateGraphs_correspond
