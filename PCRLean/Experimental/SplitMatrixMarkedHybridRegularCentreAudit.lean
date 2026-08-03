@@ -1,0 +1,9 @@
+import PCRLean.Experimental.SplitMatrixMarkedHybridRegularCentre
+
+#print axioms PCRLean.Experimental.SplitMatrixMarkedHybridRegularCentre.centreIdeal_eq_combinedIdeal
+#print axioms PCRLean.Experimental.SplitMatrixMarkedHybridRegularCentre.quotientEquiv
+#print axioms PCRLean.Experimental.SplitMatrixMarkedHybridRegularCentre.centreIdeal_ne_top
+#print axioms PCRLean.Experimental.SplitMatrixMarkedHybridRegularCentre.centreIdeal_ne_bot
+#print axioms PCRLean.Experimental.SplitMatrixMarkedHybridRegularCentre.centreIdeal_fg
+#print axioms PCRLean.Experimental.SplitMatrixMarkedHybridRegularCentre.quotient_isRegularRing
+#print axioms PCRLean.Experimental.SplitMatrixMarkedHybridRegularCentre.certificate
