@@ -1,0 +1,7 @@
+import PCRLean.Experimental.PolynomialHasseFrobenius
+
+#print axioms PCRLean.Experimental.PolynomialHasseFrobenius.map_hasseDeriv
+#print axioms PCRLean.Experimental.PolynomialHasseFrobenius.coeff_pow_prime_mul
+#print axioms PCRLean.Experimental.PolynomialHasseFrobenius.eval_X_map_C
+#print axioms PCRLean.Experimental.PolynomialHasseFrobenius.hasseDeriv_pow_prime
+#print axioms PCRLean.Experimental.PolynomialHasseFrobenius.hasseDeriv_pow_primePower
