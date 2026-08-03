@@ -1,0 +1,6 @@
+import PCRLean.Experimental.PolynomialGraphSupportEquality
+
+#print axioms PCRLean.Experimental.PolynomialGraphSupportEquality.sourceIdeal_le_graphIdeal
+#print axioms PCRLean.Experimental.PolynomialGraphSupportEquality.graphGenerator_pow_mem_sourceIdeal
+#print axioms PCRLean.Experimental.PolynomialGraphSupportEquality.sourceIdeal_le_prime_iff_graphIdeal_le_prime
+#print axioms PCRLean.Experimental.PolynomialGraphSupportEquality.primePoint_contains_source_iff_contains_graph
