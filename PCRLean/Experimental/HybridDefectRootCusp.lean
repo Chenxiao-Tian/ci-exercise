@@ -8,7 +8,8 @@ The basic positive-characteristic cusp shows that the actual centre mechanism
 cannot be a disjoint choice between an ordinary derivative defect and a pure
 Frobenius root. In characteristic `p`, the `y^p` term is invisible to the
 ordinary `y` derivative, while the `x^(p+1)` term exposes the `x` direction.
-The marked equation is permissible for the hybrid centre `(x,y)`.
+Neither component ideal `(x)` nor `(y)` is marked-permissible by itself, while
+the hybrid ideal `(x,y)` is permissible.
 
 Blowing up this hybrid centre gives two explicit chart identities. In the
 `x`-pivot chart the controlled transform is `T^p-x`, with unit derivative in
@@ -76,6 +77,14 @@ Frobenius-root direction. -/
 def hybridIdeal : Ideal (P (K := K)) :=
   Ideal.span {x (K := K), y (K := K)}
 
+/-- The defect-only component. -/
+def defectIdeal : Ideal (P (K := K)) :=
+  Ideal.span {x (K := K)}
+
+/-- The Frobenius-root-only component. -/
+def rootIdeal : Ideal (P (K := K)) :=
+  Ideal.span {y (K := K)}
+
 /-- The defect coordinate belongs to the hybrid centre. -/
 theorem x_mem_hybridIdeal :
     x (K := K) ∈ hybridIdeal (K := K) := by
@@ -118,6 +127,106 @@ theorem markedCusp_permissible :
   exact MarkedIdeal.permissible_span_singleton
     (R := P (K := K)) Fact.out.pos
     (cusp_mem_hybridIdeal_pow (K := K) p)
+
+/-- Eliminate the defect coordinate and retain the root coordinate. -/
+def evalXZero : P (K := K) →+* Polynomial K :=
+  MvPolynomial.eval₂Hom Polynomial.C fun b =>
+    match b with
+    | false => 0
+    | true => Polynomial.X
+
+/-- Eliminate the root coordinate and retain the defect coordinate. -/
+def evalYZero : P (K := K) →+* Polynomial K :=
+  MvPolynomial.eval₂Hom Polynomial.C fun b =>
+    match b with
+    | false => Polynomial.X
+    | true => 0
+
+@[simp] theorem evalXZero_x :
+    evalXZero (K := K) (x (K := K)) = 0 := by
+  simp [evalXZero, x]
+
+@[simp] theorem evalXZero_y :
+    evalXZero (K := K) (y (K := K)) = Polynomial.X := by
+  simp [evalXZero, y]
+
+@[simp] theorem evalYZero_x :
+    evalYZero (K := K) (x (K := K)) = Polynomial.X := by
+  simp [evalYZero, x]
+
+@[simp] theorem evalYZero_y :
+    evalYZero (K := K) (y (K := K)) = 0 := by
+  simp [evalYZero, y]
+
+/-- Eliminating `x` leaves the nonzero pure Frobenius term. -/
+theorem evalXZero_cusp :
+    evalXZero (K := K) (cusp (K := K) p) =
+      (Polynomial.X : Polynomial K) ^ p := by
+  have hp : p ≠ 0 := Fact.out.ne_zero
+  simp [cusp, hp]
+
+/-- Eliminating `y` leaves the nonzero ordinary defect term. -/
+theorem evalYZero_cusp :
+    evalYZero (K := K) (cusp (K := K) p) =
+      -((Polynomial.X : Polynomial K) ^ (p + 1)) := by
+  have hp : p ≠ 0 := Fact.out.ne_zero
+  simp [cusp, hp]
+
+/-- The root component alone is not sufficient for marked permissibility. -/
+theorem cusp_not_mem_rootIdeal_pow :
+    cusp (K := K) p ∉ (rootIdeal (K := K)) ^ p := by
+  intro hmem
+  rw [rootIdeal, Ideal.span_singleton_pow] at hmem
+  have hdvd :
+      (y (K := K)) ^ p ∣ cusp (K := K) p :=
+    Ideal.mem_span_singleton.mp hmem
+  rcases hdvd with ⟨a, ha⟩
+  have hmap := congrArg (evalYZero (K := K)) ha
+  have hzero : evalYZero (K := K) (cusp (K := K) p) = 0 := by
+    simpa using hmap
+  have hxne :
+      (Polynomial.X : Polynomial K) ^ (p + 1) ≠ 0 :=
+    pow_ne_zero _ Polynomial.X_ne_zero
+  apply hxne
+  apply neg_eq_zero.mp
+  simpa [evalYZero_cusp (K := K) p] using hzero
+
+/-- The defect component alone is not sufficient for marked permissibility. -/
+theorem cusp_not_mem_defectIdeal_pow :
+    cusp (K := K) p ∉ (defectIdeal (K := K)) ^ p := by
+  intro hmem
+  rw [defectIdeal, Ideal.span_singleton_pow] at hmem
+  have hdvd :
+      (x (K := K)) ^ p ∣ cusp (K := K) p :=
+    Ideal.mem_span_singleton.mp hmem
+  rcases hdvd with ⟨a, ha⟩
+  have hmap := congrArg (evalXZero (K := K)) ha
+  have hzero : evalXZero (K := K) (cusp (K := K) p) = 0 := by
+    simpa using hmap
+  have hyne :
+      (Polynomial.X : Polynomial K) ^ p ≠ 0 :=
+    pow_ne_zero _ Polynomial.X_ne_zero
+  exact hyne (by simpa [evalXZero_cusp (K := K) p] using hzero)
+
+/-- The marked cusp is not permissible for the root-only component. -/
+theorem rootIdeal_not_permissible :
+    ¬ MarkedIdeal.Permissible
+      (R := P (K := K))
+      ⟨Ideal.span {cusp (K := K) p}, p, Fact.out.pos⟩
+      (rootIdeal (K := K)) := by
+  intro hperm
+  exact cusp_not_mem_rootIdeal_pow (K := K) p
+    (hperm (Ideal.mem_span_singleton_self (cusp (K := K) p)))
+
+/-- The marked cusp is not permissible for the defect-only component. -/
+theorem defectIdeal_not_permissible :
+    ¬ MarkedIdeal.Permissible
+      (R := P (K := K))
+      ⟨Ideal.span {cusp (K := K) p}, p, Fact.out.pos⟩
+      (defectIdeal (K := K)) := by
+  intro hperm
+  exact cusp_not_mem_defectIdeal_pow (K := K) p
+    (hperm (Ideal.mem_span_singleton_self (cusp (K := K) p)))
 
 /-- The ordinary derivative in the Frobenius-root direction vanishes. -/
 theorem pderiv_y_cusp :
