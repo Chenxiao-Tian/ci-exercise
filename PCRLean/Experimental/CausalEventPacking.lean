@@ -71,8 +71,6 @@ theorem card_events_le_card_sources :
     (fun e => chosenSource C e)
     (chosenSource_injective C)
 
-omit C
-
 /-- If every ancestor source is already assigned, a new disjoint nonempty event
 cannot be inserted without merging or releasing an old support. -/
 theorem no_fresh_disjoint_support_of_cover
