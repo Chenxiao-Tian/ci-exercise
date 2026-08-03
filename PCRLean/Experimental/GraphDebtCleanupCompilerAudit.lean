@@ -1,0 +1,10 @@
+import PCRLean.Experimental.GraphDebtCleanupCompiler
+
+#print axioms PCRLean.Experimental.GraphDebtCleanupCompiler.unused_child_eq_parent
+#print axioms PCRLean.Experimental.GraphDebtCleanupCompiler.cleanupHeight_decreases
+#print axioms PCRLean.Experimental.GraphDebtCleanupCompiler.cleanupStep
+#print axioms PCRLean.Experimental.GraphDebtCleanupCompiler.rank_decreases
+#print axioms PCRLean.Experimental.GraphDebtCleanupCompiler.support_not_disjoint_parent_used
+#print axioms PCRLean.Experimental.GraphDebtCleanupCompiler.not_fresh_birth_same_support
+#print axioms PCRLean.Experimental.GraphDebtCleanupCompiler.graphResidualIdeal_eq_childHeight
+#print axioms PCRLean.Experimental.GraphDebtCleanupCompiler.exactMark_childHeight_zero
