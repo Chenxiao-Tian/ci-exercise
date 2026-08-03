@@ -1,0 +1,6 @@
+import PCRLean.Experimental.IntrinsicKernelIdealBiEquiv
+
+#print axioms PCRLean.Experimental.IntrinsicKernelIdealBiEquiv.map_mem_ker
+#print axioms PCRLean.Experimental.IntrinsicKernelIdealBiEquiv.symm_mem_ker
+#print axioms PCRLean.Experimental.IntrinsicKernelIdealBiEquiv.map_kernelIdeal_eq
+#print axioms PCRLean.Experimental.IntrinsicKernelIdealBiEquiv.surjective_iff
