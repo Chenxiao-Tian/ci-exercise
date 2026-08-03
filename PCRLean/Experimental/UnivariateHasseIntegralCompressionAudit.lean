@@ -1,0 +1,7 @@
+import PCRLean.Experimental.UnivariateHasseIntegralCompression
+
+#print axioms PCRLean.Experimental.UnivariateHasseIntegralCompression.packet
+#print axioms PCRLean.Experimental.UnivariateHasseIntegralCompression.rootHasse_isIntegral
+#print axioms PCRLean.Experimental.UnivariateHasseIntegralCompression.rootHasseAdjoin_moduleFinite
+#print axioms PCRLean.Experimental.UnivariateHasseIntegralCompression.source_root_integralEquivalent
+#print axioms PCRLean.Experimental.UnivariateHasseIntegralCompression.isIntegral_source_iff_rootHasseAdjoin
