@@ -1,0 +1,7 @@
+import PCRLean.Experimental.AffineConormalIdeal
+
+#print axioms PCRLean.Experimental.AffineConormalIdeal.equationMap_apply
+#print axioms PCRLean.Experimental.AffineConormalIdeal.generator_mem_packetIdeal
+#print axioms PCRLean.Experimental.AffineConormalIdeal.equationMap_mem_of_mem_span
+#print axioms PCRLean.Experimental.AffineConormalIdeal.packetIdeal_eq_of_span_eq
+#print axioms PCRLean.Experimental.AffineConormalIdeal.equationMap_mem_indexedIdeal_of_mem_span
