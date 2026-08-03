@@ -26,6 +26,7 @@ import PCRLean.Experimental.CoordinateControlledTransformHeredity
 import PCRLean.Experimental.PolynomialGraphCentreHeredity
 import PCRLean.Experimental.PolynomialGraphCentreQuotient
 import PCRLean.Experimental.PolynomialGraphBlowupHeredity
+import PCRLean.Experimental.PolynomialGraphMarkedTransformDebt
 import PCRLean.Experimental.PolynomialGraphFrobeniusCentreCertificate
 
 /-!
@@ -44,7 +45,8 @@ Lean build through the complete current experimental heredity chain:
 * the graded-layer and normal-cone sufficient conditions;
 * faithfully flat descent and local coordinate/graph models;
 * arbitrary-mark ceiling compression and bounded exceptional debt;
-* exact commutation with coordinate controlled transforms; and
+* exact commutation with coordinate controlled transforms;
+* exact classification of graph-root residuals as a pure exceptional power; and
 * actual proper finite-type regular polynomial graph centres with explicit
   all-chart terminal root packets.
 
