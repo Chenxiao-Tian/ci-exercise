@@ -1,0 +1,23 @@
+{
+  "node": "MLEL-A003 / FPE-EDGE",
+  "protocol": "PCR-FRACTAL-PROOF-LEAN 1.0",
+  "title": "Fractal Proof Engineering, Edge Certification, Mathematical Invention, and Lean Closure Protocol",
+  "status": "ACCEPTED_RESEARCH_PROTOCOL",
+  "epistemic_class": "RESEARCH_META_PROTOCOL / PROOF_ENGINEERING",
+  "seed_architecture": "MLEL-D001 / FCPP-ATLAS",
+  "seed_papers": 6,
+  "seed_groups": 65,
+  "seed_dictionary_entries": 325,
+  "seed_dependency_edges": 1340,
+  "seed_page_budget": 520,
+  "accepted_mathematical_node": "MLEL-M004 / HMC-SCCD",
+  "certified_graph_changed": false,
+  "formal_global_status": "OPEN_GAP",
+  "general_resolution_proved": false,
+  "completion_condition": {
+    "FINAL_MAIN_THEOREM_KERNEL_VERIFIED": true,
+    "ALL_CLAIM_NODES_ON_CERTIFIED_CUT": "proved",
+    "ALL_EDGE_CERTIFICATES_ON_CUT": "proved",
+    "PAPER_LEAN_SEMANTIC_MISMATCH": 0
+  }
+}
