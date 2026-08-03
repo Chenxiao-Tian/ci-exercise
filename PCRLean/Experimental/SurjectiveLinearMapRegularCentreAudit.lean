@@ -1,5 +1,7 @@
 import PCRLean.Experimental.SurjectiveLinearMapRegularCentre
 
+/-! Kernel audit for the intrinsic regular centre of a surjective linear map. -/
+
 #print axioms PCRLean.Experimental.SurjectiveLinearMapRegularCentre.splitOfSurjective
 #print axioms PCRLean.Experimental.SurjectiveLinearMapRegularCentre.split_kernelIdeal_eq
 #print axioms PCRLean.Experimental.SurjectiveLinearMapRegularCentre.ker_projectAlg_eq_kernelIdeal
