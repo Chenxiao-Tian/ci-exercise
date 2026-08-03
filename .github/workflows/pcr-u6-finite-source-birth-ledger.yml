@@ -1,0 +1,67 @@
+name: PCR U6 finite-source birth ledger
+
+on:
+  push:
+    branches:
+      - pcr-u6-finite-source-birth-ledger-20260803
+  pull_request:
+    branches:
+      - pcr-jump-lean-20260802-u2-root-boundary
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pcr-u6-finite-source-birth-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  finite-source-birth-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          set -o pipefail
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf \
+            | sh -s -- -y --default-toolchain leanprover/lean4:v4.30.0
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned mathlib
+        run: |
+          set -o pipefail
+          lake update
+          lake exe cache get
+      - name: Reject placeholders
+        run: |
+          set -o pipefail
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)([[:space:]]|$)' \
+              PCRLean/Experimental/FiniteSourceBirthLedger.lean \
+              PCRLean/Experimental/FiniteSourceBirthLedgerAudit.lean; then
+            echo 'Forbidden proof placeholder or custom axiom found.' >&2
+            exit 1
+          fi
+      - name: Build finite-source birth ledger
+        run: |
+          set -o pipefail
+          lake build PCRLean.Experimental.FiniteSourceBirthLedger 2>&1 \
+            | tee finite-source-birth-build.txt
+      - name: Kernel axiom audit
+        run: |
+          set -o pipefail
+          lake env lean PCRLean/Experimental/FiniteSourceBirthLedgerAudit.lean 2>&1 \
+            | tee finite-source-birth-axioms.txt
+          if grep -E 'sorryAx|PCRLean\..*Axiom|ResolutionAxiom|PacketizationAxiom' \
+              finite-source-birth-axioms.txt; then
+            echo 'Unpermitted axiom detected.' >&2
+            exit 1
+          fi
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pcr-u6-finite-source-birth-${{ github.sha }}
+          path: |
+            finite-source-birth-build.txt
+            finite-source-birth-axioms.txt
+          if-no-files-found: warn
