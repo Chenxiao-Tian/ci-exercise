@@ -1,0 +1,6 @@
+import PCRLean.Experimental.RankZeroFrobeniusReesExit
+
+#print axioms PCRLean.Experimental.RankZeroFrobeniusReesExit.visible_or_integral_strict_root
+#print axioms PCRLean.Experimental.RankZeroFrobeniusReesExit.strictRoot_integralEquivalent
+#print axioms PCRLean.Experimental.RankZeroFrobeniusReesExit.InitialDecomposition.integral_cleaning_exit
+#print axioms PCRLean.Experimental.RankZeroFrobeniusReesExit.InitialDecomposition.integral_cleaning_equivalent

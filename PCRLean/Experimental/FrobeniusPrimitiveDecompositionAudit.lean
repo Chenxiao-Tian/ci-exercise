@@ -1,0 +1,4 @@
+import PCRLean.Experimental.FrobeniusPrimitiveDecomposition
+
+#print axioms PCRLean.Experimental.FrobeniusPrimitiveDecomposition.exists_frobeniusPrimitive_decomposition
+#print axioms PCRLean.Experimental.FrobeniusPrimitiveDecomposition.exists_positive_depth_of_all_pderiv_zero

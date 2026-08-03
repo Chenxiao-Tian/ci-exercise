@@ -1,0 +1,7 @@
+import PCRLean.Experimental.InitialFormFrobeniusCleaning
+
+#print axioms PCRLean.Experimental.InitialFormFrobeniusCleaning.InitialDecomposition.root_pow
+#print axioms PCRLean.Experimental.InitialFormFrobeniusCleaning.InitialDecomposition.cleaned_eq_remainder
+#print axioms PCRLean.Experimental.InitialFormFrobeniusCleaning.InitialDecomposition.cleaned_higher
+#print axioms PCRLean.Experimental.InitialFormFrobeniusCleaning.InitialDecomposition.prime_dvd_initial_degree
+#print axioms PCRLean.Experimental.InitialFormFrobeniusCleaning.InitialDecomposition.root_totalDegree_lt

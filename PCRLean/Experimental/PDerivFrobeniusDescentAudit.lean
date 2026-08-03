@@ -1,0 +1,10 @@
+import PCRLean.Experimental.PDerivFrobeniusDescent
+
+#print axioms PCRLean.Experimental.PDerivFrobeniusDescent.coeff_X_mul_pderiv
+#print axioms PCRLean.Experimental.PDerivFrobeniusDescent.exponent_dvd_of_pderiv_eq_zero
+#print axioms PCRLean.Experimental.PDerivFrobeniusDescent.exponentDivisible_one_of_all_pderiv_zero
+#print axioms PCRLean.Experimental.PDerivFrobeniusDescent.derivativeRoot_pow
+#print axioms PCRLean.Experimental.PDerivFrobeniusDescent.derivativeRoot_ne_zero
+#print axioms PCRLean.Experimental.PDerivFrobeniusDescent.derivativeRoot_totalDegree_pos
+#print axioms PCRLean.Experimental.PDerivFrobeniusDescent.derivativeRoot_totalDegree_lt
+#print axioms PCRLean.Experimental.PDerivFrobeniusDescent.visible_or_strict_root
