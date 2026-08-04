@@ -1,0 +1,20 @@
+import PCRLean.Experimental.X037BiReesSaturationIndex
+
+#print axioms PCRLean.Experimental.ExceptionalLayerTransform.layerQuotientEquivRange
+#print axioms PCRLean.Experimental.ExceptionalLayerTransform.layerQuotientEquivRange_apply_mk
+#print axioms PCRLean.Experimental.ExceptionalLayerTransform.SaturationCertificate.targetEquivRange
+#print axioms PCRLean.Experimental.ExceptionalLayerTransform.SaturationCertificate.targetEquivRange_apply_mk
+#print axioms PCRLean.Experimental.WeightedContactCleaning.factor_continuing
+#print axioms PCRLean.Experimental.WeightedContactCleaning.factor_terminal
+#print axioms PCRLean.Experimental.WeightedContactCleaning.debt_drop
+#print axioms PCRLean.Experimental.WeightedContactCleaning.Step.strict
+#print axioms PCRLean.Experimental.WeightedContactCleaning.two_stage_residual
+#print axioms PCRLean.Experimental.FinitePrefixTailCriterion.Packet.all_degrees
+#print axioms PCRLean.Experimental.FinitePrefixTailCriterion.Packet.degree
+#print axioms PCRLean.Experimental.FinitePrefixTailCriterion.all_of_window_of_tail
+#print axioms PCRLean.Experimental.SaturationDebtRank.saturation_drop
+#print axioms PCRLean.Experimental.SaturationDebtRank.contact_drop
+#print axioms PCRLean.Experimental.SaturationDebtRank.passive_drop
+#print axioms PCRLean.Experimental.SaturationDebtRank.debt_drop
+#print axioms PCRLean.Experimental.SaturationDebtRank.rank_wellFounded
+#print axioms PCRLean.Experimental.X037BiReesSaturationIndex.loaded
