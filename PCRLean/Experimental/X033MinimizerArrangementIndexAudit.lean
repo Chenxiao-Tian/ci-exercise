@@ -1,0 +1,14 @@
+import PCRLean.Experimental.X033MinimizerArrangementIndex
+
+#print axioms PCRLean.Experimental.IntrinsicOrderIdealLinearEquiv.orderIdeal_linearEquiv
+#print axioms PCRLean.Experimental.IntrinsicOrderIdealLinearEquiv.regimes_equiv
+#print axioms PCRLean.Experimental.MarkedClosureArrangement.closure_mono
+#print axioms PCRLean.Experimental.MarkedClosureArrangement.acceptable_mono
+#print axioms PCRLean.Experimental.MarkedClosureArrangement.intersectionClosure_eq_sup
+#print axioms PCRLean.Experimental.MarkedClosureArrangement.intersectionClosure_acceptable_left
+#print axioms PCRLean.Experimental.MarkedClosureArrangement.classifyPair
+#print axioms PCRLean.Experimental.CriticalPairTorExcess.torIndependent_comm
+#print axioms PCRLean.Experimental.CriticalPairTorExcess.classify
+#print axioms PCRLean.Experimental.SchurFittingComplexity.MatrixShape.residual_complexity_lt
+#print axioms PCRLean.Experimental.SchurFittingComplexity.MatrixShape.residual_relation_wellFounded
+#print axioms PCRLean.Experimental.X033MinimizerArrangementIndex.loaded
