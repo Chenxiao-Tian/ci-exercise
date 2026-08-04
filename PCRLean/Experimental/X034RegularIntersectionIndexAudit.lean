@@ -1,0 +1,10 @@
+import PCRLean.Experimental.X034RegularIntersectionIndex
+
+#print axioms PCRLean.Experimental.TorExcessIsZeroExcess.torIndependent_nested_iff
+#print axioms PCRLean.Experimental.TorExcessIsZeroExcess.not_torIndependent_of_nested_nonidempotent
+#print axioms PCRLean.Experimental.SplitExcessKernel.SplitSurjection.kernelRetraction_comp_subtype
+#print axioms PCRLean.Experimental.SplitExcessKernel.SplitSurjection.kernel_projective
+#print axioms PCRLean.Experimental.SplitExcessKernel.kernel_projective_of_surjective
+#print axioms PCRLean.Experimental.ProjectivityDiscriminantPrime.mul_le_prime_iff
+#print axioms PCRLean.Experimental.ProjectivityDiscriminantPrime.not_mul_le_prime_iff
+#print axioms PCRLean.Experimental.X034RegularIntersectionIndex.loaded
