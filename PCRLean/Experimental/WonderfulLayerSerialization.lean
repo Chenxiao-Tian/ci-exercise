@@ -67,7 +67,8 @@ structure WordCertificate (F : RankedFamily (α := α)) : Prop where
   schedule : List (Finset α)
   schedule_eq : schedule = F.schedule
   gate : ∀ k, k ≤ F.maxRank → LayerGate F k
-  all_gates_hold : ∀ k, k ≤ F.maxRank → (gate k ‹_›).Holds
+  all_gates_hold :
+    ∀ (k : ℕ) (hk : k ≤ F.maxRank), (gate k hk).Holds
   length_eq : schedule.length = F.maxRank + 1
 
 /-- Compile a word certificate from one geometric gate for every bounded
