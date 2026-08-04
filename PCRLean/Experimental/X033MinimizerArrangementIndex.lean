@@ -1,4 +1,5 @@
 import PCRLean.Experimental.IntrinsicOrderIdealLinearEquiv
+import PCRLean.Experimental.ProjectiveOrderIdealContent
 import PCRLean.Experimental.MarkedClosureArrangement
 import PCRLean.Experimental.CriticalPairTorExcess
 import PCRLean.Experimental.SchurFittingComplexity
@@ -24,6 +25,8 @@ nonunique marked minimizers
 The source proves the intrinsic algebraic leaves:
 
 * order ideals are invariant under linear equivalence;
+* for a finite dual frame, the order ideal is the least content ideal
+  absorbing the section;
 * marked closure is monotone and pairwise intersection is `closure(A union B)`;
 * active marked permissibility survives every such intersection closure;
 * critical pairs admit exact same/disjoint/intersecting and
