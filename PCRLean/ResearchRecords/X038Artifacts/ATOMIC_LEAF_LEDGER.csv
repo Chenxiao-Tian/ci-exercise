@@ -1,0 +1,9 @@
+leaf_id,parent_claim,statement,lean_declaration,status
+X038-L1,X038-G2,Relative power saturation is extensive monotone and idempotent,PCRLean.Experimental.PowerSaturation.powerSaturation_idem,SOURCE-WRITTEN
+X038-L2,X038-G2,A quotient class is q-power torsion iff its representative is in relative q-saturation,PCRLean.Experimental.PowerSaturation.quotient_mk_mem_powerTorsion_iff,SOURCE-WRITTEN
+X038-L3,X038-G2,Regular multiplication by q on the quotient forces q-saturation to be trivial,PCRLean.Experimental.PowerSaturation.powerSaturation_eq_of_isSMulRegular_quotient,SOURCE-WRITTEN
+X038-L4,X038-G6,Two surjections to one common core with zero kernels induce a canonical linear equivalence,PCRLean.Experimental.CommonCoreInterchange.Cospan.interchangeEquiv,SOURCE-WRITTEN
+X038-L5,X038-G6,The common-core equivalence is compatible with both epimorphisms,PCRLean.Experimental.CommonCoreInterchange.Cospan.rightMap_interchangeEquiv_apply,SOURCE-WRITTEN
+X038-L6,X038-G19,A carrier-dimension drop dominates arbitrary later-coordinate changes,PCRLean.Experimental.FlatKillLegalizationRank.dimension_drop,SOURCE-WRITTEN
+X038-L7,X038-G19,A common-core defect drop dominates contact and debt changes,PCRLean.Experimental.FlatKillLegalizationRank.defect_drop,SOURCE-WRITTEN
+X038-L8,X038-G19,The dimension/defect/contact/debt order is well founded,PCRLean.Experimental.FlatKillLegalizationRank.rank_wellFounded,SOURCE-WRITTEN
