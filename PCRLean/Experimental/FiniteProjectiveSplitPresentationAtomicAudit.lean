@@ -1,0 +1,6 @@
+import PCRLean.Experimental.FiniteProjectiveSplitPresentationAtomic
+
+#print axioms PCRLean.Experimental.FiniteSpanningSetSurjectionAtomic.generatorMap_surjective
+#print axioms PCRLean.Experimental.ProjectiveSurjectionSplitAtomic.projective_surjection_splits
+#print axioms PCRLean.Experimental.FiniteProjectiveSplitPresentationAtomic.ofSpanningSet
+#print axioms PCRLean.Experimental.FiniteProjectiveSplitPresentationAtomic.exists_splitFreePresentation
