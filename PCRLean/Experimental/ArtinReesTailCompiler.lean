@@ -1,0 +1,63 @@
+import Mathlib
+
+/-!
+# Finite Artin--Rees tail compiler
+
+Artin--Rees turns an induced filtration into a finite prefix followed by a tail
+obtained recursively from one cutoff layer.  The geometric X038 packet uses
+this to replace infinitely many exceptional-torsion degrees by a finite window,
+a tail seed, and one propagation law.
+
+This file proves only the logical/numerical compiler.  It does not prove the
+Artin--Rees theorem, construct an induced filtration, or identify a geometric
+Rees-interchange defect.
+-/
+
+namespace PCRLean
+namespace Experimental
+namespace ArtinReesTailCompiler
+
+noncomputable section
+
+/-- A finite prefix, one cutoff value, and an eventual successor law. -/
+structure Packet (Good : ℕ → Prop) where
+  cutoff : ℕ
+  prefix : ∀ n, n < cutoff → Good n
+  seed : Good cutoff
+  tailStep : ∀ n, cutoff ≤ n → Good n → Good (n + 1)
+
+namespace Packet
+
+variable {Good : ℕ → Prop}
+
+/-- Every degree is certified by the finite prefix or by induction from the
+Artin--Rees cutoff. -/
+theorem all_degrees (P : Packet Good) : ∀ n, Good n := by
+  intro n
+  by_cases hprefix : n < P.cutoff
+  · exact P.prefix n hprefix
+  · have hcut : P.cutoff ≤ n := Nat.le_of_not_gt hprefix
+    induction n, hcut using Nat.le_induction with
+    | base => exact P.seed
+    | succ n hcn ih => exact P.tailStep n hcn ih
+
+/-- Pointwise projection of the full degree certificate. -/
+theorem degree (P : Packet Good) (n : ℕ) : Good n :=
+  P.all_degrees n
+
+end Packet
+
+/-- A direct finite-prefix/tail induction theorem without packaging. -/
+theorem all_of_prefix_seed_step
+    (Good : ℕ → Prop) (cutoff : ℕ)
+    (hprefix : ∀ n, n < cutoff → Good n)
+    (hseed : Good cutoff)
+    (hstep : ∀ n, cutoff ≤ n → Good n → Good (n + 1)) :
+    ∀ n, Good n := by
+  exact (Packet.mk cutoff hprefix hseed hstep).all_degrees
+
+end
+
+end ArtinReesTailCompiler
+end Experimental
+end PCRLean
