@@ -7,12 +7,19 @@
   "status": "OPEN_GAP",
   "certified_graph_changed": false,
   "root_theorem_proved": false,
-  "principal_correction": {
-    "deleted_candidate": "one speculative direct bifiltered interchange map with undifferentiated kernel/cokernel RID",
-    "replacement": "two canonical epimorphisms to one image-filtration common core",
-    "left_kernel": "exceptional power-saturation / relative Valabrega defect",
-    "right_kernel": "nonexact filtration base change / Tor defect"
-  },
+  "principal_corrections": [
+    {
+      "deleted_candidate": "one speculative direct bifiltered interchange map with undifferentiated kernel/cokernel RID",
+      "replacement": "two canonical epimorphisms to one image-filtration common core",
+      "left_kernel": "exceptional power-saturation / relative Valabrega defect",
+      "right_kernel": "nonexact filtration base change / Tor defect"
+    },
+    {
+      "deleted_candidate": "projective Rees-Serre tail as a necessary flatification device",
+      "replacement": "one finite coherent module on an affine normal/mixed-Rees scheme",
+      "reason": "associated-graded and two-ideal mixed-Rees modules are finite over finite-type Noetherian algebras, and affine flatification applies directly"
+    }
+  ],
   "nodes": [
     {"id":"X038-G1","title":"Affine strict-transform power-torsion API","status":"OPEN"},
     {"id":"X038-G2","title":"Relative power saturation and quotient identity","status":"EXPERIMENTAL-LEAN-WRITTEN"},
@@ -20,11 +27,13 @@
     {"id":"X038-G4","title":"Tor base-change epimorphism and kernel presentation","status":"OPEN"},
     {"id":"X038-G5","title":"Valabrega saturation epimorphism and kernel formula","status":"OPEN"},
     {"id":"X038-G6","title":"Tor-Valabrega common-core cospan","status":"ABSTRACT-LEAN-WRITTEN/GEOMETRY-OPEN"},
-    {"id":"X038-G7","title":"Mixed Rees finite presentation and uniform cutoff","status":"OPEN"},
-    {"id":"X038-G8","title":"Projective TVC tail and Serre comparison","status":"OPEN"},
+    {"id":"X038-G7A","title":"Finite associated-graded module on the affine normal cone","status":"STANDARD-MATH-CLOSED/LEAN-SCHEME-OPEN"},
+    {"id":"X038-G7B","title":"Finite two-ideal mixed-Rees module","status":"STANDARD-MATH-CLOSED/LEAN-GRADED-OPEN"},
+    {"id":"X038-G7C","title":"Uniform homogeneous power-saturation bound","status":"STANDARD-MATH-CLOSED/LEAN-OPEN"},
+    {"id":"X038-G8A","title":"Affine flatification of the complete ANC-TVC packet","status":"STANDARD-FLATIFICATION-INPUT/INTERFACE-OPEN"},
+    {"id":"X038-G8B","title":"Grading preserved by degree-zero strict transform","status":"ELEMENTARY-MATH-CLOSED/LEAN-SCHEME-OPEN"},
     {"id":"X038-G9","title":"Overlap cocycles and smooth base change","status":"OPEN"},
     {"id":"X038-G10","title":"Generic vanishing of the TVC packet","status":"OPEN"},
-    {"id":"X038-G11","title":"Simultaneous projective-normal/TVC flatification","status":"STANDARD-INPUT+OPEN-INTERFACE"},
     {"id":"X038-G12","title":"Flat generically-zero implies zero on every component","status":"STANDARD-MATH+LEAN-OPEN"},
     {"id":"X038-G13","title":"Regular centre word factoring through the flatifier","status":"OPEN"},
     {"id":"X038-G14","title":"Recursive joint legalization of every trace subcentre","status":"OPEN"},
@@ -38,10 +47,10 @@
   "edges": [
     {"from":["X038-G1","X038-G2","X038-G3"],"to":"X038-G5","kind":"affine-saturation-construction"},
     {"from":["X038-G3","X038-G4","X038-G5"],"to":"X038-G6","kind":"common-core-cospan"},
-    {"from":["X038-G6","X038-G7","X038-G8"],"to":"X038-G9","kind":"finite-sheafification-and-descent"},
-    {"from":["X038-G9","X038-G10","X038-G11","X038-G12"],"to":"X038-G15","kind":"flat-kill-ambient-transport"},
+    {"from":["X038-G6","X038-G7A","X038-G7B","X038-G7C","X038-G8B"],"to":"X038-G9","kind":"finite-affine-sheafification-and-descent"},
+    {"from":["X038-G8A","X038-G9","X038-G10","X038-G12"],"to":"X038-G15","kind":"affine-flat-kill-ambient-transport"},
     {"from":["X038-G13","X038-G14","X038-G15"],"to":"X038-G19","kind":"carrier-dimension-induction"},
     {"from":["X038-G15","X038-G16","X038-G17","X038-G18","X038-G19"],"to":"X038-G20","kind":"joint-legalization-compiler"}
   ],
-  "highest_information_cut": ["X038-G6","X038-G7","X038-G11","X038-G14","X038-G15","X038-G18","X038-G19"]
+  "highest_information_cut": ["X038-G6","X038-G9","X038-G13","X038-G14","X038-G15","X038-G18","X038-G19"]
 }
