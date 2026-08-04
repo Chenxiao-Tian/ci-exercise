@@ -1,0 +1,1 @@
+Under flat base change, finite exceptional torsion stabilizes at a uniform exponent, intersections commute by exactness, and the induced filtration and exceptional graded-torsion defect should commute with base change. This is a scheme-level theorem target, not yet a Lean declaration.
