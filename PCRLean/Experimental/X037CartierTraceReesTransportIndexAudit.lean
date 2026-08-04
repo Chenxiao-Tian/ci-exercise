@@ -1,0 +1,13 @@
+import PCRLean.Experimental.X037CartierTraceReesTransportIndex
+
+#print axioms PCRLean.Experimental.CentreEnrichedPureTransform.forgetCarrierMorphism_not_injective
+#print axioms PCRLean.Experimental.CentreEnrichedPureTransform.exists_same_morphism_distinct_payload
+#print axioms PCRLean.Experimental.FinitePrefixTailCriterion.Packet.all_degrees
+#print axioms PCRLean.Experimental.FinitePrefixTailCriterion.Packet.degree
+#print axioms PCRLean.Experimental.FinitePrefixTailCriterion.all_of_window_of_tail
+#print axioms PCRLean.Experimental.BifilteredLegalizationRank.commutator_drop
+#print axioms PCRLean.Experimental.BifilteredLegalizationRank.passive_drop
+#print axioms PCRLean.Experimental.BifilteredLegalizationRank.contact_drop
+#print axioms PCRLean.Experimental.BifilteredLegalizationRank.debt_drop
+#print axioms PCRLean.Experimental.BifilteredLegalizationRank.rank_wellFounded
+#print axioms PCRLean.Experimental.X037CartierTraceReesTransportIndex.loaded
