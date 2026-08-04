@@ -1,0 +1,7 @@
+tool_id,name,definition_short,gaps_compressed,positive_test,adversarial_test,bridge_status
+X038-T1,RelativePowerSaturation,"Sat_q(P;N)={x | exists n, q^n x in P}","strict-transform torsion; Valabrega kernel",transverse chart,Cartier-supported torsion,ALGEBRA-LEAN-WRITTEN/SCHEME-OPEN
+X038-T2,TorValabregaCommonCore,"two epimorphisms from old/new transformed graded objects to Q_q(image filtration quotient)","direct RID direction; Tor versus saturation separation",regular transverse nested centres,nonflat base change and tangent contact,ABSTRACT-LEAN-WRITTEN/GEOMETRY-OPEN
+X038-T3,MixedReesTVCPacket,"finite bigraded kernel/torsion packet from I^a K^b M", "all degrees; overlap gluing; finite presentation",Noetherian two-ideal Rees model,flat tail with bad low degree,OPEN
+X038-T4,FlatKillLegalization,"flatify the generically-zero TVC packet together with the projective-normal portfolio", "passive normal flatness; defect elimination",zero-generic coherent packet,component omitted from U,STANDARD-INPUT/AMBIENT-REALIZATION-OPEN
+X038-T5,CarrierDimensionInduction,"legalize every trace subcentre recursively by strict decrease of carrier dimension", "regular realization of singular flatifiers; circularity",proper flatifier support in a regular carrier,zero-dimensional carrier and whole-component centre,ARITHMETIC-LEAN-WRITTEN/GEOMETRY-OPEN
+X038-T6,CartierStableSourceCompression,"identify source words differing by Cartier factors only after torsion-free certification", "source-ledger size; no-reset",Cartier-torsion-free module,fully Cartier-supported torsion,OPEN
