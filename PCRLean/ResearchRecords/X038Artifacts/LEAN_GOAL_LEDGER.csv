@@ -1,0 +1,14 @@
+goal_id,parent_claim,lean_statement_short,file,status,priority
+X038-LG1,X038-G2,powerSaturation is a Submodule and a closure operation,PCRLean/Experimental/PowerSaturation.lean,SOURCE-WRITTEN,HIGH
+X038-LG2,X038-G2,quotient q-power torsion iff relative q-saturation,PCRLean/Experimental/PowerSaturation.lean,SOURCE-WRITTEN,HIGH
+X038-LG3,X038-G2,IsSMulRegular on quotient implies saturation equality,PCRLean/Experimental/PowerSaturation.lean,SOURCE-WRITTEN,HIGH
+X038-LG4,X038-G6,two-surjection cospan with zero kernels yields LinearEquiv,PCRLean/Experimental/CommonCoreInterchange.lean,SOURCE-WRITTEN,HIGH
+X038-LG5,X038-G19,dimension/defect/contact/debt lexicographic drops,PCRLean/Experimental/FlatKillLegalizationRank.lean,SOURCE-WRITTEN,MEDIUM
+X038-LG6,X038-G3,define affine chart image filtration and prove IB=qL after torsion quotient,PCRLean/Experimental/ChartImageFiltration.lean,OPEN,CRITICAL
+X038-LG7,X038-G4,construct right epimorphism and finite kernel,PCRLean/Experimental/TorBaseChangeCore.lean,OPEN,CRITICAL
+X038-LG8,X038-G5,construct left saturation epimorphism and kernel formula,PCRLean/Experimental/ValabregaCore.lean,OPEN,CRITICAL
+X038-LG9,X038-G7,define finite mixed-Rees kernel module and uniform q-torsion exponent,PCRLean/Experimental/MixedReesTVC.lean,OPEN,CRITICAL
+X038-LG10,X038-G9,prove localization and overlap equality of TVC modules,PCRLean/Experimental/TVCOverlap.lean,OPEN,HIGH
+X038-LG11,X038-G12,formalize flat finitely-presented generically-zero module vanishing,PCRLean/Experimental/FlatKill.lean,OPEN,HIGH
+X038-LG12,X038-G18,formalize Cartier-factor invariance under zero torsion certificate,PCRLean/Experimental/CartierStableSource.lean,OPEN,HIGH
+X038-LG13,X038-G15,compile all affine chart cospans to a scheme-level ambient transport certificate,PCRLean/Experimental/TVCTransportCompiler.lean,OPEN,CRITICAL
