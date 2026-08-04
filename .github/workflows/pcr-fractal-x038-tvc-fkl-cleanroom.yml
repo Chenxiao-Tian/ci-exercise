@@ -24,6 +24,7 @@ jobs:
           files=(
             PCRLean/Experimental/PowerSaturation.lean
             PCRLean/Experimental/CommonCoreInterchange.lean
+            PCRLean/Experimental/BigradedFlatnessCompiler.lean
             PCRLean/Experimental/FlatKillLegalizationRank.lean
             PCRLean/Experimental/X038TorValabregaCommonCoreIndex.lean
           )
@@ -78,6 +79,7 @@ jobs:
           modules=(
             PCRLean.Experimental.PowerSaturation
             PCRLean.Experimental.CommonCoreInterchange
+            PCRLean.Experimental.BigradedFlatnessCompiler
             PCRLean.Experimental.FlatKillLegalizationRank
             PCRLean.Experimental.X038TorValabregaCommonCoreIndex
           )
@@ -105,10 +107,12 @@ jobs:
           set -euo pipefail
           cp PCRLean/Experimental/PowerSaturation.lean x038-evidence/
           cp PCRLean/Experimental/CommonCoreInterchange.lean x038-evidence/
+          cp PCRLean/Experimental/BigradedFlatnessCompiler.lean x038-evidence/
           cp PCRLean/Experimental/FlatKillLegalizationRank.lean x038-evidence/
           cp PCRLean/Experimental/X038TorValabregaCommonCoreIndex.lean x038-evidence/
           cp PCRLean/Experimental/X038TorValabregaCommonCoreIndexAudit.lean x038-evidence/
           cp PCRLean/ResearchRecords/MLEL_X038_TVC_FKL_REPORT.md x038-evidence/
+          cp PCRLean/ResearchRecords/MLEL_X038_AFFINE_NORMAL_CONE_FLATIFICATION_SUPPLEMENT.md x038-evidence/
           cp PCRLean/ResearchRecords/MLEL_X038_ANNALS_SERIES_MLE.md x038-evidence/
           cp -R PCRLean/ResearchRecords/X038Artifacts x038-evidence/
           find x038-evidence -type f -print0 \
