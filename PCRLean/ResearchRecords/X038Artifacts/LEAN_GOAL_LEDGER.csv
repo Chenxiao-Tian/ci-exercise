@@ -1,14 +1,17 @@
 goal_id,parent_claim,lean_statement_short,file,status,priority
 X038-LG1,X038-G2,powerSaturation is a Submodule and a closure operation,PCRLean/Experimental/PowerSaturation.lean,SOURCE-WRITTEN,HIGH
 X038-LG2,X038-G2,quotient q-power torsion iff relative q-saturation,PCRLean/Experimental/PowerSaturation.lean,SOURCE-WRITTEN,HIGH
-X038-LG3,X038-G2,IsSMulRegular on quotient implies saturation equality,PCRLean/Experimental/PowerSaturation.lean,SOURCE-WRITTEN,HIGH
-X038-LG4,X038-G6,two-surjection cospan with zero kernels yields LinearEquiv,PCRLean/Experimental/CommonCoreInterchange.lean,SOURCE-WRITTEN,HIGH
-X038-LG5,X038-G19,dimension/defect/contact/debt lexicographic drops,PCRLean/Experimental/FlatKillLegalizationRank.lean,SOURCE-WRITTEN,MEDIUM
-X038-LG6,X038-G3,define affine chart image filtration and prove IB=qL after torsion quotient,PCRLean/Experimental/ChartImageFiltration.lean,OPEN,CRITICAL
-X038-LG7,X038-G4,construct right epimorphism and finite kernel,PCRLean/Experimental/TorBaseChangeCore.lean,OPEN,CRITICAL
-X038-LG8,X038-G5,construct left saturation epimorphism and kernel formula,PCRLean/Experimental/ValabregaCore.lean,OPEN,CRITICAL
-X038-LG9,X038-G7,define finite mixed-Rees kernel module and uniform q-torsion exponent,PCRLean/Experimental/MixedReesTVC.lean,OPEN,CRITICAL
-X038-LG10,X038-G9,prove localization and overlap equality of TVC modules,PCRLean/Experimental/TVCOverlap.lean,OPEN,HIGH
-X038-LG11,X038-G12,formalize flat finitely-presented generically-zero module vanishing,PCRLean/Experimental/FlatKill.lean,OPEN,HIGH
-X038-LG12,X038-G18,formalize Cartier-factor invariance under zero torsion certificate,PCRLean/Experimental/CartierStableSource.lean,OPEN,HIGH
-X038-LG13,X038-G15,compile all affine chart cospans to a scheme-level ambient transport certificate,PCRLean/Experimental/TVCTransportCompiler.lean,OPEN,CRITICAL
+X038-LG3,X038-G2,IsSMulRegular on quotient implies saturation equality and regular q has no power torsion,PCRLean/Experimental/PowerSaturation.lean,SOURCE-WRITTEN,HIGH
+X038-LG4,X038-G6,Tor epimorphism plus zero Valabrega kernel and cokernel yields LinearEquiv,PCRLean/Experimental/ControlledCoreInterchange.lean,SOURCE-WRITTEN,HIGH
+X038-LG5,X038-G7A,complete bigraded and finite-owner portfolio flatness iff all pieces are flat,PCRLean/Experimental/BigradedFlatnessCompiler.lean,SOURCE-WRITTEN,HIGH
+X038-LG6,X038-G19,dimension/defect/contact/debt lexicographic drops,PCRLean/Experimental/FlatKillLegalizationRank.lean,SOURCE-WRITTEN,MEDIUM
+X038-LG7,X038-G3,define controlled ideal J and strict carrier ideal L=Sat_q(J) on every chart,PCRLean/Experimental/ControlledCarrierChart.lean,OPEN,CRITICAL
+X038-LG8,X038-G4,construct alpha epimorphism and finite Tor kernel from homogeneous mixed-Rees maps,PCRLean/Experimental/TorControlledCore.lean,OPEN,CRITICAL
+X038-LG9,X038-G5,construct beta and prove Valabrega intersection-kernel and saturation-cokernel formulas,PCRLean/Experimental/ValabregaControlledCore.lean,OPEN,CRITICAL
+X038-LG10,X038-G7B,formalize finite two-ideal mixed-Rees module and uniform homogeneous colon stabilization,PCRLean/Experimental/MixedReesTVF.lean,OPEN,CRITICAL
+X038-LG11,X038-G9,prove double-localization and smooth-base-change equality of alpha beta and all three defects,PCRLean/Experimental/TVFOverlap.lean,OPEN,CRITICAL
+X038-LG12,X038-G12,formalize flat finitely-presented componentwise-generically-zero module vanishing,PCRLean/Experimental/AffineFlatKill.lean,OPEN,HIGH
+X038-LG13,RFL-A,formalize regular-flag coordinate charts controlled=strict ideal and conormal line twist,PCRLean/Experimental/RegularFlagCharts.lean,OPEN,CRITICAL
+X038-LG14,RFL-A,compile Tor safety and normal flatness into all-degree transform interchange for a regular flag,PCRLean/Experimental/RegularFlagLegalLift.lean,OPEN,CRITICAL
+X038-LG15,X038-G18,formalize Cartier-factor invariance under a zero torsion certificate,PCRLean/Experimental/CartierStableSource.lean,OPEN,HIGH
+X038-LG16,X038-G15,compile centre-enriched flatifier word plus regular-flag lifts to scheme-level ambient transport,PCRLean/Experimental/TVFAmbientCompiler.lean,OPEN,CRITICAL
