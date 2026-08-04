@@ -42,9 +42,8 @@ def powerSaturation (q : R) (N : Submodule R M) : Submodule R M where
   smul_mem' := by
     rintro r x ⟨n, hx⟩
     refine ⟨n, ?_⟩
-    calc
-      q ^ n • (r • x) = r • (q ^ n • x) := smul_comm _ _ _
-      _ ∈ N := N.smul_mem r hx
+    rw [smul_comm (q ^ n) r x]
+    exact N.smul_mem r hx
 
 @[simp] theorem mem_powerSaturation_iff
     (q : R) (N : Submodule R M) (x : M) :
@@ -148,10 +147,16 @@ theorem powerSaturation_eq_of_isSMulRegular_quotient
 theorem powerTorsion_eq_bot_of_isSMulRegular
     (q : R) (hreg : IsSMulRegular M q) :
     powerTorsion (M := M) q = ⊥ := by
-  simpa [powerTorsion] using
-    powerSaturation_eq_of_isSMulRegular_quotient
-      (M := M) q (⊥ : Submodule R M)
-      (by simpa using hreg)
+  apply Submodule.eq_bot_iff.mpr
+  intro x hx
+  rcases (mem_powerTorsion_iff q x).mp hx with ⟨n, hn⟩
+  induction n with
+  | zero =>
+      simpa using hn
+  | succ n ih =>
+      apply ih
+      apply hreg
+      simpa [pow_succ, smul_smul, mul_comm] using hn
 
 end
 
