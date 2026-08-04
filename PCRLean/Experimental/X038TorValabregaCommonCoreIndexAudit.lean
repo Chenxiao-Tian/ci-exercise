@@ -7,6 +7,8 @@ import PCRLean.Experimental.X038TorValabregaCommonCoreIndex
 #print axioms PCRLean.Experimental.PowerSaturation.mem_powerTorsion_iff
 #print axioms PCRLean.Experimental.PowerSaturation.quotient_mk_mem_powerTorsion_iff
 #print axioms PCRLean.Experimental.PowerSaturation.powerSaturation_eq_iff_quotient_powerTorsion_zero
+#print axioms PCRLean.Experimental.PowerSaturation.powerSaturation_eq_of_isSMulRegular_quotient
+#print axioms PCRLean.Experimental.PowerSaturation.powerTorsion_eq_bot_of_isSMulRegular
 #print axioms PCRLean.Experimental.CommonCoreInterchange.Cospan.rightMap_interchangeEquiv_apply
 #print axioms PCRLean.Experimental.CommonCoreInterchange.Cospan.nonempty_equiv_of_kernel_vanishing
 #print axioms PCRLean.Experimental.FlatKillLegalizationRank.dimension_drop
