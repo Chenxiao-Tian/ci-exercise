@@ -1,0 +1,3 @@
+import PCRLean.Experimental.ProjectiveSurjectionSplitAtomic
+
+#print axioms PCRLean.Experimental.ProjectiveSurjectionSplitAtomic.projective_surjection_splits
