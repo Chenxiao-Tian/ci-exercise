@@ -11,6 +11,9 @@ import PCRLean.Experimental.X033WonderfulDefectIndex
 #print axioms PCRLean.Experimental.TorCleanIntersectionBoundary.torIndependent_self_iff_idempotent
 #print axioms PCRLean.Experimental.TorCleanIntersectionBoundary.not_torIndependent_self_of_not_idempotent
 #print axioms PCRLean.Experimental.TorCleanIntersectionBoundary.torIndependent_of_disjoint
+#print axioms PCRLean.Experimental.WonderfulProductIdeal.productIdeal_congr
+#print axioms PCRLean.Experimental.WonderfulProductIdeal.productIdeal_equiv
+#print axioms PCRLean.Experimental.WonderfulProductIdeal.productIdeal_symmetry
 #print axioms PCRLean.Experimental.WonderfulLayerSerialization.LayerGate.holds
 #print axioms PCRLean.Experimental.WonderfulLayerSerialization.compile
 #print axioms PCRLean.Experimental.WonderfulLayerSerialization.compiled_length
