@@ -11,6 +11,9 @@ import PCRLean.Experimental.X038PurificationGradingInterchangeIndex
 #print axioms PCRLean.Experimental.ArtinReesTailCompiler.Packet.all_degrees
 #print axioms PCRLean.Experimental.ArtinReesTailCompiler.Packet.degree
 #print axioms PCRLean.Experimental.ArtinReesTailCompiler.all_of_prefix_seed_step
+#print axioms PCRLean.Experimental.FlatExceptionalTorsionKill.eq_zero_of_pow_smul_eq_zero
+#print axioms PCRLean.Experimental.FlatExceptionalTorsionKill.submodule_eq_bot_of_power_torsion
+#print axioms PCRLean.Experimental.FlatExceptionalTorsionKill.finite_packet_vanishes
 #print axioms PCRLean.Experimental.ExceptionalInterchangeRank.support_drop
 #print axioms PCRLean.Experimental.ExceptionalInterchangeRank.exponent_drop
 #print axioms PCRLean.Experimental.ExceptionalInterchangeRank.tail_drop
