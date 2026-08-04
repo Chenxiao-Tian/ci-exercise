@@ -1,0 +1,12 @@
+import PCRLean.Experimental.X036ReesSerreContactIndex
+
+#print axioms PCRLean.Experimental.FinitePrefixTailCriterion.Packet.all_degrees
+#print axioms PCRLean.Experimental.FinitePrefixTailCriterion.all_of_window_of_tail
+#print axioms PCRLean.Experimental.FiniteGateProductPrime.prod_le_prime_iff
+#print axioms PCRLean.Experimental.FiniteGateProductPrime.not_prod_le_prime_iff
+#print axioms PCRLean.Experimental.ContactCancellationRank.shiftDepth_lt
+#print axioms PCRLean.Experimental.ContactCancellationRank.contact_shift
+#print axioms PCRLean.Experimental.ContactCancellationRank.tangent_rank_drop
+#print axioms PCRLean.Experimental.ContactCancellationRank.rank_wellFounded
+#print axioms PCRLean.Experimental.ContactCancellationRank.Packet.shift_rank_lt
+#print axioms PCRLean.Experimental.X036ReesSerreContactIndex.loaded
