@@ -1,0 +1,100 @@
+name: PCR Fractal X032 split-free order-ideal clean room
+
+on:
+  pull_request:
+    branches:
+      - pcr-fractal-x032-sfp-iom-base-20260803
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  x032-cleanroom:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout exact PR merge
+        uses: actions/checkout@v4
+
+      - name: Reject placeholders and project axioms in X032 slice
+        shell: bash
+        run: |
+          set -euo pipefail
+          files=(
+            PCRLean/Experimental/IntrinsicOrderIdealMinimality.lean
+            PCRLean/Experimental/SplitFreePresentationDualFrame.lean
+            PCRLean/Experimental/SplitCokernelOrderIdealCompiler.lean
+            PCRLean/Experimental/X032SplitFreeOrderIdealKernelIndex.lean
+          )
+          if grep -RInE '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)|^[[:space:]]*axiom[[:space:]]' "${files[@]}"; then
+            echo 'Forbidden placeholder or project axiom detected.'
+            exit 1
+          fi
+
+      - name: Install pinned Lean toolchain through elan
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+            | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Record exact environment
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          mkdir -p x032-evidence
+          git rev-parse HEAD | tee x032-evidence/COMMIT.txt
+          cat lean-toolchain | tee x032-evidence/LEAN_TOOLCHAIN.txt
+          sha256sum lakefile.toml lake-manifest.json lean-toolchain \
+            | tee x032-evidence/ENVIRONMENT_SHA256SUMS.txt
+          lean --version | tee x032-evidence/LEAN_VERSION.txt
+          lake --version | tee x032-evidence/LAKE_VERSION.txt
+
+      - name: Build official default target
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          lake build 2>&1 | tee x032-evidence/LAKE_BUILD.log
+
+      - name: Elaborate integrated X032 source slice
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          lake env lean PCRLean/Experimental/X032SplitFreeOrderIdealKernelIndex.lean \
+            2>&1 | tee x032-evidence/X032_ELABORATION.log
+
+      - name: Run unified axiom audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          lake env lean PCRLean/Experimental/X032SplitFreeOrderIdealKernelIndexAudit.lean \
+            2>&1 | tee x032-evidence/X032_AXIOM_AUDIT.log
+          if grep -q 'sorryAx' x032-evidence/X032_AXIOM_AUDIT.log; then
+            echo 'sorryAx detected in axiom output.'
+            exit 1
+          fi
+
+      - name: Snapshot X032 sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp PCRLean/Experimental/IntrinsicOrderIdealMinimality.lean x032-evidence/
+          cp PCRLean/Experimental/SplitFreePresentationDualFrame.lean x032-evidence/
+          cp PCRLean/Experimental/SplitCokernelOrderIdealCompiler.lean x032-evidence/
+          cp PCRLean/Experimental/X032SplitFreeOrderIdealKernelIndex.lean x032-evidence/
+          cp PCRLean/Experimental/X032SplitFreeOrderIdealKernelIndexAudit.lean x032-evidence/
+          sha256sum x032-evidence/*.lean | tee x032-evidence/X032_SOURCE_SHA256SUMS.txt
+
+      - name: Upload exact evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: PCR-FRACTAL-X032-SFP-IOM-EVIDENCE
+          path: x032-evidence
+          if-no-files-found: error
+          retention-days: 90
