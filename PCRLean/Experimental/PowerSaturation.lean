@@ -1,5 +1,6 @@
 import Mathlib
 import Mathlib.Algebra.Module.Torsion.Basic
+import Mathlib.RingTheory.Regular.IsSMulRegular
 
 /-!
 # Power saturation and quotient torsion
@@ -117,6 +118,38 @@ theorem powerSaturation_eq_iff_quotient_powerTorsion_zero
         (quotient_mk_mem_powerTorsion_iff q N x).mpr hx
       exact (Submodule.Quotient.mk_eq_zero N).mp (h x htor)
     · exact le_powerSaturation q N
+
+/-- If multiplication by `q` is regular on the quotient, no higher power of
+`q` can create new saturation.  This is the algebraic flat-kill endpoint for
+one exceptional parameter. -/
+theorem powerSaturation_eq_of_isSMulRegular_quotient
+    (q : R) (N : Submodule R M)
+    (hreg : IsSMulRegular (M ⧸ N) q) :
+    powerSaturation q N = N := by
+  have hpow : ∀ n : ℕ, ∀ x : M, q ^ n • x ∈ N → x ∈ N := by
+    intro n
+    induction n with
+    | zero =>
+        intro x hx
+        simpa using hx
+    | succ n ih =>
+        intro x hx
+        apply mem_of_isSMulRegular_quotient_of_smul_mem hreg
+        apply ih (q • x)
+        simpa [pow_succ, smul_smul] using hx
+  apply le_antisymm
+  · rintro x ⟨n, hx⟩
+    exact hpow n x hx
+  · exact le_powerSaturation q N
+
+/-- A regular exceptional parameter has no power torsion. -/
+theorem powerTorsion_eq_bot_of_isSMulRegular
+    (q : R) (hreg : IsSMulRegular M q) :
+    powerTorsion (M := M) q = ⊥ := by
+  simpa [powerTorsion] using
+    powerSaturation_eq_of_isSMulRegular_quotient
+      (M := M) q (⊥ : Submodule R M)
+      (by simpa using hreg)
 
 end
 
