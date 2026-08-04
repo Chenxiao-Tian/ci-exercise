@@ -23,6 +23,7 @@ jobs:
           set -euo pipefail
           files=(
             PCRLean/Experimental/ExceptionalTorsionLayers.lean
+            PCRLean/Experimental/NestedPurificationQuotient.lean
             PCRLean/Experimental/ArtinReesTailCompiler.lean
             PCRLean/Experimental/ExceptionalInterchangeRank.lean
             PCRLean/Experimental/X038PurificationGradingInterchangeIndex.lean
@@ -77,6 +78,7 @@ jobs:
           source "$HOME/.elan/env"
           modules=(
             PCRLean.Experimental.ExceptionalTorsionLayers
+            PCRLean.Experimental.NestedPurificationQuotient
             PCRLean.Experimental.ArtinReesTailCompiler
             PCRLean.Experimental.ExceptionalInterchangeRank
             PCRLean.Experimental.X038PurificationGradingInterchangeIndex
@@ -104,11 +106,13 @@ jobs:
         run: |
           set -euo pipefail
           cp PCRLean/Experimental/ExceptionalTorsionLayers.lean x038-evidence/
+          cp PCRLean/Experimental/NestedPurificationQuotient.lean x038-evidence/
           cp PCRLean/Experimental/ArtinReesTailCompiler.lean x038-evidence/
           cp PCRLean/Experimental/ExceptionalInterchangeRank.lean x038-evidence/
           cp PCRLean/Experimental/X038PurificationGradingInterchangeIndex.lean x038-evidence/
           cp PCRLean/Experimental/X038PurificationGradingInterchangeIndexAudit.lean x038-evidence/
           cp PCRLean/ResearchRecords/MLEL_X038_PGI_ERD_REPORT.md x038-evidence/
+          cp PCRLean/ResearchRecords/MLEL_X038_FILTER_REGULARITY_SUPPLEMENT.md x038-evidence/
           cp PCRLean/ResearchRecords/MLEL_X038_ANNALS_SERIES_MLE.md x038-evidence/
           sha256sum x038-evidence/* | tee x038-evidence/X038_SOURCE_SHA256SUMS.txt
 
