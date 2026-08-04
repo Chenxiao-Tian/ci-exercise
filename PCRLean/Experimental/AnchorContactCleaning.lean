@@ -51,7 +51,7 @@ theorem CleaningStep.contactDrop
     (h : CleaningStep oldOrder newOrder) :
     newOrder < oldOrder := by
   rw [h.residual_eq]
-  omega
+  exact Nat.sub_lt h.positive Nat.zero_lt_one
 
 /-- Contact order followed by exceptional debt. -/
 abbrev ContactDebtRank := ℕ ×ₗ ℕ
