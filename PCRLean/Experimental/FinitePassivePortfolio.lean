@@ -44,7 +44,8 @@ theorem Certificate.ownerFlat
     (c : Certificate (A := A) Piece Tail)
     (o : Owner) :
     Module.Flat A (DirectSum ℕ (Piece o)) :=
-  (c.ownerCertificate o).directSumFlat
+  FiniteGradedFlatnessCompiler.Certificate.directSumFlat
+    (A := A) (Piece o) (Tail o) (c.ownerCertificate o)
 
 /-- The complete finite passive portfolio is flat. -/
 theorem Certificate.portfolioFlat
@@ -54,7 +55,7 @@ theorem Certificate.portfolioFlat
   classical
   rw [Module.Flat.directSum_iff]
   intro o
-  exact c.ownerFlat o
+  exact Certificate.ownerFlat Piece Tail c o
 
 end
 
