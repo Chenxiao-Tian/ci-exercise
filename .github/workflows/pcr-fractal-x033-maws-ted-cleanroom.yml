@@ -23,6 +23,7 @@ jobs:
           set -euo pipefail
           files=(
             PCRLean/Experimental/IntrinsicOrderIdealLinearEquiv.lean
+            PCRLean/Experimental/ProjectiveOrderIdealContent.lean
             PCRLean/Experimental/MarkedClosureArrangement.lean
             PCRLean/Experimental/CriticalPairTorExcess.lean
             PCRLean/Experimental/SchurFittingComplexity.lean
@@ -86,6 +87,7 @@ jobs:
         run: |
           set -euo pipefail
           cp PCRLean/Experimental/IntrinsicOrderIdealLinearEquiv.lean x033-evidence/
+          cp PCRLean/Experimental/ProjectiveOrderIdealContent.lean x033-evidence/
           cp PCRLean/Experimental/MarkedClosureArrangement.lean x033-evidence/
           cp PCRLean/Experimental/CriticalPairTorExcess.lean x033-evidence/
           cp PCRLean/Experimental/SchurFittingComplexity.lean x033-evidence/
