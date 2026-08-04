@@ -115,6 +115,7 @@ jobs:
           cp PCRLean/ResearchRecords/MLEL_X038_CONTROLLED_CORE_CORRECTION.md x038-evidence/
           cp PCRLean/ResearchRecords/MLEL_X038_AFFINE_NORMAL_CONE_FLATIFICATION_SUPPLEMENT.md x038-evidence/
           cp PCRLean/ResearchRecords/MLEL_X038_REGULAR_FLAG_LEGAL_LIFT_SUPPLEMENT.md x038-evidence/
+          cp PCRLean/ResearchRecords/MLEL_X038_REDUCED_BASE_FLAT_KILL_SUPPLEMENT.md x038-evidence/
           cp PCRLean/ResearchRecords/MLEL_X038_TVF_ANC_FINAL_REPORT.md x038-evidence/
           cp PCRLean/ResearchRecords/MLEL_X038_ANNALS_SERIES_MLE.md x038-evidence/
           cp -R PCRLean/ResearchRecords/X038Artifacts x038-evidence/
