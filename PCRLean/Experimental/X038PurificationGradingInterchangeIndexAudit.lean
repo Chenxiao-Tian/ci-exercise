@@ -4,6 +4,10 @@ import PCRLean.Experimental.X038PurificationGradingInterchangeIndex
 #print axioms PCRLean.Experimental.ExceptionalTorsionLayers.Layers.exists_witness_of_ne
 #print axioms PCRLean.Experimental.ExceptionalTorsionLayers.Layers.witness_nonempty_iff_ne
 #print axioms PCRLean.Experimental.ExceptionalTorsionLayers.Layers.classify
+#print axioms PCRLean.Experimental.NestedPurificationQuotient.quotientMap_surjective
+#print axioms PCRLean.Experimental.NestedPurificationQuotient.quotientMap_ker
+#print axioms PCRLean.Experimental.NestedPurificationQuotient.defect_eq_bot_iff
+#print axioms PCRLean.Experimental.NestedPurificationQuotient.interchangeEquiv_apply
 #print axioms PCRLean.Experimental.ArtinReesTailCompiler.Packet.all_degrees
 #print axioms PCRLean.Experimental.ArtinReesTailCompiler.Packet.degree
 #print axioms PCRLean.Experimental.ArtinReesTailCompiler.all_of_prefix_seed_step
