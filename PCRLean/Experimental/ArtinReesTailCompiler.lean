@@ -34,11 +34,19 @@ variable {Good : ℕ → Prop}
 Artin--Rees cutoff. -/
 theorem all_degrees (P : Packet Good) : ∀ n, Good n := by
   intro n
-  by_cases hprefix : n < P.cutoff
-  · exact P.prefixCert n hprefix
-  · have hcut : P.cutoff ≤ n := Nat.le_of_not_gt hprefix
-    exact Nat.le_induction P.seed
-      (fun m hm ih => P.tailStep m hm ih) hcut
+  induction n with
+  | zero =>
+      by_cases h : 0 < P.cutoff
+      · exact P.prefixCert 0 h
+      · have hc : P.cutoff = 0 := by omega
+        simpa [hc] using P.seed
+  | succ n ih =>
+      by_cases hprefix : n + 1 < P.cutoff
+      · exact P.prefixCert (n + 1) hprefix
+      · by_cases hseed : n + 1 = P.cutoff
+        · simpa [hseed] using P.seed
+        · have hcut : P.cutoff ≤ n := by omega
+          exact P.tailStep n hcut ih
 
 /-- Pointwise projection of the full degree certificate. -/
 theorem degree (P : Packet Good) (n : ℕ) : Good n :=
