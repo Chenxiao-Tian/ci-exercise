@@ -71,7 +71,9 @@ noncomputable def classify
   · exact Coverage.clean h
   · apply Coverage.defect
     rw [badStrata_nonempty_iff]
-    simpa only [not_forall] using h
+    by_contra hnone
+    push_neg at hnone
+    exact h hnone
 
 end
 
