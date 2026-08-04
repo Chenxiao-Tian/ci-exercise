@@ -1,4 +1,5 @@
 import PCRLean.Experimental.ExceptionalTorsionLayers
+import PCRLean.Experimental.NestedPurificationQuotient
 import PCRLean.Experimental.ArtinReesTailCompiler
 import PCRLean.Experimental.ExceptionalInterchangeRank
 
@@ -26,17 +27,21 @@ The proposed exact sequence is
   -> 0.
 ```
 
-Moreover `U/H` is the exceptional-power torsion of `gr_L(N/T)`.  Artin--Rees
-should make `H` and hence the defect finite graded.  A separate Rees
-base-change/twist comparison has coherent kernel and cokernel supported on the
-same exceptional divisor.  Vanishing gives exact ambient/projective-normal
-transport; nonvanishing is a lower-dimensional exceptional packet.
+The abstract nested-submodule quotient map and its exact kernel are now an
+explicit Lean leaf.  Geometry must still identify `gr_L(N/T)` with `A/H`, prove
+`H <= U`, and prove that `U/H` is all exceptional-power torsion of that quotient.
+Artin--Rees supplies a finite transition window once the induced filtration is
+constructed.  A separate Rees base-change/twist comparison has coherent kernel
+and cokernel supported on the same exceptional divisor.  Vanishing gives exact
+ambient/projective-normal transport; nonvanishing is a lower-dimensional
+exceptional packet.
 
 The Lean leaves in this slice prove only nested-layer clean/defect coverage,
-finite prefix/tail induction, and the well-founded arithmetic of the proposed
-rank.  They do not prove the exact sequence, Artin--Rees finiteness, base change,
-all-chart Rees comparison, divisorial elimination, no-reset, termination, or
-general positive-characteristic resolution.
+the abstract nested quotient kernel, finite prefix/tail induction, and the
+well-founded arithmetic of the proposed rank.  They do not prove the geometric
+exact sequence, Artin--Rees finiteness, base change, all-chart Rees comparison,
+divisorial elimination, no-reset, termination, or general
+positive-characteristic resolution.
 -/
 
 namespace PCRLean
