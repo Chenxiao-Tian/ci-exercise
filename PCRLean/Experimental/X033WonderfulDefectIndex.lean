@@ -1,5 +1,6 @@
 import PCRLean.Experimental.IntrinsicOrderIdealLinearEquiv
 import PCRLean.Experimental.ProjectiveOrderIdealContent
+import PCRLean.Experimental.SymmetricConfigurationDifference
 import PCRLean.Experimental.MarkedClosureArrangement
 import PCRLean.Experimental.CanonicalIntersectionCompletion
 import PCRLean.Experimental.CriticalPairTorExcess
@@ -28,16 +29,19 @@ finite minimizer family
 Defect chamber:
 
 ```text
-first nonregular or illegal intersection stratum
+common graph atlas
+-> symmetric pairwise-difference contact packet
+-> first nonregular or illegal intersection stratum
 -> intrinsic Jacobian/Fitting/passive/boundary defect carrier
--> strict lower-support or Schur-Fitting recursion.
+-> strict lower-support, Hasse-contact, or Schur-Fitting recursion.
 ```
 
-Only the finite ideal/combinatorial interfaces, product invariant, and the
-conditional gate compiler are formalized here.  The geometric
-maximal-building-set theorem and the comparison between product-ideal blow-up
-and the iterated word are standard wonderful-model geometry; construction and
-strict descent of the defect carrier remain open load-bearing obligations.
+Only the finite ideal/combinatorial interfaces, symmetric difference packet,
+product invariant, and the conditional gate compiler are formalized here.  The
+geometric maximal-building-set theorem and the comparison between product-ideal
+blow-up and the iterated word are standard wonderful-model geometry;
+construction and strict descent of the defect carrier remain open
+load-bearing obligations.
 
 The Tor predicate `I inf J = I * J` is retained only as a passive/derived
 intersection diagnostic.  It is explicitly rejected as a complete
