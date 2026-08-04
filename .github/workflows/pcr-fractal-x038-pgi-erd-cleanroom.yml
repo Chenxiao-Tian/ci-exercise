@@ -25,6 +25,7 @@ jobs:
             PCRLean/Experimental/ExceptionalTorsionLayers.lean
             PCRLean/Experimental/NestedPurificationQuotient.lean
             PCRLean/Experimental/ArtinReesTailCompiler.lean
+            PCRLean/Experimental/FlatExceptionalTorsionKill.lean
             PCRLean/Experimental/ExceptionalInterchangeRank.lean
             PCRLean/Experimental/X038PurificationGradingInterchangeIndex.lean
           )
@@ -80,6 +81,7 @@ jobs:
             PCRLean.Experimental.ExceptionalTorsionLayers
             PCRLean.Experimental.NestedPurificationQuotient
             PCRLean.Experimental.ArtinReesTailCompiler
+            PCRLean.Experimental.FlatExceptionalTorsionKill
             PCRLean.Experimental.ExceptionalInterchangeRank
             PCRLean.Experimental.X038PurificationGradingInterchangeIndex
           )
@@ -108,6 +110,7 @@ jobs:
           cp PCRLean/Experimental/ExceptionalTorsionLayers.lean x038-evidence/
           cp PCRLean/Experimental/NestedPurificationQuotient.lean x038-evidence/
           cp PCRLean/Experimental/ArtinReesTailCompiler.lean x038-evidence/
+          cp PCRLean/Experimental/FlatExceptionalTorsionKill.lean x038-evidence/
           cp PCRLean/Experimental/ExceptionalInterchangeRank.lean x038-evidence/
           cp PCRLean/Experimental/X038PurificationGradingInterchangeIndex.lean x038-evidence/
           cp PCRLean/Experimental/X038PurificationGradingInterchangeIndexAudit.lean x038-evidence/
