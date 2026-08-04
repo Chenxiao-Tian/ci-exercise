@@ -1,0 +1,18 @@
+{
+  "snapshot_date": "2026-08-04",
+  "round_id": "MLEL-X038/TVC-FKL",
+  "accepted_mathematical_frontier": "MLEL-M004/HMC-SCCD",
+  "scope": "restricted Hasse-Morita/source-causal backend only",
+  "candidate_rounds_not_promoted": [
+    "MLEL-X035/STD-ALI",
+    "MLEL-X036/PNF-ACL",
+    "MLEL-X037/CTW-BRT",
+    "MLEL-X038/TVC-FKL"
+  ],
+  "new_nodes_promoted": [],
+  "new_edges_promoted": [],
+  "certified_graph_changed": false,
+  "final_main_theorem_kernel_verified": false,
+  "general_positive_characteristic_resolution": false,
+  "formal_global_status": "OPEN_GAP"
+}
