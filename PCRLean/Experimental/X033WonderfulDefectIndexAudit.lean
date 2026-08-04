@@ -1,0 +1,20 @@
+import PCRLean.Experimental.X033WonderfulDefectIndex
+
+#print axioms PCRLean.Experimental.CanonicalIntersectionCompletion.mem_upperCompletion_iff
+#print axioms PCRLean.Experimental.CanonicalIntersectionCompletion.union_mem_upperCompletion
+#print axioms PCRLean.Experimental.CanonicalIntersectionCompletion.acceptable_of_mem_upperCompletion
+#print axioms PCRLean.Experimental.CanonicalIntersectionCompletion.closure_intersection_union
+#print axioms PCRLean.Experimental.CanonicalLayerScheduler.RankedFamily.layer_disjoint
+#print axioms PCRLean.Experimental.CanonicalLayerScheduler.RankedFamily.own_layer_mem_schedule
+#print axioms PCRLean.Experimental.CanonicalLayerScheduler.RankedFamily.map_layer_eq
+#print axioms PCRLean.Experimental.CanonicalLayerScheduler.RankedFamily.map_schedule_eq
+#print axioms PCRLean.Experimental.TorCleanIntersectionBoundary.torIndependent_self_iff_idempotent
+#print axioms PCRLean.Experimental.TorCleanIntersectionBoundary.not_torIndependent_self_of_not_idempotent
+#print axioms PCRLean.Experimental.TorCleanIntersectionBoundary.torIndependent_of_disjoint
+#print axioms PCRLean.Experimental.WonderfulLayerSerialization.LayerGate.holds
+#print axioms PCRLean.Experimental.WonderfulLayerSerialization.compile
+#print axioms PCRLean.Experimental.WonderfulLayerSerialization.compiled_length
+#print axioms PCRLean.Experimental.WonderfulLayerSerialization.schedule_equivariant
+#print axioms PCRLean.Experimental.WonderfulLayerSerialization.CleanBuildingSetGeometry.toGates
+#print axioms PCRLean.Experimental.WonderfulLayerSerialization.compileClean
+#print axioms PCRLean.Experimental.X033WonderfulDefectIndex.loaded
