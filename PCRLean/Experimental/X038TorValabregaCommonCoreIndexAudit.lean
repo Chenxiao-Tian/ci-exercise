@@ -1,0 +1,17 @@
+import PCRLean.Experimental.X038TorValabregaCommonCoreIndex
+
+#print axioms PCRLean.Experimental.PowerSaturation.mem_powerSaturation_iff
+#print axioms PCRLean.Experimental.PowerSaturation.le_powerSaturation
+#print axioms PCRLean.Experimental.PowerSaturation.powerSaturation_mono
+#print axioms PCRLean.Experimental.PowerSaturation.powerSaturation_idem
+#print axioms PCRLean.Experimental.PowerSaturation.mem_powerTorsion_iff
+#print axioms PCRLean.Experimental.PowerSaturation.quotient_mk_mem_powerTorsion_iff
+#print axioms PCRLean.Experimental.PowerSaturation.powerSaturation_eq_iff_quotient_powerTorsion_zero
+#print axioms PCRLean.Experimental.CommonCoreInterchange.Cospan.rightMap_interchangeEquiv_apply
+#print axioms PCRLean.Experimental.CommonCoreInterchange.Cospan.nonempty_equiv_of_kernel_vanishing
+#print axioms PCRLean.Experimental.FlatKillLegalizationRank.dimension_drop
+#print axioms PCRLean.Experimental.FlatKillLegalizationRank.defect_drop
+#print axioms PCRLean.Experimental.FlatKillLegalizationRank.contact_drop
+#print axioms PCRLean.Experimental.FlatKillLegalizationRank.debt_drop
+#print axioms PCRLean.Experimental.FlatKillLegalizationRank.rank_wellFounded
+#print axioms PCRLean.Experimental.X038TorValabregaCommonCoreIndex.loaded
