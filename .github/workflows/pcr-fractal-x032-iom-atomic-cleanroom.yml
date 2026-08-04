@@ -1,0 +1,95 @@
+name: PCR Fractal X032A intrinsic order-ideal atomic clean room
+
+on:
+  pull_request:
+    branches:
+      - pcr-fractal-x032-iom-atomic-base-20260803
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  x032a-cleanroom:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout exact PR merge
+        uses: actions/checkout@v4
+
+      - name: Reject placeholders and project axioms
+        shell: bash
+        run: |
+          set -euo pipefail
+          files=(
+            PCRLean/Experimental/IntrinsicOrderIdealMinimalityAtomic.lean
+            PCRLean/Experimental/IntrinsicOrderIdealMinimalityAtomicAudit.lean
+          )
+          if grep -RInE '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)|^[[:space:]]*axiom[[:space:]]' "${files[@]}"; then
+            echo 'Forbidden placeholder or project axiom detected.'
+            exit 1
+          fi
+
+      - name: Install pinned Lean toolchain through elan
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+            | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Record exact environment
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          mkdir -p x032a-evidence
+          git rev-parse HEAD | tee x032a-evidence/COMMIT.txt
+          cat lean-toolchain | tee x032a-evidence/LEAN_TOOLCHAIN.txt
+          sha256sum lakefile.toml lake-manifest.json lean-toolchain \
+            | tee x032a-evidence/ENVIRONMENT_SHA256SUMS.txt
+          lean --version | tee x032a-evidence/LEAN_VERSION.txt
+          lake --version | tee x032a-evidence/LAKE_VERSION.txt
+
+      - name: Build official default target
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          lake build 2>&1 | tee x032a-evidence/LAKE_BUILD.log
+
+      - name: Elaborate atomic theorem file
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          lake env lean PCRLean/Experimental/IntrinsicOrderIdealMinimalityAtomic.lean \
+            2>&1 | tee x032a-evidence/X032A_ELABORATION.log
+
+      - name: Run axiom audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          lake env lean PCRLean/Experimental/IntrinsicOrderIdealMinimalityAtomicAudit.lean \
+            2>&1 | tee x032a-evidence/X032A_AXIOM_AUDIT.log
+          if grep -q 'sorryAx' x032a-evidence/X032A_AXIOM_AUDIT.log; then
+            echo 'sorryAx detected in axiom output.'
+            exit 1
+          fi
+
+      - name: Snapshot sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp PCRLean/Experimental/IntrinsicOrderIdealMinimalityAtomic.lean x032a-evidence/
+          cp PCRLean/Experimental/IntrinsicOrderIdealMinimalityAtomicAudit.lean x032a-evidence/
+          sha256sum x032a-evidence/*.lean | tee x032a-evidence/X032A_SOURCE_SHA256SUMS.txt
+
+      - name: Upload exact evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: PCR-FRACTAL-X032A-IOM-ATOMIC-EVIDENCE
+          path: x032a-evidence
+          if-no-files-found: error
+          retention-days: 90
