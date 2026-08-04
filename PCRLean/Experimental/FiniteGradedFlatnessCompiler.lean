@@ -60,7 +60,7 @@ theorem Certificate.directSumFlat
   classical
   rw [Module.Flat.directSum_iff]
   intro n
-  exact c.pieceFlat n
+  exact Certificate.pieceFlat Piece Tail c n
 
 /-- Conversely, flatness of the complete graded direct sum implies flatness of
 each piece. -/
