@@ -2,6 +2,9 @@ import PCRLean.Experimental.X033MinimizerArrangementIndex
 
 #print axioms PCRLean.Experimental.IntrinsicOrderIdealLinearEquiv.orderIdeal_linearEquiv
 #print axioms PCRLean.Experimental.IntrinsicOrderIdealLinearEquiv.regimes_equiv
+#print axioms PCRLean.Experimental.ProjectiveOrderIdealContent.orderIdeal_le_of_section_mem_smul_top
+#print axioms PCRLean.Experimental.ProjectiveOrderIdealContent.orderIdeal_le_iff_section_mem_smul_top
+#print axioms PCRLean.Experimental.ProjectiveOrderIdealContent.orderIdeal_isLeast_content
 #print axioms PCRLean.Experimental.MarkedClosureArrangement.closure_mono
 #print axioms PCRLean.Experimental.MarkedClosureArrangement.acceptable_mono
 #print axioms PCRLean.Experimental.MarkedClosureArrangement.intersectionClosure_eq_sup
