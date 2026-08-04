@@ -110,6 +110,7 @@ jobs:
           cp PCRLean/Experimental/X037CartierTraceReesTransportIndexAudit.lean x037-evidence/
           cp PCRLean/ResearchRecords/MLEL_X037_CTW_BRT_REPORT.md x037-evidence/
           cp PCRLean/ResearchRecords/MLEL_X037_ANNALS_SERIES_MLE.md x037-evidence/
+          cp PCRLean/ResearchRecords/MLEL_X037_CARTIER_TRACE_BASE_CHANGE_SUPPLEMENT.md x037-evidence/
           sha256sum x037-evidence/* | tee x037-evidence/X037_SOURCE_SHA256SUMS.txt
 
       - name: Upload exact evidence
