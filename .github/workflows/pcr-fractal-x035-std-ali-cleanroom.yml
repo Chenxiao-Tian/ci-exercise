@@ -72,13 +72,24 @@ jobs:
           source "$HOME/.elan/env"
           lake build 2>&1 | tee x035-evidence/LAKE_BUILD.log
 
-      - name: Elaborate integrated X035 source
+      - name: Elaborate exact X035 dependency slice
         shell: bash
         run: |
           set -euo pipefail
           source "$HOME/.elan/env"
-          lake env lean PCRLean/Experimental/X035SupportThicknessIndex.lean \
-            2>&1 | tee x035-evidence/X035_ELABORATION.log
+          files=(
+            PCRLean/Experimental/FiniteBadStratumCoverage.lean
+            PCRLean/Experimental/SupportThicknessAlternative.lean
+            PCRLean/Experimental/StratumInductionActiveLift.lean
+            PCRLean/Experimental/SupportThicknessRank.lean
+            PCRLean/Experimental/NilpotentThickness.lean
+            PCRLean/Experimental/X035SupportThicknessIndex.lean
+          )
+          : > x035-evidence/X035_ELABORATION.log
+          for file in "${files[@]}"; do
+            echo "===== ${file} =====" | tee -a x035-evidence/X035_ELABORATION.log
+            lake env lean "$file" 2>&1 | tee -a x035-evidence/X035_ELABORATION.log
+          done
 
       - name: Run unified axiom audit
         shell: bash
