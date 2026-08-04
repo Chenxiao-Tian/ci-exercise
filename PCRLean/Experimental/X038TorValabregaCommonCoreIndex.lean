@@ -1,43 +1,41 @@
 import PCRLean.Experimental.PowerSaturation
-import PCRLean.Experimental.CommonCoreInterchange
+import PCRLean.Experimental.ControlledCoreInterchange
 import PCRLean.Experimental.BigradedFlatnessCompiler
 import PCRLean.Experimental.FlatKillLegalizationRank
 
 /-!
-# MLEL-X038 / TVC-FKL integrated experimental index
+# MLEL-X038 / TVF-ANC integrated experimental index
 
-X038 replaces one speculative bifiltered comparison map by a two-surjection
-common-core diagram.  On an affine blowup chart, the right kernel records
-nonexact base change of a filtration, while the left kernel records exceptional
-power saturation of the transformed filtration.  The latter is a relative
-Valabrega-type defect.
+The final X038 candidate replaces both the X037 direct interchange map and the
+first X038 two-epimorphism cospan by a controlled-core factorization:
 
 ```text
-old graded piece after chart pullback -->> common image-filtration core
-new normal graded piece with Cartier twist -->> common image-filtration core
+old controlled graded object
+  -- Tor/base-change epimorphism -->
+controlled-transform core
+  -- Valabrega saturation map -->
+new strict-carrier normal graded object.
 ```
 
-When both kernels vanish, the common-core compiler gives a canonical linear
-equivalence.  The geometric proposal packages the two coherent kernels with
-the complete associated-graded passive portfolio and kills them by a
-lower-dimensional, centre-enriched flatification/legalization macro.
+The first map has a kernel.  The second map can have both kernel and cokernel;
+the example `J=(q*y) subset L=(y)` shows that it need not be surjective before
+saturation compatibility is proved.
 
-The affine normal-cone correction treats the whole graded or bigraded packet as
-one direct-sum module over the carrier.  No projective tail is needed for the
-module-theoretic flatness compiler.
+The affine normal-cone correction treats the complete associated-graded and
+mixed-Rees packets as finite direct-sum modules over the carrier.  No
+projective tail is needed for the module-theoretic flatness compiler.
 
 The exact Lean leaves in this slice prove only:
 
 * elementary relative power saturation and quotient-power-torsion identities;
 * regular exceptional parameters create no power torsion or new saturation;
-* the abstract two-surjection common-core equivalence compiler;
+* the abstract Tor-kernel/Valabrega-kernel-and-cokernel factorization compiler;
 * flatness equivalences for complete bigraded packets and finite portfolios;
 * well-founded arithmetic for the dimension/defect/contact/debt rank.
 
-They do not construct blowup charts, image filtrations, mixed Rees algebras,
-finite Tor--Valabrega defect sheaves, flatification words, ambient trace
-centres, hereditary reentry, termination, or general positive-characteristic
-resolution.
+They do not construct blowup charts, controlled ideals, mixed Rees algebras,
+finite transform-defect sheaves, flatification words, ambient trace centres,
+hereditary reentry, termination, or general positive-characteristic resolution.
 -/
 
 namespace PCRLean
