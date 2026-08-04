@@ -1,0 +1,1 @@
+Candidate strict rank: exceptional-defect support dimension, Artin–Rees/torsion exponent, projective-tail/Fitting profile, passive complexity, contact, debt, SCC height. The exceptional support coordinate precedes all later coordinates.
