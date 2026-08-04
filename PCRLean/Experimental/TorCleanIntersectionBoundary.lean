@@ -64,8 +64,8 @@ precisely the algebra needed for disjoint-union layers, not a replacement for
 regularity of nonempty intersection strata. -/
 theorem torIndependent_of_disjoint
     (I J : Ideal R) (hIJ : I ⊔ J = ⊤) :
-    TorIndependent I J :=
-  torIndependent_of_comaximal I J hIJ
+    TorIndependent I J := by
+  exact (Ideal.mul_eq_inf_of_coprime hIJ).symm
 
 end
 
