@@ -11,6 +11,11 @@ import PCRLean.Experimental.X038TorValabregaCommonCoreIndex
 #print axioms PCRLean.Experimental.PowerSaturation.powerTorsion_eq_bot_of_isSMulRegular
 #print axioms PCRLean.Experimental.CommonCoreInterchange.Cospan.rightMap_interchangeEquiv_apply
 #print axioms PCRLean.Experimental.CommonCoreInterchange.Cospan.nonempty_equiv_of_kernel_vanishing
+#print axioms PCRLean.Experimental.BigradedFlatnessCompiler.directSumFlat_iff_pieceFlat
+#print axioms PCRLean.Experimental.BigradedFlatnessCompiler.directSumFlat
+#print axioms PCRLean.Experimental.BigradedFlatnessCompiler.pieceFlat_of_directSumFlat
+#print axioms PCRLean.Experimental.BigradedFlatnessCompiler.portfolioFlat
+#print axioms PCRLean.Experimental.BigradedFlatnessCompiler.ownerPieceFlat_of_portfolioFlat
 #print axioms PCRLean.Experimental.FlatKillLegalizationRank.dimension_drop
 #print axioms PCRLean.Experimental.FlatKillLegalizationRank.defect_drop
 #print axioms PCRLean.Experimental.FlatKillLegalizationRank.contact_drop
