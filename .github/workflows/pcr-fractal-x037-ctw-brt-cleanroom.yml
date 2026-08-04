@@ -1,0 +1,121 @@
+name: PCR Fractal X037 Cartier-trace Rees-transport clean room
+
+on:
+  pull_request:
+    branches:
+      - pcr-fractal-x037-ctw-brt-base-20260804
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  x037-cleanroom:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout exact PR merge
+        uses: actions/checkout@v4
+
+      - name: Reject placeholders and project axioms
+        shell: bash
+        run: |
+          set -euo pipefail
+          files=(
+            PCRLean/Experimental/CentreEnrichedPureTransform.lean
+            PCRLean/Experimental/BifilteredLegalizationRank.lean
+            PCRLean/Experimental/FinitePrefixTailCriterion.lean
+            PCRLean/Experimental/X037CartierTraceReesTransportIndex.lean
+          )
+          if grep -RInE '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)|^[[:space:]]*axiom[[:space:]]' "${files[@]}"; then
+            echo 'Forbidden placeholder or project axiom detected.'
+            exit 1
+          fi
+
+      - name: Install pinned Lean toolchain through elan
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+            | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Bootstrap pinned Lake manifest when absent
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          if [[ ! -f lake-manifest.json ]]; then
+            lake update
+          fi
+          test -f lake-manifest.json
+
+      - name: Record exact environment
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          mkdir -p x037-evidence
+          git rev-parse HEAD | tee x037-evidence/COMMIT.txt
+          cat lean-toolchain | tee x037-evidence/LEAN_TOOLCHAIN.txt
+          sha256sum lakefile.toml lake-manifest.json lean-toolchain \
+            | tee x037-evidence/ENVIRONMENT_SHA256SUMS.txt
+          lean --version | tee x037-evidence/LEAN_VERSION.txt
+          lake --version | tee x037-evidence/LAKE_VERSION.txt
+
+      - name: Build official default target
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          lake build 2>&1 | tee x037-evidence/LAKE_BUILD.log
+
+      - name: Build exact X037 module targets
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          modules=(
+            PCRLean.Experimental.CentreEnrichedPureTransform
+            PCRLean.Experimental.BifilteredLegalizationRank
+            PCRLean.Experimental.FinitePrefixTailCriterion
+            PCRLean.Experimental.X037CartierTraceReesTransportIndex
+          )
+          : > x037-evidence/X037_ELABORATION.log
+          for module in "${modules[@]}"; do
+            echo "===== ${module} =====" | tee -a x037-evidence/X037_ELABORATION.log
+            lake build "$module" 2>&1 | tee -a x037-evidence/X037_ELABORATION.log
+          done
+
+      - name: Run unified axiom audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          lake env lean PCRLean/Experimental/X037CartierTraceReesTransportIndexAudit.lean \
+            2>&1 | tee x037-evidence/X037_AXIOM_AUDIT.log
+          if grep -q 'sorryAx' x037-evidence/X037_AXIOM_AUDIT.log; then
+            echo 'sorryAx detected in axiom output.'
+            exit 1
+          fi
+
+      - name: Snapshot exact sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp PCRLean/Experimental/CentreEnrichedPureTransform.lean x037-evidence/
+          cp PCRLean/Experimental/BifilteredLegalizationRank.lean x037-evidence/
+          cp PCRLean/Experimental/FinitePrefixTailCriterion.lean x037-evidence/
+          cp PCRLean/Experimental/X037CartierTraceReesTransportIndex.lean x037-evidence/
+          cp PCRLean/Experimental/X037CartierTraceReesTransportIndexAudit.lean x037-evidence/
+          cp PCRLean/ResearchRecords/MLEL_X037_CTW_BRT_REPORT.md x037-evidence/
+          cp PCRLean/ResearchRecords/MLEL_X037_ANNALS_SERIES_MLE.md x037-evidence/
+          sha256sum x037-evidence/* | tee x037-evidence/X037_SOURCE_SHA256SUMS.txt
+
+      - name: Upload exact evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: PCR-FRACTAL-X037-CTW-BRT-EVIDENCE
+          path: x037-evidence
+          if-no-files-found: error
+          retention-days: 90
