@@ -116,6 +116,7 @@ jobs:
           cp PCRLean/Experimental/X038PurificationGradingInterchangeIndexAudit.lean x038-evidence/
           cp PCRLean/ResearchRecords/MLEL_X038_PGI_ERD_REPORT.md x038-evidence/
           cp PCRLean/ResearchRecords/MLEL_X038_FILTER_REGULARITY_SUPPLEMENT.md x038-evidence/
+          cp PCRLean/ResearchRecords/MLEL_X038_FLAT_FILTER_REGULARITY_SUPPLEMENT.md x038-evidence/
           cp PCRLean/ResearchRecords/MLEL_X038_ANNALS_SERIES_MLE.md x038-evidence/
           sha256sum x038-evidence/* | tee x038-evidence/X038_SOURCE_SHA256SUMS.txt
 
