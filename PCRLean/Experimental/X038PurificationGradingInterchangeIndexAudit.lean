@@ -1,0 +1,17 @@
+import PCRLean.Experimental.X038PurificationGradingInterchangeIndex
+
+#print axioms PCRLean.Experimental.ExceptionalTorsionLayers.Layers.no_witness_of_eq
+#print axioms PCRLean.Experimental.ExceptionalTorsionLayers.Layers.exists_witness_of_ne
+#print axioms PCRLean.Experimental.ExceptionalTorsionLayers.Layers.witness_nonempty_iff_ne
+#print axioms PCRLean.Experimental.ExceptionalTorsionLayers.Layers.classify
+#print axioms PCRLean.Experimental.ArtinReesTailCompiler.Packet.all_degrees
+#print axioms PCRLean.Experimental.ArtinReesTailCompiler.Packet.degree
+#print axioms PCRLean.Experimental.ArtinReesTailCompiler.all_of_prefix_seed_step
+#print axioms PCRLean.Experimental.ExceptionalInterchangeRank.support_drop
+#print axioms PCRLean.Experimental.ExceptionalInterchangeRank.exponent_drop
+#print axioms PCRLean.Experimental.ExceptionalInterchangeRank.tail_drop
+#print axioms PCRLean.Experimental.ExceptionalInterchangeRank.passive_drop
+#print axioms PCRLean.Experimental.ExceptionalInterchangeRank.contact_drop
+#print axioms PCRLean.Experimental.ExceptionalInterchangeRank.debt_drop
+#print axioms PCRLean.Experimental.ExceptionalInterchangeRank.rank_wellFounded
+#print axioms PCRLean.Experimental.X038PurificationGradingInterchangeIndex.loaded
