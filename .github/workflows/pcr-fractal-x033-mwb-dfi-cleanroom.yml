@@ -1,0 +1,118 @@
+name: PCR Fractal X033 wonderful-defect clean room
+
+on:
+  pull_request:
+    branches:
+      - pcr-fractal-x033-mwb-dfi-base-20260804
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  x033-wonderful-defect-cleanroom:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout exact PR merge
+        uses: actions/checkout@v4
+
+      - name: Reject placeholders and project axioms
+        shell: bash
+        run: |
+          set -euo pipefail
+          files=(
+            PCRLean/Experimental/IntrinsicOrderIdealLinearEquiv.lean
+            PCRLean/Experimental/ProjectiveOrderIdealContent.lean
+            PCRLean/Experimental/SymmetricConfigurationDifference.lean
+            PCRLean/Experimental/MarkedClosureArrangement.lean
+            PCRLean/Experimental/CanonicalIntersectionCompletion.lean
+            PCRLean/Experimental/CriticalPairTorExcess.lean
+            PCRLean/Experimental/TorCleanIntersectionBoundary.lean
+            PCRLean/Experimental/SchurFittingComplexity.lean
+            PCRLean/Experimental/CanonicalLayerScheduler.lean
+            PCRLean/Experimental/WonderfulProductIdeal.lean
+            PCRLean/Experimental/WonderfulLayerSerialization.lean
+            PCRLean/Experimental/X033WonderfulDefectIndex.lean
+          )
+          if grep -RInE '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)|^[[:space:]]*axiom[[:space:]]' "${files[@]}"; then
+            echo 'Forbidden placeholder or project axiom detected.'
+            exit 1
+          fi
+
+      - name: Install pinned Lean toolchain through elan
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+            | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Record exact environment
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          mkdir -p x033-wonderful-defect-evidence
+          git rev-parse HEAD | tee x033-wonderful-defect-evidence/COMMIT.txt
+          cat lean-toolchain | tee x033-wonderful-defect-evidence/LEAN_TOOLCHAIN.txt
+          sha256sum lakefile.toml lake-manifest.json lean-toolchain \
+            | tee x033-wonderful-defect-evidence/ENVIRONMENT_SHA256SUMS.txt
+          lean --version | tee x033-wonderful-defect-evidence/LEAN_VERSION.txt
+          lake --version | tee x033-wonderful-defect-evidence/LAKE_VERSION.txt
+
+      - name: Build official default target
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          lake build 2>&1 | tee x033-wonderful-defect-evidence/LAKE_BUILD.log
+
+      - name: Elaborate corrected integrated X033 source
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          lake env lean PCRLean/Experimental/X033WonderfulDefectIndex.lean \
+            2>&1 | tee x033-wonderful-defect-evidence/X033_ELABORATION.log
+
+      - name: Run unified axiom audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          lake env lean PCRLean/Experimental/X033WonderfulDefectIndexAudit.lean \
+            2>&1 | tee x033-wonderful-defect-evidence/X033_AXIOM_AUDIT.log
+          if grep -q 'sorryAx' x033-wonderful-defect-evidence/X033_AXIOM_AUDIT.log; then
+            echo 'sorryAx detected in axiom output.'
+            exit 1
+          fi
+
+      - name: Snapshot exact sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp PCRLean/Experimental/IntrinsicOrderIdealLinearEquiv.lean x033-wonderful-defect-evidence/
+          cp PCRLean/Experimental/ProjectiveOrderIdealContent.lean x033-wonderful-defect-evidence/
+          cp PCRLean/Experimental/SymmetricConfigurationDifference.lean x033-wonderful-defect-evidence/
+          cp PCRLean/Experimental/MarkedClosureArrangement.lean x033-wonderful-defect-evidence/
+          cp PCRLean/Experimental/CanonicalIntersectionCompletion.lean x033-wonderful-defect-evidence/
+          cp PCRLean/Experimental/CriticalPairTorExcess.lean x033-wonderful-defect-evidence/
+          cp PCRLean/Experimental/TorCleanIntersectionBoundary.lean x033-wonderful-defect-evidence/
+          cp PCRLean/Experimental/SchurFittingComplexity.lean x033-wonderful-defect-evidence/
+          cp PCRLean/Experimental/CanonicalLayerScheduler.lean x033-wonderful-defect-evidence/
+          cp PCRLean/Experimental/WonderfulProductIdeal.lean x033-wonderful-defect-evidence/
+          cp PCRLean/Experimental/WonderfulLayerSerialization.lean x033-wonderful-defect-evidence/
+          cp PCRLean/Experimental/X033WonderfulDefectIndex.lean x033-wonderful-defect-evidence/
+          cp PCRLean/Experimental/X033WonderfulDefectIndexAudit.lean x033-wonderful-defect-evidence/
+          cp PCRLean/ResearchRecords/MLEL_X033_MWB_DFI_REPORT.md x033-wonderful-defect-evidence/
+          sha256sum x033-wonderful-defect-evidence/* \
+            | tee x033-wonderful-defect-evidence/X033_SOURCE_SHA256SUMS.txt
+
+      - name: Upload exact evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: PCR-FRACTAL-X033-MWB-DFI-EVIDENCE
+          path: x033-wonderful-defect-evidence
+          if-no-files-found: error
+          retention-days: 90
