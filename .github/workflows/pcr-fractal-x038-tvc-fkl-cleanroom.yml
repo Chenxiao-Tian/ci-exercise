@@ -99,7 +99,7 @@ jobs:
             exit 1
           fi
 
-      - name: Snapshot exact sources
+      - name: Snapshot exact sources and protocol artifacts
         shell: bash
         run: |
           set -euo pipefail
@@ -110,7 +110,11 @@ jobs:
           cp PCRLean/Experimental/X038TorValabregaCommonCoreIndexAudit.lean x038-evidence/
           cp PCRLean/ResearchRecords/MLEL_X038_TVC_FKL_REPORT.md x038-evidence/
           cp PCRLean/ResearchRecords/MLEL_X038_ANNALS_SERIES_MLE.md x038-evidence/
-          sha256sum x038-evidence/* | tee x038-evidence/X038_SOURCE_SHA256SUMS.txt
+          cp -R PCRLean/ResearchRecords/X038Artifacts x038-evidence/
+          find x038-evidence -type f -print0 \
+            | sort -z \
+            | xargs -0 sha256sum \
+            | tee x038-evidence/X038_SOURCE_SHA256SUMS.txt
 
       - name: Upload exact evidence
         uses: actions/upload-artifact@v4
