@@ -32,8 +32,9 @@ variable [∀ n, AddCommGroup (Piece n)] [∀ n, Module A (Piece n)]
 variable [∀ n, AddCommGroup (Tail n)] [∀ n, Module A (Tail n)]
 
 /-- A finite Rees--Serre certificate: low pieces are flat, and every piece
-strictly beyond the cutoff is identified with a flat tail model. -/
-structure Certificate (N : ℕ) : Prop where
+strictly beyond the cutoff is identified with a flat tail model.  The
+linear equivalences are data, so the certificate lives in `Type`. -/
+structure Certificate (N : ℕ) where
   lowFlat : ∀ n, n ≤ N → Module.Flat A (Piece n)
   tailEquiv : ∀ n, N < n → Piece n ≃ₗ[A] Tail n
   tailFlat : ∀ n, N < n → Module.Flat A (Tail n)
@@ -55,7 +56,7 @@ by the normal-flatness gate. -/
 theorem Certificate.directSumFlat
     {N : ℕ}
     (c : Certificate (A := A) Piece Tail N) :
-    Module.Flat A (⨁ n, Piece n) := by
+    Module.Flat A (DirectSum ℕ Piece) := by
   classical
   rw [Module.Flat.directSum_iff]
   intro n
@@ -64,17 +65,17 @@ theorem Certificate.directSumFlat
 /-- Conversely, flatness of the complete graded direct sum implies flatness of
 each piece. -/
 theorem pieceFlat_of_directSumFlat
-    [Module.Flat A (⨁ n, Piece n)]
+    [Module.Flat A (DirectSum ℕ Piece)]
     (n : ℕ) :
     Module.Flat A (Piece n) := by
   classical
-  exact (Module.Flat.directSum_iff.mp (inferInstance :
-    Module.Flat A (⨁ n, Piece n))) n
+  exact (Module.Flat.directSum_iff.mp
+    (inferInstance : Module.Flat A (DirectSum ℕ Piece))) n
 
 /-- The exact equivalence between graded normal flatness and pointwise
 flatness of all homogeneous pieces. -/
 theorem directSumFlat_iff_pieceFlat :
-    Module.Flat A (⨁ n, Piece n) ↔ ∀ n, Module.Flat A (Piece n) := by
+    Module.Flat A (DirectSum ℕ Piece) ↔ ∀ n, Module.Flat A (Piece n) := by
   classical
   exact Module.Flat.directSum_iff
 
