@@ -1,23 +1,23 @@
 claim_id,parent_group,statement_short,evidence_level,lean_file,manuscript_location,status
 X038-G1,HER-06/HER-07,Strict transform on an affine blowup chart is quotient by exceptional power torsion,STANDARD-MATH+LEAN-OPEN,,Paper III §4,OPEN
 X038-G2,HER-03,Relative q-power saturation equals quotient q-power torsion and is a closure operation,EXPERIMENTAL-WRITTEN,PCRLean/Experimental/PowerSaturation.lean,Paper III §5,LEAN-SOURCE-WRITTEN
-X038-G3,HER-07,The chart image filtration and transformed carrier ideal satisfy the exact Cartier-twist relation,OPEN-BRIDGE,,Paper III §6,OPEN
-X038-G4,HER-02,Old graded chart pullback maps epimorphically to the image-filtration core with finite Tor kernel,OPEN-BRIDGE,,Paper III §7,OPEN
-X038-G5,HER-03,New normal graded piece maps epimorphically to the common core with relative Valabrega saturation kernel,OPEN-BRIDGE,,Paper III §8,OPEN
-X038-G6,HER-03,The Tor and Valabrega epimorphisms form a canonical common-core cospan and zero kernels yield interchange,ABSTRACT-LEAN-WRITTEN+GEOMETRY-OPEN,PCRLean/Experimental/CommonCoreInterchange.lean,Paper III §9,PARTIAL
+X038-G3,HER-07,The chart controlled ideal J and strict carrier ideal L=Sat_q(J) satisfy the exact Cartier-twist relation,OPEN-BRIDGE,,Paper III §6,OPEN
+X038-G4,HER-02,The old controlled graded piece maps epimorphically to gr_J with finite Tor/base-change kernel,OPEN-BRIDGE,,Paper III §7,OPEN
+X038-G5,HER-03,The map gr_J to gr_L has the stated Valabrega intersection kernel and saturation-generation cokernel,OPEN-BRIDGE,,Paper III §8,OPEN
+X038-G6,HER-03,Vanishing Tor kernel Valabrega kernel and saturation cokernel yields exact transform interchange,ABSTRACT-LEAN-WRITTEN+GEOMETRY-OPEN,PCRLean/Experimental/ControlledCoreInterchange.lean,Paper III §9,PARTIAL
 X038-G7A,FND-13/HER-03,The complete associated-graded owner module is finite over the affine normal-cone algebra,STANDARD-MATH-CLOSED+LEAN-SCHEME-OPEN,,Paper III §10,STANDARD-PROOF-CLOSED
 X038-G7B,HER-03,The two-ideal mixed-Rees module is finite over a finite-type Noetherian algebra,STANDARD-MATH-CLOSED+LEAN-GRADED-OPEN,,Paper III §11,STANDARD-PROOF-CLOSED
 X038-G7C,HER-03,Homogeneous power torsion and relative saturation stabilize at one uniform exponent,STANDARD-MATH-CLOSED+LEAN-OPEN,,Paper III §11,STANDARD-PROOF-CLOSED
-X038-G8A,HER-03,A U-admissible blowup flatifies the complete affine normal-cone and TVC packet,STANDARD-FLATIFICATION-INPUT+OPEN-INTERFACE,,Paper III §12,OPEN-INTERFACE
+X038-G8A,HER-03,A U-admissible blowup flatifies the complete affine normal-cone and TVF packet,STANDARD-FLATIFICATION-INPUT+OPEN-INTERFACE,,Paper III §12,OPEN-INTERFACE
 X038-G8B,HER-03,Degree-zero pullback and exceptional-torsion quotient preserve the complete grading,ELEMENTARY-MATH-CLOSED+LEAN-SCHEME-OPEN,,Paper III §12,STANDARD-PROOF-CLOSED
-X038-G9,HER-09,The TVC packet glues on overlaps and commutes with smooth base change,OPEN-LOAD-BEARING,,Paper III §13,OPEN
-X038-G10,HER-03,The TVC packet vanishes on the generic legal locus of every carrier component,OPEN-BRIDGE,,Paper III §14,OPEN
+X038-G9,HER-09,The three TVF defect modules glue on overlaps and commute with smooth base change,OPEN-LOAD-BEARING,,Paper III §13,OPEN
+X038-G10,HER-03,All three TVF defects vanish on the generic legal locus of every carrier component,OPEN-BRIDGE,,Paper III §14,OPEN
 X038-G12,HER-03,A flat sheaf vanishing over a componentwise dense open is zero on a reduced base,STANDARD-MATH+LEAN-OPEN,,Paper III §14,OPEN-LEAN
 X038-G13,CTR-12/HER-03,A lower-dimensional regular centre word factors through the centre-enriched final flatifier,OPEN-LOAD-BEARING,,Paper III §15,OPEN
 X038-G14,HER-05,Every preparatory trace subcentre is recursively jointly legalized before ambient blowup,OPEN-LOAD-BEARING,,Paper III §16,OPEN
-X038-G15,HER-03/HER-15,The regular trace word realizes affine flat-kill and exact ambient/common-core transport on all charts,OPEN-LOAD-BEARING,,Paper III §17,OPEN
-X038-G16,CTR-03/HER-03,Anchor-contact principalization is an instance of the same TVC compiler,OPEN-BRIDGE,,Paper II §10 / Paper III §18,OPEN
-X038-G17,HER-04,Log-conormal legalization is an instance of the same TVC compiler,OPEN-BRIDGE,,Paper III §19,OPEN
+X038-G15,HER-03/HER-15,The regular trace word realizes affine flat-kill and exact ambient controlled-core transport on all charts,OPEN-LOAD-BEARING,,Paper III §17,OPEN
+X038-G16,CTR-03/HER-03,Anchor-contact principalization is an instance of the same TVF compiler,OPEN-BRIDGE,,Paper II §10 / Paper III §18,OPEN
+X038-G17,HER-04,Log-conormal legalization is an instance of the same TVF compiler,OPEN-BRIDGE,,Paper III §19,OPEN
 X038-G18,HER-14/HER-15,Certified Cartier factors may be compressed with all source identities reentering without reset,OPEN-LOAD-BEARING,,Paper III §20,OPEN
 X038-G19,TRM-11,Nested legalization strictly lowers carrier dimension and outer cleanup lowers defect/contact/debt,ARITHMETIC-LEAN-WRITTEN+GEOMETRY-OPEN,PCRLean/Experimental/FlatKillLegalizationRank.lean,Paper IV §3,PARTIAL
 X038-G20,CTR-13/HER-05,Every nonterminal state admits a finite actual jointly legal centre word,OPEN-LOAD-BEARING,,Paper II terminal / Paper III terminal,OPEN
