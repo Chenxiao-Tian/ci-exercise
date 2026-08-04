@@ -1,0 +1,33 @@
+{
+  "node": "MLEL-X032 / SFP-IOM",
+  "protocol": "PCR-FRACTAL-PROOF-LEAN 1.0",
+  "parent": "MLEL-D001 / FCPP-ATLAS / G11-FND-11",
+  "predecessor": "MLEL-X031 / ACI-MMR-OIH",
+  "claims": [
+    "X032-C01 intrinsic vanishing iff order-ideal containment",
+    "X032-C02 intrinsic least absorbing ideal",
+    "X032-C03 unit-obstruction no-go",
+    "X032-C04 split finite-free presentation constructs dual frame",
+    "X032-C05 dual frame constructs split presentation",
+    "X032-C06 presentation-independent finite coefficient ideal",
+    "X032-C07 compatible split-presentation base change",
+    "X032-C08 split-cokernel intrinsic status compiler",
+    "X032-NG01 zero detection requires dual separation"
+  ],
+  "edges": [
+    "EDGE-X032-01 intrinsic minimality",
+    "EDGE-X032-02 certificate equivalence",
+    "EDGE-X032-03 choice independence",
+    "EDGE-X032-04 base-change naturality",
+    "EDGE-X032-05 cokernel compiler soundness and coverage"
+  ],
+  "open_cut": [
+    "finite-projective cokernel to finite compatible split atlas",
+    "overlap effectivity and index-change independence",
+    "proper regular jointly legal marked closure",
+    "hereditary all-chart reconstruction without reset"
+  ],
+  "certified_graph_changed": false,
+  "general_resolution_proved": false,
+  "formal_global_status": "OPEN_GAP"
+}
