@@ -22,7 +22,7 @@ noncomputable section
 /-- A finite prefix, one cutoff value, and an eventual successor law. -/
 structure Packet (Good : ℕ → Prop) where
   cutoff : ℕ
-  prefix : ∀ n, n < cutoff → Good n
+  prefixCert : ∀ n, n < cutoff → Good n
   seed : Good cutoff
   tailStep : ∀ n, cutoff ≤ n → Good n → Good (n + 1)
 
@@ -35,7 +35,7 @@ Artin--Rees cutoff. -/
 theorem all_degrees (P : Packet Good) : ∀ n, Good n := by
   intro n
   by_cases hprefix : n < P.cutoff
-  · exact P.prefix n hprefix
+  · exact P.prefixCert n hprefix
   · have hcut : P.cutoff ≤ n := Nat.le_of_not_gt hprefix
     induction n, hcut using Nat.le_induction with
     | base => exact P.seed
