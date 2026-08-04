@@ -1,0 +1,17 @@
+import PCRLean.Experimental.X035SupportThicknessIndex
+
+#print axioms PCRLean.Experimental.FiniteBadStratumCoverage.badStrata_eq_empty_iff
+#print axioms PCRLean.Experimental.FiniteBadStratumCoverage.badStrata_nonempty_iff
+#print axioms PCRLean.Experimental.FiniteBadStratumCoverage.classify
+#print axioms PCRLean.Experimental.SupportThicknessAlternative.layers_disjoint
+#print axioms PCRLean.Experimental.SupportThicknessAlternative.union_layers
+#print axioms PCRLean.Experimental.SupportThicknessAlternative.classify
+#print axioms PCRLean.Experimental.StratumInductionActiveLift.markedPermissible_mono
+#print axioms PCRLean.Experimental.StratumInductionActiveLift.relativeWord_active
+#print axioms PCRLean.Experimental.SupportThicknessRank.support_drop
+#print axioms PCRLean.Experimental.SupportThicknessRank.thickness_drop
+#print axioms PCRLean.Experimental.SupportThicknessRank.rank_wellFounded
+#print axioms PCRLean.Experimental.NilpotentThickness.killedAt_mono
+#print axioms PCRLean.Experimental.NilpotentThickness.eq_of_killedAt_one
+#print axioms PCRLean.Experimental.NilpotentThickness.StrictDrop.trans
+#print axioms PCRLean.Experimental.X035SupportThicknessIndex.loaded
