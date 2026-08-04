@@ -37,9 +37,8 @@ theorem all_degrees (P : Packet Good) : ∀ n, Good n := by
   by_cases hprefix : n < P.cutoff
   · exact P.prefixCert n hprefix
   · have hcut : P.cutoff ≤ n := Nat.le_of_not_gt hprefix
-    induction n, hcut using Nat.le_induction with
-    | base => exact P.seed
-    | succ n hcn ih => exact P.tailStep n hcn ih
+    exact Nat.le_induction P.seed
+      (fun m hm ih => P.tailStep m hm ih) hcut
 
 /-- Pointwise projection of the full degree certificate. -/
 theorem degree (P : Packet Good) (n : ℕ) : Good n :=
