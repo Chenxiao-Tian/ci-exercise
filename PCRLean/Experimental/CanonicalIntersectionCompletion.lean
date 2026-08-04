@@ -52,7 +52,7 @@ theorem minimizer_mem_upperCompletion
     (hminimal : minimal ∈ minimizers) :
     minimal ∈ upperCompletion minimizers := by
   exact mem_upperCompletion_iff.mpr
-    ⟨minimal, hminimal, Finset.Subset.rfl⟩
+    ⟨minimal, hminimal, fun _ hx => hx⟩
 
 /-- The upper completion is closed under finite binary unions. -/
 theorem union_mem_upperCompletion
@@ -98,16 +98,13 @@ theorem closure_mono_of_subset
     closure J component A ≤ closure J component B :=
   closure_mono J component hAB
 
-/-- If the full correction family is itself among the minimizers, the upper
-completion contains only that full family.  This records the unique terminal
-boundary of the completion construction. -/
-theorem upperCompletion_eq_single_univ
-    (minimizers : Finset (Finset Component))
-    (hmins : minimizers = {Finset.univ}) :
-    upperCompletion minimizers = {Finset.univ} := by
-  subst hmins
+/-- If the full correction family is the only minimizer, the upper completion
+contains only that full family. -/
+theorem upperCompletion_eq_single_univ :
+    upperCompletion ({Finset.univ} : Finset (Finset Component)) =
+      {Finset.univ} := by
   ext selected
-  simp [upperCompletion, Finset.Subset.antisymm_iff]
+  simp [upperCompletion]
 
 end
 
