@@ -48,7 +48,8 @@ def pairwiseDifference : (α → N) →ₗ[R] (α × α → N) where
   map_add' := by
     intro h k
     ext ij
-    simp [sub_eq_add_neg, add_assoc, add_left_comm, add_comm]
+    simp only [Pi.add_apply]
+    abel
   map_smul' := by
     intro r h
     ext ij
@@ -65,8 +66,10 @@ theorem mem_ker_pairwiseDifference_iff
       ∀ i j, h i = h j := by
   constructor
   · intro hh i j
-    have hz := congrFun (LinearMap.mem_ker.mp hh) (i, j)
-    simpa [pairwiseDifference] using sub_eq_zero.mp hz
+    have hz : h i - h j = 0 := by
+      have hfun := congrFun (LinearMap.mem_ker.mp hh) (i, j)
+      simpa [pairwiseDifference] using hfun
+    exact sub_eq_zero.mp hz
   · intro hh
     apply LinearMap.mem_ker.mpr
     ext ij
@@ -89,7 +92,7 @@ theorem ker_pairwiseDifference_eq_range_diagonal
   apply le_antisymm
   · intro h hh
     classical
-    let a0 : α := Classical.choice inferInstance
+    let a0 : α := Classical.choice (inferInstance : Nonempty α)
     refine ⟨h a0, ?_⟩
     ext i
     have heq :=
@@ -110,7 +113,8 @@ theorem pairwiseDifference_eq_zero_iff_constant
     rw [ker_pairwiseDifference_eq_range_diagonal
       (R := R) (N := N) (α := α)] at hker
     rcases hker with ⟨x, hx⟩
-    exact ⟨x, hx.symm⟩
+    refine ⟨x, ?_⟩
+    simpa [diagonal] using hx.symm
   · rintro ⟨x, rfl⟩
     ext ij
     simp [pairwiseDifference]
