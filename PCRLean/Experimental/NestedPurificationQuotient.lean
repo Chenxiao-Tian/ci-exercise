@@ -40,7 +40,7 @@ def quotientMap (hHU : H ≤ U) : M ⧸ H →ₗ[R] M ⧸ U :=
   Submodule.factor hHU
 
 /-- The image of the larger layer inside the quotient by the inherited layer. -/
-def defect (hHU : H ≤ U) : Submodule R (M ⧸ H) :=
+def defect : Submodule R (M ⧸ H) :=
   U.map H.mkQ
 
 /-- The nested quotient map is surjective. -/
@@ -50,17 +50,17 @@ theorem quotientMap_surjective (hHU : H ≤ U) :
 
 /-- Its kernel is exactly the purification--grading defect. -/
 theorem quotientMap_ker (hHU : H ≤ U) :
-    LinearMap.ker (quotientMap hHU) = defect hHU := by
+    LinearMap.ker (quotientMap hHU) = defect (H := H) (U := U) := by
   simp [quotientMap, defect, Submodule.factor, Submodule.ker_mapQ]
 
 /-- The defect vanishes exactly when the inherited and purified layers agree. -/
 theorem defect_eq_bot_iff (hHU : H ≤ U) :
-    defect hHU = ⊥ ↔ H = U := by
+    defect (H := H) (U := U) = ⊥ ↔ H = U := by
   constructor
   · intro hDef
     apply le_antisymm hHU
     intro x hxU
-    have hxDef : H.mkQ x ∈ defect hHU := by
+    have hxDef : H.mkQ x ∈ defect (H := H) (U := U) := by
       exact ⟨x, hxU, rfl⟩
     rw [hDef] at hxDef
     have hzero : H.mkQ x = 0 := by
@@ -72,15 +72,17 @@ theorem defect_eq_bot_iff (hHU : H ≤ U) :
 /-- Vanishing of the defect upgrades the canonical epimorphism to an exact
 linear equivalence. -/
 noncomputable def interchangeEquiv
-    (hHU : H ≤ U) (hDef : defect hHU = ⊥) :
-    M ⧸ H ≃ₗ[R] M ⧸ U :=
-  LinearEquiv.ofBijective (quotientMap hHU)
-    ⟨LinearMap.ker_eq_bot.mp (by simpa [quotientMap_ker hHU] using hDef),
-      quotientMap_surjective hHU⟩
+    (hHU : H ≤ U) (hDef : defect (H := H) (U := U) = ⊥) :
+    (M ⧸ H) ≃ₗ[R] (M ⧸ U) := by
+  have hker : LinearMap.ker (quotientMap hHU) = ⊥ := by
+    rw [quotientMap_ker hHU, hDef]
+  exact LinearEquiv.ofBijective (quotientMap hHU)
+    ⟨LinearMap.ker_eq_bot.mp hker, quotientMap_surjective hHU⟩
 
 /-- The equivalence is the canonical nested quotient map. -/
 theorem interchangeEquiv_apply
-    (hHU : H ≤ U) (hDef : defect hHU = ⊥) (x : M ⧸ H) :
+    (hHU : H ≤ U) (hDef : defect (H := H) (U := U) = ⊥)
+    (x : M ⧸ H) :
     interchangeEquiv hHU hDef x = quotientMap hHU x := by
   rfl
 
