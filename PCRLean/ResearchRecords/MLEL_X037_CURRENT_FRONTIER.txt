@@ -1,0 +1,10 @@
+X037 current frontier after the flat Cartier-trace supplement:
+
+G6B regular-word factorization through the final flatifier
+G6C total-exceptional source label and SNC pullback
+G10 all-chart pure-transform interchange morphism
+G11 finite/base-change-compatible Rees interchange defect
+G12 RID vanishing or strict support/Fitting descent
+G18 Cartier-trace macro no-reset
+
+Next research node: MLEL-X038 / PGI-ERD.
