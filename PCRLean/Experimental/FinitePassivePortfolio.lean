@@ -31,8 +31,9 @@ variable [∀ o n, Module A (Tail o n)]
 
 open FiniteGradedFlatnessCompiler
 
-/-- A cutoff and finite-tail certificate for every passive owner. -/
-structure Certificate : Prop where
+/-- A cutoff and finite-tail certificate for every passive owner.  The cutoff
+and linear equivalences are data, so this certificate lives in `Type`. -/
+structure Certificate where
   cutoff : Owner → ℕ
   ownerCertificate : ∀ o,
     FiniteGradedFlatnessCompiler.Certificate
@@ -42,13 +43,14 @@ structure Certificate : Prop where
 theorem Certificate.ownerFlat
     (c : Certificate (A := A) Piece Tail)
     (o : Owner) :
-    Module.Flat A (⨁ n, Piece o n) :=
+    Module.Flat A (DirectSum ℕ (Piece o)) :=
   (c.ownerCertificate o).directSumFlat
 
 /-- The complete finite passive portfolio is flat. -/
 theorem Certificate.portfolioFlat
     (c : Certificate (A := A) Piece Tail) :
-    Module.Flat A (⨁ o, (⨁ n, Piece o n)) := by
+    Module.Flat A
+      (DirectSum Owner (fun o => DirectSum ℕ (Piece o))) := by
   classical
   rw [Module.Flat.directSum_iff]
   intro o
