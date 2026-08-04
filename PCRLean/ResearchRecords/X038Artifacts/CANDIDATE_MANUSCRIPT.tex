@@ -1,0 +1,128 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\title{Tor--Valabrega Common Cores and Flat-Kill Legalization}
+\author{Maximum-Likelihood Candidate Chapter}
+\date{4 August 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We isolate a finite obstruction to the interchange of ambient strict transform
+and normal associated grading along a regular carrier.  On every affine chart
+of a centre-enriched trace blowup, the old chart-pulled graded piece and the new
+normal graded piece, after its Cartier twist, map epimorphically to a canonical
+image-filtration core.  The two kernels are respectively a Tor/base-change
+defect and a power-saturation defect of Valabrega type.  Their simultaneous
+vanishing gives the interchange isomorphism without a preferred comparison
+map.  We formulate a lower-dimensional flat-kill compiler that enrolls these
+kernels with the projective-normal passive portfolio.  The scheme-level
+compiler and the positive-characteristic resolution theorem remain open.
+\end{abstract}
+
+\section{The affine common core}
+Let $A$ be Noetherian, let $I\subset K\subset A$ be ideals, let $M$ be a
+finite $A$-module, and choose $q\in K$.  Put
+\[
+ B=A[K/q],\qquad N=M\otimes_A B,
+ \qquad Q_q(P)=P/H^0_{(q)}(P).
+\]
+For $a\geq0$ define
+\[
+ F_a=\operatorname{im}(I^aM\otimes_A B\longrightarrow N),\quad
+ \overline G_a=F_a/F_{a+1},\quad
+ G_a=(I^aM/I^{a+1}M)\otimes_A B,
+\]
+and set $C_a=Q_q(\overline G_a)$.
+
+\begin{definition}[Relative power saturation]
+For $P\subset N$, put
+\[
+ \operatorname{Sat}_q(P;N)=
+ \{x\in N:\ q^n x\in P\text{ for some }n\geq0\}.
+\]
+Then
+\[
+ Q_q(N/P)\cong N/\operatorname{Sat}_q(P;N).
+\]
+\end{definition}
+
+There is a canonical epimorphism
+\[
+ R_a:Q_q(G_a)\twoheadrightarrow C_a.
+\]
+Its kernel is the Tor/base-change defect.  Let $L$ denote the transformed
+carrier ideal on the $q$-chart, so that $IB=qL$ after removal of chart power
+torsion.  Multiplication by $q^a$ induces a second epimorphism
+\[
+ L_a:
+ \bigl(L^aQ_q(N)/L^{a+1}Q_q(N)\bigr)\otimes\mathcal O(-aE)
+ \twoheadrightarrow C_a.
+\]
+Its kernel is the Valabrega saturation defect.
+
+\begin{proposition}[Common-core compiler]
+If $\ker L_a=0=\ker R_a$, then there is a unique isomorphism between the two
+sources which makes the triangle through $C_a$ commute.
+\end{proposition}
+
+\begin{proof}
+Both epimorphisms are then isomorphisms.  Compose $L_a$ with the inverse of
+$R_a$.
+\end{proof}
+
+\section{Finite mixed-Rees packet}
+The expected global construction begins with the finite bigraded module
+\[
+ \mathcal R_{I,K}(M)=
+ \bigoplus_{a,b\geq0}I^aK^bM\,u^av^b
+\]
+over the two-ideal Rees algebra.  Its finite kernels, exceptional-power torsion,
+and relative Serre tail are predicted to sheafify to a coherent
+Tor--Valabrega packet on the projectivized normal carrier.  Establishing the
+exact chart identifications, overlap cocycles, and smooth-base-change law is a
+load-bearing open theorem.
+
+\section{Flat-kill legalization}
+Let $C$ be a regular carrier and let $\mathcal T$ be the direct sum of the
+projective-normal legality packet and the Tor--Valabrega packet.  On the open
+locus where the proposed centre is already legal, $\mathcal T$ is zero.  An
+admissible flatifying blowup makes its strict transform finitely presented and
+flat.  If the good open meets every irreducible component, the flat transform
+of the generically zero defect is zero.
+
+The flatifier centre need not be regular.  Its source ideal is therefore
+principalized on $C$, and every regular trace subcentre is recursively
+legalized before ambient blowup.  Since each such subcentre has strictly
+smaller carrier dimension, this is a well-founded nested recursion.
+
+\begin{theorem}[Maximum-likelihood decisive theorem]
+Assume the strong relative principalization and legalization program for
+regular carriers of dimension strictly less than $d$.  Let $C$ be a regular
+$d$-dimensional carrier in a smooth ambient scheme, equipped with a finite
+source-labelled active, passive, logarithmic, and contact portfolio.  Then the
+projective-normal and Tor--Valabrega packets admit a finite centre-enriched
+flat-kill word in ordinary ambient blowups with regular, recursively legalized
+trace centres.  After the word, the transformed carrier is jointly legal and
+the Tor--Valabrega common-core maps are isomorphisms on every chart and
+overlap.  All source, owner, boundary, and debt identities reenter without
+reset.
+\end{theorem}
+
+\begin{remark}
+The preceding theorem is a target statement.  It has not been proved.  In
+particular, mixed-Rees finite presentation in the required scheme interface,
+regular ambient realization of the flatifier, and hereditary no-reset remain
+open.
+\end{remark}
+
+\section{Publication architecture}
+The current maximum-likelihood series consists of six papers totaling 560
+dense Annals/AMS-equivalent pages.  The present chapter belongs to Paper III,
+\emph{Tor--Valabrega Common Cores, Projective-Normal Flatification, and
+Hereditary Reentry}.
+
+\end{document}
