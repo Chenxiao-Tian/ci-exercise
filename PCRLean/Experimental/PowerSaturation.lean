@@ -42,7 +42,9 @@ def powerSaturation (q : R) (N : Submodule R M) : Submodule R M where
   smul_mem' := by
     rintro r x ⟨n, hx⟩
     refine ⟨n, ?_⟩
-    simpa [smul_comm] using N.smul_mem r hx
+    calc
+      q ^ n • (r • x) = r • (q ^ n • x) := smul_comm _ _ _
+      _ ∈ N := N.smul_mem r hx
 
 @[simp] theorem mem_powerSaturation_iff
     (q : R) (N : Submodule R M) (x : M) :
