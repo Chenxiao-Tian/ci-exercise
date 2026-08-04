@@ -11,9 +11,9 @@ is `q`-power torsion exactly when its representative lies in the relative
 `q`-power saturation of `N` in `M`.
 
 This elementary fact is the algebraic leaf behind the X038
-Tor--Valabrega common-core proposal.  It identifies the saturation defect with
-the exceptional-power torsion of a quotient.  It does not construct a blowup,
-a Rees module, a coherent defect sheaf, or a resolution algorithm.
+Tor--Valabrega transform-factorization proposal.  It identifies saturation
+defects with exceptional-power torsion of quotients.  It does not construct a
+blowup, a Rees module, a coherent defect sheaf, or a resolution algorithm.
 -/
 
 namespace PCRLean
@@ -101,7 +101,7 @@ theorem quotient_mk_mem_powerTorsion_iff
     simpa using hmk
 
 /-- Saturation is trivial exactly when every power-torsion quotient class is
-already zero.  This is the abstract Valabrega-style exactness gate. -/
+already zero. -/
 theorem powerSaturation_eq_iff_quotient_powerTorsion_zero
     (q : R) (N : Submodule R M) :
     powerSaturation q N = N ↔
@@ -121,8 +121,7 @@ theorem powerSaturation_eq_iff_quotient_powerTorsion_zero
     · exact le_powerSaturation q N
 
 /-- If multiplication by `q` is regular on the quotient, no higher power of
-`q` can create new saturation.  This is the algebraic flat-kill endpoint for
-one exceptional parameter. -/
+`q` can create new saturation. -/
 theorem powerSaturation_eq_of_isSMulRegular_quotient
     (q : R) (N : Submodule R M)
     (hreg : IsSMulRegular (M ⧸ N) q) :
@@ -147,7 +146,7 @@ theorem powerSaturation_eq_of_isSMulRegular_quotient
 theorem powerTorsion_eq_bot_of_isSMulRegular
     (q : R) (hreg : IsSMulRegular M q) :
     powerTorsion (M := M) q = ⊥ := by
-  apply Submodule.eq_bot_iff.mpr
+  rw [eq_bot_iff]
   intro x hx
   rcases (mem_powerTorsion_iff q x).mp hx with ⟨n, hn⟩
   induction n with
