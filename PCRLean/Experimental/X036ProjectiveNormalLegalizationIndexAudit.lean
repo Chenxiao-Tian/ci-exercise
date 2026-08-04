@@ -1,0 +1,18 @@
+import PCRLean.Experimental.X036ProjectiveNormalLegalizationIndex
+
+#print axioms PCRLean.Experimental.FiniteGradedFlatnessCompiler.Certificate.pieceFlat
+#print axioms PCRLean.Experimental.FiniteGradedFlatnessCompiler.Certificate.directSumFlat
+#print axioms PCRLean.Experimental.FiniteGradedFlatnessCompiler.pieceFlat_of_directSumFlat
+#print axioms PCRLean.Experimental.FiniteGradedFlatnessCompiler.directSumFlat_iff_pieceFlat
+#print axioms PCRLean.Experimental.FinitePassivePortfolio.Certificate.ownerFlat
+#print axioms PCRLean.Experimental.FinitePassivePortfolio.Certificate.portfolioFlat
+#print axioms PCRLean.Experimental.AnchorContactCleaning.factor_one_exceptional
+#print axioms PCRLean.Experimental.AnchorContactCleaning.CleaningStep.contactDrop
+#print axioms PCRLean.Experimental.AnchorContactCleaning.CleaningStep.rankDrop
+#print axioms PCRLean.Experimental.AnchorContactCleaning.rank_drop_of_debt
+#print axioms PCRLean.Experimental.AnchorContactCleaning.rank_wellFounded
+#print axioms PCRLean.Experimental.LegalizationPhaseRank.contact_drop
+#print axioms PCRLean.Experimental.LegalizationPhaseRank.passive_drop
+#print axioms PCRLean.Experimental.LegalizationPhaseRank.debt_drop
+#print axioms PCRLean.Experimental.LegalizationPhaseRank.rank_wellFounded
+#print axioms PCRLean.Experimental.X036ProjectiveNormalLegalizationIndex.loaded
