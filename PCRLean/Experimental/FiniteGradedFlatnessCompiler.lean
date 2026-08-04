@@ -69,8 +69,10 @@ theorem pieceFlat_of_directSumFlat
     (n : ℕ) :
     Module.Flat A (Piece n) := by
   classical
-  exact (Module.Flat.directSum_iff.mp
-    (inferInstance : Module.Flat A (DirectSum ℕ Piece))) n
+  have hpieces : ∀ i, Module.Flat A (Piece i) :=
+    (Module.Flat.directSum_iff (R := A) (M := Piece)).mp
+      (inferInstance : Module.Flat A (DirectSum ℕ Piece))
+  exact hpieces n
 
 /-- The exact equivalence between graded normal flatness and pointwise
 flatness of all homogeneous pieces. -/
