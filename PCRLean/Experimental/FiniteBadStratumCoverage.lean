@@ -54,7 +54,12 @@ theorem badStrata_nonempty_iff
     (strata : Finset α) (Good : α → Prop) [DecidablePred Good] :
     (badStrata strata Good).Nonempty ↔
       ∃ a ∈ strata, ¬ Good a := by
-  simp [badStrata]
+  constructor
+  · rintro ⟨a, ha⟩
+    have h := (mem_badStrata_iff strata Good a).mp ha
+    exact ⟨a, h.1, h.2⟩
+  · rintro ⟨a, ha, hbad⟩
+    exact ⟨a, (mem_badStrata_iff strata Good a).mpr ⟨ha, hbad⟩⟩
 
 /-- Exact finite coverage of the clean and defect chambers. -/
 inductive Coverage
@@ -72,8 +77,10 @@ noncomputable def classify
   · apply Coverage.defect
     rw [badStrata_nonempty_iff]
     by_contra hnone
-    push_neg at hnone
-    exact h hnone
+    apply h
+    intro a ha
+    by_contra hbad
+    exact hnone ⟨a, ha, hbad⟩
 
 end
 
