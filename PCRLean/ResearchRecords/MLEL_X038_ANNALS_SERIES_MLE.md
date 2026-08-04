@@ -2,7 +2,8 @@
 
 ## Annals of Mathematics Series - Maximum-Likelihood Architecture after MLEL-X038
 
-**Research node:** `MLEL-X038 / TVC-FKL`  
+**Research node:** `MLEL-X038 / TVF-ANC`  
+**Expanded title:** Tor--Valabrega Factorization and Affine Normal-Cone Flatification  
 **Seed architecture:** `MLEL-D001 / FCPP-ATLAS`  
 **Formal status:** `OPEN_GAP`  
 **General positive-characteristic resolution proved:** `false`  
@@ -20,19 +21,27 @@ characteristic has been proved.  The series becomes unconditional only after
 every load-bearing claim, edge theorem, chart, overlap, source-labelled
 transform, defect exit, and well-founded descent certificate is closed.
 
-The principal X038 refinement is the Tor-Valabrega common-core formalism.  The
-failure of ambient strict transform and carrier normal grading to commute is
-not represented by one speculative map.  On every standard trace-blowup chart,
-both transformed objects map epimorphically to a canonical image-filtration
-core.  The right kernel records nonexact base change of the old filtration; the
-left kernel records exceptional power saturation of the new filtration.
+The final X038 refinement has two parts.
 
-A second simplification removes the projective Rees-Serre detour.  The complete
-associated-graded passive portfolio is a single finite module over the affine
-normal-cone algebra.  The complete Tor-Valabrega packet is finite over a
-two-ideal mixed-Rees algebra.  The general affine flatification theorem applies
-directly to these coherent modules.  Projectivization and Hilbert-polynomial
-tails are no longer load-bearing existence devices.
+First, the transformation comparison is a canonical factorization
+
+```text
+old controlled normal piece
+-- Tor/base-change epimorphism -->
+controlled-transform core
+-- Valabrega saturation map -->
+new strict-carrier normal piece.
+```
+
+The first map has a kernel; the second can have both kernel and cokernel.  The
+earlier two-epimorphism cospan is false before saturation compatibility and is
+retained only as a counterexample-driven failed candidate.
+
+Second, the complete associated-graded passive portfolio is a finite module on
+the affine normal cone, and the complete Tor--Valabrega packet is finite over a
+two-ideal mixed-Rees algebra.  General affine flatification applies directly.
+Projectivization, Hilbert polynomials, and a Rees--Serre tail are no longer
+load-bearing existence devices.
 
 ---
 
@@ -72,7 +81,7 @@ legalization.
 
 # Paper III - 134 pages
 
-## Affine Normal-Cone Flatification, Tor-Valabrega Common Cores, and Hereditary Reentry
+## Affine Normal-Cone Flatification, Tor-Valabrega Factorization, and Hereditary Reentry
 
 The third paper treats the full associated-graded passive portfolio as one
 finite coherent module on the affine normal cone.  For a regular carrier
@@ -84,24 +93,35 @@ gr_(I_C)(O_X)
 
 is finite type over `O_C`, and every passive associated-graded module is finite
 over it.  A general admissible flatifying blowup of `C` therefore handles all
-normal degrees and all passive owners simultaneously; no projective tail or
-Serre cutoff is required.
+normal degrees and all passive owners simultaneously.
 
-For every nested carrier/trace-centre pair, the paper constructs the chart
-image filtration and the two canonical epimorphisms to the Tor-Valabrega common
-core.  It identifies the right kernel with the finite
-filtration-base-change/Tor packet and the left kernel with the
-power-saturation/Valabrega packet.  A two-ideal mixed-Rees algebra packages all
-normal and trace degrees in one finite Noetherian module; homogeneous power
-saturation stabilizes uniformly.
+For every nested carrier/trace-centre pair and every standard chart, the paper
+constructs the controlled transform ideal `J`, the strict-carrier ideal
+`L=Sat_q(J)`, and the canonical factorization
 
-The direct sum of the associated-graded, Tor-Valabrega, log-conormal, and
+```text
+Old_a --alpha_a-->> J^a N/J^(a+1)N --beta_a--> L^a N/L^(a+1)N.
+```
+
+It identifies
+
+```text
+ker(alpha_a)  = filtration-base-change/Tor defect,
+ker(beta_a)   = Valabrega intersection defect,
+coker(beta_a) = saturation-generation defect.
+```
+
+A two-ideal mixed-Rees algebra packages all normal and trace degrees in one
+finite Noetherian module; homogeneous power saturation stabilizes uniformly.
+The direct sum of the associated-graded, Tor--Valabrega, log-conormal, and
 source-Cartier packets is flatified on an affine finite-type scheme over the
-carrier.  The possibly singular flatifier is factored through a
-lower-dimensional centre-enriched regular word.  Every preparatory centre is
-recursively legalized, lifted through its ambient trace ideal, and checked on
-all standard charts and overlaps.  Generic vanishing plus flatness kills the
-Tor-Valabrega packet and gives exact ambient/normal transform interchange.
+carrier.
+
+The possibly singular flatifier is factored through a lower-dimensional
+centre-enriched regular word.  Every preparatory centre is recursively
+legalized, lifted through its ambient trace ideal, and checked on all standard
+charts and overlaps.  Generic vanishing plus flatness kills all three
+Tor--Valabrega defects and yields exact ambient/normal transform interchange.
 
 The paper then proves controlled transforms, Cartier-stable source compression,
 Hasse and integral no-reset, owner/debt transport, and hereditary successor
@@ -147,10 +167,10 @@ by ordinary blowups.
 The final paper compiles the preceding interfaces to strong embedded
 resolution, nonembedded resolution, and ambient independence.  It closes the
 kangaroo, cycle, fixed-jet, passive-Tor, Cartier-identity,
-Tor-Valabrega-saturation, normalization-reset, symmetry, and immediate-defect
-counterexample atlas.  It supplies the complete paper-to-Lean declaration map,
-exact clean-room builds, axiom audits, proof-term checks, dependency
-reconstruction, and source hashes.
+Tor--Valabrega-saturation, false-cospan, normalization-reset, symmetry, and
+immediate-defect counterexample atlas.  It supplies the complete paper-to-Lean
+declaration map, exact clean-room builds, axiom audits, proof-term checks,
+dependency reconstruction, and source hashes.
 
 ---
 
@@ -175,7 +195,7 @@ Subjective publication-form planning weights:
 
 ```text
 six papers                                      0.64
-seven papers, splitting common-core theory      0.18
+seven papers, splitting transform factorization 0.18
 five papers after consolidation                 0.11
 other                                           0.07
 ```
@@ -186,29 +206,30 @@ These are scheduling weights, not calibrated probabilities.
 
 # Modal decisive theorem
 
-> **Affine Normal-Cone Tor-Valabrega Flat-Kill Theorem.**  Let a prepared
-> marked state on a smooth `n`-dimensional scheme over a perfect field of
-> characteristic `p>0` produce a finite symmetry-stable family of regular raw
-> carriers.  Assume strong relative principalization and the same legalization
-> theorem in dimensions `<n`.  For every carrier, all passive associated-graded
-> modules, logarithmic defects, source-Cartier modules, and Tor-Valabrega
-> kernels form one finite coherent graded module on an affine finite-type
-> normal/mixed-Rees scheme over the carrier.  A `U`-admissible flatifying blowup
-> of the carrier makes this complete packet finitely presented and flat.
+> **Affine Normal-Cone Tor--Valabrega Factorization and Flat-Kill Theorem.**
+> Let a prepared marked state on a smooth `n`-dimensional scheme over a perfect
+> field of characteristic `p>0` produce a finite symmetry-stable family of
+> regular raw carriers.  Assume strong relative principalization and the same
+> legalization theorem in dimensions `<n`.  For every carrier, all passive
+> associated-graded modules, logarithmic defects, source-Cartier modules, and
+> Tor--Valabrega transform defects form one finite coherent graded module on an
+> affine finite-type normal/mixed-Rees scheme over the carrier.  A
+> `U`-admissible flatifying blowup makes this complete packet finitely presented
+> and flat.
 >
 > The flatifier factors through a finite centre-enriched word of ordinary
 > ambient blowups in regular trace centres, each recursively legalized on a
 > strictly lower-dimensional carrier.  On every standard chart and in every
-> normal degree, the ambient strict transform and the carrier affine-normal
-> pure transform admit canonical epimorphisms to one common image-filtration
-> core.  Their Tor and Valabrega kernels vanish after flat-kill, yielding exact
-> transform interchange.  The resulting carrier is active-permissible,
-> normally flat and Tor-safe for every passive owner, and SNC-compatible with
-> the total boundary.  Certified Cartier factors may then be compressed without
-> changing strict transforms.  All owner, source, debt, boundary, contact,
-> flatifier, and common-core identities reenter without reset.  Every nested
-> legalization call strictly lowers carrier dimension and every outer macro
-> lowers the global well-founded rank.
+> normal degree, the transform comparison factors through the controlled core.
+> The Tor kernel, Valabrega intersection kernel, and saturation-generation
+> cokernel vanish after flat-kill, yielding exact transform interchange.  The
+> resulting carrier is active-permissible, normally flat and Tor-safe for every
+> passive owner, and SNC-compatible with the total boundary.  Certified Cartier
+> factors may then be compressed without changing strict transforms.  All
+> owner, source, debt, boundary, contact, flatifier, and controlled-core
+> identities reenter without reset.  Every nested legalization call strictly
+> lowers carrier dimension and every outer macro lowers the global
+> well-founded rank.
 
 This is the current maximum-likelihood theorem target.  It is not an
 established theorem.
@@ -232,18 +253,18 @@ ideals on lower-dimensional regular carriers.  Every flatifier and contact
 ideal retains its source label through a centre-enriched Cartier-trace word.
 
 For each regular carrier, the complete passive associated-graded portfolio is
-a finite coherent module on the affine normal cone.  For a carrier ideal and
-an ambient trace ideal, a finite two-ideal mixed-Rees module packages the
-normal filtration, trace filtration, and their homogeneous saturation data.
-On every chart, the old chart-pulled graded module and the new normal graded
-module map epimorphically to a common image-filtration core.  Their kernels are
-respectively a Tor/base-change packet and a power-saturation/Valabrega packet.
-Noetherian finite generation packages all degrees at once.
+a finite coherent module on the affine normal cone.  For a carrier ideal and an
+ambient trace ideal, a finite two-ideal mixed-Rees module packages the normal
+filtration, trace filtration, and homogeneous saturation data.  On each chart,
+the old controlled normal module maps epimorphically to the controlled core,
+which then maps to the new strict-carrier normal module.  The three defects are
+a Tor kernel, a Valabrega intersection kernel, and a saturation-generation
+cokernel.
 
 A lower-dimensional simultaneous affine flatification, recursively realized by
-legal ambient trace centres, kills the generically zero kernels and makes the
-associated-graded passive portfolio flat.  This yields exact transform
-transport, passive normal flatness, logarithmic compatibility, and
+legal ambient trace centres, kills the generically zero transform defects and
+makes the associated-graded passive portfolio flat.  This yields exact
+transform transport, passive normal flatness, logarithmic compatibility, and
 Cartier-stable hereditary reentry on all charts and overlaps.
 
 A composite well-founded rank eliminates nested legalization, contact, births,
