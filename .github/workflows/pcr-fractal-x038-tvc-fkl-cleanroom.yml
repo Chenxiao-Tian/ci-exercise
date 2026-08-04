@@ -1,4 +1,4 @@
-name: PCR Fractal X038 Tor-Valabrega common-core clean room
+name: PCR Fractal X038 Tor-Valabrega factorization clean room
 
 on:
   pull_request:
@@ -23,7 +23,7 @@ jobs:
           set -euo pipefail
           files=(
             PCRLean/Experimental/PowerSaturation.lean
-            PCRLean/Experimental/CommonCoreInterchange.lean
+            PCRLean/Experimental/ControlledCoreInterchange.lean
             PCRLean/Experimental/BigradedFlatnessCompiler.lean
             PCRLean/Experimental/FlatKillLegalizationRank.lean
             PCRLean/Experimental/X038TorValabregaCommonCoreIndex.lean
@@ -78,7 +78,7 @@ jobs:
           source "$HOME/.elan/env"
           modules=(
             PCRLean.Experimental.PowerSaturation
-            PCRLean.Experimental.CommonCoreInterchange
+            PCRLean.Experimental.ControlledCoreInterchange
             PCRLean.Experimental.BigradedFlatnessCompiler
             PCRLean.Experimental.FlatKillLegalizationRank
             PCRLean.Experimental.X038TorValabregaCommonCoreIndex
@@ -106,12 +106,13 @@ jobs:
         run: |
           set -euo pipefail
           cp PCRLean/Experimental/PowerSaturation.lean x038-evidence/
-          cp PCRLean/Experimental/CommonCoreInterchange.lean x038-evidence/
+          cp PCRLean/Experimental/ControlledCoreInterchange.lean x038-evidence/
           cp PCRLean/Experimental/BigradedFlatnessCompiler.lean x038-evidence/
           cp PCRLean/Experimental/FlatKillLegalizationRank.lean x038-evidence/
           cp PCRLean/Experimental/X038TorValabregaCommonCoreIndex.lean x038-evidence/
           cp PCRLean/Experimental/X038TorValabregaCommonCoreIndexAudit.lean x038-evidence/
           cp PCRLean/ResearchRecords/MLEL_X038_TVC_FKL_REPORT.md x038-evidence/
+          cp PCRLean/ResearchRecords/MLEL_X038_CONTROLLED_CORE_CORRECTION.md x038-evidence/
           cp PCRLean/ResearchRecords/MLEL_X038_AFFINE_NORMAL_CONE_FLATIFICATION_SUPPLEMENT.md x038-evidence/
           cp PCRLean/ResearchRecords/MLEL_X038_ANNALS_SERIES_MLE.md x038-evidence/
           cp -R PCRLean/ResearchRecords/X038Artifacts x038-evidence/
@@ -123,7 +124,7 @@ jobs:
       - name: Upload exact evidence
         uses: actions/upload-artifact@v4
         with:
-          name: PCR-FRACTAL-X038-TVC-FKL-EVIDENCE
+          name: PCR-FRACTAL-X038-TVF-ANC-EVIDENCE
           path: x038-evidence
           if-no-files-found: error
           retention-days: 90
