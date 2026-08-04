@@ -1,0 +1,79 @@
+name: PCR Fractal X032C finite-projective split clean room
+
+on:
+  pull_request:
+    branches:
+      - pcr-fractal-x032c-finite-projective-split-base-20260803
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  x032c-cleanroom:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Reject placeholders and project axioms
+        shell: bash
+        run: |
+          set -euo pipefail
+          files=(
+            PCRLean/Experimental/FiniteSpanningSetSurjectionAtomic.lean
+            PCRLean/Experimental/ProjectiveSurjectionSplitAtomic.lean
+            PCRLean/Experimental/FiniteProjectiveSplitPresentationAtomic.lean
+            PCRLean/Experimental/FiniteProjectiveSplitPresentationAtomicAudit.lean
+          )
+          if grep -RInE '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)|^[[:space:]]*axiom[[:space:]]' "${files[@]}"; then exit 1; fi
+
+      - name: Install pinned Lean
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Record exact environment
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          mkdir -p x032c-evidence
+          git rev-parse HEAD | tee x032c-evidence/COMMIT.txt
+          cat lean-toolchain | tee x032c-evidence/LEAN_TOOLCHAIN.txt
+          sha256sum lakefile.toml lake-manifest.json lean-toolchain | tee x032c-evidence/ENVIRONMENT_SHA256SUMS.txt
+          lean --version | tee x032c-evidence/LEAN_VERSION.txt
+
+      - name: Build official default target
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          lake build 2>&1 | tee x032c-evidence/LAKE_BUILD.log
+
+      - name: Elaborate integrated theorem slice
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          lake env lean PCRLean/Experimental/FiniteProjectiveSplitPresentationAtomic.lean 2>&1 | tee x032c-evidence/ELABORATION.log
+          lake env lean PCRLean/Experimental/FiniteProjectiveSplitPresentationAtomicAudit.lean 2>&1 | tee x032c-evidence/AXIOM_AUDIT.log
+          if grep -q 'sorryAx' x032c-evidence/AXIOM_AUDIT.log; then exit 1; fi
+
+      - name: Snapshot sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp PCRLean/Experimental/FiniteSpanningSetSurjectionAtomic.lean x032c-evidence/
+          cp PCRLean/Experimental/ProjectiveSurjectionSplitAtomic.lean x032c-evidence/
+          cp PCRLean/Experimental/FiniteProjectiveSplitPresentationAtomic*.lean x032c-evidence/
+          sha256sum x032c-evidence/*.lean | tee x032c-evidence/SOURCE_SHA256SUMS.txt
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PCR-FRACTAL-X032C-FINITE-PROJECTIVE-SPLIT-EVIDENCE
+          path: x032c-evidence
+          if-no-files-found: error
+          retention-days: 90
