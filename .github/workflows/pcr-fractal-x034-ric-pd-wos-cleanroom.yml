@@ -40,6 +40,16 @@ jobs:
             | sh -s -- -y
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
 
+      - name: Bootstrap pinned Lake manifest when absent
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          if [[ ! -f lake-manifest.json ]]; then
+            lake update
+          fi
+          test -f lake-manifest.json
+
       - name: Record exact environment
         shell: bash
         run: |
