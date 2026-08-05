@@ -10,6 +10,12 @@ import PCRLean.Experimental.X041SaturatedDecalageIndex
 #print axioms PCRLean.Experimental.SaturatedSourceCapsule.ExponentCertificate.mono
 #print axioms PCRLean.Experimental.SaturatedSourceCapsule.Capsule.wordSaturation_eq
 #print axioms PCRLean.Experimental.SaturatedSourceCapsule.Capsule.saturatedSubmodule_eq_of_perm
+#print axioms PCRLean.Experimental.SaturationRecharge.no_witness_of_rechargeFree
+#print axioms PCRLean.Experimental.SaturationRecharge.exists_witness_of_not_rechargeFree
+#print axioms PCRLean.Experimental.SaturationRecharge.witness_nonempty_iff_not_rechargeFree
+#print axioms PCRLean.Experimental.SaturationRecharge.word_rechargeFree_iff
+#print axioms PCRLean.Experimental.SaturationRecharge.word_rechargeFree_iff_of_perm
+#print axioms PCRLean.Experimental.SaturationRecharge.classify
 #print axioms PCRLean.Experimental.DecalageSourceRank.carrier_drop
 #print axioms PCRLean.Experimental.DecalageSourceRank.torsion_drop
 #print axioms PCRLean.Experimental.DecalageSourceRank.source_drop
