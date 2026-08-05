@@ -1,0 +1,44 @@
+{
+  "round_id": "MLEL-X040/CFT-ACN",
+  "date": "2026-08-04",
+  "parent": "MLEL-X039/NTR-RFL",
+  "seed_architecture": "MLEL-D001/FCPP-ATLAS",
+  "accepted_formal_node": "MLEL-M004/HMC-SCCD (restricted)",
+  "status": "OPEN_GAP",
+  "certified_graph_changed": false,
+  "root_theorem_proved": false,
+  "principal_correction": {
+    "deleted_candidate": "independent preparation and concatenation of maximal-carrier flatifier words",
+    "counterexample": "X=A3, C1=V(x), C2=V(y), D=V(x,z): D meets C2 at the origin but is neither disjoint from nor contained in C2",
+    "replacement": "one finite product of ambient trace ideals, lower-support-dimensional regular realization, and source-arrangement completion"
+  },
+  "nodes": [
+    {"id":"X040-G1","title":"Finite flatifier word compressed to one source blowup ideal","status":"STANDARD-MATH/INTERFACE-OPEN"},
+    {"id":"X040-G2","title":"Ambient trace ideal and induced carrier blowup","status":"STANDARD-MATH/SCHEME-INTERFACE-OPEN"},
+    {"id":"X040-G3","title":"Finite product blowup is a common refinement","status":"STANDARD-MATH-CLOSED/LEAN-SCHEME-OPEN"},
+    {"id":"X040-G4","title":"Componentwise admissibility gives strict support-dimension drop","status":"STANDARD-MATH/LEDGER-OPEN"},
+    {"id":"X040-G5","title":"Lower-dimensional relative principalization of common trace product","status":"OPEN-LOAD-BEARING"},
+    {"id":"X040-G6","title":"Regular jointly legal ambient realization","status":"OPEN-LOAD-BEARING"},
+    {"id":"X040-G7","title":"Source-pure transform under common refinement","status":"OPEN-LOAD-BEARING"},
+    {"id":"X040-G8","title":"Simultaneous maximal-carrier passive flatness","status":"OPEN"},
+    {"id":"X040-G9","title":"Finite source-arrangement completion","status":"COMBINATORIAL-LEAN-WRITTEN/GEOMETRY-OPEN"},
+    {"id":"X040-G10","title":"Bad source intersections enter support-thickness recursion","status":"OPEN"},
+    {"id":"X040-G11","title":"Clean source arrangement admits wonderful serialization","status":"OPEN"},
+    {"id":"X040-G12","title":"Minimal stratum is disjoint or nested","status":"COMBINATORIAL-LEAN-WRITTEN/SCHEME-OPEN"},
+    {"id":"X040-G13","title":"Regular-Flag Flat-Lift","status":"OPEN-LOAD-BEARING"},
+    {"id":"X040-G14","title":"Hironaka transitivity and wonderful persistence","status":"ABSTRACT-LEAN-GREEN/SCHEME-OPEN"},
+    {"id":"X040-G15","title":"Common passive budget and no recharge","status":"ARITHMETIC-LEAN-WRITTEN/GEOMETRY-OPEN"},
+    {"id":"X040-G16","title":"Source-conservative all-chart no reset","status":"OPEN-LOAD-BEARING"},
+    {"id":"X040-G17","title":"Outer birth classification for new maximal sources","status":"OPEN"},
+    {"id":"X040-G18","title":"Universal actual jointly legal centre word","status":"OPEN-LOAD-BEARING"}
+  ],
+  "edges": [
+    {"from":["X040-G1","X040-G2","X040-G3","X040-G4"],"to":"X040-G5","kind":"common-source-product-reduction"},
+    {"from":["X040-G5","X040-G6","X040-G7"],"to":"X040-G8","kind":"common-flatifier-realization"},
+    {"from":["X040-G9","X040-G10","X040-G11","X040-G12"],"to":"X040-G13","kind":"crossing-to-nested-reduction"},
+    {"from":["X040-G8","X040-G13","X040-G14","X040-G15","X040-G16"],"to":"X040-G18","kind":"joint-legalization-and-persistence"},
+    {"from":["X040-G17","X040-G18"],"to":"TRM-12","kind":"outer-causal-termination-handoff"},
+    {"from":["TRM-12","GLB-07","GLB-08"],"to":"FIN-01","kind":"final-resolution-handoff"}
+  ],
+  "highest_information_cut": ["X040-G5","X040-G6","X040-G7","X040-G13","X040-G16"]
+}
