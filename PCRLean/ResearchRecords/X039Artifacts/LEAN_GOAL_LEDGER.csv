@@ -1,0 +1,17 @@
+goal_id,parent_claim,lean_statement_short,file,status,priority
+X039-LG1,X039-G2,An exact tensor comparison of two flat modules makes the total module flat,PCRLean/Experimental/HironakaTensorFlatnessCompiler.lean,SOURCE-WRITTEN,HIGH
+X039-LG2,X039-G2,Compile the Hironaka tensor endpoint for a finite owner portfolio,PCRLean/Experimental/HironakaTensorFlatnessCompiler.lean,SOURCE-WRITTEN,HIGH
+X039-LG3,X039-G11,Flatness kills every exceptional-monomial power-torsion submodule and all successor recharge,PCRLean/Experimental/ExceptionalNoRecharge.lean,SOURCE-WRITTEN,HIGH
+X039-LG4,X039-G14,Formalize strict carrier-dimension and immutable-word-height recursion,PCRLean/Experimental/NestedCarrierLegalizationRank.lean,SOURCE-WRITTEN,HIGH
+X039-LG5,X039-G1,Construct the sheafified Hironaka comparison and prove compatibility with finite owner sums,PCRLean/Experimental/HironakaSheafComparison.lean,OPEN,CRITICAL
+X039-LG6,X039-G3,Formalize relevant-chart coverage for a regular flag and the exceptional conormal line twist,PCRLean/Experimental/RegularFlagCharts.lean,OPEN,CRITICAL
+X039-LG7,X039-G4,Construct the twisted Rees base-change map on every standard chart,PCRLean/Experimental/TwistedReesBaseChange.lean,OPEN,CRITICAL
+X039-LG8,X039-G5,Package the Rees comparison kernel/cokernel as finite coherent exceptional modules,PCRLean/Experimental/ExceptionalReesPacket.lean,OPEN,CRITICAL
+X039-LG9,X039-G6,Prove the all-chart Regular-Flag Flat-Lift theorem with overlap equality,PCRLean/Experimental/RegularFlagFlatLift.lean,OPEN,CRITICAL
+X039-LG10,X039-G7,Formalize a source-labelled regular word factoring through the final admissible flatifier,PCRLean/Experimental/CentreEnrichedFlatifierWord.lean,OPEN,CRITICAL
+X039-LG11,X039-G8,Compile recursive joint legalization of every trace subcentre with a dimension proof,PCRLean/Experimental/RecursiveTraceLegalization.lean,OPEN,CRITICAL
+X039-LG12,X039-G9,Realize the carrier word as ordinary ambient blowups in regular trace centres,PCRLean/Experimental/AmbientTraceRealization.lean,OPEN,CRITICAL
+X039-LG13,X039-G10,Sheafify the flat exceptional-torsion kill endpoint on regular carriers,PCRLean/Experimental/FlatPurificationDefect.lean,OPEN,HIGH
+X039-LG14,X039-G12,Prove Cartier-factor source invariance under zero-torsion certification,PCRLean/Experimental/CartierStableSource.lean,OPEN,HIGH
+X039-LG15,X039-G13,Construct unique all-chart successor ledgers with no split clone or recharge,PCRLean/Experimental/RegularFlagNoReset.lean,OPEN,CRITICAL
+X039-LG16,X039-G16,Compile the full normal-flat carrier legalization word into a JointLegalityCertificate,PCRLean/Experimental/X039JointLegalizationCompiler.lean,OPEN,CRITICAL
