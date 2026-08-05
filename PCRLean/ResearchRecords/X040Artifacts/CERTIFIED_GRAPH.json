@@ -1,0 +1,11 @@
+{
+  "round_id": "MLEL-X040/CFT-ACN",
+  "certified_graph_changed": false,
+  "accepted_formal_node": "MLEL-M004/HMC-SCCD (restricted)",
+  "new_certified_declarations": [],
+  "experimental_green_parent": "MLEL-X039/NTR-RFL finite Lean slice",
+  "general_positive_characteristic_resolution": false,
+  "final_main_theorem_kernel_verified": false,
+  "formal_global_status": "OPEN_GAP",
+  "note": "X040 declarations remain Experimental and are not imported by CertifiedIndex."
+}
