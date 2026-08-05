@@ -1,0 +1,25 @@
+X043 CURRENT FRONTIER
+====================
+
+Node:
+MLEL-X043 / ATR-NJC
+Ambient Trace Realization, Normal-Jet Criteria, and Joint Legality Compilation
+
+Closed or reduced to standard/inductive inputs:
+- regular carrier centres ambientize as the same regular closed subschemes;
+- ambient blowup restricts to the carrier blowup;
+- finite truncated normal Hasse jets detect ambient active divisibility exactly;
+- logarithmic compatibility lifts from the carrier to the ambient regular flag;
+- lower-dimensional full-portfolio preparation gives a jointly legal ambient word;
+- X042 exactification identifies the prepared carrier comparison with the actual successor comparison;
+- completed joint words have all-chart state reentry.
+
+Dominant open cut:
+UNIVERSAL ACTUAL-CENTRE SYNTHESIS
+-> FULL SUPPORT-THICKNESS/CONTACT COVERAGE
+-> GEOMETRIC SOURCE BIRTH AND RECURRENT-CLASS EXIT
+-> STRICT GLOBAL WELL-FOUNDED TERMINATION
+-> FINITE FUNCTORIAL GLOBALIZATION.
+
+General positive-characteristic resolution:
+OPEN.
