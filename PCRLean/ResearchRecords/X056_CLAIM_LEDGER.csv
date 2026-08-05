@@ -1,0 +1,10 @@
+claim_id,statement_short,status
+X056-G1,Finite-flat exactification of the entire radicial envelope,ASSUMED-PROVED-IN-X056
+X056-G2,Relative Hasse operators generate intrinsic End_A(B),PROVED-IN-ARCHITECTURE
+X056-G3,Logarithmic Cartier kernel equals pth-power logarithmic monomials,PROVED-IN-X056
+X056-G4,Simultaneous Cartier row reduction and strict residual-height descent,ASSUMED-PROVED-IN-X056
+X056-G5,Saturated Kummer monoid describes the terminal normalization,ASSUMED-PROVED-IN-X056
+X056-G6,Regular labelled subdivision is realized by ordinary blowups,PROVED-TOROIDAL-INPUT
+X056-G7,Simultaneous finite radicial-envelope uniformization,ASSUMED-PROVED-IN-X056
+X056-G8,Defectless projection existence,DERIVED
+X056-G9,Intrinsic finite termination and smooth-functorial resolution,DERIVED
