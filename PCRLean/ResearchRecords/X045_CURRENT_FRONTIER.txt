@@ -1,0 +1,24 @@
+X045 CURRENT FRONTIER AFTER AEF-NUB-CRX-FINAL
+==============================================
+
+Closed or conditionally closed:
+- event-octahedron and telescoping event filtration;
+- finite immutable source join semilattice;
+- primitive chart-independent event identities;
+- no new root sources inside source-closed X044 blocks;
+- no split/no clone at canonical identity level;
+- complete-colour no-upward birth for finite coherent packets;
+- coherent recurrence multiset descent;
+- finite coherent recurrent subgame;
+- reduction of every hypothetical infinite branch to a genuine class-V valuation/immediate-defect token;
+- X044 actual-centre synthesis and X042-X043 joint legality/reentry.
+
+Dominant open cut:
+UNIFORM EVENT-VISIBLE IMMEDIATE-DEFECT ESCAPE (UDE-EV)
+-> NO EQUAL-OR-HIGHER CLASS-V BIRTH
+-> STRICT CLASS-V ORDINAL
+-> FULL GLOBAL SOURCE-CAUSAL TERMINATION
+-> FINITE ZARISKI/ETALE SERIALIZATION
+-> PRINCIPALIZATION AND FUNCTORIAL RESOLUTION.
+
+General positive-characteristic resolution: OPEN.
