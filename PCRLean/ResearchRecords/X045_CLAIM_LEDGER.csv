@@ -1,0 +1,19 @@
+claim_id,parent_group,statement_short,evidence_level,status
+X045-G1,TRM-05,Event complexes of composable centre words fit in the canonical octahedral triangle,STANDARD-TRIANGULATED,CLOSED
+X045-G2,TRM-05,Cumulative event complexes admit finite telescoping filtrations by transported one-step events,STANDARD-INDUCTION,CLOSED
+X045-G3,TRM-04,The finite incoming source set generates a finite join semilattice filtration on every coloured portfolio and event cone,FINITE-CONSTRUCTION,CLOSED
+X045-G4,TRM-04,Primitive source quotients give chart-independent canonical event identities,FINITE-DESCENT-CONSTRUCTION,CLOSED-INTERFACE
+X045-G5,TRM-04,Source-closed X044 blocks create no new root source IDs,CONDITIONAL-ON-X044-SOURCE-CLOSURE,CONDITIONAL-CLOSED
+X045-G6,TRM-04,Chart decomposition and irreducible decomposition do not clone a primitive event identity,SCHEME-DESCENT+DEFINITION,CLOSED-INTERFACE
+X045-G7,TRM-06,A complete coherent colour portfolio yields no-upward birth for every primitive successor event,OPEN-LOAD-BEARING-CONDITIONAL,CONDITIONAL
+X045-G8,TRM-06,Every coherent birth is source merge financed reappearance or earlier geometric drop,DERIVED-FROM-X045-G7,CONDITIONAL
+X045-G9,TRM-11,Canonical coherent recurrence tokens form a well-founded base order,FINITE-PROFILES+MULTISET,CONDITIONAL-CLOSED
+X045-G10,TRM-12,Every completed coherent block strictly lowers the coherent recurrence multiset,DERIVED-FROM-G7+DM-MULTISET,CONDITIONAL
+X045-G11,TRM-12,No infinite branch remains entirely in coherent recurrent classes,DERIVED-FROM-G10,CONDITIONAL
+X045-G12,TRM-08,Every infinite branch has an eventual genuine class-V valuation/immediate-defect token,SEMANTIC-COMPLETENESS+G11,CONDITIONAL
+X045-G13,TRM-08,Finite event-visible shadows of a class-V token admit one finite common model,VALUATION-COMPACTNESS-INTERFACE,OPEN
+X045-G14,TRM-10,Uniform event-visible immediate-defect escape UDE-EV,OPEN-LOAD-BEARING,OPEN
+X045-G15,TRM-11,UDE-EV supplies a strict nonresetting class-V ordinal with no equal-or-higher V birth,OPEN-LOAD-BEARING,OPEN
+X045-G16,TRM-12,Coherent ordinal plus class-V ordinal gives strict global source-causal termination,CONDITIONAL-ON-G14-G15,OPEN
+X045-G17,GLB-07,Finite Zariski-etale serialization and functorial globalization after termination,OPEN-FINAL,OPEN
+X045-G18,FIN-01,Principalization embedded resolution and intrinsic resolution over perfect fields,OPEN-FINAL,OPEN
