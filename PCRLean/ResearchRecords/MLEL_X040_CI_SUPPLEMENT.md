@@ -4,23 +4,23 @@
 **Class:** `EXPERIMENTAL_GREEN_SLICE / NO THEOREM PROMOTION`  
 **Formal global status:** `OPEN_GAP`
 
-The first exact-snapshot workflow completed successfully without a repair
-cycle:
+The initial exact snapshot and the final supplemented snapshot both completed
+successfully.  The final run bound the functorial-flatifier correction,
+source-word payload semantics, revised Annals architecture, and all updated
+PCR-FRACTAL ledgers to one exact head.
 
 ```text
 PR                         = 59, draft, open, unmerged
-base SHA at run            = 750f4787e6c8cdd1eca346ae9284ce866ec6d90b
-head SHA                   = a181dec9ae12c4bb5ba8a207c1bae1e684b36557
-workflow run               = 30967066363
-job                        = 92183223964
+final base SHA             = 49fb80b1a68a9003c605e112f1deff069f9cea02
+final head SHA             = 3c1631f8ae973e87fa96c4d507aeda8025bcdf60
+workflow run               = 30969230858
+job                        = 92189745668
 conclusion                 = success
-Lean                       = 4.30.0
-mathlib revision           = c5ea00351c28e24afc9f0f84379aa41082b1188f
-artifact                   = 8915206677
-artifact digest            = sha256:dc010ab7c37dce2c7723fa81d5ba8fa1afeec44e89f89610bf25aca879b712d8
+artifact                   = 8915955473
+artifact digest            = sha256:80db1ce2e52a560017f25c7aac5bce87ff3896730411dee86fdb89de1e9b8756
 ```
 
-The run completed:
+The final run completed:
 
 1. placeholder and project-axiom rejection;
 2. pinned toolchain and exact manifest bootstrap;
@@ -28,7 +28,8 @@ The run completed:
 4. every exact X040 module target;
 5. integrated-index elaboration;
 6. unified `#print axioms` audit with no `sorryAx`;
-7. exact source and PCR-FRACTAL artifact snapshot;
+7. exact source, reports, supplements, candidate manuscript, and protocol
+   artifact snapshot;
 8. checksum generation and evidence upload.
 
 The green slice certifies only:
@@ -41,10 +42,10 @@ elementary ideal-product containments and symmetry;
 common support/source/word rank arithmetic.
 ```
 
-It does not certify finite blowup-word compression, common-product blowup
-factorization in the project scheme interface, lower-dimensional full-portfolio
-principalization, source-pure-transform comparison, Regular-Flag Flat-Lift,
-source-conservative no-reset, termination, globalization, or general
+It does not certify the functorial Rees-Serre packet, functorial source-word
+construction, common-product scheme factorization, lower-dimensional
+full-portfolio principalization, Source-Word Realization, Regular-Flag
+Flat-Lift, source-conservative no-reset, termination, globalization, or general
 positive-characteristic resolution.
 
 ```text
