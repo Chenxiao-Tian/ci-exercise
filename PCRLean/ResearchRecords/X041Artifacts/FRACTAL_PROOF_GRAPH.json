@@ -14,9 +14,14 @@
       "reason": "the chart D_+(z) recovers the complete affine normal-cone module and all degrees without a cutoff"
     },
     {
-      "deleted_candidate": "full source-word realization as an entirely new project theorem",
-      "replacement": "centre-exact composite word ideal, strict-transform transitivity, flat pullback, and finite product cofinality",
-      "reason": "Stacks Project Divisors 31.34.3/5/6 and More on Flatness 38.30.6 provide the exact standard scheme pattern"
+      "deleted_candidate": "an arbitrary ideal representing the composite source modification is automatically centre-exact and functorial",
+      "replacement": "retain the full source word; separately construct a functorial polarized composite-blowup presentation or a word-level common-modification certificate",
+      "reason": "composition of blowups gives existence of a centre, but the standard proof does not supply a presentation-independent flat-base-change-compatible choice"
+    },
+    {
+      "deleted_candidate": "full source-word persistence is an undifferentiated new theorem",
+      "replacement": "after a centre-exact presentation, use standard strict-transform transitivity, flat pullback, and finite-product cofinality",
+      "reason": "Stacks strict-transform and flatification lemmas close the scheme-theoretic backend once the centre-exact interface is supplied"
     },
     {
       "deleted_candidate": "repeated same-carrier legalization of flatifier defects",
@@ -28,9 +33,10 @@
     {"id":"X041-G1","title":"Canonical homogenized normal-cone compactification","status":"CANDIDATE-SCHEME-THEOREM/LEAN-MODULE-BACKEND-WRITTEN"},
     {"id":"X041-G2","title":"Homogenized flatness equivalence and flat-base-change law","status":"CANDIDATE-SCHEME-THEOREM/LEAN-MODULE-BACKEND-WRITTEN"},
     {"id":"X041-G3","title":"Rydh functorial flatifier of the finite maximal-carrier packet","status":"STANDARD-PREPRINT-INPUT/PACKET-INTERFACE-OPEN"},
-    {"id":"X041-G4","title":"Centre-exact composite word ideal and strict-transform transitivity","status":"STANDARD-MATH-CLOSED/LEAN-SCHEME-OPEN"},
-    {"id":"X041-G5","title":"Finite common-product cofinality and flat terminal pullback","status":"STANDARD-MATH-CLOSED/LEAN-SCHEME-OPEN"},
-    {"id":"X041-G6","title":"Lower-dimensional full-portfolio principalization of the common source ideal","status":"OPEN-LOAD-BEARING"},
+    {"id":"X041-G4","title":"Existence of a centre-exact composite word centre and strict-transform transitivity","status":"STANDARD-MATH-CLOSED/LEAN-SCHEME-OPEN"},
+    {"id":"X041-G4F","title":"Functorial polarized word compression or word-level common-modification fallback","status":"OPEN-LOAD-BEARING"},
+    {"id":"X041-G5","title":"Finite common-product cofinality and flat terminal pullback after centre-exact certification","status":"STANDARD-MATH-CLOSED/LEAN-SCHEME-OPEN"},
+    {"id":"X041-G6","title":"Lower-dimensional full-portfolio principalization of the common source object","status":"OPEN-LOAD-BEARING"},
     {"id":"X041-G7","title":"Ambient trace realization of the lower-dimensional regular word","status":"OPEN-LOAD-BEARING"},
     {"id":"X041-G8","title":"Regular-flag relevant-chart normal form and exceptional line twist","status":"STANDARD-LOCAL-GEOMETRY/LEAN-SCHEME-OPEN"},
     {"id":"X041-G9","title":"Degreewise Regular-Flag Flat-Lift isomorphism","status":"OPEN-LOAD-BEARING/LEAN-COMPILER-WRITTEN"},
@@ -42,11 +48,11 @@
   ],
   "edges": [
     {"from":["X041-G1","X041-G2"],"to":"X041-G3","kind":"canonical-proper-packet-to-functorial-flatifier"},
-    {"from":["X041-G3","X041-G4","X041-G5"],"to":"X041-G6","kind":"functorial-common-source-reduction"},
+    {"from":["X041-G3","X041-G4","X041-G4F","X041-G5"],"to":"X041-G6","kind":"functorial-centre-exact-common-source-reduction"},
     {"from":["X041-G6","X041-G7","X041-G8","X041-G9","X041-G10"],"to":"X041-G11","kind":"lower-dimensional-realization-and-flag-lift"},
     {"from":["X041-G11","X041-G12","X041-G13"],"to":"X041-G14","kind":"hereditary-joint-legalization"},
     {"from":["X041-G13","X041-G14"],"to":"TRM-12","kind":"causal-termination-handoff"},
     {"from":["TRM-12","GLB-07","GLB-08"],"to":"FIN-01","kind":"final-resolution-handoff"}
   ],
-  "highest_information_cut": ["X041-G1","X041-G2","X041-G6","X041-G7","X041-G9","X041-G10","X041-G12"]
+  "highest_information_cut": ["X041-G1","X041-G2","X041-G4F","X041-G6","X041-G7","X041-G9","X041-G10","X041-G12"]
 }
