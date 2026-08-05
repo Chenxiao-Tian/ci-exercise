@@ -1,0 +1,155 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\title{Saturated Cartier D\'ecalage and Source-Word Realization}
+\author{Maximum-Likelihood Candidate Chapter}
+\date{5 August 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We propose a factorization-independent description of the transform payload of
+a centre-enriched blowup word.  The bare modification morphism is insufficient,
+but the final modification together with its total source-labelled exceptional
+Cartier divisor and a finite power-torsion exponent is conjecturally sufficient.
+The Berthelot--Ogus identity $\eta_f\eta_g=\eta_{fg}$ collapses a finite divisor
+word to its product, while the cohomology formula for $L\eta_f$ removes one
+Cartier-torsion layer.  After finite Noetherian stabilization, degree-zero
+cohomology gives the full exceptional-power-torsion quotient.  A canonical
+good-triple blowup of the perfect source complex supplies arbitrary-pullback
+compatibility.  We formulate the resulting source-word realization theorem and
+its role in positive-characteristic resolution.  The scheme-level theorem
+remains open.
+\end{abstract}
+
+\section{The minimal transform payload}
+A strict transform depends on the chosen centre.  The identity morphism
+obtained by blowing up the Cartier ideal $(z)$ on $\operatorname{Spec}k[z]$
+annihilates the strict transform of $k[z]/(z)$, whereas the empty identity
+modification does not.  The two presentations have different exceptional
+Cartier divisors.  This suggests retaining
+\[
+ (\pi:Y\to X, E_\pi, N, Q_\pi,\text{source lineage})
+\]
+rather than the morphism alone, where $E_\pi$ is the total source-labelled
+exceptional divisor, $N$ a torsion exponent, and $Q_\pi$ a saturated derived
+transform.
+
+\section{Cartier d\'ecalage}
+Let $A$ be a ring and let $f\in A$ be a nonzerodivisor.  For a complex of
+$f$-torsion-free modules, Berthelot--Ogus define $\eta_f$.  Its derived functor
+satisfies
+\[
+ H^i(L\eta_fM)\cong f^i\bigl(H^i(M)/H^i(M)[f]\bigr).
+\]
+For nonzerodivisors $f,g$ one has
+\[
+ \eta_f\eta_gM=\eta_{fg}M.
+\]
+Inductively the expected normalized formula is
+\[
+ H^i((L\eta_f)^NM)
+ \cong f^{Ni}\bigl(H^i(M)/H^i(M)[f^N]\bigr).
+\]
+For degree zero this is simply the quotient by $f^N$-torsion.
+
+\section{Finite saturation}
+Let $M$ be coherent on a quasi-compact Noetherian scheme.  The ascending chain
+\[
+ M[f]\subset M[f^2]\subset\cdots
+\]
+stabilizes.  For a perfect packet with finitely many coherent cohomology
+sheaves, one exponent $N$ dominates all degrees and all members of a finite
+portfolio.  We call
+\[
+ \operatorname{SCD}_{E,N}(M)=(L\eta_{\mathcal O(-E)})^NM
+\]
+the saturated Cartier-d\'ecalage capsule, with the predictable degree twists
+retained in its data.
+
+At the module level, if
+\[
+ \operatorname{Sat}_f(P)=\{x:f^nx\in P\text{ for some }n\},
+\]
+then
+\[
+ \operatorname{Sat}_{fg}(P)
+ =\operatorname{Sat}_g(\operatorname{Sat}_f(P)).
+\]
+Hence a finite Cartier word is equivalent, at degree zero, to saturation by the
+product equation and is invariant under permutation.
+
+\section{Strict transform as stabilized d\'ecalage}
+Let $\pi:Y\to X$ be a finite centre-enriched word of blowups and let $E_\pi$ be
+the total source exceptional divisor.  The principal candidate is
+\[
+ F^{\mathrm{str},\pi}
+ \cong
+ H^0\!\left((L\eta_{\mathcal O_Y(-E_\pi)})^N L\pi^*F\right)
+\]
+for $N$ at least the exceptional torsion exponent.  One affine blowup chart
+reduces this to the standard quotient by exceptional power torsion; composition
+reduces to $\eta_f\eta_g=\eta_{fg}$.
+
+The assertion does not say that intermediate blowups are order independent.
+It states that the final source transform is determined by the final model,
+total source divisor, exponent, and derived packet.
+
+\section{Good triples and common refinements}
+For a perfect complex $P$ and an effective Cartier divisor $E$, the canonical
+blowing-up-complexes construction principalizes finitely many intrinsic ideals
+and produces a universal good triple.  In that chamber $L\eta_E P$ remains
+perfect and commutes with arbitrary pullback.  We propose to apply this
+construction to the direct sum of the finite source comparison complexes.
+
+After functorial flatification of a maximal carrier, the final owner transforms
+are finitely presented and flat.  Their degree-zero exceptional torsion is
+already zero.  The good-triple packet controls the comparison complex under the
+nonflat common-refinement morphism.
+
+\section{Passive and active stopping rules}
+For passive modules, apply enough d\'ecalage layers to remove all exceptional
+power torsion.  For a marked contact equation, apply only the number of layers
+prescribed by the controlled-transform mark.  The example $A/(u^m)$ gives the
+local shadow
+\[
+ m\longmapsto m-1.
+\]
+The unconsumed layer count is part of the contact/debt rank.  Full passive
+saturation and controlled active division are therefore two stopping rules for
+one Cartier-layer calculus, not one transform semantics.
+
+\begin{theorem}[Saturated Cartier d\'ecalage source-word theorem, target]
+Let $\pi:Y\to X$ be a finite centre-enriched ordinary blowup word, let
+$E_\pi$ be its total source-labelled exceptional Cartier divisor, and let $P$
+be a perfect finite source packet with coherent cohomology.  There exists a
+finite exponent $N$ such that the normalized iterated d\'ecalage
+$(L\eta_{E_\pi})^NL\pi^*P$ has cohomology obtained by quotienting every
+cohomology sheaf by its full exceptional power torsion.  It is independent of
+the ordering and parenthesization of the divisor components, commutes with flat
+base change, and, after canonical good-triple preparation, commutes with
+arbitrary pullback.
+
+For a module in degree zero, $H^0$ is the actual iterated strict transform.  For
+a marked contact packet, one prescribed layer is the controlled exceptional
+division.  All comparisons are compatible with charts, overlaps, owners,
+sources, boundary, and debt.
+\end{theorem}
+
+\begin{remark}
+This theorem is not proved.  The module saturation product law and rank
+arithmetic have been written in Lean.  The derived iteration, strict-transform
+comparison, good-triple source packet, and hereditary scheme interfaces remain
+open.
+\end{remark}
+
+\section{Publication architecture}
+The current maximum-likelihood series consists of six papers totaling $564$
+dense Annals/AMS-equivalent pages.  The present chapter is the transform core
+of Paper III, \emph{Functorial Flatification, Saturated Cartier D\'ecalage, and
+Hereditary Reentry}.
+
+\end{document}
