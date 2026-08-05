@@ -1,5 +1,7 @@
 claim_id,parent_group,statement_short,evidence_level,lean_file,status
-X040-G1,CTR-12/HER-03,A finite flatifier word is representable by one source-labelled blowup ideal,STANDARD-MATH+INTERFACE-OPEN,,OPEN-INTERFACE
+X040-G0A,HER-03/GLB-05,The affine normal packet admits a finite proper Rees-Serre comparison packet canonical under smooth and etale base change,OPEN-LOAD-BEARING,,OPEN
+X040-G0B,HER-03/GLB-05,Functorial proper flatification of the maximal-carrier groupoid produces equivariant componentwise-admissible source words,STANDARD-FLATIFICATION-INPUT+PROJECT-INTERFACE-OPEN,,OPEN-INTERFACE
+X040-G1,CTR-12/HER-03,A finite functorial flatifier word is representable by one immutable source-labelled blowup ideal,STANDARD-MATH+INTERFACE-OPEN,,OPEN-INTERFACE
 X040-G2,HER-06/HER-07,The ambient inverse-image trace ideal restricts to the carrier source ideal and induces the carrier blowup,STANDARD-MATH+LEAN-SCHEME-OPEN,,OPEN-INTERFACE
 X040-G3,GLB-03,A finite product ideal blowup is a common refinement of all source blowups,STANDARD-MATH-CLOSED+LEAN-SCHEME-OPEN,,STANDARD-PROOF-CLOSED
 X040-G4,TRM-04,Componentwise admissibility forces the common trace support below maximal carrier dimension,STANDARD-MATH+LEDGER-OPEN,,OPEN-INTERFACE
