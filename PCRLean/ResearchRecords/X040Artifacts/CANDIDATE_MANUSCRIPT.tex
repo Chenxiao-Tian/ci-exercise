@@ -4,26 +4,29 @@
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{remark}[theorem]{Remark}
-\title{Common Flatifier Traces and Nested Persistence}
+\title{Functorial Common Flatifier Traces and Nested Persistence}
 \author{Maximum-Likelihood Candidate Chapter}
 \date{4 August 2026}
 \begin{document}
 \maketitle
 
 \begin{abstract}
-We propose a simultaneous legalization mechanism for a finite arrangement of
-regular candidate carriers.  Independent flatifier words can cross other
-carriers and therefore do not form an ambiently closed algorithm.  Each carrier
-flatifier is compressed to a source-labelled blowup ideal, lifted to an ambient
-trace ideal, and the finite source orbit is multiplied.  The blowup of the
-product is a common refinement of all flatifiers.  Componentwise admissibility
-forces the product support below the maximal carrier dimension, so strong
-relative principalization in lower dimension realizes the common modification
-by ordinary blowups in regular jointly legal centres.  Source arrangement
+We propose a simultaneous and functorial legalization mechanism for a finite
+arrangement of regular candidate carriers.  Independent flatifier words can
+cross other carriers, and an arbitrary choice of one flatifier per carrier is
+not made functorial merely by symmetrizing afterwards.  The complete affine
+normal-cone module is paired with a finite proper Rees--Serre packet.  Functorial
+flatification of the latter gives equivariant component source words.  Each is
+compressed to a source-labelled blowup ideal, lifted to an ambient trace ideal,
+and the finite source orbit is multiplied.  The blowup of the product is a
+common refinement of all flatifiers.  Componentwise admissibility forces the
+product support below the maximal carrier dimension, so strong relative
+principalization in lower dimension realizes the common modification by
+ordinary blowups in regular jointly legal centres.  Source arrangement
 completion and deepest-first serialization reduce all remaining interactions
 to the disjoint and nested cases.  The latter is governed by a Regular-Flag
 Flat-Lift theorem.  The construction is a candidate architecture; its
-load-bearing scheme and no-reset theorems remain open.
+load-bearing Rees--Serre, scheme, and no-reset theorems remain open.
 \end{abstract}
 
 \section{The crossing obstruction}
@@ -37,10 +40,33 @@ carrier preparation followed by concatenation is not closed under ambient
 interaction.  The origin must be enrolled as a deeper stratum before $D$ is
 executed.
 
+\section{The hidden flatifier choice}
+Existence of an admissible flatifier is insufficient for a functorial
+resolution algorithm.  Two valid flatifier words may have different source
+supports and ambient trace ideals.  Taking a product after selecting one word
+does not remove that prior choice.
+
+For a regular carrier $C$, write
+\[
+ E_C=I_C/I_C^2,\qquad P_C=\mathbf P(E_C),
+\]
+and let $G_C(M)=\operatorname{gr}_{I_C}(M)$ be the complete affine normal-cone
+module of one passive owner.  The affine module is the exact all-degree object,
+but general affine flatification does not by itself choose a source word
+functorial under smooth and \emph{\'etale} base change.
+
+We therefore retain a finite proper Rees--Serre packet consisting of bounded
+irrelevant torsion, finitely many low and transition degrees, the coherent
+projective-normal tail on $P_C$, and the comparison and higher-direct-image
+certificates.  On the disjoint union of the intrinsic maximal-carrier groupoid,
+functorial flatification of this proper packet gives an equivariant admissible
+source word.  Its centres need not be regular in positive characteristic; they
+are inputs to the lower-dimensional regular realization compiler.
+
 \section{Source ideals and the common product}
 Let $\{C_\lambda\}_{\lambda\in\Lambda}$ be the finite set of maximal regular
-carriers.  For each $\lambda$, compress the finite carrier flatification to a
-source-labelled blowup ideal
+carriers.  For each $\lambda$, compress the functorial carrier-flatification
+word to an immutable source-labelled blowup ideal
 \[
  J_\lambda\subset\mathcal O_{C_\lambda}.
 \]
@@ -48,10 +74,10 @@ Let $K_\lambda\subset\mathcal O_X$ be its inverse-image ambient trace.  Define
 \[
  K_{\mathrm{com}}=\prod_{\lambda\in\Lambda}K_\lambda.
 \]
-The product is independent of the enumeration.  The blowup
-$\operatorname{Bl}_{K_{\mathrm{com}}}X$ factors through every
-$\operatorname{Bl}_{K_\lambda}X$, and the strict transform of $C_\lambda$ in
-the latter is $\operatorname{Bl}_{J_\lambda}C_\lambda$.
+The product is independent of the enumeration and invariant under the carrier
+groupoid.  The blowup $\operatorname{Bl}_{K_{\mathrm{com}}}X$ factors through
+every $\operatorname{Bl}_{K_\lambda}X$, and the strict transform of
+$C_\lambda$ in the latter is $\operatorname{Bl}_{J_\lambda}C_\lambda$.
 
 \section{Support-dimension descent}
 Assume that each $J_\lambda$ is the unit at every generic point of
@@ -82,7 +108,8 @@ common refinement is flat.  Additional exceptional equations are Cartier on
 the transformed regular carrier and hence act injectively on this flat module.
 Thus the source-labelled strict transform along the complete word equals the
 pullback of $F_\lambda^{\mathrm{flat}}$.  All maximal carriers are therefore
-prepared by one common macro.
+prepared by one common macro.  The finite Rees--Serre comparison then recovers
+flatness of every degree of the affine normal-cone module.
 
 \section{Source arrangement completion}
 Adjoin the source supports to the old carrier arrangement and take all
@@ -115,34 +142,37 @@ This theorem is not proved here.  Together with Hironaka normal-flatness
 transitivity it implies passive persistence through the complete wonderful
 word.
 
-\section{Candidate common-trace theorem}
-\begin{theorem}[Common-Trace Carrier Legalization, target]
+\section{Candidate functorial common-trace theorem}
+\begin{theorem}[Functorial Common-Trace Carrier Legalization, target]
 Let a prepared marked state on a smooth scheme over a perfect field of positive
 characteristic produce a finite symmetry-stable clean arrangement of regular
 raw carriers.  Assume strong relative principalization and the same
-legalization program in lower carrier dimension.  Then the finite orbit of
-maximal-carrier flatifiers admits one common ambient trace product whose support
-has lower dimension.  A finite word of ordinary blowups in regular jointly
-legal centres realizes the common refinement and factors through every source
-flatifier.  All maximal carriers become normally flat simultaneously.  After
-source arrangement completion, every wonderful interaction is disjoint or
-nested, and the Regular-Flag Flat-Lift theorem preserves passive legality and
-all hereditary data.  No passive charge is created by completion or
-serialization.
+legalization program in lower carrier dimension.  The intrinsic groupoid of
+maximal carriers admits a finite proper Rees--Serre packet whose functorial
+flatification gives equivariant component source words.  Their ambient trace
+ideals admit one common product whose support has lower dimension.  A finite
+word of ordinary blowups in regular jointly legal centres realizes the common
+refinement and factors through every source flatifier.  All maximal carriers
+become normally flat simultaneously, and the proper and affine flatness
+certificates agree.  After source arrangement completion, every wonderful
+interaction is disjoint or nested, and the Regular-Flag Flat-Lift theorem
+preserves passive legality and all hereditary data.  No passive charge is
+created by flatification, completion, or serialization.
 \end{theorem}
 
 \begin{remark}
-The theorem is a maximum-likelihood target.  Lower-dimensional full-portfolio
-principalization, source-pure-transform comparison, Regular-Flag Flat-Lift,
-and all-chart no-reset remain open.  General resolution in positive
-characteristic is not asserted.
+The theorem is a maximum-likelihood target.  The finite functorial Rees--Serre
+packet, lower-dimensional full-portfolio principalization,
+source-pure-transform comparison, Regular-Flag Flat-Lift, and all-chart no-reset
+remain open.  General resolution in positive characteristic is not asserted.
 \end{remark}
 
 \section{Publication architecture}
-The current maximum-likelihood series consists of six papers totaling $552$
+The current maximum-likelihood series consists of six papers totaling $558$
 dense Annals/AMS-equivalent pages.  The present chapter is divided between
 Paper II, \emph{Common Trace Products, Anchor-Contact Ideals, and Wonderful
-Actual-Centre Synthesis}, and Paper III, \emph{Common-Refinement
-Flatification, Regular-Flag Transport, and Hereditary Reentry}.
+Actual-Centre Synthesis}, and Paper III, \emph{Functorial Rees--Serre
+Flatification, Common Refinements, Regular-Flag Transport, and Hereditary
+Reentry}.
 
 \end{document}
