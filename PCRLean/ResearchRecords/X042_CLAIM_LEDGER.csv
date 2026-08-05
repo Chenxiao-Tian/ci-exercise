@@ -1,0 +1,17 @@
+claim_id,parent_group,statement_short,evidence_level,status
+X042-G1,HER-03,Finite blowup word compresses to a centre-exact composite blowup,STANDARD-STACKS,CLOSED
+X042-G2,HER-03,Iterated strict transform equals strict transform for the composite centre,STANDARD-STACKS,CLOSED
+X042-G3,HER-03,Terminal strict transform has no total-exceptional power torsion,STANDARD-LOCAL-ALGEBRA,CLOSED
+X042-G4,HER-03,Finite H0(Leta) computes the terminal transform,STANDARD-X041,CLOSED
+X042-G5,HER-15,Regular-flag chart comparison factors through the image filtration,SCHEME-CONSTRUCTION,CLOSED-ON-CHARTS
+X042-G6,HER-15,Typed defects are Tor kernel Valabrega kernel and saturation cokernel,LOCAL-ALGEBRA,CLOSED-INTERFACE
+X042-G7,HER-15,All-degree defect portfolio is finite over a mixed-Rees algebra,NOETHERIAN,CLOSED
+X042-G8,HER-15,Homogenization recovers the full affine normal cone and all degrees,STANDARD-PROJ,CLOSED
+X042-G8A,HER-15,Flatness of the exactified comparison portfolio makes all defining sequences universally exact,STANDARD-HOMOLOGICAL-ALGEBRA,CLOSED
+X042-G9,HER-15,Flatification plus reduced-base flat-kill annihilates defects on a fixed centre-exact mixed-Rees chart,STANDARD+EXACTIFICATION,CONDITIONAL-CLOSED
+X042-G10,HER-15,Flat terminal source packets pull back on a common refinement,STANDARD-STACKS,CLOSED
+X042-G11,CTR-13,Regular ambient realization of every carrier flatifier and exactified comparison portfolio,OPEN-LOAD-BEARING,OPEN
+X042-G12,HER-13,Identification with the actual successor comparison on every chart and overlap,OPEN-LOAD-BEARING,OPEN
+X042-G13,HER-13,All-chart owner source boundary and contact transport,OPEN-LOAD-BEARING,OPEN
+X042-G14,TRM-12,Global strict causal rank after comparison closure,OPEN-LOAD-BEARING,OPEN
+X042-G15,GLB-07,Finite functorial globalization,OPEN-FINAL,OPEN
