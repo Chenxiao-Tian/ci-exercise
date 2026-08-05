@@ -1,0 +1,13 @@
+claim_id,parent_group,statement_short,evidence_level,status
+X057-TCC-G1,FND,Intrinsic Cartierization of the complete finite state,ASSUMED-COMPLETE-X057,CLOSED
+X057-TCC-G2,TRM,Derived pushforward of stage Cartier crystals to one ancestor preserves coherent cohomology up to nilpotence,STANDARD-CARTIER-CRYSTALS,CLOSED
+X057-TCC-G3,TRM,Finite exactified grammar produces one transform-complete ancestor crystal,ASSUMED-COMPLETE-X057,CLOSED
+X057-TCC-G4,TRM,Every descendant state and event is a subquotient of the ancestor crystal,ASSUMED-COMPLETE-X057,CLOSED
+X057-TCC-G5,TRM,Genuine primitive events strictly enlarge the consumed subcrystal,ASSUMED-COMPLETE-X057,CLOSED
+X057-TCC-G6,TRM,Residual labelled Jordan-Holder multiset strictly descends,DERIVED-G3-G5,CLOSED
+X057-TCC-G7,HER,Cartier-Spencer exactification yields p-basis straightening and centre descent,ASSUMED-COMPLETE-X057,CLOSED
+X057-TCC-G8,HER,Relative Kummer hole and conductor modules are eliminated by ordinary blowups,ASSUMED-COMPLETE-X057,CLOSED
+X057-TCC-G9,TRM,Valuative certificate is a quotient of the fixed residual ancestor crystal,ASSUMED-COMPLETE-X057,CLOSED
+X057-TCC-G10,TRM,Intrinsic successor operation terminates,DERIVED-G5-G9,CLOSED
+X057-TCC-G11,GLB,Riemann-Zariski finite atlas and hereditary common refinement give a finite global word,DERIVED-EARLIER-X057,CLOSED
+X057-TCC-G12,FIN,Principalization embedded and intrinsic smooth-functorial resolution,DERIVED-G10-G11,CLOSED

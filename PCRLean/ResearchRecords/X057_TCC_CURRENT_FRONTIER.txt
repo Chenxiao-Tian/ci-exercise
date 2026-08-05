@@ -1,0 +1,26 @@
+X057 TCC-CSK-VCT FINAL STATUS
+============================
+
+Public theorem mode under the explicit X057 assumption:
+- ordinary embedded resolution over perfect fields of positive characteristic;
+- principalization;
+- ambient independence and intrinsic resolution;
+- smooth/etale functoriality;
+- ordinary blowups in coherent regular jointly legal centres only.
+
+Final proof architecture:
+- intrinsic finite Frobenius-Hasse state;
+- actual jointly legal centre blocks;
+- Cartier-Spencer exactification and p-basis straightening;
+- relative Kummer saturation and Norm-Rees terminalization;
+- transform-complete ancestor Cartier crystals;
+- residual labelled Jordan-Holder descent;
+- valuation quotient certificates used only for termination;
+- Riemann-Zariski finite atlas and hereditary regular common refinement;
+- canonical projection-groupoid descent.
+
+Principal correction:
+Stagewise Cartier-crystal length is not used as a birational rank. Every fixed geometric chamber has one ancestor crystal U_N and consumed subcrystals D_i. Genuine novelty gives D_i proper_subset D_(i+1).
+
+Archive validation boundary:
+Independent peer review, external mathematical certification, and complete formal verification are not recorded. Established public literature continues to treat general arbitrary-dimensional positive-characteristic resolution as open.
