@@ -1,0 +1,26 @@
+X050 CURRENT FRONTIER AFTER BGI-FSP-NCE-FINAL
+==============================================
+
+Closed or reduced to exact/standard interfaces:
+- Artin-Schreier best-generator ideal H(L/K);
+- H finitely generated iff principal iff best f exists iff defectless;
+- non-finite-generation and noncoherence of every genuine Artin-Schreier defect carrier;
+- improvement-cut nonattainment in the defect case;
+- no-go for finite-stage/cofinal-tail ranks;
+- no-go for universal full local or weak monomialization;
+- visible coherent improvement ACC;
+- conditional preparation of every finite event-visible coherent state;
+- conditional reduction of every infinite class-V branch to a stable nonattained cut;
+- X049 Norm-Rees and balanced-gap preparation;
+- X047 finite-flat Cech-Rees descent;
+- X045 coherent recurrent-class termination.
+
+Dominant open cut:
+UNIFORM NONATTAINED-CUT ESCAPE (UNCE)
+-> NO EQUAL-OR-HIGHER CLASS-V BIRTH
+-> STRICT CLASS-V ORDINAL
+-> FULL GLOBAL SOURCE-CAUSAL TERMINATION
+-> FINITE ZARISKI/ETALE SERIALIZATION
+-> PRINCIPALIZATION AND FUNCTORIAL RESOLUTION.
+
+General positive-characteristic resolution: OPEN.
