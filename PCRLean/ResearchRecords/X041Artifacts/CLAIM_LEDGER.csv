@@ -1,0 +1,15 @@
+claim_id,parent_group,statement_short,evidence_level,lean_file,status
+X041-G1,HER-03/GLB-05,For every finite normal graded module G the total-degree module G[z] is finite over Sym(E)[z] and sheafifies on P(O plus E),CANDIDATE-SCHEME-THEOREM+LEAN-MODULE-BACKEND,PCRLean/Experimental/HomogenizedGradedFlatness.lean,PARTIAL
+X041-G2,HER-03/GLB-05,Flatness of the homogenized projective sheaf is equivalent to flatness of every normal degree and commutes with flat base change,CANDIDATE-SCHEME-THEOREM+LEAN-MODULE-BACKEND,PCRLean/Experimental/HomogenizedGradedFlatness.lean,PARTIAL
+X041-G3,HER-03/GLB-05,Functorial flatification of the finite proper maximal-carrier packet yields equivariant source words,STANDARD-PREPRINT-INPUT+PROJECT-INTERFACE-OPEN,,OPEN-INTERFACE
+X041-G4,HER-06/HER-15,A finite centre word admits a distinguished composite blowup ideal with exact iterated strict-transform semantics,STANDARD-MATH-CLOSED+LEAN-SCHEME-OPEN,,STANDARD-PROOF-CLOSED
+X041-G5,GLB-03/HER-03,A finite product of centre-exact word ideals is a common refinement and flat terminal transforms pull back,STANDARD-MATH-CLOSED+LEAN-ABSTRACT-BACKEND,PCRLean/Experimental/SourceWordCofinalityCompiler.lean,PARTIAL
+X041-G6,GLB-08/TRM-12,The common source ideal admits strengthened full-portfolio principalization in lower dimension,OPEN-LOAD-BEARING,,OPEN
+X041-G7,HER-05/HER-15,The lower-dimensional regular word lifts to regular jointly legal ambient trace centres,OPEN-LOAD-BEARING,,OPEN
+X041-G8,HER-03/HER-07,A regular flag has only relative-pivot charts meeting the strict carrier and has the canonical exceptional conormal twist,STANDARD-LOCAL-GEOMETRY+LEAN-SCHEME-OPEN,,OPEN-INTERFACE
+X041-G9,HER-02/HER-03,Joint Tor and normal-flat legality gives degreewise old-to-new normal-module equivalences through a nested regular blowup,OPEN-LOAD-BEARING+LEAN-COMPILER,PCRLean/Experimental/DegreewiseFlagFlatLiftCompiler.lean,PARTIAL
+X041-G10,HER-09/GLB-05,Regular-flag degreewise equivalences agree on overlaps and commute with smooth and etale base change,OPEN-LOAD-BEARING,,OPEN
+X041-G11,HER-03/HER-15,Hironaka transitivity and Regular-Flag Flat-Lift preserve passive legality through deepest-first wonderful serialization,ABSTRACT-BACKEND-GREEN+SCHEME-OPEN,,PARTIAL
+X041-G12,HER-13/HER-14/HER-15,All source owner boundary contact packet and debt identities reenter without reset,OPEN-LOAD-BEARING,,OPEN
+X041-G13,TRM-01/TRM-11,Every nested call or outer macro lowers support source flag word or causal rank,ARITHMETIC-LEAN-WRITTEN+GEOMETRY-OPEN,PCRLean/Experimental/HomogenizedCarrierRank.lean,PARTIAL
+X041-G14,CTR-13/HER-05,Every nonterminal prepared state admits a finite actual jointly legal centre word,OPEN-LOAD-BEARING,,OPEN
