@@ -1,0 +1,11 @@
+leaf_id,parent_claim,statement,lean_declaration,status
+X041-L1,X041-G6,Relative power saturation is extensive monotone and idempotent,PCRLean.Experimental.PowerSaturationProduct.powerSaturation_idem,SOURCE-WRITTEN
+X041-L2,X041-G6,Saturation by q*r equals successive saturation by q and r,PCRLean.Experimental.PowerSaturationProduct.powerSaturation_mul,SOURCE-WRITTEN
+X041-L3,X041-G6,Two saturation steps commute over a commutative ring,PCRLean.Experimental.PowerSaturationProduct.powerSaturation_commute,SOURCE-WRITTEN
+X041-L4,X041-G6,A finite divisor word equals one saturation by the product,PCRLean.Experimental.DivisorWordSaturation.wordSaturation_eq_prod,SOURCE-WRITTEN
+X041-L5,X041-G6,Permuting a finite divisor word preserves saturation,PCRLean.Experimental.DivisorWordSaturation.wordSaturation_eq_of_perm,SOURCE-WRITTEN
+X041-L6,X041-G2,A larger finite saturation exponent remains complete,PCRLean.Experimental.SaturatedSourceCapsule.ExponentCertificate.mono,SOURCE-WRITTEN
+X041-L7,X041-G3,A source capsule exponent computes its saturated submodule,PCRLean.Experimental.SaturatedSourceCapsule.Capsule.mem_saturatedSubmodule_iff,SOURCE-WRITTEN
+X041-L8,X041-G3,Permutation-equivalent divisor words produce the same capsule submodule,PCRLean.Experimental.SaturatedSourceCapsule.Capsule.saturatedSubmodule_eq_of_perm,SOURCE-WRITTEN
+X041-L9,X041-G17,A torsion-height drop dominates source and debt changes,PCRLean.Experimental.DecalageSourceRank.torsion_drop,SOURCE-WRITTEN
+X041-L10,X041-G17,The dimension/torsion/source/debt order is well founded,PCRLean.Experimental.DecalageSourceRank.rank_wellFounded,SOURCE-WRITTEN
