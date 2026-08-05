@@ -1,0 +1,128 @@
+name: PCR Fractal X041 saturated-decalage source-word clean room
+
+on:
+  pull_request:
+    branches:
+      - pcr-fractal-x041-scd-dsw-base-20260804
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  x041-cleanroom:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout exact PR merge
+        uses: actions/checkout@v4
+
+      - name: Reject placeholders and project axioms
+        shell: bash
+        run: |
+          set -euo pipefail
+          files=(
+            PCRLean/Experimental/PowerSaturationProduct.lean
+            PCRLean/Experimental/DivisorWordSaturation.lean
+            PCRLean/Experimental/SaturatedSourceCapsule.lean
+            PCRLean/Experimental/DecalageSourceRank.lean
+            PCRLean/Experimental/X041SaturatedDecalageIndex.lean
+          )
+          if grep -RInE '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)|^[[:space:]]*axiom[[:space:]]' "${files[@]}"; then
+            echo 'Forbidden placeholder or project axiom detected.'
+            exit 1
+          fi
+
+      - name: Install pinned Lean toolchain through elan
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+            | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Bootstrap pinned Lake manifest when absent
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          if [[ ! -f lake-manifest.json ]]; then
+            lake update
+          fi
+          test -f lake-manifest.json
+
+      - name: Record exact environment
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          mkdir -p x041-evidence
+          git rev-parse HEAD | tee x041-evidence/COMMIT.txt
+          cat lean-toolchain | tee x041-evidence/LEAN_TOOLCHAIN.txt
+          sha256sum lakefile.toml lake-manifest.json lean-toolchain \
+            | tee x041-evidence/ENVIRONMENT_SHA256SUMS.txt
+          lean --version | tee x041-evidence/LEAN_VERSION.txt
+          lake --version | tee x041-evidence/LAKE_VERSION.txt
+
+      - name: Build official default target
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          lake build 2>&1 | tee x041-evidence/LAKE_BUILD.log
+
+      - name: Build exact X041 module targets
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          modules=(
+            PCRLean.Experimental.PowerSaturationProduct
+            PCRLean.Experimental.DivisorWordSaturation
+            PCRLean.Experimental.SaturatedSourceCapsule
+            PCRLean.Experimental.DecalageSourceRank
+            PCRLean.Experimental.X041SaturatedDecalageIndex
+          )
+          : > x041-evidence/X041_ELABORATION.log
+          for module in "${modules[@]}"; do
+            echo "===== ${module} =====" | tee -a x041-evidence/X041_ELABORATION.log
+            lake build "$module" 2>&1 | tee -a x041-evidence/X041_ELABORATION.log
+          done
+
+      - name: Run unified axiom audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          lake env lean PCRLean/Experimental/X041SaturatedDecalageIndexAudit.lean \
+            2>&1 | tee x041-evidence/X041_AXIOM_AUDIT.log
+          if grep -q 'sorryAx' x041-evidence/X041_AXIOM_AUDIT.log; then
+            echo 'sorryAx detected in axiom output.'
+            exit 1
+          fi
+
+      - name: Snapshot exact sources and protocol artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp PCRLean/Experimental/PowerSaturationProduct.lean x041-evidence/
+          cp PCRLean/Experimental/DivisorWordSaturation.lean x041-evidence/
+          cp PCRLean/Experimental/SaturatedSourceCapsule.lean x041-evidence/
+          cp PCRLean/Experimental/DecalageSourceRank.lean x041-evidence/
+          cp PCRLean/Experimental/X041SaturatedDecalageIndex.lean x041-evidence/
+          cp PCRLean/Experimental/X041SaturatedDecalageIndexAudit.lean x041-evidence/
+          cp PCRLean/ResearchRecords/MLEL_X041_SCD_DSW_REPORT.md x041-evidence/
+          cp PCRLean/ResearchRecords/MLEL_X041_ANNALS_SERIES_MLE.md x041-evidence/
+          cp -R PCRLean/ResearchRecords/X041Artifacts x041-evidence/
+          find x041-evidence -type f -print0 \
+            | sort -z \
+            | xargs -0 sha256sum \
+            | tee x041-evidence/X041_SOURCE_SHA256SUMS.txt
+
+      - name: Upload exact evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: PCR-FRACTAL-X041-SCD-DSW-EVIDENCE
+          path: x041-evidence
+          if-no-files-found: error
+          retention-days: 90
