@@ -104,7 +104,7 @@ noncomputable def transformEquivOfPerm
     (hinherited : C.inherited = D.inherited) :
     C.Transform ≃ₗ[R] D.Transform := by
   have hsub := C.saturatedSubmodule_eq_of_perm D hword hinherited
-  subst hsub
+  rw [hsub]
   exact LinearEquiv.refl R _
 
 end Capsule
