@@ -1,0 +1,9 @@
+leaf_id,parent_claim,statement,lean_declaration,status
+X040-L1,X040-G12,Minimal nonempty stratum is disjoint from or contained in every stratum,PCRLean.Experimental.MinimalStratumNesting.disjoint_or_subset,SOURCE-WRITTEN
+X040-L2,X040-G12,In the non-disjoint case the intersection equals the minimal stratum,PCRLean.Experimental.MinimalStratumNesting.inter_eq_left_of_not_disjoint,SOURCE-WRITTEN
+X040-L3,X040-G3,A binary trace product ideal is contained in each source factor,PCRLean.Experimental.CommonTraceProduct.product_le_inf,SOURCE-WRITTEN
+X040-L4,X040-G3,Trace-product aggregation is symmetric and associative,PCRLean.Experimental.CommonTraceProduct.swap_sources,SOURCE-WRITTEN
+X040-L5,X040-G9,Every original finite stratum lies in one finite powerset completion universe,PCRLean.Experimental.FiniteArrangementCompletion.original_mem_completion,SOURCE-WRITTEN
+X040-L6,X040-G9,The finite completion universe is closed under binary intersection,PCRLean.Experimental.FiniteArrangementCompletion.inter_mem_completion,SOURCE-WRITTEN
+X040-L7,X040-G15,Strict support/source/word drops are well founded,PCRLean.Experimental.CommonFlatifierBudgetRank.rank_wellFounded,SOURCE-WRITTEN
+X040-L8,X040-G9,Two crossing sources can be non-disjoint and non-nested while their completion is contained in both,PCRLean.Experimental.CrossCarrierCompletionModel.E_subset_both,SOURCE-WRITTEN
