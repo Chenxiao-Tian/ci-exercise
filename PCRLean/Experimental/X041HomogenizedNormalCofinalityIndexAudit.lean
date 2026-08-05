@@ -1,0 +1,18 @@
+import PCRLean.Experimental.X041HomogenizedNormalCofinalityIndex
+
+#print axioms PCRLean.Experimental.HomogenizedGradedFlatness.sliceFlat
+#print axioms PCRLean.Experimental.HomogenizedGradedFlatness.homogenizedFlat
+#print axioms PCRLean.Experimental.HomogenizedGradedFlatness.pieceFlat_of_homogenizedFlat
+#print axioms PCRLean.Experimental.HomogenizedGradedFlatness.homogenizedFlat_iff_pieceFlat
+#print axioms PCRLean.Experimental.DegreewiseFlagFlatLiftCompiler.Transport.newPieceFlat
+#print axioms PCRLean.Experimental.DegreewiseFlagFlatLiftCompiler.Transport.newGradedFlat
+#print axioms PCRLean.Experimental.DegreewiseFlagFlatLiftCompiler.Transport.newHomogenizedFlat
+#print axioms PCRLean.Experimental.DegreewiseFlagFlatLiftCompiler.PortfolioTransport.portfolioFlat
+#print axioms PCRLean.Experimental.SourceWordCofinalityCompiler.Certificate.commonFlat
+#print axioms PCRLean.Experimental.SourceWordCofinalityCompiler.Certificate.portfolioFlat
+#print axioms PCRLean.Experimental.HomogenizedCarrierRank.support_drop
+#print axioms PCRLean.Experimental.HomogenizedCarrierRank.source_drop
+#print axioms PCRLean.Experimental.HomogenizedCarrierRank.flag_drop
+#print axioms PCRLean.Experimental.HomogenizedCarrierRank.word_drop
+#print axioms PCRLean.Experimental.HomogenizedCarrierRank.rank_wellFounded
+#print axioms PCRLean.Experimental.X041HomogenizedNormalCofinalityIndex.loaded
