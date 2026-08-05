@@ -1,0 +1,19 @@
+claim_id,parent_group,statement_short,evidence_level,lean_file,status
+X040-G1,CTR-12/HER-03,A finite flatifier word is representable by one source-labelled blowup ideal,STANDARD-MATH+INTERFACE-OPEN,,OPEN-INTERFACE
+X040-G2,HER-06/HER-07,The ambient inverse-image trace ideal restricts to the carrier source ideal and induces the carrier blowup,STANDARD-MATH+LEAN-SCHEME-OPEN,,OPEN-INTERFACE
+X040-G3,GLB-03,A finite product ideal blowup is a common refinement of all source blowups,STANDARD-MATH-CLOSED+LEAN-SCHEME-OPEN,,STANDARD-PROOF-CLOSED
+X040-G4,TRM-04,Componentwise admissibility forces the common trace support below maximal carrier dimension,STANDARD-MATH+LEDGER-OPEN,,OPEN-INTERFACE
+X040-G5,GLB-08/TRM-12,The common trace product admits full-portfolio relative principalization in lower dimension,OPEN-LOAD-BEARING,,OPEN
+X040-G6,HER-05,The principalization word uses regular nonidentity jointly legal ambient centres,OPEN-LOAD-BEARING,,OPEN
+X040-G7,HER-03/HER-15,Flat source strict transforms pull back through the common refinement without extra Cartier torsion,OPEN-LOAD-BEARING,,OPEN
+X040-G8,HER-03,One common word simultaneously prepares every maximal carrier,OPEN-BRIDGE,,OPEN
+X040-G9,CTR-07/GLB-04,The source-enriched intersection completion is finite,EXPERIMENTAL-WRITTEN,PCRLean/Experimental/FiniteArrangementCompletion.lean,PARTIAL
+X040-G10,CTR-05/TRM-04,Bad source intersections enter lower-dimensional support-thickness recursion,OPEN-BRIDGE,,OPEN
+X040-G11,CTR-07/GLB-04,A clean source arrangement admits deepest-first wonderful serialization,STANDARD-TEMPLATE+PROJECT-OPEN,,OPEN
+X040-G12,CTR-07,Every minimal completed stratum is disjoint from or contained in every remaining stratum,EXPERIMENTAL-WRITTEN,PCRLean/Experimental/MinimalStratumNesting.lean,PARTIAL
+X040-G13,HER-03/HER-15,Nested interactions satisfy the all-chart Regular-Flag Flat-Lift theorem,OPEN-LOAD-BEARING,,OPEN
+X040-G14,HER-03,Hironaka transitivity propagates passive legality to every descendant stratum,ABSTRACT-LEAN-GREEN+SCHEME-OPEN,PCRLean/Experimental/HironakaTensorFlatnessCompiler.lean,PARTIAL
+X040-G15,TRM-11,The common passive budget cannot recharge inside completion or wonderful serialization,ARITHMETIC-WRITTEN+GEOMETRY-OPEN,PCRLean/Experimental/CommonFlatifierBudgetRank.lean,PARTIAL
+X040-G16,HER-13/HER-14/HER-15,All sources owners boundaries contacts and debts reenter without reset,OPEN-LOAD-BEARING,,OPEN
+X040-G17,TRM-01/TRM-02,Every later nonempty maximal-source budget has a genuine outer birth witness,OPEN-LOAD-BEARING,,OPEN
+X040-G18,CTR-13/HER-05,Every nonterminal state admits a finite actual jointly legal centre word,OPEN-LOAD-BEARING,,OPEN
