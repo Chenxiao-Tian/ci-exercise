@@ -1,0 +1,17 @@
+import PCRLean.Experimental.X039NormalFlatnessTransitivityIndex
+
+#print axioms PCRLean.Experimental.HironakaTensorFlatnessCompiler.Certificate.totalFlat
+#print axioms PCRLean.Experimental.HironakaTensorFlatnessCompiler.Certificate.flat_iff_tensorFlat
+#print axioms PCRLean.Experimental.HironakaTensorFlatnessCompiler.Certificate.comparison_apply
+#print axioms PCRLean.Experimental.HironakaTensorFlatnessCompiler.PortfolioCertificate.ownerFlat
+#print axioms PCRLean.Experimental.HironakaTensorFlatnessCompiler.PortfolioCertificate.portfolioFlat
+#print axioms PCRLean.Experimental.ExceptionalNoRecharge.noRecharge
+#print axioms PCRLean.Experimental.ExceptionalNoRecharge.successor_eq_bot
+#print axioms PCRLean.Experimental.ExceptionalNoRecharge.finitePortfolio
+#print axioms PCRLean.Experimental.NestedCarrierLegalizationRank.carrier_dimension_drop
+#print axioms PCRLean.Experimental.NestedCarrierLegalizationRank.word_height_drop
+#print axioms PCRLean.Experimental.NestedCarrierLegalizationRank.rees_defect_drop
+#print axioms PCRLean.Experimental.NestedCarrierLegalizationRank.contact_drop
+#print axioms PCRLean.Experimental.NestedCarrierLegalizationRank.debt_drop
+#print axioms PCRLean.Experimental.NestedCarrierLegalizationRank.rank_wellFounded
+#print axioms PCRLean.Experimental.X039NormalFlatnessTransitivityIndex.loaded
