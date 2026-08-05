@@ -1,4 +1,7 @@
 goal_id,parent_claim,lean_statement_short,file,status,priority
+X040-LG0A,X040-G0A,define a finite low-transition/projective-tail comparison certificate for one graded owner,PCRLean/Experimental/FunctorialReesSerrePacket.lean,OPEN,CRITICAL
+X040-LG0B,X040-G0A,compile finite-owner Rees-Serre certificates to all-degree flatness and flat-base-change naturality,PCRLean/Experimental/FunctorialReesSerreCompiler.lean,OPEN,CRITICAL
+X040-LG0C,X040-G0B,formalize equivariance of the finite maximal-carrier groupoid packet and source word,PCRLean/Experimental/MaximalCarrierFlatifierGroupoid.lean,OPEN,CRITICAL
 X040-LG1,X040-G12,finite intersection-closed minimal stratum is disjoint or contained,PCRLean/Experimental/MinimalStratumNesting.lean,SOURCE-WRITTEN,HIGH
 X040-LG2,X040-G3,binary trace product lies below both sources and is symmetric associative,PCRLean/Experimental/CommonTraceProduct.lean,SOURCE-WRITTEN,HIGH
 X040-LG3,X040-G15,common support/source/word rank drops and is well founded,PCRLean/Experimental/CommonFlatifierBudgetRank.lean,SOURCE-WRITTEN,MEDIUM
