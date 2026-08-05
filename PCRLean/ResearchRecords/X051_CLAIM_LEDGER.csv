@@ -1,0 +1,19 @@
+claim_id,parent_group,statement_short,evidence_level,status
+X051-G1,TRM-10,Fixed birational model changes preserve valued-field defect distance best-generator ideal and dependent-independent type,EXACT-DEFINITIONS,CLOSED
+X051-G2,TRM-10,Ordinary blowups cannot create a best generator or change fixed-projection independent defect,DERIVED-G1,CLOSED-NO-GO
+X051-G3,TRM-10,Local uniformization reduces to rank-one valuations,EXTERNAL-NOVACOSKI-SPIVAKOVSKY,CLOSED-EXTERNAL
+X051-G4,TRM-10,No-transcendence-defect valued function fields over a defectless base are defectless,EXTERNAL-GENERALIZED-STABILITY,CLOSED-EXTERNAL
+X051-G5,TRM-10,Genuine class V over a perfect ground field has positive transcendence defect,DERIVED-G4,CLOSED
+X051-G6,TRM-10,Independent Artin-Schreier defect has idempotent distance,EXTERNAL-KUHLMANN,CLOSED-EXTERNAL
+X051-G7,TRM-10,Rank-one independent defect has distance 0-minus and nonfinitely-generated idempotent maximal best-generator ideal,DERIVED-G6+VALUATION-ALGEBRA,CLOSED
+X051-G8,TRM-10,Valuation-algebraic transcendence-degree-one function fields become henselian rational after finite base extension,EXTERNAL-KUHLMANN,CLOSED-EXTERNAL
+X051-G9,TRM-10,A finite state in a henselization descends to one finite etale neighbourhood,STANDARD-FINITE-PRESENTATION,CLOSED
+X051-G10,TRM-10,Given a henselian-rational reprojection certificate the complete finite state admits an upper regular preparation word,LOWER-DIMENSION+X044,CONDITIONAL-CLOSED
+X051-G11,TRM-10,The certified upper word descends to an ordinary base word through X047 Cech-Rees and X049 Norm-Rees machinery,DERIVED-X047-X049,CONDITIONAL-CLOSED
+X051-G12,TRM-10,Finite-state class-V escape is closed in the certified henselian-rational reprojection chamber,DERIVED-G10-G11,CONDITIONAL-CLOSED
+X051-G13,TRM-10,Uniform Rank-One Henselian Reprojection on every primitive neighbourhood,OPEN-LOAD-BEARING,OPEN
+X051-G14,TRM-10,URHR creates no equal-or-higher class-V token with fresh ancestry,OPEN-LOAD-BEARING,OPEN
+X051-G15,TRM-12,URHR plus rank-one composition gives strict class-V multiset descent,CONDITIONAL-ON-G13-G14,OPEN
+X051-G16,TRM-12,Coherent and class-V multisets give full global source-causal termination,CONDITIONAL-ON-G15,OPEN
+X051-G17,GLB-07,Finite Zariski-etale serialization and functorial globalization,OPEN-FINAL,OPEN
+X051-G18,FIN-01,Principalization and functorial resolution over perfect fields,OPEN-FINAL,OPEN
