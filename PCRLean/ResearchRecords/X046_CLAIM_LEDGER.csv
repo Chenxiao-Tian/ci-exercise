@@ -1,0 +1,18 @@
+claim_id,parent_group,statement_short,evidence_level,status
+X046-G1,TRM-08,Finite event-visible valuation observables admit one finite shadow hull on a finite common model,STANDARD-QC+FINITE-CONSTRUCTION,CLOSED-INTERFACE
+X046-G2,TRM-08,Finite valued extensions refine to prime-degree towers and nontrivial defect is detected in a prime layer,STANDARD-VALUATION,CLOSED
+X046-G3,TRM-08,Prime Galois defect layers admit dependent-independent classification in the declared cases,STANDARD-VALUATION,CLOSED-SCOPE
+X046-G4,TRM-08,Defectless projection and Abhyankar routes give positive valuation escape,EXTERNAL-THEOREMS,CLOSED-SCOPE
+X046-G5,TRM-08,Every valuation admits local uniformization after finite extension or purely inseparable alteration,EXTERNAL-THEOREMS,CLOSED-SCOPE
+X046-G6,TRM-08,Dependent defect can be enrolled as a paired radicial shadow packet,CLASSIFICATION+GEOMETRIC-INTERFACE,CONDITIONAL
+X046-G7,TRM-08,Independent prime layers have a finite differential-ramification shadow portfolio on finite models,FINITE-PRESENTATION+EXTERNAL-CHARACTERIZATIONS,CLOSED-INTERFACE
+X046-G8,TRM-09,A quasi-compact valuation neighbourhood admits a finite uniformizing alteration portfolio for the finite event-visible packet,QC+EXTERNAL-LOCAL-UNIFORMIZATION,CONDITIONAL-CLOSED
+X046-G9,TRM-09,Layerwise alteration shadows compose by a finite octahedral filtration,STANDARD-DERIVED,CLOSED
+X046-G10,TRM-09,Proper pushforward and exactification produce a coherent downstairs alteration-shadow portfolio,STANDARD-COHERENCE+PROJECT-INTERFACE,CLOSED-INTERFACE
+X046-G11,TRM-10,Genuinely new coherent alteration shadows satisfy Noetherian ACC in a fixed ancestor envelope,NOETHERIAN,CONDITIONAL-CLOSED
+X046-G12,TRM-10,Stable independent defect visible to the complete packet has an effective coherent alteration shadow or exact monomial descent,OPEN-LOAD-BEARING,OPEN
+X046-G13,TRM-10,Independent-Defect Effectivity yields a finite uniform actual centre tree on the valuation neighbourhood,DERIVED-FROM-G12+X044,OPEN
+X046-G14,TRM-11,IDE supplies a strict nonresetting class-V profile and no equal-or-higher V birth,OPEN-LOAD-BEARING,OPEN
+X046-G15,TRM-12,X045 coherent ordinal plus class-V profile gives full source-causal termination,CONDITIONAL-ON-G13-G14,OPEN
+X046-G16,GLB-07,Finite Zariski-etale serialization after termination,OPEN-FINAL,OPEN
+X046-G17,FIN-01,Principalization embedded resolution and functorial intrinsic resolution,OPEN-FINAL,OPEN
