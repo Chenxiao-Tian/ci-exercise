@@ -1,5 +1,7 @@
 edge_id,parent_claim,child_claims,decomposition_kind,soundness_status,coverage_status,naturality_status,rank_status
-EDGE-X040-01,X040-G5,X040-G1|X040-G2|X040-G3|X040-G4,common-source-product-reduction,STANDARD-CORE/PROJECT-OPEN,N/A,OPEN,PARTIAL
+EDGE-X040-00A,X040-G0B,X040-G0A,functorial-proper-flatification,STANDARD-INPUT/PROJECT-INTERFACE-OPEN,OPEN,PARTIAL,N/A
+EDGE-X040-00B,X040-G1,X040-G0B,finite-word-source-compression,STANDARD-MATH/SEMANTIC-OPEN,N/A,OPEN,N/A
+EDGE-X040-01,X040-G5,X040-G0B|X040-G1|X040-G2|X040-G3|X040-G4,functorial-common-source-product-reduction,STANDARD-CORE/PROJECT-OPEN,N/A,PARTIAL,PARTIAL
 EDGE-X040-02,X040-G8,X040-G5|X040-G6|X040-G7,common-flatifier-realization,OPEN,OPEN,OPEN,OPEN
 EDGE-X040-03,X040-G10,X040-G9,support-thickness-defect-routing,OPEN,OPEN,OPEN,OPEN
 EDGE-X040-04,X040-G13,X040-G9|X040-G11|X040-G12,crossing-to-disjoint-or-nested,COMBINATORIAL-PARTIAL/SCHEME-OPEN,PARTIAL,OPEN,N/A
