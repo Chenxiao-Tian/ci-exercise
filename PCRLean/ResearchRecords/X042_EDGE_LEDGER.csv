@@ -1,0 +1,8 @@
+edge_id,parent_claim,child_claims,decomposition_kind,soundness_status
+EDGE-X042-01,X042-G9,X042-G5|X042-G6|X042-G7|X042-G8|X042-G8A,exactified-regular-flag-comparison,CONDITIONAL-CLOSED
+EDGE-X042-02,X042-G10,X042-G1|X042-G2|X042-G3,terminal-source-realization,CLOSED
+EDGE-X042-03,X042-G11,X042-G9|CTR-13,ambient-regular-trace-realization,OPEN
+EDGE-X042-04,X042-G12,X042-G8A|X042-G11,successor-comparison-identification,OPEN
+EDGE-X042-05,X042-G13,X042-G10|X042-G12,all-chart-heredity,OPEN
+EDGE-X042-06,X042-G14,X042-G13|TRM-11,causal-termination,OPEN
+EDGE-X042-07,X042-G15,X042-G14|GLB-07|GLB-08,global-resolution,OPEN-FINAL
