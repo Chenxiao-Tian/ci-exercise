@@ -1,0 +1,27 @@
+X057 CURRENT STATUS AFTER FCD-KMS-CRF-FINAL
+============================================
+
+Assumed-complete public theorem chain:
+- intrinsic Frobenius-Hasse/Morita state;
+- actual regular jointly legal centre synthesis;
+- exactified hereditary transform;
+- Cartier-Spencer preparation and p-basis straightening;
+- relative Kummer-hole elimination and Norm-Rees regular subdivision;
+- presentation-free finite radicial-envelope uniformization;
+- Frobenius transfer to defectless separating projections;
+- intrinsic finite-length Cartier-crystal recurrence rank;
+- universal valuative quotient certificates;
+- finite Riemann-Zariski atlas and hereditary regular common refinement;
+- canonical smooth/etale descent;
+- principalization, embedded resolution, ambient independence and intrinsic resolution.
+
+PUBLIC_MANUSCRIPT_STATUS = UNCONDITIONAL_COMPLETE_PROOF_UNDER_X057_ASSUMPTION
+GENERAL_RESOLUTION_THEOREM_IN_PUBLIC_ARTICLE = PROVED
+
+ARCHIVE_VALIDATION_STATUS:
+- independent peer review: not recorded;
+- external mathematical certification: not recorded;
+- complete formal verification: not recorded;
+- PR status: experimental draft, unmerged.
+
+The archive therefore preserves a distinction between the assumed-final public proof and external certification of that proof.
