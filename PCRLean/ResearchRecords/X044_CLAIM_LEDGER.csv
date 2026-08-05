@@ -1,0 +1,22 @@
+claim_id,parent_group,statement_short,evidence_level,status
+X044-G1,CTR-05,Finite coloured obstruction portfolio exists for every finite intrinsic packet,FINITE-NOETHERIAN,CLOSED-CONSTRUCTION
+X044-G2,CTR-05,Good locus equals regular clean active passive logarithmic locus,STANDARD-LOCI+PACKAGE,CLOSED-INTERFACE
+X044-G3,CTR-12,Bad support is contained in the proper nonterminal locus and has lower carrier dimension,SCHEME-SUPPORT,CLOSED
+X044-G4,CTR-12,Coloured ideals and modules form one finite multigraded Rees package,NOETHERIAN,CLOSED
+X044-G5,CTR-13,Lower-dimensional full-portfolio theorem simultaneously monomializes the obstruction package,INDUCTIVE,CONDITIONAL-CLOSED
+X044-G6,CTR-13,Common-power sum gives exact joint permissibility for regular centres and commutes with controlled transform,REGULAR-GRADED-ROOT,CLOSED
+X044-G7,CTR-13,Prepared monomial owners define a finite upward-closed admissibility face complex,FINITE-COMBINATORICS,CLOSED
+X044-G8,CTR-13,Ordinary monomial marked-ideal algorithm resolves the aggregate by permissible regular strata,STANDARD-MONOMIAL,CLOSED-INPUT
+X044-G9,CTR-09,Nilpotent thickness and contact colours are handled by the same aggregate block,INDUCTIVE+MONOMIAL,CONDITIONAL-CLOSED
+X044-G10,TRM-04,Projectivized residual contact height strictly drops on every surviving contact direction,LOCAL-CHART-THEOREM,CLOSED
+X044-G11,TRM-04,One centre block has a strict finite preparation-monomial-word rank,FINITE-WORD,CLOSED
+X044-G12,TRM-05,All source labels inside one block lie in a finite join semilattice,FINITE-COMBINATORICS,CLOSED
+X044-G13,TRM-05,Every block transition has a finite coherent choice-free successor event complex,FINITE-DERIVED-CONSTRUCTION,CLOSED-CONSTRUCTION
+X044-G14,CTR-13,Every nonterminal packet admits an actual centre word under lower-dimensional induction,INDUCTIVE-SYNTHESIS,CONDITIONAL-CLOSED
+X044-G15,TRM-05,One ancestor cannot recur in infinitely many later event complexes,OPEN-LOAD-BEARING,OPEN
+X044-G16,TRM-06,No source splitting or cloning across successive blocks,OPEN-LOAD-BEARING,OPEN
+X044-G17,TRM-12,Every recurrent wild class exits,OPEN-LOAD-BEARING,OPEN
+X044-G18,TRM-12,Every immediate-defect end is algebraized on a finite common model,OPEN-LOAD-BEARING,OPEN
+X044-G19,TRM-12,One strict global source-causal rank exists,OPEN-FINAL,OPEN
+X044-G20,GLB-07,Finite functorial globalization and principalization,OPEN-FINAL,OPEN
+X044-G21,FIN-01,Final functorial resolution over perfect fields,OPEN-FINAL,OPEN

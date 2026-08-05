@@ -1,0 +1,7 @@
+edge_id,parent_claim,child_claims,decomposition_kind,soundness_status
+EDGE-X044-01,X044-G5,X044-G1|X044-G2|X044-G3|X044-G4,simultaneous-coloured-preparation,CONDITIONAL-INDUCTIVE
+EDGE-X044-02,X044-G8,X044-G6|X044-G7,joint-aggregate-monomial-word,CLOSED-STANDARD
+EDGE-X044-03,X044-G9,X044-G5|X044-G6|X044-G8|X044-G10,support-thickness-aggregate-closure,CONDITIONAL-INDUCTIVE
+EDGE-X044-04,X044-G14,X044-G5|X044-G8|X044-G9|X044-G11|X044-G12|X044-G13,universal-actual-centre-synthesis,CONDITIONAL-CLOSED
+EDGE-X044-05,X044-G19,X044-G13|X044-G15|X044-G16|X044-G17|X044-G18,source-causal-global-termination,OPEN
+EDGE-X044-06,X044-G21,X044-G14|X044-G19|X044-G20|GLB-04|GLB-08,global-functorial-resolution,OPEN-FINAL

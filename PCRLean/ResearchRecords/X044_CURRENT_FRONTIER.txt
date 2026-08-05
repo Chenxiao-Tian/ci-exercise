@@ -1,0 +1,21 @@
+X044 CURRENT FRONTIER AFTER COP-PCH-UCS-FINAL
+================================================
+
+Closed or conditionally closed:
+- finite coloured multi-Rees obstruction portfolio;
+- exact simultaneous good locus and lower-dimensional bad support;
+- projectivized residual contact profile and one-step height drop;
+- exact common-mark joint aggregate on regular centres;
+- ordinary characteristic-free monomial face resolution;
+- source-closed actual-centre blocks;
+- bounded coherent successor event complexes and choice-free birth packets;
+- X042/X043 joint legality and all-chart hereditary reentry.
+
+Dominant open cut in the research baseline:
+ANCESTRAL NO-REPETITION ACROSS EVENT COMPLEXES
+-> UNIVERSAL RECURRENT-CLASS EXIT
+-> IMMEDIATE-DEFECT ALGEBRAIZATION
+-> STRICT GLOBAL SOURCE-CAUSAL TERMINATION
+-> FINITE FUNCTORIAL GLOBALIZATION.
+
+General positive-characteristic resolution: OPEN.
