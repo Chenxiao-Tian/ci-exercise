@@ -118,6 +118,7 @@ jobs:
           cp PCRLean/ResearchRecords/MLEL_X041_ITERATION_AND_TOR_FIREWALL_SUPPLEMENT.md x041-evidence/
           cp PCRLean/ResearchRecords/MLEL_X041_RECHARGE_CORRECTION.md x041-evidence/
           cp PCRLean/ResearchRecords/MLEL_X041_ANNALS_SERIES_MLE.md x041-evidence/
+          cp PCRLean/ResearchRecords/MLEL_X041_ANNALS_RECHARGE_ADDENDUM.md x041-evidence/
           cp -R PCRLean/ResearchRecords/X041Artifacts x041-evidence/
           find x041-evidence -type f -print0 \
             | sort -z \
