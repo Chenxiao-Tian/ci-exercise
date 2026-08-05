@@ -1,0 +1,21 @@
+claim_id,parent_group,statement_short,evidence_level,status
+X048-G1,TRM-10,Finite-flat ideals have canonical lower annihilator and upper content descent ideals,FINITE-PROJECTIVE-ALGEBRA,CLOSED
+X048-G2,TRM-10,An upper ideal descends iff its lower and upper descent ideals coincide,FINITE-PROJECTIVE-ALGEBRA,CLOSED
+X048-G3,TRM-10,The exact descent-gap module is finite and vanishes exactly in the descent chamber,FINITE-PRESENTATION,CLOSED
+X048-G4,TRM-10,Invertible ideals over a finite extension of DVRs descend iff exponents are ramification-balanced,VALUATION-ALGEBRA,CLOSED
+X048-G5,TRM-10,Nonzero divisorial ramification residue persists under ordinary base blowups,REGULAR-BIRATIONAL-CODIM1,CLOSED
+X048-G6,TRM-10,Universal descent of arbitrary upper regular centres is false,EXPLICIT-RAMIFIED-COUNTEREXAMPLE,FAILED-EDGE
+X048-G7,TRM-10,Diagonal monomial norm-Newton pullback has the integral closure of the n-th power of the upper ideal,MONOMIAL-NEWTON-ALGEBRA,CLOSED
+X048-G8,TRM-10,Normalized blowups of the norm-Newton ideal and upper monomial ideal have the same toric fan after base change,TORIC-NEWTON,CLOSED
+X048-G9,TRM-10,A regular base toroidal word principalizes the upper monomial ideal after normalized pullback,STANDARD-TOROIDAL-REFINEMENT,CLOSED-IN-DIAGONAL-CHAMBER
+X048-G10,CTR-13,Joint marked norm-Newton preparation treats all active monomial colours simultaneously,DERIVED-X044+G7,CONDITIONAL-CLOSED
+X048-G11,TRM-10,Balanced descent gaps are supported in codimension at least two,LOCAL-CODIM1-CRITERION,CLOSED-IN-MONOMIAL-CHAMBER
+X048-G12,TRM-10,Global norm-Rees/Newton shadow independent of local diagonal charts,OPEN-LOAD-BEARING,OPEN
+X048-G13,TRM-10,Toroidalization of the finite event-visible wild map with complete packet,OPEN-LOAD-BEARING,OPEN
+X048-G14,TRM-10,Exact comparison of normalized pullback with the complete successor packet,OPEN-LOAD-BEARING,OPEN
+X048-G15,TRM-10,Every balanced residual shadow is strictly reduced by a downstairs X044 block,OPEN-LOAD-BEARING,OPEN
+X048-G16,TRM-10,Ramification-Balanced Base-First Wild Preparation,CONDITIONAL-G12-G15,OPEN
+X048-G17,TRM-10,RB-BFWP implies UDE-EV and no equal-or-higher class-V birth,CONDITIONAL,OPEN
+X048-G18,TRM-12,Strict class-V ordinal and full global source-causal termination,CONDITIONAL-G17,OPEN
+X048-G19,GLB-07,Finite Zariski-etale serialization and functorial globalization,OPEN-FINAL,OPEN
+X048-G20,FIN-01,Principalization and functorial resolution over perfect fields,OPEN-FINAL,OPEN
