@@ -110,6 +110,8 @@ jobs:
           cp PCRLean/Experimental/X039NormalFlatnessTransitivityIndexAudit.lean x039-evidence/
           cp PCRLean/ResearchRecords/MLEL_X039_NTR_RFL_REPORT.md x039-evidence/
           cp PCRLean/ResearchRecords/MLEL_X039_ANNALS_SERIES_MLE.md x039-evidence/
+          cp PCRLean/ResearchRecords/MLEL_X039_FLAT_WONDERFUL_PERSISTENCE_SUPPLEMENT.md x039-evidence/
+          cp PCRLean/ResearchRecords/MLEL_X039_MAXIMAL_CARRIER_PASSIVE_BUDGET_SUPPLEMENT.md x039-evidence/
           cp -R PCRLean/ResearchRecords/X039Artifacts x039-evidence/
           find x039-evidence -type f -print0 \
             | sort -z \
