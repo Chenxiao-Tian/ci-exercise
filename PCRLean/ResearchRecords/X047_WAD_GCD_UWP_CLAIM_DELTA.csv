@@ -1,0 +1,13 @@
+claim_id,parent_group,statement_short,evidence_level,status
+X047-W1,TRM-10,The complete stagewise Amitsur discrepancy of a finite upper word is bounded coherent downstairs,FINITE-FLAT+FINITE-PRESENTATION,CLOSED
+X047-W2,TRM-10,The first nonzero primitive Amitsur layer is a proper coherent colour on the base,FINITE-PUSHFORWARD+FITTING,CLOSED
+X047-W3,TRM-10,Fixed-profile Amitsur discrepancies lie in one finite Noetherian ancestor envelope,FINITE-GRAMMAR,CONDITIONAL-CLOSED
+X047-W4,TRM-10,A genuinely new discrepancy layer strictly enlarges the consumed submodule of the ancestor envelope,X045-EXACTIFICATION+SOURCE-FILTRATION,CONDITIONAL-CLOSED
+X047-W5,TRM-10,Discrepancy-purification rounds terminate by earlier-profile descent or Noetherian ACC,DERIVED-W3-W4,CONDITIONAL-CLOSED
+X047-W6,TRM-10,Every given finite upper monomial word becomes groupoid-compatible after finitely many downstairs preparations,DERIVED-W1-W5+X044,CONDITIONAL
+X047-W7,TRM-10,Zero final discrepancy descends the complete word stagewise,X047-ZERO-SHADOW,CLOSED
+X047-W8,TRM-10,Uniform Wild Preparation on one degree-p wild layer,OPEN-LOAD-BEARING,OPEN
+X047-W9,TRM-10,UWP plus discrepancy purification implies UDE-EV and removal of the class-V token,CONDITIONAL,OPEN
+X047-W10,TRM-12,UWP completes the global recurrence multiset descent,CONDITIONAL-ON-X045,OPEN
+X047-W11,GLB-07,Finite functorial global serialization after termination,OPEN-FINAL,OPEN
+X047-W12,FIN-01,Principalization and resolution over perfect fields,OPEN-FINAL,OPEN
