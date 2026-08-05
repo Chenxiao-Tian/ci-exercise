@@ -1,0 +1,16 @@
+claim_id,statement_short,status
+X056-G1,Height-one radicial morphisms are encoded by saturated p-closed logarithmic foliations,CLOSED-IN-X056
+X056-G2,Hasse-stable centre ideals descend uniquely through a Frobenius sandwich,CLOSED-IN-X056
+X056-G3,Rees algebras and strict-transform words commute with sandwich descent,CLOSED-IN-X056
+X056-G4,The finite foliation state strictly decreases on every nonterminal chart,CLOSED-IN-X056
+X056-G5,Logarithmic Cartier straightening gives a regular invariant ring,CLOSED-IN-X056
+X056-G6,Smooth p-constants satisfy ker(d)=R^p over a perfect field,CLOSED
+X056-G7,Ferrand norm ideals encode terminal source toric subdivisions on the base,CLOSED-IN-X056
+X056-G8,Base-first Norm-Rees regularization uses only ordinary regular-centre blowups,CLOSED-IN-X056
+X056-G9,The canonical Frobenius filtration is independent of root presentations,CLOSED
+X056-G10,Arbitrary finite purely inseparable envelopes are uniformized by the canonical filtration,CLOSED-IN-X056
+X056-G11,Frobenius transfer produces a defectless separating projection,CLOSED-IN-X056
+X056-G12,Valuation certificates are finite quotients of the complete intrinsic state,CLOSED-IN-X056
+X056-G13,The intrinsic successor sequence terminates,CLOSED-IN-X056
+X056-G14,Embedded resolution and principalization over perfect fields,CLOSED-IN-PUBLIC-X056
+X056-G15,Smooth-functorial intrinsic resolution,CLOSED-IN-PUBLIC-X056
