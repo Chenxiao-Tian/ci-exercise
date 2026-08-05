@@ -1,0 +1,28 @@
+X048 CURRENT FRONTIER AFTER FDI-RRF-NNW-FINAL
+==============================================
+
+Closed or reduced to exact/standard interfaces:
+- finite-flat lower and upper descent ideals;
+- exact ideal-descent criterion and finite descent-gap packet;
+- codimension-one ramification-balance theorem;
+- persistence of nonzero divisorial residue under ordinary base blowups;
+- no-go for universal descent of arbitrary regular upper centres;
+- diagonal monomial norm--Newton pullback identity;
+- normalized blowup comparison by Newton fans;
+- base-first ordinary toroidal monomialization in the diagonal chamber;
+- simultaneous marked norm--Newton preparation;
+- X047 zero-shadow descent retained as the clean descent chamber;
+- X045 coherent recurrent-class termination and X044 actual-centre synthesis.
+
+Dominant open cut:
+RAMIFICATION-BALANCED BASE-FIRST WILD PREPARATION (RB-BFWP)
+-> GLOBAL NORM-REES/NEWTON SHADOW
+-> STRICT REDUCTION OF EVERY BALANCED CECH/DIFFERENTIAL SHADOW
+-> UDE-EV
+-> NO EQUAL-OR-HIGHER CLASS-V BIRTH
+-> STRICT CLASS-V ORDINAL
+-> FULL GLOBAL SOURCE-CAUSAL TERMINATION
+-> FINITE ZARISKI/ETALE SERIALIZATION
+-> PRINCIPALIZATION AND FUNCTORIAL RESOLUTION.
+
+General positive-characteristic resolution: OPEN.
