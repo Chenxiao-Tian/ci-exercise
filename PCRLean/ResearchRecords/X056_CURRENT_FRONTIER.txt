@@ -1,0 +1,20 @@
+X056 CURRENT STATE
+==================
+
+Public manuscript status under the user's X056 assumption:
+- complete ordinary embedded resolution over perfect fields of positive characteristic;
+- principalization;
+- ambient independence;
+- intrinsic resolution;
+- smooth/etale functoriality.
+
+New X056 closure:
+- logarithmic Cartier kernel;
+- finite Cartier-height peeling;
+- simultaneous root-relation row reduction;
+- saturated Kummer-monoid terminalization;
+- presentation- and tower-independent radicial-envelope uniformization.
+
+External validation boundary:
+- independent peer review not recorded;
+- complete formal certification not recorded.
