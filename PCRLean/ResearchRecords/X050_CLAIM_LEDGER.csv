@@ -1,0 +1,16 @@
+claim_id,parent_group,statement_short,evidence_level,status
+X050-G1,TRM-10,The Artin-Schreier best-generator ideal H(L/K) is well defined,STANDARD-VALUATION-THEORY,CLOSED
+X050-G2,TRM-10,H finitely generated iff principal iff best f exists iff the extension is defectless,STANDARD+ELEMENTARY,CLOSED
+X050-G3,TRM-10,A genuine Artin-Schreier defect carrier is not the pullback of a coherent ideal on a finite Noetherian model,DERIVED-G2,CLOSED
+X050-G4,TRM-10,The improvement cut is attained iff a best generator exists,DEFINITION+G2,CLOSED
+X050-G5,TRM-10,A fixed finite approximation index or cofinal-tail shift is not an intrinsic cut rank,PRO-CATEGORY-NO-GO,CLOSED
+X050-G6,TRM-10,Visible coherent improvements satisfy Noetherian ACC in a fixed ancestor envelope,NOETHERIAN,CLOSED-CONDITIONAL
+X050-G7,TRM-10,Full local or weak monomialization is not a universal positive-characteristic wild target,EXTERNAL-COUNTEREXAMPLE,CLOSED-NO-GO
+X050-G8,CTR-13,Every finite event-visible coherent state admits finite-state preparation,CONDITIONAL-ON-X044-X049,CONDITIONAL
+X050-G9,TRM-10,Every hypothetical infinite class-V branch reduces to a stable nonattained cut after coherent stabilization,CONDITIONAL-SEMANTIC-COMPLETENESS,CONDITIONAL
+X050-G10,TRM-10,Dependent defect enters the radicial branch,VALUATION-CLASSIFICATION+GEOMETRIC-INTERFACE,CONDITIONAL
+X050-G11,TRM-10,Uniform Nonattained-Cut Escape for independent defect,OPEN-LOAD-BEARING,OPEN
+X050-G12,TRM-11,UNCE gives a strict nonresetting class-V order,CONDITIONAL-ON-G11,OPEN
+X050-G13,TRM-12,Class-V order plus X045 coherent descent gives full global termination,CONDITIONAL,OPEN
+X050-G14,GLB-07,Finite Zariski-etale serialization and functorial globalization,OPEN-FINAL,OPEN
+X050-G15,FIN-01,Principalization and functorial resolution over perfect fields,OPEN-FINAL,OPEN
