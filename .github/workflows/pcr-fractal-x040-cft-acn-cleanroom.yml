@@ -1,0 +1,131 @@
+name: PCR Fractal X040 common-flatifier trace clean room
+
+on:
+  pull_request:
+    branches:
+      - pcr-fractal-x040-cft-acn-base-20260804
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  x040-cleanroom:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout exact PR merge
+        uses: actions/checkout@v4
+
+      - name: Reject placeholders and project axioms
+        shell: bash
+        run: |
+          set -euo pipefail
+          files=(
+            PCRLean/Experimental/MinimalStratumNesting.lean
+            PCRLean/Experimental/CommonTraceProduct.lean
+            PCRLean/Experimental/CommonFlatifierBudgetRank.lean
+            PCRLean/Experimental/FiniteArrangementCompletion.lean
+            PCRLean/Experimental/CrossCarrierCompletionModel.lean
+            PCRLean/Experimental/X040CommonFlatifierTraceIndex.lean
+          )
+          if grep -RInE '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)|^[[:space:]]*axiom[[:space:]]' "${files[@]}"; then
+            echo 'Forbidden placeholder or project axiom detected.'
+            exit 1
+          fi
+
+      - name: Install pinned Lean toolchain through elan
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+            | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Bootstrap pinned Lake manifest when absent
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          if [[ ! -f lake-manifest.json ]]; then
+            lake update
+          fi
+          test -f lake-manifest.json
+
+      - name: Record exact environment
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          mkdir -p x040-evidence
+          git rev-parse HEAD | tee x040-evidence/COMMIT.txt
+          cat lean-toolchain | tee x040-evidence/LEAN_TOOLCHAIN.txt
+          sha256sum lakefile.toml lake-manifest.json lean-toolchain \
+            | tee x040-evidence/ENVIRONMENT_SHA256SUMS.txt
+          lean --version | tee x040-evidence/LEAN_VERSION.txt
+          lake --version | tee x040-evidence/LAKE_VERSION.txt
+
+      - name: Build official default target
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          lake build 2>&1 | tee x040-evidence/LAKE_BUILD.log
+
+      - name: Build exact X040 module targets
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          modules=(
+            PCRLean.Experimental.MinimalStratumNesting
+            PCRLean.Experimental.CommonTraceProduct
+            PCRLean.Experimental.CommonFlatifierBudgetRank
+            PCRLean.Experimental.FiniteArrangementCompletion
+            PCRLean.Experimental.CrossCarrierCompletionModel
+            PCRLean.Experimental.X040CommonFlatifierTraceIndex
+          )
+          : > x040-evidence/X040_ELABORATION.log
+          for module in "${modules[@]}"; do
+            echo "===== ${module} =====" | tee -a x040-evidence/X040_ELABORATION.log
+            lake build "$module" 2>&1 | tee -a x040-evidence/X040_ELABORATION.log
+          done
+
+      - name: Run unified axiom audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$HOME/.elan/env"
+          lake env lean PCRLean/Experimental/X040CommonFlatifierTraceIndexAudit.lean \
+            2>&1 | tee x040-evidence/X040_AXIOM_AUDIT.log
+          if grep -q 'sorryAx' x040-evidence/X040_AXIOM_AUDIT.log; then
+            echo 'sorryAx detected in axiom output.'
+            exit 1
+          fi
+
+      - name: Snapshot exact sources and protocol artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp PCRLean/Experimental/MinimalStratumNesting.lean x040-evidence/
+          cp PCRLean/Experimental/CommonTraceProduct.lean x040-evidence/
+          cp PCRLean/Experimental/CommonFlatifierBudgetRank.lean x040-evidence/
+          cp PCRLean/Experimental/FiniteArrangementCompletion.lean x040-evidence/
+          cp PCRLean/Experimental/CrossCarrierCompletionModel.lean x040-evidence/
+          cp PCRLean/Experimental/X040CommonFlatifierTraceIndex.lean x040-evidence/
+          cp PCRLean/Experimental/X040CommonFlatifierTraceIndexAudit.lean x040-evidence/
+          cp PCRLean/ResearchRecords/MLEL_X040_CFT_ACN_REPORT.md x040-evidence/
+          cp PCRLean/ResearchRecords/MLEL_X040_ANNALS_SERIES_MLE.md x040-evidence/
+          cp -R PCRLean/ResearchRecords/X040Artifacts x040-evidence/
+          find x040-evidence -type f -print0 \
+            | sort -z \
+            | xargs -0 sha256sum \
+            | tee x040-evidence/X040_SOURCE_SHA256SUMS.txt
+
+      - name: Upload exact evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: PCR-FRACTAL-X040-CFT-ACN-EVIDENCE
+          path: x040-evidence
+          if-no-files-found: error
+          retention-days: 90
