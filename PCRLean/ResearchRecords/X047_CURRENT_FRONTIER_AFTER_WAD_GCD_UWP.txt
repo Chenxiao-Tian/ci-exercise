@@ -1,0 +1,35 @@
+X047 CURRENT FRONTIER AFTER WAD-GCD-UWP-FINAL
+==============================================
+
+Closed or reduced to standard/conditional finite interfaces:
+- finite-flat Cech-Rees descent and zero-shadow word effectivity;
+- complete finite Amitsur discrepancy for an upper centre word;
+- coherent effectivity of its first nonzero primitive layer;
+- fixed Noetherian Amitsur ancestor envelope;
+- no repeated charging of discrepancy layers;
+- finite discrepancy-purification iteration;
+- conditional groupoid-compatible descent of every given finite upper monomial word;
+- finite wild-tower compilation through the event octahedron;
+- X045 coherent recurrent-class termination;
+- X044 actual-centre synthesis and X042-X043 legality/reentry.
+
+SINGLE DOMINANT TARGET:
+UNIFORM WILD PREPARATION (UWP)
+
+Required output:
+one finite ordinary upper word on a finite regular wild model,
+uniform on a quasi-compact independent Artin-Schreier neighbourhood,
+which monomializes the complete event-visible coloured state and preserves
+all data needed by the Amitsur discrepancy.
+
+Then:
+UWP
+-> finite Amitsur discrepancy purification
+-> descended ordinary jointly legal word
+-> UDE-EV
+-> class-V elimination
+-> full global source-causal termination
+-> finite Zariski/etale serialization
+-> principalization and functorial resolution.
+
+General positive-characteristic resolution: OPEN.

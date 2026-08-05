@@ -1,0 +1,28 @@
+X047 CURRENT FRONTIER AFTER FCD-RAE-ZSD-FINAL
+==============================================
+
+Closed or reduced to standard/finite interfaces:
+- good-open flattening of a proper alteration to a finite locally free cover;
+- finite coherent Cech-Rees shadow on the double and triple fibre products;
+- coherent effectivity of the first nonzero Cech layer;
+- fpqc descent of complete coherent coloured objects;
+- descent of ideals, graded Rees algebras and their structure maps;
+- flat-base-change identity for blowups;
+- fpqc descent of quasi-regular/regular centres and finite legality certificates;
+- stagewise descent of a zero-shadow ordinary centre word;
+- terminal certificate descent;
+- zero-shadow exact descent for one independent Artin-Schreier degree-p layer;
+- finite wild-tower compilation by the X045 event octahedron;
+- X045 coherent recurrent-class termination and X044 actual-centre synthesis.
+
+Dominant open cut:
+CECH-COMPATIBLE WILD MONOMIALIZATION (CCWM)
+-> STRICT REDUCTION OF EVERY NONZERO CECH/DIFFERENTIAL SHADOW
+-> UDE-EV
+-> NO EQUAL-OR-HIGHER CLASS-V BIRTH
+-> STRICT CLASS-V ORDINAL
+-> FULL GLOBAL SOURCE-CAUSAL TERMINATION
+-> FINITE ZARISKI/ETALE SERIALIZATION
+-> PRINCIPALIZATION AND FUNCTORIAL RESOLUTION.
+
+General positive-characteristic resolution: OPEN.

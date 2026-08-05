@@ -1,0 +1,19 @@
+claim_id,parent_group,statement_short,evidence_level,status
+X047-G1,TRM-10,A proper alteration finite locally free on the good open becomes finite locally free after a good-open-admissible blowup,STANDARD-FLATTENING,CLOSED
+X047-G2,TRM-10,The complete Cech-Rees discrepancy on the two- and three-fold fibre products is finite coherent downstairs,FINITE-FLAT+FINITE-PRESENTATION,CLOSED
+X047-G3,TRM-10,A first nonzero Cech-Rees cohomology/Fitting layer is an effective coherent colour on the base,FINITE-PUSHFORWARD,CLOSED
+X047-G4,TRM-10,Zero complete Cech-Rees shadow gives effective fpqc descent of the coloured coherent object,STANDARD-FPQC-DESCENT,CLOSED
+X047-G5,TRM-10,Ideals and finite graded Rees algebras descend under zero Cech-Rees shadow,STANDARD-FPQC-DESCENT,CLOSED
+X047-G6,TRM-10,Blowup in the descended ideal pulls back to the upper blowup,STANDARD-FLAT-BASE-CHANGE,CLOSED
+X047-G7,HER-15,Quasi-regular/regular centres and finite joint-legality certificates descend fpqc,STANDARD-DESCENT,CLOSED
+X047-G8,HER-15,A finite zero-shadow upper centre word descends stagewise to an ordinary regular jointly legal word,DERIVED-G4-G7,CLOSED
+X047-G9,TRM-10,The terminal regular/SNC certificate descends when included in the complete Cech object,STANDARD-DESCENT,CLOSED
+X047-G10,TRM-10,For one independent Artin-Schreier layer a finite upper word satisfies the effective-shadow/zero-shadow dichotomy,FINITE-COHERENT-DICHOTOMY,CLOSED
+X047-G11,TRM-10,The zero-shadow clause of X046 IDE is closed for one independent Artin-Schreier layer,DERIVED-G10,CLOSED-IN-CHAMBER
+X047-G12,TRM-10,Finite wild towers compile from one-layer shadows by the event octahedron,STANDARD-OCTAHEDRAL-INDUCTION,CLOSED-CONDITIONAL
+X047-G13,TRM-10,Cech-Compatible Wild Monomialization for every independent layer,OPEN-LOAD-BEARING,OPEN
+X047-G14,TRM-10,Every nonzero Cech/differential shadow is strictly lowered by a descended X044 block on all valuation charts,OPEN-LOAD-BEARING,OPEN
+X047-G15,TRM-10,CCWM implies UDE-EV and a strict class-V ordinal,CONDITIONAL,OPEN
+X047-G16,TRM-12,Full global source-causal termination,CONDITIONAL-ON-G15,OPEN
+X047-G17,GLB-07,Finite Zariski-etale serialization and functorial globalization,OPEN-FINAL,OPEN
+X047-G18,FIN-01,Principalization and functorial resolution over perfect fields,OPEN-FINAL,OPEN
