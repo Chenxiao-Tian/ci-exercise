@@ -1,0 +1,17 @@
+claim_id,parent_group,statement_short,evidence_level,lean_file,manuscript_location,status
+X039-G1,HER-03,The sheafified Hironaka comparison exists for every finite passive-owner portfolio on a regular flag,STANDARD-PRIMARY-SOURCE+INTERFACE-OPEN,,Paper III §6,OPEN-INTERFACE
+X039-G2,HER-03,Normal flatness is transitive from a regular carrier to every regular subcarrier,STANDARD-MATH+LEAN-SCHEME-OPEN,,Paper III §7,STANDARD-PROOF-IDENTIFIED
+X039-G3,HER-07,Only relative-pivot charts meet the transformed carrier and conormal generators differ by one exceptional line twist,STANDARD-LOCAL-NORMAL-FORM+LEAN-OPEN,,Paper III §8,STANDARD-PROOF-IDENTIFIED
+X039-G4,HER-02/HER-03,Construct the all-chart twisted Rees base-change map for every passive owner,OPEN-LOAD-BEARING,,Paper III §9,OPEN
+X039-G5,HER-03,The kernel and cokernel of the twisted Rees map form a finite coherent exceptional packet with flat-base-change law,OPEN-LOAD-BEARING,,Paper III §10,OPEN
+X039-G6,HER-03/HER-15,Joint legality of a regular flag implies exact ambient/carrier transform comparison on all charts and overlaps,OPEN-LOAD-BEARING,,Paper III §11,OPEN
+X039-G7,CTR-12/HER-03,One centre-enriched regular word factors through the final admissible carrier flatifier,OPEN-LOAD-BEARING,,Paper III §12,OPEN
+X039-G8,HER-05,Every trace subcentre in the realizing word is recursively jointly legalized in strictly smaller carrier dimension,OPEN-LOAD-BEARING,,Paper III §13,OPEN
+X039-G9,HER-06/HER-07,The legalized carrier word lifts to ordinary ambient blowups in canonical regular trace centres,OPEN-LOAD-BEARING,,Paper III §14,OPEN
+X039-G10,HER-03,Carrier flatness kills the purification-grading exceptional-power-torsion defect,LEAN-ABSTRACT+SCHEME-OPEN,PCRLean/Experimental/FlatExceptionalTorsionKill.lean,Paper III §15,PARTIAL
+X039-G11,TRM-03,No exceptional Cartier-monomial torsion can recharge after carrier flatness,ABSTRACT-LEAN-WRITTEN+GEOMETRY-OPEN,PCRLean/Experimental/ExceptionalNoRecharge.lean,Paper IV §2,PARTIAL
+X039-G12,HER-12/HER-14,Cartier factors may be compressed only after a zero-torsion source certificate,OPEN-BRIDGE,,Paper III §17,OPEN
+X039-G13,HER-14/HER-15,Owners sources debts boundaries flatifier labels and contact packets reenter on every overlap without reset,OPEN-LOAD-BEARING,,Paper III §18,OPEN
+X039-G14,TRM-11,Nested legalization is well founded by carrier dimension and immutable word height,ARITHMETIC-LEAN-WRITTEN+GEOMETRY-OPEN,PCRLean/Experimental/NestedCarrierLegalizationRank.lean,Paper IV §3,PARTIAL
+X039-G15,CTR-12/HER-03,Every centre in a clean wonderful word inherits passive legality without a new flatification charge,OPEN-BRIDGE,,Paper II terminal / Paper III §19,OPEN
+X039-G16,CTR-13/HER-05,Every nonterminal prepared state admits a finite actual jointly legal ordinary-centre word,OPEN-LOAD-BEARING,,Paper II terminal / Paper III terminal,OPEN
