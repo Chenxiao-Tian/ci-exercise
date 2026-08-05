@@ -37,10 +37,9 @@ structure Transport where
 
 namespace Transport
 
-variable (T : Transport (A := A) Old New)
-
 /-- Flatness transports across each degreewise equivalence. -/
 theorem newPieceFlat
+    (T : Transport (A := A) Old New)
     (hOld : ∀ n, Module.Flat A (Old n))
     (n : ℕ) :
     Module.Flat A (New n) := by
@@ -50,21 +49,23 @@ theorem newPieceFlat
 /-- A degreewise regular-flag comparison transports normal flatness of the
 complete associated graded module. -/
 theorem newGradedFlat
+    (T : Transport (A := A) Old New)
     (hOld : ∀ n, Module.Flat A (Old n)) :
     Module.Flat A (DirectSum ℕ New) := by
   classical
   rw [Module.Flat.directSum_iff]
   intro n
-  exact T.newPieceFlat hOld n
+  exact newPieceFlat Old New T hOld n
 
 /-- The same comparison transports flatness of the canonical homogenized
 projective-normal module. -/
 theorem newHomogenizedFlat
+    (T : Transport (A := A) Old New)
     (hOld : ∀ n, Module.Flat A (Old n)) :
     Module.Flat A
       (HomogenizedGradedFlatness.Homogenized New) :=
   HomogenizedGradedFlatness.homogenizedFlat New
-    (T.newPieceFlat hOld)
+    (newPieceFlat Old New T hOld)
 
 end Transport
 
@@ -84,25 +85,28 @@ variable [∀ o n, AddCommGroup (OldP o n)]
 variable [∀ o n, Module A (OldP o n)]
 variable [∀ o n, AddCommGroup (NewP o n)]
 variable [∀ o n, Module A (NewP o n)]
-variable (T : PortfolioTransport (A := A) Owner OldP NewP)
 
 /-- All owners and all new normal degrees are flat. -/
 theorem ownerPieceFlat
+    (T : PortfolioTransport (A := A) Owner OldP NewP)
     (hOld : ∀ o n, Module.Flat A (OldP o n)) :
     ∀ o n, Module.Flat A (NewP o n) := by
   intro o n
-  exact (T.ownerTransport o).newPieceFlat (hOld o) n
+  exact Transport.newPieceFlat (OldP o) (NewP o)
+    (T.ownerTransport o) (hOld o) n
 
 /-- The complete finite owner portfolio of new associated-graded modules is
 flat over the carrier. -/
 theorem portfolioFlat
+    (T : PortfolioTransport (A := A) Owner OldP NewP)
     (hOld : ∀ o n, Module.Flat A (OldP o n)) :
     Module.Flat A
       (DirectSum Owner (fun o => DirectSum ℕ (NewP o))) := by
   classical
   rw [Module.Flat.directSum_iff]
   intro o
-  exact (T.ownerTransport o).newGradedFlat (hOld o)
+  exact Transport.newGradedFlat (OldP o) (NewP o)
+    (T.ownerTransport o) (hOld o)
 
 end PortfolioTransport
 
