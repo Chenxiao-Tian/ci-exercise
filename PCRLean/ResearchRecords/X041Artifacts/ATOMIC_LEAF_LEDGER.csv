@@ -1,0 +1,13 @@
+leaf_id,parent_claim,statement,lean_declaration,status
+X041-L1,X041-G2,Flatness of every original graded piece implies flatness of each finite triangular homogenized slice,PCRLean.Experimental.HomogenizedGradedFlatness.sliceFlat,SOURCE-WRITTEN
+X041-L2,X041-G2,Pointwise graded flatness implies flatness of the complete triangular homogenization,PCRLean.Experimental.HomogenizedGradedFlatness.homogenizedFlat,SOURCE-WRITTEN
+X041-L3,X041-G2,Flatness of the complete homogenization recovers flatness of every original graded piece,PCRLean.Experimental.HomogenizedGradedFlatness.pieceFlat_of_homogenizedFlat,SOURCE-WRITTEN
+X041-L4,X041-G2,Homogenized flatness is equivalent to pointwise graded flatness,PCRLean.Experimental.HomogenizedGradedFlatness.homogenizedFlat_iff_pieceFlat,SOURCE-WRITTEN
+X041-L5,X041-G9,Degreewise linear equivalence transports flatness to each new normal piece,PCRLean.Experimental.DegreewiseFlagFlatLiftCompiler.Transport.newPieceFlat,SOURCE-WRITTEN
+X041-L6,X041-G9,Degreewise transport compiles to flatness of the complete new associated graded module,PCRLean.Experimental.DegreewiseFlagFlatLiftCompiler.Transport.newGradedFlat,SOURCE-WRITTEN
+X041-L7,X041-G9,Degreewise transport compiles to flatness of the new homogenized packet,PCRLean.Experimental.DegreewiseFlagFlatLiftCompiler.Transport.newHomogenizedFlat,SOURCE-WRITTEN
+X041-L8,X041-G5,Certified common-refinement equivalences preserve flatness source by source,PCRLean.Experimental.SourceWordCofinalityCompiler.Certificate.commonFlat,SOURCE-WRITTEN
+X041-L9,X041-G5,A finite source portfolio remains flat on the certified common refinement,PCRLean.Experimental.SourceWordCofinalityCompiler.Certificate.portfolioFlat,SOURCE-WRITTEN
+X041-L10,X041-G13,A support-dimension drop dominates all later rank changes,PCRLean.Experimental.HomogenizedCarrierRank.support_drop,SOURCE-WRITTEN
+X041-L11,X041-G13,A flag-depth drop dominates remaining word changes,PCRLean.Experimental.HomogenizedCarrierRank.flag_drop,SOURCE-WRITTEN
+X041-L12,X041-G13,The support/source/flag/word rank is well founded,PCRLean.Experimental.HomogenizedCarrierRank.rank_wellFounded,SOURCE-WRITTEN
