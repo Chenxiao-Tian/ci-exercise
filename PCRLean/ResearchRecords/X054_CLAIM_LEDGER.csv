@@ -1,0 +1,13 @@
+claim_id,parent_group,statement_short,evidence_level,status
+X054-G1,VALUATION,Inseparable local uniformization supplies a finite purely inseparable extension with regular centre,LITERATURE-TEMKIN,CLOSED-INPUT
+X054-G2,RADICIAL,Every degree-p radicial root over a regular centre admits a finite ordinary regular jointly legal uniformization word,NEW-X054-PROOF,ASSUMED-CLOSED
+X054-G3,RADICIAL,The radicial differential-contact rank strictly decreases on every nonterminal chart,NEW-X054-CHART-PROOF,ASSUMED-CLOSED
+X054-G4,RADICIAL,Finite Frobenius-root towers admit ordinary uniformization by iterating X054-G2,INDUCTION,CLOSED-FROM-G2
+X054-G5,PROJECTION,Frobenius transfer of etale parameters gives a finite separable defectless projection,NEW-X054-PROOF,ASSUMED-CLOSED
+X054-G6,PROJECTION,Every valued function field over a perfect field has minimal projection defect zero,DERIVED-G1-G5,ASSUMED-CLOSED
+X054-G7,INDUCTION,Radicial root common refinement and embedded resolution close simultaneously without circularity,NEW-X054-PROOF,ASSUMED-CLOSED
+X054-G8,GLOBAL,Riemann-Zariski compactness extracts a finite local-word atlas,STANDARD,CLOSED
+X054-G9,GLOBAL,The complete source portfolio admits hereditary regular common refinement,DERIVED-X040-X044,ASSUMED-CLOSED
+X054-G10,FUNCTORIAL,The full defect-zero projection groupoid descends canonically,NEW-X054-PROOF,ASSUMED-CLOSED
+X054-G11,FINAL,Finite smooth-functorial embedded resolution over perfect fields,DERIVED-G6-G10,ASSUMED-CLOSED
+X054-G12,FINAL,Principalization ambient independence and intrinsic resolution follow,STANDARD-REDUCTIONS,ASSUMED-CLOSED
