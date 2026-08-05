@@ -24,13 +24,13 @@ Singularity_Resolution_in_Positive_Character_X046_Optimized_Unified.tex
   sha256 = 104961d7fe68850ed14815fb37b21cc249aca879ccc3e6cd5af2d68caee5a2be
 
 Singularity_Resolution_in_Positive_Character_X046_LaTeX_Source_2026-08-05.zip
-  sha256 = 03bcdd1abe9df74b37f90cb508c022a05832de82a0f80e2890edf55ae8ea7c61
+  sha256 = cecf3c68357969c674c0899473ecc81911e126e41cebc3baa7dceda4ea5b2041
 
 Singularity_Resolution_in_Positive_Character_X046_PDF_2026-08-05.zip
-  sha256 = a4e2fce9ab0e7db9b8cc71bf8a71491a2db1ea5bada6af72db7e6ca0d415b65b
+  sha256 = a31d820166abf0cbefc51de3e8dc9d0d5639d30c3d25351a864a94ee23c0b76b
 
 Singularity_Resolution_in_Positive_Character_X046_Complete_2026-08-05.zip
-  sha256 = 657ba90abae339606b05cdaf9a6eb88253df193155d201dfa3b782e9ed13cbbf
+  sha256 = 67e270ea8a69dca001477d946d7532ac8946accf7bf05c037ef3133bfc2feb99
 ```
 
 ## Build evidence
