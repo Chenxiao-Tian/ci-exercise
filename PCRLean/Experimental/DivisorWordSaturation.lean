@@ -79,7 +79,8 @@ theorem wordSaturation_reverse
     (qs : List R) (N : Submodule R M) :
     wordSaturation qs.reverse N = wordSaturation qs N := by
   apply wordSaturation_eq_of_perm
-  exact List.perm_reverse qs
+  have hreflexive : qs.reverse.Perm qs.reverse := List.Perm.refl _
+  exact (List.perm_reverse).mp hreflexive
 
 /-- Any two words with the same product define the same saturation. -/
 theorem wordSaturation_eq_of_prod_eq
