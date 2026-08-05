@@ -1,0 +1,13 @@
+goal_id,parent_claim,lean_statement_short,file,status,priority
+X040-LG1,X040-G12,finite intersection-closed minimal stratum is disjoint or contained,PCRLean/Experimental/MinimalStratumNesting.lean,SOURCE-WRITTEN,HIGH
+X040-LG2,X040-G3,binary trace product lies below both sources and is symmetric associative,PCRLean/Experimental/CommonTraceProduct.lean,SOURCE-WRITTEN,HIGH
+X040-LG3,X040-G15,common support/source/word rank drops and is well founded,PCRLean/Experimental/CommonFlatifierBudgetRank.lean,SOURCE-WRITTEN,MEDIUM
+X040-LG4,X040-G9,finite powerset completion contains originals and is intersection closed,PCRLean/Experimental/FiniteArrangementCompletion.lean,SOURCE-WRITTEN,HIGH
+X040-LG5,X040-G9,crossing-source model is non-disjoint non-nested and completed by a deeper intersection,PCRLean/Experimental/CrossCarrierCompletionModel.lean,SOURCE-WRITTEN,HIGH
+X040-LG6,X040-G1,formalize finite composition of scheme blowups as one source ideal,PCRLean/Experimental/CompositeSourceBlowup.lean,OPEN,CRITICAL
+X040-LG7,X040-G2,formalize inverse-image ambient trace and strict transform equals carrier blowup,PCRLean/Experimental/AmbientTraceBlowup.lean,OPEN,CRITICAL
+X040-LG8,X040-G3,formalize finite product blowup common refinement and source maps,PCRLean/Experimental/CommonProductBlowup.lean,OPEN,CRITICAL
+X040-LG9,X040-G4,formalize componentwise admissibility and strict support-dimension drop,PCRLean/Experimental/AdmissibleSupportDimension.lean,OPEN,HIGH
+X040-LG10,X040-G7,formalize flat source strict-transform pullback through common refinement,PCRLean/Experimental/CommonRefinementPureTransform.lean,OPEN,CRITICAL
+X040-LG11,X040-G13,formalize all-chart Regular-Flag Flat-Lift with grading twist,PCRLean/Experimental/RegularFlagFlatLift.lean,OPEN,CRITICAL
+X040-LG12,X040-G16,formalize source-conservative completion and all-chart no-reset,PCRLean/Experimental/CommonTraceNoReset.lean,OPEN,CRITICAL
