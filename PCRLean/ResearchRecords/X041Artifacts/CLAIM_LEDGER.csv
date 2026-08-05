@@ -1,19 +1,23 @@
 claim_id,parent_group,statement_short,evidence_level,lean_file,status
-X041-G1,HER-03,Iterated Leta_f has cohomology f^(Ni)(H^i/H^i[f^N]),STANDARD-IDENTITY-BASED,,OPEN-PROJECT-PROOF
+X041-G1,HER-03,Iterated Leta_f has cohomology f^(Ni)(H^i/H^i[f^N]),STANDARD-PROOF-CLOSED+LEAN-DERIVED-OPEN,,STANDARD-PROOF-CLOSED
 X041-G2,HER-03,One finite exponent kills exceptional power torsion in every cohomology module of a finite packet,STANDARD-NOETHERIAN,,OPEN-INTERFACE
-X041-G3,HER-03,Normalized saturated Leta capsule is finite and independent of any larger exponent up to canonical degree twist,OPEN-LOAD-BEARING,,OPEN
-X041-G4,HER-06/HER-07,One affine blowup strict transform equals H0 of sufficiently iterated Leta along the exceptional divisor,OPEN-LOAD-BEARING,,OPEN
+X041-G3,HER-03,Normalized fully saturated Leta capsule is finite and independent of any larger exponent up to canonical degree twist,OPEN-LOAD-BEARING,,OPEN
+X041-G4,HER-06/HER-07,One affine blowup strict transform equals H0 of sufficiently iterated Leta along the exceptional divisor,STANDARD-CHART-REDUCTION+SCHEME-LEAN-OPEN,,OPEN-INTERFACE
 X041-G5,HER-14,A finite centre word determines a total source-labelled exceptional Cartier divisor and multiplicity ledger,STANDARD-MATH+LEDGER-OPEN,,OPEN-INTERFACE
 X041-G6,HER-03,Successive divisor saturations equal saturation by the product and are permutation invariant,LEAN-SOURCE-WRITTEN,PCRLean/Experimental/PowerSaturationProduct.lean|PCRLean/Experimental/DivisorWordSaturation.lean,PARTIAL
-X041-G7,HER-09,The SCD capsule glues on overlaps and commutes with smooth and etale base change,OPEN-LOAD-BEARING,,OPEN
+X041-G7,HER-09,The saturated capsule glues on overlaps and commutes with smooth and etale base change,OPEN-LOAD-BEARING,,OPEN
 X041-G8,HER-03,The complete perfect source packet admits the canonical universal good-triple blowup,STANDARD-DERIVED-INPUT+PROJECT-INTERFACE-OPEN,,OPEN-INTERFACE
 X041-G9,HER-03,After good-triple preparation Leta commutes with arbitrary pullback,STANDARD-DERIVED-INPUT+SEMANTIC-OPEN,,OPEN-INTERFACE
-X041-G10,HER-03/HER-15,Actual source transforms on a common refinement equal pullbacks of the final saturated source capsules,OPEN-LOAD-BEARING,,OPEN
+X041-G10A,HER-03/HER-15,The actual iterated source transform maps to the fully saturated total-divisor capsule,OPEN-LOAD-BEARING,,OPEN
+X041-G10B,HER-14/HER-15,The kernel of actual-to-saturated comparison is a finite exceptional recharge packet with choice-free clean/defect coverage,LEAN-MODULE-SOURCE-WRITTEN+SCHEME-OPEN,PCRLean/Experimental/SaturationRecharge.lean,PARTIAL
+X041-G10C,HER-03/HER-15,Joint legality and Regular-Flag Flat-Lift force exceptional recharge to vanish,OPEN-LOAD-BEARING,,OPEN
+X041-G10D,TRM-04/HER-15,A nonzero recharge packet yields strict exceptional support/Fitting descent,OPEN-LOAD-BEARING,,OPEN
+X041-G10,HER-03/HER-15,Actual source transforms on a common refinement equal saturated source capsules after recharge elimination,OPEN-LOAD-BEARING,,OPEN
 X041-G11,HER-07/CTR-03,Passive data uses full saturation while marked contact uses a prescribed finite number of Cartier layers,OPEN-SEMANTIC-BRIDGE,,OPEN
 X041-G12,TRM-04/CTR-05,One controlled Cartier layer strictly lowers positive contact height,ARITHMETIC-LEAN-WRITTEN,PCRLean/Experimental/DecalageSourceRank.lean,PARTIAL
-X041-G13,HER-03/HER-15,Regular-Flag Flat-Lift is the one-layer local form of SCD source realization,OPEN-LOAD-BEARING,,OPEN
-X041-G14,HER-13/HER-14/HER-15,SCD capsules sources owners boundaries contacts and debts reenter without reset,OPEN-LOAD-BEARING,,OPEN
-X041-G15,GLB-03,The X040 common trace product transports the complete SCD source capsules,COMBINATORIAL-BACKEND-GREEN+SCHEME-OPEN,,OPEN
-X041-G16,GLB-04/GLB-05,SCD source capsules descend across finite graph atlases and source groupoids,OPEN,,OPEN
-X041-G17,TRM-11,Carrier dimension torsion height source count and debt form a well-founded prefix rank,LEAN-SOURCE-WRITTEN,PCRLean/Experimental/DecalageSourceRank.lean,PARTIAL
+X041-G13,HER-03/HER-15,Regular-Flag Flat-Lift is the one-layer local recharge-vanishing theorem,OPEN-LOAD-BEARING,,OPEN
+X041-G14,HER-13/HER-14/HER-15,Saturated capsules recharge sources owners boundaries contacts and debts reenter without reset,OPEN-LOAD-BEARING,,OPEN
+X041-G15,GLB-03,The X040 common trace product transports complete saturated source capsules and recharge ledgers,COMBINATORIAL-BACKEND-GREEN+SCHEME-OPEN,,OPEN
+X041-G16,GLB-04/GLB-05,Saturated source capsules descend across finite graph atlases and source groupoids,OPEN,,OPEN
+X041-G17,TRM-11,Carrier dimension recharge support torsion height source count and debt form a well-founded prefix rank,LEAN-SOURCE-WRITTEN+GEOMETRY-OPEN,PCRLean/Experimental/DecalageSourceRank.lean,PARTIAL
 X041-G18,CTR-13/HER-05,Every nonterminal state admits a finite actual jointly legal centre word,OPEN-LOAD-BEARING,,OPEN
