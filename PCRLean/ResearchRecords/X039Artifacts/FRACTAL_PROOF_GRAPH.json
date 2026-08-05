@@ -1,0 +1,50 @@
+{
+  "round_id": "MLEL-X039/NTR-RFL",
+  "date": "2026-08-04",
+  "parent": "MLEL-X038/PGI-ERD",
+  "seed_architecture": "MLEL-D001/FCPP-ATLAS",
+  "accepted_formal_node": "MLEL-M004/HMC-SCCD (restricted)",
+  "status": "OPEN_GAP",
+  "certified_graph_changed": false,
+  "root_theorem_proved": false,
+  "principal_compressions": [
+    {
+      "old_burden": "independent divisorial elimination of purification-grading torsion",
+      "replacement": "carrier flatness makes every exceptional equation regular and kills the torsion"
+    },
+    {
+      "old_burden": "fresh passive legalization at every nested regular centre",
+      "replacement": "Hironaka tensor transitivity after one carrier is normally flat"
+    },
+    {
+      "remaining_burden": "ambient realization",
+      "replacement": "one centre-enriched flatifier plus dimension-strict regular-flag lifting"
+    }
+  ],
+  "nodes": [
+    {"id":"X039-G1","title":"Sheafified Hironaka comparison for finite owner portfolios","status":"STANDARD-INPUT/INTERFACE-OPEN"},
+    {"id":"X039-G2","title":"Normal-flatness transitivity on regular flags","status":"STANDARD-MATH/LEAN-SCHEME-OPEN"},
+    {"id":"X039-G3","title":"Regular-flag chart coverage and exceptional line twist","status":"LOCAL-NORMAL-FORM-IDENTIFIED"},
+    {"id":"X039-G4","title":"All-chart twisted Rees base-change map","status":"OPEN-LOAD-BEARING"},
+    {"id":"X039-G5","title":"Finite exceptional kernel/cokernel packet","status":"OPEN-LOAD-BEARING"},
+    {"id":"X039-G6","title":"Regular-Flag Flat-Lift theorem","status":"OPEN-LOAD-BEARING"},
+    {"id":"X039-G7","title":"Centre-enriched regular factorization of one flatifier","status":"OPEN-LOAD-BEARING"},
+    {"id":"X039-G8","title":"Recursive joint legalization of every trace subcentre","status":"OPEN-LOAD-BEARING"},
+    {"id":"X039-G9","title":"Ambient trace realization","status":"OPEN-LOAD-BEARING"},
+    {"id":"X039-G10","title":"Flat purification-defect vanishing scheme interface","status":"ALGEBRA-LEAN-WRITTEN/SCHEME-OPEN"},
+    {"id":"X039-G11","title":"Exceptional-monomial no recharge","status":"ABSTRACT-LEAN-WRITTEN/GEOMETRY-OPEN"},
+    {"id":"X039-G12","title":"Cartier-stable source compression","status":"OPEN"},
+    {"id":"X039-G13","title":"All-chart owner/source/debt/boundary no reset","status":"OPEN-LOAD-BEARING"},
+    {"id":"X039-G14","title":"Dimension-strict nested legalization","status":"ARITHMETIC-LEAN-WRITTEN/GEOMETRY-OPEN"},
+    {"id":"X039-G15","title":"Wonderful-word passive heredity","status":"OPEN"},
+    {"id":"X039-G16","title":"Universal actual jointly legal centre word","status":"OPEN-LOAD-BEARING"}
+  ],
+  "edges": [
+    {"from":["X039-G1"],"to":"X039-G2","kind":"Hironaka-tensor-flatness"},
+    {"from":["X039-G3","X039-G4","X039-G5","X039-G10"],"to":"X039-G6","kind":"regular-flag-transform-transport"},
+    {"from":["X039-G7","X039-G8","X039-G9","X039-G6"],"to":"X039-G14","kind":"carrier-dimension-induction"},
+    {"from":["X039-G2","X039-G10","X039-G11"],"to":"X039-G15","kind":"passive-no-recharge"},
+    {"from":["X039-G6","X039-G12","X039-G13","X039-G14","X039-G15"],"to":"X039-G16","kind":"joint-legalization-compiler"}
+  ],
+  "highest_information_cut": ["X039-G4","X039-G5","X039-G6","X039-G7","X039-G8","X039-G9","X039-G13","X039-G14"]
+}
