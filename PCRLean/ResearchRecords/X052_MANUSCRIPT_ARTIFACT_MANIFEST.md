@@ -11,30 +11,30 @@
 
 ```text
 Singularity_Resolution_in_Positive_Character_X052_Optimized_Unified.pdf
-  pages  = 198
-  sha256 = 3493f8dc1d5552b084148d5f7ae2ff710a3b22385c32fc17fea98a95f5c630b3
+  pages  = 199
+  sha256 = ac5f39abb5b99d2675e15a004003f692699945b395005254740db05ea2531483
 
 Singularity_Resolution_in_Positive_Character_X052_Optimized_Unified.tex
-  sha256 = 47bdaa2bff253d8e3a2587f5c0f4de64bffbdb92a8ec9cfbb00f7f61be2f38dc
+  sha256 = 3e19a6c180fc27c2dd724de816300ae0de32244fbe69a8b1b0fb5c5a61df9913
 
 Singularity_Resolution_in_Positive_Character_X052_LaTeX_Source_2026-08-05.zip
-  sha256 = 58a15a2344c0a996ceefb3f593e87fd3cecdafa1a9eecc020dd9724db6e87dd5
+  sha256 = 2dd037d920010583633ecdc142ea38073bca4b085279d7bcde850e03e37baf10
 
 Singularity_Resolution_in_Positive_Character_X052_PDF_2026-08-05.zip
-  sha256 = ac25952e41e51041fa6c843f7601acb353672171928e3d808388b66f4a877a8f
+  sha256 = 62b9bc3007621c8f06259488ab7f276748a11a0e1b0e0083ea1b35ef4e556c01
 
 Singularity_Resolution_in_Positive_Character_X052_Complete_2026-08-05.zip
-  sha256 = 8fd71d73197ea4ab7d45362fa974cc82d72c499624bb3bfc9edbf3606dc3e7f3
+  sha256 = c5d7b8afb2a315acafa6167bc2f6f5f7488cc5a76ec2dd7e9566592dac26058e
 ```
 
 ## Build evidence
 
-- clean source rebuild: 198 pages;
+- clean source rebuild: 199 pages;
 - undefined references/citations: 0;
 - overfull boxes: 0;
 - all fonts embedded;
-- 198 pages rendered at 100 dpi;
-- 12 load-bearing pages rendered at 200 dpi;
+- 199 pages rendered at 100 dpi;
+- 13 load-bearing pages rendered at 200 dpi;
 - blank-page suspects: 0;
 - strict black-and-white rendering;
 - first and final pages contain `Princeton, NJ 08544, USA` and both email addresses;
@@ -43,7 +43,7 @@ Singularity_Resolution_in_Positive_Character_X052_Complete_2026-08-05.zip
 
 ## Truth boundary
 
-The manuscript is conditional on Defectless Projection Existence (DPE). Fixed-projection PZGE is superseded as an ill-typed birational claim. General arbitrary-dimensional positive-characteristic resolution is not established in the research baseline.
+The manuscript is conditional on **Uniform Defectless Projection Existence (UDPE)**. Pointwise DPE is separated from the finite constructible and smooth-functorial choice needed for globalization. Fixed-projection PZGE is superseded as an ill-typed birational claim. General arbitrary-dimensional positive-characteristic resolution is not established in the research baseline.
 
 ## Persistence instruction
 
