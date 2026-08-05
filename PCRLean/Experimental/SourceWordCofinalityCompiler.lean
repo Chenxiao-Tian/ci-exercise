@@ -39,10 +39,9 @@ structure Certificate where
 
 namespace Certificate
 
-variable (C : Certificate (A := A) Terminal Common)
-
 /-- A flat terminal source transform stays flat on the common refinement. -/
 theorem commonFlat
+    (C : Certificate (A := A) Terminal Common)
     (hTerminal : ∀ s, Module.Flat A (Terminal s))
     (s : Source) :
     Module.Flat A (Common s) := by
@@ -51,12 +50,13 @@ theorem commonFlat
 
 /-- The complete finite common-refinement source portfolio is flat. -/
 theorem portfolioFlat
+    (C : Certificate (A := A) Terminal Common)
     (hTerminal : ∀ s, Module.Flat A (Terminal s)) :
     Module.Flat A (DirectSum Source Common) := by
   classical
   rw [Module.Flat.directSum_iff]
   intro s
-  exact C.commonFlat hTerminal s
+  exact commonFlat Terminal Common C hTerminal s
 
 end Certificate
 
