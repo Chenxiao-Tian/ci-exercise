@@ -5,21 +5,25 @@ Closed or reduced to standard inputs:
 - fixed-projection invariance of ramification index, residue degree, local henselian degree, defect, Artin-Schreier distance, best-generator ideal, and dependent/independent type;
 - stabilized fixed-projection PZGE no-go;
 - minimal projection defect and its birational invariance;
-- local uniformization implies a defectless finite etale projection;
+- pointwise local uniformization implies a defectless finite etale projection;
 - defectless projections in the Abhyankar chamber;
 - henselian-rational projections for immediate transcendence-degree-one extensions over separably tame bases;
 - defectless projection multiplicity reduction;
-- conditional equivalence between defectless projection existence and local uniformization inside the X033-X050 coherent architecture.
+- conditional equivalence between pointwise DPE and local uniformization inside the X033-X050 coherent architecture.
 
 Superseded:
 - coarsening as birational descent;
 - fixed-projection blowups attaining a best generator;
 - fixed-projection blowups changing independent defect or distance;
 - PZGE as an ordinary-centre theorem;
-- projection-switch count as a rank.
+- projection-switch count as a rank;
+- silently inferring finite constructible or functorial projection choices from pointwise DPE.
 
 Dominant open cut:
-DEFECTLESS PROJECTION EXISTENCE (DPE)
+UNIFORM DEFECTLESS PROJECTION EXISTENCE (UDPE)
+= pointwise DPE
++ finite constructible coverage on quasi-compact valuation neighbourhoods
++ common-refinement and smooth/etale compatibility
 -> DEFECTLESS-PROJECTION MULTIPLICITY REDUCTION
 -> LOCAL UNIFORMIZATION
 -> FULL GLOBAL SOURCE-CAUSAL TERMINATION
