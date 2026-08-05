@@ -86,14 +86,48 @@ which additional common-refinement blowups are harmless.
 
 The module saturation quotient is invariant under permutation of divisor
 equations.  The ambient blowup centres and intermediate boundaries can still
-change.  The SCD theorem compares final source transforms; it does not assert
-that arbitrary centre words are isomorphic step by step.
+change.  The SCD theorem compares final saturated source transforms; it does
+not assert that arbitrary centre words are isomorphic step by step.
+
+## SCD-13 — Exceptional recharge under nonflat pullback
+
+Let
+
+```text
+B=k[e], N=B, C=B/(e).
+```
+
+Multiplication by `e` is injective on `N`, so the old exceptional torsion is
+zero.  After the nonflat base change `B->C`, every element of `N tensor_B C=C`
+is killed by `e`.  Thus an old exceptional component can acquire new torsion
+under a later nonflat pullback.  Total-divisor saturation kills it; the raw
+pullback does not.  This falsifies unconditional equality between an actual
+iterated transform and the fully saturated capsule under arbitrary pullback.
+
+The example is not asserted to be a legal regular blowup flag.  It isolates the
+algebraic phenomenon that the good-triple/Regular-Flag hypotheses must exclude.
+
+## SCD-14 — Saturated capsule versus actual word
+
+For a centre word, the actual transform removes exceptional torsion step by
+step.  The final total-divisor capsule removes all torsion along every old and
+new component at once.  If a later step recharges torsion along an old divisor,
+then
+
+```text
+actual iterated transform != fully saturated capsule.
+```
+
+The difference is the exceptional recharge packet.  Equality is a no-recharge
+theorem, not a formal consequence of `eta_f eta_g=eta_(f*g)`.
 
 ## Posterior effect
 
 The ledger rejects bare morphism semantics, one-layer passive transforms,
 full-saturation contact transforms, arbitrary nonflat base change, nonperfect
-good-triple inputs, multiplicity-free divisor capsules, and misuse of
-triangulated exactness.  It supports a finite source divisor word, a uniform
-saturation exponent, perfect good-triple preparation, and a separate
-active/passive stopping rule.  It does not prove the scheme-level SCD theorem.
+good-triple inputs, multiplicity-free divisor capsules, misuse of triangulated
+exactness, and unconditional actual-equals-saturated comparison.  It supports a
+finite source divisor word, a uniform saturation exponent, a perfect good-
+triple packet, an explicit exceptional recharge module, and separate
+active/passive stopping rules.  It does not prove recharge vanishing, strict
+recharge descent, or the scheme-level SCD theorem.
