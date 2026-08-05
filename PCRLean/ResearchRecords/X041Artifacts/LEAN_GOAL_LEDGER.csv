@@ -1,0 +1,14 @@
+goal_id,parent_claim,lean_statement_short,file,status,priority
+X041-LG1,X041-G2,triangular homogenized direct-sum flatness iff all graded pieces are flat,PCRLean/Experimental/HomogenizedGradedFlatness.lean,SOURCE-WRITTEN,HIGH
+X041-LG2,X041-G9,degreewise regular-flag equivalences compile to full graded and homogenized flatness,PCRLean/Experimental/DegreewiseFlagFlatLiftCompiler.lean,SOURCE-WRITTEN,HIGH
+X041-LG3,X041-G5,finite source common-refinement equivalences compile to portfolio flatness,PCRLean/Experimental/SourceWordCofinalityCompiler.lean,SOURCE-WRITTEN,HIGH
+X041-LG4,X041-G13,support/source/flag/word rank drops and is well founded,PCRLean/Experimental/HomogenizedCarrierRank.lean,SOURCE-WRITTEN,MEDIUM
+X041-LG5,X041-G1,formalize total-degree homogenization of a finite graded module over S to a finite graded module over S[z],PCRLean/Experimental/GradedHomogenization.lean,OPEN,CRITICAL
+X041-LG6,X041-G1,formalize D_+(z) recovery of the affine graded module and coherence on relative Proj,PCRLean/Experimental/HomogenizedProjChart.lean,OPEN,CRITICAL
+X041-LG7,X041-G2,formalize pointwise flatness equivalence and flat-base-change naturality of the homogenized sheaf,PCRLean/Experimental/HomogenizedProjFlatness.lean,OPEN,CRITICAL
+X041-LG8,X041-G4,formalize finite centre-word composition as a centre-exact blowup ideal with strict-transform transitivity,PCRLean/Experimental/CentreExactWordIdeal.lean,OPEN,CRITICAL
+X041-LG9,X041-G5,formalize finite product common refinement and flat terminal strict-transform pullback,PCRLean/Experimental/StrictTransformCofinality.lean,OPEN,CRITICAL
+X041-LG10,X041-G8,formalize relevant regular-flag charts and exceptional conormal degree twist,PCRLean/Experimental/RegularFlagCharts.lean,OPEN,CRITICAL
+X041-LG11,X041-G9,construct degreewise old/new normal comparison maps from Tor-safe Rees sequences,PCRLean/Experimental/RegularFlagDegreewiseTransport.lean,OPEN,CRITICAL
+X041-LG12,X041-G10,prove double-localization overlap equality and smooth-base-change naturality,PCRLean/Experimental/RegularFlagOverlap.lean,OPEN,CRITICAL
+X041-LG13,X041-G12,formalize source-conservative owner boundary debt and packet reentry,PCRLean/Experimental/HomogenizedNoReset.lean,OPEN,CRITICAL
