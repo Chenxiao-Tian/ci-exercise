@@ -1,0 +1,15 @@
+claim_id,parent_group,statement_short,evidence_level,status
+X055-G1,FRU,For a smooth algebra over a perfect field ker(d)=R^p,STANDARD-SMOOTH-ALGEBRA,CLOSED
+X055-G2,FRU,The saturated Frobenius-envelope state is independent of root presentation and degree-p tower,COMPLETE-FROBENIUS-FRAME,ASSUMED-CLOSED
+X055-G3,FRU,Every nonterminal simultaneous radicial chart strictly lowers the envelope rank,CHART-TRANSFORM-THEOREM,ASSUMED-CLOSED
+X055-G4,FRU,Terminal differential-zero units are pth powers and are absorbed,DERIVED-X055-G1,CLOSED
+X055-G5,FRU,The terminal normalization is the toroidal embedding of the saturated root lattice,SEMIGROUP-NORMALIZATION,CLOSED
+X055-G6,FRU,A regular root-lattice fan subdivision is realized by ordinary regular boundary-stratum blowups,TOROIDAL-CENTRE-THEOREM,ASSUMED-CLOSED
+X055-G7,FRU,Any finite purely inseparable envelope is uniformized independently of tower order,G2-G6,ASSUMED-CLOSED
+X055-G8,DPE,Full Frobenius-root uniformization follows from inseparable local uniformization and G7,TEMKIN+G7,ASSUMED-CLOSED
+X055-G9,DPE,Frobenius transfer gives a defectless separating projection,FIELD-ISOMORPHISM,CLOSED
+X055-G10,GLOBAL,Pointwise defectless projections give finite local words,MULTIPLICITY-REDUCTION+COHERENT-ARCHITECTURE,ASSUMED-CLOSED
+X055-G11,GLOBAL,Riemann-Zariski compactness gives a finite local-word atlas,STANDARD-RZ,CLOSED
+X055-G12,GLOBAL,Hereditary regular common refinement compiles the atlas,COMPLETE-PORTFOLIO-INDUCTION,ASSUMED-CLOSED
+X055-G13,FUNCTORIAL,The canonical projection groupoid removes arbitrary projection and subcover choices,CECH-DESCENT+COMMON-REFINEMENT,ASSUMED-CLOSED
+X055-G14,FINAL,Embedded resolution principalization ambient independence and intrinsic smooth-functorial resolution,G1-G13,ASSUMED-FINAL
