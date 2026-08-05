@@ -1,0 +1,26 @@
+X046 CURRENT FRONTIER AFTER PDS-AST-IDE-FINAL
+==============================================
+
+Closed or reduced to standard/finite interfaces:
+- finite event-visible valuation shadow hulls;
+- finite prime-degree defect towers and prime-layer detection;
+- defectless projection and Abhyankar positive routes;
+- finite-extension and purely inseparable local-uniformization portfolios;
+- dependent/independent prime-defect classification in the declared cases;
+- finite differential-ramification shadow portfolios;
+- finite alteration-shadow octahedra;
+- coherent downstairs alteration-shadow packets;
+- Noetherian ACC for genuinely new coherent alteration shadows;
+- X045 coherent recurrent-class termination;
+- X044 actual-centre synthesis and X042-X043 legality/reentry.
+
+Dominant open cut:
+INDEPENDENT-DEFECT EFFECTIVITY (IDE)
+-> UNIFORM EVENT-VISIBLE DEFECT ESCAPE (UDE-EV)
+-> NO EQUAL-OR-HIGHER CLASS-V BIRTH
+-> STRICT CLASS-V ORDINAL
+-> FULL GLOBAL SOURCE-CAUSAL TERMINATION
+-> FINITE ZARISKI/ETALE SERIALIZATION
+-> PRINCIPALIZATION AND FUNCTORIAL RESOLUTION.
+
+General positive-characteristic resolution: OPEN.
