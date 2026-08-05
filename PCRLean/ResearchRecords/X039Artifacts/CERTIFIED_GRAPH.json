@@ -1,0 +1,15 @@
+{
+  "round_id": "MLEL-X039/NTR-RFL",
+  "date": "2026-08-04",
+  "certified_graph_changed": false,
+  "accepted_mathematical_node": "MLEL-M004/HMC-SCCD",
+  "accepted_scope": "restricted finite Frobenius-frame Hasse-Morita core descent and its certified arithmetic backend",
+  "new_x039_nodes_promoted": [],
+  "candidate_only_nodes": [
+    "X039-G1","X039-G2","X039-G3","X039-G4","X039-G5","X039-G6","X039-G7","X039-G8",
+    "X039-G9","X039-G10","X039-G11","X039-G12","X039-G13","X039-G14","X039-G15","X039-G16"
+  ],
+  "final_main_theorem_kernel_verified": false,
+  "general_positive_characteristic_resolution": false,
+  "formal_global_status": "OPEN_GAP"
+}
