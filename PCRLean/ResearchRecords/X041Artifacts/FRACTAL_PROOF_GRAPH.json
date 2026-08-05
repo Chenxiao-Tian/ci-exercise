@@ -10,11 +10,16 @@
   "principal_refinements": [
     {
       "old_interface": "retain the complete source word indefinitely because strict transform depends on its centres",
-      "new_interface": "retain the word until the Décalage--Strict-Transform theorem is proved, then compress downstream to final modification + total exceptional divisor + finite saturation exponent + perfect source transform + lineage"
+      "new_interface": "retain the word until actual-to-saturated comparison is proved; downstream retain final modification, total exceptional divisor, finite exponent, saturated source capsule, recharge packet, and lineage"
     },
     {
       "old_interface": "word-by-word exceptional torsion removal",
-      "new_interface": "factorization-independent saturated Cartier décalage using eta_f eta_g = eta_(f*g)"
+      "new_interface": "factorization-independent fully saturated Cartier decalage using eta_f eta_g = eta_(f*g)"
+    },
+    {
+      "rejected_candidate": "the actual iterated strict transform always equals the total-divisor saturated capsule",
+      "reason": "later nonflat pullback can create new torsion along an older exceptional component",
+      "replacement": "actual transform -> quotient by finite exceptional recharge -> saturated capsule"
     },
     {
       "old_interface": "separate passive strict transform and contact cleaning formalisms",
@@ -22,32 +27,37 @@
     }
   ],
   "nodes": [
-    {"id":"X041-G1","title":"Derived iteration formula for powers of L-eta","status":"STANDARD-IDENTITY-BASED/PROJECT-PROOF-OPEN"},
+    {"id":"X041-G1","title":"Derived iteration formula for powers of L-eta","status":"STANDARD-PROOF-CLOSED/LEAN-DERIVED-OPEN"},
     {"id":"X041-G2","title":"Uniform exceptional torsion exponent for a finite coherent packet","status":"STANDARD-NOETHERIAN/INTERFACE-OPEN"},
-    {"id":"X041-G3","title":"Normalized saturated L-eta capsule and degree twists","status":"OPEN-LOAD-BEARING"},
-    {"id":"X041-G4","title":"One-blowup strict transform equals saturated H0 L-eta","status":"OPEN-LOAD-BEARING"},
+    {"id":"X041-G3","title":"Normalized fully saturated L-eta capsule and degree twists","status":"OPEN-LOAD-BEARING"},
+    {"id":"X041-G4","title":"One-blowup strict transform equals saturated H0 L-eta","status":"STANDARD-CHART-REDUCTION/SCHEME-LEAN-OPEN"},
     {"id":"X041-G5","title":"Total source-labelled exceptional divisor of a centre word","status":"STANDARD-DIVISOR-SEMANTICS/LEDGER-OPEN"},
     {"id":"X041-G6","title":"Word composition via eta product identity","status":"MODULE-LEAN-WRITTEN/DERIVED-SCHEME-OPEN"},
-    {"id":"X041-G7","title":"Overlap and smooth base change for SCD capsules","status":"OPEN-LOAD-BEARING"},
+    {"id":"X041-G7","title":"Overlap and smooth base change for saturated capsules","status":"OPEN-LOAD-BEARING"},
     {"id":"X041-G8","title":"Canonical good-triple preparation for the complete perfect source packet","status":"STANDARD-CONSTRUCTION/PROJECT-INTERFACE-OPEN"},
     {"id":"X041-G9","title":"Arbitrary pullback of L-eta after good-triple preparation","status":"STANDARD-DERIVED-INPUT/SEMANTIC-OPEN"},
+    {"id":"X041-G10A","title":"Actual iterated transform to fully saturated capsule comparison","status":"OPEN-LOAD-BEARING"},
+    {"id":"X041-G10B","title":"Exceptional recharge packet finite and compatible with overlaps/base change","status":"MODULE-LEAN-WRITTEN/SCHEME-OPEN"},
+    {"id":"X041-G10C","title":"Legal regular flag forces exceptional recharge to vanish","status":"OPEN-LOAD-BEARING"},
+    {"id":"X041-G10D","title":"Nonzero recharge gives strict exceptional Fitting/support descent","status":"OPEN-LOAD-BEARING"},
     {"id":"X041-G10","title":"Source-word realization on a common refinement","status":"OPEN-LOAD-BEARING"},
     {"id":"X041-G11","title":"Active controlled layer versus passive saturation","status":"OPEN-SEMANTIC-BRIDGE"},
     {"id":"X041-G12","title":"Contact height strict descent","status":"ARITHMETIC-LEAN-WRITTEN/GEOMETRY-OPEN"},
-    {"id":"X041-G13","title":"Regular-Flag Flat-Lift as one-layer SCD theorem","status":"OPEN-LOAD-BEARING"},
-    {"id":"X041-G14","title":"Source-conservative SCD no reset","status":"OPEN-LOAD-BEARING"},
-    {"id":"X041-G15","title":"Common trace product with SCD capsules","status":"X040-COMBINATORICS-GREEN/SCHEME-OPEN"},
-    {"id":"X041-G16","title":"Global descent of SCD capsules","status":"OPEN"},
-    {"id":"X041-G17","title":"Dimension/torsion/source/debt/SCC rank","status":"ARITHMETIC-LEAN-WRITTEN/GEOMETRY-OPEN"},
+    {"id":"X041-G13","title":"Regular-Flag Flat-Lift as one-layer no-recharge theorem","status":"OPEN-LOAD-BEARING"},
+    {"id":"X041-G14","title":"Source-conservative saturated-capsule no reset","status":"OPEN-LOAD-BEARING"},
+    {"id":"X041-G15","title":"Common trace product with saturated source capsules","status":"X040-COMBINATORICS-GREEN/SCHEME-OPEN"},
+    {"id":"X041-G16","title":"Global descent of saturated source capsules","status":"OPEN"},
+    {"id":"X041-G17","title":"Dimension/recharge/torsion/source/debt/SCC rank","status":"ARITHMETIC-LEAN-WRITTEN/GEOMETRY-OPEN"},
     {"id":"X041-G18","title":"Universal actual jointly legal centre word","status":"OPEN-LOAD-BEARING"}
   ],
   "edges": [
     {"from":["X041-G1","X041-G2"],"to":"X041-G3","kind":"finite-derived-saturation"},
-    {"from":["X041-G3","X041-G4","X041-G5","X041-G6"],"to":"X041-G10","kind":"divisor-word-source-realization"},
-    {"from":["X041-G8","X041-G9","X041-G7"],"to":"X041-G10","kind":"good-triple-base-change"},
+    {"from":["X041-G3","X041-G4","X041-G5","X041-G6","X041-G8","X041-G9"],"to":"X041-G10A","kind":"total-divisor-saturated-comparison"},
+    {"from":["X041-G10A"],"to":"X041-G10B","kind":"exceptional-recharge-extraction"},
+    {"from":["X041-G10B","X041-G10C","X041-G10D"],"to":"X041-G10","kind":"recharge-vanishing-or-descent"},
     {"from":["X041-G10","X041-G11","X041-G12","X041-G13","X041-G14"],"to":"X041-G18","kind":"joint-transform-and-heredity"},
     {"from":["X041-G15","X041-G16","X041-G17","X041-G18"],"to":"TRM-12","kind":"global-causal-termination-handoff"},
     {"from":["TRM-12","GLB-07","GLB-08"],"to":"FIN-01","kind":"final-resolution-handoff"}
   ],
-  "highest_information_cut": ["X041-G1","X041-G3","X041-G4","X041-G8","X041-G9","X041-G10","X041-G13","X041-G14"]
+  "highest_information_cut": ["X041-G3","X041-G8","X041-G9","X041-G10A","X041-G10B","X041-G10C","X041-G10D","X041-G13","X041-G14"]
 }
