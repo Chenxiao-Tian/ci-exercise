@@ -1,0 +1,14 @@
+goal_id,parent_claim,lean_statement_short,file,status,priority
+X041-LG1,X041-G6,relative power saturation by a product equals successive saturation,PCRLean/Experimental/PowerSaturationProduct.lean,SOURCE-WRITTEN,HIGH
+X041-LG2,X041-G6,finite divisor-word saturation equals product saturation and is permutation invariant,PCRLean/Experimental/DivisorWordSaturation.lean,SOURCE-WRITTEN,HIGH
+X041-LG3,X041-G2,finite exponent certificates are monotone and compute saturated source capsules,PCRLean/Experimental/SaturatedSourceCapsule.lean,SOURCE-WRITTEN,HIGH
+X041-LG4,X041-G17,carrier/torsion/source/debt rank is well founded,PCRLean/Experimental/DecalageSourceRank.lean,SOURCE-WRITTEN,MEDIUM
+X041-LG5,X041-G1,formalize the cohomology formula for N iterates of Leta_f,PCRLean/Experimental/IteratedDecalageCohomology.lean,OPEN,CRITICAL
+X041-LG6,X041-G3,define normalized saturated derived decalage capsule with degree twists,PCRLean/Experimental/SaturatedDerivedDecalage.lean,OPEN,CRITICAL
+X041-LG7,X041-G4,formalize one-chart strict transform as H0 saturated decalage,PCRLean/Experimental/StrictTransformDecalage.lean,OPEN,CRITICAL
+X041-LG8,X041-G5,formalize total exceptional divisor word and finite exponent ledger,PCRLean/Experimental/ExceptionalDivisorWord.lean,OPEN,HIGH
+X041-LG9,X041-G8,interface the canonical good-triple blowup of a perfect source complex,PCRLean/Experimental/GoodTripleSourcePacket.lean,OPEN,CRITICAL
+X041-LG10,X041-G9,formalize arbitrary pullback compatibility after good-triple preparation,PCRLean/Experimental/GoodTripleDecalageBaseChange.lean,OPEN,CRITICAL
+X041-LG11,X041-G10,compile source-word realization on a common refinement,PCRLean/Experimental/SCDSourceWordRealization.lean,OPEN,CRITICAL
+X041-LG12,X041-G13,formalize Regular-Flag Flat-Lift as a one-layer SCD comparison,PCRLean/Experimental/RegularFlagDecalageLift.lean,OPEN,CRITICAL
+X041-LG13,X041-G14,formalize source-conservative capsule reconstruction on all charts,PCRLean/Experimental/SCDNoReset.lean,OPEN,CRITICAL
