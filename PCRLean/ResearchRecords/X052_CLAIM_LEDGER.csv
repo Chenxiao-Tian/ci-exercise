@@ -1,0 +1,16 @@
+claim_id,parent_group,statement_short,evidence_level,status
+X052-G1,TRM-10,Fixed-projection valued-field invariants are unchanged by birational model modifications,DIRECT-FIELD-THEORY,CLOSED
+X052-G2,TRM-10,Ordinary blowups cannot make a fixed defective extension defectless or produce a best generator,DIRECT-COROLLARY,CLOSED
+X052-G3,TRM-10,Ordinary blowups cannot change independent/dependent type or Artin-Schreier distance,DIRECT-COROLLARY,CLOSED
+X052-G4,TRM-10,Stabilized fixed-projection PZGE is impossible,DERIVED-G1-X050-ACC,CLOSED-NO-GO
+X052-G5,TRM-10,Minimal projection defect is well-defined and birationally invariant,DIRECT-DEFINITION,CLOSED
+X052-G6,TRM-10,Local uniformization implies minimal projection defect zero,STANDARD-ETALE-GEOMETRY,CLOSED
+X052-G7,TRM-10,Abhyankar valuations have minimal projection defect zero,GENERALIZED-STABILITY,LITERATURE-CLOSED
+X052-G8,TRM-10,Immediate trdeg-one extensions over separably tame bases admit henselian-rational defectless projections,HENSELIAN-RATIONALITY,LITERATURE-CLOSED
+X052-G9,TRM-10,Defectless projection gives multiplicity reduction along the valuation,CUTKOSKY-MOURTADA,LITERATURE-CLOSED
+X052-G10,TRM-12,DPE implies local uniformization inside the coherent programme,CONDITIONAL-ON-X033-X050,CONDITIONAL
+X052-G11,TRM-12,Local uniformization is equivalent to DPE inside the programme,DERIVED-G6-G10,CONDITIONAL
+X052-G12,TRM-10,No projection-minimal defect core exists,OPEN-LOAD-BEARING,OPEN
+X052-G13,TRM-12,DPE gives strict class-V elimination and global termination,CONDITIONAL-ON-G12,OPEN
+X052-G14,GLB-07,Finite functorial globalization after termination,OPEN-FINAL,OPEN
+X052-G15,FIN-01,General principalization and resolution over perfect fields,OPEN-FINAL,OPEN
