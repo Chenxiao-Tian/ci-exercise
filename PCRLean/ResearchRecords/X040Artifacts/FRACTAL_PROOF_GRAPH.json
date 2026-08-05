@@ -17,18 +17,23 @@
       "deleted_candidate": "arbitrarily choose one flatifier per maximal carrier and only symmetrize afterwards",
       "failure": "the source ideals and words depend on a hidden nonfunctorial flatifier choice",
       "replacement": "a finite proper Rees-Serre packet and functorial proper flatification on the intrinsic maximal-carrier groupoid"
+    },
+    {
+      "deleted_candidate": "replace an iterated flatifier word and its strict-transform semantics by one composite ideal",
+      "failure": "strict transform depends on the actual centre word, not only on the composite modification morphism",
+      "replacement": "retain the full source-word payload; use one modification ideal only to construct the common refinement"
     }
   ],
   "nodes": [
     {"id":"X040-G0A","title":"Functorial finite Rees-Serre carrier packet","status":"OPEN-LOAD-BEARING"},
     {"id":"X040-G0B","title":"Functorial proper flatifier source on maximal-carrier groupoid","status":"STANDARD-FLATIFICATION-INPUT/PROJECT-INTERFACE-OPEN"},
-    {"id":"X040-G1","title":"Finite flatifier word compressed to one source blowup ideal","status":"STANDARD-MATH/INTERFACE-OPEN"},
+    {"id":"X040-G1","title":"Centre-enriched source-word package and composite modification ideal","status":"STANDARD-MORPHISM-COMPRESSION/TRANSFORM-SEMANTICS-OPEN"},
     {"id":"X040-G2","title":"Ambient trace ideal and induced carrier blowup","status":"STANDARD-MATH/SCHEME-INTERFACE-OPEN"},
     {"id":"X040-G3","title":"Finite product blowup is a common refinement","status":"STANDARD-MATH-CLOSED/LEAN-SCHEME-OPEN"},
     {"id":"X040-G4","title":"Componentwise admissibility gives strict support-dimension drop","status":"STANDARD-MATH/LEDGER-OPEN"},
     {"id":"X040-G5","title":"Lower-dimensional relative principalization of common trace product","status":"OPEN-LOAD-BEARING"},
     {"id":"X040-G6","title":"Regular jointly legal ambient realization","status":"OPEN-LOAD-BEARING"},
-    {"id":"X040-G7","title":"Source-pure transform under common refinement","status":"OPEN-LOAD-BEARING"},
+    {"id":"X040-G7","title":"Full source-word realization under common refinement","status":"OPEN-LOAD-BEARING"},
     {"id":"X040-G8","title":"Simultaneous maximal-carrier passive flatness","status":"OPEN"},
     {"id":"X040-G9","title":"Finite source-arrangement completion","status":"COMBINATORIAL-LEAN-WRITTEN/GEOMETRY-OPEN"},
     {"id":"X040-G10","title":"Bad source intersections enter support-thickness recursion","status":"OPEN"},
@@ -44,7 +49,7 @@
   "edges": [
     {"from":["X040-G0A"],"to":"X040-G0B","kind":"proper-functorial-flatification"},
     {"from":["X040-G0B","X040-G1","X040-G2","X040-G3","X040-G4"],"to":"X040-G5","kind":"functorial-common-source-product-reduction"},
-    {"from":["X040-G5","X040-G6","X040-G7"],"to":"X040-G8","kind":"common-flatifier-realization"},
+    {"from":["X040-G5","X040-G6","X040-G7"],"to":"X040-G8","kind":"centre-enriched-common-flatifier-realization"},
     {"from":["X040-G9","X040-G10","X040-G11","X040-G12"],"to":"X040-G13","kind":"crossing-to-nested-reduction"},
     {"from":["X040-G8","X040-G13","X040-G14","X040-G15","X040-G16"],"to":"X040-G18","kind":"joint-legalization-and-persistence"},
     {"from":["X040-G17","X040-G18"],"to":"TRM-12","kind":"outer-causal-termination-handoff"},
