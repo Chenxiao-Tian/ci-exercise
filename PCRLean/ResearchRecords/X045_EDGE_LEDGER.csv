@@ -1,0 +1,9 @@
+edge_id,parent_claim,child_claims,decomposition_kind,soundness_status
+EDGE-X045-01,X045-G2,X045-G1,event-octahedron-telescoping,CLOSED
+EDGE-X045-02,X045-G5,X045-G3|X045-G4|X044-SOURCE-CLOSURE,source-semilattice-no-new-root,CONDITIONAL-CLOSED
+EDGE-X045-03,X045-G7,X044-ACTUAL-CENTRE-BLOCK|X045-G2|X045-G5,complete-colour-no-upward-birth,OPEN-CONDITIONAL
+EDGE-X045-04,X045-G10,X045-G7|X045-G9,coherent-multiset-descent,CONDITIONAL-CLOSED
+EDGE-X045-05,X045-G12,X045-G11|COHERENT-GRAMMAR-COMPLETENESS,coherent-to-class-V-reduction,CONDITIONAL
+EDGE-X045-06,X045-G14,X045-G13|TRM-09|TRM-10,event-visible-defect-escape,OPEN
+EDGE-X045-07,X045-G16,X045-G10|X045-G14|X045-G15,global-source-causal-termination,OPEN
+EDGE-X045-08,X045-G18,X045-G16|X045-G17,final-resolution,OPEN-FINAL
