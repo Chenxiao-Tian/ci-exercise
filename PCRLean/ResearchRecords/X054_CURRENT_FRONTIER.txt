@@ -1,0 +1,21 @@
+X054 ASSUMED-COMPLETE FRONTIER
+==============================
+
+Assumed closed in the X054 final-proof model:
+- relative Frobenius-frame preparation;
+- relative Hasse-Morita descent and frame independence;
+- coherent radicial descent complex;
+- lower-dimensional elimination of all radicial descent defects;
+- descent of centre ideals, Rees algebras, and finite centre words;
+- Frobenius-flat/Kunz descent of regularity;
+- descent of ordered SNC terminal certificates;
+- independence of the purely inseparable uniformizing alteration;
+- pointwise defectless projections;
+- canonical finite local-word atlas;
+- hereditary regular common refinement;
+- principalization, embedded resolution, intrinsic resolution, and smooth functoriality.
+
+Actual external truth status:
+- the X054 radicial descent theorem is a maximum-likelihood reconstructed theorem;
+- it has not been independently peer reviewed or certified;
+- general arbitrary-dimensional positive-characteristic resolution remains open in the public literature.

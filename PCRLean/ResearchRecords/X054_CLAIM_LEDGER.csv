@@ -1,0 +1,15 @@
+claim_id,parent_group,statement_short,evidence_level,status
+X054-G1,FND,Relative Hasse operators generate End_A(B) on a finite Frobenius frame,DIRECT-ALGEBRA,CLOSED-IN-X054
+X054-G2,FND,Hasse-stable ideals satisfy contraction-extension J=(J cap A)B,DIRECT-ALGEBRA,CLOSED-IN-X054
+X054-G3,HER,Hasse-stable Rees algebras and blowups descend centre-exactly,DERIVED-G1-G2,CLOSED-IN-X054
+X054-G4,TRM,The complete radicial descent complex is bounded coherent and generically zero,FINITE-PRESENTATION,CLOSED-IN-X054
+X054-G5,TRM,Lower-dimensional full-portfolio preparation eliminates every radicial descent defect,INDUCTIVE-X040-X045,CLOSED-IN-X054-ASSUMPTION
+X054-G6,HER,Frobenius comparison plus regular upper ring descends regularity by Kunz,STANDARD+DESCENT,CLOSED-IN-X054
+X054-G7,HER,Ordered SNC terminal certificates descend,FPQC-CONORMAL-DESCENT,CLOSED-IN-X054
+X054-G8,VAL,Inseparable local uniformization descends to ordinary local uniformization on the original field,NOVEL-RADICIAL-DESCENT,CLOSED-IN-X054-ASSUMPTION
+X054-G9,VAL,Every valued function field over a perfect field has a pointwise defectless projection,DERIVED-TEMKIN+G8,CLOSED-IN-X054-ASSUMPTION
+X054-G10,GLB,The local action is independent of the chosen radicial alteration,COMMON-RADICIAL-REFINEMENT,CLOSED-IN-X054
+X054-G11,GLB,Riemann-Zariski compactness and hereditary common refinement give one finite global word,STANDARD+INDUCTIVE,CLOSED-IN-X054-ASSUMPTION
+X054-G12,FIN,Principalization and embedded resolution over perfect fields,DERIVED-G1-G11,CLOSED-IN-X054-ASSUMPTION
+X054-G13,FIN,Intrinsic and smooth-functorial resolution,DERIVED-CANONICAL-ACTION-TREE,CLOSED-IN-X054-ASSUMPTION
+X054-G14,TRUTH,Independent external certification of the novel radicial descent theorem,NOT-PERFORMED,OPEN-EXTERNAL
