@@ -1,5 +1,21 @@
 # X040 Counterexample Ledger
 
+## CFT-0 — Hidden flatifier choice
+
+An existence theorem can produce two different admissible flatifier words for
+the same carrier packet.  They may have different source ideals and ambient
+trace supports.  Taking a symmetry product after selecting one word does not
+make the selection functorial.  The source word must be produced by a
+functorial flatification theorem from a canonical finite packet.
+
+## CFT-0B — Projective tail alone misses low degrees
+
+A coherent projective-normal tail sheaf can be flat while a finite low
+associated-graded piece is nonflat.  The functorial packet must include bounded
+irrelevant torsion, a finite low/transition window, and the proper tail with
+comparison maps.  Conversely, the affine normal-cone packet is sufficient for
+existence but does not by itself choose a functorial flatifier.
+
 ## CFT-1 — Crossing preparatory source
 
 ```text
@@ -71,9 +87,11 @@ source.  The product ideal is invariant; arbitrary concatenation is not.
 
 ## Posterior effect
 
-The ledger rejects independent flatifier concatenation, direct singular product
-centres, morphism-only domination, noncomponentwise admissibility, and
-uncompleted crossing serialization.  It supports one source-labelled common
-trace product, lower-support-dimensional relative principalization, finite
-source-arrangement completion, and nested-only wonderful persistence.  It does
-not prove their scheme-level bridge theorems.
+The ledger rejects hidden nonfunctorial flatifier selection, projective-tail-only
+flatness, independent flatifier concatenation, direct singular product centres,
+morphism-only domination, noncomponentwise admissibility, and uncompleted
+crossing serialization.  It supports a canonical finite proper Rees-Serre
+packet, functorial component flatifiers, one source-labelled common trace
+product, lower-support-dimensional relative principalization, finite source
+arrangement completion, and nested-only wonderful persistence.  It does not
+prove their scheme-level bridge theorems.
