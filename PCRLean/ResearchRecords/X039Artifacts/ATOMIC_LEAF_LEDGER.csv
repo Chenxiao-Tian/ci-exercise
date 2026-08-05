@@ -1,0 +1,11 @@
+leaf_id,parent_claim,statement,lean_declaration,status
+X039-L1,X039-G2,An exact linear equivalence from the tensor of two flat modules to a total module makes the total module flat,PCRLean.Experimental.HironakaTensorFlatnessCompiler.Certificate.totalFlat,SOURCE-WRITTEN
+X039-L2,X039-G2,Flatness of the total module is equivalent to flatness of the Hironaka tensor model,PCRLean.Experimental.HironakaTensorFlatnessCompiler.Certificate.flat_iff_tensorFlat,SOURCE-WRITTEN
+X039-L3,X039-G2,The Hironaka tensor compiler works simultaneously for every owner in a finite portfolio,PCRLean.Experimental.HironakaTensorFlatnessCompiler.PortfolioCertificate.portfolioFlat,SOURCE-WRITTEN
+X039-L4,X039-G11,A flat module has no nonzero submodule killed elementwise by powers of a certified exceptional monomial,PCRLean.Experimental.ExceptionalNoRecharge.noRecharge,SOURCE-WRITTEN
+X039-L5,X039-G11,A successor exceptional-torsion layer cannot recharge after the previous layer is zero,PCRLean.Experimental.ExceptionalNoRecharge.successor_eq_bot,SOURCE-WRITTEN
+X039-L6,X039-G11,Exceptional no-recharge holds simultaneously for a finite owner portfolio,PCRLean.Experimental.ExceptionalNoRecharge.finitePortfolio,SOURCE-WRITTEN
+X039-L7,X039-G14,A recursive call on a proper carrier is strict regardless of all later coordinates,PCRLean.Experimental.NestedCarrierLegalizationRank.carrier_dimension_drop,SOURCE-WRITTEN
+X039-L8,X039-G14,At fixed carrier dimension consuming the immutable flatifier-word height is strict,PCRLean.Experimental.NestedCarrierLegalizationRank.word_height_drop,SOURCE-WRITTEN
+X039-L9,X039-G14,At fixed dimension and word height a Rees-defect improvement is strict,PCRLean.Experimental.NestedCarrierLegalizationRank.rees_defect_drop,SOURCE-WRITTEN
+X039-L10,X039-G14,The complete carrier-dimension word-height Rees-defect contact debt order is well founded,PCRLean.Experimental.NestedCarrierLegalizationRank.rank_wellFounded,SOURCE-WRITTEN
