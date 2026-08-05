@@ -1,0 +1,16 @@
+claim_id,parent_group,statement_short,evidence_level,status
+X053-G1,GLB-07,The terminal basin of a finite centre word is open in the Riemann-Zariski space,STANDARD-TOPOLOGY,CLOSED
+X053-G2,GLB-07,Pointwise finite local words yield a finite local-word atlas by Riemann-Zariski quasi-compactness,STANDARD-COMPACTNESS,CLOSED
+X053-G3,GLB-07,Finitely many admissible source blowups have one common admissible blowup,STANDARD-STACKS,CLOSED
+X053-G4,GLB-07,An arbitrary common blowup may be singular and does not by itself resolve the pair,EXPLICIT-COUNTEREXAMPLE,CLOSED-NO-GO
+X053-G5,GLB-07,The common modification ideal has smaller carrier dimension when all source words are generically trivial,DIMENSION-ARGUMENT,CLOSED
+X053-G6,GLB-07,The complete terminal portfolio admits a regular jointly legal realization dominating all source words,LOWER-DIMENSIONAL-FULL-PORTFOLIO,CONDITIONAL
+X053-G7,HER-15,Source terminal regular/SNC certificates survive the hereditary common refinement,X042-X043+G6,CONDITIONAL
+X053-G8,GLB-07,Every final scheme point is detected by a valuation centred at that point,STANDARD-VALUATION-EXISTENCE,CLOSED
+X053-G9,FIN-01,Pointwise DPE implies finite global embedded resolution in the current architecture,G2+G6+G7+G8+X052,CONDITIONAL-CLOSED
+X053-G10,FIN-02,Pointwise DPE implies principalization and intrinsic resolution existence,DERIVED-G9,CONDITIONAL
+X053-G11,TRM-10,A separate finite-constructible Uniform DPE hypothesis is unnecessary for existence,DERIVED-G2+G9,SUPERSEDES-X052-UNIFORMITY
+X053-G12,FIN-03,An arbitrary compactness subcover is not smooth-functorial,SELECTION-BOUNDARY,CLOSED-NO-GO
+X053-G13,FIN-03,Functorial projection-atlas selection yields smooth-functorial common refinement and resolution,CONDITIONAL,OPEN
+X053-G14,TRM-10,Pointwise defectless projection existence for every valued function field over a perfect field,OPEN-VALUATION-FRONTIER,OPEN
+X053-G15,FIN-01,General arbitrary-dimensional positive-characteristic resolution,OPEN-FINAL,OPEN
