@@ -1,0 +1,9 @@
+edge_id,parent_claim,child_claims,decomposition_kind,soundness_status,coverage_status,naturality_status,rank_status
+EDGE-X041-01,X041-G3,X041-G1|X041-G2,finite-derived-saturation,STANDARD-CORE/PROJECT-OPEN,N/A,OPEN,N/A
+EDGE-X041-02,X041-G10,X041-G3|X041-G4|X041-G5|X041-G6,strict-transform-as-total-divisor-saturation,OPEN,OPEN,OPEN,OPEN
+EDGE-X041-03,X041-G10,X041-G7|X041-G8|X041-G9,good-triple-base-change,STANDARD-INPUT/PROJECT-INTERFACE-OPEN,N/A,PARTIAL,N/A
+EDGE-X041-04,X041-G13,X041-G4|X041-G9|X041-G10,regular-flag-one-layer-decalage,OPEN,OPEN,OPEN,OPEN
+EDGE-X041-05,X041-G14,X041-G10|X041-G11|X041-G13,source-conservative-heredity,OPEN,OPEN,OPEN,OPEN
+EDGE-X041-06,X041-G18,X041-G12|X041-G14|X041-G15|X041-G16|X041-G17,joint-legalization-compiler,OPEN,OPEN,OPEN,PARTIAL
+EDGE-X041-07,TRM-12,X041-G17|X041-G18,causal-termination-handoff,OPEN,OPEN,OPEN,OPEN
+EDGE-X041-08,FIN-01,TRM-12|GLB-07|GLB-08,final-resolution-compiler,OPEN-FINAL,OPEN,OPEN,OPEN
