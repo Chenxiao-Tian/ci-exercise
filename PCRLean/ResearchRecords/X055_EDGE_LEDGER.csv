@@ -1,0 +1,8 @@
+edge_id,parent_claim,child_claims,decomposition_kind,soundness_status
+EDGE-X055-01,X055-G4,X055-G1,unit-absorption,CLOSED
+EDGE-X055-02,X055-G7,X055-G2|X055-G3|X055-G4|X055-G5|X055-G6,simultaneous-radicial-envelope,ASSUMED-CLOSED
+EDGE-X055-03,X055-G8,X055-G7|TEMKIN-INSEPARABLE-LU,full-Frobenius-root-uniformization,ASSUMED-CLOSED
+EDGE-X055-04,X055-G9,X055-G8,Frobenius-transfer,CLOSED
+EDGE-X055-05,X055-G12,X055-G10|X055-G11|HCR,finite-global-compilation,ASSUMED-CLOSED
+EDGE-X055-06,X055-G13,X055-G9|X055-G12|CECH-GROUPOID,canonical-functoriality,ASSUMED-CLOSED
+EDGE-X055-07,X055-G14,X055-G9|X055-G10|X055-G12|X055-G13,final-resolution,ASSUMED-FINAL
