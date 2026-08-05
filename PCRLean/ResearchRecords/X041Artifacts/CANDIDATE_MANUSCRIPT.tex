@@ -1,0 +1,242 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\title{Homogenized Normal Cones, Strict-Transform Cofinality, and Regular-Flag Flat Lifting}
+\author{Maximum-Likelihood Candidate Chapter}
+\date{4 August 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $C$ be a regular carrier in a regular ambient scheme and let
+$G=\operatorname{gr}_C(M)$ be the complete normal associated-graded module of a
+passive owner.  We introduce a canonical proper compactification of the entire
+affine normal-cone module by total-degree homogenization.  If
+$S=\operatorname{Sym}(I_C/I_C^2)$, then $G[z]$ is a finite graded module over
+$S[z]$, the standard open $D_+(z)$ in $\operatorname{Proj}S[z]$ is the full
+affine normal cone, and flatness of the associated projective sheaf is
+equivalent to flatness of $G$.  Functorial flatification of proper coherent
+sheaves therefore yields canonical source words without a presentation-
+dependent Rees--Serre cutoff.
+
+We also isolate a standard cofinality theorem: the iterated strict transform of
+a centre word equals the strict transform for its distinguished composite word
+ideal, finite products give common refinements, and once a source transform is
+flat every later strict transform is its pullback.  The remaining
+project-specific theorem is an all-chart Regular-Flag Flat-Lift statement
+transporting the complete normal module through nested regular blowups.  The
+chapter records the exact candidate theorem and its open interfaces; it does
+not prove resolution in positive characteristic.
+\end{abstract}
+
+\section{The homogenized normal packet}
+Let $C\hookrightarrow X$ be a regular immersion with ideal $I$ and conormal
+bundle $E=I/I^2$.  Put
+\[
+ S=\operatorname{Sym}_{\mathcal O_C}(E).
+\]
+For a coherent owner $M$ set
+\[
+ G=\operatorname{gr}_I(M)=\bigoplus_{n\geq0}I^nM/I^{n+1}M.
+\]
+The module $G$ is finite and graded over $S$.  Let $z$ have degree one and
+define the total-degree homogenization
+\[
+ \mathsf H(G)=G\otimes_{\mathcal O_C}\mathcal O_C[z],
+ \qquad
+ \mathsf H(G)_d=\bigoplus_{0\leq n\leq d}G_nz^{d-n}.
+\]
+It is finite over
+\[
+ \overline S=S[z]=\operatorname{Sym}_{\mathcal O_C}(\mathcal O_C\oplus E).
+\]
+Let
+\[
+ \overline N_C=\operatorname{Proj}_C(\overline S)
+ =\mathbf P_C(\mathcal O_C\oplus E),
+ \qquad
+ \overline{\mathcal G}=\widetilde{\mathsf H(G)}.
+\]
+
+\begin{proposition}[Affine recovery, candidate scheme interface]
+There are canonical identifications
+\[
+ D_+(z)\cong\operatorname{Spec}_C(S),
+ \qquad
+ \overline{\mathcal G}|_{D_+(z)}\cong\widetilde G.
+\]
+They commute with flat base change on $C$.
+\end{proposition}
+
+\begin{proof}[Algebraic calculation]
+The degree-zero parts after localizing at $z$ are
+\[
+ (S[z]_z)_0=\bigoplus_{n\geq0}S_nz^{-n}\cong S
+\]
+and
+\[
+ (\mathsf H(G)_z)_0=\bigoplus_{n\geq0}G_nz^{-n}\cong G.
+\]
+The relative sheaf and base-change statements require the standard Proj
+interfaces.
+\end{proof}
+
+\begin{proposition}[Flatness equivalence, candidate scheme interface]
+The following are equivalent:
+\begin{enumerate}
+\item $G$ is flat over $C$;
+\item every homogeneous piece $G_n$ is flat over $C$;
+\item $\mathsf H(G)$ is flat over $C$;
+\item $\overline{\mathcal G}$ is flat over $C$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}[Proof architecture]
+The module $G$ is the direct sum of its homogeneous pieces, so (1) and (2) are
+equivalent.  As an $\mathcal O_C$-module,
+$\mathsf H(G)$ is the direct sum of the finite triangular slices
+$\bigoplus_{n\leq d}G_n$, giving (2)$\Leftrightarrow$(3).  Flatness of
+$\mathsf H(G)$ implies flatness of its associated sheaf.  Conversely, restriction
+of a flat projective sheaf to $D_+(z)$ gives the flat affine module $G$.
+\end{proof}
+
+The proposition retains every normal degree and avoids an arbitrary Serre
+cutoff.  It is also presentation independent because it is defined from the
+canonical graded module rather than a chosen finite presentation.
+
+\section{Functorial flatifier sources}
+For a finite passive portfolio take the direct sum of the homogenized sheaves.
+Logarithmic and source modules may be included on proper identity components.
+The resulting finite disjoint-union morphism is proper over $C$.  Rydh's
+functorial flatification theorem for coherent sheaves on proper noetherian
+morphisms yields a sequence of blowups, supported outside the maximal flat
+open, whose strict transform is flat and whose formation is functorial under
+flat base change.
+
+In positive characteristic the flatifier centres need not be regular.  The
+sequence is therefore source data for lower-dimensional principalization, not
+the final ambient resolution word.
+
+\section{Centre-exact word compression}
+Strict transform depends on the centre.  Nevertheless, a finite centre word
+has a distinguished composite blowup ideal produced by the composition theorem
+for blowups.  Its centre support records the set-theoretic union of the word
+centres.  For this distinguished ideal, strict-transform transitivity gives
+\[
+ \operatorname{ST}_{J^{\mathrm{word}}}(F)
+ \cong
+ \operatorname{ST}_{J_r}\cdots\operatorname{ST}_{J_1}(F).
+\]
+This does not hold for an arbitrary ideal defining an isomorphic modification;
+Cartier changes require the corresponding torsion-free hypothesis.
+
+Let $J_\lambda^{\mathrm{word}}$ be the finite orbit of carrier source ideals and
+let $K_\lambda$ be their ambient traces.  Put
+\[
+ K_{\mathrm{com}}=\prod_\lambda K_\lambda.
+\]
+The blowup of $K_{\mathrm{com}}$ factors through every source modification.  If
+$F_\lambda^{\mathrm{flat}}$ is the flat terminal transform of source
+$\lambda$, then its strict transform on the common refinement is simply its
+pullback.  This is the same product-ideal and strict-transform-transitivity
+argument used in the local-to-global flatification theorem.
+
+\section{Lower-dimensional realization}
+Every maximal carrier $C$ has dimension below that of the ambient scheme.  The
+flatifier source is componentwise admissible, hence supported away from every
+generic point of $C$.  Apply the strengthened relative principalization theorem
+in lower dimension to $K_{\mathrm{com}}|_C$, enrolling the complete active,
+normal, logarithmic, contact, source, and debt portfolio.  The output is a
+finite word of regular centres on the successive carrier transforms.  By the
+universal property, the word factors through the common flatifier.
+
+Active marked legality lifts ambiently by ideal-power monotonicity.  Passive and
+logarithmic legality are supplied by the following theorem.
+
+\section{Regular-Flag Flat-Lift}
+Let $D\subset C\subset X$ be regular immersions.  Etale-locally choose a regular
+sequence
+\[
+ I_C=(x_1,\ldots,x_r),\qquad
+ I_D=(x_1,\ldots,x_r,y_1,\ldots,y_s).
+\]
+Only the $y_j$-pivot charts of $\operatorname{Bl}_D(X)$ meet the strict transform
+$C'$.  On the $y_1$-chart,
+\[
+ x_i=y_1x_i',\qquad y_j=y_1y_j'\quad(j>1),
+\]
+and $I_{C'}=(x_1',\ldots,x_r')$.
+
+\begin{theorem}[Regular-Flag Flat-Lift, target]
+Let $M$ be a coherent passive owner.  Assume:
+\begin{enumerate}
+\item $\operatorname{gr}_C(M)$ is flat over $C$;
+\item the Rees filtration sequences of $M$ are Tor-safe for the blowup in $D$;
+\item $D$ is normally flat for the complete induced carrier portfolio;
+\item the flag is compatible with the total SNC boundary.
+\end{enumerate}
+Let $M'$ and $C'$ be strict transforms after blowing up $X$ in $D$.  Then for
+every $n\geq0$ there is a canonical all-chart isomorphism
+\[
+ \frac{I_{C'}^nM'}{I_{C'}^{n+1}M'}
+ \cong
+ \operatorname{pr}^*\left(\frac{I_C^nM}{I_C^{n+1}M}\right)
+ \otimes\mathcal O_{C'}(nE_C),
+\]
+with the sign determined by the convention $x_i=y_1x_i'$.  The isomorphisms
+agree on overlaps, commute with smooth base change, and preserve source and
+owner lineage.  Consequently $\operatorname{gr}_{C'}(M')$ and its homogenized
+projective completion are flat over $C'$.
+\end{theorem}
+
+The theorem is open.  Its final flatness conclusion follows formally once the
+degreewise isomorphisms are constructed.
+
+\section{The candidate global compiler}
+The local architecture is
+\[
+\begin{gathered}
+\text{canonical homogenized normal packet}
+\longrightarrow
+\text{functorial source words}
+\longrightarrow
+\text{centre-exact common product}
+\longrightarrow
+\text{lower-dimensional regular realization}
+\longrightarrow
+\text{Regular-Flag Flat-Lift}.
+\end{gathered}
+\]
+After source-arrangement completion, deepest-first wonderful serialization has
+only disjoint and nested interactions.  Hironaka normal-flatness transitivity
+prepares every stratum; the theorem above handles the nested blowups.  A
+support/source/flag/word rank controls the internal macro, while the existing
+source/debt/SCC rank controls outer execution.
+
+\begin{theorem}[Homogenized normal-cone carrier legalization, target]
+Under strong relative principalization in dimensions below $n$, every finite
+symmetry-stable arrangement of raw regular carriers in a smooth $n$-dimensional
+ambient scheme admits a finite centre-exact common-refinement word whose
+centres are ordinary, regular, nonidentity, active-permissible, passive-normal-
+flat and Tor-safe, and SNC-compatible.  The complete finite state reenters on
+all charts without reset, and every nonterminal macro strictly lowers the
+global well-founded rank.
+\end{theorem}
+
+\begin{remark}
+This is a maximum-likelihood theorem target.  The relative-Proj flatness
+interface, lower-dimensional full-portfolio realization, Regular-Flag
+Flat-Lift, hereditary reconstruction, and termination handoff remain open.
+General resolution in positive characteristic is not asserted.
+\end{remark}
+
+\section{Publication architecture}
+The current modal publication form is a six-paper series totaling $550$ dense
+Annals/AMS-equivalent pages.  The present chapter is the core of Paper III,
+\emph{Homogenized Normal-Cone Flatification, Strict-Transform Cofinality, and
+Hereditary Reentry}.
+
+\end{document}
