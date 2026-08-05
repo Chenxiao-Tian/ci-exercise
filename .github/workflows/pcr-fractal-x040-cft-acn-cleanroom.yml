@@ -117,6 +117,7 @@ jobs:
           cp PCRLean/ResearchRecords/MLEL_X040_CFT_ACN_REPORT.md x040-evidence/
           cp PCRLean/ResearchRecords/MLEL_X040_ANNALS_SERIES_MLE.md x040-evidence/
           cp PCRLean/ResearchRecords/MLEL_X040_FUNCTORIAL_FLATIFIER_SOURCE_SUPPLEMENT.md x040-evidence/
+          cp PCRLean/ResearchRecords/MLEL_X040_SOURCE_WORD_PAYLOAD_SUPPLEMENT.md x040-evidence/
           cp PCRLean/ResearchRecords/MLEL_X040_CI_SUPPLEMENT.md x040-evidence/
           cp -R PCRLean/ResearchRecords/X040Artifacts x040-evidence/
           find x040-evidence -type f -print0 \
