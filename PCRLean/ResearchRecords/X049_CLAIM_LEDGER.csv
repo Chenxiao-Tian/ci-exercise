@@ -1,0 +1,17 @@
+claim_id,parent_group,statement_short,evidence_level,status
+X049-G1,TRM-10,Ferrand norm of an ideal defines a coherent global norm ideal,STANDARD-NORM-FUNCTOR,CLOSED
+X049-G2,TRM-10,The norm ideal commutes with flat smooth and etale base change,STANDARD-NORM+FLAT-IMAGE,CLOSED
+X049-G3,TRM-10,In a diagonal toroidal chart the norm ideal has the X048 scaled Newton polyhedron,LOCAL-MONOMIAL-PROOF,CLOSED
+X049-G4,TRM-10,The normalized pullback of the norm-Rees shadow has the upper J^n Newton fan,DERIVED-G3,CLOSED-TOROIDAL
+X049-G5,TRM-10,The normalized norm-Rees shadow globalizes the local Norm-Newton modification,EXCELLENT-NORMALIZATION,CLOSED
+X049-G6,HER-15,Codimension-one ramification balance forces the two descent quotients to have codimension-at-least-two support,DVR+NORMALITY,CLOSED
+X049-G7,HER-15,The complete descent-interval diagram admits simultaneous exactified flatification,RG+X042,CONDITIONAL
+X049-G8,HER-15,Flat transformed balanced gap quotients vanish by flat-kill,STANDARD-FLAT-KILL,CLOSED
+X049-G9,HER-15,Vanishing of both transformed quotients makes the upper ideal descend uniquely,EXACT-SEQUENCES+FAITHFUL-FLATNESS,CLOSED
+X049-G10,CTR-13,The flatification modification is realizable by ordinary regular jointly legal centres,X044-LOWER-DIMENSIONAL,CONDITIONAL
+X049-G11,TRM-10,Ramification-balanced base-first wild preparation holds in the finite toroidal event-visible chamber,G1-G10,CONDITIONAL-CLOSED
+X049-G12,TRM-10,Event-Visible Wild Toroidalization for one independent Artin-Schreier layer,OPEN-LOAD-BEARING,OPEN
+X049-G13,TRM-10,EVWT implies UDE-EV without equal-or-higher class-V birth,CONDITIONAL,OPEN
+X049-G14,TRM-12,EVWT plus X045 yields strict global source-causal termination,CONDITIONAL,OPEN
+X049-G15,GLB-07,Finite Zariski-etale serialization and functorial globalization,OPEN-FINAL,OPEN
+X049-G16,FIN-01,Principalization and functorial resolution over perfect fields,OPEN-FINAL,OPEN

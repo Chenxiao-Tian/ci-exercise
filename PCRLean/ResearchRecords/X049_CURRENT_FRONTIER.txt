@@ -1,0 +1,27 @@
+X049 CURRENT FRONTIER AFTER FNI-BGE-NRW-FINAL
+==============================================
+
+Closed or reduced to exact/standard interfaces:
+- global Ferrand norm ideal for a finite locally free cover;
+- flat/smooth/etale naturality of the norm ideal;
+- diagonal toroidal norm-polyhedron identity;
+- global normalized Norm-Rees shadow;
+- exact two-sided descent-gap portfolio;
+- codimension-one balance implies codimension-at-least-two gap support;
+- flat-kill of a simultaneously exactified balanced gap;
+- unique descent of the transformed balanced upper ideal;
+- conditional regular-centre realization of the flatification modification;
+- ramification-balanced base-first wild preparation in the finite toroidal event-visible chamber;
+- X047 clean zero-shadow descent;
+- X045 coherent recurrent-class termination and X044 actual-centre synthesis.
+
+Dominant open cut:
+EVENT-VISIBLE WILD TOROIDALIZATION (EVWT)
+-> UDE-EV
+-> NO EQUAL-OR-HIGHER CLASS-V BIRTH
+-> STRICT CLASS-V ORDINAL
+-> FULL GLOBAL SOURCE-CAUSAL TERMINATION
+-> FINITE ZARISKI/ETALE SERIALIZATION
+-> PRINCIPALIZATION AND FUNCTORIAL RESOLUTION.
+
+General positive-characteristic resolution: OPEN.

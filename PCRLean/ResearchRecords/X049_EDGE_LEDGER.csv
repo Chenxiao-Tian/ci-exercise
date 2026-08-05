@@ -1,0 +1,7 @@
+edge_id,parent_claim,child_claims,decomposition_kind,soundness_status
+EDGE-X049-01,X049-G5,X049-G1|X049-G2|X049-G3|X049-G4,global-norm-Rees-shadow,CLOSED
+EDGE-X049-02,X049-G9,X049-G6|X049-G7|X049-G8,balanced-gap-elimination,CONDITIONAL-CLOSED
+EDGE-X049-03,X049-G11,X049-G5|X049-G9|X049-G10,toroidal-base-first-wild-preparation,CONDITIONAL-CLOSED
+EDGE-X049-04,X049-G13,X049-G11|X049-G12,event-visible-wild-escape,OPEN
+EDGE-X049-05,X049-G14,X049-G13|X045-COHERENT-RECURRENCE,global-source-causal-termination,OPEN
+EDGE-X049-06,X049-G16,X049-G14|X049-G15,final-resolution,OPEN-FINAL
