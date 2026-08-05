@@ -1,5 +1,7 @@
 import Mathlib
 import Mathlib.RingTheory.Flat.Basic
+import Mathlib.RingTheory.Flat.Stability
+import Mathlib.LinearAlgebra.TensorProduct.Basic
 
 /-!
 # Hironaka tensor-flatness compiler
@@ -41,30 +43,30 @@ variable [AddCommGroup Total] [Module K Total]
 /-- An abstract Hironaka comparison certificate. -/
 structure Certificate where
   comparison :
-    (Restricted ⊗[K] RelativeNormal) ≃ₗ[K] Total
+    LinearEquiv K (TensorProduct K Restricted RelativeNormal) Total
 
 namespace Certificate
 
 /-- Flatness is transitive across an exact Hironaka tensor decomposition. -/
 theorem totalFlat
-    (c : Certificate (K := K) Restricted RelativeNormal Total)
+    (c : Certificate Restricted RelativeNormal Total)
     [Module.Flat K Restricted]
     [Module.Flat K RelativeNormal] :
     Module.Flat K Total := by
-  letI : Module.Flat K (Restricted ⊗[K] RelativeNormal) := inferInstance
+  letI : Module.Flat K (TensorProduct K Restricted RelativeNormal) := inferInstance
   exact Module.Flat.of_linearEquiv c.comparison.symm
 
 /-- The comparison transports flatness in both directions. -/
 theorem flat_iff_tensorFlat
-    (c : Certificate (K := K) Restricted RelativeNormal Total) :
+    (c : Certificate Restricted RelativeNormal Total) :
     Module.Flat K Total ↔
-      Module.Flat K (Restricted ⊗[K] RelativeNormal) := by
+      Module.Flat K (TensorProduct K Restricted RelativeNormal) := by
   exact (Module.Flat.equiv_iff c.comparison).symm
 
 /-- Pointwise comparison identity used by higher-level certificates. -/
 theorem comparison_apply
-    (c : Certificate (K := K) Restricted RelativeNormal Total)
-    (x : Restricted ⊗[K] RelativeNormal) :
+    (c : Certificate Restricted RelativeNormal Total)
+    (x : TensorProduct K Restricted RelativeNormal) :
     c.comparison x = c.comparison x :=
   rfl
 
@@ -86,15 +88,13 @@ variable [∀ o, Module K (TotalO o)]
 /-- One Hironaka comparison for every passive owner. -/
 structure PortfolioCertificate where
   ownerCertificate : ∀ o,
-    Certificate (K := K)
-      (RestrictedO o) (RelativeNormalO o) (TotalO o)
+    Certificate (RestrictedO o) (RelativeNormalO o) (TotalO o)
 
 namespace PortfolioCertificate
 
 /-- Every owner is normally flat after exact tensor transitivity. -/
 theorem ownerFlat
-    (c : PortfolioCertificate (K := K)
-      RestrictedO RelativeNormalO TotalO)
+    (c : PortfolioCertificate RestrictedO RelativeNormalO TotalO)
     [∀ o, Module.Flat K (RestrictedO o)]
     [∀ o, Module.Flat K (RelativeNormalO o)]
     (o : Owner) :
@@ -103,8 +103,7 @@ theorem ownerFlat
 
 /-- A finite passive portfolio is flat simultaneously. -/
 theorem portfolioFlat
-    (c : PortfolioCertificate (K := K)
-      RestrictedO RelativeNormalO TotalO)
+    (c : PortfolioCertificate RestrictedO RelativeNormalO TotalO)
     [∀ o, Module.Flat K (RestrictedO o)]
     [∀ o, Module.Flat K (RelativeNormalO o)] :
     Module.Flat K (DirectSum Owner TotalO) := by
