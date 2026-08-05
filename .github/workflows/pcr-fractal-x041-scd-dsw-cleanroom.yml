@@ -25,6 +25,7 @@ jobs:
             PCRLean/Experimental/PowerSaturationProduct.lean
             PCRLean/Experimental/DivisorWordSaturation.lean
             PCRLean/Experimental/SaturatedSourceCapsule.lean
+            PCRLean/Experimental/SaturationRecharge.lean
             PCRLean/Experimental/DecalageSourceRank.lean
             PCRLean/Experimental/X041SaturatedDecalageIndex.lean
           )
@@ -80,6 +81,7 @@ jobs:
             PCRLean.Experimental.PowerSaturationProduct
             PCRLean.Experimental.DivisorWordSaturation
             PCRLean.Experimental.SaturatedSourceCapsule
+            PCRLean.Experimental.SaturationRecharge
             PCRLean.Experimental.DecalageSourceRank
             PCRLean.Experimental.X041SaturatedDecalageIndex
           )
@@ -108,10 +110,13 @@ jobs:
           cp PCRLean/Experimental/PowerSaturationProduct.lean x041-evidence/
           cp PCRLean/Experimental/DivisorWordSaturation.lean x041-evidence/
           cp PCRLean/Experimental/SaturatedSourceCapsule.lean x041-evidence/
+          cp PCRLean/Experimental/SaturationRecharge.lean x041-evidence/
           cp PCRLean/Experimental/DecalageSourceRank.lean x041-evidence/
           cp PCRLean/Experimental/X041SaturatedDecalageIndex.lean x041-evidence/
           cp PCRLean/Experimental/X041SaturatedDecalageIndexAudit.lean x041-evidence/
           cp PCRLean/ResearchRecords/MLEL_X041_SCD_DSW_REPORT.md x041-evidence/
+          cp PCRLean/ResearchRecords/MLEL_X041_ITERATION_AND_TOR_FIREWALL_SUPPLEMENT.md x041-evidence/
+          cp PCRLean/ResearchRecords/MLEL_X041_RECHARGE_CORRECTION.md x041-evidence/
           cp PCRLean/ResearchRecords/MLEL_X041_ANNALS_SERIES_MLE.md x041-evidence/
           cp -R PCRLean/ResearchRecords/X041Artifacts x041-evidence/
           find x041-evidence -type f -print0 \
