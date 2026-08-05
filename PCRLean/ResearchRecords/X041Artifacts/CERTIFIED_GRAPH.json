@@ -1,0 +1,15 @@
+{
+  "round_id": "MLEL-X041/HNC-STC-RFL",
+  "certified_graph_changed": false,
+  "accepted_formal_node": "MLEL-M004/HMC-SCCD (restricted)",
+  "new_promoted_nodes": [],
+  "new_promoted_edges": [],
+  "experimental_modules": [
+    "PCRLean.Experimental.HomogenizedGradedFlatness",
+    "PCRLean.Experimental.DegreewiseFlagFlatLiftCompiler",
+    "PCRLean.Experimental.SourceWordCofinalityCompiler",
+    "PCRLean.Experimental.HomogenizedCarrierRank"
+  ],
+  "general_positive_characteristic_resolution": false,
+  "formal_global_status": "OPEN_GAP"
+}
