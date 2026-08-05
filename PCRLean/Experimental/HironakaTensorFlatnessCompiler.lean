@@ -43,7 +43,7 @@ variable [AddCommGroup Total] [Module K Total]
 /-- An abstract Hironaka comparison certificate. -/
 structure Certificate where
   comparison :
-    LinearEquiv K (TensorProduct K Restricted RelativeNormal) Total
+    TensorProduct K Restricted RelativeNormal ≃ₗ[K] Total
 
 namespace Certificate
 
