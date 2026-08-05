@@ -1,0 +1,34 @@
+X053 CURRENT FRONTIER AFTER RZC-FLA-HCR-FINAL
+==============================================
+
+Closed or reduced to standard inputs:
+- openness of terminal basins in the Riemann-Zariski space;
+- finite local-word atlas from pointwise finite words and quasi-compactness;
+- finite common admissible blowup of source modifications;
+- valuation detection of every final scheme point;
+- fixed-projection invariance and minimal projection defect from X052.
+
+Conditionally closed in the present architecture:
+- hereditary regular common refinement of a finite local-word atlas;
+- pointwise DPE -> finite global embedded resolution existence;
+- pointwise DPE -> principalization and intrinsic resolution existence;
+- elimination of a separate finite-cover Uniform DPE hypothesis for existence.
+
+Superseded or rejected:
+- arbitrary common modification is automatically regular;
+- compactness alone patches local uniformizations;
+- arbitrary concatenation of local words preserves legality;
+- pointwise compactness selection is automatically smooth-functorial.
+
+Dominant valuation frontier:
+POINTWISE DEFECTLESS PROJECTION EXISTENCE (PDPE)
+-> LOCAL MULTIPLICITY REDUCTION / LOCAL UNIFORMIZATION
+-> X053 FINITE ATLAS + HEREDITARY COMMON REFINEMENT
+-> FINITE GLOBAL RESOLUTION EXISTENCE.
+
+Additional functoriality frontier:
+FUNCTORIAL PROJECTION-ATLAS SELECTION (FPAS)
+-> SMOOTH-FUNCTORIAL COMMON REFINEMENT
+-> FUNCTORIAL PRINCIPALIZATION AND RESOLUTION.
+
+General positive-characteristic resolution: OPEN.
