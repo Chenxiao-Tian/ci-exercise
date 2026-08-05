@@ -1,0 +1,21 @@
+X056 CURRENT STATE
+==================
+
+Public theorem: complete unconditional resolution proof under the user's X056 assumption.
+
+New closed interfaces:
+- intrinsic height-one Frobenius-sandwich state;
+- Hasse-stable centre descent and Rees comparison;
+- strict foliation-state descent;
+- logarithmic Cartier straightening;
+- smooth p-constant unit absorption;
+- base-first Norm-Rees regularization of terminal Frobenius lattices;
+- canonical Frobenius filtration and presentation-independent envelope uniformization;
+- defectless projection theorem;
+- valuation-certificate termination;
+- embedded resolution, principalization, ambient independence, intrinsic resolution, smooth functoriality.
+
+External validation boundary:
+- independent peer review: not recorded;
+- external theorem certification: not recorded;
+- complete formal verification: not recorded.
