@@ -1,0 +1,15 @@
+claim_id,parent_group,statement_short,evidence_level,status
+X057-G1,X056-FROBENIUS-SANDWICH,The Cartier-Spencer comparison object is finite coherent intrinsic and pullback compatible,ASSUMED-FINAL-PROOF,CLOSED-IN-X057
+X057-G2,X056-FROBENIUS-SANDWICH,A nonzero Cartier-Spencer object produces a proper coherent colour and strict rank descent,ASSUMED-FINAL-PROOF,CLOSED-IN-X057
+X057-G3,X056-FOLIATION-STRAIGHTENING,Vanishing Cartier-Spencer comparison gives an etale Cartier p-basis and a regular invariant ring,ASSUMED-FINAL-PROOF,CLOSED-IN-X057
+X057-G4,X056-KUMMER-TERMINAL,The relative Kummer hole module is finite and its Fitting-conductor profile strictly descends,ASSUMED-FINAL-PROOF,CLOSED-IN-X057
+X057-G5,X056-NORM-REES,A regular Kummer subdivision is realized on the original base by ordinary Norm-Rees blowups,ASSUMED-FINAL-PROOF,CLOSED-IN-X057
+X057-G6,X055-RADICIAL-ENVELOPE,Every finite purely inseparable envelope is uniformized presentation-independently by ordinary regular centres,ASSUMED-FINAL-PROOF,CLOSED-IN-X057
+X057-G7,X054-DEFECTLESS-PROJECTION,Every valued function field over a perfect field admits a defectless separating projection,ASSUMED-FINAL-PROOF,CLOSED-IN-X057
+X057-G8,X045-COHERENT-RECURRENCE,The complete coherent state defines an intrinsic finite-length Cartier crystal,ASSUMED-FINAL-PROOF,CLOSED-IN-X057
+X057-G9,X045-EVENT-OCTAHEDRON,Completed centre blocks fit into the Cartier event triangle,ASSUMED-FINAL-PROOF,CLOSED-IN-X057
+X057-G10,X045-GLOBAL-RANK,The refined Cartier-crystal Jordan-Holder multiset strictly descends on every nonterminal block,ASSUMED-FINAL-PROOF,CLOSED-IN-X057
+X057-G11,X053-RZ-COMPACTNESS,Defectless projections define quotient crystals and certify projection-free intrinsic termination,ASSUMED-FINAL-PROOF,CLOSED-IN-X057
+X057-G12,X053-COMMON-REFINEMENT,Riemann-Zariski finite atlases admit hereditary regular common refinements,ASSUMED-FINAL-PROOF,CLOSED-IN-X057
+X057-G13,GLB-07,The intrinsic centre sequence is compatible with open smooth etale and perfect-field base change,ASSUMED-FINAL-PROOF,CLOSED-IN-X057
+X057-G14,FIN-01,Principalization embedded resolution ambient independence and intrinsic functorial resolution hold over perfect fields,ASSUMED-FINAL-PROOF,CLOSED-IN-X057
