@@ -1,0 +1,22 @@
+import PCRLean.Experimental.X040CommonFlatifierTraceIndex
+
+#print axioms PCRLean.Experimental.MinimalStratumNesting.disjoint_or_subset
+#print axioms PCRLean.Experimental.MinimalStratumNesting.inter_eq_left_of_not_disjoint
+#print axioms PCRLean.Experimental.CommonTraceProduct.mul_le_left_source
+#print axioms PCRLean.Experimental.CommonTraceProduct.mul_le_right_source
+#print axioms PCRLean.Experimental.CommonTraceProduct.product_le_inf
+#print axioms PCRLean.Experimental.CommonTraceProduct.swap_sources
+#print axioms PCRLean.Experimental.CommonTraceProduct.reassoc_sources
+#print axioms PCRLean.Experimental.CommonFlatifierBudgetRank.support_drop
+#print axioms PCRLean.Experimental.CommonFlatifierBudgetRank.source_drop
+#print axioms PCRLean.Experimental.CommonFlatifierBudgetRank.word_drop
+#print axioms PCRLean.Experimental.CommonFlatifierBudgetRank.rank_wellFounded
+#print axioms PCRLean.Experimental.FiniteArrangementCompletion.original_mem_completion
+#print axioms PCRLean.Experimental.FiniteArrangementCompletion.inter_mem_completion
+#print axioms PCRLean.Experimental.FiniteArrangementCompletion.subset_pointUniverse_of_mem_completion
+#print axioms PCRLean.Experimental.CrossCarrierCompletionModel.inter_eq
+#print axioms PCRLean.Experimental.CrossCarrierCompletionModel.not_disjoint
+#print axioms PCRLean.Experimental.CrossCarrierCompletionModel.not_D_subset_C
+#print axioms PCRLean.Experimental.CrossCarrierCompletionModel.not_C_subset_D
+#print axioms PCRLean.Experimental.CrossCarrierCompletionModel.E_subset_both
+#print axioms PCRLean.Experimental.X040CommonFlatifierTraceIndex.loaded
