@@ -1,0 +1,10 @@
+edge_id,parent_claim,child_claims,decomposition_kind,soundness_status
+EDGE-X043-01,X043-G4,X043-G3,finite-normal-Hasse-jet-legality,CLOSED
+EDGE-X043-02,X043-G7,X043-G1|X043-G2|X043-G4|X043-G5|X043-G6,ambient-joint-legality,CONDITIONAL-CLOSED
+EDGE-X043-03,X043-G8,X043-G2|X042-G8A|X042-G9,ambient-successor-comparison,CONDITIONAL-CLOSED
+EDGE-X043-04,X043-G9,X043-G7|X043-G8|X042-G10,all-chart-reentry,CONDITIONAL-CLOSED
+EDGE-X043-05,X043-G10,FND-13|CTR-13|X043-G4,actual-centre-synthesis,OPEN
+EDGE-X043-06,X043-G11,X043-G10|STD-ALI|NIB-GEN,support-thickness-coverage,OPEN
+EDGE-X043-07,X043-G14,X043-G11|X043-G12|X043-G13,source-causal-termination,OPEN
+EDGE-X043-08,X043-G15,X043-G9|X043-G14|GLB-07,globalization,OPEN
+EDGE-X043-09,X043-G16,X043-G15|FIN-01,final-resolution,OPEN-FINAL

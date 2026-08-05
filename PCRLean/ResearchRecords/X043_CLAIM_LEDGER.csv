@@ -1,0 +1,17 @@
+claim_id,parent_group,statement_short,evidence_level,status
+X043-G1,HER-03,Regular carrier centre is regular in the ambient via composition of regular immersions,STANDARD-STACKS,CLOSED
+X043-G2,HER-03,Ambient blowup in the carrier centre has carrier strict transform equal to the carrier blowup,STANDARD-STACKS,CLOSED
+X043-G3,CTR-03,Truncated normal jet (a+I_C^b)/I_C^b is finite intrinsic and smooth-natural,STANDARD-LOCAL-GEOMETRY,CLOSED
+X043-G4,CTR-03,Finite Hasse normal coefficients below the mark are equivalent to ambient marked divisibility,LOCAL-THEOREM,CLOSED
+X043-G5,HER-05,Normal crossings on the carrier lift to ambient normal crossings for a regular flag,STANDARD-COORDINATE-THEOREM,CLOSED
+X043-G6,HER-15,Lower-dimensional full-portfolio word factors through the carrier source flatifier,INDUCTIVE-STANDARD,CONDITIONAL-CLOSED
+X043-G7,HER-15,Canonical ambientization of that word is jointly active passive and logarithmically legal,INDUCTIVE-COMPILER,CONDITIONAL-CLOSED
+X043-G8,HER-15,Prepared carrier mixed-Rees comparison equals the actual ambient successor comparison,LOCAL-REES+X042-EXACTIFICATION,CONDITIONAL-CLOSED
+X043-G9,HER-13,Completed joint word has all-chart owner source boundary and contact reentry,INDUCTIVE-COMPILER,CONDITIONAL-CLOSED
+X043-G10,CTR-13,Every nonterminal intrinsic state has a finite actual regular carrier arrangement,OPEN-LOAD-BEARING,OPEN
+X043-G11,TRM-04,Support-thickness and anchor-contact recursion strictly descends in every wild chamber,OPEN-LOAD-BEARING,OPEN
+X043-G12,TRM-08,Every new source has a finite geometric birth witness and no free cloning,OPEN-LOAD-BEARING,OPEN
+X043-G13,TRM-12,Every recurrent class including immediate defect admits an actual exit,OPEN-LOAD-BEARING,OPEN
+X043-G14,TRM-12,One global well-founded rank strictly decreases for every macro,OPEN-LOAD-BEARING,OPEN
+X043-G15,GLB-07,Local intrinsic words descend and serialize functorially to a finite global word,OPEN-FINAL,OPEN
+X043-G16,FIN-01,Principalization embedded resolution and intrinsic resolution follow,OPEN-FINAL,OPEN
