@@ -1,0 +1,25 @@
+X042 CURRENT FRONTIER
+====================
+
+Node: MLEL-X042 / RFG-TVC
+Regular-Flag Graded Comparison, Tor-Valabrega Closure, and Terminal Source Realization
+
+Closed/reduced:
+- finite centre-exact blowup-word compression;
+- terminal exceptional saturation and no terminal recharge;
+- finite H0(Leta) realization;
+- canonical chartwise alpha/beta comparison;
+- finite Tor-Valabrega-saturation mixed-Rees packet;
+- homogenized all-degree normal-cone packet;
+- universal exactification of kernels/images/cokernels;
+- carrier flatification plus reduced-base flat-kill on a fixed centre-exact chart;
+- flat terminal source realization on common refinements.
+
+Dominant open cut:
+AMBIENT REGULAR TRACE REALIZATION
+-> SUCCESSOR COMPARISON IDENTIFICATION
+-> ALL-CHART STATE REENTRY
+-> STRICT GLOBAL TERMINATION
+-> GLOBAL FUNCTORIAL RESOLUTION.
+
+General positive-characteristic resolution: OPEN.
