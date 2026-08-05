@@ -1,0 +1,18 @@
+import PCRLean.Experimental.X041SaturatedDecalageIndex
+
+#print axioms PCRLean.Experimental.PowerSaturationProduct.powerSaturation_one
+#print axioms PCRLean.Experimental.PowerSaturationProduct.powerSaturation_idem
+#print axioms PCRLean.Experimental.PowerSaturationProduct.powerSaturation_mul
+#print axioms PCRLean.Experimental.PowerSaturationProduct.powerSaturation_commute
+#print axioms PCRLean.Experimental.DivisorWordSaturation.wordSaturation_eq_prod
+#print axioms PCRLean.Experimental.DivisorWordSaturation.wordSaturation_append
+#print axioms PCRLean.Experimental.DivisorWordSaturation.wordSaturation_eq_of_perm
+#print axioms PCRLean.Experimental.SaturatedSourceCapsule.ExponentCertificate.mono
+#print axioms PCRLean.Experimental.SaturatedSourceCapsule.Capsule.wordSaturation_eq
+#print axioms PCRLean.Experimental.SaturatedSourceCapsule.Capsule.saturatedSubmodule_eq_of_perm
+#print axioms PCRLean.Experimental.DecalageSourceRank.carrier_drop
+#print axioms PCRLean.Experimental.DecalageSourceRank.torsion_drop
+#print axioms PCRLean.Experimental.DecalageSourceRank.source_drop
+#print axioms PCRLean.Experimental.DecalageSourceRank.debt_drop
+#print axioms PCRLean.Experimental.DecalageSourceRank.rank_wellFounded
+#print axioms PCRLean.Experimental.X041SaturatedDecalageIndex.loaded
