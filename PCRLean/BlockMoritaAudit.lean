@@ -1,0 +1,7 @@
+import PCRLean.BlockMatrixStableSubmodule
+
+#print axioms PCRLean.BlockMatrixStableSubmodule.row_mem
+#print axioms PCRLean.BlockMatrixStableSubmodule.sum_rowEmbed_rowAt
+#print axioms PCRLean.BlockMatrixStableSubmodule.fromRowModule_leftInvariant
+#print axioms PCRLean.BlockMatrixStableSubmodule.eq_fromRowModule
+#print axioms PCRLean.BlockMatrixStableSubmodule.mem_iff_forall_row_mem

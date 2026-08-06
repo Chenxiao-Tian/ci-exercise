@@ -1,0 +1,4 @@
+import PCRLean.ProofArchitecture.FractalProofEngine
+
+#print axioms PCRLean.Blueprint.FractalProofEngine.Architecture.depRel_wellFounded
+#print axioms PCRLean.Blueprint.FractalProofEngine.root_of_edgePackage

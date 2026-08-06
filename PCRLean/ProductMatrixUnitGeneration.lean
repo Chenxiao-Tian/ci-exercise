@@ -1,0 +1,333 @@
+import Mathlib
+import PCRLean.FiniteHasseModel
+import PCRLean.CoordinatePacketDescent
+
+/-!
+# Product matrix-unit generation
+
+A matrix-unit-generating operator packet on each of two finite free coordinate
+modules induces a matrix-unit-generating packet on their product coordinate
+module. The left packet acts independently on every right fibre, and the right
+packet acts independently on every left fibre. Composing the lifted matrix
+units gives the matrix unit indexed by the product pair.
+
+Applied to `FiniteHasseModel`, this proves that the primitive multiplication and
+Hasse packets in two variables generate the full endomorphism algebra on the
+finite Frobenius monomial frame. The construction is binary and can therefore
+be iterated to any finite number of variables.
+-/
+
+namespace PCRLean
+namespace ProductMatrixUnitGeneration
+
+noncomputable section
+
+universe u v w x y z
+
+variable {R : Type u} [CommRing R]
+variable {ι : Type v} {κ : Type w}
+variable [Fintype ι] [DecidableEq ι]
+variable [Fintype κ] [DecidableEq κ]
+
+abbrev LeftCoordinates := ι → R
+abbrev RightCoordinates := κ → R
+abbrev ProductCoordinates := (ι × κ) → R
+
+/-- Lift an endomorphism of the left coordinate module fibrewise to the product
+coordinate module. -/
+def liftLeft
+    (T : Module.End R (LeftCoordinates (R := R) (ι := ι))) :
+    Module.End R (ProductCoordinates (R := R) (ι := ι) (κ := κ)) where
+  toFun f p := T (fun i => f (i, p.2)) p.1
+  map_add' := by
+    intro f g
+    funext p
+    change T ((fun i => f (i, p.2)) + (fun i => g (i, p.2))) p.1 =
+      (T (fun i => f (i, p.2)) + T (fun i => g (i, p.2))) p.1
+    exact congrFun (T.map_add
+      (fun i => f (i, p.2)) (fun i => g (i, p.2))) p.1
+  map_smul' := by
+    intro r f
+    funext p
+    change T (r • (fun i => f (i, p.2))) p.1 =
+      (r • T (fun i => f (i, p.2))) p.1
+    exact congrFun (T.map_smul r (fun i => f (i, p.2))) p.1
+
+/-- Lift an endomorphism of the right coordinate module fibrewise to the
+product coordinate module. -/
+def liftRight
+    (T : Module.End R (RightCoordinates (R := R) (κ := κ))) :
+    Module.End R (ProductCoordinates (R := R) (ι := ι) (κ := κ)) where
+  toFun f p := T (fun k => f (p.1, k)) p.2
+  map_add' := by
+    intro f g
+    funext p
+    change T ((fun k => f (p.1, k)) + (fun k => g (p.1, k))) p.2 =
+      (T (fun k => f (p.1, k)) + T (fun k => g (p.1, k))) p.2
+    exact congrFun (T.map_add
+      (fun k => f (p.1, k)) (fun k => g (p.1, k))) p.2
+  map_smul' := by
+    intro r f
+    funext p
+    change T (r • (fun k => f (p.1, k))) p.2 =
+      (r • T (fun k => f (p.1, k))) p.2
+    exact congrFun (T.map_smul r (fun k => f (p.1, k))) p.2
+
+@[simp] theorem liftLeft_apply
+    (T : Module.End R (LeftCoordinates (R := R) (ι := ι)))
+    (f : ProductCoordinates (R := R) (ι := ι) (κ := κ)) (p : ι × κ) :
+    liftLeft (κ := κ) T f p = T (fun i => f (i, p.2)) p.1 := rfl
+
+@[simp] theorem liftRight_apply
+    (T : Module.End R (RightCoordinates (R := R) (κ := κ)))
+    (f : ProductCoordinates (R := R) (ι := ι) (κ := κ)) (p : ι × κ) :
+    liftRight (ι := ι) T f p = T (fun k => f (p.1, k)) p.2 := rfl
+
+@[simp] theorem liftLeft_zero :
+    liftLeft (R := R) (ι := ι) (κ := κ) 0 = 0 := by
+  apply LinearMap.ext
+  intro f
+  funext p
+  rfl
+
+@[simp] theorem liftRight_zero :
+    liftRight (R := R) (ι := ι) (κ := κ) 0 = 0 := by
+  apply LinearMap.ext
+  intro f
+  funext p
+  rfl
+
+@[simp] theorem liftLeft_id :
+    liftLeft (R := R) (ι := ι) (κ := κ)
+      (LinearMap.id : Module.End R (LeftCoordinates (R := R) (ι := ι))) =
+        LinearMap.id := by
+  apply LinearMap.ext
+  intro f
+  funext p
+  rfl
+
+@[simp] theorem liftRight_id :
+    liftRight (R := R) (ι := ι) (κ := κ)
+      (LinearMap.id : Module.End R (RightCoordinates (R := R) (κ := κ))) =
+        LinearMap.id := by
+  apply LinearMap.ext
+  intro f
+  funext p
+  rfl
+
+@[simp] theorem liftLeft_add
+    (S T : Module.End R (LeftCoordinates (R := R) (ι := ι))) :
+    liftLeft (κ := κ) (S + T) = liftLeft (κ := κ) S + liftLeft (κ := κ) T := by
+  apply LinearMap.ext
+  intro f
+  funext p
+  rfl
+
+@[simp] theorem liftRight_add
+    (S T : Module.End R (RightCoordinates (R := R) (κ := κ))) :
+    liftRight (ι := ι) (S + T) =
+      liftRight (ι := ι) S + liftRight (ι := ι) T := by
+  apply LinearMap.ext
+  intro f
+  funext p
+  rfl
+
+@[simp] theorem liftLeft_smul
+    (r : R) (T : Module.End R (LeftCoordinates (R := R) (ι := ι))) :
+    liftLeft (κ := κ) (r • T) = r • liftLeft (κ := κ) T := by
+  apply LinearMap.ext
+  intro f
+  funext p
+  rfl
+
+@[simp] theorem liftRight_smul
+    (r : R) (T : Module.End R (RightCoordinates (R := R) (κ := κ))) :
+    liftRight (ι := ι) (r • T) = r • liftRight (ι := ι) T := by
+  apply LinearMap.ext
+  intro f
+  funext p
+  rfl
+
+@[simp] theorem liftLeft_comp
+    (S T : Module.End R (LeftCoordinates (R := R) (ι := ι))) :
+    liftLeft (κ := κ) (S.comp T) =
+      (liftLeft (κ := κ) S).comp (liftLeft (κ := κ) T) := by
+  apply LinearMap.ext
+  intro f
+  funext p
+  rfl
+
+@[simp] theorem liftRight_comp
+    (S T : Module.End R (RightCoordinates (R := R) (κ := κ))) :
+    liftRight (ι := ι) (S.comp T) =
+      (liftRight (ι := ι) S).comp (liftRight (ι := ι) T) := by
+  apply LinearMap.ext
+  intro f
+  funext p
+  rfl
+
+/-- The disjoint union of the two fibrewise lifted operator packets. -/
+def productPacket
+    {α : Type x} {β : Type y}
+    (opsLeft : α → Module.End R (LeftCoordinates (R := R) (ι := ι)))
+    (opsRight : β → Module.End R (RightCoordinates (R := R) (κ := κ))) :
+    (α ⊕ β) → Module.End R
+      (ProductCoordinates (R := R) (ι := ι) (κ := κ))
+  | Sum.inl a => liftLeft (κ := κ) (opsLeft a)
+  | Sum.inr b => liftRight (ι := ι) (opsRight b)
+
+/-- Every expression generated by the left packet remains generated after
+fibrewise lifting to the product. -/
+theorem generated_liftLeft
+    {α : Type x} {β : Type y}
+    (opsLeft : α → Module.End R (LeftCoordinates (R := R) (ι := ι)))
+    (opsRight : β → Module.End R (RightCoordinates (R := R) (κ := κ)))
+    {T : Module.End R (LeftCoordinates (R := R) (ι := ι))}
+    (hT : EndomorphismGeneration.Generated opsLeft T) :
+    EndomorphismGeneration.Generated (productPacket opsLeft opsRight)
+      (liftLeft (κ := κ) T) := by
+  induction hT with
+  | zero =>
+      simpa using
+        (EndomorphismGeneration.Generated.zero
+          (ops := productPacket opsLeft opsRight))
+  | identity =>
+      simpa using
+        (EndomorphismGeneration.Generated.identity
+          (ops := productPacket opsLeft opsRight))
+  | generator a =>
+      exact EndomorphismGeneration.Generated.generator
+        (ops := productPacket opsLeft opsRight) (Sum.inl a)
+  | add hS hT ihS ihT =>
+      simpa using EndomorphismGeneration.Generated.add ihS ihT
+  | smul r hT ihT =>
+      simpa using EndomorphismGeneration.Generated.smul r ihT
+  | comp hS hT ihS ihT =>
+      simpa using EndomorphismGeneration.Generated.comp ihS ihT
+
+/-- Every expression generated by the right packet remains generated after
+fibrewise lifting to the product. -/
+theorem generated_liftRight
+    {α : Type x} {β : Type y}
+    (opsLeft : α → Module.End R (LeftCoordinates (R := R) (ι := ι)))
+    (opsRight : β → Module.End R (RightCoordinates (R := R) (κ := κ)))
+    {T : Module.End R (RightCoordinates (R := R) (κ := κ))}
+    (hT : EndomorphismGeneration.Generated opsRight T) :
+    EndomorphismGeneration.Generated (productPacket opsLeft opsRight)
+      (liftRight (ι := ι) T) := by
+  induction hT with
+  | zero =>
+      simpa using
+        (EndomorphismGeneration.Generated.zero
+          (ops := productPacket opsLeft opsRight))
+  | identity =>
+      simpa using
+        (EndomorphismGeneration.Generated.identity
+          (ops := productPacket opsLeft opsRight))
+  | generator b =>
+      exact EndomorphismGeneration.Generated.generator
+        (ops := productPacket opsLeft opsRight) (Sum.inr b)
+  | add hS hT ihS ihT =>
+      simpa using EndomorphismGeneration.Generated.add ihS ihT
+  | smul r hT ihT =>
+      simpa using EndomorphismGeneration.Generated.smul r ihT
+  | comp hS hT ihS ihT =>
+      simpa using EndomorphismGeneration.Generated.comp ihS ihT
+
+/-- A lifted left matrix unit followed by a lifted right matrix unit is the
+corresponding product matrix unit. -/
+theorem lift_matrixUnit_comp_lift_matrixUnit
+    (i j : ι) (k l : κ) :
+    (liftLeft (κ := κ)
+      (MatrixStableSubmodule.matrixUnit (R := R) i j)).comp
+        (liftRight (ι := ι)
+          (MatrixStableSubmodule.matrixUnit (R := R) k l)) =
+      MatrixStableSubmodule.matrixUnit (R := R) (i, k) (j, l) := by
+  apply LinearMap.ext
+  intro f
+  funext p
+  rcases p with ⟨a, b⟩
+  by_cases hai : a = i
+  · subst a
+    by_cases hbk : b = k
+    · subst b
+      simp [liftLeft, liftRight,
+        MatrixStableSubmodule.matrixUnit_apply]
+    · simp [liftLeft, liftRight,
+        MatrixStableSubmodule.matrixUnit_apply, hbk]
+  · simp [liftLeft, liftRight,
+      MatrixStableSubmodule.matrixUnit_apply, hai]
+
+/-- Matrix-unit generation tensorizes over a binary product of finite coordinate
+frames. -/
+theorem productPacket_generatesMatrixUnits
+    {α : Type x} {β : Type y}
+    (opsLeft : α → Module.End R (LeftCoordinates (R := R) (ι := ι)))
+    (opsRight : β → Module.End R (RightCoordinates (R := R) (κ := κ)))
+    (hLeft : EndomorphismGeneration.GeneratesMatrixUnits opsLeft)
+    (hRight : EndomorphismGeneration.GeneratesMatrixUnits opsRight) :
+    EndomorphismGeneration.GeneratesMatrixUnits
+      (productPacket opsLeft opsRight) := by
+  rintro ⟨i, k⟩ ⟨j, l⟩
+  have hL := generated_liftLeft opsLeft opsRight (hLeft i j)
+  have hR := generated_liftRight opsLeft opsRight (hRight k l)
+  have hcomp := EndomorphismGeneration.Generated.comp hL hR
+  simpa [lift_matrixUnit_comp_lift_matrixUnit] using hcomp
+
+section TwoVariableHasse
+
+variable (q₁ q₂ : ℕ)
+
+/-- The primitive multiplication/Hasse packet on a two-variable product
+Frobenius frame. -/
+def twoVariablePrimitivePacket (t₁ t₂ : R) :
+    ((Fin q₁ ⊕ Fin q₁) ⊕ (Fin q₂ ⊕ Fin q₂)) →
+      Module.End R ((Fin q₁ × Fin q₂) → R) :=
+  productPacket
+    (FiniteHasseModel.primitivePacket (R := R) q₁ t₁)
+    (FiniteHasseModel.primitivePacket (R := R) q₂ t₂)
+
+/-- The two-variable primitive Frobenius--Hasse packet generates all matrix
+units on the product monomial frame. -/
+theorem twoVariablePrimitivePacket_generatesMatrixUnits (t₁ t₂ : R) :
+    EndomorphismGeneration.GeneratesMatrixUnits
+      (twoVariablePrimitivePacket (R := R) q₁ q₂ t₁ t₂) := by
+  exact productPacket_generatesMatrixUnits
+    (FiniteHasseModel.primitivePacket (R := R) q₁ t₁)
+    (FiniteHasseModel.primitivePacket (R := R) q₂ t₂)
+    (FiniteHasseModel.primitivePacket_generatesMatrixUnits
+      (R := R) q₁ t₁)
+    (FiniteHasseModel.primitivePacket_generatesMatrixUnits
+      (R := R) q₂ t₂)
+
+section Descent
+
+variable {A : Type z} [CommRing A] [Algebra R A]
+
+/-- An ideal stable under the pullback of the two-variable primitive
+Frobenius--Hasse packet descends from the chosen Frobenius base. -/
+theorem ideal_eq_map_comap_of_twoVariablePacket_stable
+    (t₁ t₂ : R)
+    (F : IdealEndomorphismDescent.UnitFrame
+      (R := R) (A := A) (ι := Fin q₁ × Fin q₂))
+    (I : Ideal A)
+    (hstable : ∀ a,
+      EndomorphismGeneration.StableUnder
+        (IdealEndomorphismDescent.idealSubmodule (R := R) I)
+        (CoordinatePacketDescent.pullbackPacket F.coord
+          (twoVariablePrimitivePacket (R := R) q₁ q₂ t₁ t₂) a)) :
+    I = (I.comap (algebraMap R A)).map (algebraMap R A) := by
+  exact CoordinatePacketDescent.ideal_eq_map_comap_of_pullbackPacket_stable
+    F
+    (twoVariablePrimitivePacket (R := R) q₁ q₂ t₁ t₂)
+    (twoVariablePrimitivePacket_generatesMatrixUnits
+      (R := R) q₁ q₂ t₁ t₂)
+    I hstable
+
+end Descent
+end TwoVariableHasse
+
+end
+
+end ProductMatrixUnitGeneration
+end PCRLean

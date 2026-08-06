@@ -1,0 +1,51 @@
+{
+  "id": "MLEL-D001",
+  "code": "FCPP-ATLAS",
+  "title": "Final Correct Proof Program: Architecture, Theorem Dictionary, and Lean Topology",
+  "date": "2026-08-03",
+  "epistemic_class": "BASELINE-PROOF-ARCHITECTURE / MLE-PLANNING-NODE",
+  "certified_graph_changed": false,
+  "current_accepted_formal_node": "MLEL-M004 / HMC-SCCD",
+  "formal_global_status": "OPEN_GAP",
+  "general_positive_characteristic_resolution_proved": false,
+  "design": {
+    "papers": 6,
+    "page_budget": 520,
+    "load_bearing_groups": 65,
+    "dictionary_entries": 325,
+    "dependency_edges": 1340,
+    "dag_acyclic": true,
+    "final_theorem_id": "PCR-MAIN-THM-001"
+  },
+  "paper_budgets": {
+    "FND": 82,
+    "CTR": 108,
+    "HER": 116,
+    "TRM": 96,
+    "GLB": 74,
+    "FIN": 44
+  },
+  "library_path": "/正特征奇点消解/MLE-Lean线/ProofArchitecture/MLEL-D001-FCPP-ATLAS/",
+  "package": {
+    "name": "MLEL_D001_FCPP_ATLAS_PACKAGE_2026-08-03.zip",
+    "sha256": "9d45eae3c54ec0ce0c88e8dd0b6a13189df07b610c78f53c5e602a8d81e351bd"
+  },
+  "lean_architecture": {
+    "branch": "pcr-blueprint-d001-20260803",
+    "pr": 32,
+    "head_sha": "756d20308ba80c698b9ae72e034f6cf7b61a918e",
+    "workflow_run": 30858121934,
+    "job": 91833782154,
+    "status_at_archive": "queued",
+    "contains_unproved_axioms": false,
+    "proof_package_exists_claimed": false,
+    "semantic_claim": "A supplied proof package for all declared nodes compiles to the final main claim."
+  },
+  "truth_boundary": {
+    "architecture_fixed": true,
+    "all_mathematical_nodes_proved": false,
+    "cleanroom_green": false,
+    "experimental_results_promoted": false,
+    "final_main_theorem_kernel_verified": false
+  }
+}

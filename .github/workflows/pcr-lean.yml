@@ -1,0 +1,98 @@
+name: PCR Lean kernel verification
+
+on:
+  push:
+    branches:
+      - pcr-lean-formalization-20260801
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pcr-lean-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  kernel-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout isolated branch
+        uses: actions/checkout@v4
+
+      - name: Install pinned Lean toolchain directly
+        run: |
+          set -o pipefail
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf \
+            | sh -s -- -y --default-toolchain leanprover/lean4:v4.30.0
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Record immutable build inputs
+        run: |
+          set -o pipefail
+          git rev-parse HEAD | tee git-commit.txt
+          lean --version | tee lean-version.txt
+          lake --version | tee lake-version.txt
+
+      - name: Resolve pinned mathlib dependency
+        run: |
+          set -o pipefail
+          lake update 2>&1 | tee lake-update.txt
+          grep -A8 -B2 'mathlib' lake-manifest.json | tee mathlib-revision.txt || true
+          lake exe cache get 2>&1 | tee mathlib-cache.txt
+
+      - name: Reject proof placeholders and custom axioms
+        run: |
+          set -o pipefail
+          if grep -R -nE '^[[:space:]]*(axiom|sorry|admit)([[:space:]]|$)' --include='*.lean' PCRLean PCRLean.lean; then
+            echo 'Forbidden proof placeholder or custom axiom found.' >&2
+            exit 1
+          fi
+          echo 'No line-level axiom, sorry, or admit declarations found.' | tee source-audit.txt
+
+      - name: Build all certified modules
+        run: |
+          set -o pipefail
+          lake build 2>&1 | tee lake-build.txt
+
+      - name: Kernel axiom audit
+        run: |
+          set -o pipefail
+          lake env lean PCRLean/AxiomAudit.lean 2>&1 | tee axiom-audit.txt
+          lake env lean PCRLean/BridgeAxiomAudit.lean 2>&1 | tee -a axiom-audit.txt
+          if grep -E 'PCRLean\..*Axiom|ResolutionAxiom|DefectEscapeAxiom|PacketizationAxiom|sorryAx' axiom-audit.txt; then
+            echo 'Project-specific axiom or unresolved proof placeholder detected.' >&2
+            exit 1
+          fi
+
+      - name: Package exact source snapshot
+        if: success()
+        run: |
+          set -o pipefail
+          tar --exclude=.git --exclude=.lake -czf PCRLean-source.tar.gz \
+            lean-toolchain lakefile.toml lake-manifest.json PCRLean.lean PCRLean
+          sha256sum PCRLean-source.tar.gz | tee source-package-sha256.txt
+
+      - name: Upload audit evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pcr-lean-kernel-audit
+          path: |
+            git-commit.txt
+            lean-version.txt
+            lake-version.txt
+            lake-update.txt
+            mathlib-revision.txt
+            mathlib-cache.txt
+            source-audit.txt
+            lake-build.txt
+            axiom-audit.txt
+            PCRLean-source.tar.gz
+            source-package-sha256.txt
+            PCRLean/THEOREM_LEDGER.csv
+            PCRLean/FORMAL_FRONTIER.md
+          if-no-files-found: warn

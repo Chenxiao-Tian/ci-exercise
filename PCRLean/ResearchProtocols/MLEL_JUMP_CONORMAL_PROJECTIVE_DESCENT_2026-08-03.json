@@ -1,0 +1,18 @@
+{
+  "record_id": "MLEL-JUMP-CONORMAL-PROJECTIVE-DESCENT-2026-08-03",
+  "record_date": "2026-08-03",
+  "status": "RESEARCH_ONLY_CI_PENDING",
+  "certified_graph_changed": false,
+  "source_branch": "pcr-jump-reduced-normal-cone-20260803",
+  "candidate_theorems": [
+    "faithfully flat descent of conormal finiteness",
+    "faithfully flat descent of conormal flatness",
+    "faithfully flat descent of conormal finite presentation",
+    "finite-presented flat conormal implies projective"
+  ],
+  "remaining_bridge": "construct the scheme-level tensor-cotangent equivalence and identify the extended conormal with the free polynomial-graph conormal",
+  "cleanroom_green": false,
+  "axiom_audit_green": false,
+  "final_main_theorem_kernel_verified": false,
+  "formal_global_status": "OPEN_GAP"
+}

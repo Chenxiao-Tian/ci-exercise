@@ -1,0 +1,7 @@
+import PCRLean.PrimePowerQuasilinear
+
+#print axioms PCRLean.PrimePowerQuasilinear.finset_sum_pow
+#print axioms PCRLean.PrimePowerQuasilinear.form_eq_root_pow
+#print axioms PCRLean.PrimePowerQuasilinear.form_mem_rootIdeal_pow
+#print axioms PCRLean.PrimePowerQuasilinear.markedForm_permissible
+#print axioms PCRLean.PrimePowerQuasilinear.additive_polar_zero
