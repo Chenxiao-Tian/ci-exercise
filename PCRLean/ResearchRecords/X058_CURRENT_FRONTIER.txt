@@ -1,0 +1,29 @@
+X058 CRH-CET-CRF FINAL STATUS
+================================
+
+Public theorem mode under the explicit X058 assumption:
+- ordinary embedded resolution over perfect fields of positive characteristic;
+- principalization;
+- ambient independence and intrinsic resolution;
+- smooth/etale functoriality;
+- ordinary blowups in coherent regular jointly legal centres only.
+
+Final proof architecture:
+- intrinsic finite Frobenius-Hasse state;
+- actual jointly legal centre blocks;
+- exactified hereditary transform;
+- Cartier-Spencer radicial descent;
+- relative Kummer saturation and Norm-Rees terminalization;
+- Cartier-Riemann-Hilbert proper transport;
+- one constructible transform ancestor P_0;
+- intermediate-extension source identity;
+- consumed perverse subobjects and finite JH descent;
+- valuation certificates used only for termination;
+- Riemann-Zariski finite atlas and hereditary regular common refinement;
+- canonical projection-groupoid descent.
+
+Principal correction:
+Finite-length termination is proved in one fixed constructible category. The algebraic state selects centres; the constructible state proves no-reset termination. No semisimplicity or decomposition theorem is assumed.
+
+Archive validation boundary:
+Independent peer review, external mathematical certification, and complete formal verification are not recorded. Established public literature continues to treat general arbitrary-dimensional positive-characteristic resolution as open.
