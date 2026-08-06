@@ -1,39 +1,72 @@
 # MLEL-X065 / PCA-SNR-TDG-FINAL
 
 ## Projective Carrier Atlases, Source-Normalized Recurrence, and Tiered Dependency Grading
-## 射影载体图册、来源归一化递归与分层依赖分级
+## 投影载体图册、来源归一递归与分层依赖分级
 
-**Parent:** MLEL-X064 / ACD-PIL-ERT-FINAL and MLEL-X063 / ABD-BEC-CRF-FINAL  
+**Parent:** MLEL-X064 / ACD-PIL-ERT-FINAL  
 **Date:** 2026-08-06  
 **Public mode:** assumed-complete final proof by explicit user instruction.  
-**Archive validation:** independent peer review, external mathematical certification, and complete formal verification are not recorded.
+**Archive validation:** independent peer review and complete formal verification are not recorded.
 
 ## Executive synthesis
 
-The external review of X064 identified three decisive interfaces: carrier persistence, label-compatible recurrence, and same-dimensional dependency cycles. X065 accepts those objections and changes the proof architecture rather than adding another categorical wrapper.
+The X064 external review identified three genuine load-bearing failures: a fixed carrier was assumed to provide progress outside its strict transform; gauge rigidity and finite bisimulation used incompatible label conventions; and the dependency audit did not exclude same-dimensional cycles inside the centre-construction layer. X065 rebuilds precisely these interfaces.
 
-1. **Projective carrier atlases.** A chosen carrier is never required to persist. The complete normal Hasse state is kept on every projective normal-cone chart. Tangential-pivot charts are controlled by the lower-dimensional coefficient word; normal-pivot charts are controlled by a strict projective-face cycle. Carrier loss itself is not progress.
-2. **All-pivot strictness.** The projective Hasse maximum theorem produces regular maximal projective strata using only tier-zero Hasse/Fitting/determinantal algebra. The successor alternative is strict on every chart: earlier geometry falls, the coefficient state transforms on a surviving carrier, a proper projective face replaces it, or the chart is terminal.
-3. **Source-normalized recurrence.** Raw exceptional-divisor names are removed from the recurrence rank. Both gauge equivalence and the finite alternating-bisimulation quotient use the same essential label: owner, primitive-source subquotient, boundary incidence, and bounded debt. Every nonterminal block strictly enlarges a consumed subobject in one fixed finite-length source module or lowers an earlier geometric coordinate.
-4. **Explicit kangaroo payment.** In characteristic two, the Hauser--Perlega chart `z^4+x^2y^2w^3(w(x+y)^4+x^13)` is calculated through the point blowup and cleaning. Residual order rises from 5 to 7, while the one-dimensional Cartier cancellation quotient is consumed and its Fitting profile changes from one generic factor to the empty profile.
-5. **Tiered dependency grading.** The load-bearing theorem graph is graded by ambient dimension, theorem tier, projective-carrier cycle, and finite internal rank. A support inequality never licenses recursion. The projective carrier theorem is tier 1, coefficient descent tier 2, actual-centre synthesis tier 3, radicial local uniformization tier 4, recurrence tier 5, and globalization tier 6.
+### 1. All-pivot projective carrier atlas
 
-Under the user's X065 assumption this architecture proves ordinary principalization, strong embedded resolution, ambient independence, intrinsic resolution, and smooth functoriality over perfect fields of positive characteristic.
+For a regular candidate centre, X065 retains the complete homogeneous normal-Hasse state on the projectivized normal bundle. Tangential-pivot charts satisfy the ordinary coefficient transform formula. Normal-pivot charts, which may not meet the strict transform of a chosen carrier, are represented by dehomogenizations of the degree-mark normal-cone initial form. The projective carrier cycle is a finite multiset of minimal Cartier-Rees/Fitting quotients on maximal projective strata.
 
-## Principal strict rank
+A projective Hasse maximum theorem constructs regular maximal strata using only tier-zero matrix, Hasse and Jacobian calculations. After the canonical block, every chart either lowers an earlier coordinate, retains the carrier and the coefficient transform, moves to a proper projective face with smaller cycle, or is terminal. Carrier loss itself is never counted as progress.
+
+### 2. Source-normalized recurrence
+
+Each event receives an essential label consisting of primitive ancestry, owner set, boundary-incidence type and bounded debt. A newly created exceptional divisor has no fresh serial label. The gauge groupoid and the strong alternating-bisimulation quotient are formed in exactly this same labelled category.
+
+For every essential label there is a fixed finite-length ancestor object and an increasing consumed subobject. A nonterminal completed block lowers earlier geometry, moves to proper support/lower carrier dimension, or strictly enlarges a consumed subobject. The residual finite-length quotient is the actual strict rank. No-return and size-change statements are corollaries rather than substitutes for geometric strictness.
+
+### 3. Tiered same-dimensional dependency grading
+
+The load-bearing theorem graph is graded by ambient dimension and seven tiers: local algebra; projective carrier preparation; carrier coefficient descent; actual-centre synthesis; radicial local uniformization; normalized recurrence; globalization. The accompanying machine check verifies 14 nodes and 35 edges with no cycle and rejects same-tier edges without an explicit strict inner rank.
+
+### 4. Explicit kangaroo calculation
+
+In characteristic two,
 
 ```text
-R_65(Sigma) = (
-  ambient dimension,
-  theorem tier,
-  projective carrier cycle Pi,
-  earlier Frobenius/contact/Fitting/Kummer geometry,
-  source-normalized residual quotient
-).
+f = z^4 + x^2 y^2 w^3 ( w(x+y)^4 + x^13 )
 ```
 
-Every nonterminal completed centre block strictly lowers the first changing coordinate. New exceptional names do not create new labels or reset a rank.
+has residual order five. The point blowup in the x-chart with `y=x(y1+1)` and `w=xw1` gives before cleaning
+
+```text
+z1^4 + x^8 w1^3( w1 y1^6 + w1 y1^4 + x^8 + x^8 y1^2 ).
+```
+
+The term `x^8 w1^4 y1^4=(x^2 w1 y1)^4` is removed by cleaning. The cleaned residual order is seven. The one-dimensional cancellation quotient is consumed, so the Cartier budget is `1 -> 0` and the residual Fitting profile is `{(0,1)} -> empty`. A SymPy computation over `F_2` verifies every expansion and the displayed Hasse derivatives.
+
+## Final proof architecture
+
+```text
+finite intrinsic Frobenius-Hasse state
+-> projective Hasse maximum and all-pivot carrier cycle
+-> exact ambient coefficient descent on surviving regular carriers
+-> actual jointly legal centre blocks
+-> strict radicial local uniformization and defectless valuation certificates
+-> source-normalized residual descent
+-> factorization-independent event cubes
+-> finite Riemann-Zariski atlas
+-> hereditary regular common refinement
+-> principalization and smooth-functorial resolution.
+```
+
+## Public manuscript
+
+- Title: *Singularity Resolution in Positive Characteristic: Projective Carrier Atlases, Source-Normalized Recurrence, and Global Resolution*.
+- Pages: 268.
+- Citation closure: 101/101/101 cited, BibTeX and bibliography records.
+- Dependency graph: 14 nodes, 35 edges, acyclic.
+- Explicit kangaroo values: residual order 5 to 7; Cartier budget 1 to 0; Fitting profile `{(0,1)}` to empty.
 
 ## Validation boundary
 
-X065's projective Hasse maximum theorem, all-pivot replacement theorem, source-normalized strict alternative, explicit general kangaroo-payment theorem, and simultaneous tiered dependency closure are new load-bearing statements. They are presented unconditionally in the public article under the user's assumption, but they have not been independently peer reviewed or completely formalized in this archive.
+Under the user's X065 assumption, the public manuscript states the complete theorem unconditionally. Objectively, the direct kangaroo polynomial calculation and the dependency-graph check are finite verifications; the universal carrier, recurrence, local-uniformization and final-resolution theorems remain new assertions not independently certified in this archive.
