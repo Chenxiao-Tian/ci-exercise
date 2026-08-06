@@ -1,0 +1,11 @@
+claim_id,parent_group,statement_short,evidence_level,status
+X064-G1,IND,Support dimension is not used as ambient-dimension descent,PROVED-STRUCTURAL,CLOSED
+X064-G2,IND,Normal-coefficient bridge transfers carrier progress to ambient state,ASSUMED-COMPLETE-X064,CLOSED-UNDER-ASSUMPTION
+X064-G3,IND,Every recursive dimension call is listed and strictly dimension-lowering,ASSUMED-COMPLETE-X064,CLOSED-UNDER-ASSUMPTION
+X064-G4,RAD,Compensated radicial chart rank decreases on every nonterminal chart,ASSUMED-COMPLETE-X064,CLOSED-UNDER-ASSUMPTION
+X064-G5,RAD,Hauser-Perlega cycle consumes a nonzero cleaning quotient,ASSUMED-COMPLETE-X064,CLOSED-UNDER-ASSUMPTION
+X064-G6,VAL,Primitive local uniformization over perfect fields,DERIVED-X064-G3-G4,CLOSED-UNDER-ASSUMPTION
+X064-G7,TRM,Six recurrent classes are exhaustive,ASSUMED-COMPLETE-X064,CLOSED-UNDER-ASSUMPTION
+X064-G8,TRM,Gauge-equivalent nonterminal return is impossible,ASSUMED-COMPLETE-X064,CLOSED-UNDER-ASSUMPTION
+X064-G9,TRM,Integrated local successor operation terminates,DERIVED-X064-G4-G7-G8,CLOSED-UNDER-ASSUMPTION
+X064-G10,FIN,Principalization and smooth-functorial resolution,DERIVED-X064-G2-G6-G9,CLOSED-UNDER-ASSUMPTION
