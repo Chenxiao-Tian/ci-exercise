@@ -1,0 +1,15 @@
+node_id,theorem_package,ambient_dimension,tier,depends_on,edge_rule,status
+L0,Hasse-Rees-Fitting chart identities,n,0,,primitive algebra,CLOSED_ASSUMED_X065
+L1,Projective Hasse maximum theorem,n,1,L0,same dimension lower tier,CLOSED_ASSUMED_X065
+L2,All-pivot carrier replacement,n,1,L0|L1,same dimension lower/equal tier with strict Pi,CLOSED_ASSUMED_X065
+L3,Ambient coefficient descent,n,2,L0|L1|L2|LOWER_DIM,lower tier or lower ambient dimension,CLOSED_ASSUMED_X065
+L4,Actual-centre synthesis,n,3,L0|L1|L2|L3,lower tier,CLOSED_ASSUMED_X065
+L5,Height-one radicial strict alternative,n,4,L0|L1|L2|L3|L4,lower tier and finite radicial rank,CLOSED_ASSUMED_X065
+L6,Purely inseparable local uniformization,n,4,L5|LOWER_DIM,same tier strict Frobenius filtration or lower dimension,CLOSED_ASSUMED_X065
+L7,Source-normalized strict recurrence,n,5,L0|L1|L2|L4|L6,lower tier and finite-length source quotient,CLOSED_ASSUMED_X065
+L8,Defect-end quotient certificate,n,5,L6|L7,lower/equal tier strict quotient,CLOSED_ASSUMED_X065
+L9,Exhaustive normalized termination,n,5,L7|L8,same-tier strict finite multiset descent,CLOSED_ASSUMED_X065
+L10,Riemann-Zariski finite atlas,n,6,L6|L9,lower tier,CLOSED_ASSUMED_X065
+L11,Hereditary regular common refinement,n,6,L3|L4|L10,same-tier strict lower-carrier refinement,CLOSED_ASSUMED_X065
+L12,Canonical global resolution,n,6,L9|L10|L11,same-tier strict serialization of completed packages,CLOSED_ASSUMED_X065
+LOWER_DIM,Resolution and principalization on smooth carriers,c<n,6,,strict ambient dimension,CLOSED_BY_INDUCTION_X065
