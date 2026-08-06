@@ -1,0 +1,18 @@
+{
+  "Hasse_G0_x_4": "w + x**9",
+  "Hasse_G0_y_2": "0",
+  "Hasse_G0_y_4": "w",
+  "Hasse_G1_x_4": "0",
+  "Hasse_G1_y_2": "w*y**4 + x**8",
+  "Hasse_G1_y_4": "w*y**2",
+  "cartier_cancellation_length_after": 0,
+  "cartier_cancellation_length_before": 1,
+  "characteristic": 2,
+  "clean_transform": "w**4*x**8*y**6 + w**3*x**16*y**2 + w**3*x**16",
+  "fitting_profile_after": [],
+  "fitting_profile_before": [[0, 1]],
+  "preclean_transform": "w**4*x**8*y**6 + w**4*x**8*y**4 + w**3*x**16*y**2 + w**3*x**16",
+  "removable_fourth_power": "w**4*x**8*y**4",
+  "residual_order_after": 7,
+  "residual_order_before": 5
+}
