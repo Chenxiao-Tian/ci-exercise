@@ -1,0 +1,26 @@
+X061 NPC-DSD-CRF FINAL STATUS
+============================
+
+Public theorem mode under the explicit X061 assumption:
+- principalization;
+- ordinary strong embedded resolution over perfect fields of positive characteristic;
+- ambient independence and intrinsic resolution;
+- smooth/etale functoriality;
+- ordinary blowups in coherent regular jointly legal centres only.
+
+Principal X061 correction:
+- no global finite support atlas;
+- no common finite monodromy cover;
+- no universal finite-dimensional Ext envelope;
+- no total ordering of supports.
+
+Replacement mechanism:
+- canonical generic Serre quotient for every current irreducible support;
+- finite dynamic perverse cycle at each stage;
+- Noetherian order on closed supports;
+- first-failure detection in the actual comparison morphism;
+- strict leading epimorphism or earlier geometric/support decrease;
+- Dershowitz-Manna multiset descent.
+
+Archive validation boundary:
+Independent peer review, external mathematical certification, and complete formal verification are not recorded. Established literature continues to treat the general theorem as open.
