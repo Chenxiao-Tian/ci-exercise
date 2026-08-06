@@ -1,0 +1,11 @@
+claim_id,parent_group,statement_short,evidence_level,status
+X063-G1,HER,Complete labelled blowup-square datum reconstructs the full finite state,ASSUMED-COMPLETE-X063,CLOSED
+X063-G2,HER,Finite centre words produce conservative finite blowup hypercubes,ASSUMED-COMPLETE-X063,CLOSED
+X063-G3,HER,Identity blowups and permutations of disjoint centres give degenerate-equivalent cubes,STANDARD+X063,CLOSED
+X063-G4,HER,Hereditary common refinement preserves the essential nondegenerate totalization,ASSUMED-COMPLETE-X063,CLOSED
+X063-G5,TRM,The essential event cycle is independent of centre-word factorization,DERIVED-G2-G4,CLOSED
+X063-G6,TRM,At a maximal face the successor satisfies the strict hyperdescent alternative,ASSUMED-COMPLETE-X063,CLOSED
+X063-G7,TRM,The factorization-invariant event multiset strictly decreases,DERIVED-G5-G6,CLOSED
+X063-G8,TRM,The intrinsic successor operation terminates,DERIVED-G7+EARLIER-GEOMETRY,CLOSED
+X063-G9,GLB,Riemann-Zariski finite atlas and hereditary common refinement give one finite word,DERIVED-EARLIER-X063,CLOSED
+X063-G10,FIN,Principalization embedded/intrinsic resolution and smooth functoriality,DERIVED-G8-G9,CLOSED
