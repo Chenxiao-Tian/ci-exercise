@@ -1,0 +1,21 @@
+X067 CRS-RFR-DOT FINAL STATUS
+================================
+
+Public theorem mode under the explicit X067 assumption:
+- principalization over perfect fields of positive characteristic;
+- ordinary strong embedded resolution;
+- intrinsic and ambient-independent resolution;
+- smooth/etale functoriality;
+- ordinary blowups in coherent regular jointly legal centres only.
+
+Principal X067 reconstruction:
+- canonical integral-differential Rees state;
+- transform-closed finite terminality complex;
+- optional carrier groupoid with full ideal-valued fpqc descent;
+- same-dimensional ambient regular-centre micro-words;
+- regular-base Frobenius-root descent with no arbitrary upper centre;
+- direct one-step event replacement, with no fixed ancestor module;
+- intrinsic global centre; Riemann-Zariski used only as an infinite-branch witness.
+
+External validation boundary:
+Independent peer review, external mathematical certification, and complete formal verification are not recorded. The main load-bearing frontier consists of the ambient centre theorem, terminality transform closure, strict regular-base root alternative, and one-step token replacement.

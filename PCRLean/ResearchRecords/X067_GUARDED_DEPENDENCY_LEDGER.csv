@@ -1,0 +1,6 @@
+family,role,allowed_dependencies,strict_guard
+L_n,dimension-free local algebra,none,none
+A_n_alpha,ambient centre extraction,L_n; G_m only through actual carrier,alpha decreases or m<n
+R_n_beta,regular-base root descent,L_n; completed A_n,beta decreases
+T_n_gamma,direct transform termination,completed A_n and R_n,gamma decreases
+G_n,global resolution,A_n; R_n; T_n; G_m via actual carrier,n decreases only on actual carrier
