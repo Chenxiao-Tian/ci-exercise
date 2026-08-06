@@ -1,0 +1,11 @@
+claim_id,parent_group,statement_short,evidence_level,status
+X062-G1,CAT,Every coherent Cartier crystal has a functorial unique minimal representative,STANDARD-BLICKLE-BOECKLE,CLOSED
+X062-G2,CAT,The Fitting tower of the minimal representative is intrinsic and base-change compatible,STANDARD-FITTING+G1,CLOSED
+X062-G3,CTR,The leading perverse kernel is Cartier-dual to a residual quotient with matching generic support and length,ASSUMED-COMPLETE-X062,CLOSED
+X062-G4,CTR,The complete Fitting-Rees portfolio is finite and actual-centre realizable,ASSUMED-COMPLETE-X062,CLOSED
+X062-G5,CTR,Prepared minimal quotients are flat and generically zero on their carriers,STANDARD-FLATTENING+EXACTIFICATION,CLOSED
+X062-G6,CTR,No successor quotient component dominates the eliminated generic support,DERIVED-G5,CLOSED
+X062-G7,TRM,The constructible successor map is a strict epimorphism in every maximal generic quotient,DERIVED-G3-G6,CLOSED
+X062-G8,TRM,Every new event support is proper in the support which financed it,ASSUMED-COMPLETE-X062,CLOSED
+X062-G9,TRM,The X061 dynamic support cycle strictly decreases,DERIVED-G7-G8,CLOSED
+X062-G10,FIN,Principalization and smooth-functorial resolution over perfect fields,DERIVED-X062+EARLIER,CLOSED
