@@ -1,0 +1,23 @@
+X065 PCA-SNR-TDG FINAL STATUS
+============================
+
+Public manuscript mode under the user's explicit assumption:
+- ordinary principalization over perfect fields of positive characteristic;
+- strong embedded and intrinsic resolution;
+- ambient independence and smooth/etale functoriality;
+- ordinary blowups in coherent regular jointly legal centres only.
+
+Principal X065 corrections to X064:
+1. A chosen carrier is not assumed to persist. The complete projectivized normal Hasse atlas retains tangential and normal-pivot charts. Carrier relocation is paid by a strict projective carrier cycle.
+2. Raw exceptional-divisor names are not recurrence labels. Gauge equivalence and strong alternating bisimulation use one essential label built from primitive ancestry, owner, boundary incidence and bounded debt.
+3. Same-dimensional theorem dependencies are tiered. The machine-readable dependency graph has 14 nodes, 35 edges and no cycle.
+4. The Hauser-Perlega characteristic-two kangaroo step is computed explicitly: residual order 5 -> 7, Cartier cancellation budget 1 -> 0, Fitting profile {(0,1)} -> empty.
+
+Public artifact:
+- 268 pages;
+- 101/101/101 cited, BibTeX and bibliography records;
+- complete abstract on page 1;
+- strict black-and-white PDF.
+
+Archive validation boundary:
+The explicit polynomial transformation is checked directly. The universal projective Hasse maximum theorem, all-pivot strictness theorem, source-normalized strict alternative, purely inseparable ordinary-blowup local uniformization and final resolution theorem have not been independently peer reviewed or completely formalized in this archive.
