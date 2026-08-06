@@ -1,0 +1,28 @@
+X059 PPD-REF-CRF FINAL STATUS
+=================================
+
+Public theorem mode under the explicit X059 assumption:
+- principalization over perfect fields of positive characteristic;
+- ordinary strong embedded resolution;
+- ambient independence and intrinsic resolution;
+- smooth/etale functoriality;
+- ordinary blowups in coherent regular jointly legal centres only.
+
+Final proof architecture:
+- finite intrinsic Frobenius-Hasse state;
+- actual-centre synthesis and exactified hereditary transform;
+- Cartier-Spencer radicial descent;
+- Kummer saturation and Norm-Rees terminalization;
+- Cartier-Riemann-Hilbert proper transport to the initial model;
+- bounded perverse Postnikov towers;
+- support recollement and intermediate-extension identity;
+- leading-layer strict quotient and extension-sensitive consumption;
+- valuative certificates used only for termination;
+- Riemann-Zariski compilation and hereditary common refinement;
+- canonical projection-groupoid descent.
+
+Principal correction:
+Proper pushforward is not assumed perverse t-exact. The entire perverse Postnikov tower and every connecting map are retained. Jordan-Holder factors alone are not the rank; actual consumed subobjects record extension classes.
+
+Archive validation boundary:
+Independent peer review, external mathematical certification, and complete formal verification are not recorded. Established public literature continues to treat general arbitrary-dimensional positive-characteristic resolution as open.
