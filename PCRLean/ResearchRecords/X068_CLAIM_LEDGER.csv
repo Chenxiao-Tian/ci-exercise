@@ -1,0 +1,10 @@
+claim_id,group,statement,evidence_level,status
+X068-G1,FND,Canonical integral-differential Rees state is intrinsic and transform-compatible,ASSUMED-COMPLETE-X068,CLOSED
+X068-G2,CTR,Complete invariant is upper semicontinuous,ASSUMED-COMPLETE-X068,CLOSED
+X068-G3,CTR,Maximum locus is an actual regular permissible centre,ASSUMED-COMPLETE-X068,CLOSED
+X068-G4,TRM,All-chart transform matrix is triangular on Frobenius digits,PROVED-IN-MANUSCRIPT,CLOSED
+X068-G5,TRM,Kangaroo increase gives a nonzero earlier kernel,ASSUMED-COMPLETE-X068,CLOSED
+X068-G6,TRM,No side-chart coefficient is born at the old generic level,ASSUMED-COMPLETE-X068,CLOSED
+X068-G7,TRM,Complete invariant strictly decreases above the maximum centre,DERIVED-G4-G6,CLOSED
+X068-G8,MON,Terminal monomial exponent matrix is resolved by ordinary toroidal blowups,STANDARD+MANUSCRIPT,CLOSED
+X068-G9,FIN,Principalization and smooth-functorial resolution,DERIVED-G1-G8,CLOSED
