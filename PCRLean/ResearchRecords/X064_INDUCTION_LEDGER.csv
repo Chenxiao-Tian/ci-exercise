@@ -1,0 +1,8 @@
+call_id,situation,original_ambient,recursive_ambient,recursive_dimension,recursive_target,ambient_bridge,strict_parameter
+ADL-01,singular-support preparation,W (n),regular carrier C,< n,support/conormal/Fitting portfolio,normal-coefficient bridge,carrier dimension or bridge profile
+ADL-02,common source modification,W (n),maximal carriers and clean intersections,< n,source modification ideals,bridge + source-word realization,source ideal becomes invertible
+ADL-03,passive flatification,W (n),regular rank-stratum carrier,< n,Tor/Valabrega/base-change packet,graded normal bridge,Fitting/Tor profile
+ADL-04,Kummer/conductor defect,W (n),regular boundary carrier,< n,hole/conductor/saturation module,boundary bridge,Kummer/Fitting profile
+ADL-05,exceptional event,W (n),exceptional face/intersection,< n,Cartier-Rees quotient,regular-flag ambient lift,carrier dimension
+ADL-06,regular-support radicial branch,W (n),W or regular carrier,n,radicial envelope packet,same-dimensional compensated theorem,radicial compensated rank
+ADL-07,global common refinement,W (n),regular carriers of common modification portfolio,< n,source words/terminal certificates,bridge + hereditary refinement,factorization-independent event cycle
