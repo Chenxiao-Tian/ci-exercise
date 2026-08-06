@@ -43,7 +43,7 @@ finite integrable conormal datum
 - Title: *Singularity Resolution in Positive Characteristic: Algebraic Carrier Effectivity, Radicial Certificate Descent, and Global Resolution*.
 - Pages: **274**.
 - TeXCount-style source words: approximately **87,205**.
-- PDF-extracted English word tokens: **90,302**.
+- PDF-extracted English word tokens: **89,274**.
 - Citation macros / key occurrences / unique records: **140 / 233 / 103**.
 - Bibliography records: **103**; undefined, duplicate and unused records: **0**.
 - Labels: **642**, all unique; undefined internal references: **0**.
