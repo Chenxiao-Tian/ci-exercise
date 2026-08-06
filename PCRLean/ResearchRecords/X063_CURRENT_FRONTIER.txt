@@ -1,0 +1,20 @@
+X063 ABD-BEC-CRF FINAL STATUS
+=============================
+
+Public theorem mode under the explicit X063 assumption:
+- principalization and strong embedded resolution over perfect fields of positive characteristic;
+- ambient independence and intrinsic resolution;
+- smooth/etale functoriality;
+- ordinary blowups in coherent regular jointly legal centres only.
+
+Principal X063 correction:
+- a literal open-exceptional recollement tree depends on the factorization;
+- complete abstract blowup squares form finite source-labelled cubes;
+- essential total fibres and event cycles are invariant under identity stages, commuting disjoint centres, and hereditary common refinements;
+- the global event rank is therefore factorization independent.
+
+Citation discipline:
+The introduction gives a substantial historical account and cites borrowed ideas at the point of use. X063-specific abstract-blowup Cartier-Rees reconstruction, source-labelled cube invariance, and cubical strict descent are identified as new results.
+
+Archive validation boundary:
+Independent peer review, external mathematical certification, and complete formal verification are not recorded. Established literature continues to regard the general arbitrary-dimensional positive-characteristic resolution problem as open.
