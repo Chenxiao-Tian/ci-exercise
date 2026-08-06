@@ -1,0 +1,8 @@
+edge_id,parent_claim,child_claims,decomposition_kind,soundness_status
+EDGE-X059-01,X059-G1,FINITE-GRAMMAR|BBD-PERVERSE-TRUNCATION,uniform-perverse-amplitude,CLOSED
+EDGE-X059-02,X059-G4,X042-EXACTIFICATION|CRH-PROPER-TRANSPORT,event-long-exact-exactification,CLOSED
+EDGE-X059-03,X059-G5,X059-G1|X059-G2|X059-G4,leading-layer-exactness,CLOSED-UNDER-X059
+EDGE-X059-04,X059-G6,X059-G3|X059-G5|FINITE-LENGTH,extension-sensitive-consumption,CLOSED
+EDGE-X059-05,X059-G7,X059-G1|X059-G2|X059-G6,postnikov-recollement-termination,CLOSED
+EDGE-X059-06,X059-G8,CARTIER-RH|FITTING-SUPPORT|ACTUAL-CENTRE,algebraic-constructible-centre-match,CLOSED-UNDER-X059
+EDGE-X059-07,X059-G11,X059-G7|X059-G8|X059-G9|X059-G10,final-resolution,CLOSED

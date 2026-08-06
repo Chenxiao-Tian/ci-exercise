@@ -1,0 +1,12 @@
+claim_id,parent_group,statement_short,evidence_level,status
+X059-G1,CRH,All transported residual states and events have one uniform bounded perverse amplitude,BBD+FINITE-GRAMMAR,CLOSED-UNDER-X059
+X059-G2,CRH,A finite support stratification gives canonical perverse recollement filtrations,STANDARD-PERVERSE-RECOLLEMENT,CLOSED
+X059-G3,SRC,Primitive chart copies have one intermediate-extension identity,INTERMEDIATE-EXTENSION,CLOSED
+X059-G4,TRM,Every event long exact sequence is universally exactified at kernels images cokernels and connecting maps,X042+X059,CLOSED-UNDER-X059
+X059-G5,TRM,A nonterminal block lowers perverse degree support layer or gives a nonzero strict kernel,ASSUMED-COMPLETE-X059,CLOSED
+X059-G6,TRM,Consumed data form strict subobject chains sensitive to extension classes,FINITE-LENGTH-ABELIAN,CLOSED
+X059-G7,TRM,The Postnikov-recollement rank is well founded and strictly decreases,DERIVED-G1-G6,CLOSED
+X059-G8,CTR,Leading perverse supports match maximal algebraic Fitting supports used for actual centres,ASSUMED-COMPLETE-X059,CLOSED
+X059-G9,VAL,Valuative projection certificates are conservative quotients and do not select centres,ASSUMED-COMPLETE-X059,CLOSED
+X059-G10,GLB,Riemann-Zariski compilation and hereditary common refinement produce one finite word,X053-X058,CLOSED
+X059-G11,FIN,Principalization embedded intrinsic and smooth-functorial resolution,DERIVED-G7-G10,CLOSED
