@@ -1,0 +1,9 @@
+caller,callee,dimension_relation,guard
+"C(n,a)","L(n)",same ambient dimension,earlier theorem-family stage
+"C(n,a)","A(n,a-prime)",same ambient dimension,a-prime < a by carrier/Fitting cycle
+"A(n,a)","G(m)",lower ambient dimension,m < n and actual regular carrier + all-chart bridge
+"R(n,a)","A(n,a-prime)",same ambient dimension,a-prime < a by first radicial discrepancy
+"T(n,a)","A(n,a-prime)",same ambient dimension,acted event quotient fixed before call; a-prime < a
+"CR(n,a)","A(n,a-prime)",same ambient dimension,comparison-packet complexity decreases
+"G(n)","T(n,a)",same ambient dimension,earlier family stage; no call back to G(n)
+"G(n)","CR(n,a)",same ambient dimension,earlier family stage; common refinement already proved

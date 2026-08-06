@@ -1,0 +1,15 @@
+edge_id,target,inputs,role,strict_guard
+E066-01,X066-G1,local algebra + Artin approximation + Elkik + uniqueness,carrier effectivity,strict family stage L<C
+E066-02,X066-G2,X066-G1 + hereditary transform + full carrier complex,all-chart escape,same dimension generic quotient decreases
+E066-03,X066-G4,X066-G1 + X066-G2 + lower ambient dimension,actual centres,dimension or inner rank decreases
+E066-04,X066-G5,finite-flat discrepancy + Frobenius comparison + Kunz,zero-discrepancy regularity,no recursive call
+E066-05,X066-G6,X066-G4 + radicial discrepancy packet,strict radicial descent,radicial rank decreases
+E066-06,X066-G7,Temkin certificate + X066-G5 + X066-G6,local uniformization,uses actual centres proved earlier
+E066-07,X066-G8,X066-G7 + etale parameters,defectless certificate,later family stage
+E066-08,X066-G9,finite exact filtration + coherent/Cartier separation,event conservativity,no universal ancestor
+E066-09,X066-G10,X066-G4 + X066-G9 + Noetherian support order,strict termination,generic length/support decreases
+E066-10,X066-G11,intrinsic nonterminal loci + hereditary transform,RZ witness,nested closed cylinders
+E066-11,X066-G12,X066-G4 + comparison packet,regular common refinement,comparison complexity decreases
+E066-12,X066-G13,all preceding theorem-family guards,acyclic closure,"lexicographic (n,alpha,stage)"
+E066-13,X066-G14,X066-G10 + X066-G11 + X066-G12,globalization,finite atlas + common refinement
+E066-14,X066-G15,X066-G14,final theorem,terminal output

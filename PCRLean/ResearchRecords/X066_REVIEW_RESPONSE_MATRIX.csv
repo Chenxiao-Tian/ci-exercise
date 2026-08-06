@@ -1,0 +1,9 @@
+referee_requirement,issue,X066_response,audit_code
+1,Carrier effectivity,Theorem 2.3: formal integration + algebraization + uniqueness gluing to coherent regular ideal,ACE-1
+2,Exact escape sequence,Theorems 2.6-2.7: full carrier ideal/Rees complex and generic nonvanishing on carrier-absent charts,ACE-2
+3,No actual-centre/LU/projection cycle,Theorem 3.2 excludes projections and LU from centre grammar; Corollary 4.5 comes later,DEP-1
+4,Purely inseparable descent,Theorems 4.2-4.4 use original-model discrepancy centres; no upper centre is descended,RCD-1
+5,No support shortcut,Corollary 2.8 and common-refinement Theorem 6.2,ACE-3/CR-1
+6,Genuine Cartier structures,Definition 5.1 separates coherent algebraic and Cartier-linear channels,EVT-1
+7,Regular common refinement without main theorem,Theorem 6.2 uses comparison complexity and projection-free centres,CR-1
+8,Projection-groupoid constructibility,Removed from existence/functoriality proof; Theorem 6.3 uses intrinsic centres and finite RZ atlas,GLB-1

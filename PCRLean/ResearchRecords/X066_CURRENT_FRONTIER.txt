@@ -1,0 +1,22 @@
+X066 ACE-RCD-DET FINAL STATUS
+============================
+
+Public theorem mode under the explicit X066 assumption:
+- ordinary principalization over perfect fields of positive characteristic;
+- strong embedded and intrinsic resolution;
+- ambient independence;
+- smooth/etale functoriality;
+- ordinary blowups in coherent regular jointly legal centres only.
+
+Principal X066 advances:
+- type-correct algebraic carrier effectivity;
+- exact all-chart carrier escape;
+- projection-free actual-centre completeness;
+- radicial certificate descent without descending arbitrary upper centres;
+- legal algebraic/Cartier two-channel event detection;
+- explicit nested Riemann-Zariski cylinders;
+- common refinement by comparison complexity rather than current-dimensional resolution;
+- guarded theorem-family dependency closure.
+
+Archive validation boundary:
+Independent peer review, external mathematical certification, and complete formal verification are not recorded. Public literature continues to describe general arbitrary-dimensional positive-characteristic resolution as open.
