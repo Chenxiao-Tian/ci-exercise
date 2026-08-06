@@ -1,0 +1,7 @@
+edge_id,parent_claim,child_claims,decomposition_kind,soundness_status
+EDGE-X062-01,X062-G4,X062-G1|X062-G3,recollement-conservativity,CLOSED
+EDGE-X062-02,X062-G6,X061-DYNAMIC-SUPPORT|X062-G5,nodewise-dynamic-cycle,CLOSED
+EDGE-X062-03,X062-G8,X062-G7|X043-AMBIENT-TRACE|X044-ACTUAL-CENTRE,exceptional-node-realization,CLOSED
+EDGE-X062-04,X062-G9,X062-G4|X062-G6|X062-G8,recursive-strict-alternative,CLOSED
+EDGE-X062-05,X062-G10,X062-G9|WELL-FOUNDED-MULTISET,global-termination,CLOSED
+EDGE-X062-06,X062-G12,X062-G10|X062-G11,final-resolution,CLOSED

@@ -1,0 +1,13 @@
+claim_id,parent_group,statement_short,evidence_level,status
+X062-G1,TRM,Open-exceptional recollement is conservative for one regular blowup,STANDARD-BBD,CLOSED
+X062-G2,HER,Exceptional divisor of a regular blowup is a smooth projective bundle,STANDARD-STACKS,CLOSED
+X062-G3,TRM,A finite centre-exact word gives a finite source-labelled recollement tree,FINITE-INDUCTION,CLOSED
+X062-G4,TRM,Every nonzero event has a nonzero node in the recollement tree,DERIVED-G1-G3,CLOSED
+X062-G5,TRM,Closed recollement children have strictly smaller carrier dimension,STANDARD-GEOMETRY,CLOSED
+X062-G6,TRM,Every node has a finite dynamic generic-support cycle,X061-DYNAMIC-SUPPORT,CLOSED
+X062-G7,HER,The leading node quotient matches a coherent Cartier-Rees quotient,ASSUMED-COMPLETE-X062,CLOSED
+X062-G8,CTR,Exceptional-node quotients admit ambient regular jointly legal centre words,ASSUMED-COMPLETE-X062,CLOSED
+X062-G9,TRM,Every nonterminal block strictly lowers the recursive exceptional cycle,ASSUMED-COMPLETE-X062,CLOSED
+X062-G10,TRM,Global intrinsic successor operation terminates without proper-pushforward conservativity,DERIVED-G4-G9,CLOSED
+X062-G11,GLB,Riemann-Zariski compilation and hereditary common refinement give one finite global word,DERIVED-EARLIER-LINE,CLOSED
+X062-G12,FIN,Principalization and smooth-functorial resolution over perfect fields,DERIVED-G10-G11,CLOSED

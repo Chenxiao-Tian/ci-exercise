@@ -1,0 +1,21 @@
+X062 CBR-EEC-CRF FINAL STATUS
+================================
+
+Public theorem mode under the explicit X062 assumption:
+- principalization over perfect fields of positive characteristic;
+- ordinary strong embedded resolution;
+- ambient independence and intrinsic resolution;
+- smooth/etale functoriality;
+- ordinary blowups in coherent regular jointly legal centres only.
+
+Principal X062 correction:
+- raw proper direct image is not used as a conservative event detector;
+- every regular blowup is represented by its full open-exceptional recollement;
+- exceptional and gluing events are retained on lower-dimensional source-labelled nodes;
+- the recursive event cycle is ordered by carrier dimension, perverse degree, support inclusion, and generic length.
+
+Final proof architecture:
+intrinsic Frobenius-Hasse state -> actual centres -> hereditary transform -> Cartier-Spencer descent -> Kummer/Norm-Rees terminalization -> conservative blowup recollement -> recursive exceptional-cycle termination -> Riemann-Zariski finite atlas -> hereditary common refinement -> canonical resolution.
+
+Archive validation boundary:
+Independent peer review, external mathematical certification, and complete formal verification are not recorded. Established public literature continues to treat the general arbitrary-dimensional problem as open.
