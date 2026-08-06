@@ -1,0 +1,12 @@
+edge_id,parent_claim,child_claims,decomposition_kind,soundness_status
+EDGE-X065-01,X065-G1,Hasse-Taylor|normal-cone-dehomogenization,explicit-chart-identity,CLOSED
+EDGE-X065-02,X065-G2,X065-G1|determinantal-pivot|Hasse-singular-stratum,projective-maximum,CLOSED_ASSUMED_X065
+EDGE-X065-03,X065-G3,X065-G1|X065-G2|minimal-Cartier-Fitting,carrier-relocation,CLOSED_ASSUMED_X065
+EDGE-X065-04,X065-G4,X065-G1|X065-G3|lower-dimensional-coefficient-word,all-chart-ambient-bridge,CLOSED_ASSUMED_X065
+EDGE-X065-05,X065-G5,X065-G1|X065-G4|dependency-ledger,tiered-simultaneous-induction,CLOSED_ASSUMED_X065
+EDGE-X065-06,X065-G6,Hauser-Perlega-equation|point-blowup|cleaning,direct-kangaroo-computation,CLOSED
+EDGE-X065-07,X065-G7,X065-G6|minimal-Cartier-quotient|Fitting-profile,kangaroo-payment,CLOSED_ASSUMED_X065
+EDGE-X065-08,X065-G9,X065-G8|finite-ancestor-source|bounded-debt,label-compatible-quotient,CLOSED_ASSUMED_X065
+EDGE-X065-09,X065-G10,X065-G9|event-filtration|generic-epimorphism|finite-length,source-normalized-strictness,CLOSED_ASSUMED_X065
+EDGE-X065-10,X065-G11,X065-G10|Dershowitz-Manna|size-change,termination-corollary,CLOSED_ASSUMED_X065
+EDGE-X065-11,X065-G12,X065-G4|X065-G5|X065-G7|X065-G11|RZ-common-refinement,final-resolution,CLOSED_UNDER_X065_ASSUMPTION
