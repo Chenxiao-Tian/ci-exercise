@@ -1,0 +1,11 @@
+claim_id,parent_group,statement_short,evidence_level,status
+X061-G1,CAT,Generic support Serre quotients have finite length,STANDARD-GABRIEL-BBD,CLOSED
+X061-G2,CAT,Every finite-length perverse object has finitely many generic supports,STANDARD-LENGTH,CLOSED
+X061-G3,TRM,Strict inclusion of irreducible closed supports is well founded on the initial Noetherian model,STANDARD-NOETHERIAN,CLOSED
+X061-G4,TRM,A nonisomorphic comparison has a maximal generic first-failure pair,STANDARD-T-STRUCTURE+SUPPORT,CLOSED
+X061-G5,TRM,Monodromy and derived-extension changes are detected without a finite envelope,DERIVED-G4,CLOSED
+X061-G6,CTR,The whole maximal active support antichain has one finite algebraic actual-centre portfolio,ASSUMED-COMPLETE-X061,CLOSED
+X061-G7,TRM,The leading generic successor map is an epimorphism with nonzero kernel unless an earlier pair falls,ASSUMED-COMPLETE-X061,CLOSED
+X061-G8,TRM,Dynamic support multiset strictly decreases at every nonterminal completed block,DERIVED-G3-G7,CLOSED
+X061-G9,FUN,Dynamic generic quotients and antichain words commute with normalized smooth pullback,STANDARD+ASSUMED-MATCHING,CLOSED
+X061-G10,FIN,Principalization and smooth-functorial resolution over perfect fields,DERIVED-X061,CLOSED
