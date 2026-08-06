@@ -1,0 +1,9 @@
+claim_id,parent_group,statement_short,evidence_level,status
+X063-G1,GLB,Complete abstract blowup square reconstructs the exactified state,STANDARD+X063,CLOSED-UNDER-X063
+X063-G2,GLB,A finite centre word has a conservative source-labelled cube,X063,CLOSED-UNDER-X063
+X063-G3,TRM,Identity blowups and commuting disjoint centres give contractible or equivalent cubes,X063,CLOSED-UNDER-X063
+X063-G4,TRM,Hereditary common refinements preserve essential event cycles,X063,CLOSED-UNDER-X063
+X063-G5,TRM,Every new refinement token lies on a lower carrier or proper support,X063,CLOSED-UNDER-X063
+X063-G6,TRM,Cubical strict alternative lowers the event multiset,X063,CLOSED-UNDER-X063
+X063-G7,TRM,The intrinsic successor operation terminates independently of factorization,DERIVED-G1-G6,CLOSED-UNDER-X063
+X063-G8,FIN,Principalization embedded intrinsic and smooth-functorial resolution,DERIVED,CLOSED-UNDER-X063
