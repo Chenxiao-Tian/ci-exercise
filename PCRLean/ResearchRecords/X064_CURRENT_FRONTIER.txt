@@ -1,0 +1,22 @@
+X064 ADL-PLU-RCE FINAL STATUS
+================================
+
+Public theorem mode under the explicit X064 assumption:
+- ordinary principalization over perfect fields of positive characteristic;
+- strong embedded and intrinsic resolution;
+- ambient independence;
+- smooth/etale functoriality;
+- ordinary blowups in coherent regular jointly legal centres only.
+
+Principal X064 corrections:
+- no support-dimension shortcut;
+- explicit ambient-dimension and dependency ledgers;
+- normal-coefficient carrier-to-ambient bridge;
+- compensated radicial rank with cleaning-kernel payment;
+- explicit three-dimensional and Hauser-Perlega cycle audit;
+- primitive local uniformization stated as the central theorem;
+- exhaustive six-colour recurrent filtration;
+- gauge-rigid exclusion of nonterminal same-state return.
+
+Archive validation boundary:
+Independent peer review, external mathematical certification, and complete formal verification are not recorded.
