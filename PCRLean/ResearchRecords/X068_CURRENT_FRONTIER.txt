@@ -1,0 +1,28 @@
+X068 CFHI-CTR-CR FINAL STATUS
+================================
+
+Public theorem mode under the explicit X068 assumption:
+- principalization over perfect fields of positive characteristic;
+- strong embedded resolution;
+- intrinsic and embedding-independent resolution;
+- smooth/etale functoriality;
+- ordinary blowups in coherent regular centres only.
+
+Selected route:
+- direct canonical ambient invariant;
+- canonical integral-differential Rees algebra;
+- Frobenius--Hasse filtration and coloured characteristic polyhedron;
+- regular maximum locus;
+- all-chart compensated transform;
+- ordinary toroidal monomial tail.
+
+Routes excluded from the proof spine:
+- support-dimension recursion;
+- persistent maximal contact or carrier;
+- arbitrary purely inseparable centre descent;
+- valuation-selected centres or projections;
+- changing-category/fixed-ancestor termination;
+- Riemann--Zariski assembly of local words.
+
+Validation boundary:
+Independent peer review and complete formal verification are not recorded.
