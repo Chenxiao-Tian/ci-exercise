@@ -1,0 +1,28 @@
+X063 BSH-FIE-CRF FINAL STATUS
+================================
+
+Public theorem mode under the explicit X063 assumption:
+- ordinary principalization over perfect fields of positive characteristic;
+- strong embedded resolution;
+- ambient independence and intrinsic resolution;
+- smooth/etale functoriality;
+- ordinary blowups in coherent regular jointly legal centres only.
+
+Final proof architecture:
+- intrinsic finite Frobenius-Hasse state;
+- actual jointly legal centre blocks;
+- exactified hereditary transform;
+- Cartier-Spencer radicial descent;
+- Kummer/conductor-Fitting/Norm-Rees terminalization;
+- dynamic generic-support cycles on every recollement face;
+- complete labelled blowup-square hyperdescent;
+- factorization-independent essential event cycles;
+- Riemann-Zariski finite atlas;
+- hereditary regular common refinement;
+- canonical projection-groupoid descent.
+
+Principal X063 correction:
+A literal recollement tree is conservative for a fixed word but not invariant under factorization. X063 replaces it with the complete finite blowup hypercube and charges only essential nondegenerate faces.
+
+Archive validation boundary:
+Independent peer review, external mathematical certification, and complete formal verification are not recorded. Established public literature continues to treat general arbitrary-dimensional positive-characteristic resolution as open.
