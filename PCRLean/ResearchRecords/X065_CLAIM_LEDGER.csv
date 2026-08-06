@@ -1,0 +1,13 @@
+claim_id,parent_group,statement_short,evidence_level,status
+X065-G1,IND,Normal-pivot charts are represented by the dehomogenized projective normal Hasse atlas,DIRECT-CHART-CALCULATION,CLOSED_ASSUMED_X065
+X065-G2,IND,Projective Hasse maximum strata become regular through tier-zero determinantal/Hasse preparation,ASSUMED-COMPLETE-X065,CLOSED_ASSUMED_X065
+X065-G3,IND,Carrier loss strictly lowers the all-pivot projective carrier cycle,ASSUMED-COMPLETE-X065,CLOSED_ASSUMED_X065
+X065-G4,IND,Ambient coefficient descent is used only on surviving regular carriers and complemented on every normal-pivot chart,DERIVED-G1-G3,CLOSED_ASSUMED_X065
+X065-G5,IND,The theorem dependency graph is acyclic under the tiered grade,DAG-CHECK+ASSUMED-THEOREMS,CLOSED_ASSUMED_X065
+X065-G6,KNG,The explicit characteristic-two blowup has residual order 5 to 7,DIRECT-SYMPY-AND-HAND-CALCULATION,CLOSED
+X065-G7,KNG,The removable fourth-power class has Cartier budget 1 to 0 and Fitting profile {(0,1)} to empty,DIRECT-CALCULATION+CATEGORY-INTERPRETATION,CLOSED_ASSUMED_X065
+X065-G8,TRM,Raw exceptional serial names are excluded from the essential recurrence label,DEFINITIONAL,CLOSED
+X065-G9,TRM,Gauge equivalence and alternating bisimulation use the same essential-label category,ASSUMED-COMPLETE-X065,CLOSED_ASSUMED_X065
+X065-G10,TRM,Every nonterminal block lowers geometry/projective support or strictly enlarges a consumed finite-length source subobject,ASSUMED-COMPLETE-X065,CLOSED_ASSUMED_X065
+X065-G11,TRM,Size-change termination is a corollary of the strict source-normalized rank rather than its geometric input,DERIVED-G9-G10,CLOSED_ASSUMED_X065
+X065-G12,FIN,Principalization embedded and intrinsic smooth-functorial resolution,DERIVED-G1-G11,CLOSED_UNDER_X065_ASSUMPTION
