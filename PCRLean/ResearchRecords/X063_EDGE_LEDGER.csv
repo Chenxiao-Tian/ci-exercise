@@ -1,0 +1,7 @@
+edge_id,parent_claim,child_claims,decomposition_kind,soundness_status
+EDGE-X063-01,X063-G2,X063-G1,iterated-blowup-square-hypercube,CLOSED
+EDGE-X063-02,X063-G4,X063-G1|HEREDITARY-COMMON-REFINEMENT,factorization-comparison,CLOSED
+EDGE-X063-03,X063-G5,X063-G2|X063-G3|X063-G4,essential-cycle-invariance,CLOSED
+EDGE-X063-04,X063-G7,X063-G5|X063-G6|DM-MULTISET,strict-event-descent,CLOSED
+EDGE-X063-05,X063-G8,X063-G7|EARLIER-GEOMETRIC-RANK,global-termination,CLOSED
+EDGE-X063-06,X063-G10,X063-G8|X063-G9|PROJECTION-GROUPOID,final-resolution,CLOSED
