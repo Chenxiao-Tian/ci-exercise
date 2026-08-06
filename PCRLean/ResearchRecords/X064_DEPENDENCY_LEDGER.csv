@@ -1,0 +1,7 @@
+node,dependencies,role,acyclicity_note
+A_n,A_<n; finite inner centre ranks,actual-centre synthesis,no same-dimensional resolution call
+R_n,A_<n; compensated radicial rank,radicial-envelope uniformization,same dimension paid only by finite radicial rank
+T_n,A_n; R_n; event completeness; gauge rigidity,termination,no call to global resolution
+H_n,A_<n; normal-coefficient bridge,hereditary common refinement,regular carrier calls only
+G_n,R_n; T_n; H_n; Riemann-Zariski compactness,globalization,used only after local termination
+Res_n,G_n,embedded/principal/intrinsic resolution,terminal node
