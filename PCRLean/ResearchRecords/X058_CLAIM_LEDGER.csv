@@ -1,0 +1,15 @@
+claim_id,parent_group,statement_short,evidence_level,status
+X058-G1,FND,Cartier-Riemann-Hilbert anti-equivalence with the perverse heart,PRIMARY-LITERATURE,CLOSED
+X058-G2,FND,Intermediate extension is compatible with the Cartier-crystal correspondence,PRIMARY-LITERATURE,CLOSED
+X058-G3,FND,Derived proper pushforward is compatible with Cartier-RH duality,PRIMARY-LITERATURE,CLOSED
+X058-G4,TRM,Finite exactified grammar gives one constructible transform ancestor P_0,ASSUMED-COMPLETE-X058,CLOSED
+X058-G5,TRM,Every transported state and primitive event is a subquotient of P_0,ASSUMED-COMPLETE-X058,CLOSED
+X058-G6,TRM,Intermediate extension gives canonical chart-independent source identity,DERIVED-G2-G5,CLOSED
+X058-G7,TRM,Every genuinely new event strictly enlarges the consumed perverse subobject,ASSUMED-COMPLETE-X058,CLOSED
+X058-G8,TRM,Residual labelled Jordan-Holder multiset strictly decreases,DERIVED-G7+FINITE-LENGTH,CLOSED
+X058-G9,HER,Algebraic and constructible event triangles and residual factors correspond,ASSUMED-COMPLETE-X058,CLOSED
+X058-G10,HER,Cartier-Spencer descent yields regular invariants and centre-exact Rees descent,ASSUMED-COMPLETE-X058,CLOSED
+X058-G11,HER,Kummer holes and conductors are eliminated by ordinary Norm-Rees centre words,ASSUMED-COMPLETE-X058,CLOSED
+X058-G12,TRM,Intrinsic successor operation terminates by the CRH rank and valuation certificates,DERIVED-G8-G11,CLOSED
+X058-G13,GLB,Riemann-Zariski atlas and hereditary common refinement give a finite global word,DERIVED-EARLIER-LINE,CLOSED
+X058-G14,FIN,Principalization embedded resolution ambient independence and smooth functoriality,DERIVED-G12-G13,CLOSED
