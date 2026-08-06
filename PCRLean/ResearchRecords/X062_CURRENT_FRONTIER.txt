@@ -1,0 +1,34 @@
+X062 MCR-FEC-CRF FINAL STATUS
+============================
+
+Public theorem mode under the explicit X062 assumption:
+- ordinary embedded resolution over perfect fields of positive characteristic;
+- principalization;
+- ambient independence and intrinsic resolution;
+- smooth/etale functoriality;
+- ordinary blowups in coherent regular jointly legal centres only.
+
+Principal X062 correction:
+- use the functorial minimal representative of every Cartier crystal;
+- define centre carriers by its intrinsic Fitting tower;
+- match the leading perverse kernel with the Cartier-dual minimal quotient;
+- flatten and annihilate that quotient generically over its support;
+- prove all successor event supports are proper closed descendants;
+- derive the X061 dynamic strict epimorphism instead of assuming it.
+
+Final proof architecture:
+finite Frobenius-Hasse state
+-> actual jointly legal centres
+-> exactified hereditary transform
+-> Cartier-Spencer radicial descent
+-> Kummer/Norm-Rees terminalization
+-> Cartier-Riemann-Hilbert transport
+-> Noetherian dynamic support cycle
+-> minimal Cartier carrier and Fitting-exact descent
+-> Riemann-Zariski atlas
+-> hereditary regular common refinement
+-> canonical projection-groupoid descent
+-> resolution and principalization.
+
+Archive validation boundary:
+Independent peer review, external mathematical certification, and complete formal verification are not recorded. Established literature continues to treat the general problem as open.
