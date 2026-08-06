@@ -31,8 +31,11 @@ Centres are the scheme-theoretic maximum loci of this intrinsic upper-semicontin
 
 - Title: *Singularity Resolution in Positive Characteristic: Canonical Frobenius--Hasse Invariants, Compensated Transform, and Resolution*.
 - Pages: 52.
-- TeXCount words: approximately 16,300.
-- Proof environments: 58.
+- TeXCount words: 16,479.
+- Sections/subsections: 27/96.
+- Theorem-like environments: 73.
+- Proof environments: 63.
+- Proof median/mean/max words: 80/92.87/316.
 - Citation-key occurrences/unique records: 82/57.
 - BibTeX records: 57.
 - Labels: 97, all unique.
