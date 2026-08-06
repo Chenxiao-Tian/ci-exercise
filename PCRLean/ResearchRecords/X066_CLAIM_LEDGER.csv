@@ -1,0 +1,16 @@
+claim_id,group,statement,evidence_level,public_status,external_status
+X066-G1,ACE,Formal finite integrable conormal data yield a unique algebraic regular carrier ideal,ASSUMED-COMPLETE-X066,CLOSED-UNDER-ASSUMPTION,UNVERIFIED
+X066-G2,ACE,Complete carrier escape cone is acyclic on tangential charts and nonzero on carrier-absent nonterminal charts,ASSUMED-COMPLETE-X066,CLOSED-UNDER-ASSUMPTION,UNVERIFIED
+X066-G3,ACE,Every lower-dimensional call occurs on an actual regular carrier with an all-chart bridge,DERIVED-G1-G2,CLOSED-UNDER-ASSUMPTION,UNVERIFIED
+X066-G4,CTR,Projection-free actual-centre theorem is complete for the finite geometric packet,ASSUMED-COMPLETE-X066,CLOSED-UNDER-ASSUMPTION,UNVERIFIED
+X066-G5,RCD,Zero radicial discrepancy plus upper regularity implies base regularity and SNC,ASSUMED-COMPLETE-X066,CLOSED-UNDER-ASSUMPTION,UNVERIFIED
+X066-G6,RCD,Nonzero radicial discrepancy is strictly lowered by original-model actual centres,ASSUMED-COMPLETE-X066,CLOSED-UNDER-ASSUMPTION,UNVERIFIED
+X066-G7,RCD,Purely inseparable certificate descent gives local uniformization on the original function field,DERIVED-G5-G6,CLOSED-UNDER-ASSUMPTION,UNVERIFIED
+X066-G8,VAL,Defectless projections are obtained only after local uniformization and are certificate-only,DERIVED-G7,CLOSED-UNDER-ASSUMPTION,UNVERIFIED
+X066-G9,EVT,The algebraic and Cartier event channels are jointly conservative,ASSUMED-COMPLETE-X066,CLOSED-UNDER-ASSUMPTION,UNVERIFIED
+X066-G10,EVT,Every nonterminal centre block strictly lowers an earlier coordinate or the dynamic event cycle,ASSUMED-COMPLETE-X066,CLOSED-UNDER-ASSUMPTION,UNVERIFIED
+X066-G11,RZ,Successive nonterminal valuation cylinders are nonempty closed and nested,ASSUMED-COMPLETE-X066,CLOSED-UNDER-ASSUMPTION,UNVERIFIED
+X066-G12,CR,Finite regular word families admit regular common refinement by strict comparison complexity,ASSUMED-COMPLETE-X066,CLOSED-UNDER-ASSUMPTION,UNVERIFIED
+X066-G13,DEP,The theorem-family dependency relation strictly lowers ambient dimension inner rank or stage,ASSUMED-COMPLETE-X066,CLOSED-UNDER-ASSUMPTION,UNVERIFIED
+X066-G14,GLB,Finite local words globalize without a projection parameter space,DERIVED-G10-G11-G12-G13,CLOSED-UNDER-ASSUMPTION,UNVERIFIED
+X066-G15,FIN,Principalization embedded resolution intrinsic resolution and smooth functoriality,DERIVED-G14,CLOSED-UNDER-ASSUMPTION,UNVERIFIED
