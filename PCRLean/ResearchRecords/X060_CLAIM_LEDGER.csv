@@ -1,0 +1,12 @@
+claim_id,parent_group,statement_short,evidence_level,status
+X060-G1,TRM,All proper transports retain full perverse Postnikov and recollement gluing data,ASSUMED-COMPLETE-X060,CLOSED
+X060-G2,TRM,Postnikov k-invariants and recollement maps lie in one finite derived envelope,ASSUMED-COMPLETE-X060,CLOSED
+X060-G3,TRM,Canonical Serre support quotients remove dependence on a total order of strata,ASSUMED-COMPLETE-X060,CLOSED
+X060-G4,TRM,The maximal active supports form a functorial finite antichain treated simultaneously,ASSUMED-COMPLETE-X060,CLOSED
+X060-G5,TRM,Each support stratum admits one finite monodromy hull with uniform rank bounds,ASSUMED-COMPLETE-X060,CLOSED
+X060-G6,TRM,All residual local systems and gluing data occur in one finite representation envelope,ASSUMED-COMPLETE-X060,CLOSED
+X060-G7,HER,A leading perverse kernel matches contravariantly with the Cartier quotient defining the actual Fitting centre,ASSUMED-COMPLETE-X060,CLOSED
+X060-G8,FUN,Normalized smooth pullback preserves support quotients monodromy and derived gluing ranks,ASSUMED-COMPLETE-X060,CLOSED
+X060-G9,TRM,The canonical derived-monodromy rank strictly decreases at every nonterminal block,DERIVED-G1-G8,CLOSED
+X060-G10,GLB,Riemann-Zariski compilation and hereditary regular common refinement give the finite global sequence,DERIVED-EARLIER+G9,CLOSED
+X060-G11,FIN,Principalization strong embedded resolution intrinsic resolution and smooth functoriality follow,DERIVED-G10,CLOSED

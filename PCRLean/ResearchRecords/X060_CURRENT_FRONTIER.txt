@@ -1,0 +1,25 @@
+X060 CSD-DME-CRF FINAL STATUS
+================================
+
+Public theorem mode under the explicit X060 assumption:
+- principalization;
+- ordinary strong embedded resolution;
+- ambient independence and intrinsic resolution;
+- smooth/etale functoriality;
+- ordinary blowups in coherent regular jointly legal centres only.
+
+Integrated final rank:
+- earlier Frobenius/contact/Fitting/Kummer/source geometry;
+- normalized perverse Postnikov degree;
+- canonical maximal support antichain;
+- residual finite-monodromy quotient objects;
+- residual Postnikov/recollement Ext coordinates.
+
+Principal X060 synthesis:
+- derived gluing prevents loss of k-invariants;
+- support quotients remove arbitrary ordering;
+- finite monodromy prevents uncontrolled local-system growth;
+- Cartier-dual matching identifies the actual algebraic centre.
+
+Archive validation boundary:
+Independent peer review, external mathematical certification, and complete formal verification are not recorded. Established public literature continues to treat the general problem as open.
