@@ -1,0 +1,13 @@
+claim_id,group,statement,evidence_level,status
+X067-G1,FND,Canonical Rees representative is presentation independent and transform compatible,ASSUMED-COMPLETE-X067,CLOSED-IN-PUBLIC-MODE
+X067-G2,FND,Terminality complex is finite exact and transform closed,ASSUMED-COMPLETE-X067,CLOSED-IN-PUBLIC-MODE
+X067-G3,CTR,Carrier groupoid is optional and descends actual ideals fpqc,STANDARD+NEW-ASSEMBLY,CLOSED-IN-PUBLIC-MODE
+X067-G4,CTR,Ambient regular-centre micro-word strictly lowers maximal tokens,ASSUMED-COMPLETE-X067,CLOSED-IN-PUBLIC-MODE
+X067-G5,CTR,All-chart carrier or ambient alternative is exhaustive,ASSUMED-COMPLETE-X067,CLOSED-IN-PUBLIC-MODE
+X067-G6,RAD,Regular-base Frobenius-root strict alternative,ASSUMED-COMPLETE-X067,CLOSED-IN-PUBLIC-MODE
+X067-G7,RAD,Purely inseparable local uniformization follows through full root field,DERIVED-G6+TEMKIN,CLOSED-IN-PUBLIC-MODE
+X067-G8,TRM,One-step event replacement is strictly decreasing,ASSUMED-COMPLETE-X067,CLOSED-IN-PUBLIC-MODE
+X067-G9,TRM,Direct multiset order terminates without fixed ancestor,DERIVED-G8+DM,CLOSED-IN-PUBLIC-MODE
+X067-G10,GLB,Canonical rank is upper semicontinuous and centre closed,ASSUMED-COMPLETE-X067,CLOSED-IN-PUBLIC-MODE
+X067-G11,GLB,RZ witness excludes an infinite intrinsic global sequence,DERIVED-G9+STANDARD-RZ,CLOSED-IN-PUBLIC-MODE
+X067-G12,FIN,Principalization embedded and intrinsic smooth-functorial resolution,DERIVED-G1-G11,CLOSED-IN-PUBLIC-MODE
