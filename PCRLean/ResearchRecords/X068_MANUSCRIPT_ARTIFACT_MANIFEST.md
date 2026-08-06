@@ -20,12 +20,13 @@ Singularity_Resolution_in_Positive_Characteristic_X068_PDF_2026-08-06.zip
   sha256 = 3036bd5c191a2e548096c4c88cb9da211adfde1dd1c2fa596284bae959614067
 
 Singularity_Resolution_in_Positive_Characteristic_X068_Complete_2026-08-06.zip
-  sha256 = c009e8943daa017cdeaa428505b3a937afc8c1a626770ead1576e3e978ce5b2d
+  sha256 = f62a504cb81c071561796dee2b78e227032b5fc8854daa6683b3ccd7e569913e
 ```
 
 Build evidence:
 
 - main and independent clean rebuild: 52 pages;
+- source structure: 27 sections, 96 subsections, 73 theorem-like environments, 63 proofs;
 - full 50 dpi comparison: zero changed pages;
 - undefined references/citations, duplicate labels and overfull boxes: zero;
 - all 15 fonts embedded and subset;
